@@ -638,20 +638,165 @@ print(f'''
 # 총 탑승 승객 : 2 분
 
 # my_code
-from random import *
-total_passenger = 0
-list_passenger = []
-for i in range(1,51):   # no 50, it's 51
-    drival_time = int(5 + random()*45)  # randrange(5, 51)
-    # print(drival_time)
+# from random import *
+# total_passenger = 0
+# list_passenger = []
+# for i in range(1,51):   # no 50, it's 51
+#     drival_time = int(5 + random()*45)  # randrange(5, 51)
+#     # print(drival_time)
 
-    if drival_time <= 15:   # 어차피 최소 시간이 5분이라 15분 이하인 조건만
-        check = "O"
-        total_passenger += 1
-        list_passenger.append(i)
+#     if drival_time <= 15:   # 어차피 최소 시간이 5분이라 15분 이하인 조건만
+#         check = "O"
+#         total_passenger += 1
+#         list_passenger.append(i)
+#     else:
+#         check = " "
+#     print('[{0}] {1}번째 손님 (소요시간 : {2}분)'.format(check, i, drival_time))
+# print("총 탑승 승객 : {0} 분".format(total_passenger))
+# print(list_passenger)
+
+
+# Quiz) 당신은 Cocoa 서비스를 이용하는 택시 기사
+# 50명의 승객과 매칭 기회가 있을 때, 총 탑승 승객 수를 구하는 프로그램을 작성
+
+# 조건 1 : 승객별 운행 소요 시간은 5분 ~ 50분 사이의 난수로 정해집니다.
+# 조건 2 : 당신은 소요 시간 5분 ~ 15분 사이의 승객만 매칭해야 합니다.
+
+# (출력문 예제)
+# [O] 1번째 손님 (소요시간 : 15분)
+# [ ] 2번째 손님 (소요시간 : 50분)
+# [O] 3번째 손님 (소요시간 : 5분)
+# ...
+# [ ] 50번째 손님 (소요시간 : 16분)
+
+# 총 탑승 승객 : 2 분
+
+
+#################### 함수
+"""
+### 함수
+def open_account():
+    print("새로운 계좌가 생성되었습니다.")
+# open_account()
+
+### 전달값과 반환값
+def deposit(balance, money):    #입금
+    print("입금이 완료되었습니다. 잔액은 {0}원입니다." .format(balance + money))
+    return balance + money
+
+def withdraw(balance, money):   #출금
+    if balance >= money:
+        print("출금이 완료되었습니다. 잔액은 {0}원입니다." .format(balance-money))
+        return balance - money
     else:
-        check = " "
-    print('[{0}] {1}번째 손님 (소요시간 : {2}분)'.format(check, i, drival_time))
-print("총 탑승 승객 : {0} 분".format(total_passenger))
-print(list_passenger)
+        print("출금이 완료되지 않았습니다. 잔액은 {0}원입니다." .format(balance))
+        return balance
 
+def withdraw_night(balance, money): #저녁에 출금
+    commission = 100    # 수수료 100원
+    return commission, balance - money - commission
+
+balance = 0 # 잔액
+balance = deposit(balance, 1500)
+print(balance)
+# balance = withdraw(balance, 2000)
+# balance = withdraw(balance, 500)
+commission, balance = withdraw_night(balance, 500)
+print("수수료 {0}원이며, 잔액은 {1}원입니다." .format(commission, balance))
+
+
+### 기본값
+def profile(name, age, main_lang):
+    print("이름 : {0}\t나이 : {1}\t주 사용 언어 : {2}"\
+        .format(name, age, main_lang))
+profile("유재석", 20, "파이썬")
+profile("김태호", 25, "자바")
+
+# 같은 학교, 같은 학년, 같으 반, 같은 수업일 경우
+def profile(name, age=17, main_lang="파이썬"):
+    print("이름 : {0}\t나이 : {1}\t주 사용 언어 : {2}"\
+        .format(name, age, main_lang))
+profile("유재석")
+profile("김태호")
+
+
+### 키워드값
+
+# def profile(name, age, main_lang):
+#     print(name, age, main_lang)
+
+# profile(name="유재석", main_lang="파이썬", age =20)
+# profile(main_lang="자바", age=25, name="김태호")
+
+
+### 가변인자
+# def profile(name, age, lang1, lang2, lang3, lang4, lang5):
+#     print("이름: {0}\t나이 : {1}\t" .format(name, age), end=" ")
+#     print(lang1, lang2, lang3, lang4, lang5)
+
+# profile("유재석", 20, "Python", "Java", "C", "C++", "C#")
+# profile("김태호", 25, "Kotlin", "Swift", "", "", "")
+
+# 이거 많이 유용할 듯
+def profile(name, age, *language):
+    print("이름: {0}\t나이 : {1}\t" .format(name, age), end=" ")
+    for lang in language:
+        print(lang, end= " ")
+    print() #줄바꿈
+
+profile("유재석", 20, "Python", "Java", "C", "C++", "C#", "JavaScript")
+profile("김태호", 25, "Kotlin", "Swift")
+
+
+### 지역변수와 전역변수
+gun = 10
+def checkpoint(soldiers):   # 경계근무
+    global gun # 전역 공간에 있는 gun 사용
+    # 일반적으로는 전역 변수를 많이 쓰면 코드 관리에 어려우니
+    # 파라미터로 전달해서 사용하는 방식을 권장
+    gun -= soldiers
+    print("[함수 내] 남은 총 : {0}" .format(gun))
+
+def checkpoint_ret(gun, soldiers):
+    gun -=soldiers
+    print("[함수 내] 남은 총 : {0}".format(gun))
+    return gun
+
+print("전체 총 : {0}" .format(gun))
+# checkpoint(2)   # 2명이 경계 근무 나감
+gun = checkpoint_ret(gun, 2)
+print("남은 총 : {0}" .format(gun))
+
+"""
+
+### Quiz) 표준 체중을 구하는 프로그램을 작성하시오
+# 표준 체중 : 각 개인의 키에 적당한 체중
+
+# 성별에 따른 공식
+# 남자 : 키(m) x 키(m) x 22
+# 여자 : 키(m) x 키(m) x 21
+
+# 조건1 : 표준 체중은 별도의 함수 내에서 계싼
+#       * 함수명 : std_weight
+#       * 전달값 : 키(height), 성별(gender)
+# 조건2 : 표준 체중은 소수점 둘때자리까지 표시
+
+# 출력 예제
+# 키 175cm 남자의 표준 체중은 67.38kg 입니다.
+
+def std_weight(height, gender):
+    if(gender=='male'):
+        bmi_weight = 22
+    elif(gender=='female'):
+        bmi_weight = 21
+
+    height_m = height/100
+
+    return height_m * height_m * bmi_weight
+
+sample_man_height = 175
+gender = "male"
+print("키 {0}cm 남자의 표준 체중은 {1}kg 입니다."\
+    .format(sample_man_height, round(std_weight(sample_man_height, 'male'),2) ))
+
+# 반올림은 round 함수
