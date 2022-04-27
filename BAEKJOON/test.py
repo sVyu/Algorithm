@@ -521,15 +521,227 @@ print(a*b)
 
 
 # 10988 팰린드롬인지 확인하기
-word_list = list(input())
-# print(word_list)
+# word_list = list(input())
+# # print(word_list)
 
-check = 1
-for i in range(int(len(word_list)/2)):
-    if(word_list[i] != word_list[-(i+1)]):
-        check = 0
-        break
-    else:
-        continue
+# check = 1
+# for i in range(int(len(word_list)/2)):
+#     if(word_list[i] != word_list[-(i+1)]):
+#         check = 0
+#         break
+#     else:
+#         continue
 
-print(check)
+# print(check)
+
+
+# 5086 배수와 약수
+# result_list = []
+# while True:
+#     data_list = list(map(int, input().split()))
+    
+#     if (data_list[0] == 0) & (data_list[1] == 0):
+#         break
+#     elif(data_list[1] % data_list[0] == 0):
+#         result_list.append("factor")
+#     elif(data_list[0] % data_list[1] == 0):
+#         result_list.append("multiple")
+#     else:
+#         result_list.append("neither")
+
+# for i in range(len(result_list)):
+#     print(result_list[i])
+
+
+# 5717 상근이의 친구들
+# result_list = []
+# while True:
+#     data_list = list(map(int, input().split()))
+#     if (data_list[0] == 0) & (data_list[1] == 0):
+#         break
+#     else:
+#         result_list.append(data_list[0]+data_list[1])
+
+# for i in range(len(result_list)):
+#     print(result_list[i])
+
+
+# 9610 사분면
+# num = int(input())
+# point_list = [list(map(int,input().split())) for _ in range(num)]
+# # print(point_list)
+# # result_list = [0]*5     # index : Q1, Q2, Q3, Q4, AXIS
+# result_list = [0 for _ in range(5)]
+# # print(result_list)
+
+# for i in range(num):
+#     if(point_list[i][1] > 0):
+#         if(point_list[i][0] > 0):
+#             result_list[0] += 1     # 1사분면
+#         elif(point_list[i][0] < 0):
+#             result_list[1] += 1     # 2사분면
+#         else:
+#             result_list[4] += 1     # AXIS
+
+#     elif(point_list[i][1] < 0):
+#         if(point_list[i][0] < 0):
+#             result_list[2] +=1      # 3사분면
+#         elif(point_list[i][0] > 0):
+#             result_list[3] += 1     # 4사분면
+#         else:
+#             result_list[4] += 1     # AXIS
+
+#     else:
+#         result_list[4] += 1         # AXIS
+
+# for i in range(num):  이 부분 실수
+# for i in range(5):
+#     if(i == 4):
+#         print("AXIS: {0}".format(result_list[i]))
+#     else:
+#         print("Q{0}: {1}".format((i+1), result_list[i]))
+
+
+# 8958 OX퀴즈
+# num = int(input())
+# score_list = []
+# for i in range(num):
+#     o_score = 0
+#     ones_score_sum = 0
+#     ans_list = list(str(input()))
+#     for j in range(len(ans_list)):
+#         if(ans_list[j] == 'O'):
+#             o_score += 1
+#             ones_score_sum += o_score
+#         else:           # 'X'
+#             o_score = 0
+#     score_list.append(ones_score_sum)
+
+# for i in range(num):
+#     print(score_list[i])
+
+
+# 9506 약수들의 합
+# num_list = []
+# while True:
+#     num = int(input())
+#     if(num == -1):
+#         break
+#     num_list.append(num)
+# # print(num_list)
+
+# def check_perfect_number(num):
+#     div_list = [1]
+#     div = 1
+#     while True:
+#         div += 1
+#         if (num % div == 0) & (num != div):
+#             div_list.append(div)
+#             # print("test2, {0}, {1}" .format(num, div))
+#         elif num <= div :
+#             break
+#         else:
+#             continue
+    
+#     if(num == sum(div_list)):
+#         print("{0} = ".format(num), end='')
+#         for i in range(len(div_list)-1):
+#             print("{0} + ".format(div_list[i]), end='')
+#         print(div_list[-1])
+#     else:
+#         print("{0} is NOT perfect.".format(num))
+#     # print("{0}의 약수 : {1}, sum:{2}".format(num, div_list, sum(div_list)))
+
+# for i in range(len(num_list)):
+#     check_perfect_number(num_list[i])
+
+
+# 10162 전자레인지
+# cooking_time = int(input())
+# hms_list = [0]*3
+
+# if cooking_time % 10 != 0:
+#     print(-1)
+#     exit()
+# else:
+#     if(cooking_time >= 300):
+#         hms_list[0] = cooking_time // 300
+#         cooking_time %= 300
+    
+#     if(cooking_time >= 60):
+#         hms_list[1] = cooking_time // 60
+#         cooking_time %= 60
+    
+#     hms_list[2] = cooking_time // 10
+
+# print("{0} {1} {2}".format(hms_list[0], hms_list[1], hms_list[2]))
+
+
+# 10103 주사위 게임
+# num = int(input())
+# dice_list = [list(map(int, input().split())) for _ in range(num)]
+# score_list = [100] * 2
+
+# for i in range(num):
+#     gab = dice_list[i][0] - dice_list[i][1]
+#     if gab > 0:
+#         score_list[1] -= dice_list[i][0]
+
+#     elif gab < 0:
+#         score_list[0] -= dice_list[i][1]
+
+#     else:
+#         continue
+
+# print(str(score_list[0])+'\n'+str(score_list[1]))
+
+
+# 10214 Baseball
+# import os
+
+# num = int(input())
+# sum_list = [0] * 2
+# check = 0
+# while check < (num*9):
+#     score_list = list(map(int, input().split()))
+#     for i in range(2):
+#         sum_list[i] += score_list[i]
+
+#     if( (check+1) % 9 == 0):
+#         if(sum_list[0] > sum_list[1]):
+#             print("Yonsei")
+#         elif(sum_list[0] < sum_list[1]):
+#             print("Korea")
+#         else:
+#             print("Draw")
+#             # os.system("pause")
+
+#         sum_list = [0] * 2
+#     check += 1
+
+# 11557 Yangjojang of The Year
+
+# num_of_test_case = int(input())
+# winner_list = []
+
+# for i in range(num_of_test_case):
+#     num_of_col = int(input())
+#     col_list = [input().split() for _ in range(num_of_col)]
+
+#     winner = col_list[0][0]
+#     for j in range(len(col_list)-1):
+#         if(int(col_list[j][1]) < int(col_list[j+1][1])):
+#             winner = col_list[j+1][0]
+
+#     # print(winner)
+#     winner_list.append(winner)
+
+# for i in range(len(winner_list)):
+#     print(winner_list[i])
+
+
+# 10757 큰 수 A+B
+# a, b = map(int, input().split())
+# print(a+b)
+
+
