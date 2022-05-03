@@ -14,18 +14,17 @@
 #     print(result_command_list[i], end='')
 
 
-
-n=int(input())
-m=[]
-for i in range(n):
-    a,b=map(int,input().split())
-    m.append([a,b])
-    m[i].append(m[i][1]+m[i][0])
-m.sort(key=lambda x: (x[2],x[1],x[0]))
-x=m[0][1]
-y=1
-for i in range(n):
-    if x<=m[i][0]:
-        x=m[i][1]
-        y+=1
-print(y)
+# n=int(input())
+# m=[]
+# for i in range(n):
+#     a,b=map(int,input().split())
+#     m.append([a,b])
+#     m[i].append(m[i][1]+m[i][0])
+# m.sort(key=lambda x: (x[2],x[1],x[0]))
+# x=m[0][1]
+# y=1
+# for i in range(n):
+#     if x<=m[i][0]:
+#         x=m[i][1]
+#         y+=1
+# print(y)

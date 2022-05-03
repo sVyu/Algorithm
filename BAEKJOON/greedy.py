@@ -215,3 +215,91 @@
 
 # # print(value_list)
 # print(sum)
+
+
+# 1439 뒤집기
+# import math
+
+# num = list(map(int, input()))
+# # print(num)
+
+# # 앞, 뒤 index 재서 할 수도 있음
+
+# check = 0
+# number_statement = num[0]
+# for i in range(1, len(num)):
+#     if(num[i] != number_statement):
+#         check += 1
+#         number_statement = num[i]
+
+# print(math.ceil(check/2))
+
+
+# 16953 A → B
+
+# A, B = map(int, input().split())
+# cnt = 0
+
+# while B > A:
+#     units_B = B % 10
+#     if(units_B % 2 == 0):
+#         # print(B)
+#         B //= 2
+#         cnt += 1
+#     elif(units_B == 1):
+#         # print(B)
+#         B //= 10
+#         cnt += 1
+#     else:   # 끝자리가 2의 배수나 1이 아닌 경우
+#         # print(B)
+#         break
+
+# if(B == A): print(cnt + 1)
+# else: print(-1)
+
+# 1449 수리공 항승
+# hole_num, tape_length = map(int, input().split())
+# hole_list = list(map(int, input().split()))
+# hole_list.sort()
+
+# cnt_tape = 1
+# rest_tape_length = tape_length - 1
+
+
+# for i in range(1, len(hole_list)):
+
+#     # 현재 테이프로 커버가 되는 경우
+#     if(hole_list[i] - hole_list[i-1]) <= rest_tape_length:
+#         rest_tape_length -= (hole_list[i] - hole_list[i-1])
+
+#     # 안 되는 경우
+#     else:
+#         # print(rest_tape_length)
+#         rest_tape_length = tape_length -1
+#         cnt_tape += 1
+
+# print(cnt_tape)
+
+
+# 1202 보석 도둑
+
+# 1049 기타줄
+n, m = map(int, input().split())
+string_list = [list(map(int, input().split())) for _ in range(m)]
+# print(string_list)
+
+min_string6, min_string1 = string_list[0][0], string_list[0][1]
+
+for i in range(len(string_list)):
+    if(string_list[i][0] < min_string6):
+        min_string6 = string_list[i][0]
+    if(string_list[i][1] < min_string1):
+        min_string1 = string_list[i][1]
+# print(min_string6, min_string1)
+
+if(min_string6 < (min_string1 * 6)):
+    if(min_string6 < min_string1 * (n%6)):
+        print(min_string6 * ((n//6)+1))
+    else: print(min_string6 * (n//6) + min_string1 * (n%6))
+else:
+    print(min_string1 * n)
