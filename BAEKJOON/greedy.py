@@ -284,22 +284,115 @@
 # 1202 보석 도둑
 
 # 1049 기타줄
-n, m = map(int, input().split())
-string_list = [list(map(int, input().split())) for _ in range(m)]
-# print(string_list)
+# n, m = map(int, input().split())
+# string_list = [list(map(int, input().split())) for _ in range(m)]
+# # print(string_list)
 
-min_string6, min_string1 = string_list[0][0], string_list[0][1]
+# min_string6, min_string1 = string_list[0][0], string_list[0][1]
 
-for i in range(len(string_list)):
-    if(string_list[i][0] < min_string6):
-        min_string6 = string_list[i][0]
-    if(string_list[i][1] < min_string1):
-        min_string1 = string_list[i][1]
-# print(min_string6, min_string1)
+# for i in range(len(string_list)):
+#     if(string_list[i][0] < min_string6):
+#         min_string6 = string_list[i][0]
+#     if(string_list[i][1] < min_string1):
+#         min_string1 = string_list[i][1]
+# # print(min_string6, min_string1)
 
-if(min_string6 < (min_string1 * 6)):
-    if(min_string6 < min_string1 * (n%6)):
-        print(min_string6 * ((n//6)+1))
-    else: print(min_string6 * (n//6) + min_string1 * (n%6))
-else:
-    print(min_string1 * n)
+# if(min_string6 < (min_string1 * 6)):
+#     if(min_string6 < min_string1 * (n%6)):
+#         print(min_string6 * ((n//6)+1))
+#     else: print(min_string6 * (n//6) + min_string1 * (n%6))
+# else:
+#     print(min_string1 * n)
+
+# 11000 강의실 배정
+# while - for문 : 시간 초과
+# 우선순위 큐?
+# class_num = int(input())
+# class_list = [list(map(int, input().split())) for _ in range(class_num)]
+# class_list.sort(key=lambda x:(x[0], x[1]))
+# # print(class_list)
+
+# check_list = [0] * class_num
+# room_num = 0
+
+# while sum(check_list) != class_num:
+#     start_minute = 0
+#     room_num += 1
+#     for i in range(class_num):
+#         if(check_list[i] == 0) & (start_minute <= class_list[i][0]):
+#             start_minute = class_list[i][1]
+#             check_list[i] = 1
+
+# print(room_num)
+
+
+# 2720 세탁소 사장 동혁
+# num = int(input())
+# num_list = [int(input()) for _ in range(num)]
+
+# for i in range(len(num_list)):
+#     value = num_list[i]
+#     print(value//25, end=' ')
+#     value %= 25
+#     print(value//10, end=' ')
+#     value %= 10
+#     print(value//5, end=' ')
+#     value %= 5
+#     print(value//1)
+
+
+# 15904 UCPC는 무엇의 약자일까?
+# string_list = list(str(input()))
+# # print(string_list)
+
+# check = 0
+# for i in string_list:
+#     if(i == 'U') & (check == 0):
+#         check += 1
+#     elif(i == 'C') & (check == 1):
+#         check += 1
+#     elif(i == 'P') & (check == 2):
+#         check += 1
+#     elif(i == 'C') & (check == 3):
+#         check += 1
+#         break
+    
+# if(check == 4): print("I love UCPC")
+# else: print("I hate UCPC")
+
+
+# 2012 등수 매기기
+# input() → sys.stdin.readline()
+# import sys
+
+# num = int(input())
+# num_list = [int(sys.stdin.readline()) for _ in range(num)]
+# num_list.sort()
+# # print(num_list)
+
+# unsatisfied_point = 0
+# for i in range(len(num_list)):
+#     unsatisfied_point += abs((i+1) - num_list[i])
+
+# print(unsatisfied_point)
+
+
+# 1543 문서 검색
+# s = input()
+# check = input()
+# step = 0
+# count = 0
+
+# for i in range(len(s)):
+#     if((step+1 > len(s)) or (step+len(check)+1 > len(s))):
+#     # if(i + len(check) > len(s)):
+#         break
+
+#     else:
+#         if(s[step+i:step+len(check)+i] == check[0:]):
+#             step += len(check)-1   # i가 증가해서 -1
+#             count += 1
+
+# print(count)
+
+

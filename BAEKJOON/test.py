@@ -745,3 +745,11 @@ print(a*b)
 # print(a+b)
 
 
+# 2562 최댓값
+# num_list = [int(input()) for _ in range(9)]
+
+# max_value = max(num_list)
+# for i in range(len(num_list)):
+#     if(max_value == num_list[i]):
+#         print(max_value)
+#         print(i+1)
