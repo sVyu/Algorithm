@@ -396,3 +396,16 @@
 # print(count)
 
 
+# 9237 이장님 초대
+# num = int(input())
+# tree_list = list(map(int, input().split()))
+# tree_list.sort(reverse=True)
+
+# max = 0
+# for i in range(len(tree_list)):
+#     if(max < (tree_list[i] + i + 1)):
+#         max = (tree_list[i] + i + 1)
+#     else: continue
+
+# print(max + 1)
+

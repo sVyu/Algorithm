@@ -63,54 +63,88 @@
 
 # 10026 적록색약
 
-import sys
-sys.setrecursionlimit(10**6)
-# recursionlimit
+# import sys
+# sys.setrecursionlimit(10**6)
+# # recursionlimit
 
-n = int(input())
-rgb_list = [list(str(input())) for _ in range(n)]
-rgb_check_list = [[0] * n for _ in range(n)]
-case_list = ['R', 'G', 'B', 'RG']
-result_list = [0] * 4
+# n = int(input())
+# rgb_list = [list(str(input())) for _ in range(n)]
+# rgb_check_list = [[0] * n for _ in range(n)]
+# case_list = ['R', 'G', 'B', 'RG']
+# result_list = [0] * 4
 
 
-# 적록색약 아닌 경우
-def dfs(rgb_list, x, y, z):
-    if((x <= -1) | (y <= -1) | (x >= n) | (y >= n)):
-        return False
+# # 적록색약 아닌 경우
+# def dfs(rgb_list, x, y, z):
+#     if((x <= -1) | (y <= -1) | (x >= n) | (y >= n)):
+#         return False
     
-    if(z == 'RG'):
-        if(rgb_check_list[x][y] == 0) & ((rgb_list[x][y] == 'R') | (rgb_list[x][y] == 'G')):
-            rgb_check_list[x][y] = 1
+#     if(z == 'RG'):
+#         if(rgb_check_list[x][y] == 0) & ((rgb_list[x][y] == 'R') | (rgb_list[x][y] == 'G')):
+#             rgb_check_list[x][y] = 1
 
-            dfs(rgb_list, x-1, y, z)
-            dfs(rgb_list, x, y-1, z)
-            dfs(rgb_list, x+1, y, z)
-            dfs(rgb_list, x, y+1, z)
-            return True
+#             dfs(rgb_list, x-1, y, z)
+#             dfs(rgb_list, x, y-1, z)
+#             dfs(rgb_list, x+1, y, z)
+#             dfs(rgb_list, x, y+1, z)
+#             return True
 
-    elif(rgb_check_list[x][y] == 0) & (rgb_list[x][y] == z):
-        rgb_check_list[x][y] = 1
+#     elif(rgb_check_list[x][y] == 0) & (rgb_list[x][y] == z):
+#         rgb_check_list[x][y] = 1
         
-        # print(rgb_check_list)
-        # os.system("pause")
+#         # print(rgb_check_list)
+#         # os.system("pause")
 
-        dfs(rgb_list, x-1, y, z)
-        dfs(rgb_list, x, y-1, z)
-        dfs(rgb_list, x+1, y, z)
-        dfs(rgb_list, x, y+1, z)
-        return True
-    return False
+#         dfs(rgb_list, x-1, y, z)
+#         dfs(rgb_list, x, y-1, z)
+#         dfs(rgb_list, x+1, y, z)
+#         dfs(rgb_list, x, y+1, z)
+#         return True
+#     return False
 
-for k in case_list:
-    if(k == 'RG'): # RG
-        rgb_check_list = [[0] * n for _ in range(n)]
+# for k in case_list:
+#     if(k == 'RG'): # RG
+#         rgb_check_list = [[0] * n for _ in range(n)]
 
-    for i in range(n):      # point index : (i, j)
-        for j in range(n):
-            if(dfs(rgb_list, i, j, k) == True):
-                # print(i, j)
-                result_list[case_list.index(k)] += 1
+#     for i in range(n):      # point index : (i, j)
+#         for j in range(n):
+#             if(dfs(rgb_list, i, j, k) == True):
+#                 # print(i, j)
+#                 result_list[case_list.index(k)] += 1
 
-# print(result_list)
-print(sum(result_list[:3]), sum(result_list[2:]))
+# # print(result_list)
+# print(sum(result_list[:3]), sum(result_list[2:]))
+
+
+# 11403 경로 찾기
+# import os
+# import copy
+
+# n = int(input())
+# route_list = [list(map(int, input().split())) for _ in range(n)]
+
+# # new_route_list = [[0] * n for _ in range(n)]
+# # new_route_list = [] + route_list
+# # result_route_list = []
+
+# next_route_list = copy.deepcopy(route_list)
+# prev_route_list = []
+
+# while next_route_list != prev_route_list :
+#     prev_route_list = copy.deepcopy(next_route_list)
+#     for i in range(n):
+#         for j in range(n):
+#             for k in range(n):
+#                 if((next_route_list[i][j] * route_list[j][k]) == 1):
+#                     next_route_list[i][k] = 1
+#                     # print(i, j, k, next_route_list)
+#                     # os.system("pause")
+    
+#     # print(prev_route_list)
+#     # print(next_route_list)
+#     # print()
+
+# for i in range(n):
+#     for j in range(n):
+#         print(next_route_list[i][j], end= ' ')
+#     print()
