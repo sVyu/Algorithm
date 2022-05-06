@@ -148,3 +148,61 @@
 #     for j in range(n):
 #         print(next_route_list[i][j], end= ' ')
 #     print()
+
+
+# 2606 바이러스
+
+# import os
+
+# num_of_com = int(input())
+# num_of_pair = int(input())
+# pair_list = [list(map(int, input().split())) for _ in range(num_of_pair)]
+# # print(pair_list)
+
+# graph = [[] for _ in range(num_of_com + 1)]
+# # print(graph)
+
+# for i in range(len(pair_list)):
+#     graph[pair_list[i][0]].append(pair_list[i][1])
+#     graph[pair_list[i][1]].append(pair_list[i][0])
+#     # os.system("pause")
+# # print(graph)
+
+# check_list = [False] * (num_of_com+1)
+# def check_infected(n) :
+#     if(check_list[n] == False):
+#         check_list[n] = True
+#         for i in graph[n]:
+#             check_infected(i)
+#             # print(i)
+
+# check_infected(1)
+# # print(check_list)
+# print(check_list.count(True)-1)
+
+
+# 14502 연구소
+n, m = map(int, input().split())
+map_list = [list(map(int, input().split())) for _ in range(n)]
+
+# print(map_list)
+
+wall_point_list = [[-1, -1] for _ in range(3)]
+
+zero_point_list = []
+
+for i in range(n):
+    for j in range(m):
+        if(map_list[i][j] == 0):
+            zero_point_list.append([i, j])
+print(zero_point_list)
+
+for i in range(len(zero_point_list)):
+    for j in range(i+1, len(zero_point_list)):
+        for k in range(j+1, len(zero_point_list)):
+            wall_point_list[0] = zero_point_list[i]
+            wall_point_list[1] = zero_point_list[j]
+            wall_point_list[2] = zero_point_list[k]
+
+            print(wall_point_list)
+

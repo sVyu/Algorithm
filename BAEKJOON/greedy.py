@@ -409,3 +409,14 @@
 
 # print(max + 1)
 
+
+# 1461 도서관
+n, m = map(int, input().split())
+num_list = list(map(int, input().split()))
+num_list.sort()
+
+sum = 0
+
+# print(num_list)
+# for i in range(num_list):
+    
