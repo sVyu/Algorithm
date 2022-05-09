@@ -411,12 +411,19 @@
 
 
 # 1461 도서관
-n, m = map(int, input().split())
-num_list = list(map(int, input().split()))
-num_list.sort()
+# n, m = map(int, input().split())
+# num_list = list(map(int, input().split()))
+# num_list.sort()
 
-sum = 0
+# sum = 0
 
 # print(num_list)
 # for i in range(num_list):
-    
+
+
+# 14487 욱제는 효도쟁이야
+# num = int(input())
+# num_list = list(map(int, input().split()))
+# num_list.sort()
+
+# print(sum(num_list[:-1]))

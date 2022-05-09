@@ -205,4 +205,3 @@ for i in range(len(zero_point_list)):
             wall_point_list[2] = zero_point_list[k]
 
             print(wall_point_list)
-
