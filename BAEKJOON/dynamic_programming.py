@@ -33,3 +33,20 @@
 # for_max_price(num)
 # print(max_price)
 
+
+
+# 1463 1로 만들기
+# num = int(input())
+# count = 0
+
+# while num != 1:
+#     if(num % 3 == 0):
+#         num //= 3
+#     elif(num % 2 == 0):
+#         num //= 2
+#     else:
+#         num -= 1
+    
+#     count += 1
+
+# print(count)

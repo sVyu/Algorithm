@@ -131,17 +131,18 @@
 #     new_card_num = que.get() + que.get()
 #     total_count += new_card_num
 #     que.put(new_card_num)
+#     print(que.queue)
 
 # print(total_count)
-# # for _ in range(n_card_num - 1):
+# # # for _ in range(n_card_num - 1):
     
-#     # print(card_num_list)
-#     # card_num_list.sort()
-#     # total_count += card_num_list[0] + card_num_list[1]
-#     # card_num_list.append(card_num_list[0] + card_num_list[1])
-#     # del card_num_list[1], card_num_list[0]
+# #     # print(card_num_list)
+# #     # card_num_list.sort()
+# #     # total_count += card_num_list[0] + card_num_list[1]
+# #     # card_num_list.append(card_num_list[0] + card_num_list[1])
+# #     # del card_num_list[1], card_num_list[0]
 
-# # print(total_count)
+# # # print(total_count)
 
 
 # 1339 단어 수학
@@ -427,3 +428,25 @@
 # num_list.sort()
 
 # print(sum(num_list[:-1]))
+
+
+# 1246 온라인 판매
+
+n, m = map(int, input().split())
+mentioned_price_list = [int(input()) for _ in range(m)]
+mentioned_price_list.sort()
+
+start_index = 0
+total_price = 0
+max_price = 0
+egg_price = 0
+
+if(n < m): start_index = m-n
+
+for i in range(start_index, m):
+    total_price = mentioned_price_list[i] * (m - i)
+    if(max_price < total_price):
+        max_price = total_price
+        egg_price = mentioned_price_list[i]
+
+print(egg_price, max_price)

@@ -753,3 +753,14 @@ print(a*b)
 #     if(max_value == num_list[i]):
 #         print(max_value)
 #         print(i+1)
+
+
+# 13333 Q-인덱스
+num = int(input())
+num_list = list(map(int, input().split()))
+num_list.sort()
+
+index = 0
+while True:
+    for i in range(num + 1):
+        if(num_list[i])
