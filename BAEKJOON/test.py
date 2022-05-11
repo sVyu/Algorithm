@@ -756,11 +756,57 @@ print(a*b)
 
 
 # 13333 Q-인덱스
-num = int(input())
-num_list = list(map(int, input().split()))
-num_list.sort()
+# num = int(input())
+# num_list = list(map(int, input().split()))
+# num_list.sort()
 
-index = 0
-while True:
-    for i in range(num + 1):
-        if(num_list[i])
+# index = 0
+# # k 번 이상 인용된 논문 k편 이상, k는 0부터 num까지
+# for k in range(num, -1, -1):
+#     count1 = 0
+#     count2 = 0
+
+#     for i in range(num-1, -1, -1):
+#         if(num_list[i] >= k):
+#             count1 += 1
+#             index = i
+#         else: break
+    
+#     for j in range(index):
+#         if(num_list[i] <= k):
+#             count2 += 1
+#         else: break
+    
+#     if( (k <= count1) & ( k >= count2) ):
+#         # print(k, count1, count2)
+#         print(k)
+#         break
+
+
+# 1929 소수 구하기
+# 시간 초과
+# import math
+
+# m, n = map(int, input().split())
+
+# def prime_check(num):
+#     if num == 1: return False
+
+#     for i in range(2, int(math.sqrt(num))+1):
+#         if num % i == 0 : return False
+    
+#     return True
+
+# for i in range(m, n+1):
+#     if prime_check(i):
+#         print(i)
+
+# for i in range(m, n+1):
+#     prime_number_check = 1
+#     for j in range(2, int(math.sqrt(i))+1):
+#         if(i % j == 0):
+#             prime_number_check = 0
+#             break
+
+#     if(prime_number_check == 1):
+#         print(i)

@@ -431,22 +431,24 @@
 
 
 # 1246 온라인 판매
+# n, m = map(int, input().split())
+# mentioned_price_list = [int(input()) for _ in range(m)]
+# mentioned_price_list.sort()
 
-n, m = map(int, input().split())
-mentioned_price_list = [int(input()) for _ in range(m)]
-mentioned_price_list.sort()
+# start_index = 0
+# total_price = 0
+# max_price = 0
+# egg_price = 0
 
-start_index = 0
-total_price = 0
-max_price = 0
-egg_price = 0
+# if(n < m): start_index = m-n
 
-if(n < m): start_index = m-n
+# for i in range(start_index, m):
+#     total_price = mentioned_price_list[i] * (m - i)
+#     if(max_price < total_price):
+#         max_price = total_price
+#         egg_price = mentioned_price_list[i]
 
-for i in range(start_index, m):
-    total_price = mentioned_price_list[i] * (m - i)
-    if(max_price < total_price):
-        max_price = total_price
-        egg_price = mentioned_price_list[i]
+# print(egg_price, max_price)
 
-print(egg_price, max_price)
+
+# 19539 사과나무
