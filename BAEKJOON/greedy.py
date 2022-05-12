@@ -452,3 +452,169 @@
 
 
 # 19539 사과나무
+# 시간 초과
+# num = int(input())
+# num_list = sorted(list(map(int, input().split())))
+
+# for i in range(num - 1):
+#     num_list[i] %= 3
+
+# num_list[num-1] = (num_list[num-1] % 3) + 3
+
+# # print(num_list)
+
+# if(sum(num_list)) == 0 :
+#     # print("YES")
+#     yes_check = True
+# elif((sum(num_list) == 1) | (sum(num_list) ==2)):
+#     # print("NO")
+#     yes_check = False
+
+# not_zero_index = 0
+# while sum(num_list) != 0:
+#     yes_check = False
+#     # 5, 4, 3, 2
+#     if ((num_list[not_zero_index] // 2) >= 1):
+#         # print(num_list, "2")
+#         num_list[not_zero_index] -= 2
+#         for j in range(not_zero_index, num):
+#             if(num_list[j] >= 1):
+#                 num_list[j] -= 1
+#                 yes_check = True
+#                 break
+#         # 사과나무를 조건에 맞게 키울 수 없음
+#         if(yes_check == False):
+#             # print("NO")
+#             break
+    
+#     elif (num_list[not_zero_index] == 1):
+#         # print(num_list, "1")
+#         num_list[not_zero_index] -= 1
+#         for j in range(not_zero_index, num):
+#             if(num_list[j] >= 2):
+#                 num_list[j] -= 2
+#                 yes_check = True
+#                 break
+#         if(yes_check == False):
+#             break
+
+#     if(num_list[not_zero_index] == 0):
+#         not_zero_index += 1
+
+# if(yes_check == True): print("YES")
+# else: print("NO")
+
+# num = int(input())
+# num_list = sorted(list(map(int, input().split())))
+
+# if(sum(num_list) % 3) != 0:
+#     print("NO")
+# else:
+#     odd_number_count = 0
+#     for i in range(num):
+#         odd_number_count += (num_list[i] // 2)
+
+#     if(odd_number_count >= (sum(num_list)//3)):
+#         print("YES")
+#     else: print("NO")
+
+#     # print(odd_number_count)
+
+
+# 13164 행복 유치원
+# n, k  = map(int, input().split())
+# num_list = list(map(int, input().split()))
+
+# gap_list = []
+# for i in range(n-1):
+#     gap_list.append([(num_list[i+1] - num_list[i]), i+1])
+# # print(gap_list)
+# gap_list.sort(key = lambda x:(-x[0]))
+# # print(gap_list)
+
+# top_gap_index_list = []
+# for i in gap_list[:k-1]:
+#     # print(gap_list[i])
+#     top_gap_index_list.append(i[1])
+# # print(top_gap_index_list)
+# top_gap_index_list.sort()
+# # print(top_gap_index_list)
+
+# total_sum = 0
+# sum_start_index, sum_end_index = 0, 0
+
+# for i in top_gap_index_list:
+#     # print(i)
+#     sum_end_index = i
+#     total_sum += (num_list[sum_end_index-1] - num_list[sum_start_index])
+#     sum_start_index = sum_end_index
+
+# if(sum_end_index != (n-1)):
+#     total_sum += num_list[-1] - num_list[sum_end_index]
+
+# print(total_sum)
+
+
+# 13414 수강신청 dictionary
+# https://www.acmicpc.net/problem/13414
+
+# 출력 초과
+# 시간 초과
+# 틀렸습니다
+
+import sys
+
+k, list_len = map(int, sys.stdin.readline().rstrip().split())
+number_list = [str(sys.stdin.readline().rstrip()) for _ in range(list_len)]
+# number_list = [int(sys.stdin.readline().rstrip()) for _ in range(list_len)]
+# print(k, list_len, number_list)
+# for i in range(len(number_list)):
+#     print(number_list[i])
+#     print(type(number_list[i]))
+
+# dictionary에 하나씩 입력
+register_dict = {}
+for i in range(list_len):
+    register_dict[number_list[i]] = i
+# print(register_dict)
+
+# 등록 dictionary 의 key, value 거꾸로
+register_dict = dict(map(reversed, register_dict.items()))
+# print(register_dict)
+
+# x = sorted(register_dict.items(), key=lambda x:x[1])
+# print(sorted(register_dict.items(), key=lambda x:x[1]))
+# print(x[0])
+
+print(register_dict.keys(), register_dict.values())
+
+# 0부터 시작해서 k명 만큼 수강 신청 → print
+count = 0
+for i in range(list_len):
+    if(i in register_dict):
+        print(register_dict[i])
+        count += 1
+    else: continue
+    if(count == k): break
+
+
+# import sys
+
+# input = sys.stdin.readline
+
+# K, L = map(int, input().split())
+
+# queue_list = {}
+
+# for i in range(L):
+#     studentId = input().rstrip()
+#     queue_list[studentId] = i
+# print(queue_list)
+# print(sorted(queue_list.items(), key=lambda x: x[1]))
+
+# cnt = 0
+# for x in sorted(queue_list.items(), key=lambda x: x[1]):
+#     cnt += 1
+#     if cnt > K:
+#         break
+#     print(x[0])
