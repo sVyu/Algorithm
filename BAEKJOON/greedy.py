@@ -562,41 +562,40 @@
 # 시간 초과
 # 틀렸습니다
 
-import sys
+# import sys
 
-k, list_len = map(int, sys.stdin.readline().rstrip().split())
-number_list = [str(sys.stdin.readline().rstrip()) for _ in range(list_len)]
-# number_list = [int(sys.stdin.readline().rstrip()) for _ in range(list_len)]
-# print(k, list_len, number_list)
-# for i in range(len(number_list)):
-#     print(number_list[i])
-#     print(type(number_list[i]))
+# k, list_len = map(int, sys.stdin.readline().rstrip().split())
+# number_list = [str(sys.stdin.readline().rstrip()) for _ in range(list_len)]
+# # number_list = [int(sys.stdin.readline().rstrip()) for _ in range(list_len)]
 
-# dictionary에 하나씩 입력
-register_dict = {}
-for i in range(list_len):
-    register_dict[number_list[i]] = i
-# print(register_dict)
+# # 길이 8 체크 코드(추가)
+# # new_number_list = []
+# for i in number_list:
+#     # new_number_list.append(list(str(i)))
+#     if(len(list(str(i))) != 8):
+#         quit()
+# # print(new_number_list[i])
 
-# 등록 dictionary 의 key, value 거꾸로
-register_dict = dict(map(reversed, register_dict.items()))
-# print(register_dict)
+# # dictionary에 하나씩 입력
+# register_dict = {}
+# for i in range(list_len):
+#     register_dict[number_list[i]] = i
+# # print(register_dict)
 
-# x = sorted(register_dict.items(), key=lambda x:x[1])
-# print(sorted(register_dict.items(), key=lambda x:x[1]))
-# print(x[0])
+# # 등록 dictionary 의 key, value 거꾸로
+# register_dict = dict(map(reversed, register_dict.items()))
+# # print(register_dict)
+# # print(register_dict.keys(), register_dict.values())
 
-print(register_dict.keys(), register_dict.values())
-
-# 0부터 시작해서 k명 만큼 수강 신청 → print
-count = 0
-for i in range(list_len):
-    if(i in register_dict):
-        print(register_dict[i])
-        count += 1
-    else: continue
-    if(count == k): break
-
+# # 0부터 시작해서 k명 만큼 수강 신청 → print
+# count = 0
+# for i in range(list_len):
+#     if(i in register_dict):
+#         # print('{0:08d}'.format(register_dict[i]))   # int
+#         print(register_dict[i])                     # str
+#         count += 1
+#     else: continue
+#     if(count == k): break
 
 # import sys
 

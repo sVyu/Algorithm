@@ -771,12 +771,12 @@ print(a*b)
 #             count1 += 1
 #             index = i
 #         else: break
-    
+
 #     for j in range(index):
 #         if(num_list[i] <= k):
 #             count2 += 1
 #         else: break
-    
+
 #     if( (k <= count1) & ( k >= count2) ):
 #         # print(k, count1, count2)
 #         print(k)
