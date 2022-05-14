@@ -810,3 +810,99 @@ print(a*b)
 
 #     if(prime_number_check == 1):
 #         print(i)
+
+
+# 4344 평균은 넘겠지
+
+# c = int(input())
+# score = []         # score 리스트 안에 또 각각의 리스트를 만들 것이다.
+# sum_score = []     # score 리스트 안에 있는 각 리스트의 점수들의 합을 모아둘 것이다.
+# average = []       # score 리스트 안에 있는 각 리스트의 평균들을 모아둘 것이다.
+# count = [0] * c    # 한 리스트에서 평균 넘는 애들 숫자 세기
+
+# for i in range(c):                                        # 각 리스트의 점수 입력 및 평균까지 구하기
+#     score.append(list(map(int, input().split())))         # 한 리스트의 점수들을 입력해서 score 리스트에 추가하기
+#     sum_score.append(sum(score[i][1:(score[i][0]+1)]))    # 그 리스트 안에 있는 점수들 합해서 sum_score 리스트 안에 추가하기
+#     average.append(sum_score[i] / score[i][0])            # 그 sum_score에 합한 값을 점수 개수로 나누어서 average 리스트에 추가하기
+
+# # 평균 넘는 애들을 카운트해서 비율 구하기
+#     for k in range(1, score[i][0] + 1):
+#         if score[i][k] > average[i]:
+#             count[i] += 1
+#     # print(f'{round(count[i] / score[i][0] * 100, 3)}%')
+#     print('{0:.3f}%'.format(round(count[i] / score[i][0] * 100, 3)))
+
+# num = int(input())
+# num_list = [list(map(int, input().split())) for _ in range(num)]
+# # print(num_list)
+
+# # 0행부터 num-1 행까지
+# for i in range(num):
+#     avg = sum(num_list[i][1:])/num_list[i][0]   # 각 행마다 평균(avg) 계산
+#     # print(avg)
+
+#     count = 0
+#     for j in range(1, num_list[i][0]+1):
+#         if(num_list[i][j] > avg): count += 1    # 평균보다 크면 count+1
+    
+#     print('{0:.3f}%'.format(round((count/num_list[i][0]) * 100, 3)))    # 형식에 맞게 출력
+
+# 10757
+# p, q = input().split()
+
+# d= max(len(p), len(q))
+# p = p.zfill(d+1)
+# q = q.zfill(d+1)
+# r = ''
+# # print(d, p, q)
+
+# c = 0
+# # 1 부터 d+1 까지
+# for i in range(1, d+2):
+#     t = int(p[-i]) + int(q[-i])
+#     r = str(t % 10 + c) + r
+#     c = t // 10 # 다음 자리 수 +c 만큼
+#     # print(t, r, c)
+
+#     # t = int(p[-i]) + int(q[-i]) + c
+#     # r = str(t % 10) + r
+#     # c = t // 10
+#     # print(t, r, c)
+
+# print(r.lstrip('0'))
+
+
+# for class ~
+# 1152 단어의 개수
+# print(len(list(map(str, input().split()))))
+
+# 1157 단어 공부
+# print(ord('A'))
+# print(chr(65))
+
+str_input = list(input())
+# print(str_input)
+# 각 알파벳을 카운트 할 list
+count_list = [0] * 26
+
+for i in range(len(str_input)):
+    # 대문자 A(65) ~ Z
+    if(65 <= ord(str_input[i]) <= 90):
+        count_list[ord(str_input[i])-65] += 1
+    # 소문자 a(97) ~ z
+    else:
+        count_list[ord(str_input[i])-97] += 1
+# print(count_list)
+
+# count_list의 최대값을 이용해서 그 최대값이 몇 개(max_value_count) 있고 index는 몇인지
+max_value = max(count_list)
+max_value_count, max_value_index = 0, 0
+# print(count_list.index(max_value))
+for i in range(26):
+    if(count_list[i] == max_value):
+        max_value_count += 1
+        max_value_index = i
+# print(max_value_count)
+
+if(max_value_count == 1): print(chr(65 + max_value_index))
+else: print("?") # 2개 이상
