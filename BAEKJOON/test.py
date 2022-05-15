@@ -880,29 +880,158 @@ print(a*b)
 # print(ord('A'))
 # print(chr(65))
 
-str_input = list(input())
-# print(str_input)
-# 각 알파벳을 카운트 할 list
-count_list = [0] * 26
+# str_input = list(input())
+# # print(str_input)
+# # 각 알파벳을 카운트 할 list
+# count_list = [0] * 26
 
-for i in range(len(str_input)):
-    # 대문자 A(65) ~ Z
-    if(65 <= ord(str_input[i]) <= 90):
-        count_list[ord(str_input[i])-65] += 1
-    # 소문자 a(97) ~ z
-    else:
-        count_list[ord(str_input[i])-97] += 1
-# print(count_list)
+# for i in range(len(str_input)):
+#     # 대문자 A(65) ~ Z
+#     if(65 <= ord(str_input[i]) <= 90):
+#         count_list[ord(str_input[i])-65] += 1
+#     # 소문자 a(97) ~ z
+#     else:
+#         count_list[ord(str_input[i])-97] += 1
+# # print(count_list)
 
-# count_list의 최대값을 이용해서 그 최대값이 몇 개(max_value_count) 있고 index는 몇인지
-max_value = max(count_list)
-max_value_count, max_value_index = 0, 0
-# print(count_list.index(max_value))
-for i in range(26):
-    if(count_list[i] == max_value):
-        max_value_count += 1
-        max_value_index = i
-# print(max_value_count)
+# # count_list의 최대값을 이용해서 그 최대값이 몇 개(max_value_count) 있고 index는 몇인지
+# max_value = max(count_list)
+# max_value_count, max_value_index = 0, 0
+# # print(count_list.index(max_value))
+# for i in range(26):
+#     if(count_list[i] == max_value):
+#         max_value_count += 1
+#         max_value_index = i
+# # print(max_value_count)
 
-if(max_value_count == 1): print(chr(65 + max_value_index))
-else: print("?") # 2개 이상
+# if(max_value_count == 1): print(chr(65 + max_value_index))
+# else: print("?") # 2개 이상
+
+
+# 1546 평균
+# num = int(input())
+# num_list = list(map(int, input().split()))
+# # print(num_list)
+
+# # 새로운 점수 : num_list[index] / max(num_list) * 100 이므로 아래는 평균
+# print(sum(num_list)/(max(num_list)*num) * 100)
+
+
+# 11720 숫자의 합
+# list_len = int(input())
+# int_list = list(map(str, input()))
+
+# sum = 0
+# for i in range(list_len):
+#     sum += int(int_list[i])
+
+# print(sum)
+
+
+# 1110 더하기 사이클
+# num = int(input())
+
+# # 10의 자리, 1의 자리
+# tens_place, ones_place = num // 10, num % 10
+# # print(tens_place, ones_place)
+
+# # 새로 만든 숫자 : -1로 초기화
+# new_number = -1 # new_number = 0
+# count = 0
+# while num != new_number:
+#     new_number = (ones_place * 10) + (tens_place + ones_place) % 10
+#     count += 1
+#     tens_place, ones_place = new_number // 10, new_number % 10
+#     # print(new_number, count)
+
+# print(count)
+
+
+# 4690 완전 세제곱
+# a;b;c;d;i;j;k;l;main()
+# for(i=2;100>i;i++){
+#     for(j=2;100>j;j++){
+#         for(k=j;100>k;k++){
+#             for(l=k;100>l;l++){
+#                 if(i*i*i==j*j*j+k*k*k+l*l*l){
+#                     printf("Cube = %d, Triple = (%d,%d,%d)\n",i,j,k,l);
+#                 }
+#             }
+#         }
+#     }
+# }
+
+# for i in range(2, 101):
+#     for j in range(2, i):
+#         for k in range(j, i):
+#             for m in range(k, i):
+#                 # if(i**3 == ((j**3) + (k**3) + (m**3))):
+#                 if((i*i*i) == ((j*j*j) + (k*k*k) + (m*m*m))):
+#                     print("Cube = {0}, Triple = ({1},{2},{3})".format(i, j, k, m))
+
+
+# 2805 나무 자르기
+# 시간 초과
+# import sys
+
+# n, m = map(int, sys.stdin.readline().rstrip().split())
+# tree_height_list = sorted(list(map(int, sys.stdin.readline().rstrip().split())), reverse = True)
+# print(tree_height_list)
+
+# # 제일 높은 나무의 높이를 기점으로 cutting_height 변수 초기화
+# # cutting_height = max(tree_height_list)
+
+# cutting_height = int((tree_height_list[0] + tree_height_list[n-1])/2)
+# # print(cutting_height)
+
+# # 이분 탐색
+# while True:
+#     for i in range(n):
+#         if((tree_height_list[i] - cutting_height) > 0):
+#             sum += tree_height_list[i] - cutting_height
+#         else: break
+    
+#     if(sum >= m): cutting_height = int((cutting_height + tree_height_list[0])/2)
+#     else: cutting_height = int((cutting_height + tree_height_list[0])/2)
+
+
+# brute force
+# # 1씩 줄이면서 계산
+# for i in range(cutting_height, -1, -1):
+#     sum = 0
+#     # 큰 나무부터 cutting을 해서 남는 값이 있으면 sum에 합산
+#     for j in range(n-1, -1, -1):
+#         if((tree_height_list[j] - i) > 0):
+#             sum += tree_height_list[j] - i
+#             # print(i, j, sum)
+#         # 0이하의 값 → cutting 기준 이하의 나무 길이 → 정렬돼있으므로 확인 할 필요 없음
+#         else:
+#             break
+
+#     # sum의 값이 m 이상이 되면 조건 충족이므로 break
+#     if(sum >= m):
+#         cutting_height = i
+#         break
+
+# print(cutting_height)
+
+
+# 2869 달팽이는 올라가고 싶다
+# import math
+# a, b, v = map(int, input().split())
+
+# # print(math.ceil(v/(a - b)))
+# days = math.ceil(v/(a - b))
+# minus_days = 0
+# min_days = 0
+
+# while True:
+#     minus_days += 1
+#     if()
+
+
+# 두 수 비교하기 1330
+a, b = map(int, input().split())
+if(a > b): print(">")
+elif(a < b): print("<")
+else: print("==")
