@@ -1017,21 +1017,120 @@ print(a*b)
 
 
 # 2869 달팽이는 올라가고 싶다
+# 시간 초과
 # import math
-# a, b, v = map(int, input().split())
+# import sys
 
-# # print(math.ceil(v/(a - b)))
-# days = math.ceil(v/(a - b))
+# a, b, v = map(int, sys.stdin.readline().split())
+# v -= a
+
+# print(math.ceil(v/(a-b)) + 1)
+
+# gab = a - b
+# days = math.ceil(v / gab)
 # minus_days = 0
 # min_days = 0
 
 # while True:
 #     minus_days += 1
-#     if()
+#     if((gab * (days - minus_days) + a) >= v): continue
+#         # print(gab, days, minus_days, a, v)
+#     else: break
+# min_days = days - minus_days
+# print(min_days + 2)
 
 
 # 두 수 비교하기 1330
-a, b = map(int, input().split())
-if(a > b): print(">")
-elif(a < b): print("<")
-else: print("==")
+# a, b = map(int, input().split())
+# if(a > b): print(">")
+# elif(a < b): print("<")
+# else: print("==")
+
+
+# 팰린드롬수 1259
+
+# while True:
+#     num_input = input()
+#     if(num_input == '0'): break
+#     else:
+#         num_list = list(map(int, num_input))
+#         # print(num_list)
+
+#         palindrome_check = True
+#         for i in range(len(num_list) // 2):
+#             if(num_list[i] == num_list[len(num_list)-1-i]): continue
+#             else: palindrome_check = False
+        
+#         if(palindrome_check): print("yes")
+#         else: print("no")
+
+
+# 1018 체스판 다시 칠하기
+# import sys
+# m, n = map(int, input().split())
+# checkboard_list = [list(sys.stdin.readline().rstrip()) for _ in range(m)]
+# # print(checkboard_list)
+
+# # m, n은 각각 8이상이므로 check 필요 X
+# # i, j : 시작돌 위치
+# # 바꿔야 하는 돌의 최대 개수는 64개이므로 min을 64로 설정
+# min_count = 64
+# for i in range(m-7):
+#     for j in range(n-7):
+#         count = 0
+#         go_stone = {0:'W', 1:'B'}
+#         for x in range(0, 8):
+#             for y in range(0, 8):
+#                 # 시작 돌이 White
+#                 if(checkboard_list[i+x][j+y] == go_stone[(x+y)%2]): count += 0
+#                 else: count += 1
+#         # print(i, j, count, 'W')
+#         if(count < min_count): min_count = count
+
+#         count = 0
+#         for x in range(8):
+#             for y in range(8):
+#                 # 시작 돌이 Black
+#                 if(checkboard_list[i+x][j+y] == go_stone[(x+y+1)%2]): count += 0
+#                 else: count += 1
+#         # print(i, j, count, 'B')
+#         if(count < min_count): min_count = count
+
+# print(min_count)
+
+# go_stone = {0:'W', 1:'B'}
+# print(go_stone[0])
+# print(go_stone[2])
+# print(go_stone[1])
+
+
+# 2747 피보나치 수
+# 2748 피보나치 수 2
+# 2748 피보나치 수 3
+
+# 11444 피보나치 수 6
+
+# num_input = int(input())
+# fibonacci_list = [0, 1]
+# for i in range(2, num_input + 1):
+#     fibonacci_list.append((fibonacci_list[i-1] + fibonacci_list[i-2]) % 1000000)
+
+# print(fibonacci_list[num_input])
+
+
+# 9471 피사노 주기
+case_num = int(input())
+case_list = [list(map(int, input().split())) for _ in range(case_num)]
+# print(case_list)
+
+fibonacci_list = [0, 1]
+
+i = 1
+while True:
+    i += 1
+    fibonacci_list.append((fibonacci_list[i-1]+[i-2])//case_list[0][1])
+    print(fibonacci_list)
+    if((fibonacci_list[-1] + fibonacci_list[-2]) == 1):
+        break
+
+print(i, fibonacci_list)
