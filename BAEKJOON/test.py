@@ -1106,31 +1106,224 @@ print(a*b)
 
 # 2747 피보나치 수
 # 2748 피보나치 수 2
-# 2748 피보나치 수 3
+# 2749 피보나치 수 3
+# 10826 피보나치 수 4
+# 10870 피보나치 수 5
 
 # 11444 피보나치 수 6
+# 행렬을 이용한 계산
 
 # num_input = int(input())
 # fibonacci_list = [0, 1]
 # for i in range(2, num_input + 1):
-#     fibonacci_list.append((fibonacci_list[i-1] + fibonacci_list[i-2]) % 1000000)
+#     fibonacci_list.append((fibonacci_list[i-1] + fibonacci_list[i-2]))
 
 # print(fibonacci_list[num_input])
 
 
 # 9471 피사노 주기
-case_num = int(input())
-case_list = [list(map(int, input().split())) for _ in range(case_num)]
-# print(case_list)
+# case_num = int(input())
+# case_list = [list(map(int, input().split())) for _ in range(case_num)]
+# # print(case_list)
 
-fibonacci_list = [0, 1]
+# for k in range(case_num):
+#     fibonacci_list = [0, 1]
+#     i = 1
+#     while True:
+#         # i : index (i번째 fibonacci 수)
+#         i += 1
+#         fibonacci_list.append((fibonacci_list[i-1]+fibonacci_list[i-2]) % case_list[k][1])
+#         # print(fibonacci_list)
+#         if((fibonacci_list[-1] + fibonacci_list[-2]) == 1):
+#             break
 
-i = 1
-while True:
-    i += 1
-    fibonacci_list.append((fibonacci_list[i-1]+[i-2])//case_list[0][1])
-    print(fibonacci_list)
-    if((fibonacci_list[-1] + fibonacci_list[-2]) == 1):
-        break
+#     print(k + 1, i)
+#     # print(i, fibonacci_list)
 
-print(i, fibonacci_list)
+
+# 2749 피보나치 수 3
+# 9471 피사노 주기를 먼저 풀어야 가능
+# num = int(input())
+# fibonacci_list = [0, 1]
+
+# for i in range(2, 1500001):
+#     fibonacci_list.append((fibonacci_list[i-1] + fibonacci_list[i-2]) % 1000000)
+
+# print(fibonacci_list[num % 1500000])
+
+
+# 11444
+# num = int(input())
+# fibonacci_list = [0, 1]
+
+# for i in range(2, 1500001):
+#     fibonacci_list.append((fibonacci_list[i-1] + fibonacci_list[i-2]) % 1000000)
+
+# print(fibonacci_list[num % 1500000])
+
+
+# 5522 카드 게임
+# print(sum([int(input()) for _ in range(5)]))
+
+
+# 14754 Pizza Boxes
+# import sys
+
+# n, m = map(int, sys.stdin.readline().rstrip().split())
+# pizza_boxes = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(n)]
+# # print(pizza_boxes)
+# check_pizza_list = [[0] * m  for _ in range(n)]
+
+# # 각 행의 최대 boxes 좌표 check
+# for i in range(0, n):
+#     max_index = 0
+#     for j in range(1, m):
+#         if(pizza_boxes[i][j] > pizza_boxes[i][max_index]): max_index = j
+#     check_pizza_list[i][max_index] = 1
+
+# # 각 열의 최대 boxes 좌표 check
+# for j in range(0, m):
+#     max_index = 0
+#     for i in range(1, n):
+#         if(pizza_boxes[i][j] > pizza_boxes[max_index][j]): max_index = i
+#     check_pizza_list[max_index][j] = 1
+
+# # pizza 합계 계산
+# sum = 0
+# for i in range(n):
+#     for j in range(m):
+#         # if ([i, j] not in max_index_list): sum += pizza_boxes[i][j]
+#         if(check_pizza_list[i][j] == 0): sum += pizza_boxes[i][j]
+
+# # print(max_index_list)
+# print(sum)
+
+
+# 10718 We love kriii
+# print("강한친구 대한육군\n강한친구 대한육군")
+
+
+# 1181 단어 정렬
+# num = int(input())
+
+# word_dict = {}
+# for i in range(num):
+#     word = input()
+#     word_dict[word] = len(word)
+
+# # word_dict = sorted(word_dict.items(), key=lambda x:(x[1], x[0]))
+# # print(word_dict)
+
+# # 1. 길이순(x[1]), 2.(같은 길이인 경우)사전순(x[0])
+# for i in sorted(word_dict.items(), key=lambda x:(x[1], x[0])):
+#     print(i[0])
+
+
+# 1764 듣보잡
+# import sys
+# n, m = map(int, input().split())
+
+# # 듣잡 dict
+# not_heard_dict = {}
+# for i in range(n):
+#     name = sys.stdin.readline().rstrip()
+#     not_heard_dict[name] = i
+# # 정렬
+# not_heard_dict = sorted(not_heard_dict.items(), key=lambda x:(x[0]))
+
+# # 보잡 dict
+# not_seen_dict = {}
+# for i in range(m):
+#     name = sys.stdin.readline().rstrip()
+#     not_seen_dict[name] = i
+
+# # 듣보잡 list
+# not_heard_seen_list = []
+# for i in range(min([n, m])):
+#     if(not_heard_dict[i][0] in not_seen_dict):
+#         not_heard_seen_list.append(not_heard_dict[i][0])
+
+# # 듣보잡의 수와 그 명단을 사전순으로 출력(위에서 이미 정렬을 했으므로 사전순으로 출력됨)
+# print(len(not_heard_seen_list))
+# for i in range(len(not_heard_seen_list)): print(not_heard_seen_list[i])
+
+
+# 4949 균형잡힌 세상
+# import sys
+
+# while True:
+#     str_list = list(sys.stdin.readline().rstrip())
+#     # print(str_list)
+    
+#     if((len(str_list) == 1) & (str_list[0] == '.')):
+#         break
+    
+#     stack_list = []
+
+#     symmetry_check = True
+#     for i in range(len(str_list)):
+#         if (str_list[i] == '('): stack_list.append('(')
+#         elif (str_list[i] == '['): stack_list.append('[')
+
+#         elif (str_list[i] == ')'):
+#             if(len(stack_list) == 0):
+#                 symmetry_check = False
+#                 break
+#             elif(stack_list.pop() == '('): continue
+#             else:
+#                 symmetry_check = False
+#                 break
+#         elif (str_list[i] == ']'):
+#             if(len(stack_list) == 0):
+#                 symmetry_check = False
+#                 break
+#             elif(stack_list.pop() == '['): continue
+#             else:
+#                 symmetry_check = False
+#                 break
+#         else: continue
+    
+#     # if(len(stack_list) == 0): print("yes")
+#     # else: print("no")
+
+#     # 출력초과 테스트용 코드
+#     # 테스트결과, 한 string에 .이 2개 이상인 경우는 없었음
+#     dot_count = 0
+#     for i in range(len(str_list)):
+#         if(str_list[i] == '.'):
+#             dot_count += 1
+#     if(dot_count > 1):
+#         print("haha")
+
+#     if((len(stack_list) == 0) & (symmetry_check == True)): print("yes")
+#     else: print("no")
+
+
+# 2108 통계학
+import math
+import sys
+
+num = int(input())
+num_list = [int(sys.stdin.readline().rstrip()) for _ in range(num)]
+num_list.sort()
+
+# 평균
+print(math.ceil(sum(num_list)/len(num_list)))
+
+# 중앙값
+# 길이가 홀수인 경우
+if((len(num_list) % 2) == 1): print(num_list[len(num_list)//2])
+# 짝수인 경우
+else: print(num_list[len(num_list)//2] + num_list[(len(num_list)//2)-1])
+
+# 최빈값
+num_count_set = {}
+for i in range(len(num_list)):
+    if(num_list[i] not in num_count_set): num_count_set[num_list[i]] = 1
+    else: num_count_set[num_list[i]] += 1
+
+num_count_set = sorted(num_count_set.items(), key=lambda x:-x[1])
+print(num_count_set)
+
+# 범위
+print(num_list[-1] - num_list[0])
