@@ -617,3 +617,33 @@
 #     if cnt > K:
 #         break
 #     print(x[0])
+
+
+# 11509 풍선 맞추기
+# 시간 초과
+num = int(input())
+num_list = list(map(int, input().split()))
+
+# 화살 count 0부터
+arrow_count = 0
+for k in range(num):
+    # 풍선 높이가 다 0이면 (다 터졌으면) break
+    if(sum(num_list) == 0): break
+
+    # 최고 높이 인덱스 찾기
+    max_height_index = 0
+    for i in range(num):
+        if(num_list[i] > num_list[max_height_index]): max_height_index = i
+    # print(max_height_index)
+
+    # 최고 높이 인덱스부터 시작해서 풍선이 맞으면 화살 높이 1씩 감소하면서 검사
+    arrow_height = num_list[max_height_index]
+    for j in range(max_height_index, num):
+        if(num_list[j] == arrow_height):
+            num_list[j] = 0
+            arrow_height -= 1
+    
+    # 화살 count 증가
+    arrow_count += 1
+
+print(arrow_count)

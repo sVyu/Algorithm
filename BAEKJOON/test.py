@@ -1300,30 +1300,153 @@ print(a*b)
 
 
 # 2108 통계학
-import math
-import sys
+# import math
+# import sys
 
-num = int(input())
-num_list = [int(sys.stdin.readline().rstrip()) for _ in range(num)]
-num_list.sort()
+# num = int(input())
+# num_list = [int(sys.stdin.readline().rstrip()) for _ in range(num)]
+# num_list.sort()
 
-# 평균
-print(math.ceil(sum(num_list)/len(num_list)))
+# # 평균
+# print(round(sum(num_list)/len(num_list)))
 
-# 중앙값
-# 길이가 홀수인 경우
-if((len(num_list) % 2) == 1): print(num_list[len(num_list)//2])
-# 짝수인 경우
-else: print(num_list[len(num_list)//2] + num_list[(len(num_list)//2)-1])
+# # 중앙값
+# # 길이가 홀수인 경우
+# if((len(num_list) % 2) == 1): print(num_list[len(num_list)//2])
+# # 짝수인 경우
+# else: print(num_list[len(num_list)//2] + num_list[(len(num_list)//2)-1])
 
-# 최빈값
-num_count_set = {}
-for i in range(len(num_list)):
-    if(num_list[i] not in num_count_set): num_count_set[num_list[i]] = 1
-    else: num_count_set[num_list[i]] += 1
+# # 최빈값
+# num_count_set = {}
+# for i in range(len(num_list)):
+#     if(num_list[i] not in num_count_set): num_count_set[num_list[i]] = 1
+#     else: num_count_set[num_list[i]] += 1
 
-num_count_set = sorted(num_count_set.items(), key=lambda x:-x[1])
-print(num_count_set)
+# # -x[1] : 카운트 수로 정렬, x[0] : 같은 카운트에 대해 기존 숫자 오름차순 정렬
+# num_count_set = sorted(num_count_set.items(), key=lambda x:(-x[1], x[0]))
+# if(len(num_count_set) == 1): print(num_count_set[0][0])
+# elif(num_count_set[0][1] == num_count_set[1][1]): print(num_count_set[1][0])
+# else: print(num_count_set[0][0])
+# # print(num_count_set)
 
-# 범위
-print(num_list[-1] - num_list[0])
+# # 범위
+# print(num_list[-1] - num_list[0])
+
+
+# 2609 최대공약수와 최소공배수
+# n, m = map(int, input().split())
+
+# # 최대공약수 - 유클리드 호제법
+# def gcd(a, b):
+#     while(b!= 0): a, b = b, a % b
+#     return a
+
+# # 최소공배수
+# def lcm(a, b):
+#     return a * b // gcd(a,b)
+
+# print(gcd(n, m))
+# print(lcm(n, m))
+
+# 10944 랜덤 게임~~
+# from random import *
+# print(randint(1, 10000))
+
+
+# 빠른 A+B
+# import sys
+
+# num = int(sys.stdin.readline().rstrip())
+# for _ in range(num):
+#     num_list = list(map(int, sys.stdin.readline().rstrip().split()))
+#     print(sum(num_list))
+
+
+# 16120 PPAP
+# 시간 초과
+# str_list = list(input().rstrip())
+# # print(str_list)
+
+# while True:
+#     if(len(str_list) < 4):
+#         print("NP")
+#         break
+#     elif(str_list == ['P', 'P', 'A', 'P']):
+#         print('PPAP')
+#         break
+#     # 길이 4이상에 PPAP가 아닌 경우
+#     else:
+#         new_str_list = []
+#         # 7인 경우 3까지 검사 range(4)
+#         # for i in range(len(str_list)-3):
+#         i = 0
+#         while True:
+#             # index가 str_list 범위를 벗어나면 break
+#             if(i >= len(str_list)): break
+#             # print(i)
+#             # 남은 str_list 길이가 3이하면 PPAP 검사 할 필요가 없으므로 new_str_list에 .extend()
+#             if(len(str_list[i:]) <= 3):
+#                 new_str_list.extend(str_list[i:])
+#                 break
+#             # PPAP 검사
+#             elif((str_list[i] == 'P') & (str_list[i+1] == 'P') & (str_list[i+2] == 'A') & (str_list[i+3] == 'P')):
+#                 new_str_list.append('P')
+#                 i += 4
+#             # PPAP가 아닌 경우 단순하게 append 추가
+#             else:
+#                 new_str_list.append(str_list[i])
+#                 i += 1
+        
+#         # 새로운 str_list랑 기존 str_list랑 같은 경우 → 무한 루프 → NP
+#         if(new_str_list == str_list):
+#             print("NP")
+#             break
+#         # 아닌 경우, 다음 step 진행
+#         else:
+#             # print(new_str_list)
+#             str_list = new_str_list
+
+
+# 15881 Pen Pineapple Apple Pen
+# str_len = int(input())
+# str_list = list(input())
+
+# p_index = []
+# for i in range(str_len):
+#     if(str_list[i] == 'p'): p_index.append(i)
+# # print(p_index)
+
+# count = 0
+# for i in p_index:
+#     if((i + 3) >= str_len): break
+#     elif(str_list[i:i+4] == ['p','P','A','p']):
+#         count += 1
+#         str_list[i+3] = 'v' # pPApPAp 일 때 1개만 체크하기 위함
+#     else: continue
+#     # print(str_list)
+# print(count)
+
+
+# 16692 Greedy Scheduler
+# n, c = map(int, input().split())
+# cart_list = list(map(int, input().split()))
+
+# cashier_number_list = [0] * c
+
+# # 0 ~ n-1 인덱스 까지는 오는 순서대로 받을 수 있음
+# for i in range(n):
+#     cashier_number_list[i] = i + 1
+
+# # 그 이후의 인덱스에 대해서는 기존 n 까지의 범위 중 최소 값을 가지는 cashier의 index 값을 이용
+# for i in range(n, c):
+#     min_seconds_index = 0
+#     for j in range(1, n):
+#         if(cart_list[min_seconds_index] > cart_list[j]): min_seconds_index = j
+#     cart_list[min_seconds_index] += cart_list[i]
+#     cashier_number_list[i] = min_seconds_index + 1
+
+# for i in range(c):
+#     print(cashier_number_list[i], end= ' ')
+# # print(cashier_number_list)
+
+

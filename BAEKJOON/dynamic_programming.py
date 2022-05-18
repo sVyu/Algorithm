@@ -216,37 +216,39 @@
 
 
 # 1495 기타리스트
-# 메모리 초과..
-n, s, m = map(int, input().split())
-vol_list = list(map(int, input().split()))
+# 메모리 초과.. → 리스트 not in 으로 해결
+# n, s, m = map(int, input().split())
+# vol_list = list(map(int, input().split()))
 
-pos_vol_list = [s]
+# pos_vol_list = [s]
 
-# 0부터 n-1까지 볼륨 조절 start
-for i in range(n):
-    # 가능한 볼륨 리스트의 길이가 0이면 print("-1") 하고 종료
-    pos_vol_list_len = len(pos_vol_list)
-    new_pos_vol_list = []
+# # 0부터 n-1까지 볼륨 조절 start
+# for i in range(n):
+#     # 가능한 볼륨 리스트의 길이가 0이면 print("-1") 하고 종료
+#     pos_vol_list_len = len(pos_vol_list)
+#     new_pos_vol_list = []
 
-    if(pos_vol_list_len == 0):
-        print("-1")
-        quit()
+#     if(pos_vol_list_len == 0):
+#         print("-1")
+#         quit()
 
-    for j in range(pos_vol_list_len):
-        if(0 <= (pos_vol_list[j] - vol_list[i]) <= m):
-            if(pos_vol_list[j] - vol_list[i] not in new_pos_vol_list):
-                new_pos_vol_list.append(pos_vol_list[j] - vol_list[i])
-        if(0 <= (pos_vol_list[j] + vol_list[i]) <= m):
-            if(pos_vol_list[j] + vol_list[i] not in new_pos_vol_list):
-                new_pos_vol_list.append(pos_vol_list[j] + vol_list[i])
+#     for j in range(pos_vol_list_len):
+#         if(0 <= (pos_vol_list[j] - vol_list[i]) <= m):
+#             if(pos_vol_list[j] - vol_list[i] not in new_pos_vol_list):
+#                 new_pos_vol_list.append(pos_vol_list[j] - vol_list[i])
+#         if(0 <= (pos_vol_list[j] + vol_list[i]) <= m):
+#             if(pos_vol_list[j] + vol_list[i] not in new_pos_vol_list):
+#                 new_pos_vol_list.append(pos_vol_list[j] + vol_list[i])
     
-    # pos_vol_list 갱신
-    # pos_vol_list = pos_vol_list[pos_vol_list_len:]
-    pos_vol_list = new_pos_vol_list
-    # print(i, pos_vol_list)
+#     # pos_vol_list 갱신
+#     # pos_vol_list = pos_vol_list[pos_vol_list_len:]
+#     pos_vol_list = new_pos_vol_list
+#     # print(i, pos_vol_list)
 
-# vol_list[n-1] 번째 계산 이후에도 확인을 해주어야 함
-if(len(pos_vol_list) == 0):
-    print("-1")
-    quit()
-else: print(max(pos_vol_list))
+# # vol_list[n-1] 번째 계산 이후에도 확인을 해주어야 함
+# if(len(pos_vol_list) == 0):
+#     print("-1")
+#     quit()
+# else: print(max(pos_vol_list))
+
+
