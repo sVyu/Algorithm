@@ -619,31 +619,117 @@
 #     print(x[0])
 
 
+
 # 11509 풍선 맞추기
 # 시간 초과
-num = int(input())
-num_list = list(map(int, input().split()))
+# num = int(input())
+# num_list = list(map(int, input().split()))
 
-# 화살 count 0부터
-arrow_count = 0
-for k in range(num):
-    # 풍선 높이가 다 0이면 (다 터졌으면) break
-    if(sum(num_list) == 0): break
+# # 화살 count 0부터
+# arrow_count = 0
+# for k in range(num):
+#     # 풍선 높이가 다 0이면 (다 터졌으면) break
+#     if(sum(num_list) == 0): break
 
-    # 최고 높이 인덱스 찾기
-    max_height_index = 0
-    for i in range(num):
-        if(num_list[i] > num_list[max_height_index]): max_height_index = i
-    # print(max_height_index)
+#     # 최고 높이 인덱스 찾기
+#     max_height_index = 0
+#     for i in range(num):
+#         if(num_list[i] > num_list[max_height_index]): max_height_index = i
+#     # print(max_height_index)
 
-    # 최고 높이 인덱스부터 시작해서 풍선이 맞으면 화살 높이 1씩 감소하면서 검사
-    arrow_height = num_list[max_height_index]
-    for j in range(max_height_index, num):
-        if(num_list[j] == arrow_height):
-            num_list[j] = 0
-            arrow_height -= 1
+#     # 최고 높이 인덱스부터 시작해서 풍선이 맞으면 화살 높이 1씩 감소하면서 검사
+#     arrow_height = num_list[max_height_index]
+#     for j in range(max_height_index, num):
+#         if(num_list[j] == arrow_height):
+#             num_list[j] = 0
+#             arrow_height -= 1
     
-    # 화살 count 증가
-    arrow_count += 1
+#     # 화살 count 증가
+#     arrow_count += 1
 
-print(arrow_count)
+# print(arrow_count)
+
+# 5% 에서 시간 초과
+# import sys
+
+# num = int(sys.stdin.readline())
+# num_list = list(map(int, sys.stdin.readline().split()))
+
+# # 화살 카운트, 시작 index 0으로 초기화
+# arrow_count = 0
+# arrow_start_index = 0
+
+# # 풍선이 다 터지면 (sum의 값이 0이면) break, 아닐 경우 계속 진행
+# while True:
+#     if(max(num_list) == 0): break
+
+#     # arrow_start_index 조정, 풍선이 없으면(이미 터졌으면) 다음 index
+#     while True:
+#         if(num_list[arrow_start_index] == 0): arrow_start_index += 1
+#         else: break
+    
+#     # 화살에 맞으면 0을 대입하고 화살 높이 -1
+#     arrow_height = num_list[arrow_start_index]
+#     for i in range(arrow_start_index, num):
+#         if(num_list[i] == arrow_height):
+#             num_list[i] = 0
+#             arrow_height -= 1
+#             # 화살 높이가 0인 경우, for문은 무의미하므로 break
+#             if(arrow_height == 0): break
+
+#     # 인덱스, 카운트 증가
+#     arrow_start_index += 1
+#     arrow_count += 1
+
+# print(arrow_count)
+
+# import sys
+
+# num = int(sys.stdin.readline())
+# num_list = list(map(int, sys.stdin.readline().split()))
+
+# # arrow(의 높이)를 저장하는 list와 확인용 index
+# arrow_list = []
+# i = 0
+# # i는 0부터 num-1 까지 1번만, O(n)
+# arrow_count = 0
+# while True:
+#     if(num_list[i] not in arrow_list):
+#         arrow_list.append(num_list[i]-1)
+#         # print("[1] ,", i, arrow_list)
+#         arrow_count += 1
+#         i += 1
+#     else:
+#         wanted_index = arrow_list.index(num_list[i])
+#         arrow_list[wanted_index] -= 1
+#         # print("[2] ,", i, arrow_list)
+#         i += 1
+#         if(arrow_list[wanted_index] == 0):
+#             del arrow_list[wanted_index]
+
+#     if(i == (num)):
+#         break
+
+# print(arrow_count)
+# # print(len(arrow_list))
+
+
+# import sys
+
+# num = int(sys.stdin.readline())
+# num_list = list(map(int, sys.stdin.readline().split()))
+# num_list.insert(0, 0)
+
+# # 0부터 n까지, index 편의를 위해 크기 1만큼 더 크게 초기화
+# arrow_list = [0] * (max(num_list) + 1)
+# arrow_count = 0
+# for i in range(1, num + 1):
+#     if(arrow_list[num_list[i]] == 0):
+#         arrow_list[num_list[i] - 1] += 1
+#         arrow_count += 1
+#     else:
+#         arrow_list[num_list[i]] -= 1
+#         arrow_list[num_list[i]-1] += 1
+#     # print(arrow_list)
+
+# print(arrow_count)

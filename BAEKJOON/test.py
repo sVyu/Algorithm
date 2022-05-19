@@ -1450,3 +1450,190 @@ print(a*b)
 # # print(cashier_number_list)
 
 
+# 18787 Mad Scientist
+# num = int(input())
+# string_A = list(input())
+# string_B = list(input())
+
+# flipinator_3000_on = False
+# count = 0
+# for i in range(num):
+#     if(string_A[i] != string_B[i]):
+#         # if(~flipinator_3000_on): # 이건 numpy 식
+#         if(not flipinator_3000_on):
+#             flipinator_3000_on = True
+#             count += 1
+#         else: continue
+#     else:
+#         flipinator_3000_on = False
+#         continue
+#     # print(i, flipinator_3000_on, count)
+
+# print(count)
+
+
+# 10859 뒤집어진 소수
+# 4퍼 13퍼 16퍼 91퍼 → 틀렸습니다
+# 4퍼 5퍼 시간 초과 
+# import math
+# import sys
+
+# input_value = sys.stdin.readline().rstrip()
+# num_list = list(map(int, input_value))
+# list_len = len(num_list)
+# new_num_list = [0] * list_len
+
+# # # 2의 배수나 5의 배수인지 혹은 3의 배수인지 check
+# # def multiple_check(list):
+# #     if( ((list[-1]%2) == 0) | (list[-1] == 5) | (sum(list) % 3 == 0)):
+# #         print("no")
+# #         # quit()
+# #         sys.exit(0)
+
+# # 소수 체크 함수
+# def prime_num_check(num):
+#     if num == 1: return False
+#     elif num == 2: return True
+#     elif num % 2 == 0: return False # 2가 아닌 2의 배수
+
+#     # 3부터 루트(num)까지 check
+#     prime_check = True
+#     for i in range(3, int(math.sqrt(num))+1, 2):
+#         if(num % i == 0):
+#             prime_check = False
+#             break
+
+#     return(prime_check)
+
+# # list를 숫자로 만드는 함수
+# def list_to_num(list):
+#     num = 0
+#     multiple_value = 1
+#     for i in range(list_len-1, -1, -1):
+#         num += list[i] * multiple_value
+#         multiple_value *= 10
+#     return num
+
+# # multiple_check(num_list)
+# # 3, 4, 7은 (뒤집으면, 180도 돌리면) 숫자가 아니다, 확인하면서 숫자 돌림(new_num_list)
+# for i in range(list_len):
+#     if((num_list[i] == 3) | (num_list[i] == 4) | (num_list[i] == 7)):
+#         print("no")
+#         # quit()
+#         sys.exit(0)
+#     elif(num_list[i] == 6): new_num_list[list_len-1-i] = 9
+#     elif(num_list[i] == 9): new_num_list[list_len-1-i] = 6
+#     else: new_num_list[list_len-1-i] = num_list[i]
+# # print(num_list)
+# # print(new_num_list)
+# # multiple_check(new_num_list)
+
+# new_value = list_to_num(new_num_list)
+
+# # 뒤집어진(new) 숫자와 기존 숫자를 체크해서 둘 다 소수면 yes 아니면 no 
+# # print(input_value, new_value)
+# if(prime_num_check(new_value) & prime_num_check(int(input_value))): print("yes")
+# else: print("no")
+
+# 1712 손익분기점
+# a, b, c = map(int, input().split())
+# if((c-b) <= 0): print(-1)
+# else: print((a//(c-b)) +1)
+
+
+# 2798 블랙잭
+# import sys
+# input = sys.stdin.readline
+
+# # n은 제시되는 카드 개수, m은 합
+# n, m = map(int, input().split())
+# num_list = list(map(int, input().split()))
+# # print(n, m, num_list)
+
+# sum = 0
+# for i in range(n-2):
+#     for j in range(i+1, n-1):
+#         for k in range(j+1, n):
+#             # print(i, j, k)
+#             if(sum < (num_list[i] + num_list[j] + num_list[k]) <= m):
+#                 sum = num_list[i] + num_list[j] + num_list[k]
+#                 # print("sum : ", sum)
+# print(sum)
+
+
+"""
+i1      0 ~ B -1
+i2      0 ~ i1 다음 인덱스
+i3      0 ~ B[i2+1]:
+            B[i1+i2+2]:
+
+1 3
+
+"""
+
+N, M = list(map(int,input().split()))
+# print(M)
+B_input = list(map(int,input().split()))
+B_input.sort()
+B_input.reverse()
+print("B : ", B_input)
+def cal_best(M,B):
+    ls_SUM_best=[]
+    ls_SUM_NEW=[]
+    F_END=False
+    for i1,VAL in enumerate(B):
+        # if F_END==True:
+        #     print("end !")
+        #     break
+        if VAL<M:
+            if len(ls_SUM_NEW)>0:
+                ls_SUM_NEW[0]=VAL
+                print("ls_SUM_NEW(#1 - 1) : ", ls_SUM_NEW)
+            else:
+                ls_SUM_NEW.append(VAL)
+                print("ls_SUM_NEW(#1 - 2) : ", ls_SUM_NEW)
+            for i2 in range(len(B[i1+1:])):
+                # if F_END==True:
+                #     break
+                VAL2=B[i1+i2+1]
+                if VAL+VAL2<M:
+                    if len(ls_SUM_NEW)>1:
+                        ls_SUM_NEW[1]=VAL2
+                        print("ls_SUM_NEW(#2 - 1) : ", ls_SUM_NEW)
+                    else:
+                        ls_SUM_NEW.append(VAL2)
+                        print("ls_SUM_NEW(#2 - 2) : ", ls_SUM_NEW)
+                for i3 in range(len(B[i1+i2+2:])):
+                    print(i1, VAL, i1+i2+1, i1+i2+i3+2)
+                    VAL3=B[i1+i2+i3+2]
+                    if VAL+VAL2+VAL3<M:
+                        if len(ls_SUM_NEW)==3:
+                            ls_SUM_NEW[-1]=VAL3
+                            print("ls_SUM_NEW(#3 - 1) : ", ls_SUM_NEW)
+                        else:
+                            ls_SUM_NEW.append(VAL3)
+                            print("ls_SUM_NEW(#3 - 2) : ", ls_SUM_NEW)
+                        if sum(ls_SUM_NEW) > sum(ls_SUM_best):
+                            del ls_SUM_best[:] 
+                            print("del" , ls_SUM_best)
+                            ls_SUM_best+=ls_SUM_NEW
+                            print("ls_SUM_BEST(#3) : ", ls_SUM_best)
+                        ls_SUM_NEW=[]
+                        break
+                    elif VAL+VAL2+VAL3==M:
+                        # print("haha")
+                        if len(ls_SUM_NEW)==3:
+                            ls_SUM_NEW[-1]=VAL3
+                        else:
+                            ls_SUM_NEW.append(VAL3)
+                        del ls_SUM_best[:]
+                        ls_SUM_best+=ls_SUM_NEW
+                        print("ls_SUM_NEW(#4) : ", ls_SUM_NEW)
+                        print("ls_SUM_BEST(#4) : ", ls_SUM_best)
+                        F_END==True
+                        ls_SUM_NEW=[]
+                        return ls_SUM_best
+    return ls_SUM_best
+
+ls_SUM_best=cal_best(M,B_input)
+print(sum(ls_SUM_best))
