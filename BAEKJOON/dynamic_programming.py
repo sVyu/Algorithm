@@ -252,3 +252,23 @@
 # else: print(max(pos_vol_list))
 
 
+# 1912 연속합
+# num = int(input())
+# num_list = list(map(int, input().split()))
+
+# dp_list = [0] * num
+# dp_list[0] = num_list[0]
+
+# # 양양 양음 음양 음음
+
+# for i in range(1, num):
+#     # 바로 전 index의 dp_list가 0 초과이고 그 값에 현재 인덱스를 더했을 때 0 초과
+#     if((dp_list[i-1] > 0) & ((dp_list[i-1] + num_list[i]) > 0)) :
+#         dp_list[i] = dp_list[i-1] + num_list[i]
+#     # 앞선 dp_list[i-1] 값이 0 이하이거나 dp_list[i-1] + num_list[i]의 값이 0 이하
+#     # ex. dp_list[i-1] 값이 0 이하 → num_list[i] 값을 저장하고 이후 새로운 합계 dp 계산 (양수/음수 불문)
+#     else: dp_list[i] = num_list[i]
+
+# # print(num_list)
+# # print(dp_list)
+# print(max(dp_list))

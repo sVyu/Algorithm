@@ -1766,3 +1766,129 @@ print(a*b)
 #         else: print(que[-1])
 
 
+# 2775 부녀회장이 될테야
+# import sys
+# input = sys.stdin.readline
+
+# # 입력 처리
+# test_case_num = int(input())
+# test_case_list = []
+# for i in range(test_case_num):
+#     k = int(input())
+#     n = int(input())
+#     test_case_list.append([k, n])
+# # print(test_case_list)
+
+# # 제일 높은 층 (안 구해도 구현 가능)(∴ k, n 이 14 이하)
+# highest_floor = sorted(test_case_list, key=lambda x:-x[0])[0][0]
+# # print(highest_floor)
+
+# # 제일 높은 호수 (안 구해도 구현 가능)
+# highest_room_num = sorted(test_case_list, key=lambda x:-x[1])[0][1]
+
+# # 최대 방 호수 크기만큼 최고 층까지 0으로 초기화
+# residents_num_list = [[0] * highest_room_num for _ in range(highest_floor+1)]
+# for i in range(highest_room_num):
+#     residents_num_list[0][i] = i+1
+# # print(residents_num_list)
+
+# # 거주민 수 계산
+# for i in range(1, highest_floor + 1):
+#     residents_num_list[i][0] = 1
+#     for j in range(1, highest_room_num):
+#         residents_num_list[i][j] = residents_num_list[i][j-1] + residents_num_list[i-1][j]
+# # print(residents_num_list)
+
+# # 출력
+# for i in range(test_case_num):
+#     print(residents_num_list[test_case_list[i][0]][test_case_list[i][1]-1])
+
+
+# 2164 카드2
+# from collections import deque
+
+# num = int(input())
+# que = deque()
+
+# for i in range(1, num+1):
+#     que.append(i)
+# # print(que)
+
+# throw_away_check = True
+# while len(que) > 1:
+#     if(throw_away_check == True):
+#         # print("버리기 : ", que.popleft())
+#         que.popleft()
+#         throw_away_check = False
+#     else: # False
+#         value = que.popleft()
+#         # print("아래로 옮기기", value)
+#         que.append(value)
+#         throw_away_check = True
+#     # print(que)
+
+# print(que[0])
+
+
+# 5430 AC
+# 시간초과
+# https://www.acmicpc.net/board/view/89276
+# import sys
+# from collections import deque
+
+# input = sys.stdin.readline
+# test_case_num = int(input())
+
+# for i in range(test_case_num):
+#     # rstrip()으로 개행(\n) 제거
+#     func_p = list(input().rstrip())
+#     # print(func_p)
+
+#     que = deque()
+#     array_num = int(input())
+#     # print("array_num : ", array_num)
+
+#     array_num_str = input().rstrip()
+#     # print("array_num_str : ", array_num_str, "!")
+#     if(array_num_str == '[]'): array_num_list = []
+#     else:
+#         # print(array_num_str[1:-1])
+#         # ValueError: invalid literal for int() with base 10: '' 때문에 else로 처리
+#         # array_num_list = list(map(int, array_num_str[1:-1].split(',')))
+#         que.extend(list(map(int, array_num_str[1:-1].split(','))))
+
+#     # for j in range(array_num):
+#     #     que.append(array_num_list[j])
+
+#     error_check = False
+#     if(func_p.count('D') > len(que)):
+#         error_check = True
+#     else:
+#         for j in range(len(func_p)):
+#             if(func_p[j] == 'R'):
+#                 que.reverse()
+#                 # print(que)
+#             else: #'D'
+#                 # if(len(que) == 0):
+#                 #     error_check = True
+#                 #     break
+#                 # else:
+#                 que.popleft()
+#                     # print("len(que) == ", len(que))
+    
+#     if(error_check): print("error")
+#     else:
+#         # print(que)
+#         print('[', end='')
+#         for j in range(len(que)-1):
+#             print('{0},'.format(que[j]), end = '')
+#         if(len(que) > 0): print(que[-1], end = '')
+#         print(']')
+
+# input()으로 str을 받는 부분은 readline().rstrip()으로 처리해주는 게 좋고
+# int(input())으로 처리하는 부분은 rstrip() 없이 다루는 게 좋다
+
+# list_as = [1,2,3]
+# print(list_as[2:])
+# print('{0}, '.format(" 1 "))
+# print(list_as.count(-2))

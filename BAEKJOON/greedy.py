@@ -733,3 +733,56 @@
 #     # print(arrow_list)
 
 # print(arrow_count)
+
+
+# 23742 Player-based Team Distribution
+# 6퍼
+# 84퍼
+# Done
+# import sys
+# input = sys.stdin.readline
+
+# # score_list 정렬
+# num = int(input())
+# score_list = sorted(list(map(int, input().split())))
+# # print(score_list)
+
+# # 처음으로 0 이상이 되는 인덱스를 찾음
+# # zero_plus_index = 0
+# zero_plus_index = -1
+# for i in range(num):
+#     if(score_list[i] >= 0):
+#         zero_plus_index = i
+#         break
+# # print("zero_plus_index : ", zero_plus_index)
+
+# # 0이상의 값을 모은 plus_list의 sum과 len 계산
+# plus_list_sum = sum(score_list[zero_plus_index:])
+# plus_list_len = len(score_list[zero_plus_index:])
+# # print(plus_list_sum, plus_list_len)
+
+# # zero_plus_index-1 부터 시작해서 (0에 가장 가까운 음수부터) 이 값을 넣었을 때 점수 합의 최대값이 더 높으면 넣음
+# minus_list_limit_index = zero_plus_index
+# for i in range(zero_plus_index-1, -1, -1):
+#     if((score_list[i] + (plus_list_len * plus_list_sum)) <= ((plus_list_len + 1) * (plus_list_sum + score_list[i])) ):
+#         plus_list_sum += score_list[i]
+#         plus_list_len += 1
+#         minus_list_limit_index = i
+#     else: break
+
+# # plus 리스트의 점수 합 + 음수 각각 팀들의 합 (음수는 1씩 팀이어야 전체 점수가 높음)
+# # print(plus_list_len, plus_list_sum, score_list[:minus_list_limit_index])
+# print((plus_list_len * plus_list_sum) + sum(score_list[:minus_list_limit_index]))
+
+'''
+# 84퍼 보완
+# zero_plus_index = 0 일 경우
+# 4
+# -4 -3 -2 -1
+# -40
+
+# zero_plus_index = -1 일 경우
+# 4
+# -4 -3 -2 -1
+# -10
+'''
