@@ -1561,79 +1561,208 @@ print(a*b)
 # print(sum)
 
 
-"""
-i1      0 ~ B -1
-i2      0 ~ i1 다음 인덱스
-i3      0 ~ B[i2+1]:
-            B[i1+i2+2]:
+# 1977 완전제곱수
+# import math
 
-1 3
+# m = int(input())
+# n = int(input())
 
-"""
+# sum = 0
+# for i in range(math.ceil(math.sqrt(m)), math.floor(math.sqrt(n))+1):
+#     sum += i ** 2
 
-N, M = list(map(int,input().split()))
-# print(M)
-B_input = list(map(int,input().split()))
-B_input.sort()
-B_input.reverse()
-print("B : ", B_input)
-def cal_best(M,B):
-    ls_SUM_best=[]
-    ls_SUM_NEW=[]
-    F_END=False
-    for i1,VAL in enumerate(B):
-        # if F_END==True:
-        #     print("end !")
-        #     break
-        if VAL<M:
-            if len(ls_SUM_NEW)>0:
-                ls_SUM_NEW[0]=VAL
-                print("ls_SUM_NEW(#1 - 1) : ", ls_SUM_NEW)
-            else:
-                ls_SUM_NEW.append(VAL)
-                print("ls_SUM_NEW(#1 - 2) : ", ls_SUM_NEW)
-            for i2 in range(len(B[i1+1:])):
-                # if F_END==True:
-                #     break
-                VAL2=B[i1+i2+1]
-                if VAL+VAL2<M:
-                    if len(ls_SUM_NEW)>1:
-                        ls_SUM_NEW[1]=VAL2
-                        print("ls_SUM_NEW(#2 - 1) : ", ls_SUM_NEW)
-                    else:
-                        ls_SUM_NEW.append(VAL2)
-                        print("ls_SUM_NEW(#2 - 2) : ", ls_SUM_NEW)
-                for i3 in range(len(B[i1+i2+2:])):
-                    print(i1, VAL, i1+i2+1, i1+i2+i3+2)
-                    VAL3=B[i1+i2+i3+2]
-                    if VAL+VAL2+VAL3<M:
-                        if len(ls_SUM_NEW)==3:
-                            ls_SUM_NEW[-1]=VAL3
-                            print("ls_SUM_NEW(#3 - 1) : ", ls_SUM_NEW)
-                        else:
-                            ls_SUM_NEW.append(VAL3)
-                            print("ls_SUM_NEW(#3 - 2) : ", ls_SUM_NEW)
-                        if sum(ls_SUM_NEW) > sum(ls_SUM_best):
-                            del ls_SUM_best[:] 
-                            print("del" , ls_SUM_best)
-                            ls_SUM_best+=ls_SUM_NEW
-                            print("ls_SUM_BEST(#3) : ", ls_SUM_best)
-                        ls_SUM_NEW=[]
-                        break
-                    elif VAL+VAL2+VAL3==M:
-                        # print("haha")
-                        if len(ls_SUM_NEW)==3:
-                            ls_SUM_NEW[-1]=VAL3
-                        else:
-                            ls_SUM_NEW.append(VAL3)
-                        del ls_SUM_best[:]
-                        ls_SUM_best+=ls_SUM_NEW
-                        print("ls_SUM_NEW(#4) : ", ls_SUM_NEW)
-                        print("ls_SUM_BEST(#4) : ", ls_SUM_best)
-                        F_END==True
-                        ls_SUM_NEW=[]
-                        return ls_SUM_best
-    return ls_SUM_best
+# if(sum == 0): print(-1)
+# else:
+#     print(sum)
+#     print(math.ceil(math.sqrt(m)) ** 2)
 
-ls_SUM_best=cal_best(M,B_input)
-print(sum(ls_SUM_best))
+
+# 1966 프린터 큐
+# import sys
+# from queue import Queue
+# input = sys.stdin.readline
+
+# # 입력 데이터로 for 문, 중요도 높은 문서를 확인하기 위해 sorted list 추가
+# case_num = int(input())
+# for i in range(case_num):
+#     n, m = map(int, input().split())
+#     test_case = list(map(int, input().split()))
+#     test_case_sorted= sorted(test_case.copy())
+#     # print(test_case_sorted)
+
+#     # test_case 값에 index를 추가로 포함하는 리스트를 que에 put()
+#     que = Queue()
+#     count = 0
+#     for j in range(n):
+#         que.put([test_case[j], j])
+#     # print(que.queue)
+
+#     # que가 비어있지 않는 한 get()을 반복하면서 확인
+#     while que.qsize():
+#         get_value = que.get()
+#         # print(get_value)
+#         # 우선도가 가장 높은 수일 경우, sorted[-1] pop(), count 증가
+#         if(get_value[0] == test_case_sorted[-1]):
+#             test_case_sorted.pop()
+#             count += 1
+#             # 원하는 index의 값까지 get()에 성공했을 경우 count 출력하고 종료
+#             if(get_value[1] == m):
+#                 print(count)
+#                 break
+#         # 우선도가 떨어지는 수일 경우, 다시 que에 추가
+#         else: que.put(get_value)
+
+# 큐 10845
+# 양방향 큐 사용
+# from collections import deque
+# import sys
+
+# input = sys.stdin.readline
+# num = int(input())
+
+# queue = deque()
+# # queue = deque([])
+# # print(queue)
+# for _ in range(num):
+#     command_list = list(map(str, input().split()))
+#     # print("command_list :", command_list)
+#     if(command_list[0] == 'push'):
+#         queue.append(int(command_list[1]))
+#         # print(command_list[1])
+#     elif(command_list[0] == 'pop'):
+#         if(len(queue) == 0): print(-1)
+#         else:
+#             pop_value = queue.popleft()
+#             print(pop_value)
+#     elif(command_list[0] == 'size'):
+#         print(len(queue))
+#     elif(command_list[0] == 'empty'):
+#         if(len(queue) == 0): print(1)
+#         else: print(0)
+#     elif(command_list[0] == 'front'):
+#         if(len(queue) == 0): print(-1)
+#         else:
+#             # pop_value = queue.popleft()
+#             # print(pop_value)
+#             # queue.appendleft(pop_value)
+#             print(queue[0])
+#     else: # back
+#         if(len(queue) == 0): print(-1)
+#         else:
+#             # pop_value = queue.pop()
+#             # print(pop_value)
+#             # queue.append(pop_value)
+#             print(queue[-1])
+
+
+# 영화감독 숌
+# from itertools import combinations
+
+# num = int(input())
+# i = 1
+# while True:
+#     i += 1
+#     com = list(combinations())
+
+# 비효율적이지만 10000 이하의 input이면 충분히 가능..할 듯
+# 어떻게 하면 더 효율적으로 만들 수 있을까
+# num = int(input())
+# count = 0
+# value = 665
+# while True:
+#     value += 1
+    
+#     if('666' in str(value)):
+#         count += 1
+#     if(count == num):
+#         print(value)
+#         break
+
+
+# 요세푸스 11866
+# from queue import Queue
+
+# n, k = map(int, input().split())
+# que = Queue()
+# count = 0
+
+# # 1부터 n까지 queue에 put()
+# for i in range(1, n+1):
+#     que.put(i)
+# # print(que.queue)
+
+# # 요세푸스 순열 list 생성
+# Josephus_permutation_list = []
+# while que.qsize():
+#     count += 1
+#     get_value = que.get()
+#     if(count % k) == 0:
+#         # print(get_value)
+#         Josephus_permutation_list.append(get_value)
+#     else: que.put(get_value)
+
+# # 출력
+# print("<", end= '')
+# for i in range(n-1):
+#     print("{0}, ".format(Josephus_permutation_list[i]), end= '')
+# print(Josephus_permutation_list[-1], end='')
+# print(">", end= '')
+
+
+# 10828 스택
+# import sys
+# input = sys.stdin.readline
+
+# command_num = int(input())
+# # command_num 만큼의 명령어 입력받음
+# stack_list = []
+# for _ in range(command_num):
+#     command_list = list(map(str, input().split()))
+#     if(command_list[0] == 'push'):
+#         stack_list.append(command_list[1])
+#     elif(command_list[0] == 'pop'):
+#         if(len(stack_list) == 0): print(-1)
+#         else: print(stack_list.pop())
+#     elif(command_list[0] == 'size'):
+#         print(len(stack_list))
+#     elif(command_list[0] == 'empty'):
+#         if(len(stack_list) == 0): print(1)
+#         else: print(0)
+#     else: # top
+#         if(len(stack_list) == 0): print(-1)
+#         else: print(stack_list[-1])
+        
+#     # print("stack_list : ", stack_list)
+
+
+# 10866 덱
+# from collections import deque
+# import sys
+# input = sys.stdin.readline
+
+# que = deque()
+
+# command_num = int(input())
+# for i in range(command_num):
+#     command_list = list(map(str, input().split()))
+#     if(command_list[0] == 'push_front'): que.appendleft(int(command_list[1]))
+#     elif(command_list[0] == 'push_back'): que.append(int(command_list[1]))
+#     elif(command_list[0] == 'pop_front'):
+#         if(len(que) == 0): print(-1)
+#         else: print(que.popleft())
+#     elif(command_list[0] == 'pop_back'):
+#         if(len(que) == 0): print(-1)
+#         else: print(que.pop())
+
+#     elif(command_list[0] == 'size'): print(len(que))
+#     elif(command_list[0] == 'empty'):
+#         if(len(que) == 0): print(1)
+#         else: print(0)
+#     elif(command_list[0] == 'front'):
+#         if(len(que) == 0): print(-1)
+#         else: print(que[0])
+#     elif(command_list[0] == 'back'):
+#         if(len(que) == 0): print(-1)
+#         else: print(que[-1])
+
+
