@@ -1892,3 +1892,108 @@ print(a*b)
 # print(list_as[2:])
 # print('{0}, '.format(" 1 "))
 # print(list_as.count(-2))
+
+
+# 11654 아스키코드
+# print(ord(input()))
+
+# # https://www.acmicpc.net/board/view/90920
+# def lower_bound(a, t):
+#     lo, hi=0, len(a)
+#     while lo<hi:
+#         mid=(lo+hi)//2
+#         if t<=a[mid]:
+#             hi=mid
+#         else:
+#             lo=mid+1
+#     return lo
+
+# def upper_bound(ar, tt):
+#     lo, hi=0, len(ar)
+#     while lo<hi:
+#         mid=(lo+hi)//2
+#         if tt>=ar[mid]:
+#             lo=mid+1
+#         else:
+#             hi=mid
+#     return lo
+
+# N=int(input())
+# ns=list(map(int, input().split()))
+# M=int(input())
+# ms=list(map(int, input().split()))
+# ans=[]
+# ns.sort()
+# for i in ms:
+#     if not lower_bound(ns, i):
+#         print(ns, i, lower_bound(ns, i))
+#         ans.append(0)
+#         print("(1) i : ", i, "ans : ", ans)
+#     else:
+#         ans.append(upper_bound(ns, i)-lower_bound(ns, i))
+#         print("(2) i : ", i, "ans : ", ans)
+# # print(*ans)
+# print(ans)
+
+
+# import sys
+# input = sys.stdin.readline
+
+# n=int(input())
+# a=[]
+# b=[]
+# for i in range(n):
+#     A, B = map(int,input().split())
+#     a.append(A)
+#     b.append(B)
+# a.sort()
+# b.sort()
+# for i in range(n):
+#     print(a[i], b[i])
+
+
+# 11650 좌표 정렬하기
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = [list(map(int, input().split())) for _ in range(num)]
+# num_list = sorted(num_list, key=lambda x:(x[0], x[1]))
+
+# for i in range(num):
+#     print(num_list[i][0], num_list[i][1])
+
+
+'''
+# 10773 제로
+# 이거 제출해야됨 ~
+# import sys
+# input = sys.stdin.readline
+# num = int(input())
+# num_list = []
+
+# for _ in range(num):
+#     plus_num = int(input())
+#     if(plus_num) == 0: num_list.pop()
+#     else: num_list.append(plus_num)
+
+# print(sum(num_list))
+
+
+# 2872 우리집엔 도서관이 있어
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = [int(input()) for _ in range(num)]
+
+# comp_num = max(num_list)
+# count = num
+
+# for i in range(num-1, -1, -1):
+#     if(num_list[i] == comp_num):
+#         count -= 1
+#         comp_num -= 1
+
+# print(count)
+'''
