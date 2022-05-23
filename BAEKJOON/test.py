@@ -1831,10 +1831,13 @@ print(a*b)
 
 
 # 5430 AC
-# 시간초과
+# 시간초과 x 2
 # https://www.acmicpc.net/board/view/89276
+# 33퍼 틀렸습니다 x 2
+# 결국 성공 ㅎㅎㅎ 
+
 # import sys
-# from collections import deque
+# # from collections import deque
 
 # input = sys.stdin.readline
 # test_case_num = int(input())
@@ -1844,7 +1847,8 @@ print(a*b)
 #     func_p = list(input().rstrip())
 #     # print(func_p)
 
-#     que = deque()
+#     # que = deque()
+#     que = []
 #     array_num = int(input())
 #     # print("array_num : ", array_num)
 
@@ -1860,22 +1864,50 @@ print(a*b)
 #     # for j in range(array_num):
 #     #     que.append(array_num_list[j])
 
+#     start_index = 0
+#     end_index = len(que)-1
+#     reverse_check = False
+
 #     error_check = False
 #     if(func_p.count('D') > len(que)):
 #         error_check = True
 #     else:
 #         for j in range(len(func_p)):
 #             if(func_p[j] == 'R'):
-#                 que.reverse()
+#                 # que.reverse()
 #                 # print(que)
+#                 if(reverse_check == False): reverse_check = True
+#                 else: reverse_check = False
+#                 # print("R", que, start_index, end_index)
+
 #             else: #'D'
 #                 # if(len(que) == 0):
 #                 #     error_check = True
 #                 #     break
 #                 # else:
-#                 que.popleft()
+#                 # que.popleft()
 #                     # print("len(que) == ", len(que))
-    
+#                 if(reverse_check == False): start_index += 1
+#                 else: end_index -= 1
+#                 # print("D", que, start_index, end_index)
+
+#     if(start_index > end_index):
+#         que = []
+#     else:
+#         if(reverse_check == False):
+#             if(end_index == len(que)-1):
+#                 que = que[start_index:]
+#             else:
+#                 que = que[start_index:end_index+1]
+                
+#         else:
+#             que.reverse()
+#             # print("reverse", que)
+#             if(start_index == 0):
+#                 que = que[-end_index-1:]
+#             else:
+#                 que = que[-end_index-1:(-start_index)]
+
 #     if(error_check): print("error")
 #     else:
 #         # print(que)
@@ -1997,3 +2029,26 @@ print(a*b)
 
 # print(count)
 '''
+
+
+# 1978 소수 찾기
+import math
+
+num = int(input())
+num_list = list(map(int, input().split()))
+
+def prime_check(value):
+    if(value == 1): return False
+    elif(value == 2): return True
+    else:
+        for i in range(3, math.floor(math.sqrt(value)), 2):
+            if(value % i == 0):
+                return False
+        return True
+
+count = 0
+for i in range(num):
+    if(prime_check(num_list[i] == True)):
+        count += 1
+
+print(count)
