@@ -2032,23 +2032,141 @@ print(a*b)
 
 
 # 1978 소수 찾기
-import math
+# 1 15 1 ?? math.floor() 뒤에 +1을 해주었어야 됐음
+# import math
 
-num = int(input())
-num_list = list(map(int, input().split()))
+# num = int(input())
+# num_list = list(map(int, input().split()))
 
-def prime_check(value):
-    if(value == 1): return False
-    elif(value == 2): return True
-    else:
-        for i in range(3, math.floor(math.sqrt(value)), 2):
-            if(value % i == 0):
-                return False
-        return True
+# def prime_check(value):
+#     # print(value)
+#     if(value == 1): return False
+#     elif(value == 2): return True
+#     elif(value % 2 == 0): return False
+#     else:
+#         for i in range(3, math.floor(math.sqrt(value))+1, 2):
+#             if(value % i == 0):
+#                 # print(value, i, value%i)
+#                 return False
+#         return True
 
-count = 0
-for i in range(num):
-    if(prime_check(num_list[i] == True)):
-        count += 1
+# count = 0
+# for i in range(num):
+#     if(prime_check(num_list[i]) == True):
+#         count += 1
 
-print(count)
+# print(count)
+
+
+# 10818 최소, 최대
+# num = int(input())
+# num_list = list(map(int, input().split()))
+# print(min(num_list), max(num_list))
+
+# while True:
+#     # 입력받기
+#     dot_list = list(map(float,input().split()))
+#     if len(dot_list) <= 0:
+#         break
+#     # 각 점의 좌표를 구하는 모습
+#     dot1 = [dot_list[0],dot_list[1]]
+#     dot2 = [dot_list[2],dot_list[3]]
+#     dot3 = [dot_list[4],dot_list[5]]
+#     dot4 = [dot_list[6],dot_list[7]]
+#     # 2번째 3번째 좌표를 같게 만드는 모습
+#     while True:
+#         if dot2 == dot3:
+#             break
+#         dot2,dot1 = dot1,dot2
+#         if dot2 == dot3:
+#             break
+#         # 한번 바꾼 것을 다시 돌려놓는 모습
+#         dot2,dot1 = dot1,dot2
+#         dot3,dot4 = dot4,dot3
+
+#     # 공통된 점을 제외하고 다른 두점의 중간 지점을 구함
+#     tmp = [(dot1[0] + dot4[0])/2,(dot1[1] + dot4[1])/2]
+
+#     # 공통된 점을 중간 지점을 기준으로 반전
+#     result = [0.000,0.000]
+#     for i in range(2):
+#         if tmp[i] > dot2[i]:
+#             result[i] = dot2[i] + (tmp[i] - dot2[i]) * 2
+#         else:
+#             result[i] = dot2[i] - (dot2[i] - tmp[i]) * 2
+#     print(f"{result[0]:.3f} {result[1]:.3f}")
+
+
+# import sys
+
+# # EOF(파일 끝)까지 한 꺼번에 읽어서 처리
+# lines = sys.stdin.readlines()
+# # print(lines)
+# for line in lines:
+#     dot_number_list = list(map(float, line.split()))
+#     # print(dot_number_list)
+
+#     # 각 line의 dots들 저장 dot_list에 저장
+#     dot_list = [[0] * 2 for _ in range(4)]
+#     for i in range(4):
+#         dot_list[i] = [dot_number_list[i*2], dot_number_list[i*2 + 1]]
+#     # print(dot_list)
+
+#     # 한 개만 있는 점들(odd_dots)과 중복되는 점(overlapped_dot)을 따로 저장
+#     odd_dots = []
+#     overlapped_dot = []
+#     for i in range(4):
+#         if(dot_list.count(dot_list[i]) == 1): odd_dots.append(dot_list[i])
+#         else: overlapped_dot = dot_list[i]
+#     # print(odd_dots)
+#     # print(overlapped_dot)
+
+#     # 한 개만 있는 점들을 가지고 중앙점을 구함
+#     standard_dot = [(odd_dots[0][0] + odd_dots[1][0])/2, (odd_dots[0][1] + odd_dots[1][1])/2]
+
+#     # required_dot : standard_dot 기준 overlapped_dot의 반대편을 구함
+#     required_dot = []
+#     for i in range(2):
+#         required_dot.append(2 * standard_dot[i] - overlapped_dot[i])
+    
+#     # 답 출력
+#     # print(required_dot)
+#     print("{0:.3f} {1:.3f}".format(required_dot[0], required_dot[1]))
+
+
+while True:
+    try:
+        line = input()
+    # except:
+    except EOFError:
+        break
+
+    dot_number_list = list(map(float, line.split()))
+    # print(dot_number_list)
+
+    # 각 line의 dots들 저장 dot_list에 저장
+    dot_list = [[0] * 2 for _ in range(4)]
+    for i in range(4):
+        dot_list[i] = [dot_number_list[i*2], dot_number_list[i*2 + 1]]
+    # print(dot_list)
+
+    # 한 개만 있는 점들(odd_dots)과 중복되는 점(overlapped_dot)을 따로 저장
+    odd_dots = []
+    overlapped_dot = []
+    for i in range(4):
+        if(dot_list.count(dot_list[i]) == 1): odd_dots.append(dot_list[i])
+        else: overlapped_dot = dot_list[i]
+    # print(odd_dots)
+    # print(overlapped_dot)
+
+    # 한 개만 있는 점들을 가지고 중앙점을 구함
+    standard_dot = [(odd_dots[0][0] + odd_dots[1][0])/2, (odd_dots[0][1] + odd_dots[1][1])/2]
+
+    # required_dot : standard_dot 기준 overlapped_dot의 반대편을 구함
+    required_dot = []
+    for i in range(2):
+        required_dot.append(2 * standard_dot[i] - overlapped_dot[i])
+    
+    # 답 출력
+    # print(required_dot)
+    print("{0:.3f} {1:.3f}".format(required_dot[0], required_dot[1]))
