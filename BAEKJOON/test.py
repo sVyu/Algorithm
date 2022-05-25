@@ -2230,15 +2230,13 @@ print(a*b)
 # if(survive_check): print("Yes")
 # else: print("No")
 
+
 # 2920 음계
 # num_list = list(map(int, input().split()))
 # num_list_copy = num_list.copy()
-# # num_list[0] = 100
-# # print(num_list)
-# # print(num_list_copy)
 
-# if(num_list_copy == num_list.sort()): print("ascending")
-# elif(num_list_copy == num_list.sort(reverse=True)): print("descending")
+# if(num_list_copy == sorted(num_list)): print("ascending")
+# elif(num_list_copy == sorted(num_list, reverse=True)): print("descending")
 # else: print("mixed")
 
 
@@ -2246,3 +2244,110 @@ print(a*b)
 # num = int(input())
 # for i in range(1, 10):
 #     print("{0} * {1} = {2}".format(num, i, num*i))
+
+
+# 17298 오큰수
+# 요새 출력 형식을 정확히 안 맞춰서 틀리는 경우가 종종 있네
+# 자중의 필요가 있다 !
+# 시간 초과...
+# 힌트가 스택 ?
+
+# 1st try
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = list(map(int, input().split()))
+
+# NGE_list = []
+# # # 0부터 n-2번까지
+# for i in range(num-1):
+#     for j in range(i+1, num):
+#         if(num_list[i] < num_list[j]):
+#             NGE_list.append(num_list[j])
+#             # print(i, j, NGE_list)
+#             break
+#         # 끝 index까지 비교해봤는데 오큰수가 없는 경우, -1 추가
+#         if(j == (num-1)):
+#             NGE_list.append(-1)
+# # n-1번째는 오른쪽이 없으므로 -1
+# NGE_list.append(-1)
+
+# print(*NGE_list)
+
+# 2nd try
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = list(map(int, input().split()))
+
+# # 스택을 쓴다면..
+# NGE_list = [-1] * num
+# stack_list = []
+
+# # i번째 인덱스 : 0부터 num -1 까지
+# for i in range(0, num):
+#     # stack_list에 저장된 값을 중에서 num_list[i]보다 작은 값이 있으면
+#     # 해당하는 인덱스(stack_list[j][0])의 NGE_list에 num_list[i] 값을 넣고 stack_list[j] 삭제
+#     for j in range(len(stack_list)-1, -1, -1):
+#         if(num_list[i] > stack_list[j][1]):
+#             NGE_list[stack_list[j][0]] = num_list[i]
+#             del stack_list[j]
+
+#     # i번째 인덱스 값을 stack_list에 추가
+#     stack_list.append([i, num_list[i]])
+# print(*NGE_list)
+
+# 3rd try
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = list(map(int, input().split()))
+# if(num != len(num_list)):
+#     quit()
+
+# NGE_list = [-1] * num
+# # stack_list에는 index를 저장
+# stack_list = []
+
+# # num_list[i]가 stack_list의 가장 마지막 요소 이하의 값이면 append(), 아닐 경우 오큰수를 만족하는 index까지 pop()
+# for i in range(0, num):
+#     if(len(stack_list) == 0): stack_list.append(i)
+#     elif(num_list[stack_list[-1]] >= num_list[i]): stack_list.append(i)
+#     else:
+#         # while (len(stack_list) != 0) & (num_list[stack_list[-1]] < num_list[i]):    
+#         #     NGE_list[stack_list.pop()] = num_list[i]
+#         while True:
+#             if(len(stack_list) == 0): break
+#             elif(num_list[stack_list[-1]] < num_list[i]):
+#                 NGE_list[stack_list.pop()] = num_list[i]
+#             else: break
+#         stack_list.append(i)
+
+# print(*NGE_list)
+
+
+# 9012 괄호
+import sys
+input = sys.stdin.readline
+
+num = int(input())
+for _ in range(num):
+    line = list(input().rstrip())
+    # print(line)
+    stack_list = []
+
+    YES_check = True
+    for i in range(len(line)):
+        if(line[i] == '('): stack_list.append(line[i])
+        elif(line[i] == ')'):
+            if(len(stack_list) == 0):
+                YES_check = False
+                break
+            else: stack_list.pop()
+        # print(i, stack_list)
+
+    if((len(stack_list) == 0) & YES_check): print("YES")
+    else: print("NO")
