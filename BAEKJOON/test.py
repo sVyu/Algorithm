@@ -2134,39 +2134,115 @@ print(a*b)
 #     print("{0:.3f} {1:.3f}".format(required_dot[0], required_dot[1]))
 
 
-while True:
-    try:
-        line = input()
-    # except:
-    except EOFError:
-        break
+# while True:
+#     try:
+#         line = input()
+#     # except:
+#     except EOFError:
+#         break
 
-    dot_number_list = list(map(float, line.split()))
-    # print(dot_number_list)
+#     dot_number_list = list(map(float, line.split()))
+#     # print(dot_number_list)
 
-    # 각 line의 dots들 저장 dot_list에 저장
-    dot_list = [[0] * 2 for _ in range(4)]
-    for i in range(4):
-        dot_list[i] = [dot_number_list[i*2], dot_number_list[i*2 + 1]]
-    # print(dot_list)
+#     # 각 line의 dots들 저장 dot_list에 저장
+#     dot_list = [[0] * 2 for _ in range(4)]
+#     for i in range(4):
+#         dot_list[i] = [dot_number_list[i*2], dot_number_list[i*2 + 1]]
+#     # print(dot_list)
 
-    # 한 개만 있는 점들(odd_dots)과 중복되는 점(overlapped_dot)을 따로 저장
-    odd_dots = []
-    overlapped_dot = []
-    for i in range(4):
-        if(dot_list.count(dot_list[i]) == 1): odd_dots.append(dot_list[i])
-        else: overlapped_dot = dot_list[i]
-    # print(odd_dots)
-    # print(overlapped_dot)
+#     # 한 개만 있는 점들(odd_dots)과 중복되는 점(overlapped_dot)을 따로 저장
+#     odd_dots = []
+#     overlapped_dot = []
+#     for i in range(4):
+#         if(dot_list.count(dot_list[i]) == 1): odd_dots.append(dot_list[i])
+#         else: overlapped_dot = dot_list[i]
+#     # print(odd_dots)
+#     # print(overlapped_dot)
 
-    # 한 개만 있는 점들을 가지고 중앙점을 구함
-    standard_dot = [(odd_dots[0][0] + odd_dots[1][0])/2, (odd_dots[0][1] + odd_dots[1][1])/2]
+#     # 한 개만 있는 점들을 가지고 중앙점을 구함
+#     standard_dot = [(odd_dots[0][0] + odd_dots[1][0])/2, (odd_dots[0][1] + odd_dots[1][1])/2]
 
-    # required_dot : standard_dot 기준 overlapped_dot의 반대편을 구함
-    required_dot = []
-    for i in range(2):
-        required_dot.append(2 * standard_dot[i] - overlapped_dot[i])
+#     # required_dot : standard_dot 기준 overlapped_dot의 반대편을 구함
+#     required_dot = []
+#     for i in range(2):
+#         required_dot.append(2 * standard_dot[i] - overlapped_dot[i])
     
-    # 답 출력
-    # print(required_dot)
-    print("{0:.3f} {1:.3f}".format(required_dot[0], required_dot[1]))
+#     # 답 출력
+#     # print(required_dot)
+#     print("{0:.3f} {1:.3f}".format(required_dot[0], required_dot[1]))
+
+
+# 11718 그대로 출력하기
+# import sys
+# lines = sys.stdin.readlines()
+
+# for line in lines:
+#     print(line.rstrip())
+
+# while True:
+#     try:
+#         line = input()
+#     except EOFError:
+#         break
+
+#     print(line)
+
+
+# 10814 나이순 정렬
+# normal input() → 4192 ms / sys.stdin.readline → 336 ms
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = [list(map(str, input().split())) for _ in range(num)]
+# # print(num_list)
+
+# for i in range(num):
+#     num_list[i][0] = int(num_list[i][0])
+
+# for i in sorted(num_list, key=lambda x:x[0]):
+#     print(*i)
+
+
+# 22993 서든어택3
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = list(map(int, input().split()))
+
+# junwons_power = num_list[0]
+# survive_check = True
+
+# sorted_power_list = sorted(num_list[1:])
+# # print(sorted_power_list)
+
+# # 준원이 제외 1명 이상이면
+# if(num >= 2):
+#     for i in range(0, num-1):
+#         if(junwons_power > sorted_power_list[i]): junwons_power += sorted_power_list[i]
+#         else:
+#             survive_check = False
+#             break    
+#         # print(junwons_power)
+
+# # print(survive_check)
+# if(survive_check): print("Yes")
+# else: print("No")
+
+# 2920 음계
+# num_list = list(map(int, input().split()))
+# num_list_copy = num_list.copy()
+# # num_list[0] = 100
+# # print(num_list)
+# # print(num_list_copy)
+
+# if(num_list_copy == num_list.sort()): print("ascending")
+# elif(num_list_copy == num_list.sort(reverse=True)): print("descending")
+# else: print("mixed")
+
+
+# 2739 구구단
+# num = int(input())
+# for i in range(1, 10):
+#     print("{0} * {1} = {2}".format(num, i, num*i))
