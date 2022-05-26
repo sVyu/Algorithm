@@ -2330,24 +2330,186 @@ print(a*b)
 
 
 # 9012 괄호
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# for _ in range(num):
+#     line = list(input().rstrip())
+#     # print(line)
+#     stack_list = []
+
+#     YES_check = True
+#     for i in range(len(line)):
+#         if(line[i] == '('): stack_list.append(line[i])
+#         elif(line[i] == ')'):
+#             if(len(stack_list) == 0):
+#                 YES_check = False
+#                 break
+#             else: stack_list.pop()
+#         # print(i, stack_list)
+
+#     if((len(stack_list) == 0) & YES_check): print("YES")
+#     else: print("NO")
+
+# 24051 알고리즘 수업 - 삽입 정렬 1
+# 90퍼 시간 초과
+# Python 3로 통과한 사람이 없음(ㄷㄷ) → PyPy3로 하니까 통과
+
+# import sys
+# input = sys.stdin.readline
+
+# def insertion_sort(numbers, val):
+#     n = len(numbers)
+#     cnt = 0
+#     num = 0
+
+#     # n 길이의 최대 cnt 보다 val이 큰 경우
+#     if(val > (n*(n-1))//2):
+#         return -1
+    
+#     for i in range(1, n):
+#         now = numbers[i]
+#         j = i - 1
+#         # 0부터 i-1까지는 정렬 되어있는 상태
+#         while j >= 0 and numbers[j] > now:
+#             numbers[j + 1] = numbers[j]
+#             cnt += 1
+#             j -= 1
+
+#             # num = numbers[j + 1]
+#             if cnt == val:
+#                 num = numbers[j + 1]
+#                 return num
+
+#         # 기존 (오름차순) 정렬에 1번이라도 변화가 있었다면, now가 들어갈 자리에 저장
+#         if((j+1) != i):
+#             numbers[j + 1] = now
+#             cnt += 1
+#             if (cnt == val):
+#                 num = numbers[j + 1]
+#                 return num
+#     # cnt가 val에 도달하지 못한 경우
+#     return -1
+
+# A, B = map(int, input().split())
+# numbers = list(map(int, input().split()))
+# print(insertion_sort(numbers, B))
+
+# 1010 다리 놓기
+# 1st code
+# import sys
+# import math
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     num_list = list(map(int, input().split()))
+#     print(math.factorial(num_list[1])//(math.factorial(num_list[0]) * math.factorial(num_list[1]-num_list[0])))
+
+# 2nd code
+# import sys
+# input = sys.stdin.readline
+
+# def factorial(num):
+#     if num > 1: return num * factorial(num-1)
+#     else: return 1
+
+# for _ in range(int(input())):
+#     num_list = list(map(int, input().split()))
+#     print(factorial(num_list[1])//(factorial(num_list[0]) * factorial(num_list[1]-num_list[0])))
+
+# import sys
+# input = sys.stdin.readline
+
+# input()
+# list_A = list(map(int, input().split()))
+# list_B = list(map(int, input().split()))
+# list_A += list_B
+
+# print(*sorted(list_A))
+
+
+# 2018 수들의 합 5
+# 메모리.. 초과..
+# PyPy3 로 통과.. 했는데 슈퍼 간단한 코드가 있다
+# import sys
+
+# def solve():
+#     num = int(sys.stdin.readline())
+#     num_list = [i for i in range(1, (num//2)+2)]
+#     # print(num_list)
+
+#     cnt = 0
+#     if(num >= 3):
+#         first_index = 0
+#         second_index = 1
+#         len_num_list = len(num_list)
+#         while True:
+#             list_sum = (((first_index +1) + (second_index+1)) * (second_index - first_index +1)) // 2
+#             if(list_sum < num):
+#                 if(second_index < (len_num_list-1)): second_index += 1
+#                 else: break
+#             elif(list_sum > num) :
+#                 if(first_index < (len_num_list-1)): first_index += 1
+#                 else: break
+#             else: # 조건에 부합하는 경우, 원하는 sum 원소들을 찾은 경우
+#                 cnt += 1
+#                 # print(num_list[first_index:second_index+1])
+#                 if(second_index == (len_num_list-1)): break
+#                 else: second_index += 1
+#             # print(first_index, second_index)
+#     # 해당 숫자 그대로인 숫자도 포함해서 +1 (ex. 15면 15)
+#     print(cnt+1)
+# solve()
+
+
+# 생각해보니 굳이 list를 쓸 필요가 없다
+# sum을 그 때마다 구할 필요도 없다 한 개의 원소 값을 더하거나 빼기만 하면 되네..
+
+# 2nd try : 참고해서 진행
+# import sys
+
+# n = int(sys.stdin.readline())
+# s, e = 1, 1
+# cnt = 0
+# sum = 1
+# while s < (n // 2 + 1):
+#     if sum < n:
+#         e += 1
+#         sum += e
+#     elif sum == n:
+#         cnt += 1
+#         e += 1
+#         sum += e
+#         sum -= s
+#         s += 1
+#     else:
+#         sum -= s
+#         s += 1
+# print(cnt + 1)
+
+
+# 1920 수 찾기
 import sys
 input = sys.stdin.readline
 
-num = int(input())
-for _ in range(num):
-    line = list(input().rstrip())
-    # print(line)
-    stack_list = []
+# 이분 탐색
+def binary_search(list, num):
+    bot = 0
+    top = len(list)-1
+    while bot <= top:
+        mid = (bot + top)//2
+        if num < list[mid] : top = mid - 1
+        elif num > list[mid] : bot = mid + 1
+        else:
+            print(1)
+            return
+    print(0)
 
-    YES_check = True
-    for i in range(len(line)):
-        if(line[i] == '('): stack_list.append(line[i])
-        elif(line[i] == ')'):
-            if(len(stack_list) == 0):
-                YES_check = False
-                break
-            else: stack_list.pop()
-        # print(i, stack_list)
+n = input()
+n_list = sorted(list(map(int, input().split())))
+m = input()
+m_list = list(map(int, input().split()))
 
-    if((len(stack_list) == 0) & YES_check): print("YES")
-    else: print("NO")
+for i in m_list:
+    binary_search(n_list, i)
