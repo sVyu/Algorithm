@@ -2490,26 +2490,36 @@ print(a*b)
 
 
 # 1920 수 찾기
+# import sys
+# input = sys.stdin.readline
+
+# # 이분 탐색
+# def binary_search(list, num):
+#     bot = 0
+#     top = len(list)-1
+#     while bot <= top:
+#         mid = (bot + top)//2
+#         if num < list[mid] : top = mid - 1
+#         elif num > list[mid] : bot = mid + 1
+#         else:
+#             print(1)
+#             return
+#     print(0)
+
+# n = input()
+# n_list = sorted(list(map(int, input().split())))
+# m = input()
+# m_list = list(map(int, input().split()))
+
+# for i in m_list:
+#     binary_search(n_list, i)
+
+
+# 2751 수 정렬하기 2
 import sys
 input = sys.stdin.readline
 
-# 이분 탐색
-def binary_search(list, num):
-    bot = 0
-    top = len(list)-1
-    while bot <= top:
-        mid = (bot + top)//2
-        if num < list[mid] : top = mid - 1
-        elif num > list[mid] : bot = mid + 1
-        else:
-            print(1)
-            return
-    print(0)
-
-n = input()
-n_list = sorted(list(map(int, input().split())))
-m = input()
-m_list = list(map(int, input().split()))
-
-for i in m_list:
-    binary_search(n_list, i)
+num = int(input())
+num_list = sorted([int(input()) for _ in range(num)])
+for i in range(num):
+    print(num_list[i])
