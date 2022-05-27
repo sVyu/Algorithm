@@ -756,6 +756,7 @@ print(a*b)
 
 
 # 13333 Q-인덱스
+# (개선 전)
 # num = int(input())
 # num_list = list(map(int, input().split()))
 # num_list.sort()
@@ -766,22 +767,44 @@ print(a*b)
 #     count1 = 0
 #     count2 = 0
 
+#     # k번 이상 인용된 논문 count1
 #     for i in range(num-1, -1, -1):
 #         if(num_list[i] >= k):
 #             count1 += 1
 #             index = i
 #         else: break
 
+#     # k번 이하의 논문 수 count2, range범위를 index-1까지
 #     for j in range(index):
 #         if(num_list[i] <= k):
 #             count2 += 1
 #         else: break
 
-#     if( (k <= count1) & ( k >= count2) ):
-#         # print(k, count1, count2)
+#     # if( (k <= count1) & ( k >= count2) ):
+#     if((k <= count1) & ((num-k) >= count2)):
+#         print(k, count1, count2)
+#     if(k <= count1):
 #         print(k)
 #         break
 
+# 개선 코드
+# num = int(input())
+# num_list = sorted(list(map(int, input().split())))
+
+# # k번 이상 인용된 논문 k편 이상, k는 0부터 num까지
+# for k in range(num, -1, -1):
+#     count1 = 0
+#     # k번 이상 인용된 논문 count1
+#     for i in range(num-1, -1, -1):
+#         if(num_list[i] >= k):
+#             count1 += 1
+#         else: break
+
+#     # count1 이 k편 이상임을 검사, 나머지 n-k편의 논문들의 인용횟수는 당연히 k번 이하(정확히는 미만)
+#     # 위 for문의 검사 조건이 (인용횟수) k 이상인 논문들을 count하기 때문
+#     if(k <= count1):
+#         print(k)
+#         break
 
 # 1929 소수 구하기
 # 시간 초과
@@ -972,35 +995,77 @@ print(a*b)
 
 # 2805 나무 자르기
 # 시간 초과
+# 틀렸습니다..?
+# 또 시간 초과 ㅡㅡ
 # import sys
 
 # n, m = map(int, sys.stdin.readline().rstrip().split())
-# tree_height_list = sorted(list(map(int, sys.stdin.readline().rstrip().split())), reverse = True)
-# print(tree_height_list)
+# tree_height_list = sorted(list(map(int, sys.stdin.readline().rstrip().split())))
+# # print(tree_height_list)
 
-# # 제일 높은 나무의 높이를 기점으로 cutting_height 변수 초기화
-# # cutting_height = max(tree_height_list)
-
-# cutting_height = int((tree_height_list[0] + tree_height_list[n-1])/2)
-# # print(cutting_height)
+# if(n != len(tree_height_list)):
+#     print("haha")
+#     quit()
 
 # # 이분 탐색
-# while True:
-#     for i in range(n):
-#         if((tree_height_list[i] - cutting_height) > 0):
+# top, bot = tree_height_list[n-1], 0
+# while top >= bot:
+#     cutting_height = (top+bot)//2
+#     # print(cutting_height)
+
+#     sum = 0
+#     for i in range(n-1, -1, -1):
+#         if(tree_height_list[i] > cutting_height):
 #             sum += tree_height_list[i] - cutting_height
 #         else: break
-    
-#     if(sum >= m): cutting_height = int((cutting_height + tree_height_list[0])/2)
-#     else: cutting_height = int((cutting_height + tree_height_list[0])/2)
+
+#     if(sum == m): break
+#     elif(sum > m): bot = cutting_height+1
+#     else: top = cutting_height-1
+
+# if(top < bot): print(top)
+# else: print(cutting_height)
+
+# https://www.acmicpc.net/source/43783824
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# li = list(map(int, input().split()))
+
+# if n == 1 :
+#     ans = li[0] - m
+
+# else :
+#     li.sort(reverse=True)
+
+#     if li[0] == li[n-1] :
+#         ans = li[0] - (m+1)//n
+
+#     else :
+
+#         wood = 0
+#         ans = 0
+#         for i in range(1, n) :
+#             wood += (li[i-1] - li[i]) * i
+#             if wood >= m :
+#                 ans = li[i]
+#                 break
+
+#         if wood > m :
+#             ans += (wood - m)//i
+
+# print(ans)
 
 
 # brute force
 # # 1씩 줄이면서 계산
+# # 제일 높은 나무의 높이를 기점으로 cutting_height 변수 초기화
+# cutting_height = max(tree_height_list)
 # for i in range(cutting_height, -1, -1):
 #     sum = 0
 #     # 큰 나무부터 cutting을 해서 남는 값이 있으면 sum에 합산
-#     for j in range(n-1, -1, -1):
+#     for j in range(n):
 #         if((tree_height_list[j] - i) > 0):
 #             sum += tree_height_list[j] - i
 #             # print(i, j, sum)
@@ -2516,10 +2581,127 @@ print(a*b)
 
 
 # 2751 수 정렬하기 2
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-num = int(input())
-num_list = sorted([int(input()) for _ in range(num)])
-for i in range(num):
-    print(num_list[i])
+# num = int(input())
+# num_list = sorted([int(input()) for _ in range(num)])
+# for i in range(num):
+#     print(num_list[i])
+
+
+# 17122 체스
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# for _ in range(num):
+#     A, B = map(str, input().split())
+#     B = int(B)
+
+#     # ord(A) → 65, (B-1) // 8 은 각각의 줄 인덱스
+#     # 표기법1(A)에서 A1 → 66, 여기에 %2 적용하면 0, 표기법2(B)에서 1 → 0
+#     if((ord(A[0]) + int(A[1]))%2 == (((B-1) // 8) + (B%2) +1)%2): print("YES")
+#     else: print("NO")
+
+
+# 2840 행운의 바퀴
+# import sys
+# input = sys.stdin.readline
+
+# n, k = map(int, input().split())
+# str_list = ['?'] * n
+# alpha_list = [-1] * 26
+# index = 0
+# normal_check = True
+
+# for _ in range(k):
+#     s, letter = map(str, input().split())
+#     s = int(s)
+#     index = (index + s) % n
+    
+#     # 현재 index의 글자가 '?'이 아니면서 입력받은 글자와 다른 경우 (1인덱스 2글자)
+#     if(str_list[index] != '?') & (str_list[index] != letter): 
+#         normal_check = False
+#         break
+#     # 하나의 글자가 두 개 이상의 index에서 나타나는 경우 (1글자 2인덱스)
+#     elif(alpha_list[(ord(letter)-65)] != -1) and (alpha_list[(ord(letter)-65)] != index):
+#         normal_check = False
+#         break
+#     else: str_list[index] = letter
+#     alpha_list[ord(letter)-65] = index
+
+# if(normal_check == True):
+#     # for i in range(index, -1, -1): print(str_list[i], end='')
+#     # for i in range(n-1, index, -1): print(str_list[i], end='')
+#     for i in range(n, 0, -1):
+#         print(str_list[(i+index)%n], end = '')
+# else: print("!")
+
+
+# 11726 2xn 타일링
+# 런타임 에러(RecursionError)
+# 틀렸습니다 → 결과값이 10007로 나눈 나머지 값이어야함 -_-
+# RecursionError → return 재귀로 안 하고 아래와 같이 for문으로 치환
+# def factorial(num):
+#     value = 1
+#     for i in range(num, 1, -1):
+#         value *= i
+#     return value
+
+# sum = 0
+# num = int(input())
+# for i in range(num//2 +1):
+#     a = num - i*2
+#     # a + i 개의 땅 중에 a개를 선택하는 조합의 수
+#     sum += factorial(a+i)//(factorial(a)*factorial(i))
+
+# print(sum % 10007)
+
+# RecursionError 해결2번째
+# import sys
+# sys.setrecursionlimit(10**6)
+
+# def factorial(num):
+#     if(num >= 2): return num * factorial(num-1)
+#     else: return 1
+
+# sum = 0
+# num = int(sys.stdin.readline())
+# for i in range(num//2 +1):
+#     a = num - i*2
+#     # a + i 개의 땅 중에 a개를 선택하는 조합의 수
+#     sum += factorial(a+i)//(factorial(a)*factorial(i))
+
+# print(sum % 10007)
+
+
+# # 14405 피카츄
+# import sys
+# str_list = list(sys.stdin.readline().rstrip())
+
+# len_str_list = len(str_list)
+# index = 0
+# pos_check = True
+
+# while True:
+#     # pi ka chu 로 index를 len_str_list까지 채웠다면 True / break
+#     if(index == len_str_list): break
+#     elif (len_str_list - index) >= 3 and str_list[index:index+3] == ['c','h','u']:
+#         index += 3
+#     elif (len_str_list - index) >= 2 and str_list[index:index+2] == ['p','i']:
+#         index += 2
+#     elif (len_str_list - index) >= 2 and str_list[index:index+2] == ['k','a']:
+#         index += 2
+#     # pi ka chu 로 발음할 수 없는 문자열이면 False / break
+#     else:
+#         pos_check = False
+#         break
+
+# if(pos_check): print("YES")
+# else: print("NO")
+
+        
+    
+        
+
