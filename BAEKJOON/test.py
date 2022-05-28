@@ -997,6 +997,7 @@ print(a*b)
 # 시간 초과
 # 틀렸습니다..?
 # 또 시간 초과 ㅡㅡ
+# 이제는 그냥 푼다 ㅎㅎ
 # import sys
 
 # n, m = map(int, sys.stdin.readline().rstrip().split())
@@ -1025,6 +1026,35 @@ print(a*b)
 
 # if(top < bot): print(top)
 # else: print(cutting_height)
+
+# python3 통과 ~
+# import sys
+# input = sys.stdin.readline
+
+# def tree_binary_search(tree_height_list, top, bot, n, m):
+#     if(top < bot):
+#         return top
+    
+#     cutting_height = (top + bot) // 2
+#     sum = sum_cut_tree(tree_height_list, cutting_height, n)
+#     # print(cutting_height, sum)
+
+#     # 각 경우에 대해서 return 달아줘야 된다 ~ 안 그러면 print()로 None이 나옴
+#     if(sum > m): return tree_binary_search(tree_height_list, top, cutting_height+1, n, m)
+#     elif(sum < m): return tree_binary_search(tree_height_list, cutting_height-1, bot, n, m)
+#     else: return cutting_height
+
+# def sum_cut_tree(tree_height_list, cutting_height, n):
+#     sum = 0
+#     for i in range(n):
+#         if(tree_height_list[i] > cutting_height):
+#             sum += tree_height_list[i] - cutting_height
+#     return sum
+
+# n, m = map(int, input().split())
+# tree_height_list = list(map(int, input().split()))
+# print(tree_binary_search(tree_height_list, max(tree_height_list), 0, n, m))
+
 
 # https://www.acmicpc.net/source/43783824
 # import sys
@@ -2061,7 +2091,6 @@ print(a*b)
 #     print(num_list[i][0], num_list[i][1])
 
 
-'''
 # 10773 제로
 # 이거 제출해야됨 ~
 # import sys
@@ -2093,7 +2122,6 @@ print(a*b)
 #         comp_num -= 1
 
 # print(count)
-'''
 
 
 # 1978 소수 찾기
@@ -2700,8 +2728,4 @@ print(a*b)
 
 # if(pos_check): print("YES")
 # else: print("NO")
-
-        
-    
-        
 
