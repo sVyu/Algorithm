@@ -2729,3 +2729,119 @@ print(a*b)
 # if(pos_check): print("YES")
 # else: print("NO")
 
+
+# 17509 And the Winner Is... Ourselves!
+# 시간이 적게 드는 순서부터 많이 드는 순서까지 정렬 → 합산하면 끝
+# import sys
+
+# def cal_sum(num_list):
+#     sum = 0
+#     time = 0
+#     for i in range(11):
+#         time += num_list[i][0]
+#         sum += time + num_list[i][1]*20
+#     return sum
+
+# num_list = sorted([list(map(int, input().split())) for _ in range(11)], key=lambda x:x[0])
+# # print(num_list)
+# print(cal_sum(num_list))
+
+
+# 2231 분해합
+# try 1
+# import sys
+# num = int(sys.stdin.readline())
+
+# def find_creator_num(num):
+#     for i in range(10):
+#         for j in range(10):
+#             for k in range(10):
+#                 for a in range(10):
+#                     for b in range(10):
+#                         for c in range(10):
+#                             if(100001 * i + 10001*j + 1001*k + 101*a + 11*b + 2*c) == num:
+#                                 return(100000 * i + 10000 * j + 1000*k + 100*a + 10*b + c)
+#                             elif(100000 * i + 10000 * j + 1000*k + 100*a + 10*b + c) > num:
+#                                 break
+#     return 0
+
+# print(find_creator_num(num))
+
+# try 2
+# import sys
+# num = int(sys.stdin.readline())
+
+# def find_creator_num(num):
+#     if(num == 1000000): return 0
+
+#     for i in range(10):
+#         for j in range(10):
+#             for k in range(10):
+#                 for a in range(10):
+#                     for b in range(10):
+#                         for c in range(10):
+#                             if(100001 * i + 10001*j + 1001*k + 101*a + 11*b + 2*c) == num:
+#                                 return(100000 * i + 10000 * j + 1000*k + 100*a + 10*b + c)
+#                             elif(100000 * i + 10000 * j + 1000*k + 100*a + 10*b + c) >= num:
+#                                 return 0
+
+# print(find_creator_num(num))
+
+
+# 17478 재귀함수가 뭔가요?
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# count = 0
+
+# def recursion_func(count):
+#     print('{0}"재귀함수가 뭔가요?"'.format(count*'_'*4))
+#     if(count == num):
+#         print('{0}"재귀함수는 자기 자신을 호출하는 함수라네"'.format(count*'_'*4))
+#     else:
+#         print('''\
+# {0}"잘 들어보게. 옛날옛날 한 산 꼭대기에 이세상 모든 지식을 통달한 선인이 있었어.
+# {0}마을 사람들은 모두 그 선인에게 수많은 질문을 했고, 모두 지혜롭게 대답해 주었지.
+# {0}그의 답은 대부분 옳았다고 하네. 그런데 어느 날, 그 선인에게 한 선비가 찾아와서 물었어."'''.format(count*'_'*4))
+#         count += 1
+#         recursion_func(count)
+#         count -= 1
+#     print("{0}라고 답변하였지.".format(count*'_'*4))
+
+# print("어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다.")
+# recursion_func(count)
+
+
+# 1074 Z
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**6)
+
+N, r, c = map(int, input().split())
+array_dist = 2**N
+count = 0
+# num_list = [[0] * array_dist for _ in range(array_dist)]
+
+def recursion_Z(N, x, y):
+    global count
+    gap = 2**(N-1)
+    # print(gap, N, x, y)
+    if(N == 1):
+        if(x == r and y == c): print(count)
+        else: count += 1
+            # print(count)
+        if(x == r and y+1 == c): print(count)
+        else: count += 1
+        if(x+1 == r and y == c): print(count)
+        else: count += 1
+        if(x+1 == r and y+1 == c): print(count)
+        else: count += 1
+    else:
+        N -= 1
+        recursion_Z(N, x, y)
+        recursion_Z(N, x, y+gap)
+        recursion_Z(N, x+gap, y)
+        recursion_Z(N, x+gap, y+gap)
+
+recursion_Z(N, 0, 0)

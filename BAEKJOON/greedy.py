@@ -308,6 +308,11 @@
 # 11000 강의실 배정
 # while - for문 : 시간 초과
 # 우선순위 큐?
+
+# try 1
+# import sys
+# input = sys.stdin.readline
+
 # class_num = int(input())
 # class_list = [list(map(int, input().split())) for _ in range(class_num)]
 # class_list.sort(key=lambda x:(x[0], x[1]))
@@ -316,8 +321,8 @@
 # check_list = [0] * class_num
 # room_num = 0
 
+# start_minute = 0
 # while sum(check_list) != class_num:
-#     start_minute = 0
 #     room_num += 1
 #     for i in range(class_num):
 #         if(check_list[i] == 0) & (start_minute <= class_list[i][0]):
@@ -325,6 +330,33 @@
 #             check_list[i] = 1
 
 # print(room_num)
+
+# try 2
+# from queue import PriorityQueue
+# import sys
+# input = sys.stdin.readline
+
+# def rooms_count(num, class_list):
+#     que = PriorityQueue()
+#     count = 0
+
+#     for i in range(num):
+#         # class가 없거나, 제일 빨리 끝나는 class보다 시작이 빠른 경우
+#         if(que.empty() or que.queue[0] > class_list[i][0]) :
+#             count += 1
+#         else:
+#             que.get()
+
+#         que.put(class_list[i][1])
+#         # print("(1)", que.queue)
+#         # print("(2)", que.queue[0])
+#     return count
+
+
+# num = int(input())
+# class_list = sorted([list(map(int, input().split())) for _ in range(num)], key=lambda x:(x[0], x[1]))
+# # print(class_list)
+# print(rooms_count(num, class_list))
 
 
 # 2720 세탁소 사장 동혁
