@@ -2814,34 +2814,168 @@ print(a*b)
 
 
 # 1074 Z
+# 1st try → 시간 초과
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
+
+# N, r, c = map(int, input().split())
+# array_dist = 2**N
+# count = 0
+# # num_list = [[0] * array_dist for _ in range(array_dist)]
+
+# def recursion_Z(N, x, y):
+#     global count
+#     gap = 2**(N-1)
+#     # print(gap, N, x, y)
+#     if(N == 1):
+#         if(x == r and y == c): print(count)
+#         else: count += 1
+#             # print(count)
+#         if(x == r and y+1 == c): print(count)
+#         else: count += 1
+#         if(x+1 == r and y == c): print(count)
+#         else: count += 1
+#         if(x+1 == r and y+1 == c): print(count)
+#         else: count += 1
+#     else:
+#         N -= 1
+#         recursion_Z(N, x, y)
+#         recursion_Z(N, x, y+gap)
+#         recursion_Z(N, x+gap, y)
+#         recursion_Z(N, x+gap, y+gap)
+
+# recursion_Z(N, 0, 0)
+
+# 1074 Z
+# import sys
+# input = sys.stdin.readline
+# # RecursionError 방지
+# sys.setrecursionlimit(10**6)
+
+# # 입력 처리
+# N, r, c = map(int, input().split())
+# gap = 2**N
+# count = 0
+# # 기준 점을 잡아서 위쪽 좌우 / 아래쪽 좌우를 나누기 위한 변수 
+# standard_x, standard_y = gap//2, gap//2
+
+# def recursion_Z(N, x, y):
+#     global count, standard_x, standard_y, gap
+#     # print("standard: ", standard_x, standard_y)
+#     # print(gap, N, x, y, count)
+#     if(N == 1):
+#         if(x == r and y == c): print(count)
+#         else: count += 1
+#             # print(count)
+#         if(x == r and y+1 == c): print(count)
+#         else: count += 1
+#         if(x+1 == r and y == c): print(count)
+#         else: count += 1
+#         if(x+1 == r and y+1 == c): print(count)
+#         else: count += 1
+#     else:
+#         N -= 1
+#         gap //= 2
+#         gap_div_2 = gap // 2
+#         # 좌상단 (standard 좌표를 기준으로 (r, c)의 위치)
+#         if(r < standard_x and c < standard_y):
+#             standard_x -= gap_div_2
+#             standard_y -= gap_div_2
+#             recursion_Z(N, x, y)
+#         # 우상단
+#         elif(r < standard_x and c >= standard_y):
+#             standard_x -= gap_div_2
+#             standard_y += gap_div_2
+#             count += gap ** 2
+#             recursion_Z(N, x, y+gap)
+#         # 좌하단
+#         elif(r >= standard_x and c < standard_y):
+#             standard_x += gap_div_2
+#             standard_y -= gap_div_2
+#             count += (gap ** 2) * 2
+#             recursion_Z(N, x+gap, y)
+#         # 우하단
+#         else:
+#             standard_x += gap_div_2
+#             standard_y += gap_div_2
+#             count += (gap ** 2) * 3
+#             recursion_Z(N, x+gap, y+gap)
+
+# recursion_Z(N, 0, 0)
+
+
+# 다른 사람 코드
+# https://www.acmicpc.net/source/43877252
+# import sys
+# input = sys.stdin.readline
+
+# N, r, c = map(int, input().split())
+
+# def D(row,col):
+
+#     if row == 0 and col == 0:
+#         return 0
+#     else:
+#         pass
+
+#     return 2 * (row % 2) + col % 2 + 4 * D(row//2,col//2)
+
+# print(D(r,c))
+
+
+# 7568 덩치
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = [list(map(int, input().split())) for _ in range(num)]
+# rate_list = []
+
+# for i in range(num):
+#     count = 1
+#     for j in range(num):
+#         if i == j : continue
+#         else:
+#             if num_list[i][0] < num_list[j][0] and num_list[i][1] < num_list[j][1]:
+#                 count += 1
+#             else: continue
+#     rate_list.append(count)
+
+# print(*rate_list)
+
+
+# 9020 골드바흐의 추측
 import sys
+import math
 input = sys.stdin.readline
-sys.setrecursionlimit(10**6)
 
-N, r, c = map(int, input().split())
-array_dist = 2**N
-count = 0
-# num_list = [[0] * array_dist for _ in range(array_dist)]
+# 1. 소수를 찾아야 함
+# 2. 두 소수의 차가 가장 적은 골드바흐 파티션
 
-def recursion_Z(N, x, y):
-    global count
-    gap = 2**(N-1)
-    # print(gap, N, x, y)
-    if(N == 1):
-        if(x == r and y == c): print(count)
-        else: count += 1
-            # print(count)
-        if(x == r and y+1 == c): print(count)
-        else: count += 1
-        if(x+1 == r and y == c): print(count)
-        else: count += 1
-        if(x+1 == r and y+1 == c): print(count)
-        else: count += 1
+num = int(input())
+
+def prime_check(num):
+    if(num == 1): return False
+    elif(num == 2): return True
+    elif(num % 2 == 0): return False
     else:
-        N -= 1
-        recursion_Z(N, x, y)
-        recursion_Z(N, x, y+gap)
-        recursion_Z(N, x+gap, y)
-        recursion_Z(N, x+gap, y+gap)
+        for i in range(3, math.floor(math.sqrt(num))+1, 2):
+            if(num % i == 0):
+                return False
+        return True
 
-recursion_Z(N, 0, 0)
+for _ in range(num):
+    n = int(input())
+    prime_list = []
+    ans_list = []
+    if n == 4:
+        ans_list.append([2, 2])
+    else:
+        for i in range(3, n-1, 2):
+            if(prime_check(i) == True):
+                prime_list.append(i)
+    
+    print(ans_list)
+    print(prime_list)
+            
