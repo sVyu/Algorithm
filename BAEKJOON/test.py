@@ -2946,36 +2946,189 @@ print(a*b)
 
 
 # 9020 골드바흐의 추측
+# 1. 소수를 찾아야 함
+# 2. 두 소수의 차가 가장 적은 골드바흐 파티션 → 정렬로 구현 (더 좋은 방법이 있을 듯?)
+# 1st try → 시간 초과
+# import sys
+# import math
+# input = sys.stdin.readline
+# num = int(input())
+
+# # 소수 체크 함수
+# def prime_check(num):
+#     if(num == 1): return False
+#     elif(num == 2): return True
+#     elif(num % 2 == 0): return False
+#     else:
+#         for i in range(3, math.floor(math.sqrt(num))+1, 2):
+#             if(num % i == 0):
+#                 return False
+#         return True
+
+# def solve():
+#     for _ in range(num):
+#         n = int(input())
+#         prime_list = []
+#         ans_list = []
+#         if n == 4:
+#             ans_list.append([2, 2, 0])
+#         else:
+#             for i in range(3, n-1, 2):
+#                 if(prime_check(i) == True):
+#                     prime_list.append(i)
+
+#             len_prime_list = len(prime_list)
+#             for i in range(len_prime_list):
+#                 for j in range(i, len_prime_list):
+#                     if(prime_list[i] + prime_list[j] == n):
+#                         ans_list.append([prime_list[i], prime_list[j], prime_list[j] - prime_list[i]])
+        
+#         ans_list.sort(key=lambda x:x[2])
+#         print(ans_list[0][0], ans_list[0][1])
+#         # print(prime_list)
+
+# solve()
+
+
+# 9퍼.. 또 시간 초과
+# import sys
+# import math
+# import os
+# input = sys.stdin.readline
+# num = int(input())
+
+# # 소수 체크 함수
+# def prime_check(num):
+#     if(num == 1): return False
+#     elif(num == 2): return True
+#     elif(num % 2 == 0): return False
+#     else:
+#         for i in range(3, math.floor(math.sqrt(num))+1, 2):
+#             if(num % i == 0):
+#                 return False
+#         return True
+
+# def solve():
+#     for _ in range(num):
+#         n = int(input())
+#         prime_list = []
+#         if n == 4:
+#             print(2, 2)
+#         else:
+#             for i in range(3, n-2, 2):
+#                 if(prime_check(i) == True):
+#                     prime_list.append(i)
+#             # print(prime_list)
+
+#             # 찾았는지 체크
+#             find_check = False
+#             index = 0
+#             # n//2 에 가장 가까우면서도 작은 소수의 인덱스를 찾아야 함
+#             for i in range(n//2, 2, -1):
+#                 if(i in prime_list):
+#                     index = prime_list.index(i)
+#                     break
+
+#             # len_prime_list = len(prime_list)
+#             # index_1은 index 포함 왼쪽, index_2는 index포함 오른쪽
+#             index_2 = index
+#             for index_1 in range(index, -1, -1):
+#                 # for index_2 in range(index_1, len(prime_list), 1):
+#                 while True :
+#                     # 숫자 조합을 찾은 경우
+#                     if(prime_list[index_1] + prime_list[index_2] == n):
+#                         print(prime_list[index_1], prime_list[index_2])
+#                         find_check = True
+#                         break
+#                     # 두 숫자의 합이 n보다 커진 경우
+#                     elif(prime_list[index_1] + prime_list[index_2] > n):
+#                         index_2 -= 1
+#                         break
+#                     # 못 찾았는데 index_2가 아직 len_prime_list-1보다 작은 경우
+#                     # elif (index_2 < len_prime_list-1): index_2 += 1
+#                     else: index_2 += 1
+#                     # 못 찾았는데 두 숫자의 합이 n보다 작으면서 index_2가 len_prime_list-1인 경우
+#                     # else:
+#                     #     print("check", index_1, prime_list[index_1], index_2, prime_list[index_2])
+#                     #     os.system("pause")
+#                     #     break
+                
+#                 if(find_check): break
+
+# solve()
+
+# # for i in range(4, 10001, 2):
+# #     print(i, end= ' ')
+# #     solve(i)
+
+
+# 4th try → clear
+# import sys
+# import math
+# input = sys.stdin.readline
+# num = int(input())
+
+# # 소수 체크 함수
+# def prime_check(num):
+#     if(num == 1): return False
+#     elif(num == 2): return True
+#     elif(num % 2 == 0): return False
+#     else:
+#         for i in range(3, math.floor(math.sqrt(num))+1, 2):
+#             if(num % i == 0):
+#                 return False
+#         return True
+
+# def solve():
+#     for _ in range(num):
+#         n = int(input())
+#         if n == 4:
+#             print(2, 2)
+#         else:
+#             # 찾았는지 체크용 변수
+#             find_check = False
+#             index = 0
+#             # n//2 랑 같거나 작으면서 가장 가까운 소수의 인덱스를 찾아야 함
+#             for i in range(n//2, 2, -1):
+#                 if(i in prime_list):
+#                     index = prime_list.index(i)
+#                     break
+
+#             # index_1은 index 포함 왼쪽, index_2는 index포함 오른쪽
+#             index_2 = index
+#             for index_1 in range(index, -1, -1):
+#                 # for index_2 in range(index_1, len(prime_list), 1):
+#                 while True :
+#                     # 숫자 조합을 찾은 경우
+#                     if(prime_list[index_1] + prime_list[index_2] == n):
+#                         print(prime_list[index_1], prime_list[index_2])
+#                         find_check = True
+#                         break
+#                     # 두 숫자의 합이 n보다 커진 경우
+#                     elif(prime_list[index_1] + prime_list[index_2] > n):
+#                         index_2 -= 1
+#                         break
+#                     # 아직 못 찾은 경우
+#                     else: index_2 += 1
+                
+#                 if(find_check): break
+
+# # 소수 list를 구해놓고 체크를 하면 되는데 바보같이 num 받을때마다 소수 list를 구하게 했네..
+# prime_list = []
+# for i in range(3, 10000-2, 2):
+#     if(prime_check(i) == True):
+#         prime_list.append(i)
+# solve()
+# # for i in range(4, 10001, 2):
+# #     solve(i)
+
+
+
+# 2577
 import sys
-import math
 input = sys.stdin.readline
 
-# 1. 소수를 찾아야 함
-# 2. 두 소수의 차가 가장 적은 골드바흐 파티션
-
-num = int(input())
-
-def prime_check(num):
-    if(num == 1): return False
-    elif(num == 2): return True
-    elif(num % 2 == 0): return False
-    else:
-        for i in range(3, math.floor(math.sqrt(num))+1, 2):
-            if(num % i == 0):
-                return False
-        return True
-
-for _ in range(num):
-    n = int(input())
-    prime_list = []
-    ans_list = []
-    if n == 4:
-        ans_list.append([2, 2])
-    else:
-        for i in range(3, n-1, 2):
-            if(prime_check(i) == True):
-                prime_list.append(i)
-    
-    print(ans_list)
-    print(prime_list)
-            
+for _ in range(3):
+    num = int(input())
+    while(num >= 10):
+        check_num = num % 10
