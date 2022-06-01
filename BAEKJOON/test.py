@@ -3123,12 +3123,119 @@ print(a*b)
 # #     solve(i)
 
 
-
 # 2577
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-for _ in range(3):
-    num = int(input())
-    while(num >= 10):
-        check_num = num % 10
+# count_check = [0] * 10
+
+# num1 = int(input())
+# num2 = int(input())
+# num3 = int(input())
+# num = num1 * num2 * num3
+# num_list = list(str(num1 * num2 * num3))
+
+# for i in range(len(num_list)):
+#     count_check[num % 10] += 1
+#     num //= 10
+
+# # print(count_check)
+# for i in range(10):
+#     print(count_check[i])
+
+
+# 3190 뱀
+# 23퍼 틀렸습니다 → 사과를 먹은 다음 해당 인덱스를 0으로 처리해주지 않았음 즉 무한 사과여서 틀렸음 ㄷㄷ
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# que = deque()
+# que.append([0, 0]) # 뱀의 위치
+
+# n = int(input())
+# k = int(input())
+
+# board = [[0] * n for _ in range(n)]
+
+# for _ in range(k):
+#     apple_x, apple_y = map(int, input().split())
+#     apple_x -= 1
+#     apple_y -= 1
+    
+#     board[apple_x][apple_y] += 1
+
+# snake_direction = {0:'right', 1:'down', 2:'left', 3:'up'}
+# now_d = 0
+
+# # board 확인 이상 무
+# # for i in range(n):
+# #     for j in range(n):
+# #         print(board[i][j], end= ' ')
+# #     print()
+
+# now_x = 0
+# now_y = 0
+# total_distance = 0
+
+# dist_direct_list = []
+# dist_direct_index = 0
+# # L : 뱀의 방향 정보
+# for _ in range(int(input())):
+#     distance, direction = map(str, input().split())
+#     distance = int(distance)
+#     dist_direct_list.append([distance, direction])
+# # print(dist_direct_list)
+
+# def check_que(now_x, now_y):
+#     # 뱀이 자기 몸이랑 만나면 True 반환
+#     if([now_x, now_y] in que): return True
+#     # 사과가 없는 자리면 꼬리 부분 pop()
+#     elif(board[now_x][now_y] != 1): que.pop()
+#     elif(board[now_x][now_y] == 1): board[now_x][now_y] = 0
+#     que.appendleft([now_x, now_y])
+
+# def solve(snake_direction, now_d, now_x, now_y, total_distance, dist_direct_list, dist_direct_index):
+#     # print(now_d)
+#     while True:
+#         total_distance += 1
+#         # 이동 수행
+#         if(snake_direction[now_d] == 'right'):
+#             if(now_y < n-1):
+#                 now_y += 1
+#                 if(check_que(now_x, now_y)): break
+#             else: break
+#         elif(snake_direction[now_d] == 'down'):
+#             if(now_x < n-1):
+#                 now_x += 1
+#                 if(check_que(now_x, now_y)): break
+#             else: break
+#         elif(snake_direction[now_d] == 'left'):
+#             if(now_y > 0):
+#                 now_y -= 1
+#                 if(check_que(now_x, now_y)): break
+#             else: break
+#         elif(snake_direction[now_d] == 'up'):
+#             if(now_x > 0):
+#                 now_x -= 1
+#                 if(check_que(now_x, now_y)): break
+#             else: break
+        
+#         # 제시된 거리만큼 이동 한 다음에 방향 조정
+#         if(total_distance == dist_direct_list[dist_direct_index][0]):
+#             if(dist_direct_list[dist_direct_index][1] == 'L'):  # 왼쪽으로 90도
+#                 if(now_d == 0): now_d = 3
+#                 else: now_d -= 1
+#             else: # D, 오른쪽으로 90도
+#                 now_d = (now_d+1) % 4
+            
+#             if dist_direct_index < len(dist_direct_list)-1:
+#                 dist_direct_index += 1
+#         # print(total_distance, que, snake_direction[now_d])
+#     return(total_distance)
+
+# print(solve(snake_direction, now_d, now_x, now_y, total_distance, dist_direct_list, dist_direct_index))
+
+
+# 2741 N 찍기
+# for i in range(1, int(input())+1): print(i)
