@@ -3239,3 +3239,28 @@ print(a*b)
 
 # 2741 N 찍기
 # for i in range(1, int(input())+1): print(i)
+
+# 10250 ACM호텔
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     h, w, n = map(int, input().split())
+#     print(((n-1)%h +1)*100 +((n-1)//h +1))
+
+
+# 3553 Dragon’s Question
+# n, d = map(int, input().split())
+
+# def solve():
+#     for i in range(10**(n-1), 10**n):
+#         if(i % d ==0):
+#             return i
+#     return "No solution"
+
+# print(solve())
+
+
+# 18108 1998년생인 내가 태국에서는 2541년생?!
+# print(int(input())-543)
+
