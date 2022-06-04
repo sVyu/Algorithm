@@ -1395,37 +1395,37 @@ print(a*b)
 
 
 # 2108 통계학
-# import math
-# import sys
+import math
+import sys
 
-# num = int(input())
-# num_list = [int(sys.stdin.readline().rstrip()) for _ in range(num)]
-# num_list.sort()
+num = int(input())
+num_list = [int(sys.stdin.readline().rstrip()) for _ in range(num)]
+num_list.sort()
 
-# # 평균
-# print(round(sum(num_list)/len(num_list)))
+# 평균
+print(round(sum(num_list)/len(num_list)))
 
-# # 중앙값
-# # 길이가 홀수인 경우
-# if((len(num_list) % 2) == 1): print(num_list[len(num_list)//2])
-# # 짝수인 경우
-# else: print(num_list[len(num_list)//2] + num_list[(len(num_list)//2)-1])
+# 중앙값
+# 길이가 홀수인 경우
+if((len(num_list) % 2) == 1): print(num_list[len(num_list)//2])
+# 짝수인 경우
+else: print(num_list[len(num_list)//2] + num_list[(len(num_list)//2)-1])
 
-# # 최빈값
-# num_count_set = {}
-# for i in range(len(num_list)):
-#     if(num_list[i] not in num_count_set): num_count_set[num_list[i]] = 1
-#     else: num_count_set[num_list[i]] += 1
+# 최빈값
+num_count_set = {}
+for i in range(len(num_list)):
+    if(num_list[i] not in num_count_set): num_count_set[num_list[i]] = 1
+    else: num_count_set[num_list[i]] += 1
 
-# # -x[1] : 카운트 수로 정렬, x[0] : 같은 카운트에 대해 기존 숫자 오름차순 정렬
-# num_count_set = sorted(num_count_set.items(), key=lambda x:(-x[1], x[0]))
-# if(len(num_count_set) == 1): print(num_count_set[0][0])
-# elif(num_count_set[0][1] == num_count_set[1][1]): print(num_count_set[1][0])
-# else: print(num_count_set[0][0])
-# # print(num_count_set)
+# -x[1] : 카운트 수로 정렬, x[0] : 같은 카운트에 대해 기존 숫자 오름차순 정렬
+num_count_set = sorted(num_count_set.items(), key=lambda x:(-x[1], x[0]))
+if(len(num_count_set) == 1): print(num_count_set[0][0])
+elif(num_count_set[0][1] == num_count_set[1][1]): print(num_count_set[1][0])
+else: print(num_count_set[0][0])
+# print(num_count_set)
 
-# # 범위
-# print(num_list[-1] - num_list[0])
+# 범위
+print(num_list[-1] - num_list[0])
 
 
 # 2609 최대공약수와 최소공배수
@@ -3264,3 +3264,74 @@ print(a*b)
 # 18108 1998년생인 내가 태국에서는 2541년생?!
 # print(int(input())-543)
 
+
+# 1267 핸드폰 요금
+# import sys
+# import math
+# input = sys.stdin.readline
+
+# def yeong_sik(num):
+#     return math.ceil((num+1)/30)*10
+
+# def min_sik(num):
+#     return math.ceil((num+1)/60)*15
+
+# def solve():
+#     sum_yeong_sik, sum_min_sik = 0, 0
+#     n = int(input())
+#     talk_time_list = list(map(int, input().split())) 
+
+#     for i in range(n):
+#         sum_yeong_sik += yeong_sik(talk_time_list[i])
+#         sum_min_sik += min_sik(talk_time_list[i])
+
+#     print("sum_yeong_sik :", sum_yeong_sik)
+#     print("sum_min_sik :", sum_min_sik)
+
+#     if(sum_yeong_sik < sum_min_sik):
+#         print("Y", sum_yeong_sik)
+#     elif(sum_yeong_sik > sum_min_sik):
+#         print("M", sum_min_sik)
+#     else:
+#         print("Y M", sum_yeong_sik)
+
+# solve()
+
+
+# 1541 잃어버린 괄호
+# def sum_list(now_str):
+#     num_list = list(map(int, now_str.split('+')))
+#     # print(num_list)
+#     return sum(num_list)
+
+# def solve():
+#     str_input = input().split('-')
+#     # print(str_input)
+
+#     # 마이너스 나오기 전 값들은 다 더할 수 밖에 없음
+#     total_sum = sum_list(str_input[0])
+
+#     # 첫 번째 마이너스 이후의 값들은 모두 마이너스 처리
+#     for i in range(1, len(str_input)):
+#         total_sum -= sum_list(str_input[i])
+
+#     return total_sum
+
+# print(solve())
+
+
+# 2953 나는 요리사다
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     max_index = -1
+#     max_sum = 0
+#     for i in range(5):
+#         list_sum = sum(list(map(int, input().split())))
+#         if(max_sum < list_sum):
+#             max_index = i
+#             max_sum = list_sum
+#     return max_index+1, max_sum
+
+# print(*solve())
