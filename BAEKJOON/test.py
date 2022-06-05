@@ -1395,37 +1395,37 @@ print(a*b)
 
 
 # 2108 통계학
-import math
-import sys
+# import math
+# import sys
 
-num = int(input())
-num_list = [int(sys.stdin.readline().rstrip()) for _ in range(num)]
-num_list.sort()
+# num = int(input())
+# num_list = [int(sys.stdin.readline().rstrip()) for _ in range(num)]
+# num_list.sort()
 
-# 평균
-print(round(sum(num_list)/len(num_list)))
+# # 평균
+# print(round(sum(num_list)/len(num_list)))
 
-# 중앙값
-# 길이가 홀수인 경우
-if((len(num_list) % 2) == 1): print(num_list[len(num_list)//2])
-# 짝수인 경우
-else: print(num_list[len(num_list)//2] + num_list[(len(num_list)//2)-1])
+# # 중앙값
+# # 길이가 홀수인 경우
+# if((len(num_list) % 2) == 1): print(num_list[len(num_list)//2])
+# # 짝수인 경우
+# else: print(num_list[len(num_list)//2] + num_list[(len(num_list)//2)-1])
 
-# 최빈값
-num_count_set = {}
-for i in range(len(num_list)):
-    if(num_list[i] not in num_count_set): num_count_set[num_list[i]] = 1
-    else: num_count_set[num_list[i]] += 1
+# # 최빈값
+# num_count_set = {}
+# for i in range(len(num_list)):
+#     if(num_list[i] not in num_count_set): num_count_set[num_list[i]] = 1
+#     else: num_count_set[num_list[i]] += 1
 
-# -x[1] : 카운트 수로 정렬, x[0] : 같은 카운트에 대해 기존 숫자 오름차순 정렬
-num_count_set = sorted(num_count_set.items(), key=lambda x:(-x[1], x[0]))
-if(len(num_count_set) == 1): print(num_count_set[0][0])
-elif(num_count_set[0][1] == num_count_set[1][1]): print(num_count_set[1][0])
-else: print(num_count_set[0][0])
-# print(num_count_set)
+# # -x[1] : 카운트 수로 정렬, x[0] : 같은 카운트에 대해 기존 숫자 오름차순 정렬
+# num_count_set = sorted(num_count_set.items(), key=lambda x:(-x[1], x[0]))
+# if(len(num_count_set) == 1): print(num_count_set[0][0])
+# elif(num_count_set[0][1] == num_count_set[1][1]): print(num_count_set[1][0])
+# else: print(num_count_set[0][0])
+# # print(num_count_set)
 
-# 범위
-print(num_list[-1] - num_list[0])
+# # 범위
+# print(num_list[-1] - num_list[0])
 
 
 # 2609 최대공약수와 최소공배수
@@ -3335,3 +3335,87 @@ print(num_list[-1] - num_list[0])
 #     return max_index+1, max_sum
 
 # print(*solve())
+
+
+# 10799 쇠막대기
+# def solve():
+#     pipe_list = list(input())
+#     # print(pipe_list)
+#     pipe_stack, sum = 0, 0
+#     pre_pipe = '('
+
+#     for i in range(len(pipe_list)):
+#         if(pipe_list[i] == '('):
+#             pipe_stack += 1
+#             pre_pipe = '('
+#         else: # pipe_list[i] == ')'
+#             if(pre_pipe == '('):
+#                 pipe_stack -= 1
+#                 sum += pipe_stack
+#                 pre_pipe = ')'
+#             else:
+#                 sum += 1
+#                 pipe_stack -= 1
+#     return sum
+
+# print(solve())
+
+
+# 2812 크게 만들기
+# try 1
+# import sys
+# input = sys.stdin.readline
+
+# n, k = map(int, input().split())
+# num_list = list(map(int, input().rstrip()))
+# # print(num_list)
+
+# new_num_list = []
+# for i in range(n):
+#     new_num_list.append([num_list[i], i])
+# # print(new_num_list)
+
+# new_num_list.sort(key=lambda x:(-x[0], -x[1]))
+# # print(new_num_list[:k])
+
+# new_num_list = sorted(new_num_list[:(n-k)], key=lambda x:x[1])
+# # .sort(key=lambda x:x[1])
+# print(new_num_list)
+
+# for i in range(n-k):
+#     print(new_num_list[i][0], end='')
+
+
+# try 2
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n, k = map(int, input().split())
+#     num_list = list(map(int, input().rstrip()))
+#     # print(num_list)
+#     num_stack = []
+
+#     for i in range(n):
+#         if k > 0 : # 아직 지울 수 있다면
+#             if(not num_stack):
+#                 num_stack.append(num_list[i])
+#             else:
+#                 # 기존 num_stack의 마지막 수보다 num_list[i]가 클 때 k가 0보다 크다면 pop()
+#                 while num_stack and k > 0:
+#                     if num_stack[-1] < num_list[i] :
+#                         num_stack.pop()
+#                         k -= 1
+#                     else: # num_stack[-1] >= num_list[i]
+#                         break
+#                 num_stack.append(num_list[i])
+#         else: # k == 0, 더 이상 지울 수 없음
+#             num_stack.append(num_list[i])
+
+#     # k가 남아있는 경우도 계산해야 함, 예를 들면 내림차순의 형태를 띄는 수
+#     # print(k, num_stack)
+#     if k > 0: num_stack = num_stack[:-k]
+#     return num_stack
+
+# for i in solve():
+#     print(i, end='')
