@@ -3419,3 +3419,130 @@ print(a*b)
 
 # for i in solve():
 #     print(i, end='')
+
+
+# 18258 큐2
+# from collections import deque
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     que = deque()
+
+#     for _ in range(int(input())):
+#         command_list = list(map(str, input().split()))
+#         if(command_list[0] == 'push'):
+#             que.append(command_list[1])
+#         elif(command_list[0] == 'pop'):
+#             if(not que): print("-1")
+#             else: print(que.popleft())
+#         elif(command_list[0] == 'size'):
+#             print(len(que))
+#         elif(command_list[0] == 'empty'):
+#             if(not que): print("1")
+#             else: print("0")
+#         elif(command_list[0] == 'front'):
+#             if(not que): print("-1")
+#             else: print(que[0])
+#         else: # back
+#             if(not que): print("-1")
+#             else: print(que[-1])
+
+# solve()
+
+
+# 1300 K번째 수
+# 1st try : 메모리 초과
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# k = int(input())
+
+# b_list = []
+# for i in range(1, n+1):
+#     for j in range(1, n+1):
+#         b_list.append(i*j)
+# b_list.sort()
+# print(b_list[k-1])
+
+
+# 1489 대결
+# 어떻게 풀까..
+# import sys
+# input = sys.stdin.readline
+
+# len_list = int(input())
+# team_a = sorted(list(map(int, input().split())), reverse=True)
+# team_b = sorted(list(map(int, input().split())), reverse=True)
+# # print(team_a)
+# # print(team_b)
+# # check_b = [0] * team_b
+# index_b = 0
+
+# score = 0
+# for index_a in range(len_list):
+#     while team_a[index_a] < team_b[index_b]:
+#         if index_b == len_list -1:
+#             break
+#         else:
+#             index_b += 1
+    
+#     if(team_a[index_a] > team_b[index_b]): score += 2
+#     elif(team_a[index_a] == team_b[index_b]): score += 1
+#     print(team_a[index_a], team_b[index_b])
+#     if(index_b < len_list-1): index_b += 1
+
+# print(score)
+
+
+# 2437 저울
+# 메모리 초과
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n = int(input())
+#     weight_list = list(map(int, input().split()))
+#     # print(weight_list)
+#     # weight_set = {}
+#     weight_set = set()
+
+#     for i in range(n):
+#         # 추 자기 자신의 무게를 temp_weight_set에 추가
+#         temp_weight_set = {weight_list[i]}
+#         # 기존 weight_set에 현재 추 무게만큼 더한 값을 temp_weight_set에 추가
+#         for j in weight_set:
+#             temp_weight_set.add(weight_list[i] + j)
+        
+#         # 기존 weight_set과 temp_weight_set을 union
+#         weight_set = weight_set.union(temp_weight_set)
+#         # print(weight_set)
+
+#     # 1부터 증가시켜서 없는 숫자가 있으면 print하고 break
+#     i = 1
+#     while True:
+#         if i in weight_set:
+#             i += 1
+#             continue
+#         else: return i
+
+# print(solve())
+
+
+# 1158 요세푸스 문제
+# from collections import deque
+# n, k = map(int, input().split())
+
+# que = deque(i for i in range(1, n+1))
+# # for i in range(1, n+1):
+# #     que.append(i)
+# Josephus_list = []
+# count = 1
+
+# while que:
+#     if count % k == 0: Josephus_list.append(que.popleft())
+#     else: que.append(que.popleft())
+#     count += 1
+
+# print('<{0}>'.format(', '.join(map(str, Josephus_list))))
