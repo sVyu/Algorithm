@@ -3546,3 +3546,21 @@ print(a*b)
 #     count += 1
 
 # print('<{0}>'.format(', '.join(map(str, Josephus_list))))
+
+
+# 2438 별 찍기 - 1
+# for i in range(1, int(input())+1):
+#     print('*' * i)
+
+# 2439 별 찍기 - 2
+# num = int(input())
+# for i in range(1, num+1):
+#     print(" " * (num-i),end='')
+#     print("*" * i)
+
+# 2442 별 찍기 - 5
+# num = int(input())
+# for i in range(1, num+1):
+#     print(" " * (num-i),end='')
+#     print("*" * i, end='')
+#     print("*" * (i-1))
