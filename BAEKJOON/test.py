@@ -3564,3 +3564,52 @@ print(a*b)
 #     print(" " * (num-i),end='')
 #     print("*" * i, end='')
 #     print("*" * (i-1))
+
+
+# 1927 최소 힙
+# from queue import PriorityQueue
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     que = PriorityQueue()
+
+#     for i in range(int(input())):
+#         num = int(input())
+#         if num == 0:
+#             if que.qsize() == 0: print(0)
+#             else: print(que.get())
+#         else: que.put(num)
+
+# solve()
+
+
+# 11279 최대 힙
+# from queue import PriorityQueue
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     que = PriorityQueue()
+
+#     for i in range(int(input())):
+#         num = int(input())
+#         if num == 0:
+#             if que.qsize() == 0: print(0)
+#             else: print(-que.get())
+#         else: que.put(-num)
+
+# solve()
+
+
+# N과 M (1)
+from itertools import permutations
+
+n, m = map(int, input().split())
+num_list = [i for i in range(1, n+1)]
+# print(num_list)
+for i in list(permutations(num_list, m)):
+    print(*i)
+    # for j in range(len(i)):
+    #     print(i[j], end=' ')
+    # print()
