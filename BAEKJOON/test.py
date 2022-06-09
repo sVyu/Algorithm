@@ -3603,13 +3603,82 @@ print(a*b)
 
 
 # N과 M (1)
-from itertools import permutations
+# from itertools import permutations
 
-n, m = map(int, input().split())
-num_list = [i for i in range(1, n+1)]
-# print(num_list)
-for i in list(permutations(num_list, m)):
-    print(*i)
-    # for j in range(len(i)):
-    #     print(i[j], end=' ')
-    # print()
+# n, m = map(int, input().split())
+# num_list = [i for i in range(1, n+1)]
+# # print(num_list)
+# for i in list(permutations(num_list, m)):
+#     print(*i)
+#     # for j in range(len(i)):
+#     #     print(i[j], end=' ')
+#     # print()
+
+
+# 15779 Zigzag
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = list(map(int, input().split()))
+# gap_list = [0] * (num-1)
+# zigzag_list = [2] * (num-1)
+
+# for i in range(num-1):
+#     gap_list[i] = num_list[i+1] - num_list[i]
+# # print(num_list)
+# # print(gap_list)
+
+# zigzag_count = 0
+# for i in range(1, num-1):
+#     if gap_list[i] > 0:
+#         if gap_list[i-1] < 0: zigzag_count += 1
+#         else: zigzag_count = 0
+#     elif gap_list[i] < 0:
+#         if gap_list[i-1] > 0: zigzag_count += 1
+#         else: zigzag_count = 0
+#     else: zigzag_count = 0
+#     zigzag_list[i] += zigzag_count
+
+# # print(zigzag_list)
+# print(max(zigzag_list))
+
+
+N = int(input())
+arr = input().split()
+c = 0
+mcnt = 0
+cnt = 1
+
+for i in range(len(arr)-1) :
+    x = int(arr[i])
+    y = int(arr[i+1])
+
+    #다시 시작할때
+    if c==0 :
+        if x>y :
+            c=-1
+        elif x<y :
+            c=1
+        else : continue
+        cnt+=1
+    #zigzag였고 이번꺼도 zigzag
+    elif (c==-1 and x<y) or ( c==1 and x>y) :
+        if c==1 : c=-1
+        else : c=1
+        cnt+=1
+    #zigzag였는데 이번꺼는 아닐때
+    else :
+        if x<y : c=1
+        elif x>y : c=-1
+        #같을때는 초기조건으로
+        else : c=0
+        cnt=1
+        # cnt = 2
+        
+    # print(i, c, cnt)
+    if cnt > mcnt : mcnt = cnt
+
+# if mcnt!=2 : print(mcnt+1)
+# else : print(mcnt)
+print(mcnt)
