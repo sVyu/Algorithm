@@ -3644,41 +3644,20 @@ print(a*b)
 # print(max(zigzag_list))
 
 
-N = int(input())
-arr = input().split()
-c = 0
-mcnt = 0
-cnt = 1
+# 5622 다이얼
+# str_list = list(input())
 
-for i in range(len(arr)-1) :
-    x = int(arr[i])
-    y = int(arr[i+1])
+# sum = 0
+# for i in range(len(str_list)):
+#     ord_value = ord(str_list[i])
 
-    #다시 시작할때
-    if c==0 :
-        if x>y :
-            c=-1
-        elif x<y :
-            c=1
-        else : continue
-        cnt+=1
-    #zigzag였고 이번꺼도 zigzag
-    elif (c==-1 and x<y) or ( c==1 and x>y) :
-        if c==1 : c=-1
-        else : c=1
-        cnt+=1
-    #zigzag였는데 이번꺼는 아닐때
-    else :
-        if x<y : c=1
-        elif x>y : c=-1
-        #같을때는 초기조건으로
-        else : c=0
-        cnt=1
-        # cnt = 2
-        
-    # print(i, c, cnt)
-    if cnt > mcnt : mcnt = cnt
+#     if ord_value <= 67 : sum += 3       # ABC
+#     elif ord_value <= 70 : sum += 4     # DEF
+#     elif ord_value <= 73 : sum += 5     # GHI
+#     elif ord_value <= 76 : sum += 6     # JKL
+#     elif ord_value <= 79 : sum += 7     # MNO
+#     elif ord_value <= 83 : sum += 8     # PQRS
+#     elif ord_value <= 86 : sum += 9     # TUV
+#     else: sum += 10                     # WXYZ
 
-# if mcnt!=2 : print(mcnt+1)
-# else : print(mcnt)
-print(mcnt)
+# print(sum)
