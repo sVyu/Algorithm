@@ -3661,3 +3661,32 @@ print(a*b)
 #     else: sum += 10                     # WXYZ
 
 # print(sum)
+
+
+# 10872
+# def factorial(num):
+#     value = 1
+#     for i in range(num, 0, -1):
+#         value *= i
+#     return value
+
+# print(factorial(int(input())))
+
+
+# 10815 숫자카드
+# 10816 숫자카드2
+
+# 11651 좌표 정렬하기 2
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     num = int(input())
+#     num_list = [list(map(int, input().split())) for _ in range(num)]
+#     # print(*num_list)
+
+#     for i in sorted(num_list, key=lambda x:(x[1], x[0])):
+#         print(i[0], i[1])
+
+# solve()
+
