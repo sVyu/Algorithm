@@ -3673,10 +3673,8 @@ print(a*b)
 # print(factorial(int(input())))
 
 
-# 10815 숫자카드
-# 10816 숫자카드2
-
 # 11651 좌표 정렬하기 2
+# key=lambda
 # import sys
 # input = sys.stdin.readline
 
@@ -3690,3 +3688,77 @@ print(a*b)
 
 # solve()
 
+
+# 10816 숫자카드2
+# 10815 숫자카드
+
+# 2
+# 10 11
+# 2
+# 10 14
+# index_binary_search 값 넘겨줄 때 top으로 n값을 넘겨줘서 IndexError
+# 지금 보니 두 숫자카드가 같은 경우는 없다.. 이런..
+
+# import sys
+# input = sys.stdin.readline
+
+# def index_binary_search(n_list, num, top, bot):
+#     while bot <= top:
+#         mid = (top+bot) // 2
+#         if n_list[mid] == num:
+#             max, min = find_max_min_index(n_list, num, mid)
+#             return max - min + 1
+#         elif num > n_list[mid]: return index_binary_search(n_list, num, top, mid+1)
+#         else: return index_binary_search(n_list, num, mid-1, bot)
+#     return 0
+
+# def find_max_min_index(n_list, num, index):
+#     max, min = index, index
+#     while min > 0:
+#         if n_list[min-1] == num: min -= 1
+#         else: break
+#     while max < len(n_list)-1:
+#         if n_list[max+1] == num: max += 1
+#         else: break
+#     return max, min
+
+# def solve():
+#     n = int(input())
+#     n_list = sorted(list(map(int, input().split())))
+#     # print(n_list)
+#     m = int(input())
+#     m_list = list(map(int, input().split()))
+
+#     for i in range(m):
+#         # print("m_list[i]:", m_list[i])
+#         print(index_binary_search(n_list, m_list[i], n-1, 0), end=' ')
+
+# solve()
+
+
+# 10989 수 정렬하기3
+# python3, PyPy3 메모리 초과
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = [int(input()) for _ in range(num)]
+
+# for i in sorted(num_list):
+#     print(i)
+
+# 검색 참고
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = [0] * 10001
+
+# for _ in range(num):
+#     num_list[int(input())] += 1
+
+# # 0부터 10000까지
+# for i in range(10001):
+#     if num_list[i] != 0:
+#         for j in range(num_list[i]):
+#             print(i)
