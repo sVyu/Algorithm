@@ -3762,3 +3762,11 @@ print(a*b)
 #     if num_list[i] != 0:
 #         for j in range(num_list[i]):
 #             print(i)
+
+
+# N과 M(3)
+# from itertools import product
+
+# m, n = map(int, input().split())
+# for i in product(range(1, m+1), repeat=n):
+#     print(*i)
