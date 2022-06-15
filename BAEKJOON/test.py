@@ -3770,3 +3770,102 @@ print(a*b)
 # m, n = map(int, input().split())
 # for i in product(range(1, m+1), repeat=n):
 #     print(*i)
+
+
+# 숫자 카드 2
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# n_list = list(map(int, input().split()))
+# m = int(input())
+# m_list = list(map(int, input().split()))
+
+# m_set = dict()
+# for i in range(n):
+#     if n_list[i] in m_set.keys():
+#         m_set[n_list[i]] += 1
+#     else: m_set[n_list[i]] = 1
+# # print(m_set)
+
+# for i in range(m):
+#     if m_list[i] in m_set.keys():
+#         print(m_set[m_list[i]], end = ' ')
+#     else: print(0, end = ' ')
+
+
+# 9935 문자열 폭발
+# 시간 초과
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     list_a = list(input().rstrip())
+#     boom_str = list(input().rstrip())
+#     stack_list = []
+#     # print(list_a, boom_str)
+#     len_boom_str = len(boom_str)
+
+#     for i in range(len(list_a)):
+#         stack_list.append(list_a[i])
+
+#         if len(stack_list) >= len_boom_str:
+#             # print(stack_list[-len_boom_str:])
+#             if stack_list[-len_boom_str:] == boom_str:
+#                 stack_list = stack_list[:-len_boom_str]
+
+#     if stack_list: print(''.join(stack_list))
+#     else: print("FRULA")
+
+# solve()
+
+
+import sys
+input = sys.stdin.readline
+
+list_a = list(input().rstrip())
+boom_str = list(input().rstrip())
+
+len_list_a = len(list_a)
+len_boom_str = len(boom_str)
+
+check_list = [1] * len_list_a
+check_index_list = []
+
+for i in range(len_list_a):
+    if(list_a[i] == boom_str[0]): check_index_list.append(i)
+# print(list_a, boom_str)
+print(check_index_list)
+
+count = 0
+
+while True:
+    is_it_bombed = False
+
+    # 인덱스 별로 확인
+    for i in check_index_list:
+        if not check_index_list: break
+        print(count, i, check_list)
+        stack_list = []
+        stack_index_list = []
+        
+        for j in range(i, len_list_a):
+            if(check_list[j] != 0):
+               stack_list.append(list_a[j])
+               stack_index_list.append(j)
+            if len(stack_list) == len_boom_str:
+                if stack_list == boom_str:
+                    print(check_index_list.index(i))
+                    del check_index_list[check_index_list.index(i)]
+                    # print(stack_index_list)
+                    is_it_bombed = True
+                    for k in stack_index_list:
+                        check_list[k] = 0
+                    if not check_index_list: break
+                else: break
+    # count += 1
+
+    if is_it_bombed == False:
+        break
+
+print(check_list)
