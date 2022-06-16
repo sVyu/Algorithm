@@ -3796,6 +3796,7 @@ print(a*b)
 
 # 9935 문자열 폭발
 # 시간 초과
+# 문자열을 다시 잡아주는 것보다 pop이 훨씬 빠름
 # import sys
 # input = sys.stdin.readline
 
@@ -3812,7 +3813,9 @@ print(a*b)
 #         if len(stack_list) >= len_boom_str:
 #             # print(stack_list[-len_boom_str:])
 #             if stack_list[-len_boom_str:] == boom_str:
-#                 stack_list = stack_list[:-len_boom_str]
+#                 # stack_list = stack_list[:-len_boom_str]
+#                 for _ in range(len_boom_str):
+#                     stack_list.pop()
 
 #     if stack_list: print(''.join(stack_list))
 #     else: print("FRULA")
@@ -3820,52 +3823,215 @@ print(a*b)
 # solve()
 
 
+# 시간 초과
+# import sys
+# input = sys.stdin.readline
+
+# list_a = list(input().rstrip())
+# boom_str = list(input().rstrip())
+# len_list_a = len(list_a)
+# len_boom_str = len(boom_str)
+
+# check_list = [1] * len_list_a
+# check_index_list = []
+
+# for i in range(len_list_a):
+#     if(list_a[i] == boom_str[0]): check_index_list.append(i)
+# # print(list_a, boom_str)
+# # print(check_index_list)
+# # count = 0
+
+# while True:
+#     is_it_bombed = False
+
+#     # 인덱스 별로 확인
+#     for i in check_index_list:
+#         # print(count, i, check_list)
+#         stack_list = []
+#         stack_index_list = []
+#         if(check_list[i] == 0): continue
+
+#         for j in range(i, len_list_a):
+#             # 해당 index에 대해서 폭발이 일어나지 않은 경우만
+#             if(check_list[j] != 0):
+#                stack_list.append(list_a[j])
+#                stack_index_list.append(j)
+#                if len(stack_list) == len_boom_str:
+#                     if stack_list == boom_str:
+#                         is_it_bombed = True
+#                         for k in stack_index_list:
+#                             check_list[k] = 0
+#                     else: break
+#     # count += 1
+
+#     if is_it_bombed == False:
+#         break
+
+# # print(check_list)  if check_list[i] != 0
+# if sum(check_list) == 0: print("FRULA")
+# else:
+#     for i in range(len_list_a):
+#         if check_list[i] != 0:
+#             print(list_a[i], end='')
+
+
+# 1302 베스트셀러
+# import sys
+# input = sys.stdin.readline
+
+# book_dict = {}
+# for _ in range(int(input())):
+#     book_name = input().rstrip()
+#     if book_name in book_dict: book_dict[book_name] += 1
+#     else: book_dict[book_name] = 1
+
+# print(sorted(book_dict.items(), key=lambda x:(-x[1], x[0]))[0][0])
+
+
+# 3273 두 수의 합
+# indexError, left > right 일때 조건을 달아서 해결
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num_list = sorted(list(map(int, input().split())))
+# x = int(input())
+
+# p_left, p_right = 0, n-1
+# count = 0
+# # print(num_list)
+
+# while p_left != p_right:
+#     if num_list[p_left] + num_list[p_right] > x:
+#         p_right -= 1
+#     elif num_list[p_left] + num_list[p_right] < x:
+#         p_left += 1
+#     else:
+#         count += 1
+#         p_left += 1
+#         p_right -= 1
+#         if(p_left >= p_right): break
+
+# print(count)
+
+
+# 16120 PPAP
+# input_list = list(input())
+# ppap_stack = []
+# ppap_list = list('PPAP')
+
+# for i in range(len(input_list)):
+#     ppap_stack.append(input_list[i])
+
+#     # ppap_stack의 길이가 4(PPAP)이상일 때
+#     if(len(ppap_stack) >= 4):
+#         if ppap_stack[-4:] == ppap_list:
+#             for _ in range(3):
+#                 ppap_stack.pop()
+#     # print(i, ppap_stack)
+
+# if ppap_stack == ['P'] : print("PPAP")
+# else: print("NP")
+
+
+# 25285 심준의 병역판정검사
+# import sys
+# input = sys.stdin.readline
+
+# def check_physical_class(h, w):
+#     bmi = w / (h/100)**2
+#     if h < 140.1: return 6
+#     elif 140.1 <= h < 146: return 5
+#     elif 146 <= h < 159: return 4
+#     elif 159 <= h < 161:
+#         if 16.0 <= bmi < 35.0 : return 3
+#         else: return 4
+#     elif 161 <= h < 204:
+#         if 20.0 <= bmi < 25.0 : return 1
+#         elif 18.5 <= bmi < 20.0 or 25.0 <= bmi < 30.0: return 2
+#         elif 16.0 <= bmi < 18.5 or 30.0 <= bmi < 35.0: return 3
+#         else: return 4
+#     else: return 4
+
+# for _ in range(int(input())):
+#     h, w = map(int, input().split())
+#     print(check_physical_class(h, w))
+
+
+# 18870 좌표 압축
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n = int(input())
+#     num_list = list(map(int, input().split()))
+#     new_num_list = sorted(num_list)
+
+#     # 좌표 순서를 담은 dict
+#     seq_dict = {}
+#     seq_num = 0
+#     # print(type(seq_dict))
+
+#     for i in range(n):
+#         if new_num_list[i] in seq_dict: continue
+#         else:
+#             seq_dict[new_num_list[i]] = seq_num
+#             seq_num += 1
+
+#     for i in range(n):
+#         print(seq_dict[num_list[i]], end= ' ')
+
+# solve()
+
+
+# 18111 마인크래프트
+# 값은 잘 나오는데 시간초과네 아 ~
 import sys
 input = sys.stdin.readline
 
-list_a = list(input().rstrip())
-boom_str = list(input().rstrip())
+n, m, b = map(int, input().split())
+land_list = [list(map(int, input().split())) for _ in range(n)]
+# print(land_list)
 
-len_list_a = len(list_a)
-len_boom_str = len(boom_str)
+min_height, max_height = 256, 0
+for i in range(n):
+    for j in range(m):
+        if land_list[i][j] < min_height : min_height = land_list[i][j]
+        if land_list[i][j] > max_height : max_height = land_list[i][j]
+print("min :", min_height, "max :", max_height)
 
-check_list = [1] * len_list_a
-check_index_list = []
+min_time_sum = 500 * 500 * 256 * 2
+result_height = 0
+# 최소 시간, 같은 시간일 경우 최대 높이이므로 높은 경우부터 계산
+for i in range(max_height, min_height-1, -1):
+    time_sum = 0
+    temp_b = b
 
-for i in range(len_list_a):
-    if(list_a[i] == boom_str[0]): check_index_list.append(i)
-# print(list_a, boom_str)
-print(check_index_list)
+    b_pos_check = True
+    for j in range(n):
+        for k in range(m):
+            # 높을 경우 제거한 블록은 인벤토리에, 제거는 블록당 2초
+            if land_list[j][k] > i:
+                temp_b += land_list[j][k] - i
+                time_sum += (land_list[j][k] - i) * 2
+            # 낮을 경우 블록이 모자라다면 False와 break, 아닐 경우 추가는 블록당 1초
+            elif land_list[j][k] < i:
+                if i - land_list[j][k] > temp_b:
+                    b_pos_check = False
+                    break
+                else:
+                    temp_b -= i - land_list[j][k]
+                    time_sum += i - land_list[j][k]
+            else: continue
+            # print(i, j, k, time_sum)
+        if b_pos_check == False: break
+    if b_pos_check == False: continue
+    # print("i:", i, "time_sum:", time_sum)
 
-count = 0
+    if min_time_sum > time_sum:
+        min_time_sum = time_sum
+        result_height = i
 
-while True:
-    is_it_bombed = False
-
-    # 인덱스 별로 확인
-    for i in check_index_list:
-        if not check_index_list: break
-        print(count, i, check_list)
-        stack_list = []
-        stack_index_list = []
-        
-        for j in range(i, len_list_a):
-            if(check_list[j] != 0):
-               stack_list.append(list_a[j])
-               stack_index_list.append(j)
-            if len(stack_list) == len_boom_str:
-                if stack_list == boom_str:
-                    print(check_index_list.index(i))
-                    del check_index_list[check_index_list.index(i)]
-                    # print(stack_index_list)
-                    is_it_bombed = True
-                    for k in stack_index_list:
-                        check_list[k] = 0
-                    if not check_index_list: break
-                else: break
-    # count += 1
-
-    if is_it_bombed == False:
-        break
-
-print(check_list)
+print(min_time_sum, result_height)
+    
+    
