@@ -3986,52 +3986,399 @@ print(a*b)
 
 # 18111 마인크래프트
 # 값은 잘 나오는데 시간초과네 아 ~
-import sys
-input = sys.stdin.readline
+# PyPy3로 제출했더니 틀렸습니다.. 왜 틀렸지 ?
+"""
+2 2 0
+1 3
+2 2
+정답 : 3 2
+출력 : 8 1
+why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
+"""
+# import sys
+# input = sys.stdin.readline
 
-n, m, b = map(int, input().split())
-land_list = [list(map(int, input().split())) for _ in range(n)]
-# print(land_list)
+# n, m, b = map(int, input().split())
+# land_list = [list(map(int, input().split())) for _ in range(n)]
+# # print(land_list)
 
-min_height, max_height = 256, 0
-for i in range(n):
-    for j in range(m):
-        if land_list[i][j] < min_height : min_height = land_list[i][j]
-        if land_list[i][j] > max_height : max_height = land_list[i][j]
-print("min :", min_height, "max :", max_height)
+# min_height, max_height = 256, 0
+# for i in range(n):
+#     for j in range(m):
+#         if land_list[i][j] < min_height : min_height = land_list[i][j]
+#         if land_list[i][j] > max_height : max_height = land_list[i][j]
+# # print("min :", min_height, "max :", max_height)
 
-min_time_sum = 500 * 500 * 256 * 2
-result_height = 0
-# 최소 시간, 같은 시간일 경우 최대 높이이므로 높은 경우부터 계산
-for i in range(max_height, min_height-1, -1):
-    time_sum = 0
-    temp_b = b
+# # min_time_sum = 500 * 500 * 256 * 2
+# min_time_sum = sys.maxsize
+# result_height = 0
+# # 최소 시간, 같은 시간일 경우 최대 높이이므로 높은 경우부터 계산
+# for i in range(max_height, min_height-1, -1):
+#     time_sum = 0
+#     temp_b = b
 
-    b_pos_check = True
-    for j in range(n):
-        for k in range(m):
-            # 높을 경우 제거한 블록은 인벤토리에, 제거는 블록당 2초
-            if land_list[j][k] > i:
-                temp_b += land_list[j][k] - i
-                time_sum += (land_list[j][k] - i) * 2
-            # 낮을 경우 블록이 모자라다면 False와 break, 아닐 경우 추가는 블록당 1초
-            elif land_list[j][k] < i:
-                if i - land_list[j][k] > temp_b:
-                    b_pos_check = False
-                    break
-                else:
-                    temp_b -= i - land_list[j][k]
-                    time_sum += i - land_list[j][k]
-            else: continue
-            # print(i, j, k, time_sum)
-        if b_pos_check == False: break
-    if b_pos_check == False: continue
-    # print("i:", i, "time_sum:", time_sum)
+#     b_pos_check = True
+#     for j in range(n):
+#         for k in range(m):
+#             # 높을 경우 제거한 블록은 인벤토리에, 제거는 블록당 2초
+#             if land_list[j][k] > i:
+#                 temp_b += land_list[j][k] - i
+#                 time_sum += (land_list[j][k] - i) * 2
+#             # 낮을 경우 블록이 모자라다면 False와 break, 아닐 경우 추가는 블록당 1초
+#             elif land_list[j][k] < i:
+#                 if i - land_list[j][k] > temp_b:
+#                     b_pos_check = False
+#                     break
+#                 else:
+#                     temp_b -= i - land_list[j][k]
+#                     time_sum += i - land_list[j][k]
+#             else: continue
+#             # print(i, j, k, time_sum)
+#         if b_pos_check == False: break
+#     if b_pos_check == False: continue
+#     # print("i:", i, "time_sum:", time_sum)
 
-    if min_time_sum > time_sum:
-        min_time_sum = time_sum
-        result_height = i
+#     if min_time_sum > time_sum:
+#         min_time_sum = time_sum
+#         result_height = i
 
-print(min_time_sum, result_height)
+# print(min_time_sum, result_height)
+
+
+# try 2
+# 보완 : 2차원 배열이 아닌 1차원 배열로 정의, sort
+# PyPy3 : 통과, Python3 시간 초과
+# import sys
+# input = sys.stdin.readline
+# n, m, b = map(int, input().split())
+# land_list = [0] * (n * m)
+# # print(land_list)
+
+# for i in range(n):
+#     temp_list = list(map(int, input().split()))
+#     for j in range(m):
+#         land_list[i*m+j] = temp_list[j]
+#         # print(i*m+j)
+# # print(land_list)
+# len_land_list = n*m
+# min_sum_time = sys.maxsize
+# max_height = 256
+
+# # 정답은 땅에 있는 범위 내의 값일 수밖에 없으므로 범위는 이하와 같음
+# land_list.sort()
+# for i in range(land_list[-1], land_list[0]-1, -1):
+#     sum_time = 0
+#     temp_b = b
+#     b_pos_check = True
+#     for j in range(len_land_list-1, -1, -1):
+#         # 고르게 설정하고자 하는 땅의 높이보다 높은 경우
+#         if land_list[j] > i:
+#             temp_b += land_list[j] - i
+#             sum_time += (land_list[j] - i)*2
+#         # (높이가) 낮은 경우
+#         elif land_list[j] < i:
+#             gap = i - land_list[j]
+#             if gap > temp_b:
+#                 b_pos_check = False
+#                 break
+#             else:
+#                 temp_b -= gap
+#                 sum_time += gap
+#         # (높이가) 동일한 경우
+#         else: continue
+#     if b_pos_check == False: continue
+#     elif min_sum_time > sum_time:
+#         min_sum_time = sum_time
+#         max_height = i
+
+# print(min_sum_time, max_height)
+
+# try3
+# 높이 별로 수를 책정해서 더 효율적으로 처리
+# import sys
+# input = sys.stdin.readline
+
+# n, m, b = map(int, input().split())
+# land_list = [0] * (n * m)
+# # print(land_list)
+# for i in range(n):
+#     temp_list = list(map(int, input().split()))
+#     for j in range(m):
+#         land_list[i*m+j] = temp_list[j]
+# # print(land_list)
+
+# # 높이별로 count한 list 생성
+# height_count_list = [0] * 257
+# for i in range(n*m): #len(land_list)
+#     height_count_list[land_list[i]] += 1
+# # print(height_count_list)
+
+# min_sum_time = sys.maxsize
+# max_height = 256
+
+# # 최종 높이는 land_list 내의 원소 값일 수밖에 없으므로 범위는 이하와 같음
+# land_list.sort()
+# for i in range(land_list[-1], land_list[0]-1, -1):
+#     sum_time = 0
+#     temp_b = b
+
+#     for j in range(257):
+#         if height_count_list[j] == 0 or i == j: continue
+#         else:
+#             if j > i:
+#                 temp_b += height_count_list[j] * (j - i)
+#                 sum_time += height_count_list[j] * (j - i)*2
+#             else: # j < i
+#                 temp_b -= height_count_list[j] * (i - j)
+#                 sum_time += height_count_list[j] * (i - j)
+#     if temp_b < 0: continue
+#     else:
+#         if min_sum_time > sum_time:
+#             min_sum_time = sum_time
+#             max_height = i
+
+# print(min_sum_time, max_height)
+
+
+# 1874 스택수열
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# stack_list = []
+# check_list = [0] * (n+1)
+# pos_check = True
+
+# pre_num = -1
+# for _ in range(n):
+#     num = int(input())
+#     # 처음 값을 넣는 경우, push
+#     if pre_num == -1:
+#         for i in range(1, num+1):
+#             check_list[i] = 1
+#             stack_list.append('+')
+#         check_list[num] = -1
+#         stack_list.append('-')
+#     else:
+#         # 더 큰 값이 들어온 경우, push
+#         if num > pre_num:
+#             for i in range(pre_num+1, num+1):
+#                 if(check_list[i] == -1): continue
+#                 else:
+#                     check_list[i] = 1
+#                     stack_list.append('+')
+#             check_list[num] = -1
+#             stack_list.append('-')
+        
+#         # pop, 여기서 가능/불가능 체크
+#         else: # num < pre_num
+#             # pop 하고자 하는 값이 이미 pop된 경우
+#             if check_list[num] == -1:
+#                 pos_check = False
+#                 break
+#             else: # check_list[num] == 1
+#                 # num 값 전에, 먼저 pop 되야할 값들이 있는 경우
+#                 for i in range(pre_num-1, num, -1):
+#                     if check_list[i] == 1:
+#                         pos_check = False
+#                         break
+#                     else: # check_list[i] == -1
+#                         continue
+#                 check_list[num] = -1
+#                 stack_list.append('-')
+#     pre_num = num
+#     # print(num, check_list, stack_list)
+
+# if pos_check : print('\n'.join(stack_list))
+#     # for i in range(len(stack_list)):
+#     #     print(stack_list[i])
+# else: print("NO")
+
+
+# try 2
+# 좀 더 효율적으로, 다른 사람의 코드를 참고했음
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num_list = [int(input()) for _ in range(n)]
+# num_for_stack = list(range(1, n+1))[::-1]
+
+# def solve():
+#     tmp, operator = [0], []
+#     for t in num_list:
+#         if t < tmp[-1]:
+#             print('NO')
+#             return
+#         while t > tmp[-1]:
+#             tmp.append(num_for_stack.pop())
+#             operator.append('+')
+#         tmp.pop()
+#         operator.append('-')
+#     print(*operator, sep='\n')
+
+# solve()
+
+
+# 1655 가운데를 말해요
+# from queue import PriorityQueue
+
+# que = PriorityQueue()
+# for _ in range(int(input())):
+#     que.put(int(input()))
+#     # if que.qsize() % 2 == 0: print(que[que.qsize()//2 -1])
+#     # else: print(que[que.qsize()//2])
+#     print(que[0])
+
+# # print(que.queue)
+
+# 우선순위 큐 세 개로 구현하는 것 같은데..
+# import sys
+# input = sys.stdin.readline
+
+# num_list = []
+# for _ in range(int(input())):
+#     num_list.append(int(input()))
+#     num_list.sort()
+
+#     if len(num_list) % 2 == 0 : print(num_list[len(num_list)//2 -1])
+#     else: print(num_list[len(num_list)//2])
+
+
+# 1980 햄버거 사랑
+# import sys
+# input = sys.stdin.readline
+
+# n, m, t = map(int, input().split())
+# if n >= m: max_nm, min_nm = n, m
+# else: max_nm, min_nm = m, n
+
+# min_time = 10000
+# max_hamburger = 10000
+
+# # i : 먹는 시간이 적게 드는 햄버거의 개수
+# for i in range(t//min_nm, -1, -1):
+#     sum_hamburger = 0
+#     res_t = t - i * min_nm
+
+#     # other_hamburger : 다른(시간이 많이 드는) 햄버거의 개수
+#     other_hamburger = res_t // max_nm
+#     res_t %= max_nm
+#     sum_hamburger = i + other_hamburger
+
+#     if min_time > res_t:
+#         min_time = res_t
+#         max_hamburger = sum_hamburger
+
+# print(max_hamburger, min_time)
+
+
+# import sys
+# input = sys.stdin.readline
+
+# # n, m, t = map(int, input().split())
+# for n in range(1, 10):
+#     for m in range(1, 10):
+#         for t in range(1, 10):
+
+#             if n >= m: max_nm, min_nm = n, m
+#             else: max_nm, min_nm = m, n
+
+#             min_time = 10000
+#             max_hamburger = 10000
+
+#             # i : 먹는 시간이 적게 드는 햄버거의 개수
+#             for i in range(t//min_nm, -1, -1):
+#                 sum_hamburger = 0
+#                 res_t = t - i * min_nm
+
+#                 # other_hamburger : 다른(시간이 많이 드는) 햄버거의 개수
+#                 other_hamburger = res_t // max_nm
+#                 res_t %= max_nm
+#                 sum_hamburger = i + other_hamburger
+
+#                 if min_time > res_t:
+#                     min_time = res_t
+#                     max_hamburger = sum_hamburger
+
+#             hamberger = 0
+#             cola = 0
+
+#             t_2 = t
+#             if n + m > t_2:
+#                 hamberger += (t_2 // min_nm)
+#                 cola += min(t_2 % min_nm, t_2 % max_nm)
+
+#             else:
+#                 while t_2 > 0:
+#                     if t_2 % min_nm == 0:
+#                         hamberger += (t_2 // min_nm)
+#                         break
+
+#                     t_2 -= max_nm
+#                     hamberger += 1
+
+#             if t_2 < 0:
+#                 hamberger -= 1
+#                 t_2 += max_nm
+#                 cola += t_2
+
+#             # print(hamberger, cola)
+#             if max_hamburger != hamberger or min_time != cola:
+#                 print(n, m, t)
+#                 print("[ 정답 ]", max_hamburger, min_time)
+#                 print("[ 출력 ]", hamberger, cola)
+#                 print()
+
+
+# 5397 키로거
+# (헷갈리는 표현) 만약 커서의 위치가 줄의 마지막이 아니라면,
+# 커서 및 커서 오른쪽에 있는 모든 문자는 오른쪽으로 한 칸 이동한다.
+
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     word_list = list(input().rstrip())
+#     pw_stack, temp_stack = [], []
+
+#     for i in range(len(word_list)):
+#         if word_list[i] == '<':
+#             if not pw_stack: continue
+#             else: temp_stack.append(pw_stack.pop())
+#         elif word_list[i] == '>':
+#             if not temp_stack: continue
+#             else: pw_stack.append(temp_stack.pop())
+#         elif word_list[i] == '-':
+#             if not pw_stack: continue
+#             else: pw_stack.pop()
+#         else: pw_stack.append(word_list[i])
+
+#     while temp_stack:
+#         pw_stack.append(temp_stack.pop())
+
+#     print(*pw_stack, sep='')
+
+
+# 2167 2차원 배열의 합
+# 시간초과
+# PyPy3로 통과
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# l_n = [list(map(int, input().split())) for _ in range(n)]
+
+# for _ in range(int(input())):
+#     i, j, x, y = map(int, input().split())
+#     total_sum = 0
     
+#     for i in range(i-1, x):
+#         total_sum += sum(l_n[i][j-1:y])
+    
+#     print(total_sum)
+
+
+# 합계 dp
+
     
