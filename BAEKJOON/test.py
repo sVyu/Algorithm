@@ -4383,4 +4383,9 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 
     
 # 10926 ??!
-print(input()+'??!')
+# print(input()+'??!')
+
+
+# 14652
+n, m, k = map(int, input().split())
+print(k//m, k%m)
