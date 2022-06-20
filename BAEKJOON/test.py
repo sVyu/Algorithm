@@ -3530,6 +3530,30 @@ print(a*b)
 # print(solve())
 
 
+# try2
+# 71% 틀렸습니다
+# weight_list[0] 일 때 print(1)로 해버렸네 아 ㅋㅋ
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# weight_list = sorted(list(map(int, input().split())))
+# # print(weight_list)
+
+# def solve():
+#     if(weight_list[0] != 1): return 1
+#     else:
+#         max_limit = 1
+#         for i in range(1, n):
+#             if(weight_list[i] > max_limit + 1): return max_limit+1
+#             else: # weight_list[i] <= max_limit +1
+#                 max_limit += weight_list[i]
+#         # 제일 무거운 추까지 연속적으로 무게를 잴 수 있는 경우
+#         return max_limit+1
+
+# print(solve())
+
+
 # 1158 요세푸스 문제
 # from collections import deque
 # n, k = map(int, input().split())
@@ -4386,6 +4410,8 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 # print(input()+'??!')
 
 
-# 14652
-n, m, k = map(int, input().split())
-print(k//m, k%m)
+# 14652 나는 행복합니다~
+# n, m, k = map(int, input().split())
+# print(k//m, k%m)
+
+
