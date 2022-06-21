@@ -857,7 +857,7 @@ print(a*b)
 
 # num = int(input())
 # num_list = [list(map(int, input().split())) for _ in range(num)]
-# # print(num_list)
+# print(num_list)
 
 # # 0행부터 num-1 행까지
 # for i in range(num):
@@ -4414,4 +4414,53 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 # n, m, k = map(int, input().split())
 # print(k//m, k%m)
 
+
+# 유기농 배추
+# RecursionError 고치고 바로 통과 ㄷㄷ
+# 아예 안 보고 풀었음 ~ 기분 좋아 ~~~
+
+# import sys
+# from collections import deque
+
+# sys.setrecursionlimit(10**9)
+# input = sys.stdin.readline
+# que = deque()
+
+# def check_bfs(graph, check_graph, nx, ny, m, n):
+#     x = [1, 0, -1, 0]
+#     y = [0, 1, 0, -1]
+
+#     if(graph[nx][ny] == 1 and check_graph[nx][ny] == 0):
+#         check_graph[nx][ny] = 1
+        
+#         for i in range(4):
+#             if 0 <= nx + x[i] < m and 0 <= ny + y[i] < n:
+#                 check_bfs(graph, check_graph, nx+x[i], ny+y[i], m, n)
+#         return True
+
+#     else: return False
+
+
+# for _ in range(int(input())):
+#     m, n, k = map(int, input().split())
+
+#     # 입력값에 맞춰서 초기화
+#     # graph = [[0] * m for _ in range(n)]
+#     # check_graph = [[0] * m for _ in range(n)]
+
+#     graph = [[0] * n for _ in range(m)]
+#     check_graph = [[0] * n for _ in range(m)]
+
+#     for _ in range(k):
+#         dot_x, dot_y = map(int, input().split())
+#         graph[dot_x][dot_y] = 1
+    
+#     total_area = 0
+#     for nx in range(m):
+#         for ny in range(n):
+#             if check_bfs(graph, check_graph, nx, ny, m, n):
+#                 total_area += 1
+    
+#     print(total_area)
+    
 
