@@ -4464,3 +4464,22 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 #     print(total_area)
     
 
+# 1620 나는야 포켓몬 마스터 이다솜
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n, m = map(int, input().split())
+#     pokemon_dict_1 = dict()
+#     for i in range(1, n+1):
+#         pokemon_dict_1[input().rstrip()] = i
+#     # print(pokemon_dict_1)
+#     pokemon_dict_2 = {v:k for k,v in pokemon_dict_1.items()}
+#     # print(pokemon_dict_2)
+
+#     for i in range(1, m+1):
+#         input_value = input().rstrip()
+#         if 65 <= ord(input_value[0]) <= 90 : print(pokemon_dict_1[input_value])
+#         else: print(pokemon_dict_2[int(input_value)])
+
+# solve()
