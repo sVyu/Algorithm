@@ -4483,3 +4483,413 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 #         else: print(pokemon_dict_2[int(input_value)])
 
 # solve()
+
+
+# 연구소 14502
+# 1st try clear
+
+# import sys
+# import copy
+# sys.setrecursionlimit(10**6)
+# input = sys.stdin.readline
+
+# def virus_bfs(virus_graph, check_graph, nx, ny, n, m, plus_x, plus_y):
+#     if virus_graph[nx][ny] == 2 and check_graph[nx][ny] == 0:
+#         check_graph[nx][ny] = 1
+#         for idx in range(4):
+#             new_x, new_y = nx + plus_x[idx], ny + plus_y[idx]
+#             if 0 <= new_x < n and 0 <= new_y < m and virus_graph[new_x][new_y] != 1:
+#                 virus_graph[new_x][new_y] = 2
+#                 virus_bfs(virus_graph, check_graph, new_x, new_y, n, m, plus_x, plus_y)
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(map(int, input().split())) for _ in range(n)]
+#     # print(graph)
+
+#     # 0은 빈 칸, 1은 벽, 2가 바이러스
+#     # 빈 칸의 개수는 3개 이상
+#     blank_dot = []
+#     virus_dot = []
+
+#     for i in range(n):
+#         for j in range(m):
+#             if graph[i][j] == 0 : blank_dot.append([i, j])
+#             elif graph[i][j] == 2: virus_dot.append([i, j])
+
+#     len_blank_dot = len(blank_dot)
+#     # print(len_blank_dot)
+#     max_count = 0
+
+#     for i in range(0, len_blank_dot-2):
+#         for j in range(i+1, len_blank_dot-1):
+#             for k in range(j+1, len_blank_dot):
+#                 # 바이러스 퍼졌을 때 상태
+#                 new_graph = copy.deepcopy(graph)
+
+#                 for x in [i, j, k]:
+#                     new_graph[blank_dot[x][0]][blank_dot[x][1]] = 1
+#                 # print(i,j,k)
+#                 # print(new_graph)
+#                 check_graph = [[0] * m for _ in range(n)]
+
+#                 plus_x = [1, 0, -1, 0]
+#                 plus_y = [0, 1, 0, -1]
+
+#                 # for nx in range(n):
+#                 #     for ny in range(m):
+#                 for nx, ny in virus_dot:
+#                        virus_bfs(new_graph, check_graph, nx, ny, n, m, plus_x, plus_y)
+                
+#                 # for nx in range(n):
+#                 #     print(new_graph[nx])
+
+#                 count = 0
+#                 for nx in range(n):
+#                     for ny in range(m):
+#                         if new_graph[nx][ny] == 0: count += 1
+                
+#                 if max_count < count: max_count = count
+#     return max_count
+
+# print(solve())
+
+
+# 위 코드 개선
+# import sys
+# from collections import deque
+# # sys.setrecursionlimit(10**6)
+# input = sys.stdin.readline
+
+# que = deque()
+
+# def virus_dfs(virus_graph, nx, ny, n, m, plus_x, plus_y):
+#     for idx in range(4):
+#         new_x, new_y = nx + plus_x[idx], ny + plus_y[idx]
+#         if 0 <= new_x < n and 0 <= new_y < m and virus_graph[new_x][new_y] == 0:
+#             virus_graph[new_x][new_y] = 2
+#             virus_dfs(virus_graph, new_x, new_y, n, m, plus_x, plus_y)
+
+# def virus_bfs(virus_graph, n, m, plus_x, plus_y):
+#     nx, ny = que.popleft()
+#     for idx in range(4):
+#         new_x, new_y = nx + plus_x[idx], ny + plus_y[idx]
+#         if 0 <= new_x < n and 0 <= new_y < m and virus_graph[new_x][new_y] == 0:
+#             virus_graph[new_x][new_y] = 2
+#             que.append([new_x, new_y])
+#     if que: virus_bfs(virus_graph, n, m, plus_x, plus_y)
+
+# def reset_graph(graph, blank_dot, wall_dot, virus_dot):
+#     # for nx, ny in blank_dot: graph[nx][ny] = 0
+#     # for nx, ny in wall_dot: graph[nx][ny] = 1
+#     # for nx, ny in virus_dot: graph[nx][ny] = 2
+#     new_list = [blank_dot, wall_dot, virus_dot]
+#     for i in range(3):
+#         for x, y in new_list[i]:
+#             graph[x][y] = i
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(map(int, input().split())) for _ in range(n)]
+#     # print(graph)
+
+#     # 0은 빈 칸, 1은 벽, 2가 바이러스
+#     # 빈 칸의 개수는 3개 이상
+#     blank_dots, wall_dots, virus_dots = [], [], []
+#     for i in range(n):
+#         for j in range(m):
+#             if graph[i][j] == 0 : blank_dots.append([i, j])
+#             elif graph[i][j] == 1: wall_dots.append([i, j])
+#             else: virus_dots.append([i, j])
+
+#     len_blank_dots = len(blank_dots)
+#     # print(len_blank_dot)
+#     max_count = 0
+
+#     for i in range(0, len_blank_dots-2):
+#         for j in range(i+1, len_blank_dots-1):
+#             for k in range(j+1, len_blank_dots):
+#                 # graph 초기화
+#                 reset_graph(graph, blank_dots, wall_dots, virus_dots)
+#                 for x in [i, j, k]:
+#                     graph[blank_dots[x][0]][blank_dots[x][1]] = 1
+#                 # print(i,j,k)
+#                 # print(new_graph)
+#                 # check_graph = [[0] * m for _ in range(n)]
+
+#                 plus_x = [1, 0, -1, 0]
+#                 plus_y = [0, 1, 0, -1]
+
+#                 # for nx in range(n):
+#                 #     for ny in range(m):
+#                 for nx, ny in virus_dots:
+#                     virus_dfs(graph, nx, ny, n, m, plus_x, plus_y)
+#                     # que.append([nx, ny])
+#                     # virus_bfs(graph, n, m, plus_x, plus_y)
+
+#                 # for nx in range(n):
+#                 #     print(graph[nx])
+
+#                 count = 0
+#                 for nx in range(n):
+#                     for ny in range(m):
+#                         if graph[nx][ny] == 0: count += 1
+#                 if max_count < count: max_count = count
+#     return max_count
+
+# print(solve())
+
+"""
+dfs/bfs
+1. check_graph가 별도로 필요한 경우가 있으니 필요하다 싶으면 바로 확인
+2. 브루트포스로 각 index에 접근할 때 for문 안에 dfs/bfs 함수를 넣어서 구현해야 함,
+    dfs/bfs 함수 안에서 브루트포스로 접근 X
+3. 재귀 limit 풀기 sys.setrecursionlimit(10**6)
+
+빠른 건 dfs가 더 빠른 듯, 대신 좌표 값을 넘겨주어야 함 (nx, ny)
+"""
+
+
+# 2477 참외밭
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# # sq_info = [[] for _ in range(5)]
+# sq_info = []
+# count_list = [0] * 5
+
+# for _ in range(6):
+#     temp_list = list(map(int, input().split()))
+#     sq_info.append(temp_list)
+#     count_list[temp_list[0]] += 1
+# # print(sq_info)
+# # print(count_list)
+
+# # # 모든 경우의 수 -> 동쪽/서쪽 중 1방향 2번, 남쪽/북쪽 중 1방향 2번으로 나눌 수 있음
+# count_1_list = [i for i in range(1, 5) if count_list[i] == 1]
+# k = 0 # 처음으로 1번 카운트된 숫자가 나올 때의 인덱스를 체크하는 변수
+# for i in range(5):
+#     if sq_info[i][0] in count_1_list:
+#         if sq_info[i+1][0] in count_1_list: k = i # %6 안 해도 됨
+#         else: k = 5 # sq_info[0][0], sq_info[5][0]이 0인 경우
+#         break
+# # print(first_count_1_index)
+
+# field_area = sq_info[k][1]*sq_info[(k+1)%6][1] - sq_info[(k+3)%6][1]*sq_info[(k+4)%6][1]
+# print(field_area * n)
+
+
+# 2206 벽 부수고 이동하기
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def move_bfs(graph, que, n, m, plus_x, plus_y):
+#     nx, ny, move_count, wall_distroy_check = que.popleft()
+#     move_count += 1
+
+#     for i in range(4):
+#         new_x, new_y = nx + plus_x[i], ny + plus_y[i]
+#         if 0 <= new_x < n and 0 <= new_y < m:
+#             # print(new_x, new_y)
+#             if new_x == n-1 and new_y == m-1: return move_count
+#             if graph[new_x][new_y] == 0:
+#                 graph[new_x][new_y] = 2
+#                 que.append([new_x, new_y, move_count, wall_distroy_check])
+#             elif graph[new_x][new_y] == 1:
+#                 if wall_distroy_check == 0:
+#                     que.append([new_x, new_y, move_count, 1])
+
+#     if que: return move_bfs(graph, que, n, m, plus_x, plus_y)
+
+# def solve():
+#     n, m = map(int, input().split())
+#     # graph = [list(map(int, input().split())) for _ in range(n)]
+#     graph = [list(map(int, input().rstrip())) for _ in range(n)]
+#     # print(graph)
+#     # nx, ny, move_count, wall_distroy_check
+#     que = deque([[0, 0, 1, 0]])
+#     # que = deque()
+#     # que.append([0, 0, move_count, wall_distroy_check])
+#     # print(que)
+
+#     plus_x = [1, 0, -1, 0]
+#     plus_y = [0, 1, 0, -1]
+
+#     result = move_bfs(graph, que, n, m, plus_x, plus_y)
+#     if result is not None: print(result)
+#     else: print(-1)
+
+# solve()
+
+
+# 21퍼 틀렸습니다
+# 1개의 graph만 공유해서 풀려고 하면 문제가 생김
+# import sys
+# from collections import deque
+# # sys.setrecursionlimit(10**6)
+# input = sys.stdin.readline
+
+# def move_bfs(graph, que, n, m, plus_x, plus_y):
+#     global result
+#     nx, ny, move_count, wall_distroy_check = que.popleft()
+#     move_count += 1
+
+#     for i in range(4):
+#         new_x, new_y = nx + plus_x[i], ny + plus_y[i]
+#         if 0 <= new_x < n and 0 <= new_y < m:
+#             # print(new_x, new_y)
+#             if new_x == n-1 and new_y == m-1:
+#                 result = move_count
+#                 # print(move_count)
+#             if graph[new_x][new_y] == 0:
+#                 graph[new_x][new_y] = 2
+#                 que.append([new_x, new_y, move_count, wall_distroy_check])
+#             elif graph[new_x][new_y] == 1:
+#                 if wall_distroy_check == 0:
+#                     que.append([new_x, new_y, move_count, 1])
+#     # if que: move_bfs(graph, que, n, m, plus_x, plus_y)
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(map(int, input().rstrip())) for _ in range(n)]
+#     # nx, ny, move_count, wall_distroy_check
+#     que = deque([[0, 0, 1, 0]])
+
+#     plus_x = [1, 0, -1, 0]
+#     plus_y = [0, 1, 0, -1]
+#     # result = move_bfs(graph, que, n, m, plus_x, plus_y)
+#     global result
+#     result = -1
+
+#     while que:
+#         move_bfs(graph, que, n, m, plus_x, plus_y)
+
+#     # if result is : print(result)
+#     # else: print(-1)
+#     print(result)
+
+# solve()
+
+
+# 시간 초과
+# import sys
+# import copy
+# from collections import deque
+# input = sys.stdin.readline
+
+# def move_bfs(graph, que, n, m, plus_x, plus_y):
+#     global result
+#     nx, ny, move_count, wall_distroy_check, visited = que.popleft()
+#     # print(nx, ny, move_count, wall_distroy_check)
+
+#     # print("visited :", visited, "0")
+#     # print(type(visited), len(visited))
+#     # print(visited[i] for i in range(len(visited)))
+#     # print(new_visited[i] for i in range(len(new_visited)))
+    
+#     move_count += 1
+
+#     for i in range(4):
+#         new_x, new_y = nx + plus_x[i], ny + plus_y[i]
+#         if 0 <= new_x < n and 0 <= new_y < m:
+#             # print(new_x, new_y)
+#             if [new_x, new_y] in visited: continue
+#             else:
+#                 if new_x == n-1 and new_y == m-1:
+#                     result = move_count
+#                     que.clear()
+#                     return
+#                 if graph[new_x][new_y] == 0:
+#                     new_visited = copy.deepcopy(visited)
+#                     new_visited.append([new_x, new_y])
+#                     # print("haha", new_visited)
+#                     que.append([new_x, new_y, move_count, wall_distroy_check, new_visited])
+#                 elif graph[new_x][new_y] == 1:
+#                     if wall_distroy_check == 0:
+#                         new_visited = copy.deepcopy(visited)
+#                         new_visited.append([new_x, new_y])
+#                         # print("haha", new_visited)
+#                         que.append([new_x, new_y, move_count, 1, new_visited])
+#     # print("move_count :", move_count)
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(map(int, input().rstrip())) for _ in range(n)]
+#     # nx, ny, move_count, wall_distroy_check
+#     # visited = [[0, 0]]
+#     # que = deque([[0, 0, 1, 0, [[0, 0]]]])
+#     que = deque([[0, 0, 1, 0, [[0, 0]]]])
+
+#     plus_x = [1, 0, -1, 0]
+#     plus_y = [0, 1, 0, -1]
+
+#     global result
+#     result = -1
+
+#     if n == 1 and m == 1: print(1)
+#     else:
+#         while que:
+#             move_bfs(graph, que, n, m, plus_x, plus_y)
+#             # print("que:", que)
+#     print(result)
+
+# solve()
+
+
+# finally i solved it
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def move_bfs(graph, que, n, m, plus_x, plus_y):
+#     global result
+#     nx, ny, move_count, wall_distroy_val = que.popleft()
+#     # print(nx, ny, move_count, wall_distroy_val)
+#     move_count += 1
+
+#     for i in range(4):
+#         new_x, new_y = nx + plus_x[i], ny + plus_y[i]
+#         if 0 <= new_x < n and 0 <= new_y < m:
+#             # print(new_x, new_y)
+#             if new_x == n-1 and new_y == m-1:
+#                 result = move_count
+#                 que.clear()
+#                 return
+#             # 빈 공간
+#             if graph[new_x][new_y] == 0:
+#                 graph[new_x][new_y] = move_count * wall_distroy_val
+#                 que.append([new_x, new_y, move_count, wall_distroy_val])
+#             # 벽인 경우, 한 번도 벽을 부순적 없으면 distroy
+#             elif graph[new_x][new_y] == 1:
+#                 if wall_distroy_val == 1:
+#                     que.append([new_x, new_y, move_count, -1])
+#             # 벽을 부수면서 왔던 칸에 벽을 부수지 않고 도착한 경우 (단, 여기서 도착한 칸은 벽이 아님)
+#             elif graph[new_x][new_y] < 0:
+#                 if wall_distroy_val == 1:
+#                     graph[new_x][new_y] = move_count * 1
+#                     que.append([new_x, new_y, move_count, 1])
+#     # print("move_count :", move_count)
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(map(int, input().rstrip())) for _ in range(n)]
+#     # nx, ny, move_count, wall_distroy_val(1 : yet, -1 : done)
+#     que = deque([[0, 0, 1, 1]])
+
+#     plus_x = [1, 0, -1, 0]
+#     plus_y = [0, 1, 0, -1]
+
+#     global result
+#     result = -1
+
+#     if n == 1 and m == 1: print(1)
+#     else:
+#         graph[0][0] = 2
+#         while que:
+#             move_bfs(graph, que, n, m, plus_x, plus_y)
+#             # print(que)
+#         print(result)
+
+# solve()

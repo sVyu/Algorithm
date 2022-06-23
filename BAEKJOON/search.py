@@ -182,26 +182,26 @@
 
 
 # 14502 연구소
-n, m = map(int, input().split())
-map_list = [list(map(int, input().split())) for _ in range(n)]
+# n, m = map(int, input().split())
+# map_list = [list(map(int, input().split())) for _ in range(n)]
 
-# print(map_list)
+# # print(map_list)
 
-wall_point_list = [[-1, -1] for _ in range(3)]
+# wall_point_list = [[-1, -1] for _ in range(3)]
 
-zero_point_list = []
+# zero_point_list = []
 
-for i in range(n):
-    for j in range(m):
-        if(map_list[i][j] == 0):
-            zero_point_list.append([i, j])
-print(zero_point_list)
+# for i in range(n):
+#     for j in range(m):
+#         if(map_list[i][j] == 0):
+#             zero_point_list.append([i, j])
+# print(zero_point_list)
 
-for i in range(len(zero_point_list)):
-    for j in range(i+1, len(zero_point_list)):
-        for k in range(j+1, len(zero_point_list)):
-            wall_point_list[0] = zero_point_list[i]
-            wall_point_list[1] = zero_point_list[j]
-            wall_point_list[2] = zero_point_list[k]
+# for i in range(len(zero_point_list)):
+#     for j in range(i+1, len(zero_point_list)):
+#         for k in range(j+1, len(zero_point_list)):
+#             wall_point_list[0] = zero_point_list[i]
+#             wall_point_list[1] = zero_point_list[j]
+#             wall_point_list[2] = zero_point_list[k]
 
-            print(wall_point_list)
+#             print(wall_point_list)
