@@ -4893,3 +4893,11 @@ dfs/bfs
 #         print(result)
 
 # solve()
+
+
+# 4999 아!
+# import sys
+# input = sys.stdin.readline
+
+# if len(input()) < len(input()): print("no")
+# else: print("go")
