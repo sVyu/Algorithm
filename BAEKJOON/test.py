@@ -4964,54 +4964,52 @@ dfs/bfs
 
 
 # 시간 초과
-import sys
-from collections import deque
-input = sys.stdin.readline
+# 같은 칸을 여러 번 체크하고 있었음
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
 
-def area_bfs(que, inc_xy, graph, check_graph, m, n):
-    nx, ny = que.popleft()
-    graph[ny][nx] = 1
-    # check_graph[ny][nx] = 1
-    for i in range(4):
-        # print(i)
-        new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
-        if 0 <= new_x < n and 0 <= new_y < m and graph[new_y][new_x] == 0 and check_graph[new_y][new_x] == 0:            
-            check_graph[new_y][new_x] = 1
-            print(nx, ny, new_x, new_y)
-            que.append([new_x, new_y])
+# def area_bfs(que, inc_xy, graph, m, n):
+#     nx, ny = que.popleft()
+#     graph[ny][nx] = 1
+#     for i in range(4):
+#         new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
+#         if 0 <= new_x < n and 0 <= new_y < m and graph[new_y][new_x] == 0 :            
+#             graph[new_y][new_x] = 1
+#             # print(nx, ny, new_x, new_y)
+#             que.append([new_x, new_y])
 
-def solve():
-    m, n, k = map(int, input().split())
-    graph = [[0] * n for _ in range(m)]
-    check_graph = [[0] * n for _ in range(m)]
+# def solve():
+#     m, n, k = map(int, input().split())
+#     graph = [[0] * n for _ in range(m)]
 
-    for _ in range(k):
-        x1, y1, x2, y2 = map(int, input().split())
-        for y in range(y1, y2):
-            for x in range(x1, x2):
-                graph[y][x] = 1
-    # for i in range(m):
-    #     print(graph[i])
+#     for _ in range(k):
+#         x1, y1, x2, y2 = map(int, input().split())
+#         for y in range(y1, y2):
+#             for x in range(x1, x2):
+#                 graph[y][x] = 1
+#     # for i in range(m):
+#     #     print(graph[i])
 
-    que = deque()
-    inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-    area_list = []
+#     que = deque()
+#     inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+#     area_list = []
 
-    for ny in range(m):
-        for nx in range(n):
-            if graph[ny][nx] == 0:
-                area_num = 0
-                que.append([nx, ny])
-                # print(que)
-                while que:
-                    area_bfs(que, inc_xy, graph, check_graph, m, n)
-                    area_num += 1
-                area_list.append(area_num)
+#     for ny in range(m):
+#         for nx in range(n):
+#             if graph[ny][nx] == 0:
+#                 area_num = 0
+#                 que.append([nx, ny])
+#                 # print(que)
+#                 while que:
+#                     area_bfs(que, inc_xy, graph, m, n)
+#                     area_num += 1
+#                 area_list.append(area_num)
     
-    print(len(area_list))
-    print(*sorted(area_list))
+#     print(len(area_list))
+#     print(*sorted(area_list))
 
-solve()
+# solve()
 
 
 # 1037 약수
@@ -5021,3 +5019,60 @@ solve()
 # n = int(input())
 # num_list = sorted(list(map(int, input().split())))
 # print(num_list[0] * num_list[n -1])
+
+
+# 7569 토마토
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def tomato_bfs(que, check_graph, graph, inc_xyz, h, n, m):
+#     nh, nn, nm = que.popleft()
+#     graph[nh][nn][nm] = 1
+#     for i in range(6):
+#         new_h, new_n, new_m = nh + inc_xyz[i][2], nn + inc_xyz[i][1], nm + inc_xyz[i][0]
+#         # print(new_h, new_n, new_m)
+#         if 0 <= new_h < h and 0 <= new_n < n and 0 <= new_m < m :
+#             if graph[new_h][new_n][new_m] == 0 and check_graph[new_h][new_n][new_m] == 0:
+#                 que.append([new_h, new_n, new_m])
+#                 check_graph[new_h][new_n][new_m] = 1
+
+# def solve():
+#     m, n, h = map(int, input().split())
+#     tomato_graph = [[list(map(int, input().split())) for _ in range(n)] for _ in range(h)]
+#     check_graph = [[[0]*m for _ in range(n)] for _ in range(h)]
+#     # print(tomato_graph)
+
+#     que = deque()
+#     inc_xyz = [[1,0,0], [0,1,0], [-1,0,0], [0,-1,0], [0,0,1], [0,0,-1]]
+#     # print(inc_xyz)
+
+#     # 처음 0일차
+#     day = 0
+#     for z in range(h):
+#         for y in range(n):
+#             for x in range(m):
+#                 if tomato_graph[z][y][x] == 1:
+#                     # print("zyx :", z, y, x)
+#                     que.append([z, y, x])
+#     for _ in range(len(que)): tomato_bfs(que, check_graph, tomato_graph, inc_xyz, h, n, m)
+
+#     # 1일차부터 닿을 수 있는 모든 토마토가 다 익을 때까지
+#     while que:
+#         # len_que = len(que)
+#         # print(len_que)
+#         for i in range(len(que)): tomato_bfs(que, check_graph, tomato_graph, inc_xyz, h, n, m)
+#         day += 1
+
+#     # 안 익은 토마토가 있으면 -1
+#     for z in range(h):
+#         for y in range(n):
+#             for x in range(m):
+#                 if tomato_graph[z][y][x] == 0:
+#                     return -1
+#     return day
+
+# print(solve())
+
+
+
