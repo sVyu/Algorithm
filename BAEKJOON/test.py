@@ -4901,3 +4901,123 @@ dfs/bfs
 
 # if len(input()) < len(input()): print("no")
 # else: print("go")
+
+
+# 2583 영역 구하기 bfs
+
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def area_bfs(que, inc_xy, graph, check_graph, m, n, area_num):
+#     nx, ny = que.popleft()
+#     graph[ny][nx] = area_num
+#     check_graph[ny][nx] = 1
+#     for i in range(4):
+#         new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
+#         if 0 <= new_x < n and 0 <= new_y < m and graph[new_y][new_x] == 0 and check_graph[new_y][new_x] == 0:
+#             que.append([new_x, new_y])
+
+# def solve():
+#     m, n, k = map(int, input().split())
+#     graph = [[0] * n for _ in range(m)]
+#     check_graph = [[0] * n for _ in range(m)]
+#     # area_graph = [0] * 10003
+
+#     for _ in range(k):
+#         x1, y1, x2, y2 = map(int, input().split())
+#         for y in range(y1, y2):
+#             for x in range(x1, x2):
+#                 # print(x, y) # x y 축 확인
+#                 graph[y][x] = 1
+#     # for i in range(m):
+#     #     print(graph[i])
+
+#     que = deque()
+#     inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+#     area_num = 1
+
+#     for ny in range(m):
+#         for nx in range(n):
+#             if graph[ny][nx] == 0:
+#                 area_num += 1
+#                 que.append([nx, ny])
+#                 # print(que)
+#                 while que: area_bfs(que, inc_xy, graph, check_graph, m, n, area_num)
+
+#     # for i in range(m):
+#     #     print(graph[i])
+#     # print()
+
+#     # for i in range(m):
+#     #     print(check_graph[i])
+
+#     area_list = [0] * (area_num-1)
+#     for y in range(m):
+#         for x in range(n):
+#             if graph[y][x] > 1: area_list[graph[y][x]-2] += 1
+
+#     print(len(area_list))
+#     print(*sorted(area_list))
+
+# solve()
+
+
+# 시간 초과
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+def area_bfs(que, inc_xy, graph, check_graph, m, n):
+    nx, ny = que.popleft()
+    graph[ny][nx] = 1
+    # check_graph[ny][nx] = 1
+    for i in range(4):
+        # print(i)
+        new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
+        if 0 <= new_x < n and 0 <= new_y < m and graph[new_y][new_x] == 0 and check_graph[new_y][new_x] == 0:            
+            check_graph[new_y][new_x] = 1
+            print(nx, ny, new_x, new_y)
+            que.append([new_x, new_y])
+
+def solve():
+    m, n, k = map(int, input().split())
+    graph = [[0] * n for _ in range(m)]
+    check_graph = [[0] * n for _ in range(m)]
+
+    for _ in range(k):
+        x1, y1, x2, y2 = map(int, input().split())
+        for y in range(y1, y2):
+            for x in range(x1, x2):
+                graph[y][x] = 1
+    # for i in range(m):
+    #     print(graph[i])
+
+    que = deque()
+    inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+    area_list = []
+
+    for ny in range(m):
+        for nx in range(n):
+            if graph[ny][nx] == 0:
+                area_num = 0
+                que.append([nx, ny])
+                # print(que)
+                while que:
+                    area_bfs(que, inc_xy, graph, check_graph, m, n)
+                    area_num += 1
+                area_list.append(area_num)
+    
+    print(len(area_list))
+    print(*sorted(area_list))
+
+solve()
+
+
+# 1037 약수
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num_list = sorted(list(map(int, input().split())))
+# print(num_list[0] * num_list[n -1])
