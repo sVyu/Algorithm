@@ -5075,4 +5075,108 @@ dfs/bfs
 # print(solve())
 
 
+# 2210 숫자판 점프
+# import sys
+# input = sys.stdin.readline
 
+# def dfs(graph, x, y, inc_xy, count, sum, ans_list):
+#     sum += graph[y][x] * 10**(5-count)
+#     count += 1
+
+#     if count == 6:
+#         if sum not in ans_list: ans_list.append(sum)
+#     else:
+#         for i in range(4):
+#             new_x, new_y = x + inc_xy[i][0], y + inc_xy[i][1]
+#             if 0 <= new_x < 5 and 0 <= new_y < 5:
+#                 dfs(graph, new_x, new_y, inc_xy, count, sum, ans_list)
+
+# def solve():
+#     graph = [list(map(int, input().split())) for _ in range(5)]
+#     # print(graph)
+#     inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+#     ans_list = []
+
+#     for y in range(5):
+#         for x in range(5):
+#             dfs(graph, x, y, inc_xy, 0, 0, ans_list)
+
+#     print(len(ans_list))
+
+# solve()
+
+
+# 2504 괄호의 값
+# import sys
+
+# def solve():
+#     bracket_list = list(sys.stdin.readline().rstrip())
+#     # print(bracket_list)
+
+#     mul_num = 1
+#     sum = 0
+#     stack_list = []
+
+#     for i in range(len(bracket_list)):
+#         if bracket_list[i] == '(' :
+#             mul_num *= 2
+#             stack_list.append('(')
+#         elif bracket_list[i] == '[' :
+#             mul_num *= 3
+#             stack_list.append('[')
+#         elif bracket_list[i] == ')' :
+#             if not stack_list or stack_list.pop() != '(':
+#                 sum = 0
+#                 break
+#             else:
+#                 mul_num //= 2
+#                 if bracket_list[i-1] == '(': sum += mul_num * 2
+#         elif bracket_list[i] == ']' :
+#             if not stack_list or stack_list.pop() != '[':
+#                 sum = 0
+#                 break
+#             else:
+#                 mul_num //= 3
+#                 if bracket_list[i-1] == '[': sum += mul_num * 3
+#         # print(i, mul_num, stack_list, sum)
+#     if stack_list: print(0)
+#     else: print(sum)
+
+# solve()
+
+
+# 2178 미로 탐색
+# graph[x][y] -> graph[y][x], input().split() -> input().rstrip(),
+# que.pop() -> que.popleft(), 함수로 바꿀 때 que 포함 시켜야 함
+# bfs(graph, que, inc_xy, n, m) : 기본형
+
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def bfs(graph, que, inc_xy, n, m):
+#     nx, ny, step = que.popleft()
+#     for i in range(4):
+#         new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
+#         # print(new_x, new_y)
+#         if 0 <= new_x < m and 0 <= new_y < n and graph[new_y][new_x] == 1:
+#                 que.append([new_x, new_y, step+1])
+#                 graph[new_y][new_x] = step+1
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(map(int, input().rstrip())) for _ in range(n)]
+#     check_graph = [[0] * m for _ in range(n)]
+#     graph[0][0] = 0
+#     # print(graph)
+#     que = deque()
+
+#     que.append([0, 0, 1])
+#     inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+#     while que: bfs(graph, que, inc_xy, n, m)
+
+#     # for i in range(n):
+#     #     print(graph[i])
+#     print(graph[n-1][m-1])
+
+# solve()
