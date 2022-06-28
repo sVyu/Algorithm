@@ -5180,3 +5180,89 @@ dfs/bfs
 #     print(graph[n-1][m-1])
 
 # solve()
+
+
+# 2667 단지번호붙이기
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def map_bfs(graph, check_graph, que, inc_xy, n):
+#     nx, ny = que.popleft()
+#     for i in range(4):
+#         new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
+#         if 0 <= new_x < n and 0 <= new_y < n:
+#             if graph[new_y][new_x] == 1 and check_graph[new_y][new_x] == 0:
+#                 check_graph[new_y][new_x] = 1
+#                 que.append([new_x, new_y])
+
+# def solve():
+#     n = int(input())
+#     graph = [list(map(int, input().rstrip())) for _ in range(n)]
+#     check_graph = [[0] * n for _ in range(n)]
+#     que = deque()
+#     area_list = []
+#     inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+
+#     for y in range(n):
+#         for x in range(n):
+#             if graph[y][x] == 1 and check_graph[y][x] == 0:
+#                 que.append([x, y])
+#                 check_graph[y][x] = 1
+
+#                 area = 0
+#                 while que :
+#                     map_bfs(graph, check_graph, que, inc_xy, n)
+#                     area += 1
+#                 # print(area)
+#                 area_list.append(area)
+
+#     print(len(area_list), *sorted(area_list), sep='\n')
+
+# solve()
+
+
+# 2644 촌수계산
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def par_bfs(par_graph, kid_graph, que, visited, end_num):
+#     while que:
+#         point, dist = que.popleft()
+#         # 부모 출발 (각 사람의 부모는 최대 한 명만 주어진다)
+#         for i in range(len(kid_graph[point])):
+#             if kid_graph[point][i] not in visited:
+#                 if kid_graph[point][i] == end_num:
+#                     return dist+1
+#                 else:
+#                     que.append([kid_graph[point][i], dist+1])
+#                     visited.append(kid_graph[point][i])
+
+#         # 자식 출발
+#         if par_graph[point] and par_graph[point][0] not in visited:
+#             if par_graph[point][0] == end_num:
+#                 return dist+1
+#             else:
+#                 que.append([par_graph[point][0], dist+1])
+#                 visited.append(par_graph[point][0])
+#     return -1
+
+# def solve():
+#     n = int(input())
+#     start_num, end_num = map(int, input().split())
+
+#     par_graph = [[] for _ in range(n+1)]
+#     kid_graph = [[] for _ in range(n+1)]
+#     for _ in range(int(input())):
+#         x, y = map(int, input().split())
+#         par_graph[y].append(x)
+#         kid_graph[x].append(y)
+#     # print(par_graph, kid_graph)
+
+#     que = deque([[start_num, 0]])
+#     visited = [start_num]
+#     print(par_bfs(par_graph, kid_graph, que, visited, end_num))
+    
+# solve()
+
