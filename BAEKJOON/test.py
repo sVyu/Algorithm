@@ -5266,3 +5266,117 @@ dfs/bfs
     
 # solve()
 
+
+# 4796 캠핑
+# import sys
+# input = sys.stdin.readline
+
+# case_num = 1
+# while True:
+#     val_l, val_p, val_v = map(int, input().split())
+#     if val_l == 0: break
+#     else:
+#         print("Case {0}: {1}".format(case_num, (val_v//val_p)*val_l + min(val_v%val_p, val_l)))
+#     case_num += 1
+
+
+# 2468 안전 영역
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
+
+# def dfs(graph, check_graph, nx, ny, inc_xy, n):
+#     if check_graph[ny][nx] == 0:
+#         check_graph[ny][nx] = 2
+#         for i in range(4):
+#             new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
+#             if 0 <= new_x < n and 0 <= new_y < n:
+#                 dfs(graph, check_graph, new_x, new_y, inc_xy, n)
+#         return True
+#     # else: return False
+
+# def solve():
+#     n = int(input())
+#     graph = [list(map(int, input().split())) for _ in range(n)]
+#     check_graph = [[0] * n for _ in range(n)]
+#     inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+
+#     # 높이는 1이상 100 이하의 정수
+#     min_h, max_h = 100, 1
+#     for y in range(n):
+#         for x in range(n):
+#             if min_h > graph[y][x]: min_h = graph[y][x]
+#             if max_h < graph[y][x]: max_h = graph[y][x]
+#     # print(min_h, max_h)
+
+#     max_area = 1
+#     for h in range(min_h, max_h): # max_h는 계산 안 해도 됨
+#         # h 이하의 높이를 가지는 곳은 다 잠김
+#         for y in range(n):
+#             for x in range(n):
+#                 if graph[y][x] <= h: check_graph[y][x] = 1
+#                 else: check_graph[y][x] = 0
+
+#         count = 0
+#         # dfs 계산해서 count
+#         for y in range(n):
+#             for x in range(n):
+#                 if dfs(graph, check_graph, x, y, inc_xy, n) == True:
+#                     count += 1
+#         if max_area < count : max_area = count
+#     print(max_area)
+
+# solve()
+
+
+# 1300 K번째 수
+# 22퍼 틀렸습니다
+# 결국 해결함 ㅋㅋ 이해하는데 좀 걸렸다 맨이야
+# n == 5, 20 <= k <= 25 조건으로 해보니까 반례도 잘 보인다 맨이야
+
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
+
+# def binary_search(top, bot, n, k):
+#     if top < bot : return bot
+
+#     # top >= bot
+#     mid = (bot + top)//2
+#     below_count = 0
+#     for i in range(1, n+1):
+#         below_count += min((n, mid//i))
+#         # print(i, below_count)
+#     # print(top, bot, below_count, mid)
+#     if below_count < k: return binary_search(top, mid+1, n, k)
+#     else: return binary_search(mid-1, bot, n, k)
+
+# def solve():
+#     n = int(input())
+#     k = int(input())
+
+#     print(binary_search(n**2, 1, n, k))
+
+# solve()
+
+
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n = int(input())
+#     k = int(input())
+
+#     top, bot, ans = n**2, 1, 0
+#     while top >= bot:
+#         below_count = 0
+#         mid = (bot + top) // 2
+#         for i in range(1, n+1):
+#             below_count += min((n, mid//i))
+#         if below_count < k: bot = mid+1
+#         else:
+#             ans = mid
+#             top = mid-1
+#     print(ans)
+
+# solve()
