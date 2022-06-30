@@ -5380,3 +5380,74 @@ dfs/bfs
 #     print(ans)
 
 # solve()
+
+
+# 1697 숨바꼭질
+# import sys
+# from collections import deque
+
+# def solve():
+#     n, k = map(int, sys.stdin.readline().split())
+#     # print(n, k)
+#     que = deque([[n, 0]])
+#     check_graph = [0]*150001
+
+#     if n == k: print(0)
+#     else:
+#         while que:
+#             x, cnt = que.popleft()
+#             for nx in [x-1, x+1, x*2]:
+#                 # print(nx)
+#                 if nx == k :
+#                     print(cnt+1)
+#                     return
+#                 elif nx < 0 or nx > 150000: continue
+#                 else:
+#                     # print(nx)
+#                     if check_graph[nx] == 0:
+#                         check_graph[nx] = 1
+#                         que.append([nx, cnt+1])
+#                     else: continue
+
+# solve()
+
+
+# 6416 트리인가?
+# import sys
+# input = sys.stdin.readline
+
+# while True:
+#     graph = [[] for _ in range(14)]
+
+#     while True:
+#         # 입력 데이터 처리
+#         temp_list = list(map(int, input().split()))
+#         # print(temp_list)
+#         for i in range(len(temp_list)//2):
+
+
+# 아무래도이문제는 A번난이도인것 같다
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     a, b = map(int, input().split())
+
+
+# 1816 암호 키
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     num = int(input())
+#     check = False
+#     if num % 2 == 0 : check = True
+#     else:
+#         div_num = 3
+#         while div_num <= 1000000:
+#             if num % div_num == 0:
+#                 check = True
+#                 break
+#             div_num += 2
+#     if check == True: print("NO")
+#     else: print("YES")
