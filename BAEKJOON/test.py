@@ -5426,14 +5426,6 @@ dfs/bfs
 #         for i in range(len(temp_list)//2):
 
 
-# 아무래도이문제는 A번난이도인것 같다
-# import sys
-# input = sys.stdin.readline
-
-# for _ in range(int(input())):
-#     a, b = map(int, input().split())
-
-
 # 1816 암호 키
 # import sys
 # input = sys.stdin.readline
@@ -5451,3 +5443,25 @@ dfs/bfs
 #             div_num += 2
 #     if check == True: print("NO")
 #     else: print("YES")
+
+
+# 아무래도이문제는A번난이도인것같다
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     input()
+#     print("yes")
+
+
+# 4153 직각삼각형
+# import sys
+# input = sys.stdin.readline
+
+# while True:
+#     a, b, c = sorted(list(map(int, input().split())))
+#     if a == 0 : break
+
+#     if a**2 + b**2 == c**2 : print("right")
+#     else: print("wrong")
+    
