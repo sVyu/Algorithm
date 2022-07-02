@@ -5464,4 +5464,50 @@ dfs/bfs
 
 #     if a**2 + b**2 == c**2 : print("right")
 #     else: print("wrong")
-    
+
+
+# 11724 연결 요소의 개수
+# 44퍼 틀렸습니다 ?
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+def bfs(graph, check_graph, que):
+    idx = que.popleft()
+    for x in range(len(graph[idx])):
+        if check_graph[graph[idx][x]] == 1: continue
+        else:
+            check_graph[graph[idx][x]] = 1
+            que.append(graph[idx][x])
+    # print(que)
+
+def solve():
+    n, m = map(int, input().split())
+    graph = [[] for _ in range(n+1)]
+    check_graph = [0]*(n+1)
+    que = deque()
+
+    for _ in range(m):
+        u, v = map(int, input().split())
+        graph[u].append(v)
+        graph[v].append(u)
+    # print(graph)
+
+    count = 0
+    for i in range(1, n+1):
+        for x in range(len(graph[i])):
+            if check_graph[graph[i][x]] == 1: continue
+            else:
+                check_graph[graph[i][x]] = 1
+                que.append(graph[i][x])
+                count += 1
+            while que:
+                bfs(graph, check_graph, que)
+        # 점 하나로만 되어있는 경우도 연결 요소 개수에 포함
+        if not graph[i]:
+            check_graph[i] = 1
+            count += 1
+        # print(check_graph)
+    print(count)
+
+solve()
