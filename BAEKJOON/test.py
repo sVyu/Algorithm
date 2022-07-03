@@ -5467,47 +5467,88 @@ dfs/bfs
 
 
 # 11724 연결 요소의 개수
-# 44퍼 틀렸습니다 ?
-import sys
-from collections import deque
-input = sys.stdin.readline
+# 44퍼 틀렸습니다 ? 보완 완료 ~
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
 
-def bfs(graph, check_graph, que):
-    idx = que.popleft()
-    for x in range(len(graph[idx])):
-        if check_graph[graph[idx][x]] == 1: continue
-        else:
-            check_graph[graph[idx][x]] = 1
-            que.append(graph[idx][x])
-    # print(que)
+# def bfs(graph, check_graph, que):
+#     idx = que.popleft()
+#     for x in range(len(graph[idx])):
+#         if check_graph[graph[idx][x]] == 1: continue
+#         else:
+#             check_graph[graph[idx][x]] = 1
+#             que.append(graph[idx][x])
+#     # print(que)
 
-def solve():
-    n, m = map(int, input().split())
-    graph = [[] for _ in range(n+1)]
-    check_graph = [0]*(n+1)
-    que = deque()
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [[] for _ in range(n+1)]
+#     check_graph = [0]*(n+1)
+#     que = deque()
 
-    for _ in range(m):
-        u, v = map(int, input().split())
-        graph[u].append(v)
-        graph[v].append(u)
-    # print(graph)
+#     for _ in range(m):
+#         u, v = map(int, input().split())
+#         graph[u].append(v)
+#         graph[v].append(u)
+#     # print(graph)
 
-    count = 0
-    for i in range(1, n+1):
-        for x in range(len(graph[i])):
-            if check_graph[graph[i][x]] == 1: continue
-            else:
-                check_graph[graph[i][x]] = 1
-                que.append(graph[i][x])
-                count += 1
-            while que:
-                bfs(graph, check_graph, que)
-        # 점 하나로만 되어있는 경우도 연결 요소 개수에 포함
-        if not graph[i]:
-            check_graph[i] = 1
-            count += 1
-        # print(check_graph)
-    print(count)
+#     count = 0
+#     for i in range(1, n+1):
+#         for x in range(len(graph[i])):
+#             if check_graph[graph[i][x]] == 1: continue
+#             else:
+#                 check_graph[graph[i][x]] = 1
+#                 que.append(graph[i][x])
+#                 count += 1
+#             while que:
+#                 bfs(graph, check_graph, que)
+#         # 점 하나로만 되어있는 경우도 연결 요소 개수에 포함
+#         if not graph[i]:
+#             check_graph[i] = 1
+#             count += 1
+#         # print(check_graph)
+#     print(count)
 
-solve()
+# solve()
+
+
+# 7576 토마토
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def dfs(graph, que, inc_xy, m, n):
+#     nx, ny, day = que.popleft()
+#     for i in range(4):
+#         new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
+#         if 0 <= new_x < m and 0 <= new_y < n:
+#             if graph[new_y][new_x] == 0:
+#                 graph[new_y][new_x] = day+1
+#                 que.append([new_x, new_y, day+1])
+
+# def solve():
+#     m, n = map(int, input().split())
+#     graph = [list(map(int, input().split())) for _ in range(n)]
+#     que = deque()
+#     inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+
+#     for y in range(n):
+#         for x in range(m):
+#             if graph[y][x] == 1:
+#                 que.append([x, y, 1])
+
+#     while que:
+#         dfs(graph, que, inc_xy, m, n)
+
+#     max = 0
+#     for y in range(n):
+#         for x in range(m):
+#             if graph[y][x] == 0:
+#                 print(-1)
+#                 return
+#             elif max < graph[y][x] : max = graph[y][x]
+#     print(max-1)
+
+# solve()
+        
