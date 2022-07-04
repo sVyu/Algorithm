@@ -5551,4 +5551,21 @@ dfs/bfs
 #     print(max-1)
 
 # solve()
-        
+
+
+# 11050 이항 계수 1
+
+# def cal_factorial(num):
+#     if num <= 1: return 1
+#     else: 
+#         ans = 1
+#         for i in range(num, 1, -1):
+#             ans *= i
+#         return ans
+    
+# def solve():
+#     n, k = map(int, input().split())
+#     ans = cal_factorial(n)//(cal_factorial(k)*cal_factorial(n-k))
+#     print(ans)
+
+# solve()
