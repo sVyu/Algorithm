@@ -5569,3 +5569,31 @@ dfs/bfs
 #     print(ans)
 
 # solve()
+
+
+# 1654 랜선 자르기
+import sys
+input = sys.stdin.readline
+
+def solve():
+    k, n = map(int, input().split())
+    line_list = [int(input()) for _ in range(k)]
+    bot, top = 1, max(line_list)
+    ans = 0
+
+    while bot <= top:
+        mid = (bot + top)// 2
+        cnt = 0
+        for i in range(k):
+            cnt += line_list[i] // mid
+        # print(cnt)
+
+        if cnt < n :
+            top = mid-1
+        else:
+            ans = mid
+            bot = mid+1
+        # print(top, bot, mid)
+    print(ans)
+
+solve()
