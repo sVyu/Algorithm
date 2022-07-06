@@ -5572,28 +5572,52 @@ dfs/bfs
 
 
 # 1654 랜선 자르기
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-def solve():
-    k, n = map(int, input().split())
-    line_list = [int(input()) for _ in range(k)]
-    bot, top = 1, max(line_list)
-    ans = 0
+# def solve():
+#     k, n = map(int, input().split())
+#     line_list = [int(input()) for _ in range(k)]
+#     bot, top = 1, max(line_list)
+#     ans = 0
 
-    while bot <= top:
-        mid = (bot + top)// 2
-        cnt = 0
-        for i in range(k):
-            cnt += line_list[i] // mid
-        # print(cnt)
+#     while bot <= top:
+#         mid = (bot + top)// 2
+#         cnt = 0
+#         for i in range(k):
+#             cnt += line_list[i] // mid
+#         # print(cnt)
 
-        if cnt < n :
-            top = mid-1
-        else:
-            ans = mid
-            bot = mid+1
-        # print(top, bot, mid)
-    print(ans)
+#         if cnt < n :
+#             top = mid-1
+#         else:
+#             ans = mid
+#             bot = mid+1
+#         # print(top, bot, mid)
+#     print(ans)
 
-solve()
+# solve()
+
+# 2292 벌집
+#  1 6 12 18 24
+# import sys
+
+# def solve():
+#     num = int(sys.stdin.readline())
+#     cnt, ans = 0, 1
+
+#     # while True:
+#     #     if num <= ans:
+#     #         print(cnt+1)
+#     #         break
+#     #     else:
+#     #         cnt += 1
+#     #         ans += cnt*6
+
+#     while num > ans:
+#         cnt += 1
+#         ans += cnt*6
+    
+#     print(cnt+1)
+
+# solve()
