@@ -5598,6 +5598,7 @@ dfs/bfs
 
 # solve()
 
+
 # 2292 벌집
 #  1 6 12 18 24
 # import sys
@@ -5621,3 +5622,39 @@ dfs/bfs
 #     print(cnt+1)
 
 # solve()
+
+
+# 2805 나무 자르기 (지금의 나는 다르다 !)
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n, m = map(int, input().split())
+#     tree_list = list(map(int, input().split()))
+#     bot, top = 1, max(tree_list)
+#     ans = 0
+
+#     while bot <= top :
+#         mid, sum = (bot+top)//2, 0
+        
+#         for tree_height in tree_list:
+#             if tree_height > mid:
+#                 sum += tree_height - mid
+        
+#         if sum >= m :
+#             ans = mid
+#             bot = mid + 1
+#         else: top = mid - 1
+
+#     print(ans)
+
+# solve()
+
+
+# 2338 긴자리 계산
+import sys
+input = sys.stdin.readline
+
+a = int(input())
+b = int(input())
+print(a+b, a-b, a*b, sep='\n')
