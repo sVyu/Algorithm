@@ -5652,9 +5652,44 @@ dfs/bfs
 
 
 # 2338 긴자리 계산
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-a = int(input())
-b = int(input())
-print(a+b, a-b, a*b, sep='\n')
+# a = int(input())
+# b = int(input())
+# print(a+b, a-b, a*b, sep='\n')
+
+
+# 10867 중복 빼고 정렬하기
+# https://xlog.tistory.com/20
+# 방법 1
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num_list = list(map(int, input().split()))
+# # print(num_list)
+
+# new_num_list = []
+# for num in num_list:
+#     if num not in new_num_list:
+#         new_num_list.append(num)
+
+# print(*sorted(new_num_list))
+
+
+# 방법2
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num_list = list(map(int, input().split()))
+# # print(num_list)
+
+# # -1000 ~ +1000
+# check_list = [0]*2001
+# for num in num_list:
+#     if check_list[num+1000] == 0: check_list[num+1000] = 1
+
+# for i in range(2001):
+#     if check_list[i] == 1: print(i-1000, end=' ')
