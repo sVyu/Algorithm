@@ -5693,3 +5693,29 @@ dfs/bfs
 
 # for i in range(2001):
 #     if check_list[i] == 1: print(i-1000, end=' ')
+
+
+# 15829 Hashing
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     num = int(input())
+#     val_list = list(map(ord, input().rstrip()))
+#     # print(val_list)
+
+#     # num 값으로 r**i (mod M) list를 생성 
+#     mul_list = [1] * num
+#     for i in range(1, num):
+#         mul_list[i] = mul_list[i-1] * 31
+#         if mul_list[i] >= 1234567891 : mul_list[i] %= 1234567891
+#     # print(mul_list)
+
+#     # 정답 ans 계산
+#     ans = 0
+#     for i in range(num):
+#         ans += (val_list[i]-96) * mul_list[i]
+#         if ans >= 1234567891 : ans %= 1234567891
+#     print(ans)
+
+# solve()
