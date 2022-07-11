@@ -5721,6 +5721,131 @@ dfs/bfs
 # solve()
 
 
-# 1085
+# 1085 직사각형에서 탈출
 # x, y, w, h = map(int, input().split())
 # print(min([x, y, w-x, h-y]))
+
+
+# 2573 빙산
+# 37퍼 시간초과 ?
+# 가능하면 copy.deepcopy()는 안 쓰는 게 메모리 관리나 속도 면에서 유리한 듯
+
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def graph_copy(graph_a, graph_b, n, m):
+#     for y in range(1, n-1):
+#         for x in range(1, m-1):
+#             graph_a[y][x] = graph_b[y][x]
+
+# def solve():
+#     n, m = map(int, input().split())
+#     pre_graph = [list(map(int, input().split())) for _ in range(n)]
+#     new_graph = [[0] * m for _ in range(n)]
+#     # print(pre_graph)
+
+#     years = 0
+#     all_melt = False
+#     while not all_melt:
+#         years += 1
+#         graph_copy(new_graph, pre_graph, n, m)
+#         inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+
+#         # 1년이 지났을 때
+#         all_melt = True
+#         for ny in range(n):
+#             for nx in range(m):
+#                 if pre_graph[ny][nx] != 0:
+#                     for x, y in inc_xy:
+#                         if new_graph[ny][nx] > 0 and pre_graph[ny + y][nx + x] == 0:
+#                             new_graph[ny][nx] -= 1
+#                             all_melt = False
+#         # print("years: ", years)
+#         # print("new :", new_graph)
+
+#         # n 덩이 계산
+#         count = 0
+#         que = deque()
+#         check_graph = [[0]*m for _ in range(n)]
+#         for ny in range(n):
+#             for nx in range(m):
+#                 if new_graph[ny][nx] != 0 and check_graph[ny][nx] == 0:
+#                     count += 1
+#                     if count > 1 : return years
+
+#                     check_graph[ny][nx] = 1
+#                     que.append([nx, ny])
+#                     while que:
+#                         # now_x, now_y = que.popleft()
+#                         now_x, now_y = que.pop()
+#                         for x, y in inc_xy:
+#                             if check_graph[now_y + y][now_x + x] == 0 and new_graph[now_y + y][now_x + x] != 0:
+#                                 check_graph[now_y + y][now_x + x] = 1
+#                                 que.append([now_x + x, now_y + y])
+#         # print(count)
+#         graph_copy(pre_graph, new_graph, n, m)
+#     return 0
+
+# print(solve())
+
+
+# 37퍼 시간 초과.. 그냥 PyPy3로 해결
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(map(int, input().split())) for _ in range(n)]
+#     check_graph = [[0]*m for _ in range(n)]
+#     # print(graph)
+
+#     years = 0
+#     all_melt = False
+#     while not all_melt:
+#         years += 1
+#         inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+
+#         # 1년이 지났을 때
+#         all_melt = True
+#         for ny in range(n):
+#             for nx in range(m):
+#                 if graph[ny][nx] != 0:
+#                     for x, y in inc_xy:
+#                         if graph[ny][nx] > 0 and graph[ny + y][nx + x] == 0:
+#                             graph[ny][nx] -= 1
+#                             # 1개의 그래프로 bfs 방식에서 계산을 정확하게 하기 위해 0이 아닌 값으로 처리
+#                             if graph[ny][nx] == 0: graph[ny][nx] = -1
+#                             all_melt = False
+
+#         # 완전히 녹은 것들을 0으로 알맞게 초기화, check_graph 초기화
+#         for ny in range(n):
+#             for nx in range(m):
+#                 if graph[ny][nx] == -1: graph[ny][nx] = 0
+#                 check_graph[ny][nx] = 0
+
+#         # n 덩이 계산
+#         count = 0
+#         que = deque()
+#         for ny in range(n):
+#             for nx in range(m):
+#                 if graph[ny][nx] != 0 and check_graph[ny][nx] == 0:
+#                     count += 1
+#                     if count > 1 : return years
+
+#                     check_graph[ny][nx] = 1
+#                     que.append([nx, ny])
+#                     while que:
+#                         # now_x, now_y = que.popleft()
+#                         now_x, now_y = que.pop()
+#                         for x, y in inc_xy:
+#                             if graph[now_y + y][now_x + x] != 0 and check_graph[now_y + y][now_x + x] == 0 :
+#                                 check_graph[now_y + y][now_x + x] = 1
+#                                 que.append([now_x + x, now_y + y])
+#         # print(count)
+#     return 0
+
+# print(solve())
+
+
