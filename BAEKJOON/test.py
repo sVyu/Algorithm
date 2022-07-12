@@ -5849,3 +5849,37 @@ dfs/bfs
 # print(solve())
 
 
+# 11723 집합
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     set_s = set()
+#     for _ in range(int(input())):
+#         cmd_list = list(map(str, input().split()))
+#         # print(cmd_list)
+        
+#         if cmd_list[0] == 'add':
+#             val = int(cmd_list[1])
+#             if val not in set_s:
+#                 set_s.add(val)
+#         elif cmd_list[0] == 'remove':
+#             val = int(cmd_list[1])
+#             if val in set_s:
+#                 set_s.remove(int(cmd_list[1]))
+
+#         elif cmd_list[0] == 'check':
+#             if int(cmd_list[1]) in set_s: print(1)
+#             else: print(0)
+#         elif cmd_list[0] == 'toggle':
+#             val = int(cmd_list[1])
+#             if val in set_s: set_s.remove(val)
+#             else: set_s.add(val)
+
+#         elif cmd_list[0] == 'all':
+#             set_s = {i for i in range(1, 21)}
+#         else: # cmd_list[0] == 'empty'
+#             set_s.clear()
+#         # print(set_s)
+
+# solve()
