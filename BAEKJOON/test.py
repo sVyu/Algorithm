@@ -5883,3 +5883,25 @@ dfs/bfs
 #         # print(set_s)
 
 # solve()
+
+
+# 9375 패션왕 신해빈
+import sys
+input = sys.stdin.readline
+
+for _ in range(int(input())):
+    clothes_dict = dict()
+    for i in range(int(input())):
+        clothes_list = list(map(str, input().split()))
+        # print(clothes_list)
+
+        if clothes_list[1] not in clothes_dict: clothes_dict[clothes_list[1]] = 1
+        else: clothes_dict[clothes_list[1]] += 1
+    # print(clothes_dict)
+    
+    ans = 1
+    for i in clothes_dict:
+        ans *= (clothes_dict[i]+1)
+
+    print(ans-1)
+        
