@@ -5886,22 +5886,33 @@ dfs/bfs
 
 
 # 9375 패션왕 신해빈
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-for _ in range(int(input())):
-    clothes_dict = dict()
-    for i in range(int(input())):
-        clothes_list = list(map(str, input().split()))
-        # print(clothes_list)
+# for _ in range(int(input())):
+#     clothes_dict = dict()
+#     for i in range(int(input())):
+#         clothes_list = list(map(str, input().split()))
+#         # print(clothes_list)
 
-        if clothes_list[1] not in clothes_dict: clothes_dict[clothes_list[1]] = 1
-        else: clothes_dict[clothes_list[1]] += 1
-    # print(clothes_dict)
+#         if clothes_list[1] not in clothes_dict: clothes_dict[clothes_list[1]] = 1
+#         else: clothes_dict[clothes_list[1]] += 1
+#     # print(clothes_dict)
     
-    ans = 1
-    for i in clothes_dict:
-        ans *= (clothes_dict[i]+1)
+#     ans = 1
+#     for i in clothes_dict:
+#         ans *= (clothes_dict[i]+1)
 
-    print(ans-1)
-        
+#     print(ans-1)
+
+
+# 2420 사파리 월드
+# n, m = map(int, input().split())
+# print(abs(n-m))
+
+# 10871 X보다 작은 수
+# n, x = map(int, input().split())
+# n_list = list(map(int, input().split()))
+# for i in n_list:
+#     if i < x:
+#         print(i, end=' ')
