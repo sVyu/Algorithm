@@ -5916,3 +5916,53 @@ dfs/bfs
 # for i in n_list:
 #     if i < x:
 #         print(i, end=' ')
+
+
+# 10807 개수 세기
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# n_list = list(map(int, input().split()))
+# target = int(input())
+# count = 0
+
+# for i in n_list:
+#     if i == target: count += 1
+
+# print(count)
+
+
+# 5597 과제 안 내신 분..?
+# import sys
+# input = sys.stdin.readline
+
+# # 0 ~ 30
+# attend_list = [0] * 31
+
+# for _ in range(28):
+#     attend_list[int(input())] += 1
+
+# for i in range(1, 31):
+#     if attend_list[i] == 0: print(i)
+
+
+# 2738 행렬 덧셈
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+
+# # 행렬 A
+# num_list = [list(map(int, input().split())) for _ in range(n)]
+
+# # 행렬 B 합산
+# for y in range(n):
+#     tmp_list = list(map(int, input().split()))
+#     for x in range(m):
+#         num_list[y][x] += tmp_list[x]
+
+# # 출력
+# for i in range(n):
+#     print(*num_list[i])
+
