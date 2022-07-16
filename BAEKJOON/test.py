@@ -5966,3 +5966,12 @@ dfs/bfs
 # for i in range(n):
 #     print(*num_list[i])
 
+
+# 2743 단어 길이 재기
+# print(len(input()))
+
+# 2744 대소문자 바꾸기
+# str_list = list(input())
+# for i in range(len(str_list)):
+#     if 65 <= ord(str_list[i]) < 91: print(chr(ord(str_list[i])+32), end='')
+#     else: print(chr(ord(str_list[i])-32), end='')
