@@ -5975,3 +5975,14 @@ dfs/bfs
 # for i in range(len(str_list)):
 #     if 65 <= ord(str_list[i]) < 91: print(chr(ord(str_list[i])+32), end='')
 #     else: print(chr(ord(str_list[i])-32), end='')
+
+# 14490 백대열
+
+# def gcd(n, m):
+#     while m > 0:
+#         n, m = m, n%m
+#     return n
+
+# n, m = map(int, input().split(':'))
+# gcd_num = gcd(n, m)
+# print(n//gcd_num, ":", m//gcd_num, sep='')
