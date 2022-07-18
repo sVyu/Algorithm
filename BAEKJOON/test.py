@@ -5976,6 +5976,7 @@ dfs/bfs
 #     if 65 <= ord(str_list[i]) < 91: print(chr(ord(str_list[i])+32), end='')
 #     else: print(chr(ord(str_list[i])-32), end='')
 
+
 # 14490 백대열
 
 # def gcd(n, m):
@@ -5986,3 +5987,31 @@ dfs/bfs
 # n, m = map(int, input().split(':'))
 # gcd_num = gcd(n, m)
 # print(n//gcd_num, ":", m//gcd_num, sep='')
+
+
+# 첼시를 도와줘!
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     max_price, max_player_name = 0, ''
+#     for _ in range(int(input())):
+#         val, name = map(str, input().split())
+#         val = int(val)
+#         if max_price < val :
+#             max_price = val
+#             max_player_name = name
+#     print(max_player_name)
+
+
+# 5635 생일
+# import sys
+# input = sys.stdin.readline
+
+# earlist_birth_name, latest_birth_name= '', ''
+# earlist_birth, latest_birth = [[31, 12, 2010]], [1, 1, 1990]
+# for _ in range(int(input())):
+#     name, dd, mm, yy = map(str, input().split())
+#     dd, mm, yy = map(int, [dd, mm, yy])
+    
+    
