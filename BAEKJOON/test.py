@@ -5989,7 +5989,7 @@ dfs/bfs
 # print(n//gcd_num, ":", m//gcd_num, sep='')
 
 
-# 첼시를 도와줘!
+# 11098 첼시를 도와줘!
 # import sys
 # input = sys.stdin.readline
 
@@ -6009,9 +6009,128 @@ dfs/bfs
 # input = sys.stdin.readline
 
 # earlist_birth_name, latest_birth_name= '', ''
-# earlist_birth, latest_birth = [[31, 12, 2010]], [1, 1, 1990]
+# earlist_birth, latest_birth = [31, 12, 2010], [1, 1, 1990]
 # for _ in range(int(input())):
 #     name, dd, mm, yy = map(str, input().split())
 #     dd, mm, yy = map(int, [dd, mm, yy])
     
-    
+#     # if earlist_birth[2] >= yy and earlist_birth[1] >= mm and earlist_birth[0] > dd :
+#     #     earlist_birth = [dd, mm, yy]
+#     #     earlist_birth_name = name
+#     # elif latest_birth[2] <= yy and latest_birth[1] <= mm and latest_birth[0] < dd :
+#     #     latest_birth = [dd, mm, yy]
+#     #     latest_birth_name = name
+
+#     if earlist_birth[2] > yy or\
+#         (earlist_birth[2] == yy and earlist_birth[1] > mm) or\
+#         (earlist_birth[2] == yy and earlist_birth[1] == mm and earlist_birth[0] > dd) :
+#         earlist_birth = [dd, mm, yy]
+#         earlist_birth_name = name
+
+#     if latest_birth[2] < yy or\
+#         (latest_birth[2] == yy and latest_birth[1] < mm) or\
+#         (latest_birth[2] == yy and latest_birth[1] == mm and latest_birth[0] < dd) :
+#         latest_birth = [dd, mm, yy]
+#         latest_birth_name = name
+
+# print(latest_birth_name, earlist_birth_name, sep='\n')
+
+
+
+# 1408 24
+# import sys
+# input = sys.stdin.readline
+
+# hh_1, mm_1, ss_1 = map(int, input().split(":"))
+# hh_2, mm_2, ss_2 = map(int, input().split(":"))
+
+# time_1 = hh_1 * 3600 + mm_1 * 60 + ss_1
+# time_2 = hh_2 * 3600 + mm_2 * 60 + ss_2
+
+# gab = time_2 - time_1
+# if gab < 0: gab += 86400
+
+# print("{0:02d}:{1:02d}:{2:02d}".format(gab//3600, (gab%3600)//60, gab%60, sep=':'))
+
+
+# 2742 기찍 N
+# for i in range(int(input()), 0, -1):
+#     print(i)
+
+
+# 2440 별 찍기 - 3
+# for i in range(int(input()), 0, -1):
+#     for _ in range(i):
+#         print('*', end='')
+#     print()
+
+
+# 2441 별 찍기 - 4
+# num = int(input())
+# for i in range(num, 0, -1):
+#     for _ in range(num-i):
+#         print(' ',end='')
+#     for _ in range(i):
+#         print('*', end='')
+#     print()
+
+
+# 8393 합
+# num = int(input())
+# print((1+num)*num//2)
+
+
+# 5565 영수증
+# import sys
+# input = sys.stdin.readline
+
+# target_price = int(input())
+# for _ in range(9):
+#     target_price -= int(input())
+# print(target_price)
+
+# 10950 A + B - 3
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     print(sum(map(int, input().split())))
+
+# 10952 A + B - 5
+# import sys
+# input = sys.stdin.readline
+
+# while True:
+#     a, b = map(int, input().split())
+#     if a == 0 : break
+#     else: print(a+b)
+
+
+# 10984 내 학점을 구해줘
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     credit_hours = 0
+#     sum = 0
+#     for i in range(int(input())):
+#         c, g = map(float, input().split())
+#         c = int(c)
+#         credit_hours += c
+#         sum += c * g
+
+#     print(credit_hours, round(sum/credit_hours, 1))
+
+
+# 10833 사과
+# import sys
+# input = sys.stdin.readline
+
+# sum = 0
+# for _ in range(int(input())):
+#     students_num, apples_num = map(int, input().split())
+#     while apples_num >= 0:
+#         apples_num -= students_num
+#     # print(apples_num + students_num)
+#     sum += apples_num + students_num
+# print(sum)
