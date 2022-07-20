@@ -6050,7 +6050,8 @@ dfs/bfs
 # gab = time_2 - time_1
 # if gab < 0: gab += 86400
 
-# print("{0:02d}:{1:02d}:{2:02d}".format(gab//3600, (gab%3600)//60, gab%60, sep=':'))
+# # print("{0:02d}:{1:02d}:{2:02d}".format(gab//3600, (gab%3600)//60, gab%60, sep=':'))
+# print("{0:02d}:{1:02d}:{2:02d}".format(gab//3600, (gab%3600)//60, gab%60))
 
 
 # 2742 기찍 N
@@ -6134,3 +6135,244 @@ dfs/bfs
 #     # print(apples_num + students_num)
 #     sum += apples_num + students_num
 # print(sum)
+
+
+# 2443 별 찍기 - 6
+# num = int(input())
+# for i in range(num):
+#     # left
+#     for _ in range(i):
+#         print(' ', end='')
+#     for _ in range(num-i-1):
+#         print('*', end='')
+    
+#     # mid
+#     print('*', end='')
+
+#     # right
+#     for _ in range(num-i-1):
+#         print('*', end='')
+    
+#     # '\n'
+#     print()
+
+
+# 2444 별 찍기 - 7
+# num = int(input())
+# for i in range(num):
+#     print(' ' * (num-i-1), end='')
+#     print('*' * (2*i + 1), end='')
+#     print()
+
+# for i in range(num-2, -1, -1):
+#     print(' ' * (num-i-1), end='')
+#     print('*' * (2*i + 1), end='')
+#     print()
+
+
+# 2522 별 찍기 - 12
+# num = int(input())
+# for i in range(num):
+#     print(' ' * (num-i-1), end='')
+#     print('*' * (i+1))
+
+# for i in range(num-2, -1, -1):
+#     print(' ' * (num-i-1), end='')
+#     print('*' * (i+1))
+
+
+# 2523 별 찍기 - 13
+# num = int(input())
+# for i in range(num):
+#     print('*' * (i+1))
+# for i in range(num-2, -1, -1):
+#     print('*' * (i+1))
+
+
+# 9325 얼마?
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     s = int(input())
+#     for _ in range(int(input())):
+#         q, p = map(int, input().split())
+#         s += q*p
+#     print(s)
+
+
+# 2445 별 찍기 - 8
+# num = int(input())
+# for i in range(num):
+#     print('*' * (i+1), end='')
+#     print(' ' * 2*(num-i-1), end='')
+#     print('*' * (i+1))
+
+# for i in range(num-2, -1, -1):
+#     print('*' * (i+1), end='')
+#     print(' ' * 2*(num-i-1), end='')
+#     print('*' * (i+1))
+
+
+# 2446 별 찍기 - 9
+# num = int(input())
+# for i in range(num):
+#     print(' ' * i, end='')
+#     print('*' * (2*(num-i-1)+1))
+
+# for i in range(num-2, -1, -1):
+#     print(' ' * i, end='')
+#     print('*' * (2*(num-i-1)+1))
+
+
+# 2010 플러그
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# sum = -(num-1)
+# for _ in range(num):
+#     sum += int(input())
+# print(sum)
+
+
+# 10178 할로윈의 사탕
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     c, v = map(int, input().split())
+#     print("You get {0} piece(s) and your dad gets {1} piece(s).".format(c//v, c%v))
+
+
+# 9295 주사위
+# import sys
+# input = sys.stdin.readline
+
+# for i in range(1, int(input())+1):
+#     print("Case {0}: {1}".format(i, sum(map(int, input().split()))))
+
+
+# 10569 다면체
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     v, e = map(int, input().split())
+#     print(-v+e+2)
+
+
+# 2921 도미노
+# 밑부분 + 윗부분
+# sigma from k=1 to n, (k * (k+1)) + (k * (k+1))/2
+# n = int(input())
+# print(n*(n+1)*(n+2)//2)
+
+
+# 10995 별 찍기 - 20
+# n = int(input())
+# for i in range(n):
+#     if i % 2 == 1: print(' ', end='') 
+#     print('*', end='')
+#     print(' *' * (n-1))
+
+
+# 10991 별 찍기 - 16
+# n = int(input())
+# for i in range(n):
+#     print(' ' * (n-i-1), end='')
+#     print('*', end='')
+#     print(' *' * i)
+
+
+# 2581 소수
+# import sys
+# input = sys.stdin.readline
+
+# def prime_check(num):
+#     if num == 1 : return False
+#     elif num == 2 : return True
+#     elif num % 2 == 0 : return False
+#     else:
+#         for i in range(3, num//3 +1, 2):
+#             if num % i == 0 : return False
+#         return True
+
+# def solve():
+#     m = int(input())
+#     n = int(input())
+#     sum, min_prime_num = 0, -1
+
+#     for i in range(m, n+1):
+#         if prime_check(i) == True:
+#             sum += i
+#             if min_prime_num == -1:
+#                 min_prime_num = i
+
+#     if min_prime_num == -1: print(-1)
+#     else: print(sum, min_prime_num, sep='\n')
+
+# solve()
+
+
+# 2501 약수 구하기
+# n, k = map(int, input().split())
+# # from 1 to n//2
+# for i in range(1, n//2+1):
+#     if n % i == 0:
+#         k -= 1
+#         if k == 0:
+#             print(i)
+#             quit()
+# # n % n == 0
+# k -= 1
+# if k == 0: print(n)
+# else: print(0)
+
+
+# 2475 검증수
+# def str_to_squared_num(num):
+#     return int(num) ** 2
+
+# print(sum(map(str_to_squared_num, input().split())) % 10)
+
+
+# 2576 홀수
+# import sys
+# input = sys.stdin.readline
+
+# sum_odd_num, min_odd_num = 0, 100
+# for _ in range(7):
+#     num = int(input())
+#     if num % 2 == 1:
+#         sum_odd_num += num
+#         if min_odd_num > num : min_odd_num = num
+
+# if min_odd_num == 100: print(-1)
+# else: print(sum_odd_num, min_odd_num, sep = '\n')
+
+
+# 9085 더하기
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     input()
+#     print(sum(map(int, input().split())))
+
+
+# 2490 윷놀이
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(3):
+#     yut_val = sum(map(int, input().split()))
+#     if yut_val == 4: print('E')
+#     elif yut_val == 3: print('A')
+#     elif yut_val == 2: print('B')
+#     elif yut_val == 1: print('C')
+#     else: print('D')
+
+# 20문제 done !
+
+
