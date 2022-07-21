@@ -6373,6 +6373,289 @@ dfs/bfs
 #     elif yut_val == 1: print('C')
 #     else: print('D')
 
-# 20문제 done !
+
+# 10797 10부제
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n = int(input())
+#     n_list = list(map(int, input().split()))
+#     sum = 0
+
+#     for i in n_list:
+#         if i == n:
+#             sum += 1
+#     print(sum)
+
+# solve()
 
 
+# 2506 점수계산
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# n_list = list(map(int, input().split()))
+# add_num, sum = 0, 0
+
+# for i in n_list:
+#     if i == 1:
+#         add_num += 1
+#         sum += add_num
+#     else: add_num = 0
+
+# print(sum)
+
+# Python 배우기 51~100 마지막 문제
+# 2455 지능형 기차
+# import sys
+# input = sys.stdin.readline
+
+# max, number_of_humans = 0, 0
+# for _ in range(4):
+#     sub_num, add_num = map(int, input().split())
+#     number_of_humans -= sub_num - add_num
+#     if max < number_of_humans :
+#         max = number_of_humans
+
+# print(max)
+
+
+# 2908 상수
+# a, b = map(list, input().split())
+# a.reverse(), b.reverse()
+# a = 100 * int(a[0]) + 10 * int(a[1]) + int(a[2])
+# b = 100 * int(b[0]) + 10 * int(b[1]) + int(b[2])
+
+# if a > b : print(a)
+# else: print(b)
+
+
+# 지능형 기차 2
+# import sys
+# input = sys.stdin.readline
+
+# max, number_of_humans = 0, 0
+# for _ in range(10):
+#     sub_num, add_num = map(int, input().split())
+#     number_of_humans -= sub_num - add_num
+#     if max < number_of_humans :
+#         max = number_of_humans
+
+# print(max)
+
+
+# 2592 대표값
+# import sys
+# input = sys.stdin.readline
+
+# num_dict = dict()
+# sum = 0
+# for _ in range(10):
+#     num = int(input())
+#     sum += num
+
+#     if num in num_dict : num_dict[num] += 1
+#     else: num_dict[num] = 1
+
+# num_dict = sorted(num_dict.items(), key=lambda x:-x[1])
+# print(sum//10, num_dict[0][0], sep='\n')
+
+
+# 2711 오타맨 고창영
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     n, input_str = map(str, input().split())
+#     n, input_str = int(n), list(input_str)
+
+#     input_str.pop(n-1)
+#     print(*input_str, sep='')
+
+
+# 3052 나머지
+# import sys
+# input = sys.stdin.readline
+
+# remainder_list, ans = [0] * 42, 0
+# for _ in range(10):
+#     remainder_list[int(input())%42] += 1
+# for i in remainder_list:
+#     if i != 0 : ans += 1
+
+# print(ans)
+
+
+# 1292 쉽게 푸는 문제
+# n_list, n = [], 1
+# while len(n_list) < 1000:
+#     for i in range(n):
+#         n_list.append(n)
+#     n += 1
+# # print(n_list)
+
+# a, b = map(int, input().split())
+# print(sum(n_list[a-1:b]))
+
+
+# 3460 이진수
+# for _ in range(int(input())):
+#     n_list, n = [], int(input())
+#     while n > 0:
+#         n_list.append(n%2)
+#         n //= 2
+    
+#     for i in range(len(n_list)):
+#         if n_list[i] == 1: print(i, end=' ')
+
+
+# 5054 주차의 신
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     input()
+#     x_list = sorted(list(map(int, input().split())))
+#     print(2*(x_list[-1]-x_list[0]))
+
+
+# 2822 점수 계산
+# import sys
+# input = sys.stdin.readline
+
+# n_list = []
+# for i in range(1, 9):
+#     n_list.append([int(input()), i])
+
+# # sort
+# n_list = sorted(n_list, key=lambda x:-x[0])[:5]
+# n_list = sorted(n_list, key=lambda x:x[1])
+# # print(*n_list)
+
+# # sum
+# sum = 0
+# for i in n_list:
+#     sum += i[0]
+
+# # print
+# print(sum)
+# for i in n_list:
+#     print(i[1], end=' ')
+
+
+# 2750 수 정렬하기
+# import sys
+# input = sys.stdin.readline
+
+# n_list = []
+# for _ in range(int(input())):
+#     n_list.append(int(input()))
+
+# print(*sorted(n_list), sep='\n')
+
+
+# 2752 세수정렬
+# n_list = list(map(int, input().split()))
+# print(*sorted(n_list))
+
+
+# 5543 상근날드
+# import sys
+# input = sys.stdin.readline
+
+# min_burger_price, min_beverage_price = 2000, 2000
+# for _ in range(3):
+#     burger_price = int(input())
+#     if min_burger_price > burger_price:
+#         min_burger_price = burger_price
+# for _ in range(2):
+#     beverage_price = int(input())
+#     if min_beverage_price > beverage_price:
+#         min_beverage_price = beverage_price
+
+# print(min_burger_price + min_beverage_price - 50)
+
+
+# 2587 대표값2
+# import sys
+# input = sys.stdin.readline
+
+# n_list = []
+# for _ in range(5):
+#     n_list.append(int(input()))
+
+# print(sum(n_list)//5, sorted(n_list)[2], sep='\n')
+
+
+# 1427 소트인사이드
+# list_n = sorted(list(input()), reverse = True)
+# for i in range(len(list_n)):
+#     print(list_n[i], end='')
+
+
+# 2309 일곱 난쟁이
+# import sys
+# input = sys.stdin.readline
+
+# height_list = []
+# not_dwarf_height_list = []
+# for _ in range(9):
+#     height_list.append(int(input()))
+
+# height_sum = sum(height_list)
+# # print(height_sum)
+
+# for ones_height in height_list:
+#     tmp_height_sum = height_sum - ones_height
+
+#     for the_others_height in height_list:
+#         if ones_height == the_others_height: continue
+#         elif tmp_height_sum - the_others_height == 100:
+#             not_dwarf_height_list.extend([ones_height, the_others_height])
+#             break
+
+#     if len(not_dwarf_height_list) != 0: break
+# # print(not_dwarf_height_list)
+
+# for height in not_dwarf_height_list:
+#     height_list.remove(height)
+
+# print(*sorted(height_list), sep='\n')
+
+
+# 9076 점수 집계
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     score_list = sorted(list(map(int, input().split())))
+#     if score_list[3] - score_list[1] >= 4: print("KIN")
+#     else: print(sum(score_list[1:4]))
+
+
+# 2693 N번째 큰 수
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     print(sorted(list(map(int, input().split())))[-3])
+
+
+# 5176 대회 자리
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     p, m = map(int, input().split())
+#     # 0 ~ m
+#     seat_list = [0]*(m+1)
+#     for _ in range(p):
+#         seat_list[int(input())] += 1
+
+#     sum = 0
+#     for num in seat_list:
+#         if num > 1:
+#             sum += num-1
+#     print(sum)
