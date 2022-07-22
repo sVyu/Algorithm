@@ -6693,3 +6693,249 @@ dfs/bfs
 
 
 # 10809 알파벳 찾기
+# str_list = list(input())
+# alphabet_list = [-1] * 26
+# for i in range(len(str_list)):
+#     if alphabet_list[ord(str_list[i])-97] == -1:
+#         alphabet_list[ord(str_list[i])-97] = i
+
+# print(*alphabet_list)
+
+
+# 3058 짝수를 찾아라
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     min_even_num, sum_even_num = 100, 0
+#     num_list = list(map(int, input().split()))
+
+#     for i in num_list:
+#         if i % 2 == 0:
+#             sum_even_num += i
+#             if min_even_num > i:
+#                 min_even_num = i
+    
+#     print(sum_even_num, min_even_num)
+
+
+# 5800 성적 통계
+# import sys
+# input = sys.stdin.readline
+
+# for i in range(1, int(input())+1):
+#     largest_gab = 0
+#     num_list = sorted(list(map(int, input().split()))[1:])
+#     for j in range(len(num_list)-1):
+#         gab = num_list[j+1] - num_list[j]
+#         if largest_gab < gab: largest_gab = gab
+
+#     print("Class", i)
+#     print("Max {0}, Min {1}, Largest gap {2}".format(num_list[-1], num_list[0], largest_gab))
+
+
+# 5576 콘테스트
+# import sys
+# input = sys.stdin.readline
+
+# num_list_1 = [int(input()) for _ in range(10)]
+# num_list_2 = [int(input()) for _ in range(10)]
+
+# print(sum(sorted(num_list_1, reverse = True)[:3]), sum(sorted(num_list_2, reverse = True)[:3]))
+
+
+# 11047 동전0
+# import sys
+# input = sys.stdin.readline
+
+# n, k = map(int, input().split())
+# coin_list = [int(input()) for _ in range(n)]
+# total_coin = 0
+
+# for coin in coin_list[::-1]:
+#     if k >= coin :
+#         total_coin += k // coin
+#         k %= coin
+
+# print(total_coin)
+
+
+# 10953 A + B - 6
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     print(sum(map(int, input().split(","))))
+
+
+# 2902 KMP는 왜 KMP일까?
+# str_list = list(input().split('-'))
+# for each_str in str_list:
+#     print(each_str[0], end='')
+
+
+# 1357 뒤집힌 덧셈
+# def Rev(num):
+#     return_num, mul_num = 0, 1
+#     num = list(str(num))
+
+#     for i in range(len(num)):
+#         return_num += int(num[i]) * mul_num
+#         mul_num *= 10
+
+#     return return_num
+
+# x, y = map(int, input().split())
+# print(Rev(Rev(x)+Rev(y)))
+
+
+# 10987 모음의 개수
+# str_list = list(input())
+# sum = 0
+# for alphabet in str_list:
+#     if alphabet in ['a','e','i','o','u']:
+#         sum += 1
+
+# print(sum)
+
+
+# 4458 첫 글자를 대문자로
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     str_list = list(input())
+#     if 97 <= ord(str_list[0]) < 123:
+#         str_list[0] = chr(ord(str_list[0])-32)
+
+#     print(*str_list, sep='', end='')
+
+
+# 11721 열 개씩 끊어 출력하기
+# str_list = list(input())
+# check_10 = 0
+# for alphabet in str_list:
+#     print(alphabet, end='')
+#     check_10 += 1
+
+#     if check_10 == 10:
+#         check_10 = 0
+#         print()
+
+
+# 10821 정수의 개수
+# n_list = list(map(int, input().split(',')))
+# print(len(n_list))
+# print(len(list(map(int, input().split(',')))))
+
+# 10808 알파벳 개수
+# str_list = list(input())
+# alphabet_list = [0] * 26
+
+# for alphabet in str_list:
+#     alphabet_list[ord(alphabet)-97] += 1
+
+# print(*alphabet_list)
+
+
+# 5218 알파벳 거리
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     standard_list, target_list = map(list, input().split())
+#     # print(standard_list, target_list)
+
+#     print("Distances:", end=' ')
+#     for i in range(len(standard_list)):
+#         ans = ord(target_list[i]) - ord(standard_list[i])
+#         if ans < 0 : ans += 26
+#         print(ans, end=' ')
+#     print()
+
+
+# 9086 문자열
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     str_list = list(input().rstrip())
+#     print(str_list[0], str_list[-1], sep='')
+
+
+# 11365 !밀비 급일
+# import sys
+# input = sys.stdin.readline
+
+# while True:
+#     str_list = input().rstrip()
+#     if str_list == 'END': break
+#     else: str_list = list(str_list)
+
+#     print(*str_list[::-1], sep='')
+
+
+# 11170 0의 개수
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     n, m = map(int, input().split())
+#     count_zero = 0
+#     for num in range(n, m+1):
+#         num = list(str(num))
+#         for i in num:
+#             if i == '0':
+#                 count_zero += 1
+
+#     print(count_zero)
+
+
+# 11655 ROT13
+# str_list = list(input())
+# for char in str_list:
+#     alphabet_num = ord(char)
+
+#     # upper_case
+#     if 65 <= ord(char) < 91:
+#         alphabet_num += 13
+#         if 91 <= alphabet_num:
+#             alphabet_num -= 26
+
+#     # lower_case
+#     elif 97 <= ord(char) < 123:
+#         alphabet_num += 13
+#         if 123 <= alphabet_num:
+#             alphabet_num -= 26
+    
+#     print(chr(alphabet_num), end='')
+
+
+# 1676 팩토리얼 0의 개수
+# num = int(input())
+# count_2, count_5 = 0, 0
+
+# for i in range(2, num+1):
+#     tmp_num = i
+#     while tmp_num % 2 == 0:
+#         tmp_num //= 2
+#         count_2 += 1
+    
+#     while tmp_num % 5 == 0:
+#         tmp_num //= 5
+#         count_5 += 1
+
+#     # print(i, count_2, count_5)
+# print(min(count_2, count_5))
+
+# num = int(input())
+# count_5 = 0
+
+# for i in range(5, num+1):
+#     tmp_num = i
+    
+#     while tmp_num % 5 == 0:
+#         tmp_num //= 5
+#         count_5 += 1
+
+# print(count_5)
