@@ -6659,3 +6659,37 @@ dfs/bfs
 #         if num > 1:
 #             sum += num-1
 #     print(sum)
+
+
+# 3040 백설 공주와 일곱 난쟁이
+# import sys
+# input = sys.stdin.readline
+
+# height_list, not_dwarf_height_list = [], []
+# for _ in range(9):
+#     height_list.append(int(input()))
+
+# height_sum = sum(height_list)
+# # print(height_sum)
+
+# for ones_height in height_list:
+#     tmp_height_sum = height_sum - ones_height
+
+#     for the_others_height in height_list:
+#         if ones_height == the_others_height: continue
+#         elif tmp_height_sum - the_others_height == 100:
+#             not_dwarf_height_list.extend([ones_height, the_others_height])
+#             break
+
+#     if len(not_dwarf_height_list) != 0: break
+# # print(not_dwarf_height_list)
+
+# for height in not_dwarf_height_list:
+#     height_list.remove(height)
+
+# print(*height_list, sep='\n')
+
+# ↑ 이거 제출하면서 시작 ~
+
+
+# 10809 알파벳 찾기
