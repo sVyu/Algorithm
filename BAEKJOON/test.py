@@ -6939,3 +6939,80 @@ dfs/bfs
 #         count_5 += 1
 
 # print(count_5)
+
+
+# 2579 계단 오르기
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# score_list = [int(input()) for _ in range(n)]
+# score_list.insert(0, 0)
+# # print(score_list)
+# dp_list = [[0]*(n+1) for _ in range(3)]
+# # print(dp_list)
+
+# # from 1 to n
+# for i in range(1, n+1):
+#     dp_list[0][i] = dp_list[2][i-1] + score_list[i]
+#     dp_list[1][i] = dp_list[0][i-1] + score_list[i]
+#     dp_list[2][i] = max(dp_list[0][i-1], dp_list[1][i-1])
+
+# # for y in range(3):
+# #     print(dp_list[y])
+
+# print(max(dp_list[0][n], dp_list[1][n]))
+
+
+# 5585 거스름돈
+# n = 1000 - int(input())
+# coin_list = [500, 100, 50, 10, 5, 1]
+# coin_count = 0
+# for coin in coin_list:
+#     if n >= coin:
+#         coin_count += n // coin
+#         n %= coin
+
+# print(coin_count)
+
+
+# 18185 라면 사기 (Small)
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# fac_list = list(map(int, input().split()))
+# start_index, end_index = 0, 0
+# sum = 0
+
+# while start_index < n :
+#     # index initialization
+#     if fac_list[start_index] == 0:
+#         start_index += 1
+#         continue
+#     end_index = start_index
+#     # print(start_index, end_index)
+
+#     # increasing end_index (max : start_index + 2)
+#     end_plus_check = 0
+#     while end_index+1 < n and fac_list[end_index+1] > 0 and end_plus_check < 2:
+#         end_index += 1
+#         end_plus_check += 1
+#     min_val = min(fac_list[start_index : end_index+1])
+#     # print(min_val, end_index, start_index)
+
+#     # index gab - 2 step, 1 step, 0 step(same)
+#     if end_index - start_index == 2:
+#         sum += min_val * 7
+#     elif end_index - start_index == 1:
+#         sum += min_val * 5
+#     elif end_index == start_index:
+#         sum += min_val * 3
+
+#     # sub calculated sum
+#     for index in range(start_index, end_index+1):
+#         fac_list[index] -= min_val
+
+# print(sum)
+        
+           
