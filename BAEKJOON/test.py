@@ -7015,4 +7015,89 @@ dfs/bfs
 
 # print(sum)
         
-           
+
+# 1237 정ㅋ벅ㅋ
+# clear
+
+# 5525 IOIOI - class 3
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# m = int(input())
+# str_list = list(input().rstrip())
+# ioi_count_list = [0] * m
+
+# ioi_count, o_count = 0, 1000
+# for idx in range(m):
+#     if str_list[idx] == 'I':
+#         # if (0 < idx and str_list[idx-1] == 'I'):
+#         # not IOI pattern
+#         if  o_count != 1:
+#             ioi_count = 0
+#         # IOI (IO'I') pattern
+#         else:
+#             ioi_count += 1
+#             ioi_count_list[idx] = ioi_count
+#         o_count = 0
+#     else: # 'O'
+#         o_count += 1
+# #     print(idx, ioi_count, o_count)
+# # print(ioi_count_list)
+
+# sum = 0
+# for val in ioi_count_list:
+#     if val >= n:
+#         sum += 1
+
+# print(sum)
+
+
+# 17219 비밀번호 찾기
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# pwd_dict = dict()
+# for _ in range(n):
+#     domain, pwd = map(str, input().rstrip().split())
+#     # print(domain, pwd)
+#     pwd_dict[domain] = pwd
+
+# for _ in range(m):
+#     print(pwd_dict[input().rstrip()])
+
+
+# 2630 색종이 만들기
+import sys
+input = sys.stdin.readline
+
+def count_color_paper(n, ny, nx, graph, w_count, b_count):
+    first_color_val = graph[ny][nx]
+    diff_color_check = False
+    for y in range(ny, ny+n):
+        for x in range(nx, nx+n):
+            if graph[y][x] != first_color_val:
+                diff_color_check = True
+                break
+        if diff_color_check == True: break
+
+    if diff_color_check : # True
+        n //= 2
+        count_color_paper(n, ny, nx, graph, w_count, b_count)
+        count_color_paper(n, ny, nx+n, graph, w_count, b_count)
+        count_color_paper(n, ny+n, nx, graph, w_count, b_count)
+        count_color_paper(n, ny+n, nx+n, graph, w_count, b_count)
+    else: # False
+        if first_color_val == 0: w_count += 1
+        else: b_count += 1
+
+    if n == 0:
+        return w_count, b_count
+
+n = int(input())
+graph = [list(map(int, input().split())) for _ in range(n)]
+w_count, b_count = 0, 0
+# print(graph)
+
+print(count_color_paper(n, 0, 0, graph, w_count, b_count))
