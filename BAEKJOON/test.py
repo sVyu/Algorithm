@@ -7069,35 +7069,185 @@ dfs/bfs
 
 
 # 2630 색종이 만들기
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
 
-def count_color_paper(n, ny, nx, graph, w_count, b_count):
-    first_color_val = graph[ny][nx]
-    diff_color_check = False
-    for y in range(ny, ny+n):
-        for x in range(nx, nx+n):
-            if graph[y][x] != first_color_val:
-                diff_color_check = True
-                break
-        if diff_color_check == True: break
+# def count_color_paper(n, ny, nx, graph):
+#     global w_count, b_count
+#     first_color_val = graph[ny][nx]
+#     diff_color_check = False
 
-    if diff_color_check : # True
-        n //= 2
-        count_color_paper(n, ny, nx, graph, w_count, b_count)
-        count_color_paper(n, ny, nx+n, graph, w_count, b_count)
-        count_color_paper(n, ny+n, nx, graph, w_count, b_count)
-        count_color_paper(n, ny+n, nx+n, graph, w_count, b_count)
-    else: # False
-        if first_color_val == 0: w_count += 1
-        else: b_count += 1
+#     # diff_color_check == False <- all_same_color ! 
+#     for y in range(ny, ny+n):
+#         for x in range(nx, nx+n):
+#             if graph[y][x] != first_color_val:
+#                 diff_color_check = True
+#                 break
+#         if diff_color_check == True: break
 
-    if n == 0:
-        return w_count, b_count
+#     if diff_color_check : # True
+#         n //= 2
+#         count_color_paper(n, ny, nx, graph)
+#         count_color_paper(n, ny, nx+n, graph)
+#         count_color_paper(n, ny+n, nx, graph)
+#         count_color_paper(n, ny+n, nx+n, graph)
+#     else: # False
+#         if first_color_val == 0: w_count += 1
+#         else: b_count += 1
+    
+#     # print(n, ny, nx, w_count, b_count)
+#     # return w_count, b_count
 
-n = int(input())
-graph = [list(map(int, input().split())) for _ in range(n)]
-w_count, b_count = 0, 0
-# print(graph)
+# def solve():
+#     n = int(input())
+#     graph = [list(map(int, input().split())) for _ in range(n)]
+#     global w_count, b_count
+#     w_count, b_count = 0, 0
+#     # print(graph)
 
-print(count_color_paper(n, 0, 0, graph, w_count, b_count))
+#     count_color_paper(n, 0, 0, graph)
+#     print(w_count, b_count, sep='\n')
+
+# solve()
+
+
+# 7662 이중 우선순위 큐
+# how solve is this
+# from queue import PriorityQueue
+# que = PriorityQueue()
+
+# que.put((3, 'Apple'))
+# que.put((1, 'Banana'))
+# que.put((2, 'Cherry'))
+
+# print(que.get()[0])  # Banana
+# print(que.get()[1])  # Cherry
+# print(que.get()[1])  # Apple
+
+# idea !!
+# import sys
+# from queue import PriorityQueue
+
+# que.put(1)
+# que.put(2)
+# que.put(3)
+
+# minus_que = que
+# # minus_que.pop()
+# print(minus_que.queue.pop())
+# print(minus_que.queue.pop())
+# # print(minus_que.queue.pop())
+
+# print(minus_que.queue)
+# print(que.queue)
+
+# clear ?
+# 1 que -> 틀렸습니다
+# 2 que -> 1% 시간 초과
+# 4 que -> 3% 시간 초과
+
+# import sys
+# from queue import PriorityQueue
+# input = sys.stdin.readline
+
+# def check_del_que(target_que, del_que):
+#     while del_que.queue:
+#         val_target_que_get = target_que.get()
+#         val_del_que_get = del_que.get()
+
+#         if val_target_que_get != val_del_que_get:
+#             target_que.put(val_target_que_get)
+#             del_que.put(val_del_que_get)
+#             break
+
+# def solve():
+#     for _ in range(int(input())):
+#         min_que, max_que = PriorityQueue(), PriorityQueue()
+#         min_del_que, max_del_que = PriorityQueue(), PriorityQueue()
+#         for _ in range(int(input())):
+#             operand, val = map(str, input().split())
+#             val = int(val)
+
+#             if operand == 'I':
+#                 min_que.put(val)
+#                 max_que.put(-val)
+#             else: # 'D'
+#                 if val == -1:
+#                     if min_que.queue:
+#                         max_del_que.put(-min_que.get())
+#                         # check_del_que(min_que, min_del_que)
+
+#                 else: # val == 1
+#                     if max_que.queue:
+#                         min_del_que.put(-max_que.get())
+#                         # check_del_que(max_que, max_del_que)
+            
+#             check_del_que(min_que, min_del_que)
+#             check_del_que(max_que, max_del_que)
+#             # print(min_que.queue, max_que.queue)
+
+#         if not min_que.queue: print('EMPTY')
+#         else:
+#             print(-max_que.get(), min_que.get())
+
+# solve()
+
+
+# 2156 포도주 시식
+# 계단 오르기랑 비슷하지만 연속으로 안 마셔도 된다는 게 point
+# dp 계산을 다르게 적용해야 한다 ~
+"""
+6
+1000
+1000
+1
+1
+1000
+1000
+정답 : 4000
+출력 : 3001
+"""
+# # try 1
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# dp_list = [[0]*(n+1) for _ in range(3)]
+
+# for i in range(1, n+1):
+#     amount_of_wine = int(input())
+
+#     if amount_of_wine == 0:
+#         dp_list[2][i] = max(dp_list[j][i-1] for j in range(3))
+#     else:
+#         dp_list[0][i] = dp_list[2][i-1] + amount_of_wine
+#         dp_list[1][i] = dp_list[0][i-1] + amount_of_wine
+#         dp_list[2][i] = max(dp_list[0][i-1], dp_list[1][i-1])
+
+# # print(max(dp_list[0][n], dp_list[1][n], dp_list[2][n]))
+# print(max(dp_list[j][n] for j in range(3)))
+
+# # for y in range(3):
+# #     print(dp_list[y])
+
+
+# try 2 -> success
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# dp_list = [0] * (n+1)
+# wine_list = [int(input()) for _ in range(n)]
+# wine_list.insert(0, 0)
+
+# # 1 <= n <= 10000
+# dp_list[1] = wine_list[1]
+# if n >= 2:
+#     dp_list[2] = wine_list[2] + dp_list[1]
+
+# for i in range(3, n+1):
+#     dp_list[i] = max(dp_list[i-1], (dp_list[i-2] + wine_list[i]),\
+#                      (dp_list[i-3] + wine_list[i-1] + wine_list[i]))
+
+# print(dp_list[n])
