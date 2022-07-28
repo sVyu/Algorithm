@@ -7251,3 +7251,175 @@ dfs/bfs
 #                      (dp_list[i-3] + wine_list[i-1] + wine_list[i]))
 
 # print(dp_list[n])
+
+
+# 절댓값 힙
+# import sys
+# from queue import PriorityQueue
+# input = sys.stdin.readline
+
+# minus_que, plus_que = PriorityQueue(), PriorityQueue()
+
+# for _ in range(int(input())):
+#     val = int(input())
+#     if val < 0:
+#         minus_que.put(-val)
+#     elif val > 0:
+#         plus_que.put(val)
+#     else:
+#         is_empty_minus_que = not minus_que.queue
+#         is_empty_plus_que = not plus_que.queue
+
+#         if is_empty_minus_que and is_empty_plus_que:
+#             print(0)
+#         elif not is_empty_minus_que and is_empty_plus_que:
+#             print(-minus_que.get())
+#         elif is_empty_minus_que and not is_empty_plus_que:
+#             print(plus_que.get())
+#         else:
+#             minus_val = minus_que.queue[0]
+#             plus_val = plus_que.queue[0]
+            
+#             if minus_val <= plus_val :
+#                 print(-minus_que.get())
+#             else:
+#                 print(plus_que.get())
+
+
+# 1107 리모컨
+# import sys
+# input = sys.stdin.readline
+
+# channel = str(input().rstrip())
+# int_channel = int(channel)
+
+# n, n_list = int(input()), []
+# if n > 0 :
+#     n_list = list(map(int, input().split()))
+# # print(n_list)
+# low_max_ans, high_min_ans = 999999, 999999
+
+# # low_max_ans
+# for i in range(int_channel, -1, -1):
+#     pos_check = True
+#     tmp_i = i
+
+#     # for j in range(len_channel):
+#     for j in range(len(str(i))):
+#         # print(tmp_i)
+#         if tmp_i % 10 in n_list:
+#             pos_check = False
+#             break
+#         tmp_i //= 10
+
+#     if pos_check :
+#         # print("[ans1] i : ", i)
+#         low_max_ans = len(str(i)) + int_channel - i
+#         break
+
+# # high_min_ans
+# for i in range(int_channel, int_channel+500000):
+#     pos_check = True
+#     tmp_i = i
+
+#     for j in range(len(str(i))):
+#         if tmp_i % 10 in n_list:
+#             pos_check = False
+#             break
+#         tmp_i //= 10
+    
+#     if pos_check:
+#         # print("[ans2] i : ", i)
+#         high_min_ans = len(str(i)) + i - int_channel
+#         break
+
+# print(min(low_max_ans, high_min_ans, abs(100-int_channel)))
+
+# 10951 A + B - 4
+# import sys
+# lines = sys.stdin.readlines()
+# for line in lines:
+#     print(sum(list(map(int, line.rsplit()))))
+
+
+# 14500 테트로미노
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# g = [list(map(int, input().split())) for _ in range(n)]
+# # print(g)
+
+# # 1, I - block, col
+# max_sum = 0
+# for ny in range(0, n-3):
+#     for nx in range(m):
+#         # print(ny, nx)
+#         tmp_sum = 0
+#         for y in range(ny, ny+4):
+#             tmp_sum += g[y][nx]
+#         # print(tmp_sum)
+#         if max_sum < tmp_sum : max_sum = tmp_sum
+
+# # 1, I - block, row
+# for ny in range(n):
+#     for nx in range(0, n-3):
+#         # print(ny, nx)
+#         tmp_sum = sum(g[ny][nx:nx+4])
+#         # print(tmp_sum)
+#         if max_sum < tmp_sum : max_sum = tmp_sum
+
+# # O - block
+# for ny in range(n-1):
+#     for nx in range(n-1):
+#         # print(ny, nx)
+#         tmp_sum = 0
+#         for y in range(ny, ny+2):
+#             tmp_sum += sum(g[y][nx:nx+2])
+#             # print(g[y])
+#         # print(tmp_sum)
+#         if max_sum < tmp_sum : max_sum = tmp_sum
+
+# L - block - 8가지 경우
+# S - block - 4가지 경우
+# T - block - 4가지 경우
+
+# 2x3, 3x2 로 묶을 수 있을 듯?
+
+
+# div_num = 2
+# for div_num in range(2, 698):
+#     if 697 % div_num == 0:
+#         print(div_num)
+#         break
+
+
+# 1016 제곱 ㄴㄴ 수
+# import math
+
+# min, max = map(int, input().split())
+# check_list = [1] * (max - min + 1)
+# for num in range(2, int(math.sqrt(max))+1):
+#     div_num = num ** 2
+#     first_val = -1
+#     for val in range(min, max+1):
+#         if val % div_num == 0:
+#             first_val = val
+#             # print("[1]", first_val, val)
+#             # check_list[first_val] = 0
+#             break
+
+#     if first_val != -1:
+#         for val in range(first_val, max+1, div_num):
+#             if val-min >= max: break
+#             # print(div_num, val, min)
+#             check_list[val-min] = 0
+
+# # print(check_list)
+# print(sum(check_list))
+
+
+# 1271 엄청난 부자2
+# n, m = map(int, input().split())
+# print(n//m, n%m, sep='\n')
+
