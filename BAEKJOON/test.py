@@ -7426,3 +7426,65 @@ dfs/bfs
 # 3003 킹, 퀸, 룩, 비숍, 나이트, 폰
 # king, queen, rook, bishop, knight, pawn = map(int, input().split())
 # print(1-king, 1-queen, 2-rook, 2-bishop, 2-knight, 8-pawn)
+
+
+# H - Highly Composite Permutations 844/8
+# 좀 더 효율적으로 작성할 필요가 있음
+# import itertools
+
+# def composite_check(num):
+#     if num == 1:
+#         return False
+#     elif num == 2:
+#         return False
+#     elif num % 2 == 0:
+#         return True
+#     else:
+#         for i in range(3, (num//3)+1, 2):
+#             if num % i == 0:
+#                 return True
+#         return False
+    
+# def solve():
+#     n = int(input())
+#     num_list = [i for i in range(1, n+1)]
+
+#     # print(list(map(' '.join, itertools.permutations(num_list)))) # 3개의 원소로 수열 만들기
+#     # print(list(map(''.join, itertools.permutations(pool, 2)))) # 2개의 원소로 수열 만들기
+
+#     for tmp_num_list in itertools.permutations(num_list):
+#         print(tmp_num_list)
+
+#         composite_permutations_check = True
+#         tmp_sum = 0
+#         # 0 ~ n-1
+#         for j in range(n):
+#             tmp_sum += tmp_num_list[j]
+#             if composite_check(tmp_sum) == False:
+#                 composite_permutations_check = False
+#                 break
+
+#         if composite_permutations_check == True:
+#             print(*tmp_num_list)
+#             return
+
+#     print(-1)
+
+# solve()
+
+
+# 11727 2xn 타일링2
+n = int(input())
+dp_list = [0]*(n+1)
+dp_list[1] = 1
+
+for i in range(2, n+1):
+    dp_list[i] = 
+
+
+for y in range(3):
+    print(dp_list[y])
+
+
+# 14928 큰 수 (BIG)
+# print(int(input()) % 20000303)
