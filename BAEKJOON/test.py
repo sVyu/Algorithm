@@ -7474,17 +7474,22 @@ dfs/bfs
 
 
 # 11727 2xn 타일링2
-n = int(input())
-dp_list = [0]*(n+1)
-dp_list[1] = 1
+# n = int(input())
+# dp_list = [0]*(n+1)
+# dp_list[0], dp_list[1] = 1, 1
 
-for i in range(2, n+1):
-    dp_list[i] = 
+# for i in range(2, n+1):
+#     dp_list[i] = (dp_list[i-1] + 2*dp_list[i-2]) % 10007
 
-
-for y in range(3):
-    print(dp_list[y])
-
+# print(dp_list[n])
 
 # 14928 큰 수 (BIG)
 # print(int(input()) % 20000303)
+
+# 3733 Shares
+import sys
+
+lines = sys.stdin.readlines()
+for line in lines:
+    n, s = map(int, line.rstrip().split())
+    print(s//(n+1))
