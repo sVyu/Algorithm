@@ -7487,9 +7487,23 @@ dfs/bfs
 # print(int(input()) % 20000303)
 
 # 3733 Shares
-import sys
+# import sys
 
-lines = sys.stdin.readlines()
-for line in lines:
-    n, s = map(int, line.rstrip().split())
-    print(s//(n+1))
+# lines = sys.stdin.readlines()
+# for line in lines:
+#     n, s = map(int, line.rstrip().split())
+#     print(s//(n+1))
+
+# 9461 파도반 수열
+# import sys
+# input = sys.stdin.readline
+
+# dp_list = [0]*101
+# dp_list[1:6] = [1,1,1,2,2]
+# for i in range(6, 101):
+#     dp_list[i] = dp_list[i-1] + dp_list[i-5]
+# # print(dp_list)
+
+# for _ in range(int(input())):
+#     print(dp_list[int(input())])
+
