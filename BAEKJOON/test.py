@@ -7507,3 +7507,22 @@ dfs/bfs
 # for _ in range(int(input())):
 #     print(dp_list[int(input())])
 
+
+# 11659 구간 합 구하기 4
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# num_list = list(map(int, input().split()))
+# dp_sum_list = [0] * (n+1)
+
+# sum = 0
+# for i in range(1, n+1):
+#     sum += num_list[i-1]
+#     dp_sum_list[i] = sum
+# # print(dp_sum_list)
+
+# for _ in range(m):
+#     i, j = map(int, input().split())
+#     print(dp_sum_list[j] - dp_sum_list[i-1])
+""" ↑ 이거 제출하면서 시작 """
