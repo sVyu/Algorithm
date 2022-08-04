@@ -7525,4 +7525,57 @@ dfs/bfs
 # for _ in range(m):
 #     i, j = map(int, input().split())
 #     print(dp_sum_list[j] - dp_sum_list[i-1])
-""" ↑ 이거 제출하면서 시작 """
+
+
+# 10171 고양이
+# print(\
+# "\    /\\",
+# " )  ( ')",
+# "(  /  )",
+# " \(__)|", sep='\n')
+
+
+# 1253 좋다
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# n_list = sorted(list(map(int, input().split())))
+# idx_left, idx_right = 0, n-1
+# # print(n_list[idx_left], n_list[idx_right])
+
+# while idx_left <= idx_right:
+
+
+# 1747 소수&팰린드롬
+# def palindrome_check(num):
+#     num_list = list(map(int, str(num)))
+#     idx_left, idx_right = 0, len(num_list)-1
+
+#     while idx_left <= idx_right:
+#         if num_list[idx_left] != num_list[idx_right]:
+#             return False
+#         idx_left += 1
+#         idx_right -= 1
+#     return True
+
+# def prime_check(num):
+#     if num == 1: return False
+#     elif num == 2: return True
+#     elif num % 2 == 0: return False
+#     else:
+#         for div in range(3, (num//3)+1, 2):
+#             if num % div == 0:
+#                 return False
+#         return True
+
+# def solve():
+#     num = int(input())
+#     while True:
+#         if palindrome_check(num):
+#             if prime_check(num):
+#                 print(num)
+#                 return
+#         num += 1
+
+# solve()
