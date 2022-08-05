@@ -7579,3 +7579,19 @@ dfs/bfs
 #         num += 1
 
 # solve()
+
+
+# 1759 암호 만들기
+# import itertools
+
+# val_l, val_c = map(int, input().split())
+# chr_list = list(input().split())
+# # print(chr_list)
+
+# for ans_str in itertools.permutations(chr_list, val_l):
+#     print(*ans_str)
+
+
+# 8370 Plane
+n1, k1, n2, k2 = map(int, input().split())
+print(n1*k1 + n2*k2)
