@@ -7585,13 +7585,52 @@ dfs/bfs
 # import itertools
 
 # val_l, val_c = map(int, input().split())
-# chr_list = list(input().split())
+# chr_list = sorted(list(input().split()))
+# vowles_list = ['a', 'e', 'i', 'o', 'u']
 # # print(chr_list)
 
-# for ans_str in itertools.permutations(chr_list, val_l):
-#     print(*ans_str)
+# # for ans_str in itertools.permutations(chr_list, val_l):
+# for ans_str in itertools.combinations(chr_list, val_l):
+#     # print(*ans_str)
+#     vowles_num, consonants_num = 0, 0
+
+#     for one_chr in ans_str:
+#         if one_chr in vowles_list: vowles_num += 1
+#         else: consonants_num += 1
+    
+#     if vowles_num >= 1 and consonants_num >= 2:
+#         # print(ans_str, vowles_num, consonant_num)
+#         print(*ans_str, sep='')
 
 
 # 8370 Plane
-n1, k1, n2, k2 = map(int, input().split())
-print(n1*k1 + n2*k2)
+# n1, k1, n2, k2 = map(int, input().split())
+# print(n1*k1 + n2*k2)
+
+
+# 17626
+import math
+
+num = int(input())
+dp_list = [0] * (num+1)
+
+for i in range(1, int(math.sqrt(num))+1):
+    dp_list[i**2] = 1
+
+for i in range(1, num+1):
+    if dp_list[i] == 1:
+        # print(i, dp_list[i])
+        continue
+
+    idx_left, idx_right = 1, (i-1)
+    dp_val = 100000
+    while idx_left <= idx_right:
+        tmp_val = dp_list[idx_left] + dp_list[idx_right]
+        if dp_val > tmp_val : dp_val = tmp_val
+        
+        idx_left += 1
+        idx_right -= 1
+    dp_list[i] = dp_val
+
+# print(dp_list)
+print(dp_list[num])
