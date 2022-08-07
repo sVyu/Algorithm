@@ -7608,29 +7608,76 @@ dfs/bfs
 # print(n1*k1 + n2*k2)
 
 
-# 17626
-import math
+# 17626 For Squares
+# import math
 
-num = int(input())
-dp_list = [0] * (num+1)
+# num = int(input())
+# dp_list = [0] * (num+1)
 
-for i in range(1, int(math.sqrt(num))+1):
-    dp_list[i**2] = 1
+# for i in range(1, int(math.sqrt(num))+1):
+#     dp_list[i**2] = 1
 
-for i in range(1, num+1):
-    if dp_list[i] == 1:
-        # print(i, dp_list[i])
-        continue
+# for i in range(1, num+1):
+#     if dp_list[i] == 1:
+#         # print(i, dp_list[i])
+#         continue
 
-    idx_left, idx_right = 1, (i-1)
-    dp_val = 100000
-    while idx_left <= idx_right:
-        tmp_val = dp_list[idx_left] + dp_list[idx_right]
-        if dp_val > tmp_val : dp_val = tmp_val
-        
-        idx_left += 1
-        idx_right -= 1
-    dp_list[i] = dp_val
+#     idx_left, idx_right = 1, (i-1)
+#     dp_val = 100000
+#     while idx_left <= idx_right:
+#         tmp_val = dp_list[idx_left] + dp_list[idx_right]
+#         if dp_val > tmp_val : dp_val = tmp_val
 
-# print(dp_list)
-print(dp_list[num])
+#         idx_left += 1
+#         idx_right -= 1
+#     dp_list[i] = dp_val
+
+# # print(dp_list)
+# print(dp_list[num])
+
+
+# N-Queen 9663
+# num = int(input())
+# chess_board = [[0]*num for _ in range(num)]
+
+# for y in range(num):
+
+
+# 10819 차이를 최대로
+# import itertools
+
+# num = int(input())
+# num_list = list(map(int, input().split()))
+
+# ans = 0
+# for tmp_num_list in itertools.permutations(num_list, num):
+#     # print(tmp_num_list)
+#     gab = 0
+#     for idx in range(1, num):
+#         gab += abs(tmp_num_list[idx] - tmp_num_list[idx-1])
+#     if ans < gab : ans = gab
+
+# print(ans)
+
+
+# 1780 종이의 개수
+import sys
+input = sys.stdin.readline
+
+
+def paper_check(graph, n, nx, ny):
+    equality_check = True
+    for y in range(ny, ny+n):
+        for x in range(nx, nx+n):
+
+
+
+def solve():
+    num = int(input())
+    graph = [list(map(int, input().split())) for _ in range(num)]
+    global cnt_1, cnt_0, cnt_minus_1
+    cnt_1, cnt_0, cnt_minus_1 = 0, 0, 0
+    paper_check(graph, num, 0, 0)
+    # print(graph)
+
+solve()
