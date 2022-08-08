@@ -7661,23 +7661,54 @@ dfs/bfs
 
 
 # 1780 종이의 개수
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
+
+# def paper_check(graph, n, nx, ny):
+#     global cnt_minus_1, cnt_0, cnt_1
+#     equality_check = True
+#     start_num = graph[ny][nx]
+
+#     for y in range(ny, ny+n):
+#         for x in range(nx, nx+n):
+#             if graph[y][x] != start_num:
+#                 equality_check = False
+#                 break
+#         if equality_check == False: break
+
+#     if equality_check == False:
+#         n //= 3
+#         for new_y in range(ny, ny+(2*n)+1, n):
+#             for new_x in range(nx, nx+(2*n)+1, n):
+#                 paper_check(graph, n, new_x, new_y)
+#     else:
+#         if start_num == 1: cnt_1 += 1
+#         elif start_num == 0: cnt_0 += 1
+#         else: cnt_minus_1 += 1
+
+# def solve():
+#     num = int(input())
+#     graph = [list(map(int, input().split())) for _ in range(num)]
+#     # print(graph)
+#     global cnt_minus_1, cnt_0, cnt_1
+#     cnt_minus_1, cnt_0, cnt_1 = 0, 0, 0
+
+#     paper_check(graph, num, 0, 0)
+#     print(cnt_minus_1, cnt_0, cnt_1, sep='\n')
+
+# solve()
 
 
-def paper_check(graph, n, nx, ny):
-    equality_check = True
-    for y in range(ny, ny+n):
-        for x in range(nx, nx+n):
+# 15650 N과 M (2)
+# import itertools
 
+# n, m = map(int, input().split())
+# for i in itertools.combinations(range(1,n+1), m):
+#     print(*i)
 
+# 15652 N과 M (4)
+# import itertools
 
-def solve():
-    num = int(input())
-    graph = [list(map(int, input().split())) for _ in range(num)]
-    global cnt_1, cnt_0, cnt_minus_1
-    cnt_1, cnt_0, cnt_minus_1 = 0, 0, 0
-    paper_check(graph, num, 0, 0)
-    # print(graph)
-
-solve()
+# n, m = map(int, input().split())
+# for i in itertools.combinations_with_replacement(range(1,n+1), m):
+#     print(*i)
