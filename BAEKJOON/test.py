@@ -7712,3 +7712,20 @@ dfs/bfs
 # n, m = map(int, input().split())
 # for i in itertools.combinations_with_replacement(range(1,n+1), m):
 #     print(*i)
+
+
+# 5347 LCM
+# import sys
+# input = sys.stdin.readline
+
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def lcm(a, b):
+#     return a * b // gcd(a, b)
+
+# for _ in range(int(input())):
+#     a, b = map(int, input().split())
+#     print(lcm(a, b))
