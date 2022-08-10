@@ -7729,3 +7729,52 @@ dfs/bfs
 # for _ in range(int(input())):
 #     a, b = map(int, input().split())
 #     print(lcm(a, b))
+
+
+# 15654 N과 M (5)
+# import itertools
+
+# n, m = map(int, input().split())
+# num_list = sorted(list(map(int, input().split())))
+# for i in itertools.permutations(num_list, m):
+#     print(*i)
+
+
+# 15657 N과 M (8)
+# import itertools
+
+# n, m = map(int, input().split())
+# num_list = sorted(list(map(int, input().split())))
+# for i in itertools.combinations_with_replacement(num_list, m):
+#     print(*i)
+
+
+# 1520 내리막길
+# 시간 초과?
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
+
+# def down_bfs(graph, m, n, nx, ny, inc_xy, num):
+#     global cnt
+#     for plus_x, plus_y in inc_xy:
+#         new_x, new_y = nx + plus_x, ny + plus_y
+#         if 0 <= new_x < n and 0 <= new_y < m :
+#             if graph[new_y][new_x] < num:
+#                 if new_y == m-1 and new_x == n-1:
+#                     cnt += 1
+#                     continue
+#                 down_bfs(graph, m, n, new_x, new_y, inc_xy, graph[new_y][new_x])
+
+# def solve():
+#     m, n = map(int, input().split())
+#     graph = [list(map(int, input().split())) for _ in range(m)]
+#     # print(graph)
+#     inc_xy = [[1,0], [0,1], [-1,0], [0,-1]]
+#     global cnt
+#     cnt = 0
+
+#     down_bfs(graph, m, n, 0, 0, inc_xy, graph[0][0])
+#     print(cnt)
+
+# solve()
