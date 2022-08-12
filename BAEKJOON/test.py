@@ -7778,3 +7778,13 @@ dfs/bfs
 #     print(cnt)
 
 # solve()
+
+
+# 1269 대칭 차집합
+# import sys
+# input = sys.stdin.readline
+
+# a, b = map(int, input().split())
+# a_set = set(map(int, input().split()))
+# b_set = set(map(int, input().split()))
+# print(len(a_set) + len(b_set) - 2*len(a_set.intersection(b_set)))
