@@ -7788,3 +7788,10 @@ dfs/bfs
 # a_set = set(map(int, input().split()))
 # b_set = set(map(int, input().split()))
 # print(len(a_set) + len(b_set) - 2*len(a_set.intersection(b_set)))
+
+
+# 5337 웰컴
+print(\
+".  .   .\n"\
+"|  | _ | _. _ ._ _  _\n"\
+"|/\|(/.|(_.(_)[ | )(/.\n")
