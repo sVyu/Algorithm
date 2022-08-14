@@ -7791,7 +7791,29 @@ dfs/bfs
 
 
 # 5337 웰컴
-print(\
-".  .   .\n"\
-"|  | _ | _. _ ._ _  _\n"\
-"|/\|(/.|(_.(_)[ | )(/.\n")
+# print(\
+# ".  .   .\n"\
+# "|  | _ | _. _ ._ _  _\n"\
+# "|/\|(/.|(_.(_)[ | )(/.\n")
+
+
+# 1149 RGB거리
+# dp_list 초기화를 1000으로 하면 안 된다 !
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# num_list = [list(map(int, input().split())) for _ in range(n)]
+# dp_list = [[1000000] * 3 for _ in range(n)]
+# dp_list[0] = num_list[0]
+# # print(dp_list)
+
+# for y in range(1, n):
+#     for x in range(0, 3):
+#         for pre_x in range(0, 3):
+#             if x != pre_x:
+#                 if dp_list[y][x] > dp_list[y-1][pre_x]:
+#                     dp_list[y][x] = dp_list[y-1][pre_x]
+#         dp_list[y][x] += num_list[y][x]
+
+# print(min(dp_list[n-1]))
