@@ -7817,3 +7817,25 @@ dfs/bfs
 #         dp_list[y][x] += num_list[y][x]
 
 # print(min(dp_list[n-1]))
+
+
+# 4375 1
+# import sys
+# lines = sys.stdin.readlines()
+
+# for line in lines:
+#     num = int(line.rstrip())
+#     len_only_one_num = 1
+#     mul_num = 1
+#     target_num = 0
+
+#     while True:
+#         target_num += mul_num * 1
+
+#         if target_num % num == 0:
+#             # print(target_num, num, len_only_one_num)
+#             print(len_only_one_num)
+#             break
+
+#         len_only_one_num += 1
+#         mul_num *= 10
