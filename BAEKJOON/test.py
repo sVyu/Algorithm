@@ -7839,3 +7839,25 @@ dfs/bfs
 
 #         len_only_one_num += 1
 #         mul_num *= 10
+
+
+# 2217 로프
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# rope_list = sorted([int(input()) for _ in range(num)])
+# # print(rope_list)
+
+# # sum_of_weights = sum(rope_list)
+# num_of_ropes = len(rope_list)
+# max_wk = 0
+
+# for rope in rope_list:
+#     tmp_wk = rope * num_of_ropes
+#     if max_wk < tmp_wk:
+#         max_wk = tmp_wk
+#     num_of_ropes -= 1
+#     # print(max_wk, tmp_wk)
+
+# print(max_wk)
