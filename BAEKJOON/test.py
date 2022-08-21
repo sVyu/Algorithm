@@ -7861,3 +7861,35 @@ dfs/bfs
 #     # print(max_wk, tmp_wk)
 
 # print(max_wk)
+
+
+# 1316 그룹 단어 체커
+# import sys
+# input = sys.stdin.readline
+
+# total_group_word = 0
+
+# for _ in range(int(input())):
+#     text_list = list(input().rstrip())
+#     # print(text_list)
+#     pre_alphabet = text_list[0]
+#     check_list = [0] * 26
+#     check_list[ord(pre_alphabet)-97] = 1
+
+#     group_word_check = True
+#     for i in range(1, len(text_list)):
+#         if pre_alphabet != text_list[i]:
+#             # print(ord(text_list[i]))
+#             if check_list[ord(text_list[i])-97] == 0:
+#                 check_list[ord(text_list[i])-97] = 1
+#             else:
+#                 group_word_check = False
+#                 # print(i, text_list[i])
+#                 break
+#         pre_alphabet = text_list[i]
+#         # print(pre_alphabet)
+    
+#     if group_word_check:
+#         total_group_word += 1
+
+# print(total_group_word)
