@@ -7904,3 +7904,21 @@ dfs/bfs
 # '-..-'|_.-''-._|\n")
 
 
+# 1264 모음의 개수
+# import sys
+# input = sys.stdin.readline
+
+# vowel_list = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U']
+# while True:
+#     str_input = input().rstrip()
+#     if str_input == '#': break
+#     else:
+#         vowel_count = 0
+#         str_list = list(str_input)
+#         # print(str_list)
+
+#         for i in range(len(str_list)):
+#             if str_list[i] in vowel_list:
+#                 vowel_count += 1
+        
+#         print(vowel_count)
