@@ -7922,3 +7922,32 @@ dfs/bfs
 #                 vowel_count += 1
         
 #         print(vowel_count)
+
+
+# 2810 컵홀더
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     len_sit_list = int(input())
+#     sit_list = list(input().rstrip())
+#     # print(sit_list)
+
+#     idx, total_cup_holder = 0, 0
+#     LL_check = False
+
+#     while idx < len_sit_list:
+#         if sit_list[idx] == 'S':
+#             total_cup_holder += 1
+#             idx += 1
+#         else: # LL
+#             if not LL_check:
+#                 LL_check = True
+#                 total_cup_holder += 2
+#             else:
+#                 total_cup_holder += 1
+#             idx += 2
+
+#     print(total_cup_holder)
+
+# solve()
