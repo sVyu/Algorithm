@@ -7951,3 +7951,51 @@ dfs/bfs
 #     print(total_cup_holder)
 
 # solve()
+
+
+# 1991 트리 순회
+# import sys
+# input = sys.stdin.readline
+
+# def preorder(tree, root):
+#     print(root, end='')
+#     left, right = tree[root]
+#     # print(left, right)
+#     if left != '.': preorder(tree, left)
+#     if right != '.': preorder(tree, right)
+
+# def inorder(tree, root):
+#     left, right = tree[root]
+
+#     if left != '.': inorder(tree, left)
+#     print(root, end='')
+#     if right != '.': inorder(tree, right)
+
+# def postorder(tree, root):
+#     left, right = tree[root]
+    
+#     if left != '.': postorder(tree, left)
+#     if right != '.': postorder(tree, right)
+#     print(root, end='')
+
+# def solve():
+#     node_num = int(input())
+#     # tree = [[] for _ in range(node_num)]
+#     tree = dict()
+
+#     for i in range(node_num):
+#         root, left, right = map(str, input().split())
+#         # print(root, left, right)
+
+#         # tree[i] = [root, left, right]
+#         tree[root] = [left, right]
+
+#     # print(tree)
+#     preorder(tree, 'A')
+#     print()
+#     inorder(tree, 'A')
+#     print()
+#     postorder(tree, 'A')
+
+# solve()
+
