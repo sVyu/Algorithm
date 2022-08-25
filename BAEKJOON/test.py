@@ -7999,3 +7999,28 @@ dfs/bfs
 
 # solve()
 
+
+# 1312 소수
+# A, B, N = map(int, input().split())
+# num = A/B
+# for _ in range(N):
+#     num *= 10
+
+# print(num//1)
+
+
+# 2083 럭비 클럽
+import sys
+input = sys.stdin.readline
+
+while True:
+    name, age, weights = map(str, input().split())
+    if name == '#': break
+    else:
+        age, weights = int(age), int(weights)
+        if age > 17 or weights >= 80:
+            ones_class = 'Senior'
+        else:
+            ones_class = 'Junior'
+        
+        print(name, ones_class)
