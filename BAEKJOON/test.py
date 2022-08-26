@@ -8000,27 +8000,50 @@ dfs/bfs
 # solve()
 
 
+# 2083 럭비 클럽
+# import sys
+# input = sys.stdin.readline
+
+# while True:
+#     name, age, weights = map(str, input().split())
+#     if name == '#': break
+#     else:
+#         age, weights = int(age), int(weights)
+#         if age > 17 or weights >= 80:
+#             ones_class = 'Senior'
+#         else:
+#             ones_class = 'Junior'
+        
+#         print(name, ones_class)
+
+
 # 1312 소수
 # A, B, N = map(int, input().split())
-# num = A/B
-# for _ in range(N):
+# num = A % B
+# decimal_list = [0]*1000000
+
+# for i in range(N):
 #     num *= 10
+#     decimal_list[i] = num // B
+#     num %= B
 
-# print(num//1)
+# # print(A/B)
+# # print(decimal_list)
+# print(decimal_list[N-1])
 
 
-# 2083 럭비 클럽
-import sys
-input = sys.stdin.readline
+# 1475 방 번호
+# num_list = list(map(int, input()))
+# # print(num_list)
+# check_list = [0] * 9 # 0 ~ 8
 
-while True:
-    name, age, weights = map(str, input().split())
-    if name == '#': break
-    else:
-        age, weights = int(age), int(weights)
-        if age > 17 or weights >= 80:
-            ones_class = 'Senior'
-        else:
-            ones_class = 'Junior'
-        
-        print(name, ones_class)
+# for i in range(len(num_list)):
+#     if num_list[i] == 9:
+#         check_list[6] += 1
+#     else:
+#         check_list[num_list[i]] += 1
+
+# if check_list[6] % 2 == 1: check_list[6] += 1
+# check_list[6] //= 2
+
+# print(max(check_list))
