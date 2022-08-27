@@ -8047,3 +8047,32 @@ dfs/bfs
 # check_list[6] //= 2
 
 # print(max(check_list))
+
+
+# 1769 3의 배수
+# num_list = list(map(int, input()))
+# count = 0
+
+# while len(num_list) > 1:
+#     num_list = list(map(int, str(sum(num_list))))
+#     # print(num_list)
+#     count += 1
+
+# print(count, 'YES' if num_list[0] % 3 == 0 else 'NO', sep = '\n')
+
+# try 2 ㅡ better code?
+sum_value = int(input())
+count = 0
+
+while sum_value >= 10:
+    count += 1
+    tmp_value = 0
+
+    while sum_value // 10 != 0:
+        tmp_value += sum_value % 10
+        sum_value //= 10
+        # print(sum_value)
+    sum_value += tmp_value
+    # print(sum_value)
+
+print(count, 'YES' if sum_value % 3 == 0 else 'NO', sep = '\n')
