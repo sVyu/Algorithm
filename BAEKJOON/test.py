@@ -8060,19 +8060,69 @@ dfs/bfs
 
 # print(count, 'YES' if num_list[0] % 3 == 0 else 'NO', sep = '\n')
 
-# try 2 ㅡ better code?
-sum_value = int(input())
-count = 0
+# try 2 ㅡ better code? ㅡ 비슷하네
+# 참고 : https://www.acmicpc.net/board/view/62323
+# 시간초과가 났던 이유 ㅡ 숫자가 백만 이하라는 게 아니라 백만 자리 이하의 수를 준다
+# sum_value = int(input())
+# sum_value = list(map(int, input()))
+# # print(sum_value)
+# count = 0
 
-while sum_value >= 10:
-    count += 1
-    tmp_value = 0
+# if len(sum_value) >= 2:
+#     count += 1
+# sum_value = sum(sum_value)
 
-    while sum_value // 10 != 0:
-        tmp_value += sum_value % 10
-        sum_value //= 10
-        # print(sum_value)
-    sum_value += tmp_value
-    # print(sum_value)
+# while sum_value >= 10:
+#     count += 1
+#     tmp_value = 0
 
-print(count, 'YES' if sum_value % 3 == 0 else 'NO', sep = '\n')
+#     while sum_value // 10 != 0:
+#         tmp_value += sum_value % 10
+#         sum_value //= 10
+#         # print(sum_value)
+#     sum_value += tmp_value
+#     # print(sum_value)
+
+# print(count, 'YES' if sum_value % 3 == 0 else 'NO', sep = '\n')
+
+
+# 9205 맥주 마시면서 걸어가기
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     convenience_store_num = int(input())
+#     convenience_store_list = [] * convenience_store_num
+
+#     home_x, home_y = map(int, input().split())
+#     home_xy = 
+#     for _ in range(convenience_store_num):
+        
+#         convenience_store_list.append(map(int, input().split()))
+
+
+# 1235 학생 번호
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# num_list = [int(input()) for _ in range(num)]
+# # print(num_list)
+
+# len = 1
+# while True:
+#     check_dict = dict()
+#     exclusive_check = True
+#     for i in range(num):
+#         if num_list[i] % (10**len) in check_dict:
+#             exclusive_check = False
+#             break
+#         else:
+#             check_dict[num_list[i] % (10**len)] = 1
+#     # print(check_dict)
+
+#     if exclusive_check == True:
+#         print(len)
+#         break
+#     else:
+#         len += 1
