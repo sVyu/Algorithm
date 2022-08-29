@@ -8126,3 +8126,37 @@ dfs/bfs
 #         break
 #     else:
 #         len += 1
+
+
+# 15663 N과 M (9)
+# import sys
+# import itertools
+
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# num_list = sorted(list(map(int, input().split())))
+# ans_list = dict()
+
+# for i in itertools.permutations(num_list, m):
+#     if i not in ans_list:
+#         print(*i)
+#         ans_list[i] = 1
+
+
+# 15666 N과 M(12)
+# import sys
+# import itertools
+
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# num_list = sorted(list(map(int, input().split())))
+# ans_list = dict()
+
+# for i in itertools.combinations_with_replacement(num_list, m):
+#     if i not in ans_list:
+#         print(*i)
+#         ans_list[i] = 1
+
+
