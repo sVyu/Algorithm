@@ -8160,3 +8160,59 @@ dfs/bfs
 #         ans_list[i] = 1
 
 
+# 1660 캡틴 이다솜
+# num = int(input())
+
+# cannon_balls_list = [0]*200
+# for i in range(1, 200):
+#     cannon_balls_list[i] = i*(i+1)*(i+2)//6
+# # print(cannon_balls_list)
+# cannon_balls_idx = 1
+
+# dp_list = [0] * (num+1)
+# for i in range(num+1):
+#     dp_list[i] = i
+# # print(dp_list)
+
+# for i in range(1, num+1):
+#     while cannon_balls_idx < 199:
+#         if cannon_balls_list[cannon_balls_idx+1] <= dp_list[i]:
+#             # print("i", i)
+#             cannon_balls_idx += 1
+#             # print(cannon_balls_idx)
+#         else: break
+#     # print(cannon_balls_idx, cannon_balls_list[cannon_balls_idx])
+    
+#     dp_list[i] = (i // cannon_balls_list[cannon_balls_idx]) + dp_list[i % cannon_balls_list[cannon_balls_idx]]
+#     # print(i, dp_list[i])
+
+#     for j in range(0, i//2):
+#         new_dp_val = dp_list[j] + dp_list[i-j]
+#         if dp_list[i] > new_dp_val:
+#             dp_list[i] = new_dp_val
+
+# print(dp_list[i])
+
+
+# 1531 투명
+import sys
+input = sys.stdin.readline
+
+def solve():
+    graph = [[0] * 100 for _ in range(100)]
+
+    n, m = map(int, input().split())
+    for _ in range(n):
+        x1, y1, x2, y2 = map(int, input().split())
+        for y in range(y1-1, y2):
+            for x in range(x1-1, x2):
+                graph[y][x] += 1
+
+    ans = 0
+    for y in range(100):
+        for x in range(100):
+            if graph[y][x] > m:
+                ans += 1
+    print(ans)
+
+solve()
