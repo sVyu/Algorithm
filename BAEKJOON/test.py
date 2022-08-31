@@ -8161,12 +8161,13 @@ dfs/bfs
 
 
 # 1660 캡틴 이다솜
+# try 1 - input 최대값인 300000 처리하는데 한참 걸린다
 # num = int(input())
 
 # cannon_balls_list = [0]*200
 # for i in range(1, 200):
 #     cannon_balls_list[i] = i*(i+1)*(i+2)//6
-# # print(cannon_balls_list)
+# print(cannon_balls_list)
 # cannon_balls_idx = 1
 
 # dp_list = [0] * (num+1)
@@ -8194,25 +8195,110 @@ dfs/bfs
 # print(dp_list[i])
 
 
+# try2
+# 85% 틀렸습니다 ㅡ idx 범위를 수정해도 똑같음
+# num = int(input())
+
+# cannon_balls_list = [0]*200
+# for i in range(1, 200):
+#     cannon_balls_list[i] = i*(i+1)*(i+2)//6
+# cannon_balls_list[0], cannon_balls_idx = 1, 1
+# # print(cannon_balls_list)
+
+# dp_list = [0] * (num+1)
+# for i in range(num+1):
+#     dp_list[i] = i
+# # print(dp_list)
+
+# for i in range(1, num+1):
+#     while cannon_balls_idx < 199:
+#         if cannon_balls_list[cannon_balls_idx+1] <= dp_list[i]:
+#             cannon_balls_idx += 1
+#         else: break
+#     # print(cannon_balls_idx, cannon_balls_list[cannon_balls_idx])
+
+#     # for idx in range(cannon_balls_idx, cannon_balls_idx//2 -1, -1):
+#     for idx in range(cannon_balls_idx, -1, -1):
+#         new_dp_val = (i // cannon_balls_list[idx]) + dp_list[i % cannon_balls_list[idx]]
+#         # print(i, cannon_balls_list[idx])
+#         if dp_list[i] > new_dp_val:
+#             dp_list[i] = new_dp_val
+
+# # print(dp_list)
+# print(dp_list[i])
+
+
 # 1531 투명
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     graph = [[0] * 100 for _ in range(100)]
+
+#     n, m = map(int, input().split())
+#     for _ in range(n):
+#         x1, y1, x2, y2 = map(int, input().split())
+#         for y in range(y1-1, y2):
+#             for x in range(x1-1, x2):
+#                 graph[y][x] += 1
+
+#     ans = 0
+#     for y in range(100):
+#         for x in range(100):
+#             if graph[y][x] > m:
+#                 ans += 1
+#     print(ans)
+
+# solve()
+
+
+# 11660 구간 합 구하기 5
+# try1 - 시간 초과
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     n, m = map(int, input().split())
+#     num_list = [list(map(int, input().split())) for _ in range(n)]
+#     dp_list = [[0] * (n+1) for _ in range(n+1)]
+#     for x in range(1, n+1):
+#         sum_of_num = 0
+#         for y in range(1, n+1):
+#             sum_of_num += num_list[x-1][y-1]
+#             dp_list[x][y] = sum_of_num
+#     # for y in range(n+1):
+#     #     print(dp_list[y])
+
+#     for _ in range(m):
+#         x1, y1, x2, y2 = map(int, input().split())
+#         ans = 0
+#         for x in range(x1, x2+1):
+#             ans += dp_list[x][y2] - dp_list[x][y1-1]
+#         print(ans)
+
+# solve()
+
+
+# try 2 - 맞았습니다 !
 import sys
 input = sys.stdin.readline
 
 def solve():
-    graph = [[0] * 100 for _ in range(100)]
-
     n, m = map(int, input().split())
-    for _ in range(n):
-        x1, y1, x2, y2 = map(int, input().split())
-        for y in range(y1-1, y2):
-            for x in range(x1-1, x2):
-                graph[y][x] += 1
+    num_list = [list(map(int, input().split())) for _ in range(n)]
+    dp_list = [[0] * (n+1) for _ in range(n+1)]
+    
+    for x in range(1, n+1):
+        sum_of_num = 0
+        for y in range(1, n+1):
+            sum_of_num += num_list[x-1][y-1]
+            dp_list[x][y] = sum_of_num + dp_list[x-1][y]
+    # for y in range(n+1):
+    #     print(dp_list[y])
 
-    ans = 0
-    for y in range(100):
-        for x in range(100):
-            if graph[y][x] > m:
-                ans += 1
-    print(ans)
+    for _ in range(m):
+        x1, y1, x2, y2 = map(int, input().split())
+        ans = dp_list[x2][y2] - dp_list[x2][y1-1] - dp_list[x1-1][y2] + dp_list[x1-1][y1-1]
+        print(ans)
 
 solve()
