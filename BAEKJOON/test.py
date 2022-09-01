@@ -8280,25 +8280,107 @@ dfs/bfs
 
 
 # try 2 - 맞았습니다 !
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-def solve():
-    n, m = map(int, input().split())
-    num_list = [list(map(int, input().split())) for _ in range(n)]
-    dp_list = [[0] * (n+1) for _ in range(n+1)]
+# def solve():
+#     n, m = map(int, input().split())
+#     num_list = [list(map(int, input().split())) for _ in range(n)]
+#     dp_list = [[0] * (n+1) for _ in range(n+1)]
     
-    for x in range(1, n+1):
-        sum_of_num = 0
-        for y in range(1, n+1):
-            sum_of_num += num_list[x-1][y-1]
-            dp_list[x][y] = sum_of_num + dp_list[x-1][y]
-    # for y in range(n+1):
-    #     print(dp_list[y])
+#     for x in range(1, n+1):
+#         sum_of_num = 0
+#         for y in range(1, n+1):
+#             sum_of_num += num_list[x-1][y-1]
+#             dp_list[x][y] = sum_of_num + dp_list[x-1][y]
+#     # for y in range(n+1):
+#     #     print(dp_list[y])
 
-    for _ in range(m):
-        x1, y1, x2, y2 = map(int, input().split())
-        ans = dp_list[x2][y2] - dp_list[x2][y1-1] - dp_list[x1-1][y2] + dp_list[x1-1][y1-1]
-        print(ans)
+#     for _ in range(m):
+#         x1, y1, x2, y2 = map(int, input().split())
+#         ans = dp_list[x2][y2] - dp_list[x2][y1-1] - dp_list[x1-1][y2] + dp_list[x1-1][y1-1]
+#         print(ans)
 
-solve()
+# solve()
+
+
+# 1343 폴리오미노
+# try 1 - code1 을 좀 더 간소화해서 try 1 - code2
+# board_list = list(input())
+# # print(board_list)
+
+# start_idx, polyomino_len = 0, 0
+# polyomino_check, possible_check = False, True
+
+# for idx in range(len(board_list)):
+#     # print(idx)
+#     if board_list[idx] == 'X':
+#         # if polyomino_check == False:
+#         #     start_idx = idx
+#         #     polyomino_check = True
+
+#         if polyomino_len == 0:
+#             start_idx = idx
+
+#         # if polyomino_check == True:
+#         polyomino_len += 1
+
+#         if polyomino_len == 4:
+#             board_list[start_idx : idx+1] = 'AAAA'
+#             polyomino_len = 0
+#             # print("new!", board_list)
+#     else: # case of '.'
+#         polyomino_check = False
+#         if polyomino_len == 2:
+#             board_list[start_idx : idx] = 'BB'
+#             polyomino_len = 0
+#         elif polyomino_len % 2 == 1:
+#             possible_check = False
+#             break
+#     # print(idx, board_list)
+
+# # print(polyomino_len)
+# if polyomino_len == 2:
+#     board_list[-2:] = 'BB'
+# elif polyomino_len % 2 == 1:
+#     possible_check = False
+
+# if possible_check == True: print(*board_list, sep='')
+# else: print(-1)
+
+#  try 1 - code2
+# board_list = list(input())
+# # print(board_list)
+
+# start_idx, polyomino_len = 0, 0
+# possible_check = True
+
+# for idx in range(len(board_list)):
+#     # print(idx)
+#     if board_list[idx] == 'X':
+#         if polyomino_len == 0: start_idx = idx
+#         polyomino_len += 1
+
+#         if polyomino_len == 4:
+#             board_list[start_idx : idx+1] = 'AAAA'
+#             polyomino_len = 0
+
+#     else: # case of '.'
+#         if polyomino_len == 2:
+#             board_list[start_idx : idx] = 'BB'
+#             polyomino_len = 0
+#         elif polyomino_len % 2 == 1:
+#             possible_check = False
+#             break
+#     # print(idx, board_list)
+
+# # case of list-end
+# # print(polyomino_len)
+# if polyomino_len == 2:
+#     board_list[start_idx:] = 'BB'
+# elif polyomino_len % 2 == 1:
+#     possible_check = False
+
+# if possible_check == True: print(*board_list, sep='')
+# else: print(-1)
+        
