@@ -8383,4 +8383,13 @@ dfs/bfs
 
 # if possible_check == True: print(*board_list, sep='')
 # else: print(-1)
-        
+
+
+# 2161 카드1
+# from collections import deque
+
+# que = deque([i for i in range(1, int(input())+1)])
+# while que:
+#     print(que.popleft(), end=' ')
+#     if que:
+#         que.append(que.popleft())
