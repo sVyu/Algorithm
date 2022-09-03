@@ -8393,3 +8393,22 @@ dfs/bfs
 #     print(que.popleft(), end=' ')
 #     if que:
 #         que.append(que.popleft())
+
+
+# 1065 한수
+num = int(input())
+cnt = 0
+
+for i in range(1, num+1):
+    hansu_check = True
+    
+    if i >= 100:
+        i_div_10 = i // 10
+        if (i % 10 - i_div_10 % 10) != (i_div_10 % 10) - (i_div_10 // 10):
+            hansu_check = False
+
+    if hansu_check:
+        cnt += 1
+
+print(cnt)
+    
