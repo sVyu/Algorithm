@@ -8414,10 +8414,182 @@ dfs/bfs
 
 
 # 1094 막대기
-num = int(input())
-cnt = 0
+# num = int(input())
+# cnt = 0
 
-while num >= 1:
-    cnt += num % 2
-    num //= 2
-print(cnt)
+# while num >= 1:
+#     cnt += num % 2
+#     num //= 2
+# print(cnt)
+
+
+# 1388 바닥 장식
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# def bfs(que, graph, check_graph, inc_x, inc_y, shape, n, m):
+#     x, y = que.popleft()
+#     if shape == '-':
+#         for plus_x, plus_y in inc_x:
+#             new_x, new_y = x + plus_x, y + plus_y
+#             if 0 <= new_y < n and 0 <= new_x < m:
+#                 if graph[new_y][new_x] == shape and check_graph[new_y][new_x] == False:
+#                     que.append([new_x, new_y])
+#                     check_graph[new_y][new_x] = True
+#     else: # '|'
+#         for plus_x, plus_y in inc_y:
+#             new_x, new_y = x + plus_x, y + plus_y
+#             if 0 <= new_y < n and 0 <= new_x < m:
+#                 if graph[new_y][new_x] == shape and check_graph[new_y][new_x] == False:
+#                     que.append([new_x, new_y])
+#                     check_graph[new_y][new_x] = True
+
+# def solve():
+#     n, m = map(int, input().split())
+#     graph = [list(input().rstrip()) for _ in range(n)]
+#     check_graph = [[False]*m for _ in range(n)]
+#     inc_x, inc_y = [[1, 0], [-1, 0]], [[0, 1], [0, -1]]
+#     # print(graph)
+
+#     cnt = 0
+#     que = deque()
+#     for y in range(n):
+#         for x in range(m):
+#             if check_graph[y][x] == False:
+#                 que.append([x, y])
+#                 shape = graph[y][x]
+#                 cnt += 1
+
+#                 while que:
+#                     bfs(que, graph, check_graph, inc_x, inc_y, shape, n, m)
+
+#     print(cnt)
+
+# solve()
+
+
+# SUAPC 2022 Summer B번 - 내비게이션
+# import sys
+# input = sys.stdin.readline
+
+# num = int(input())
+# sx, sy, ex, ey = map(int, input().split())
+# idx, min_dist = 0, sys.maxsize
+
+# for i in range(1, num+1):
+#     pre_x, pre_y = sx, sy
+#     total_dist = 0
+#     for _ in range(int(input())):
+#         next_x, next_y = map(int, input().split())
+#         total_dist += abs(pre_x - next_x) + abs(pre_y - next_y)
+#         pre_x, pre_y = next_x, next_y
+#         # print("test", total_dist, pre_x, next_x, pre_y, next_y)
+#     total_dist += abs(pre_x - ex) + abs(pre_y - ey)
+#     # print("haha", total_dist, i)
+
+#     if min_dist > total_dist:
+#         min_dist = total_dist
+#         idx = i
+
+# print(idx)
+
+
+# F번 - 차의 개수
+# num = int(input())
+
+# max_list, min_list = [1], [i for i in range(1, num+1)]
+# max_set, min_set = set(), set()
+# tmp_num, plus_num = 1, 30
+
+# for _ in range(num-1):
+#     tmp_num += plus_num
+#     max_list.append(tmp_num)
+#     plus_num += 31
+#     # plus_num *= 7
+# # print(max_list)
+# # print(min_list)
+
+# for num_one in range(0, num-1):
+#     for num_two in range(num_one+1, num):
+#         if abs(max_list[num_two] - max_list[num_one]) not in max_set:
+#             max_set.add(abs(max_list[num_two] - max_list[num_one]))
+#         if abs(min_list[num_two] - min_list[num_one]) not in min_set:
+#             min_set.add(abs(min_list[num_two] - min_list[num_one]))
+# # print(len(max_set), max_set)
+# # print(len(min_set), min_set)
+
+# print(len(max_set))
+# print(*max_list, sep=' ')
+# print(len(min_set))
+# print(*min_list, sep=' ')
+
+
+# I번 - 딸기와 토마토
+# import sys
+# input = sys.stdin.readline
+
+# n, m, k = map(int, input().split())
+# graph = [list(map(int, input().split())) for _ in range(n)]
+# # print(graph)
+# pos_point_list, ans_list = [], []
+
+# # col
+# for y in range(n-k+1):
+#     for x in range(m):
+#         pos_check = True
+#         for plus_y in range(k):
+#             if graph[y+plus_y][x] != 1:
+#                 pos_check = False
+#                 break
+#         # print(y, x, pos_check)
+#         if pos_check:
+#             pos_point_list.append([y, x, 0])
+
+# # row
+# for y in range(n):
+#     for x in range(m-k+1):
+#         pos_check = True
+#         for plus_x in range(k):
+#             if graph[y][x+plus_x] != 1:
+#                 pos_check = False
+#                 break
+#         if pos_check:
+#             pos_point_list.append([y, x, 1])
+# # print(pos_point_list)
+
+# if len(pos_point_list) == 1:
+#     start_y, start_x, direction = pos_point_list[0][0], pos_point_list[0][1], pos_point_list[0][2]
+#     # print(start_y, start_x, direction)
+
+#     if direction == 0:
+#         for plus_val in range(k):
+#             ans_list.append([start_y+plus_val, start_x])
+#     else:
+#         for plus_val in range(k):
+#             ans_list.append([start_y, start_x+plus_val])
+#     # print(ans_list)
+# else:
+#     for i in range(2):
+#         start_y, start_x, direction = pos_point_list[i][0], pos_point_list[i][1], pos_point_list[i][2]
+    
+#         if direction == 0:
+#             for plus_val in range(k):
+#                 graph[start_y+plus_val][start_x] += 1
+#         else:
+#             for plus_val in range(k):
+#                 graph[start_y][start_x+plus_val] += 1
+#     # print(graph)
+
+#     for y in range(n):
+#         for x in range(m):
+#             if graph[y][x] == 3:
+#                 ans_list.append([y, x])
+
+# # print(ans_list)
+# ans_list = sorted(ans_list, key=lambda x:(x[0],x[1]))
+# if len(ans_list) == 0: print(0)
+# else:
+#     print(len(ans_list))
+#     for x, y in ans_list:
+#         print(x+1, y+1)
