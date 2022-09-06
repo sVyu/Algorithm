@@ -8506,6 +8506,7 @@ dfs/bfs
 #     tmp_num += plus_num
 #     max_list.append(tmp_num)
 #     plus_num += 31
+#     # plus_num += 11
 #     # plus_num *= 7
 # # print(max_list)
 # # print(min_list)
@@ -8593,3 +8594,34 @@ dfs/bfs
 #     print(len(ans_list))
 #     for x, y in ans_list:
 #         print(x+1, y+1)
+
+
+
+# 5014 스타트링크
+# from collections import deque
+
+# F, S, G, U, D = map(int, input().split())
+# # print(F)
+# cnt_list = [-1] * F
+# cnt_list[S-1] = 0 
+# que = deque([[S,0]])
+
+# while que:
+#     num, cnt = que.popleft()
+#     # print("num:", num, cnt)
+
+#     if num == G:
+#         print(cnt)
+#         quit()
+
+#     next_step_floor = num+U
+#     if next_step_floor <= F and cnt_list[next_step_floor-1] == -1:
+#         cnt_list[next_step_floor-1] = cnt
+#         que.append([next_step_floor, cnt+1])
+        
+#     next_step_floor = num-D
+#     if next_step_floor >= 1 and cnt_list[next_step_floor-1] == -1:
+#         cnt_list[next_step_floor-1] = cnt
+#         que.append([next_step_floor, cnt+1])
+
+# print("use the stairs")
