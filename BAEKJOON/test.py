@@ -8618,10 +8618,43 @@ dfs/bfs
 #     if next_step_floor <= F and cnt_list[next_step_floor-1] == -1:
 #         cnt_list[next_step_floor-1] = cnt
 #         que.append([next_step_floor, cnt+1])
-        
+
 #     next_step_floor = num-D
 #     if next_step_floor >= 1 and cnt_list[next_step_floor-1] == -1:
 #         cnt_list[next_step_floor-1] = cnt
 #         que.append([next_step_floor, cnt+1])
 
 # print("use the stairs")
+
+
+# 2628 종이자르기
+
+import sys
+input = sys.stdin.readline
+
+row, col = map(int, input().split())
+row_list, col_list = [], []
+for _ in range(int(input())):
+    check_row_or_col, line_num = map(int, input().split())
+    if check_row_or_col == 0:
+        row_list.append(line_num)
+    else:
+        col_list.append(line_num)
+
+row_list.sort()
+col_list.sort()
+
+# print(row_list, col_list)
+
+pre_val = 1
+max_row = 0
+max_col = 0
+
+for row_val in row_list:
+    if max_row < row_val - pre_val:
+        max_row = row_val - pre_val
+    pre_val = row_val
+if max_row 
+
+a,b,c = map(int, input().split())
+print(a+b+c)
