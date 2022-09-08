@@ -8628,33 +8628,127 @@ dfs/bfs
 
 
 # 2628 종이자르기
+# 리팩토링 가능 ~
 
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-row, col = map(int, input().split())
-row_list, col_list = [], []
-for _ in range(int(input())):
-    check_row_or_col, line_num = map(int, input().split())
-    if check_row_or_col == 0:
-        row_list.append(line_num)
-    else:
-        col_list.append(line_num)
+# col_num, row_num = map(int, input().split())
+# row_cut_list, col_cut_list = [], []
+# for _ in range(int(input())):
+#     check_row_or_col, line_num = map(int, input().split())
+#     if check_row_or_col == 0:
+#         row_cut_list.append(line_num)
+#     else:
+#         col_cut_list.append(line_num)
 
-row_list.sort()
-col_list.sort()
+# row_cut_list.append(row_num)
+# col_cut_list.append(col_num)
 
-# print(row_list, col_list)
+# row_cut_list.sort()
+# col_cut_list.sort()
 
-pre_val = 1
-max_row = 0
-max_col = 0
+# # print(row_cut_list, col_cut_list)
 
-for row_val in row_list:
-    if max_row < row_val - pre_val:
-        max_row = row_val - pre_val
-    pre_val = row_val
-if max_row 
+# pre_val = 0 # 1 아님 ~
+# max_row, max_col = 0, 0
 
-a,b,c = map(int, input().split())
-print(a+b+c)
+# for row_val in row_cut_list:
+#     if max_row < row_val - pre_val:
+#         max_row = row_val - pre_val
+#     pre_val = row_val
+#     # print(row_val, pre_val, max_row)
+# pre_val = 0
+# for col_val in col_cut_list:
+#     if max_col < col_val - pre_val:
+#         max_col = col_val - pre_val
+#     pre_val = col_val
+#     # print(col_val, pre_val, max_col)
+
+# print(max_row * max_col)
+
+# 11382 꼬마 정민
+# a,b,c = map(int, input().split())
+# print(a+b+c)
+
+
+# 1969 DNA
+# 1차 시도 - 문제를 잘못 이해했네
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+
+# DNA_list = [list(input().rstrip()) for _ in range(n)]
+# # print(DNA_list)
+# Hamming_Distance_list = [0] * n
+
+# for i in range(n):
+#     Hamming_Distance = 0
+#     for j in range(n):
+#         if i != j:
+#             for k in range(m):
+#                 if DNA_list[i][k] != DNA_list[j][k]:
+#                     Hamming_Distance += 1
+#     Hamming_Distance_list[i] = Hamming_Distance
+# print(Hamming_Distance_list)
+
+
+# try - 2
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# DNA_list = [list(input().rstrip()) for _ in range(n)]
+# new_DNA_list = ['A'] * m
+# min_Hamming_Distance = 0
+
+# for i in range(m):
+#     DNA_check_list = [0] * 26
+#     for j in range(n):
+#         # print(j, i)
+#         DNA_check_list[ord(DNA_list[j][i])-65] += 1
+    
+#     max_val, max_val_idx = 0, 0
+#     for alphabet_idx in range(26):
+#         if max_val < DNA_check_list[alphabet_idx]:
+#             max_val = DNA_check_list[alphabet_idx]
+#             max_val_idx = alphabet_idx
+    
+#     new_DNA_list[i] = chr(max_val_idx + 65)
+#     min_Hamming_Distance += sum(DNA_check_list) - DNA_check_list[max_val_idx]
+
+# print(*new_DNA_list, sep='')
+# print(min_Hamming_Distance)
+
+
+# 1384 메시지
+# PN_idx를 range(num)에서 num으로 지정해야 되는 이유를 못 찾고 있었음 ㅋㅋ
+# import sys
+# input = sys.stdin.readline
+
+# group_num = 1
+# while True:
+#     num = int(input())
+#     if num == 0 : break
+
+#     name_PN_list = [list(map(str, input().split())) for _ in range(num)]
+#     # print(name_PN_list)
+#     PN_check = False
+
+#     print("Group {0}".format(group_num))
+#     for name_idx in range(num):
+#         for PN_idx in range(1, num):
+##        for PN_idx in range(num): 이거보다 위가 더 좋은 코드 why? Name은 check할 필요가 없으니~
+#             if name_PN_list[name_idx][PN_idx] == 'N':
+#                 PN_check = True
+#                 target_name_idx = name_idx - PN_idx
+#                 if target_name_idx < 0: target_name_idx += num
+#                 # print(target_name_idx)
+#                 print("{0} was nasty about {1}".format(name_PN_list[target_name_idx][0], name_PN_list[name_idx][0]))
+    
+#     if not PN_check:
+#         print("Nobody was nasty")
+    
+#     group_num += 1
+#     print()
