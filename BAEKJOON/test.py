@@ -8752,3 +8752,37 @@ dfs/bfs
     
 #     group_num += 1
 #     print()
+
+
+# 1059 좋은 구간
+# import sys
+# input = sys.stdin.readline
+
+# len_s = int(input())
+# s_list = sorted(list(map(int, input().split())))
+# target_num = int(input())
+# # print(s_list)
+
+# if len_s == 1 or target_num < s_list[0]:
+#     start_num, end_num = 0, s_list[0]
+# else:
+#     for idx in range(len_s-1):
+#         if s_list[idx] <= target_num < s_list[idx+1]:
+#             break
+#     # print(idx)
+#     start_num, end_num = s_list[idx], s_list[idx+1]
+
+# # ans - 1
+# # ans = 0
+# # for i in range(start_num+1, end_num-1):
+# #     for j in range(i+1, end_num):
+# #         if i <= target_num <= j:
+# #             ans += 1
+# #             # print(i, target_num, j)
+# # print(ans)
+
+# # ans - 2
+# if target_num in s_list: print(0)
+# else:
+#     print((target_num - start_num) * (end_num - target_num) -1)
+
