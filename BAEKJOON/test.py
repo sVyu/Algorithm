@@ -8786,3 +8786,31 @@ dfs/bfs
 # else:
 #     print((target_num - start_num) * (end_num - target_num) -1)
 
+
+# 2875 대회 or 인턴
+# N, M, K = map(int, input().split())
+# print(min(N//2, M, (N+M-K)//3))
+
+
+# 1491 나선
+# N, M = map(int, input().split())
+# sub_cnt = min((N-1)//2, (M-1)//2)
+# # print("sub_cnt:", sub_cnt)
+
+# # 동서남북 껍데기 몇 번 제거할 수 있는지 (subbed_N/M은 최대 2를 가짐)
+# subbed_N, subbed_M = N-sub_cnt*2, M-sub_cnt*2
+# if subbed_N == 1 or subbed_M == 1:
+#     print(N-1-sub_cnt, M-1-sub_cnt)
+# else: # subbed_N == 2 or subbed_M == 2:
+#     print(sub_cnt, sub_cnt+1)
+
+# 이 코드를 위 코드로 간소화
+# if subbed_M == 2:
+#     # print("1: ",sub_cnt, M-sub_cnt-1)
+#     print("1: ",sub_cnt, sub_cnt+1)
+# elif subbed_M == 1:
+#     print("2: ", N-sub_cnt-1, M-sub_cnt-1)
+# elif subbed_N == 2:
+#     print("3: ", sub_cnt, sub_cnt+1)
+# elif subbed_N == 1:
+#     print("4 :", N-sub_cnt-1, M-sub_cnt-1)
