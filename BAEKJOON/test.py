@@ -8814,3 +8814,24 @@ dfs/bfs
 #     print("3: ", sub_cnt, sub_cnt+1)
 # elif subbed_N == 1:
 #     print("4 :", N-sub_cnt-1, M-sub_cnt-1)
+
+
+# 1835 카드
+# import sys
+# from collections import deque
+# input = sys.stdin.readline
+
+# N = int(input())
+# que = deque([i for i in range(N)])
+# num_list = [0] * N
+
+# num = 1
+# while que:
+#     for _ in range(num):
+#         que.append(que.popleft())
+#     # print(que, num)
+#     num_list[que.popleft()] = num
+#     # print(num_list)
+#     num += 1
+
+# print(*num_list)
