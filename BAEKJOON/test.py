@@ -8835,3 +8835,90 @@ dfs/bfs
 #     num += 1
 
 # print(*num_list)
+
+
+# 17404 RGB거리 2
+"""
+월요일에 제출 ~ 09/12 ~
+틀렸습니다 why?
+반례
+3
+26 83 40
+49 60 57
+13 89 99
+위 반례에 대해서 110 이 나올 수가 없음
+"""
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# val_list = [list(map(int, input().split())) for _ in range(N)]
+# dp_list = [[1000000]*3 for _ in range(N)]
+# idx_list = [[0]*3 for _ in range(N)]
+# dp_list[0] = val_list[0]
+# idx_list[0] = [0, 1, 2]
+# print("dp_list, idx_list :", dp_list, idx_list)
+
+# for y in range(1, N):
+#     for x in range(3):
+#         for comp_x in range(3):
+#             if x != comp_x:
+#                 if dp_list[y][x] > dp_list[y-1][comp_x]:
+#                     dp_list[y][x] = dp_list[y-1][comp_x]
+#                     idx_list[y][x] = idx_list[y-1][comp_x]
+#         dp_list[y][x] += val_list[y][x]
+
+# print(dp_list)
+# # print(idx_list)
+
+# # 1번 집의 색과 N번 집의 색이 같은 경우를 위한 코드
+# for x in range(3):
+#     if x == idx_list[N-1][x]:
+#         dp_list[N-1][x] -= dp_list[0][x]
+#         val_min = 1000
+#         for comp_x in range(3):
+#             if x != comp_x:
+#                 if val_min > dp_list[0][comp_x]:
+#                     val_min = dp_list[0][comp_x]
+#         dp_list[N-1][x] += val_min
+
+# print(min(dp_list[N-1]))
+
+
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# val_list = [list(map(int, input().split())) for _ in range(N)]
+# # print(dp_list)
+# val_min = 1000000
+
+# for z in range(3):
+#     dp_list = [[1000000]*3 for _ in range(N)]
+#     dp_list[0] = val_list[0]
+#     for x in range(3):
+#         if z != x:
+#             dp_list[1][x] = dp_list[0][z] + val_list[1][x]
+#     # print(dp_list)
+
+#     for y in range(2, N-1):
+#         for x in range(3):
+#             for comp_x in range(3):
+#                 if x != comp_x:
+#                     if dp_list[y][x] > dp_list[y-1][comp_x]:
+#                         dp_list[y][x] = dp_list[y-1][comp_x]
+#             dp_list[y][x] += val_list[y][x]
+
+#     for x in range(3):
+#         if z != x:
+#             for comp_x in range(3):
+#                 if x != comp_x:
+#                     if dp_list[N-1][x] > dp_list[N-2][comp_x]:
+#                         dp_list[N-1][x] = dp_list[N-2][comp_x]
+#             dp_list[N-1][x] += val_list[N-1][x]
+#     # print(dp_list)
+
+#     val_min = min(val_min, min(dp_list[N-1]))
+#     # print(val_min)
+
+# print(val_min)
