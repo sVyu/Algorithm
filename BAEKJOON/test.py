@@ -8922,3 +8922,34 @@ dfs/bfs
 #     # print(val_min)
 
 # print(val_min)
+
+
+# 1359 복권
+# def factorial(num):
+#     if num <= 1:
+#         return 1
+#     else:
+#         val = 1
+#         for i in range(num, 1, -1):
+#             val *= i
+#         return val
+# # print(factorial(5))
+
+# def combinations(num1, num2):
+#     return factorial(num1) // (factorial(num2) * factorial(num1 - num2))
+
+# # if 2*M-K >= N:
+# #     print(1.0)
+# # else:
+# # print(1 - combinations(N, M)*combinations(N-M, M)/(combinations(N, M)**2))
+# # print(combinations(N,M), combinations(N-M, M))
+
+# def solve():
+#     N, M, K = map(int, input().split())
+    
+#     sub_val = 0
+#     for k in range(K):
+#         sub_val += combinations(N, M) * combinations(M, k) * combinations(N-M, M-k)
+#     print(1 - sub_val/combinations(N, M)**2)
+
+# solve()
