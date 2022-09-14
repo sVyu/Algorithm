@@ -8953,3 +8953,82 @@ dfs/bfs
 #     print(1 - sub_val/combinations(N, M)**2)
 
 # solve()
+
+
+# 13023 ABCDE
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
+
+# def dfs(graph, visited_list, n, num):
+#     # print(visited_list, n, num)
+#     if num == 5:
+#         return True
+#     for new_n in graph[n]:
+#         if new_n not in visited_list:
+#             visited_list.append(new_n)
+#             return dfs(graph, visited_list, new_n, num+1)
+#     return False
+
+# def solve():
+#     N, M = map(int, input().split())
+#     graph = [[] for _ in range(N)]
+
+#     for _ in range(M):
+#         a, b = map(int, input().split())
+#         graph[a].append(b)
+#         graph[b].append(a)
+#     # print(graph)
+
+#     ans_check = False
+#     for n in range(N):
+#         visited_list = [n]
+#         for new_n in graph[n]:
+#             if new_n not in visited_list:
+#                 visited_list.append(new_n)
+#                 if dfs(graph, visited_list, new_n, 2) == True:
+#                     ans_check = True
+#                     break
+#             # print(visited_list)
+#             # print("new_n : ", new_n)
+#             visited_list.remove(new_n)
+#             # print(visited_list)
+
+#     if ans_check: print(1)
+#     else: print(0)
+
+# solve()
+
+# Backtracking
+# import sys
+# input = sys.stdin.readline
+
+# def dfs(graph, visited_list, n, num):
+#     visited_list[n] = True
+#     # print(visited_list)
+#     if num == 4:
+#         print(1)
+#         exit()
+    
+#     for new_n in graph[n]:
+#         if visited_list[new_n] == False:
+#             dfs(graph, visited_list, new_n, num+1)
+
+#     visited_list[n] = False
+
+# def solve():
+#     N, M = map(int, input().split())
+#     graph = [[] for _ in range(N)]
+#     visited_list = [False] * N
+#     for _ in range(M):
+#         a, b = map(int, input().split())
+#         graph[a].append(b)
+#         graph[b].append(a)
+#     # print(graph)
+
+#     for n in range(N):
+#         # print(n)
+#         dfs(graph, visited_list, n, 0)
+#     print(0)
+
+# solve()
