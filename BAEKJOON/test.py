@@ -9032,3 +9032,44 @@ dfs/bfs
 #     print(0)
 
 # solve()
+
+
+# 2407 조합
+# def factorial(num):
+#     if num <= 1:
+#         return 1
+#     else:
+#         val = 1
+#         for i in range(num, 1, -1):
+#             val *= i
+#         return val
+
+# def solve():
+#     n, m = map(int, input().split())
+#     print(factorial(n)//(factorial(m)*factorial(n-m)))
+
+# solve()
+
+
+# 9465 스티커
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     n = int(input())
+#     num_list = [list(map(int,input().split())) for _ in range(2)]
+#     # print(num_list)
+#     dp_list = [[0] * n for _ in range(2)]
+#     dp_list[0][0], dp_list[1][0] = num_list[0][0], num_list[1][0]
+
+#     if n >= 2:
+#         dp_list[0][1] = dp_list[1][0] + num_list[0][1]
+#         dp_list[1][1] = dp_list[0][0] + num_list[1][1]
+    
+#     for idx in range(2, n):
+#         for x in range(2):
+#             dp_list[x][idx] = max(dp_list[(x+1)%2][idx-1], dp_list[(x+1)%2][idx-2]) + num_list[x][idx]
+    
+#     # for x in range(2):
+#     #     print(dp_list[x])
+#     print(max(dp_list[0][n-1], dp_list[1][n-1]))
