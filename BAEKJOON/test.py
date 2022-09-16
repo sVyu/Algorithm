@@ -9073,3 +9073,8 @@ dfs/bfs
 #     # for x in range(2):
 #     #     print(dp_list[x])
 #     print(max(dp_list[0][n-1], dp_list[1][n-1]))
+
+
+# 13277 큰 수 곱셈
+# a, b = map(int, input().split())
+# print(a*b)
