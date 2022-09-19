@@ -9086,3 +9086,44 @@ dfs/bfs
 # 15740 A+B-9
 # A, B = map(int, input().split())
 # print(A+B)
+
+# 1913 달팽이
+# N = int(input())
+# sqaured_N = N**2
+# target_num = int(input())
+# target_x, target_y = 0, 0
+
+# num_table = [[0]*N for _ in range(N)]
+# nx, ny = N//2, N//2
+# num_table[nx][ny] = 1
+# num = 2
+# direction, moving_distance = 0, 0
+
+# while num <= sqaured_N:
+#     if direction == 0 or direction == 2:
+#         moving_distance += 1
+
+#     for _ in range(moving_distance):
+#         if direction == 0:
+#             nx -= 1
+#         elif direction == 1:
+#             ny += 1
+#         elif direction == 2:
+#             nx += 1
+#         else:
+#             ny -= 1
+        
+#         if num == target_num:
+#             target_x, target_y = nx+1, ny+1
+
+#         num_table[nx][ny] = num
+#         # print(nx, ny, direction)
+#         num += 1
+        
+#         if nx == 0 and ny == 0:
+#             break
+#     direction = (direction + 1) % 4
+
+# for x in range(N):
+#     print(*num_table[x])
+# print(target_x, target_y)
