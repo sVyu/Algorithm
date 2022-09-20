@@ -9087,11 +9087,11 @@ dfs/bfs
 # A, B = map(int, input().split())
 # print(A+B)
 
-# 1913 달팽이
+# # 1913 달팽이
 # N = int(input())
 # sqaured_N = N**2
 # target_num = int(input())
-# target_x, target_y = 0, 0
+# target_x, target_y = (N//2)+1, (N//2)+1
 
 # num_table = [[0]*N for _ in range(N)]
 # nx, ny = N//2, N//2
@@ -9127,3 +9127,18 @@ dfs/bfs
 # for x in range(N):
 #     print(*num_table[x])
 # print(target_x, target_y)
+
+
+# 9653 스타워즈 로고
+print("\
+    8888888888  888    88888\n\
+   88     88   88 88   88  88\n\
+    8888  88  88   88  88888\n\
+       88 88 888888888 88   88\n\
+88888888  88 88     88 88    888888\n\
+\n\
+88  88  88   888    88888    888888\n\
+88  88  88  88 88   88  88  88\n\
+88 8888 88 88   88  88888    8888\n\
+ 888  888 888888888 88  88      88\n\
+  88  88  88     88 88   88888888")
