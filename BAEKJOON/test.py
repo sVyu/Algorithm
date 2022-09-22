@@ -9130,15 +9130,67 @@ dfs/bfs
 
 
 # 9653 스타워즈 로고
-print("\
-    8888888888  888    88888\n\
-   88     88   88 88   88  88\n\
-    8888  88  88   88  88888\n\
-       88 88 888888888 88   88\n\
-88888888  88 88     88 88    888888\n\
-\n\
-88  88  88   888    88888    888888\n\
-88  88  88  88 88   88  88  88\n\
-88 8888 88 88   88  88888    8888\n\
- 888  888 888888888 88  88      88\n\
-  88  88  88     88 88   88888888")
+# print("\
+#     8888888888  888    88888\n\
+#    88     88   88 88   88  88\n\
+#     8888  88  88   88  88888\n\
+#        88 88 888888888 88   88\n\
+# 88888888  88 88     88 88    888888\n\
+# \n\
+# 88  88  88   888    88888    888888\n\
+# 88  88  88  88 88   88  88  88\n\
+# 88 8888 88 88   88  88888    8888\n\
+#  888  888 888888888 88  88      88\n\
+#   88  88  88     88 88   88888888")
+
+
+# 1817 짐 챙기는 숌
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# box, remain_amount = 0, 0
+
+# if N != 0:
+#     box_list = list(map(int, input().split()))
+#     # print(box_list)
+
+#     for i in range(N):
+#         if remain_amount < box_list[i]:
+#             box += 1
+#             remain_amount = M - box_list[i]
+#         else:
+#             remain_amount -= box_list[i]
+#         # print(box, box_list[i], remain_amount)
+# print(box)
+
+
+# 1476 날짜 계산
+# E, S, M = map(int, input().split())
+# tmp_E, tmp_S, tmp_M = 1, 1, 1
+# year = 1
+
+# # 1 ≤ E ≤ 15, 1 ≤ S ≤ 28, 1 ≤ M ≤ 19
+# while True:
+#     if tmp_E == E and tmp_S == S and tmp_M == M:
+#         # print(tmp_E, E, tmp_S, S, tmp_M, M)
+#         break
+#     else:
+#         year += 1
+
+#         # tmp_E = (tmp_E + 1) % 16
+#         # tmp_S = (tmp_S + 1) % 29
+#         # tmp_M = (tmp_M + 1) % 20
+
+#         # if tmp_E == 0: tmp_E = 1
+#         # if tmp_S == 0: tmp_S = 1
+#         # if tmp_M == 0: tmp_M = 1
+
+#     개선 (better code)
+#         tmp_E = (tmp_E % 15) + 1
+#         tmp_S = (tmp_S % 28) + 1
+#         tmp_M = (tmp_M % 19) + 1
+#     # print(tmp_E, tmp_S, tmp_M)
+#     # print(year)
+
+# print(year)
