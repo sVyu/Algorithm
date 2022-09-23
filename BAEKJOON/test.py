@@ -9194,3 +9194,68 @@ dfs/bfs
 #     # print(year)
 
 # print(year)
+
+
+
+# import sys
+
+# input = sys.stdin.readline
+
+# if __name__ == '__main__':
+#     m = int(input().rstrip())
+#     s = set()
+#     all_set = set([i for i in range(1, 21)])
+#     for _ in range(m):
+#         line = list(input().rstrip().split())
+#         o = line[0]
+#         n = 0
+#         print(o, len(o),line, len(line))
+#         if len(o) == 2:
+#             n = int(o[1])
+#         if o == "add":
+#             s.add(n)
+#         elif o == "check":
+#             print(1 if n in s else 0)
+#         elif o == "remove":
+#             print(n)
+#             print("Is it workded?")
+#             s.discard(n)
+#         elif o == "toggle":
+#             try:
+#                 s.remove(n)
+#             except:
+#                 s.add(n)
+#         elif o == "all":
+#             s = all_set.copy()
+#         elif o == "empty":
+#             s = set()
+#         print("n : ", n)
+#         print(s)
+
+
+# 1544 사이클 단어
+# import sys
+# input = sys.stdin.readline
+
+# word_dict = dict()
+# for _ in range(int(input())):
+#     alpha_check_list = [0] * 26
+#     alpha_list = list(input().rstrip())
+#     # print(alpha_list)
+
+#     for alphabet in alpha_list:
+#         alpha_check_list[ord(alphabet)-97] += 1
+    
+#     alpha_check_list = tuple(alpha_check_list)
+#     if alpha_check_list in word_dict:
+#         word_dict[alpha_check_list] += 1
+#     else:
+#         word_dict[alpha_check_list] = 1
+
+# print(len(word_dict))
+
+
+# 15727
+# t = int(input())
+# if t % 5 == 0 : print(t//5)
+# else: print((t//5)+1)
