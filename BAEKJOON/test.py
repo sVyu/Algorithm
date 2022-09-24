@@ -9196,9 +9196,8 @@ dfs/bfs
 # print(year)
 
 
-
+# 11723 집합 Q&A ㅡ https://www.acmicpc.net/board/view/100546
 # import sys
-
 # input = sys.stdin.readline
 
 # if __name__ == '__main__':
@@ -9234,6 +9233,7 @@ dfs/bfs
 
 
 # 1544 사이클 단어
+# try1 - 문제를 잘못 이해했다 ㅋㅋㅋ
 # import sys
 # input = sys.stdin.readline
 
@@ -9254,8 +9254,118 @@ dfs/bfs
 
 # print(len(word_dict))
 
+# try2
+# import sys
+# input = sys.stdin.readline
+
+# word_dict = dict()
+# for i in range(int(input())):
+#     word_list = list(input().rstrip())
+#     overlapped_word_check = False
+
+#     for start_idx in range(len(word_list)):
+#         # this code is not work - new_list : None
+#         # new_list = word_list[start_idx:].append(word_list[:start_idx])
+
+#         # be write like below code
+#         new_list = word_list[start_idx:]
+#         new_list.extend(word_list[:start_idx])
+#         # print(new_list)
+        
+#         tupled_new_list = tuple(new_list)
+#         # print(tupled_new_list)
+#         if tupled_new_list in word_dict:
+#             word_dict[tupled_new_list] += 1
+#             overlapped_word_check = True
+#             # print(new_list, "haha !")
+
+#     if overlapped_word_check == False:
+#         word_dict[tuple(word_list)] = 1
+
+# print(len(word_dict))
+
 
 # 15727
 # t = int(input())
 # if t % 5 == 0 : print(t//5)
 # else: print((t//5)+1)
+
+
+# 1015 수열 정렬
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# p_list = [0] * N
+# num_list = list(map(int, input().split()))
+# num_idx_dict = dict()
+
+# for idx in range(N):
+#     num_idx_dict[idx] = num_list[idx]
+# # print(num_idx_dict)
+
+# new_num_dict = dict(sorted(num_idx_dict.items(), key=lambda x:(x[1], x[0])))
+# # print(new_num_dict)
+
+# val = 0
+# for idx in new_num_dict.keys():
+#     p_list[idx] = val
+#     val += 1
+
+# print(*p_list)
+
+
+# 2355 시그마
+# 참고 https://www.acmicpc.net/board/view/82119
+# A, B = map(int, input().split())
+# if A <= B: print((A+B)*(B-A+1)//2)
+# else: print((A+B)*(A-B+1)//2)
+
+
+# 1629 곱셈
+# 2147483647
+# A, B, C = map(int, input().split())
+# # num_list = [A] * 31
+# num_list = [1] * 31
+# binary_B_list = list(map(int, bin(B)[2:]))
+# binary_B_list.reverse()
+# # print(binary_B_list)
+
+# # mul_val = ((A%C)**2)
+# # mul_val = ((A%C)**2)%C
+# mul_val = (A**2)
+# # print("mul_val : ", mul_val)
+
+# num_list[1] = mul_val % C
+# for i in range(2, len(num_list)):
+#     # num_list[i] = num_list[i-1] * mul_val % C
+#     num_list[i] = num_list[i-1] * mul_val
+# print(num_list)
+
+# ans = 1
+# for idx in range(len(binary_B_list)):
+#     if binary_B_list[idx] == 1:
+#         # ans = (ans * num_list[idx]) % C
+#         ans = (ans * num_list[idx])
+#     # print(ans)
+# print(ans%C)
+
+
+# try 2 - 성공
+# A, B, C = map(int, input().split())
+# num_list = [A] * 31
+# # num_list = [1] * 31
+# binary_B_list = list(map(int, bin(B)[2:]))
+# binary_B_list.reverse()
+# # print(binary_B_list)
+
+# for i in range(1, len(num_list)):
+#     num_list[i] = (num_list[i-1] ** 2) % C
+# # print(num_list)
+
+# ans = 1
+# for idx in range(len(binary_B_list)):
+#     if binary_B_list[idx] == 1:
+#         ans = (ans * num_list[idx]) % C
+#     # print(ans)
+# print(ans)
