@@ -9354,7 +9354,6 @@ dfs/bfs
 # try 2 - 성공
 # A, B, C = map(int, input().split())
 # num_list = [A] * 31
-# # num_list = [1] * 31
 # binary_B_list = list(map(int, bin(B)[2:]))
 # binary_B_list.reverse()
 # # print(binary_B_list)
@@ -9369,3 +9368,61 @@ dfs/bfs
 #         ans = (ans * num_list[idx]) % C
 #     # print(ans)
 # print(ans)
+
+
+# 1418 K-세준수
+# N = int(input())
+# K = int(input())
+
+# se_joon_num_check_list = [0] * (N+1)
+# se_joon_num_check_list[1] = 1
+
+# for i in range(2, N+1):
+#     if se_joon_num_check_list[i] == 0:
+#         prime_num_list = []
+#         target_num = i
+#         for div_num in range(2, min(target_num+1, K+1)):
+#             if target_num % div_num == 0:
+#                 prime_num_list.append(div_num)
+#                 target_num //= div_num
+#             else:
+#                 div_num += 1
+#         # print(i)
+#         # print(prime_num_list)
+#         if prime_num_list[-1] <= K:
+#             for j in range(2, K):
+#                 idx = i
+#                 while idx <= N:
+#                     se_joon_num_check_list[idx] = 1
+#                     idx *= j
+
+# print(se_joon_num_check_list)
+# print(sum(se_joon_num_check_list))
+
+
+# 1380 귀걸이
+# import sys
+# input = sys.stdin.readline
+
+# scenario_num = 1
+# while True:
+#     K = int(input())
+#     if K == 0: break
+#     else:
+#         name_list = [input().rstrip() for _ in range(K)]
+#         # print(name_list)
+        
+#         check_list = [True] * K
+#         for _ in range(2*K-1):
+#             num, check = map(str, input().split())
+#             num = int(num)
+#             if check_list[num-1] == True: check_list[num-1] = False
+#             else: check_list[num-1] = True
+#         # print(check_list)
+
+#         for idx in range(K):
+#             if check_list[idx] == False:
+#                 print(scenario_num, name_list[idx])
+#                 break
+    
+#     scenario_num += 1
