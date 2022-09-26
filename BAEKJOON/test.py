@@ -9400,6 +9400,60 @@ dfs/bfs
 # print(sum(se_joon_num_check_list))
 
 
+# 코드 개선... 했는데 오래 걸림
+# 더 빠르게 동작할 수 있어야 함 
+# N = int(input())
+# K = int(input())
+
+# se_joon_num_check_list = [1] * (N+1)
+
+# def prime_num_check(num):
+#     if num == 1: return False
+#     elif num == 2: return True
+#     elif num % 2 == 0: return False
+#     else:
+#         # for div_num in range(3, num//3):
+#         for div_num in range(3, num//3+1, 2):
+#             if num % div_num == 0: return False
+#         return True
+
+# for i in range(K+1, N+1):
+#     if se_joon_num_check_list[i] == 1 and prime_num_check(i) == True:
+#         idx = i
+#         while idx <= N:
+#             se_joon_num_check_list[idx] = 0
+#             idx += i
+
+# # for i in range(K+1, N+1):
+# #     if se_joon_num_check_list[i] == 1 and prime_num_check(i) == True:
+# #         for idx in range(i, N+1, i):
+# #             se_joon_num_check_list[idx] = 0
+
+# # print(se_joon_num_check_list)
+# print(sum(se_joon_num_check_list)-1)
+
+# import sys
+# input = sys.stdin.readline
+# n = int(input())
+# m = int(input())
+
+# num_list = [0 for _ in range(n+1)]
+# for div_num in range(2, n+1):
+#     if num_list[div_num] == 0:
+#         # for mul_num in range(1, n//div_num+1):
+#         #     idx = div_num * mul_num
+#         #     num_list[idx] = max(div_num, num_list[idx])
+#         for mul_idx in range(div_num, n+1, div_num):
+#             if mul_idx % div_num == 0:
+#                 num_list[mul_idx] = div_num
+
+# ans = 0
+# for num in num_list:
+#     if num <= m:
+#         ans += 1
+# print(ans-1)
+
+
 # 1380 귀걸이
 # import sys
 # input = sys.stdin.readline
@@ -9426,3 +9480,15 @@ dfs/bfs
 #                 break
     
 #     scenario_num += 1
+
+
+# 2097 조약돌
+# import math
+# N = int(input())
+
+# if N <= 4: print(4)
+# else:
+#     math_sqrt_N = math.sqrt(N)
+#     # print(math_sqrt_N)
+#     if math_sqrt_N % 1 == 0 : print(int(4*math_sqrt_N))
+#     else: print(2*(2*(math_sqrt_N//1)-1))
