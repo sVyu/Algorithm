@@ -145,7 +145,6 @@ print(a*b)
 
 
 # 2530 인공지능 시계
-
 # a, b, c = map(int, input().split())
 # gap = int(input())
 
@@ -9482,13 +9481,60 @@ dfs/bfs
 #     scenario_num += 1
 
 
+# #15962 새로운 시작
+# print('파이팅!!')
+
 # 2097 조약돌
 # import math
 # N = int(input())
 
 # if N <= 4: print(4)
 # else:
-#     math_sqrt_N = math.sqrt(N)
-#     # print(math_sqrt_N)
-#     if math_sqrt_N % 1 == 0 : print(int(4*math_sqrt_N))
-#     else: print(2*(2*(math_sqrt_N//1)-1))
+#     sqrt_N = math.sqrt(N)
+#     int_sqrt_N = int(sqrt_N)
+
+#     if sqrt_N % 1 == 0 : print(4*(int_sqrt_N-1))
+#     elif N <= int_sqrt_N * (int_sqrt_N+1):
+#         # 4*(int_sqrt_N-1)+2
+#         print(4*int_sqrt_N-2)
+#     else:
+#         # 4*(int_sqrt_N+1-1)
+#         print(4*int_sqrt_N)
+
+
+# 1331 나이트 투어
+# try1 - 실패 - 나이트의 이동경로를 정확히 맞춰가는지 체크해야 함 (앞으로 2칸 옆으로 1칸)
+# try2 - 성공
+
+# import sys
+# input = sys.stdin.readline
+
+# chess_board_check = [[0] * 6 for _ in range(6)]
+# pre_xy_coordinate = list(input().rstrip())
+# pre_x, pre_y = ord(pre_xy_coordinate[0])-65, int(pre_xy_coordinate[1])-1
+# chess_board_check[pre_x][pre_y] = 1
+# start_x, start_y = pre_x, pre_y
+# success_check = True
+# # xy_coordinate = [list(input().rstrip()) for _ in range(35)]
+
+# for _ in range(35):
+#     xy_coordinate = list(input().rstrip())
+#     new_x, new_y = ord(xy_coordinate[0])-65, int(xy_coordinate[1])-1
+#     # print(xy_coordinate)
+    
+#     if ((abs(pre_x - new_x) == 1 and abs(pre_y - new_y) == 2) or\
+#         (abs(pre_x - new_x) == 2 and abs(pre_y - new_y) == 1)) and\
+#         chess_board_check[new_x][new_y] == 0:
+#             chess_board_check[new_x][new_y] = 1
+#     else:
+#         success_check = False
+#         break
+
+#     pre_x, pre_y = new_x, new_y
+
+# if abs(start_x - pre_x) + abs(start_y - pre_y) != 3:
+#     success_check = False
+# # print(chess_board_check)
+
+# if success_check: print("Valid")
+# else: print("Invalid")
