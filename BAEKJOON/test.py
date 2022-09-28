@@ -9538,3 +9538,48 @@ dfs/bfs
 
 # if success_check: print("Valid")
 # else: print("Invalid")
+
+
+# 12865 평범한 배낭
+# import sys
+# input = sys.stdin.readline
+
+# N, K = map(int, input().split())
+# dp_list = [[0] * (K+1) for _ in range(N+1)]
+
+# stuff_list = [list(map(int, input().split())) for _ in range(N)]
+# stuff_list.insert(0, [0, 0])
+# # print(stuff_list)
+
+# for i in range(1, N+1):
+#     for j in range(1, K+1):
+#         w, v = stuff_list[i][0], stuff_list[i][1]
+
+#         if j < w: dp_list[i][j] = dp_list[i-1][j]
+#         else: dp_list[i][j] = max(dp_list[i-1][j], dp_list[i-1][j-w] + v)
+
+# # for i in range(N+1):
+# #     print(dp_list[i])
+# print(dp_list[N][K])
+
+
+# 2535 아시아 정보올림피아드
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# students_list = [list(map(int, input().split())) for _ in range(N)]
+# students_list = sorted(students_list, key=lambda x:(-x[2]))
+# # for x in range(N):
+# #     print(students_list[x])
+
+# if students_list[0][0] == students_list[1][0]:
+#     overlapped_country = students_list[0][0]
+#     for idx in range(2, N):
+#         if students_list[idx][0] != overlapped_country:
+#             break
+# else:
+#     idx = 2
+
+# for country, students_num, score in [students_list[0], students_list[1], students_list[idx]]:
+#     print(country, students_num)
