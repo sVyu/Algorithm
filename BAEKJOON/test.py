@@ -9583,3 +9583,26 @@ dfs/bfs
 
 # for country, students_num, score in [students_list[0], students_list[1], students_list[idx]]:
 #     print(country, students_num)
+
+
+# 2740 행렬 곱셈
+# import sys
+# input = sys.stdin.readline
+
+# A_N, A_M = map(int, input().split())
+# # p_A -> procession_A
+# p_A = list(map(int, input().split()) for _ in range(A_N))
+
+# B_N, B_M = map(int, input().split())
+# p_B = list(map(int, input().split()) for _ in range(B_N))
+
+# p_C = [[0] * A_N for _ in range(B_M)]
+
+# for x in range(A_N):
+#     for y in range(B_M):
+#         for k in range(A_M):
+#             p_C[x][y] += A_N[x][k] * A_N[k][y]
+
+# print(p_C)
+
+print(int(input())-1946)
