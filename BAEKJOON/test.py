@@ -9586,23 +9586,76 @@ dfs/bfs
 
 
 # 2740 행렬 곱셈
+# 1try - 실패 (IndexError) -> p_C를 잘못 정의했음
 # import sys
 # input = sys.stdin.readline
 
 # A_N, A_M = map(int, input().split())
 # # p_A -> procession_A
-# p_A = list(map(int, input().split()) for _ in range(A_N))
+# p_A = [list(map(int, input().split())) for _ in range(A_N)]
+# # print(p_A)
 
 # B_N, B_M = map(int, input().split())
-# p_B = list(map(int, input().split()) for _ in range(B_N))
+# p_B = [list(map(int, input().split())) for _ in range(B_N)]
+# # print(p_B)
 
-# p_C = [[0] * A_N for _ in range(B_M)]
-
+# # p_C = [[0] * A_N for _ in range(B_M)]
+# p_C = [[0] * B_M for _ in range(A_N)]
 # for x in range(A_N):
 #     for y in range(B_M):
 #         for k in range(A_M):
-#             p_C[x][y] += A_N[x][k] * A_N[k][y]
+#             p_C[x][y] += p_A[x][k] * p_B[k][y]
 
-# print(p_C)
+# for x in range(A_N):
+#     print(*p_C[x])
 
-print(int(input())-1946)
+# 16394 홍익대학교
+# print(int(input())-1946)
+
+# 1730 판화
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input().rstrip())
+# move_list = list(input().rstrip())
+# # print(move_list)
+# board = [[[False, False] for _ in range(N)] for _ in range(N)]
+# # print(board)
+# x, y = 0, 0
+
+# for direction in move_list:
+#     if (direction == 'L' and y <= 0) or (direction == 'R' and y >= N-1) or\
+#         (direction == 'U' and x <= 0) or (direction == 'D' and x >= N-1): continue
+
+#     x_check, y_check = False, False
+#     if direction == 'L' or direction == 'R': x_check = True
+#     else: y_check = True
+
+#     if x_check: board[x][y][0] = True
+#     elif y_check: board[x][y][1] = True
+
+#     if direction == 'L':    y -= 1
+#     elif direction == 'R':  y += 1
+#     elif direction == 'U':  x -= 1
+#     elif direction == 'D':  x += 1
+#     # print(direction, x, y)
+
+#     if x_check: board[x][y][0] = True
+#     elif y_check: board[x][y][1] = True
+
+# # for x in range(N):
+# #     print(board[x])
+
+# for nx in range(N):
+#     special_characters_list = [chr(46), chr(124), chr(45), chr(43)]
+#     for ny in range(N):
+#         if board[nx][ny] == [False, False]:
+#             board[nx][ny] = special_characters_list[0]
+#         elif board[nx][ny] == [False, True]:
+#             board[nx][ny] = special_characters_list[1]
+#         elif board[nx][ny] == [True, False]:
+#             board[nx][ny] = special_characters_list[2]
+#         else: board[nx][ny] = special_characters_list[3]
+
+# for x in range(N):
+#     print(*board[x], sep='')
