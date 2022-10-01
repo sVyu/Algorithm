@@ -9613,6 +9613,7 @@ dfs/bfs
 # print(int(input())-1946)
 
 # 1730 판화
+# 걸린 시간 40분 ㅡㅡ, 벽에서 넘어가려면 '무시'해야되는 걸 제대로 안 봤음
 # import sys
 # input = sys.stdin.readline
 
@@ -9659,3 +9660,69 @@ dfs/bfs
 
 # for x in range(N):
 #     print(*board[x], sep='')
+
+# 1996 지뢰 찾기
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# mines_list = [list(input().rstrip()) for _ in range(N)]
+# map_list = [[0] * N for _ in range(N)]
+# # print(mines_list)
+
+# for x in range(N):
+#     for y in range(N):
+#         if mines_list[x][y] != '.':
+#             map_list[x][y] = '*'
+#             continue
+
+#         if x == 0: x_list = [0, 1]
+#         elif x == N-1: x_list = [-1, 0]
+#         else: x_list = [-1, 0, 1]
+
+#         if y == 0: y_list = [0, 1]
+#         elif y == N-1: y_list = [-1, 0]
+#         else: y_list = [-1, 0, 1]
+
+#         num_of_mines = 0
+#         for plus_x in x_list:
+#             nx = x + plus_x
+#             for plus_y in y_list:
+#                 ny = y + plus_y
+#                 if mines_list[nx][ny] != '.':
+#                     num_of_mines += int(mines_list[nx][ny])
+        
+#         if num_of_mines >= 10: map_list[x][y] = 'M'
+#         else: map_list[x][y] = num_of_mines
+
+# for x in range(N):
+#     print(*map_list[x], sep='')
+
+
+# 1263 시간 관리
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# time_list = [list(map(int, input().split())) for _ in range(N)]
+# time_list = sorted(time_list, key=lambda x:x[1])
+# # print(time_list)
+
+# ans = time_list[0][1] - time_list[0][0]
+# # print(ans)
+# ans_check = True
+
+# total_time = ans
+# for Ti, Si in time_list:
+#     total_time += Ti
+#     if total_time > Si:
+#         ans -= total_time - Si
+#         if ans < 0:
+#             ans_check = False
+#             break
+
+# if ans_check: print(ans)
+# else: print(-1)
+
+
+#
