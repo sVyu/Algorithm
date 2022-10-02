@@ -9720,9 +9720,55 @@ dfs/bfs
 #         if ans < 0:
 #             ans_check = False
 #             break
+#     print(Ti, Si, total_time, ans)
 
 # if ans_check: print(ans)
 # else: print(-1)
 
+"""
+반례:
+4
+1 6
+1 6
+1 6
+1 6
+"""
 
-#
+# try - 2
+# 35퍼 쯤? 틀렸습니다
+# 뭐가 문제지?
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# time_list = [list(map(int, input().split())) for _ in range(N)]
+# time_list = sorted(time_list, key=lambda x:(x[1], x[0]))
+# # print(time_list)
+
+# ans = time_list[0][1] - time_list[0][0]
+# # print(ans)
+# ans_check = True
+
+# total_time = ans
+# for Ti, Si in time_list:
+#     total_time += Ti
+
+#     if total_time > Si:
+#         time_gab = total_time - Si
+#         ans -= time_gab
+#         total_time -= time_gab
+
+#         if ans < 0:
+#             ans_check = False
+#             break
+#     # print(Ti, Si, total_time, ans)
+
+# if ans_check: print(ans)
+# else: print(-1)
+
+# 4470 줄번호
+# import sys
+# input = sys.stdin.readline
+
+# for i in range(1, int(input())+1):
+#     print("{0}.".format(i), input(), end='')
