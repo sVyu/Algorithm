@@ -9772,3 +9772,126 @@ dfs/bfs
 
 # for i in range(1, int(input())+1):
 #     print("{0}.".format(i), input(), end='')
+
+
+# 882/4
+# 1000000000000000000
+# N, A, L, R = map(int, input().split())
+# histogram_check = False
+# for_base_L = L
+
+# if L == 0:
+#     if A == 0:
+#         histogram_check = True
+#         print("YES", "0", sep='\n')
+#         exit()
+#     else:
+#         for_base_L += 1
+#         # print(for_base_L)
+
+# if not histogram_check:
+#     for div_num in range(for_base_L, R+1):
+#         if A % div_num == 0:
+#             quotient = A // div_num
+#             if quotient <= N:
+#                 if L >= div_num:
+#                     continue
+#                 histogram_check = True
+#                 break
+
+# if histogram_check:
+#     print("YES")
+#     for _ in range(quotient):
+#         print(div_num, end=' ')
+#     print(L)
+# else:
+#     print("NO")
+
+# 소인수 분해
+# import itertools
+
+# N, A, L, R = map(int, input().split())
+# histogram_check = False
+# for_base_L = L
+# div_set = set()
+
+# if L == 0:
+#     if A == 0:
+#         histogram_check = True
+#         print("YES", "0", sep='\n')
+#         exit()
+#     else:
+#         for_base_L += 1
+#         # print(for_base_L)
+
+# if not histogram_check:
+#     A_list = []
+#     div_num = 2
+#     tmp_A = A
+#     while div_num <= tmp_A//2:
+#         while tmp_A % div_num == 0:
+#             A_list.append(div_num)
+#             tmp_A //= div_num
+#         div_num += 1
+#     print(A_list)
+    
+#     for i in range((len(A_list))+1):
+#         for div_num in itertools.combinations(A_list, i):
+#             print(div_num)
+#             div_val = 1
+#             for val in div_num:
+#                 div_val *= val
+#             print(div_val)
+#             if div_val not in div_set:
+#                 div_set.add(div_val)
+            
+#                 if (L <= div_val <= R) and (A % div_val == 0):
+#                     # print("ahha")
+#                     quotient = A // div_val
+#                     if quotient <= N:
+#                         if L >= div_val:
+#                             continue
+#                         histogram_check = True
+#                         break
+            
+#         if histogram_check : break
+
+# if histogram_check:
+#     print("YES")
+#     for _ in range(quotient):
+#         print(div_val, end=' ')
+#     print(L)
+# else:
+#     print("NO")
+
+
+# 2890 카약
+# import sys
+# input = sys.stdin.readline
+
+# R, C = map(int, input().split())
+# kayak_list = [list(input().rstrip()) for _ in range(R)]
+# # print(kayak_list)
+# rank_list = [0] * (R-1)
+
+# rank_num = 0
+# for y in range(C-2, 0, -1):
+#     rank_check = False
+#     for x in range(R-1):
+#         print(x, y)
+#         print(rank_list)
+#         if kayak_list[x][y] != '.':
+#             if rank_check == False:
+#                 rank_check = True
+#                 rank_num += 1
+        
+#             if rank_list[x] == 0:
+#                 rank_list[x] = rank_num
+
+# print(rank_list)
+
+
+# 15680
+N = int(input())
+if N == 0: print("YONSEI")
+else: print("Leading the Way to the Future")
