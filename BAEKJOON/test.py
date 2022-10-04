@@ -9872,26 +9872,61 @@ dfs/bfs
 # R, C = map(int, input().split())
 # kayak_list = [list(input().rstrip()) for _ in range(R)]
 # # print(kayak_list)
-# rank_list = [0] * (R-1)
+# rank_list = [[0, 0] for _ in range(R)]
 
 # rank_num = 0
 # for y in range(C-2, 0, -1):
 #     rank_check = False
-#     for x in range(R-1):
-#         print(x, y)
-#         print(rank_list)
+#     for x in range(R):
+#         # print(x, y)
+#         # print(rank_list)
 #         if kayak_list[x][y] != '.':
-#             if rank_check == False:
-#                 rank_check = True
-#                 rank_num += 1
-        
-#             if rank_list[x] == 0:
-#                 rank_list[x] = rank_num
+#             if rank_list[x][1] == 0:
+#                 rank_list[x][0] = int(kayak_list[x][y])
+#                 if rank_check == False:
+#                     rank_check = True
+#                     rank_num += 1
 
-# print(rank_list)
+#                 rank_list[x][1] = rank_num
+
+# rank_list = sorted(rank_list, key=lambda x:(x[0]))
+# # print(rank_list)
+# for num, rank in rank_list:
+#     if num != 0: print(rank)
 
 
-# 15680
-N = int(input())
-if N == 0: print("YONSEI")
-else: print("Leading the Way to the Future")
+# 15680 연세대학교
+# N = int(input())
+# if N == 0: print("YONSEI")
+# else: print("Leading the Way to the Future")
+
+# 2891 카약과 강풍
+"""
+5 3 3
+2 3 4
+3 4 5
+"""
+# import sys
+# input = sys.stdin.readline
+
+# N, S, R = map(int, input().split())
+# broken_team = set(map(int, input().split()))
+# extra_team = set(map(int, input().split()))
+
+# broken_team_list = list(broken_team - extra_team)
+# extra_team_list = list(extra_team - broken_team)
+# # print(broken_team_list)
+# # print(extra_team_list)
+
+# broken_kayak_list = [0] * (N+1)
+# for idx in broken_team_list:
+#     broken_kayak_list[idx] = 1
+
+# for idx in extra_team_list:
+#     if broken_kayak_list[idx-1] == 1:
+#         broken_kayak_list[idx-1] = 0
+#     elif idx < N and broken_kayak_list[idx+1] == 1:
+#         broken_kayak_list[idx+1] = 0
+
+# # print(broken_kayak_list)
+# print(sum(broken_kayak_list))
