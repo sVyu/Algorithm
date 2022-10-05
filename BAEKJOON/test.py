@@ -9935,3 +9935,33 @@ dfs/bfs
 # 14645 와이버스 부릉부릉
 # 어이가 없네 문제 ㅋㅋㅋ
 # print("비와이")
+
+
+# 3699 주차 빌딩
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     val_h, val_l = map(int, input().split())
+#     car_list = [list(map(int, input().split())) for _ in range(val_h)]
+
+#     max_val = 0
+#     for x in range(val_h):
+#         for y in range(val_l):
+#             if max_val < car_list[x][y]: max_val = car_list[x][y]
+
+#     car_idx_list = [[0, 0] for _ in range(max_val)]
+#     for h in range(val_h):
+#         for i in range(val_l):
+#             if car_list[h][i] != -1:
+#                 car_idx_list[car_list[h][i]-1] = [h, i]
+#     # print(car_idx_list)
+
+#     ans = 0
+#     conveyor_belt_index = [0] * val_h
+#     for x, y in car_idx_list:
+#         gap = abs(conveyor_belt_index[x]-y)
+#         ans += (x * 20) + min(gap, val_l - gap) * 5
+#         conveyor_belt_index[x] = y
+#         # print(ans)
+#     print(ans)
