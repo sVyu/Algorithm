@@ -9930,3 +9930,8 @@ dfs/bfs
 
 # # print(broken_kayak_list)
 # print(sum(broken_kayak_list))
+
+
+# 14645 와이버스 부릉부릉
+# 어이가 없네 문제 ㅋㅋㅋ
+# print("비와이")
