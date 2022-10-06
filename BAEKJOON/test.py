@@ -9965,3 +9965,163 @@ dfs/bfs
 #         conveyor_belt_index[x] = y
 #         # print(ans)
 #     print(ans)
+
+
+# 888 667
+# import sys
+# input = sys.stdin.readline
+
+# def DFS(numS):
+#     defNum =abs(int(n) - int(numS))
+#     # print(numS, defNum)
+#     if defNum < minDef[1] :
+#     # if len(str(defNum)) + defNum < minDef[1] + minDef[2]:
+#         minDef[0] = numS
+#         minDef[1] = defNum
+#         minDef[2] = len(str(int(numS))) # 숫자 첫 번째에 0이 붙으면 제거하기 위해
+#         # print(minDef)
+
+#     if len(numS) > len(n):
+#         return True
+#     else:    
+#         for i in btn:
+#             DFS(numS + i)
+
+# for n in range(1555, 1556):
+#     start = 100
+#     n = str(n)
+#     # n = input() # 이동하려는 채널 
+#     # m = int(input()) # 고장난 버튼 개수
+#     m = 3
+#     broke = [0, 1, 9]
+#     # if m > 0:
+#     #     broke = list(map(int, input().split()))
+
+#     btn = [] # 사용 가능 버튼 
+#     for i in range(0,10):
+#         if i not in broke:
+#             btn.append(str(i))
+            
+#     # 입력 가능한 버튼을 DFS 방식으로 탐색
+#     #  index 0: n과의 차이가 가장 적은 값의 수 
+#     #  index 1: n과의 차가 가장 작은값 
+#     #  index 2: 수를 만들기 위해 눌러야 하는 횟수 
+#     minDef = [100, 500000, 0] 
+#     for i in btn:
+#         DFS(i)
+
+#     print(minDef)
+#     res = []
+#     # n을 만들기 위해 최소한을 눌러야 하는 총 횟수 
+#     res.append(minDef[1]+minDef[2]) 
+
+#     # 만약 +, - 만 누르는 것이 숫자를 누르는 횟수보다 빠른지 확인
+#     res.append(abs(int(n)-start))
+
+#     # 최솟값 출력 
+#     # print(min(res))
+#     val_ans_1 = min(res)
+
+
+#     # channel = str(input().rstrip())
+#     # int_channel = int(channel)
+#     int_channel = int(n)
+
+#     # val_n, val_n_list = int(input()), []
+#     val_n, val_n_list = m, broke
+#     # if val_n > 0 :
+#     #     val_n_list = list(map(int, input().split()))
+#     # print(n_list)
+#     low_max_ans, high_min_ans = 999999, 999999
+
+#     # low_max_ans
+#     for i in range(int_channel, -1, -1):
+#         pos_check = True
+#         tmp_i = i
+
+#         # for j in range(len_channel):
+#         for j in range(len(str(i))):
+#             # print(tmp_i)
+#             if tmp_i % 10 in val_n_list:
+#                 pos_check = False
+#                 break
+#             tmp_i //= 10
+
+#         if pos_check :
+#             # print("[ans1] i : ", i)
+#             low_max_ans = len(str(i)) + int_channel - i
+#             # print("haha", i)
+#             break
+
+#     # high_min_ans
+#     for i in range(int_channel, int_channel+500000):
+#         pos_check = True
+#         tmp_i = i
+
+#         for j in range(len(str(i))):
+#             if tmp_i % 10 in val_n_list:
+#                 pos_check = False
+#                 break
+#             tmp_i //= 10
+        
+#         if pos_check:
+#             # print("[ans2] i : ", i)
+#             high_min_ans = len(str(i)) + i - int_channel
+#             break
+    
+#     print(low_max_ans, high_min_ans, abs(100-int_channel))
+#     # print(min(low_max_ans, high_min_ans, abs(100-int_channel)))
+#     val_ans_2 = min(low_max_ans, high_min_ans, abs(100-int_channel))
+#     print(n)
+#     if val_ans_1 != val_ans_2 :
+#         print("haha i found it!", i, val_ans_1, val_ans_2)
+
+
+# 3711 학번
+# try 1
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     g = int(input())
+#     g_list = [int(input()) for _ in range(g)]
+
+#     div_num = 1
+#     while True:
+#         mod_val_list = [0]*10000
+#         min_ans_check = True
+
+#         for idx in range(g):
+#             if mod_val_list[g_list[idx] % div_num] == 0:
+#                 mod_val_list[g_list[idx] % div_num] = 1
+#             else:
+#                 min_ans_check = False
+#             # print(idx, div_num, mod_val_list[:10])
+
+#         if min_ans_check: break
+#         else: div_num +=1
+#     print(div_num)
+
+# try 2
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     g = int(input())
+#     g_list = [int(input()) for _ in range(g)]
+
+#     div_num = 1
+#     while True:
+#         mod_set = set()
+#         min_ans_check = True
+
+#         for idx in range(g):
+#             if (g_list[idx] % div_num) not in mod_set:
+#                 mod_set.add(g_list[idx] % div_num)
+#             else:
+#                 min_ans_check = False
+#             # print(idx, div_num, mod_val_list[:10])
+
+#         if min_ans_check: break
+#         else: div_num +=1
+#     print(div_num)
