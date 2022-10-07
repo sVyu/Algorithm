@@ -10125,3 +10125,216 @@ dfs/bfs
 #         if min_ans_check: break
 #         else: div_num +=1
 #     print(div_num)
+
+
+# 16236 아기 상어 ~~~~
+# 01:20 ~ 03 : 30
+# 해쉬맵 항목 제거로 먹은 물고기 처리 ? no ~
+# import sys
+# input = sys.stdin.readline
+# from queue import deque
+
+# N = int(input())
+# g = [list(map(int, input().split())) for _ in range(N)]
+# fish_list = [0] * 7
+# # num_of_fish = 0
+# nx, ny = 0, 0
+# for x in range(N):
+#     for y in range(N):
+#         if g[x][y] not in [0, 9]:
+#             fish_list[g[x][y]] += 1
+#         elif g[x][y] == 9:
+#             g[x][y] = 0
+#             nx, ny = x, y
+# # print(nx, ny)
+# # print(num_of_fish)
+# # print(fish_list)
+
+# # up, left, right, down
+# inc_x = [-1, 0, 0, 1]
+# inc_y = [0, -1, 1, 0]
+
+# day = 0
+# body_size = 2
+# sum_for_size_up = 0
+
+# while sum(fish_list[:body_size]) != 0:
+#     print("fish_list ??!", sum(fish_list[:body_size]))
+#     print("haha")
+#     # xy_que, fish_que = deque(), deque()
+#     xy_que = deque()
+
+#     check_g = [[0]*N for _ in range(N)]
+#     check_g[nx][ny] = 1
+#     print("now", nx, ny)
+#     xy_que.append([nx, ny])
+#     print("[_1]", xy_que)
+
+#     fish_found_check = False
+#     # while (not fish_found_check) or (sum(fish_list[:body_size]) != 0): # 무한 루프 + check_g 때문에 error
+#     while (not fish_found_check):
+#         print("fish_list !!?", sum(fish_list[:body_size]))
+#         # print()
+#         # print("problem?")
+#         day += 1
+#         for _ in range(len(xy_que)):
+#             print("day", day)
+#             print("[_2]", xy_que)
+#             tmp_x, tmp_y = xy_que.popleft()
+
+#             for idx in range(4):
+#                 new_x = tmp_x + inc_x[idx]
+#                 new_y = tmp_y + inc_y[idx]
+#                 # print(new_x, new_y)
+#                 if 0 <= new_x < N and 0 <= new_y < N and check_g[new_x][new_y] == 0 and\
+#                     body_size >= g[new_x][new_y]:
+#                     # print(new_x, new_y)
+
+#                     check_g[new_x][new_y] = 1
+#                     xy_que.append([new_x, new_y])
+
+#                     if 0 < g[new_x][new_y] < body_size:
+#                         fish_found_check = True
+#                         # g[new_x][new_y] = 0
+#                         # fish_list[g[new_x][new_y]] -= 1
+#                         fish_list[g[new_x][new_y]] -= 1
+#                         g[new_x][new_y] = 0
+#                         print(fish_list)
+#                         # if g[new_x][new_y] == body_size:
+#                         sum_for_size_up += 1
+#                         if sum_for_size_up == body_size:
+#                             body_size += 1
+#                             sum_for_size_up = 0
+#                         nx, ny = new_x, new_y
+#                         print("size!!", sum_for_size_up, body_size)
+#                         break
+                
+#                 if fish_found_check: break
+                
+#             if fish_found_check: break
+#         for x in range(N):
+#             print(g[x])
+#         print()
+
+# print(day)
+
+
+# import sys
+# input = sys.stdin.readline
+# from queue import deque
+
+# N = int(input())
+# g = [list(map(int, input().split())) for _ in range(N)]
+# fish_list = [0] * 7
+
+# nx, ny = 0, 0
+# for x in range(N):
+#     for y in range(N):
+#         if g[x][y] not in [0, 9]:
+#             fish_list[g[x][y]] += 1
+#         elif g[x][y] == 9:
+#             g[x][y] = 0
+#             nx, ny = x, y
+# # print(nx, ny)
+# # print(fish_list)
+
+# # up, left, right, down
+# inc_x = [-1, 0, 0, 1]
+# inc_y = [0, -1, 1, 0]
+
+# day = 0
+# body_size = 2
+# sum_for_size_up = 0
+# blocked_check = False
+
+# while sum(fish_list[:body_size]) != 0:
+#     xy_que, fish_xy_list = deque(), list()
+#     check_g = [[0]*N for _ in range(N)]
+#     check_g[nx][ny] = 1
+#     xy_que.append([nx, ny])
+
+#     fish_found_check = False
+#     blocked_day = 0
+#     while (not fish_found_check):
+#         # print(xy_que)
+#         if not xy_que:
+#             day -= blocked_day
+#             blocked_check = True
+#             break
+
+#         day += 1
+#         blocked_day += 1
+#         # print("day", day)
+#         for _ in range(len(xy_que)):
+#             tmp_x, tmp_y = xy_que.popleft()
+
+#             for idx in range(4):
+#                 new_x = tmp_x + inc_x[idx]
+#                 new_y = tmp_y + inc_y[idx]
+#                 if 0 <= new_x < N and 0 <= new_y < N and check_g[new_x][new_y] == 0 and\
+#                     body_size >= g[new_x][new_y]:
+#                     # print(new_x, new_y)
+
+#                     check_g[new_x][new_y] = 1
+#                     xy_que.append([new_x, new_y])
+
+#                     if 0 < g[new_x][new_y] < body_size:
+#                         fish_xy_list.append([new_x, new_y])
+
+#         if len(fish_xy_list) != 0:
+#             new_x, new_y = sorted(fish_xy_list, key=lambda x:(x[0], x[1]))[0]
+#             fish_found_check = True
+#             fish_list[g[new_x][new_y]] -= 1
+#             g[new_x][new_y] = 0
+
+#             sum_for_size_up += 1
+#             if sum_for_size_up == body_size:
+#                 body_size += 1
+#                 sum_for_size_up = 0
+
+#             nx, ny = new_x, new_y
+#             # print("size!!", sum_for_size_up, body_size)
+
+#         # for x in range(N):
+#         #     print(g[x])
+#         # print()
+#     if blocked_check: break
+
+# print(day)
+
+# 14501 퇴사
+# N = int(input())
+# consulting_list = [list(map(int, input().split())) for _ in range(N)]
+# consulting_list.insert(0, 0)
+# # print(con)
+# dp_list = [0] * (N+1)
+# print(consulting_list)
+
+# for idx in range(1, N+1):
+#     if idx + consulting_list[idx][0] -1< N:
+#         dp_list[idx + consulting_list[idx][0]-1] = max(consulting_list[idx][1], dp_list[idx])
+#     print(idx, dp_list)
+#     # dp_list[idx] = max(dp_list[idx], dp_list[idx])
+
+# print(dp_list)
+
+
+# 2828 사과 담기 게임
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# ans = 0
+# l, r = 1, M
+# for _ in range(int(input())):
+#     x = int(input())
+#     if x < l:
+#         gab = l-x
+#         ans += gab
+#         l, r = l-gab, r-gab
+#     elif x >= r:
+#         gab = x-r
+#         ans += gab
+#         l, r = l+gab, r+gab
+
+# print(ans)
