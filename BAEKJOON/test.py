@@ -10303,6 +10303,7 @@ dfs/bfs
 # print(day)
 
 # 14501 퇴사
+# 이런 접근인가? 
 # N = int(input())
 # consulting_list = [list(map(int, input().split())) for _ in range(N)]
 # consulting_list.insert(0, 0)
@@ -10311,12 +10312,34 @@ dfs/bfs
 # print(consulting_list)
 
 # for idx in range(1, N+1):
-#     if idx + consulting_list[idx][0] -1< N:
-#         dp_list[idx + consulting_list[idx][0]-1] = max(consulting_list[idx][1], dp_list[idx])
+#     if idx + consulting_list[idx][0] -1 <= N:
+#         dp_list[idx + consulting_list[idx][0]-1] = consulting_list[idx][1]
 #     print(idx, dp_list)
 #     # dp_list[idx] = max(dp_list[idx], dp_list[idx])
 
 # print(dp_list)
+
+# try2
+# N = int(input())
+# consulting_list = [list(map(int, input().split())) for _ in range(N)]
+# consulting_list.insert(0, 0)
+# # print(con)
+# dp_list = [0] * (N+1)
+# # print(consulting_list)
+
+# max_dp_val = 0
+# # idx_1, idx_2 == standard, sub(-)
+# for idx_1 in range(1, N+1):
+#     # dp_list[idx_1] = max(dp_list[:idx_1])
+#     dp_list[idx_1] = max_dp_val
+#     for idx_2 in range(idx_1):
+#         if idx_2 == consulting_list[idx_1 - idx_2][0] - 1:
+#             dp_list[idx_1] = max(dp_list[idx_1 - idx_2 -1] + consulting_list[idx_1 - idx_2][1], dp_list[idx_1])
+#     max_dp_val = max(max_dp_val, dp_list[idx_1])
+
+#     # print(idx_1, dp_list)
+# # print(dp_list)
+# print(dp_list[N])
 
 
 # 2828 사과 담기 게임
@@ -10338,3 +10361,28 @@ dfs/bfs
 #         l, r = l+gab, r+gab
 
 # print(ans)
+
+
+# 1106 호텔
+# import sys
+# input = sys.stdin.readline
+
+# C, N = map(int, input().split())
+# dp_list = [[0]*(C+1) for _ in range(N+1)]
+# dp_list[0] = [100000]*(C+1)
+# # print(dp_list)
+
+# for x in range(1, N+1):
+#     cost, num_of_client = map(int, input().split())
+#     for y in range(1, C+1):
+#         mul_val = 1
+#         while mul_val * num_of_client < y:
+#             mul_val += 1
+        
+#         dp_list[x][y] = min(dp_list[x-1][y], mul_val * cost)
+#         if num_of_client <= y:
+#             dp_list[x][y] = min(dp_list[x][y], dp_list[x][y-num_of_client] + cost)
+
+# # for x in range(N+1):
+# #     print(dp_list)
+# print(dp_list[N][C])
