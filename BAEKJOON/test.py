@@ -10386,3 +10386,49 @@ dfs/bfs
 # # for x in range(N+1):
 # #     print(dp_list)
 # print(dp_list[N][C])
+
+# 소수 경로 test
+# num_list = [1033 1733 3733 3739 3779 8779 8179]
+# def prime_check(num):
+#     for div_num in range(3, int(num**(1/2))+1,2):
+#         if num % div_num == 0: return False
+#     return True
+
+# num_list = list(map(int, input().split()))
+# print(num_list)
+
+# for num in num_list:
+#     print(prime_check(num))
+
+
+# 9322 철벽 보안 알고리즘
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     n = int(input())
+#     dict_1, dict_2 = dict(), dict()
+#     list_1 = list(map(str, input().split()))
+#     list_2 = list(map(str, input().split()))
+
+#     for idx in range(n):
+#         dict_1[list_1[idx]] = idx
+#         dict_2[list_2[idx]] = idx
+    
+#     new_list = [[0, 0] for _ in range(n)]
+#     for idx in range(n):
+#         new_list[idx] = [dict_2[list_2[idx]], dict_1[list_2[idx]]]
+#     # print(new_list)
+    
+
+#     secret_list = list(map(str, input().split()))
+#     plain_text_list = []*n
+
+#     for idx in range(n):
+#         plain_text_list[new_list[idx][1]] = secret_list[new_list[idx][0]]
+#     print(plain_text_list)
+
+
+# 15964
+A, B = map(int, input().split())
+print((A+B)*(A-B))
