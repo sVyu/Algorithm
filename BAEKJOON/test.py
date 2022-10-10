@@ -10387,6 +10387,41 @@ dfs/bfs
 # #     print(dp_list)
 # print(dp_list[N][C])
 
+
+# 9322 철벽 보안 알고리즘
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     n = int(input())
+#     dict_1, dict_2 = dict(), dict()
+#     # list_1/2 - public_key_1/2
+#     list_1 = list(map(str, input().split()))
+#     list_2 = list(map(str, input().split()))
+
+#     for idx in range(n):
+#         dict_1[list_1[idx]] = idx
+#         dict_2[list_2[idx]] = idx
+
+#     idx_list = [[0, 0] for _ in range(n)]
+#     for idx in range(n):
+#         idx_list[idx] = [dict_1[list_2[idx]], dict_2[list_2[idx]]]
+#     # print(idx_list)
+    
+#     cryptogram_list = list(map(str, input().split()))
+#     # plain_text_list = []*n
+#     plain_text_list = [_]*n
+
+#     for idx in range(n):
+#         plain_text_list[idx_list[idx][0]] = cryptogram_list[idx_list[idx][1]]
+#     print(*plain_text_list)
+
+
+# 15964 이상한 기호
+# A, B = map(int, input().split())
+# print((A+B)*(A-B))
+
+
 # 소수 경로 test
 # num_list = [1033 1733 3733 3739 3779 8779 8179]
 # def prime_check(num):
@@ -10401,34 +10436,28 @@ dfs/bfs
 #     print(prime_check(num))
 
 
-# 9322 철벽 보안 알고리즘
-# import sys
-# input = sys.stdin.readline
+# 1072 게임
+# 10:45 ~ 11:01
+# https://solved.ac/contribute/1072/list
+# 1차 부등식으로도 풀 수가 있다고.. (그러네?)
 
-# for _ in range(int(input())):
-#     n = int(input())
-#     dict_1, dict_2 = dict(), dict()
-#     list_1 = list(map(str, input().split()))
-#     list_2 = list(map(str, input().split()))
+# X, Y = map(int, input().split())
+# bot, top = 0, X
+# Z = int(Y*100/X)
+# # Z = int(Y/X)
+# # print(Z)
+# ans = 0
 
-#     for idx in range(n):
-#         dict_1[list_1[idx]] = idx
-#         dict_2[list_2[idx]] = idx
-    
-#     new_list = [[0, 0] for _ in range(n)]
-#     for idx in range(n):
-#         new_list[idx] = [dict_2[list_2[idx]], dict_1[list_2[idx]]]
-#     # print(new_list)
-    
+# if Z >= 99: print(-1)
+# else:
+#     while bot <= top:
+#         mid = (bot+top)//2
+#         # print("mid", mid)
+#         if int((Y+mid)*100/(X+mid)) != Z:
+#             # print(mid, Y+mid, X+mid, int((Y+mid)*100/(X+mid)))
+#             ans = mid
+#             top = mid -1
+#         else:
+#             bot = mid +1
 
-#     secret_list = list(map(str, input().split()))
-#     plain_text_list = []*n
-
-#     for idx in range(n):
-#         plain_text_list[new_list[idx][1]] = secret_list[new_list[idx][0]]
-#     print(plain_text_list)
-
-
-# 15964
-A, B = map(int, input().split())
-print((A+B)*(A-B))
+#     print(ans)
