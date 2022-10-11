@@ -10422,20 +10422,6 @@ dfs/bfs
 # print((A+B)*(A-B))
 
 
-# 소수 경로 test
-# num_list = [1033 1733 3733 3739 3779 8779 8179]
-# def prime_check(num):
-#     for div_num in range(3, int(num**(1/2))+1,2):
-#         if num % div_num == 0: return False
-#     return True
-
-# num_list = list(map(int, input().split()))
-# print(num_list)
-
-# for num in num_list:
-#     print(prime_check(num))
-
-
 # 1072 게임
 # 10:45 ~ 11:01
 # https://solved.ac/contribute/1072/list
@@ -10461,3 +10447,97 @@ dfs/bfs
 #             bot = mid +1
 
 #     print(ans)
+
+
+# 1963 소수 경로 test
+# num_list = [1033 1733 3733 3739 3779 8779 8179]
+# def prime_check(num):
+#     for div_num in range(3, int(num**(1/2))+1,2):
+#         if num % div_num == 0: return False
+#     return True
+
+# num_list = list(map(int, input().split()))
+# print(num_list)
+
+# for num in num_list:
+#     print(prime_check(num))
+
+
+# 1963 소수경로
+# 10:34 ~ 11:23
+# 소수 판정, 에라토스테네스의 체, 너비 우선 탐색(BFS)
+
+# import sys
+# from queue import deque
+# input = sys.stdin.readline
+
+# def prime_check(num):
+#     if num == 1: return False
+#     elif num == 2: return True
+#     elif num % 2 == 0: return False
+#     else:
+#         # for div_num in range(3, int(num^(1/2))+1, 2):
+#         for div_num in range(3, int(num**(1/2))+1, 2):
+#             if num % div_num == 0:
+#                 return False
+#         return True
+
+# # 10:46
+# def bfs(que, prime_check_list, num_check_list, target_num):
+#     tmp_num, cnt = que.popleft()
+#     if tmp_num == target_num:
+#         print(cnt)
+#         # while que:
+#         #     que.popleft()
+#         return True
+#     # print(list(map(int, str(tmp_num))))
+#     num_list = list(map(int, str(tmp_num)))
+
+#     # for num in range(thousands_list):
+#     for idx in range(4):
+#         tmp_num_list = num_list.copy()
+#         place_value = tmp_num // (10**(3-idx))
+#         if idx == 0:
+#             next_num_list = [i for i in range(1, 10) if i != place_value]
+#         else:
+#             next_num_list = [i for i in range(10) if i != place_value]
+        
+#         for val in next_num_list:
+#             tmp_num_list[idx] = val
+#             # print(tmp_num_list)
+            
+#             next_num = 0
+#             for i in range(4):
+#                 next_num += tmp_num_list[i] * (10**(3-i))
+
+#             if prime_check_list[next_num] and not num_check_list[next_num]:
+#                 num_check_list[next_num] = True
+#                 que.append([next_num, cnt+1])
+
+# def solve():
+#     # 소수 판정, 에라토스테네스의 체 
+#     prime_check_list = [True] * 10000
+#     for x in range(2, 10000):
+#         if prime_check(x):
+#             for mul_x in range(x*2, 10000, x):
+#                 if prime_check_list[mul_x] == True:
+#                     prime_check_list[mul_x] = False
+#         # print(x, prime_check_list[x])
+
+#     for _ in range(int(input())):
+#         start_num, target_num = map(int, input().split())
+#         num_check_list, found_check = [False] * 10000, False
+#         que = deque()
+#         # print(que)
+
+#         # 너비 우선 탐색(BFS)
+#         que.append([start_num, 0])
+#         while que:
+#             if bfs(que, prime_check_list, num_check_list, target_num):
+#                 found_check = True
+#             # print(que)
+#             # input()
+#         if not found_check:
+#             print("Impossible")
+
+# solve()
