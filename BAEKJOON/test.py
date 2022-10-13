@@ -7013,7 +7013,58 @@ dfs/bfs
 #         fac_list[index] -= min_val
 
 # print(sum)
+
+N = int(input())
+list_n = list(map(int, input().split()))
+list_block = [0]*3
+
+for idx_from in range(N):
+    gab = min(2, N-1-idx_from)
+    tmp_gab = gab
+    tmp_list_n = list_n[idx_from:idx_from+gab+1].copy()
+    tmp_list_block = [0]*(tmp_gab+1)
+    # print(tmp_list_n, tmp_list_block)
+
+    while tmp_gab >= 0:
+        min_val = min(tmp_list_n[:tmp_gab+1])
+        # print(min_val)
+        for tmp_idx in range(tmp_gab+1):
+            tmp_list_n[tmp_idx] -= min_val
+        # print(tmp_list_n)
+
+        tmp_list_block[tmp_gab] += min_val
+        tmp_gab -= 1
+    # print(list_block)
+
+    if gab == 2:
+        if list_n[idx_from+1] > list_n[idx_from+2]:
+            val = min(list_n[idx_from+1]-list_n[idx_from+2], tmp_list_block[2])
+            tmp_list_block[2] -= val
+            tmp_list_block[1] += val
+            tmp_list_n[2] += val
+    # print(list_block)
+
+    for tmp_idx in range(gab+1):
+        list_block[tmp_idx] += tmp_list_block[tmp_idx]
+        list_n[idx_from+tmp_idx] = tmp_list_n[tmp_idx]
+    # print(list_block)
+# print(list_block)
+print(list_block[0]*3 + list_block[1]*5 + list_block[2]*7)
+
         
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 1237 정ㅋ벅ㅋ
 # clear
@@ -8196,21 +8247,20 @@ dfs/bfs
 
 # try2
 # 85% 틀렸습니다 ㅡ idx 범위를 수정해도 똑같음
-# num = int(input())
+# N = int(input())
 
-# cannon_balls_list = [0]*200
-# for i in range(1, 200):
+# cannon_balls_list = [0]*121
+# for i in range(1, 121):
 #     cannon_balls_list[i] = i*(i+1)*(i+2)//6
 # cannon_balls_list[0], cannon_balls_idx = 1, 1
-# # print(cannon_balls_list)
+# print(cannon_balls_list)
 
-# dp_list = [0] * (num+1)
-# for i in range(num+1):
-#     dp_list[i] = i
+# dp_list = [i for i in range(N+1)]
 # # print(dp_list)
 
-# for i in range(1, num+1):
-#     while cannon_balls_idx < 199:
+# for i in range(1, N+1):
+#     # find proper index
+#     while cannon_balls_idx < 120:
 #         if cannon_balls_list[cannon_balls_idx+1] <= dp_list[i]:
 #             cannon_balls_idx += 1
 #         else: break
@@ -8225,6 +8275,42 @@ dfs/bfs
 
 # # print(dp_list)
 # print(dp_list[i])
+
+# 300000 개 인덱스를 다 받아도 될 듯 ?
+# 3:06 ~
+# N = int(input())
+
+# cannon_balls_list = [0]*121
+# for i in range(1, 121):
+#     cannon_balls_list[i] = i*(i+1)*(i+2)//6
+#     # if cannon_balls_list[i] > 300000: print(i)
+# # print(cannon_balls_list)
+
+# dp_list = [i for i in range(N+1)]
+# # print(dp_list)
+
+# # cannon_balls_idx = 1
+# for idx in range(1, N+1):
+#     # if cannon_balls_idx < 120 and cannon_balls_list[cannon_balls_idx] < idx:
+#     # if cannon_balls_idx < 120 and cannon_balls_list[cannon_balls_idx+1] <= idx:
+#     #     cannon_balls_idx += 1
+#     # print(idx, cannon_balls_idx)
+#     # for sub_idx in cannon_balls_list[:cannon_balls_idx+1]:
+#     # for sub_idx in cannon_balls_list:
+#     #     if sub_idx == idx:
+#     #         dp_list[idx] = 1
+#     #         break
+#     #     elif sub_idx > idx:
+#     #         break
+#     #     dp_list[idx] = min(dp_list[idx], dp_list[idx - sub_idx]+1)
+
+#     for sub_idx in cannon_balls_list:
+#         if sub_idx <= idx:
+#             dp_list[idx] = min(dp_list[idx], dp_list[idx - sub_idx]+1)
+#         else: break
+
+# # print(dp_list)
+# print(dp_list[N])
 
 
 # 1531 투명
@@ -9734,9 +9820,16 @@ dfs/bfs
 1 6
 """
 
-# try - 2
+# try - 2, 3
 # 35퍼 쯤? 틀렸습니다
-# 뭐가 문제지?
+# 뭐가 문제지(try2) ㅡ input의 1행부터 Ti가 Si보다 크다면?(try3)
+''' 찾았다 반례
+2
+7 5
+1 8
+[정답] -1
+[출력] -2
+'''
 # import sys
 # input = sys.stdin.readline
 
@@ -9750,21 +9843,24 @@ dfs/bfs
 # ans_check = True
 
 # total_time = ans
-# for Ti, Si in time_list:
-#     total_time += Ti
+# if ans < 0: print(-1)
+# else:
+#     for Ti, Si in time_list:
+#         total_time += Ti
 
-#     if total_time > Si:
-#         time_gab = total_time - Si
-#         ans -= time_gab
-#         total_time -= time_gab
+#         if total_time > Si:
+#             time_gab = total_time - Si
+#             ans -= time_gab
+#             total_time -= time_gab
 
-#         if ans < 0:
-#             ans_check = False
-#             break
-#     # print(Ti, Si, total_time, ans)
+#             if ans < 0:
+#                 ans_check = False
+#                 break
+#         # print(Ti, total_time, Si, ans)
 
-# if ans_check: print(ans)
-# else: print(-1)
+#     if ans_check: print(ans)
+#     else: print(-1)
+
 
 # 4470 줄번호
 # import sys
@@ -10320,6 +10416,9 @@ dfs/bfs
 # print(dp_list)
 
 # try2
+# import sys
+# input = sys.stdin.readline
+
 # N = int(input())
 # consulting_list = [list(map(int, input().split())) for _ in range(N)]
 # consulting_list.insert(0, 0)
@@ -10327,15 +10426,24 @@ dfs/bfs
 # dp_list = [0] * (N+1)
 # # print(consulting_list)
 
-# max_dp_val = 0
+# # max_dp_val = 0
+# # # idx_1, idx_2 == standard, sub(-)
+# # for idx_1 in range(1, N+1):
+# #     # dp_list[idx_1] = max(dp_list[:idx_1])
+# #     dp_list[idx_1] = max_dp_val
+# #     for idx_2 in range(idx_1):
+# #         if idx_2 == consulting_list[idx_1 - idx_2][0] - 1:
+# #             dp_list[idx_1] = max(dp_list[idx_1 - idx_2 -1] + consulting_list[idx_1 - idx_2][1], dp_list[idx_1])
+# #     max_dp_val = max(max_dp_val, dp_list[idx_1])
+
+# max_dp_val 빼고도 가능
 # # idx_1, idx_2 == standard, sub(-)
 # for idx_1 in range(1, N+1):
 #     # dp_list[idx_1] = max(dp_list[:idx_1])
-#     dp_list[idx_1] = max_dp_val
 #     for idx_2 in range(idx_1):
 #         if idx_2 == consulting_list[idx_1 - idx_2][0] - 1:
 #             dp_list[idx_1] = max(dp_list[idx_1 - idx_2 -1] + consulting_list[idx_1 - idx_2][1], dp_list[idx_1])
-#     max_dp_val = max(max_dp_val, dp_list[idx_1])
+#     dp_list[idx_1] = max(dp_list[idx_1-1], dp_list[idx_1])
 
 #     # print(idx_1, dp_list)
 # # print(dp_list)
@@ -10541,3 +10649,50 @@ dfs/bfs
 #             print("Impossible")
 
 # solve()
+
+
+# 15486 퇴사2
+# pm 5:10 ~ 5:21
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# val_list = [list(map(int, input().split())) for _ in range(N)]
+# val_list.insert(0, 0)
+# dp_list = [0] * (N+1)
+
+# for idx in range(1, N+1):
+#     t, p = val_list[idx]
+#     if idx + t-1 <= N:
+#         dp_list[idx + t-1] = max(dp_list[idx + t-1], dp_list[idx-1] + p)
+#     dp_list[idx] = max(dp_list[idx-1], dp_list[idx])
+#     # print(idx, dp_list)
+
+# print(dp_list[N])
+
+
+# 6068 시간 관리하기
+# PM 02:46 ~ 02:52
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# total_T, ans = 0, 1000000
+# work_list = [list(map(int, input().split())) for _ in range(N)]
+# work_list = sorted(work_list, key=lambda x:x[1])
+# work_done_check = True
+
+# for idx in range(N):
+#     T_i, S_i = work_list[idx]
+#     total_T += T_i
+#     # print(T_i, total_T, S_i)
+#     if total_T > S_i:
+#         work_done_check = False
+#         break
+#     else:
+#         ans = min(S_i - total_T, ans)
+
+# if work_done_check: print(ans)
+# else: print(-1)
+
+
