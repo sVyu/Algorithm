@@ -7014,56 +7014,50 @@ dfs/bfs
 
 # print(sum)
 
-N = int(input())
-list_n = list(map(int, input().split()))
-list_block = [0]*3
+# N = int(input())
+# list_n = list(map(int, input().split()))
+# list_block = [0]*3
 
-for idx_from in range(N):
-    gab = min(2, N-1-idx_from)
-    tmp_gab = gab
-    tmp_list_n = list_n[idx_from:idx_from+gab+1].copy()
-    tmp_list_block = [0]*(tmp_gab+1)
-    # print(tmp_list_n, tmp_list_block)
+# for idx_from in range(N):
+#     gab = min(2, N-1-idx_from)
+#     # print(gab)
+#     tmp_gab = gab
+#     tmp_list_n = list_n[idx_from:idx_from+gab+1].copy()
+#     tmp_list_block = [0]*(tmp_gab+1)
+#     # print(tmp_list_n, tmp_list_block)
 
-    while tmp_gab >= 0:
-        min_val = min(tmp_list_n[:tmp_gab+1])
-        # print(min_val)
-        for tmp_idx in range(tmp_gab+1):
-            tmp_list_n[tmp_idx] -= min_val
-        # print(tmp_list_n)
+#     while tmp_gab >= 0:
+#         min_val = min(tmp_list_n[:tmp_gab+1])
+#         # print(min_val)
+#         for tmp_idx in range(tmp_gab+1):
+#             tmp_list_n[tmp_idx] -= min_val
+#         # print(tmp_list_n)
 
-        tmp_list_block[tmp_gab] += min_val
-        tmp_gab -= 1
-    # print(list_block)
+#         tmp_list_block[tmp_gab] += min_val
+#         tmp_gab -= 1
+#     # print(tmp_list_block)
 
-    if gab == 2:
-        if list_n[idx_from+1] > list_n[idx_from+2]:
-            val = min(list_n[idx_from+1]-list_n[idx_from+2], tmp_list_block[2])
-            tmp_list_block[2] -= val
-            tmp_list_block[1] += val
-            tmp_list_n[2] += val
-    # print(list_block)
+#     if gab == 2:
+#         if list_n[idx_from+1] > list_n[idx_from+2]:
+#             # val = min(list_n[idx_from+1]-list_n[idx_from+2], tmp_list_block[2])
+#             val = min(tmp_list_n[1]-tmp_list_n[2], tmp_list_block[2])
+#             tmp_list_block[2] -= val
+#             tmp_list_block[1] += val
+#             tmp_list_n[2] += val
+#     # print(tmp_list_block)
 
-    for tmp_idx in range(gab+1):
-        list_block[tmp_idx] += tmp_list_block[tmp_idx]
-        list_n[idx_from+tmp_idx] = tmp_list_n[tmp_idx]
-    # print(list_block)
-# print(list_block)
-print(list_block[0]*3 + list_block[1]*5 + list_block[2]*7)
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
+#     for tmp_idx in range(gab+1):
+#         list_block[tmp_idx] += tmp_list_block[tmp_idx]
+#         list_n[idx_from+tmp_idx] = tmp_list_n[tmp_idx]
+#     # print(list_block)
+# # print(list_block)
+# print(list_block[0]*3 + list_block[1]*5 + list_block[2]*7)
+'''
+3
+2 2 1
+[정답] 12 (7+5)
+[출력] 13 (5+5+1)
+'''
 
 
 # 1237 정ㅋ벅ㅋ
@@ -10696,3 +10690,55 @@ print(list_block[0]*3 + list_block[1]*5 + list_block[2]*7)
 # else: print(-1)
 
 
+# 9663 N-Queen
+def same_line_check(y_list, x, y):
+    for nx in range(x):
+        ny = y_list[nx]
+        # print(y_list, nx, x, ny, y)
+        if abs(nx-x) == abs(ny-y) or (nx==x) or (ny==y):
+            return True
+    return False
+
+def N_queens(N, y_list, x):
+    global ans
+    for y in range(N):
+        if y_list[x] == -1:
+            if not same_line_check(y_list, x, y):
+                y_list[x] = y
+                if x == (N-1):
+                    ans += 1
+                    y_list[x] = -1
+                else:
+                    x += 1
+                    N_queens(N, y_list, x)
+                    x -= 1
+                    y_list[x] = -1
+
+def solve():
+    global ans
+    ans = 0
+    N = int(input())
+    y_list, x = [-1] * N, 0
+    N_queens(N, y_list, x)
+    print(ans)
+
+solve()
+
+
+
+    # for idx in range(N):
+    #     if y_list[x] == -1:
+    #         print("x:, cnt", x, cnt)
+    #         if not same_line_check(y_list, cnt, x, idx):
+    #             y_list[x] = idx
+    #             x += 1
+    #             cnt += 1
+    #             # print('haha')
+    #             print(x, idx, y_list)
+    #             if cnt == N:
+    #                 ans += 1
+    #             N_queens(ans, N, y_list, x, cnt)
+    #     y_list[x] = -1
+    #     x -= 1
+    #     cnt -= 1
+    # return ans
