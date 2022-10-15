@@ -10691,38 +10691,99 @@ dfs/bfs
 
 
 # 9663 N-Queen
-def same_line_check(y_list, x, y):
-    for nx in range(x):
-        ny = y_list[nx]
-        # print(y_list, nx, x, ny, y)
-        if abs(nx-x) == abs(ny-y) or (nx==x) or (ny==y):
-            return True
-    return False
+# 6퍼 시간 초과아ㅏ...
+# def same_line_check(y_list, x, y):
+#     for nx in range(x):
+#         ny = y_list[nx]
+#         # print(y_list, nx, x, ny, y)
+#         if abs(nx-x) == abs(ny-y) :
+#             return True
+#     return False
 
-def N_queens(N, y_list, x):
-    global ans
-    for y in range(N):
-        if y_list[x] == -1:
-            if not same_line_check(y_list, x, y):
-                y_list[x] = y
-                if x == (N-1):
-                    ans += 1
-                    y_list[x] = -1
-                else:
-                    x += 1
-                    N_queens(N, y_list, x)
-                    x -= 1
-                    y_list[x] = -1
+# def N_queens(N, y_list, x, n_list):
+#     global ans
+#     for y in range(N):
+#         if y_list[x] == -1 and n_list[y] == 0:
+#             if not same_line_check(y_list, x, y):
+#                 y_list[x] = y
+#                 n_list[y] = 1
+#                 # print(y_list, n_list)
+#                 if x == (N-1):
+#                     ans += 1
+#                     y_list[x] = -1
+#                     n_list[y] = 0
+#                 else:
+#                     x += 1
+#                     N_queens(N, y_list, x, n_list)
+#                     x -= 1
+#                     y_list[x] = -1
+#                     n_list[y] = 0
 
-def solve():
-    global ans
-    ans = 0
-    N = int(input())
-    y_list, x = [-1] * N, 0
-    N_queens(N, y_list, x)
-    print(ans)
+# def solve():
+#     global ans
+#     ans = 0
+#     N = int(input())
+#     y_list, x = [-1] * N, 0
+#     n_list = [0]*(N)
+#     N_queens(N, y_list, x, n_list)
+#     print(ans)
 
-solve()
+# solve()
+
+# def N_queens(board, N, y_list, x):
+#     global ans
+#     for y in range(N):
+#         if board[x][y] == 0:
+#             y_list[x] = y
+#             if x == (N-1):
+#                 ans += 1
+#             else:
+#                 for n in range(N):
+#                     board[x][n] += 1
+#                     board[n][y] += 1
+#                 for nx in range(x):
+#                     if y-nx >= 0:
+#                         board[x-nx][y-nx] += 1
+#                     if y+nx < N:
+#                         board[x-nx][y+nx] += 1
+#                 for nx in range(N-x):
+#                     if y-nx >= 0:
+#                         board[x+nx][y-nx] += 1
+#                     if y+nx < N:
+#                         board[x+nx][y+nx] += 1
+
+#                 x += 1
+#                 N_queens(board, N, y_list, x)
+#                 x -= 1
+#                 y_list[x] = -1
+
+#                 for n in range(N):
+#                     board[x][n] -= 1
+#                     board[n][y] -= 1
+#                 for nx in range(x):
+#                     if y-nx >= 0:
+#                         board[x-nx][y-nx] -= 1
+#                     if y+nx < N:
+#                         board[x-nx][y+nx] -= 1
+#                 for nx in range(N-x):
+#                     if y-nx >= 0:
+#                         board[x+nx][y-nx] -= 1
+#                     if y+nx < N:
+#                         board[x+nx][y+nx] -= 1
+
+# def solve():
+#     global ans
+#     ans = 0
+#     N = int(input())
+#     board = [[0]* N for _ in range(N)]
+#     y_list, x = [-1] * N, 0
+#     N_queens(board, N, y_list, x)
+#     print(ans)
+
+# solve()
+
+# 17295 엔드게임 스포일러
+# print("Avengers: Endgame")
 
 
 
@@ -10742,3 +10803,151 @@ solve()
     #     x -= 1
     #     cnt -= 1
     # return ans
+
+
+# 878/1 초콜릿 피라미드
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     R, C = map(int, input().split())
+#     sum_white_chocolate, sum_black_chocolate = 0, 0
+#     if R > C:
+#         R, C = C, R
+#     # print("haha", R, C)
+#     while R > 1 and C > 1:
+#         sum_white_chocolate += (R*C) + (R-1)*(C-1)
+#         sum_black_chocolate += (2*R*C) -R -C
+#         R -=1
+#         C -=1
+#     # print(sum_white_chocolate, sum_black_chocolate)
+
+#     if R == 1:
+#         if C == 1:
+#             sum_white_chocolate += 1
+#         while C >= 2:
+#             sum_white_chocolate += C
+#             sum_black_chocolate += C-1
+#             C -= 1
+
+#     print(sum_white_chocolate, sum_black_chocolate)
+
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     R, C = map(int, input().split())
+#     sum_white_chocolate, sum_black_chocolate = 0, 0
+#     if R > C:
+#         R, C = C, R
+#     # print("haha", R, C)
+#     gab = C-R
+#     if R >= 2:
+#         sum_white_chocolate = 2*(R*(R+1)*((2*R)+(3*gab)+1)//6) -R*C -gab-1
+#         sum_black_chocolate = 2*(R*(R+1)*(R-1))//3 + gab*R*R - gab
+#     # print(sum_white_chocolate, sum_black_chocolate)
+
+#     # R 값이 1인 층,
+#     if gab == 0:
+#         sum_white_chocolate += 1
+#     else:
+#         sum_white_chocolate += gab+1
+#         sum_black_chocolate += gab
+
+#     print(sum_white_chocolate, sum_black_chocolate)
+
+
+# 878/2
+# X, Y = map(int, input().split())
+# print(7)
+# if X > 0 and Y > 0:
+#     print(X, Y)
+#     print(2*X, 0)
+#     print(3*X, -Y)
+#     print(2*X, -2*Y)
+#     print(X, -3*Y)
+#     print(0, -2*Y)
+#     print(X, -Y)
+# else:
+#     k = max(X, Y)
+#     print(k, 0)
+#     print(k, k)
+#     print(k, 2*k)
+#     print(0, 2*k)
+#     print(-k, 2*k)
+#     print(-k, k)
+#     print(0, k)
+
+
+# 878/2
+# from queue import deque
+
+# def next_step(que, X, Y):
+#     tmp_dict, cnt = que.popleft()
+#     # print(pre_list,cnt)
+#     # print(tmp_dict[0])
+#     nx, ny = tmp_dict[cnt]
+#     # print(nx, ny)
+
+#     road_found_check = False
+#     tmp_dict_values = tmp_dict.values()
+#     # print(tmp_dict_values)
+
+#     for x, y in [[X, Y], [X,-Y], [-X, Y], [-X, -Y], [Y, X], [Y, -X], [-Y, X], [-Y, -X]]:
+#         if [nx + x, ny + y] not in tmp_dict_values:
+#             road_found_check = True
+#             next_dict = tmp_dict.copy()
+#             next_dict[cnt+1] = [nx+x, ny+y]
+#             que.append([next_dict, cnt+1])
+
+#     if not road_found_check:
+#         print(cnt)
+#         for x in range(1, cnt+1):
+#             print(*tmp_dict[x])
+#         que.clear()
+
+# def solve():
+#     X, Y = map(int, input().split())
+#     tmp_dict = dict({0: [0,0]})
+#     # tmp_dict[0] = [0, 0]
+#     que = deque([[tmp_dict, 0]])
+    
+#     while que:
+#         next_step(que, X, Y)
+
+# solve()
+
+
+# from queue import deque
+
+# def next_step(que, X, Y):
+#     pre_list, cnt = que.popleft()
+#     nx, ny = pre_list[cnt]
+#     # print(nx, ny)
+
+#     road_found_check = False
+#     for x, y in [[X, Y], [X,-Y], [-X, Y], [-X, -Y], [Y, X], [Y, -X], [-Y, X], [-Y, -X]]:
+#         if [nx + x, ny + y] not in pre_list:
+#             road_found_check = True
+#             tmp_list = [[0, 0] for _ in range(9)]
+#             for k in range(cnt+1):
+#                 tmp_list[k] = pre_list[k]
+#             tmp_list[cnt+1] = [nx+x, ny+y]
+#             # print(tmp_list, pre_list)
+#             que.append([tmp_list, cnt+1])
+#     # input()
+
+#     if not road_found_check:
+#         print(cnt)
+#         for x in range(1, cnt+1):
+#             print(*pre_list[x])
+#         que.clear()
+
+# def solve():
+#     X, Y = map(int, input().split())
+#     que = deque([[[[0, 0] for _ in range(9)], 0]])
+    
+#     while que:
+#         next_step(que, X, Y)
+
+# solve()
