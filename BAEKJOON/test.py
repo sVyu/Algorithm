@@ -10782,11 +10782,6 @@ dfs/bfs
 
 # solve()
 
-# 17295 엔드게임 스포일러
-# print("Avengers: Endgame")
-
-
-
     # for idx in range(N):
     #     if y_list[x] == -1:
     #         print("x:, cnt", x, cnt)
@@ -10804,6 +10799,8 @@ dfs/bfs
     #     cnt -= 1
     # return ans
 
+# 17295 엔드게임 스포일러
+# print("Avengers: Endgame")
 
 # 878/1 초콜릿 피라미드
 # import sys
@@ -10845,7 +10842,7 @@ dfs/bfs
 #     if R >= 2:
 #         sum_white_chocolate = 2*(R*(R+1)*((2*R)+(3*gab)+1)//6) -R*C -gab-1
 #         sum_black_chocolate = 2*(R*(R+1)*(R-1))//3 + gab*R*R - gab
-#     # print(sum_white_chocolate, sum_black_chocolate)
+    # print(sum_white_chocolate, sum_black_chocolate)
 
 #     # R 값이 1인 층,
 #     if gab == 0:
@@ -10951,3 +10948,106 @@ dfs/bfs
 #         next_step(que, X, Y)
 
 # solve()
+
+
+# 3344 N-Queen
+# 새로 짠 N-Queen 코드, 전보다 깔끔하네
+# def check_n_queen(N, y_list, y_check_list, x):
+#     global ans
+#     for y in range(N):
+#         if y_check_list[y] == False:
+#             y_list[x] = y
+#             y_check_list[y] = True
+
+#             safe_place = True
+#             # 서로 공격범위에 있는 칸인지 체크
+#             for nx in range(x):
+#                 ny = y_list[nx]
+#                 if abs(y - ny) == abs(x - nx):
+#                     safe_place = False
+#                     break
+
+#             if safe_place:
+#                 if x == (N-1):
+#                     ans += 1
+#                 else:
+#                     check_n_queen(N, y_list, y_check_list, x+1)
+#             # BackTracking
+#             y_list[x] = -1
+#             y_check_list[y] = False
+        
+# def solve():
+#     global ans
+#     ans = 0
+#     N = int(input())
+#     y_list = [-1]*N
+#     y_check_list = [False]*N
+    
+#     check_n_queen(N, y_list, y_check_list, 0)
+#     print(ans)
+
+# solve()
+
+# 시간 초과, 20부터 시간이 많이 소요됨
+# def check_n_queen(N, y_list, x):
+#     for y in range(N):
+#         y_list[x] = y
+
+#         safe_place = True
+#         # 서로 공격범위에 있는 칸인지 체크
+#         for nx in range(x):
+#             ny = y_list[nx]
+#             if y == ny or abs(y - ny) == abs(x - nx):
+#                 safe_place = False
+
+#         if safe_place:
+#             if x == (N-1):
+#                 for idx in range(N):
+#                     print(y_list[idx]+1)
+#                 exit()
+#             else:
+#                 check_n_queen(N, y_list, x+1)
+#         # BackTracking
+#         y_list[x] = -1
+        
+# def solve():
+#     N = int(input())
+#     y_list = [-1]*N
+    
+#     check_n_queen(N, y_list, 0)
+#     # print(ans)
+
+# solve()
+
+
+# 1052 물병
+# N, K = map(int, input().split())
+# if N <= K:
+#     print(0)
+# else:
+#     n_list = [0] * 25
+#     idx = 0
+#     # binary num (reversed)
+#     while N > 0:
+#         n_list[idx] = N % 2
+#         N //= 2
+#         idx += 1
+#     # print(n_list)
+
+#     min_idx, ans = 0, 0
+#     while True:
+#         if sum(n_list) <= K:
+#             print(ans)
+#             break
+
+#         for idx in range(min_idx, 25):
+#             if n_list[idx] == 1:
+#                 break
+#         n_list[idx] += 1
+#         ans += 2**idx
+#         while n_list[idx] == 2:
+#             n_list[idx] = 0
+#             n_list[idx+1] += 1
+#             idx += 1
+#         min_idx = idx
+#         # print(n_list)
