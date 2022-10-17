@@ -11051,3 +11051,59 @@ dfs/bfs
 #             idx += 1
 #         min_idx = idx
 #         # print(n_list)
+
+
+# 1374 강의실
+# pm 03:00 ~ 03:16
+# import sys
+# from queue import PriorityQueue
+# input = sys.stdin.readline
+
+# N = int(input())
+# course_list = [list(map(int, input().split())) for _ in range(N)]
+# course_list = sorted(course_list, key=lambda x:(x[1], x[2]))
+# # for x in range(N):
+# #     print(course_list[x])
+
+# pque = PriorityQueue()
+# pque.put(0)
+
+# ans = 1
+# for idx in range(N):
+#     val_pque_get = pque.get()
+#     # print(val_pque_get)
+#     if course_list[idx][1] < val_pque_get:
+#         ans += 1
+#         pque.put(val_pque_get)
+#     pque.put(course_list[idx][2])
+#     # print(pque.queue)
+# print(ans)
+
+
+# 1379 강의실2
+# pm 3:30 ~ 4:32
+# import sys
+# from queue import PriorityQueue
+# input = sys.stdin.readline
+
+# N = int(input())
+# course_list = [list(map(int, input().split())) for _ in range(N)]
+# course_list = sorted(course_list, key=lambda x:(x[1], x[2]))
+# course_room_dict = dict()
+
+# pque = PriorityQueue()
+# pque.put((0, 1))
+# ans = 1
+# for idx in range(N):
+#     min_val, room_num  = list(pque.get())
+#     if course_list[idx][1] < min_val:
+#         ans += 1
+#         pque.put((min_val, room_num))
+#         room_num = ans
+
+#     course_room_dict[course_list[idx][0]] = room_num
+#     pque.put((course_list[idx][2], room_num))
+
+# print(ans)
+# for x in range(1, N+1):
+#     print(course_room_dict[x])
