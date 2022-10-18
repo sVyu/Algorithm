@@ -10854,10 +10854,20 @@ dfs/bfs
 #     print(sum_white_chocolate, sum_black_chocolate)
 
 
-# 878/2
+# 878/2 ㅡ 25794 초콜릿과 나이트 게임
 # X, Y = map(int, input().split())
-# print(7)
-# if X > 0 and Y > 0:
+# if X == 0 or Y == 0:
+#     print(7)
+#     k = max(X, Y)
+#     print(k, 0)
+#     print(k, k)
+#     print(k, 2*k)
+#     print(0, 2*k)
+#     print(-k, 2*k)
+#     print(-k, k)
+#     print(-0, k)
+# elif X == Y:
+#     print(7)
 #     print(X, Y)
 #     print(2*X, 0)
 #     print(3*X, -Y)
@@ -10866,14 +10876,45 @@ dfs/bfs
 #     print(0, -2*Y)
 #     print(X, -Y)
 # else:
-#     k = max(X, Y)
-#     print(k, 0)
-#     print(k, k)
-#     print(k, 2*k)
-#     print(0, 2*k)
-#     print(-k, 2*k)
-#     print(-k, k)
-#     print(0, k)
+#     print(15)
+#     ## X 2  / Y 1
+#     x, y = 0, 0
+#     x -= Y; y += X
+#     print(x, y)
+#     x += X; y -= Y
+#     print(x, y)
+
+#     x += Y; y += X
+#     print(x, y)
+#     x += Y; y -= X
+#     print(x, y)
+
+#     x += X; y += Y
+#     print(x, y)
+#     x -= Y; y -= X
+#     print(x, y)
+
+#     x += X; y -= Y
+#     print(x, y)
+#     x -= X; y -= Y
+#     print(x, y)
+
+#     x += Y; y -= X
+#     print(x, y)
+#     x -= X; y += Y
+#     print(x, y)
+
+#     x -= Y; y -= X
+#     print(x, y)
+#     x -= Y; y += X
+#     print(x, y)
+
+#     x -= X; y -= Y
+#     print(x, y)
+#     x += Y; y += X
+#     print(x, y)
+#     x += X; y += Y
+#     print(x, y)
 
 
 # 878/2
@@ -11107,3 +11148,61 @@ dfs/bfs
 # print(ans)
 # for x in range(1, N+1):
 #     print(course_room_dict[x])
+
+
+# 18186 라면 사기 (Large)
+# import sys
+# input = sys.stdin.readline
+
+# N, B, C = map(int, input().split())
+# n_list = list(map(int, input().split()))
+# n_list.extend([0])
+# # print(n_list)
+# cnt_list = [[0]*(N+1) for _ in range(3)]
+# cnt_list[0][0] = n_list[0]
+
+# for idx in range(N):
+#     min_val = min(cnt_list[0][idx], n_list[idx+1])
+#     cnt_list[0][idx] -= min_val
+#     cnt_list[1][idx+1] += min_val
+#     n_list[idx+1] -= min_val
+    
+#     min_val = min(cnt_list[1][idx], n_list[idx+1])
+#     cnt_list[1][idx] -= min_val
+#     cnt_list[2][idx+1] += min_val
+#     n_list[idx+1] -= min_val
+
+#     cnt_list[0][idx+1] = n_list[idx+1]
+#     n_list[idx+1] = 0
+
+# for x in range(3):
+#     print(cnt_list[x])
+
+
+# import sys
+# input = sys.stdin.readline
+
+# N, B, C = map(int, input().split())
+# n_list = list(map(int, input().split()))
+# n_list.extend([0])
+# # print(n_list)
+
+# if B <= C:
+#     print(sum(n_list)*B)
+# else:
+#     cnt_list = [[0]*(N+1) for _ in range(3)]
+#     cnt_list[0][0] = n_list[0]
+#     for idx in range(N):
+#         for x in range(2):
+#             min_val = min(cnt_list[x][idx], n_list[idx+1])
+#             cnt_list[x][idx] -= min_val
+#             cnt_list[x+1][idx+1] += min_val
+#             n_list[idx+1] -= min_val
+
+#         cnt_list[0][idx+1] = n_list[idx+1]
+#         n_list[idx+1] = 0
+
+#     # for x in range(3):
+#     #     print(cnt_list[x])
+#     print(sum(cnt_list[0])*B + sum(cnt_list[1])*(B+C) + sum(cnt_list[2])*(B+2*C))
+
