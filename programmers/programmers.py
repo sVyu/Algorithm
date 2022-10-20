@@ -157,3 +157,24 @@
     
 #     return w*h - sum_of_sub*val_gcd
 # print(solution(8, 12))
+
+
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def ans(w, h):
+#     gcd_val = gcd(w, h)
+#     if gcd_val == 1:
+#         return w+h-1
+#     else:
+#         return ans(w//gcd_val, h//gcd_val) * gcd_val
+# def solution(w, h):
+#     gcd_val = gcd(w, h)
+#     if gcd_val == 1:
+#         return w*h -(w+h-1)
+#     else:
+#         return w*h - ans(w//gcd_val, h//gcd_val) * gcd_val
+
+# print(solution(1, 9))

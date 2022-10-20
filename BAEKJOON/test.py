@@ -11209,3 +11209,26 @@ dfs/bfs
 
 # 15733 나는 누구인가
 # print("I'm Sexy")
+
+# 1051 숫자 정사각형
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# board = [list(map(int, input().rstrip())) for _ in range(N)]
+# # print(board)
+
+# ans = 1
+# for x in range(N):
+#     for y in range(M):
+#         dist = 1
+#         while True:
+#             if x+dist < N and y+dist < M:
+#                 if board[x][y] == board[x][y+dist] and\
+#                     board[x][y] == board[x+dist][y] and\
+#                     board[x][y] == board[x+dist][y+dist]:
+#                     ans = max(ans, (dist+1)**2)
+#             else:
+#                 break
+#             dist += 1
+# print(ans)
