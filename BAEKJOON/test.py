@@ -11232,3 +11232,8 @@ dfs/bfs
 #                 break
 #             dist += 1
 # print(ans)
+
+
+# 20492 세금
+# N = int(input())
+# print(int(N*0.78), int(N*0.956))
