@@ -11233,7 +11233,11 @@ dfs/bfs
 #             dist += 1
 # print(ans)
 
-
 # 20492 세금
 # N = int(input())
 # print(int(N*0.78), int(N*0.956))
+
+
+# 18301 Rats
+# n1, n2, n12 = map(int, input().split())
+# print(int((n1 + 1)*(n2 + 1)/(n12 + 1) - 1))

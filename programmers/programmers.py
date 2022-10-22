@@ -235,11 +235,13 @@
 #     elif ans[0] > 1: result += str(ans[0])+"x"
     
 #     if ans[1] != 0:
-#         result += ' + '+ str(ans[1])
+#         if ans[0] > 0:
+#             result += ' + '
+#         result += str(ans[1])
     
-#     return result
+#     return result if result != '' else '0'
 
-# print(solution("3x + 7 + x + 5 + x"))
+# print(solution("0 + 0"))
 
 
 # def solution(board):
@@ -272,18 +274,19 @@
 
 
 # def solution(lines):
-#     x = [0]*199
+#     x = [0]*198
 #     for line in lines:
-#         for num in range(min(line[0],line[1]), max(line[0], line[1])+1):
+#         for num in range(min(line[0],line[1]), max(line[0], line[1])):
 #             x[num+99] += 1
     
 #     ans = 0
 #     for idx in range(198):
-#         if x[idx] >= 2 and x[idx+1] >= 2:
+#         if x[idx] >= 2:
 #             ans += 1
 #     return ans
+
 # # print(solution([[-99, -98], [-99, 99], [98, 99]]))
-# print(solution([[1,10], [1,3], [1,3]]))
+# print(solution([[-1, 0], [0, 1], [1,2]]))
 
 
 # def solution(babbling):
