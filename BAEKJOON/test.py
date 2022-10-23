@@ -11237,7 +11237,22 @@ dfs/bfs
 # N = int(input())
 # print(int(N*0.78), int(N*0.956))
 
-
 # 18301 Rats
 # n1, n2, n12 = map(int, input().split())
 # print(int((n1 + 1)*(n2 + 1)/(n12 + 1) - 1))
+
+
+# 1748 수 이어 쓰기 1
+# n = int(input())
+# ans = 0
+# cmp_num, base_num, num_len = 9, 1, 1
+# while True:
+#     if n <= cmp_num:
+#         ans += (n-base_num+1)*num_len
+#         break
+#     else:
+#         ans += (cmp_num-base_num+1)*num_len
+#     cmp_num = cmp_num*10 + 9
+#     base_num *= 10
+#     num_len += 1
+# print(ans)
