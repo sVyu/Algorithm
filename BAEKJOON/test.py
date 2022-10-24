@@ -11256,3 +11256,8 @@ dfs/bfs
 #     base_num *= 10
 #     num_len += 1
 # print(ans)
+
+
+# 2025 Site Score
+# UR, TR, UO, TO = map(int, input().split())
+# print(56*UR + 24*TR + 14*UO + 6*TO)
