@@ -11261,3 +11261,58 @@ dfs/bfs
 # 2025 Site Score
 # UR, TR, UO, TO = map(int, input().split())
 # print(56*UR + 24*TR + 14*UO + 6*TO)
+
+# 1309 동물원
+# N = int(input())
+# dp = [[1, 0, 0] for _ in range(2)]
+# # dp[0] = [1, 1, 1]
+
+# for _ in range(N):
+#     dp[1][0] = sum(dp[0])
+#     dp[1][1] = dp[1][0] - dp[0][1]
+#     dp[1][2] = dp[1][0] - dp[0][2]
+
+#     for idx in range(3):
+#         dp[1][idx] = dp[1][idx] % 9901
+#         dp[0][idx] = dp[1][idx]
+
+# # print(sum(dp[1]) % 9901)
+# print(sum(dp[1]))
+
+# N = int(input())
+# dp = [0, 3, 7] + [0]*(N-2)
+# for n in range(3, N+1):
+#     dp[n] = (2*dp[n-1] + dp[n-2]) % 9901
+# print(dp[N])
+
+
+# 1229 육각수 - 캡틴 이다솜이랑 흡사한 듯
+# N = int(input())
+# hexagonal_num = [0, 1] + [0] * 711
+
+# val_sub = 1
+# for idx in range(2, 711):
+#     hexagonal_num[idx] = (idx-1)*6 + hexagonal_num[idx-1] - val_sub
+#     val_sub += 2
+# # print(hexagonal_num)
+
+# limit_idx = 0
+# dp = [6] * (N+1)
+# dp[0] = 0
+# for idx in range(1, N+1):
+#     if idx >= hexagonal_num[limit_idx+1]:
+#         limit_idx += 1
+#     try:
+#         for sub_idx in hexagonal_num[:limit_idx+1]:
+#             # print(idx, sub_idx)
+#             dp[idx] = min(dp[idx], dp[idx-sub_idx]+1)
+#     except IndexError:
+#         print("?", idx, limit_idx)
+#         input()
+
+# print(dp[N-100:N])
+
+
+# 22193
+# input()
+# print(int(input())*int(input()))
