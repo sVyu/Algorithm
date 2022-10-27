@@ -11320,3 +11320,21 @@ dfs/bfs
 
 # 24262 알고리즘 수업 - 알고리즘의 수행 시간 1
 # print(1, 0, sep='\n')
+
+
+# 2410 2의 멱수의 합
+# N = int(input())
+# dp_list = [0] * (N+1)
+
+
+# 1351 무한 수열
+# def func_add(num_dict, i, p, q):
+#     if i not in num_dict:
+#         num_dict[i] = func_add(num_dict, i//p, p, q) + func_add(num_dict, i//q, p, q)
+
+#     return num_dict[i]
+
+# N, P, Q = map(int, input().split())
+# num_dict = dict({0: 1})
+
+# print(func_add(num_dict, N, P, Q))
