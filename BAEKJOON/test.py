@@ -11338,3 +11338,7 @@ dfs/bfs
 # num_dict = dict({0: 1})
 
 # print(func_add(num_dict, N, P, Q))
+
+
+# 25314 코딩은 체육과목 입니다
+# print("long "*(int(input())//4) + "int")

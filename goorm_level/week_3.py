@@ -106,3 +106,107 @@
 # # 	print(g[x])
 
 # # cycle 판별..!
+
+
+
+# 1. 0커플
+# N = int(input())
+# print(sum(list(map(int, input().split()))))
+
+# 마이너스 값 먼저 들어가면 pop이 안 됨
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# n = int(input())
+# dic = defaultdict()
+# arr = list(map(int, input().split()))
+# for i in arr:
+#     if abs(i) in dic:
+#         dic.pop(abs(i))
+#         print(abs(i))
+#     else:
+#         dic[i] = 1
+#         print(dic)
+# print(sum(dic.keys()))
+
+# 개선 코드
+# N = int(input())
+# n_list = list(map(int, input().split()))
+# n_dict = dict()
+
+# for n in n_list:
+# 	if (-n) in n_dict:
+# 		n_dict.pop(-n)
+# 	else:
+# 		n_dict[n] = 1
+# 		# print(n_dict)
+
+# print(sum(n_dict.keys()))
+
+
+# 2. 폴더 폰 자판
+# import sys
+# input = sys.stdin.readline
+
+# dic = {
+# 	'1': "1.,?!",
+# 	'2': "2ABC",
+# 	'3': "3DEF",
+# 	'4': "4GHI",
+# 	'5': "5JKL",
+# 	'6': "6MNO",
+# 	'7': "7PQRS",
+# 	'8': "8TUV",
+# 	'9': "9WXYZ"
+# }
+
+# n = int(input())
+# s = input()
+# cnt = 0
+# ans = ''
+
+# for i in range(n):
+# 	# n-1, n에서 indexerror 가 안 나는 이유
+# 	# s = input() 다음 rstrip()을 안 해서 개행문자가 살아있음
+# 	if s[i] == s[i+1]:
+# 		cnt += 1
+# 	else:
+# 		cnt %= len(dic[s[i]])
+# 		ans += dic[s[i]][cnt]
+# 		cnt = 0
+
+# print(ans)
+
+
+# import sys
+# from collections import defaultdict
+# from collections import deque
+# input = sys.stdin.readline
+
+# def solution():
+# 	N, M, K = map(int, input().split())
+# 	# g == graph
+# 	g = defaultdict(list)
+# 	for _ in range(M):
+# 		u, v = map(int, input().split())
+# 		g[u].append(v)
+# 		g[v].append(u)
+# 	visited = [0]*(N+1)
+# 	que = deque([1])
+# 	cnt = 1
+# 	visited[1] = 1
+	
+# 	while que and cnt <= K:
+# 		for _ in range(len(que)):
+# 			now_v = que.popleft()
+
+# 			for next_v in g[now_v]:
+# 				if visited[next_v] == 0:
+# 					if next_v == N:
+# 						return "YES"
+# 					visited[next_v] = cnt
+# 					que.append(next_v)
+# 		cnt += 1
+# 	return "NO"
+
+# print(solution())
