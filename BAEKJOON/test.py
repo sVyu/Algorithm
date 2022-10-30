@@ -11346,3 +11346,114 @@ dfs/bfs
 # 25311 UCPC에서 가장 쉬운 문제 번호는?
 # print("A")
 
+# 2670 연속부분최대곱
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# n_list = [float(input()) for _ in range(N)]
+# n_list.insert(0, 0)
+# dp_list = [0] * (N+1)
+
+# for idx in range(1, N+1):
+#     dp_list[idx] = max(dp_list[idx-1]*n_list[idx], n_list[idx])
+# # print(dp_list)
+# print(f'{max(dp_list):.3f}')
+
+
+# pm 01:35 시작
+# 894/1 A번 - 안녕 클레오파트라 세상에서 제일가는 포테이토칩
+# N, X = map(int, input().split())
+# T_list = list(map(int, input().split()))
+# idx = 0
+
+# while True:
+#     if T_list[idx] < X:
+#         print(idx+1)
+#         break
+#     X += 1
+#     idx = (idx+1) % N
+
+
+# 894/2 B번 - 장인은 도구를 탓하지 않는다
+# import sys
+# input = sys.stdin.readline
+
+# def factorial(num):
+#     return_val = 1
+#     for mul_num in range(2, num+1):
+#         return_val *= mul_num
+#     return return_val
+
+# p_list = sorted([float(input()) for _ in range(10)], reverse=True)
+# # print(p_list)
+
+# ans = 1
+# for p in p_list[:-1]:
+#     ans *= p
+
+# print((ans/factorial(9))*(10**9))
+
+
+# 894/4
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# bot, top = 1, N
+# ans = 0
+# while bot <= top:
+#     mid = (bot+top)//2
+#     print("?", mid)
+#     sys.stdout.flush()
+
+#     returned_val = int(input())
+#     if mid == 2*returned_val:
+#         ans = mid
+#         break
+#     elif mid < 2*returned_val:
+#         bot = mid+1
+#     else: # mid > 2*returned_val
+#         top = mid-1
+
+# print("!", ans)
+
+
+# 894/5 E번 - 수열의 합
+# 추후 답 확인
+# from collections import defaultdict
+
+# S, T = map(int, input().split())
+# total_ans = 0
+# total_ans_list = [0] * (T+1)
+# for num in range(S, T+1):
+#     tmp_num = num
+#     div_dict = defaultdict(int)
+#     while num % 2 == 0:
+#         num //= 2
+#         div_dict[2] += 1
+
+#     div_num = 3
+#     while num != 1:
+#         while num % div_num == 0:
+#             num //= div_num
+#             div_dict[div_num] += 1
+#         div_num += 2
+#     # print(div_dict)
+
+#     even_num = 0
+#     odd_num = 1
+#     for key, val_num in div_dict.items():
+#         if key != 2:
+#             odd_num *= val_num+1
+#         else:
+#             even_num += val_num
+
+#     # print(even_num, odd_num)
+#     # total_ans += even_num * odd_num - odd_num
+#     total_ans += (even_num -1) * odd_num
+#     total_ans_list[tmp_num] = (even_num -1) * odd_num
+
+# # print(total_ans)
+# print(total_ans_list)
+    
