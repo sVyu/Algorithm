@@ -11457,6 +11457,7 @@ dfs/bfs
 # # print(total_ans)
 # print(total_ans_list)
 
+
 # 1182 부분수열의 합
 # import itertools
 # N, S = map(int, input().split())
@@ -11469,3 +11470,111 @@ dfs/bfs
 #             ans += 1
 
 # print(ans)
+
+
+# def backtracking(idx, n_list, bit_list, N, S):
+#     global val, ans
+
+#     val += n_list[idx]
+#     bit_list[idx] = 1
+
+
+#     if idx != N-1:
+#         backtracking(idx+1, n_list, bit_list, N, S)
+
+#     if val == S and sum(bit_list) != 0:
+#         ans += 1
+#         print("[1]", idx, bit_list)
+
+#     val -= n_list[idx]
+#     bit_list[idx] = 0
+#     # if val == S and sum(bit_list) != 0:
+#     #     ans += 1
+#     #     print("[2]", idx, bit_list)
+    
+#     if idx+1 <= N-1:
+#         backtracking(idx+1, n_list, bit_list, N, S)
+
+# def solve():
+#     N, S = map(int, input().split())
+#     n_list = list(map(int, input().split()))
+#     global val, ans, bit_list
+#     val, ans, bit_list = 0, 0, [0] * N
+
+#     backtracking(0, n_list, bit_list, N, S)
+#     print(ans)
+
+# solve()
+
+
+# def backtracking(idx, n_list, bit, N, S):
+#     global val, ans
+
+#     val += n_list[idx]
+#     bit += 1
+
+#     if val == S and bit != 0:
+#         ans += 1
+
+#     if idx != N-1:
+#         backtracking(idx+1, n_list, bit, N, S)
+
+#     val -= n_list[idx]
+#     bit -= 1
+    
+#     if idx+1 <= N-1:
+#         backtracking(idx+1, n_list, bit, N, S)
+
+# def solve():
+#     N, S = map(int, input().split())
+#     n_list = list(map(int, input().split()))
+#     global val, ans
+#     val, ans, bit = 0, 0, 0
+
+#     backtracking(0, n_list, bit, N, S)
+#     print(ans)
+
+# solve()
+
+
+# 14499 주사위 굴리기
+# N, M, x, y, K = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# cmd = list(map(int, input().split()))
+# direction = [[], [0, 1], [0, -1], [-1, 0], [1, 0]]
+# top, bot, left, right, up, down = [0]*6
+
+# for i in range(K):
+#     nx, ny = x + direction[cmd[i]][0], y + direction[cmd[i]][1]
+#     # print("cmd(i)", i, cmd[i])
+#     # print(nx, ny)
+#     if 0 <= nx < N and 0 <= ny < M:
+#         tmp_bot = bot
+#         if cmd[i] == 1:
+#             bot = right
+#             right = top
+#             top = left
+#             left = tmp_bot
+#         elif cmd[i] == 2:
+#             bot = left
+#             left = top
+#             top = right
+#             right = tmp_bot
+#         elif cmd[i] == 3:
+#             bot = up
+#             up = top
+#             top = down
+#             down = tmp_bot
+#         else:
+#             bot = down
+#             down = top
+#             top = up
+#             up = tmp_bot
+
+#         if board[nx][ny] == 0:
+#             board[nx][ny] = bot
+#         else:
+#             bot = board[nx][ny]
+#             board[nx][ny] = 0
+#         print(top)
+#         x, y = nx, ny
