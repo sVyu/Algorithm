@@ -11578,3 +11578,65 @@ dfs/bfs
 #             board[nx][ny] = 0
 #         print(top)
 #         x, y = nx, ny
+
+
+# 14888 연산자 끼워넣기
+# def backtracking(idx, N, n_list, oprs, oprs_order):
+#     global max_val, min_val
+
+#     for i in range(4):
+#         # print(idx, i)
+#         if oprs[i] != 0:
+#             oprs_order[idx] = i
+#             oprs[i] -= 1
+
+#             # N-1 까지 가도록
+#             if idx != N-2:
+#                 backtracking(idx+1, N, n_list, oprs, oprs_order)
+#             else: # idx == N-1
+#                 # print(oprs_order)
+#                 res = n_list[0]
+#                 for oprs_idx in range(N-1):
+#                     if oprs_order[oprs_idx] == 0:
+#                         res += n_list[oprs_idx+1]
+#                     elif oprs_order[oprs_idx] == 1:
+#                         res -= n_list[oprs_idx+1]
+#                     elif oprs_order[oprs_idx] == 2:
+#                         res *= n_list[oprs_idx+1]
+#                     else: # 3
+#                         if res < 0:
+#                             res = (-res) // n_list[oprs_idx+1]
+#                             res = (-res)
+#                         else:
+#                             res //= n_list[oprs_idx+1]
+#                         # res //= n_list[oprs_idx+1]
+#                     # if oprs_order == [1, 3, 0, 0, 2]:
+#                     #     print(oprs_idx+1, res)
+#                 # print(oprs_order, res)
+
+#                 if max_val < res:
+#                     max_val = res
+#                 if min_val > res:
+#                     min_val = res
+
+#             oprs[i] += 1
+
+# def solve():
+#     N = int(input())
+#     n_list = list(map(int, input().split()))
+#     oprs = list(map(int, input().split())) # operators
+#     oprs_order = [-1] * (N-1)
+    
+#     global max_val, min_val
+#     max_val, min_val = -1e9, 1e9 # -10억, 10억
+
+#     backtracking(0, N, n_list, oprs, oprs_order)
+#     print(max_val, min_val, sep='\n')
+
+# solve()
+
+
+# 17256 달달함이 넘쳐흘러
+# a = list(map(int, input().split()))
+# c = list(map(int, input().split()))
+# print(c[0] - a[2], c[1]//a[1], c[2] - a[0])
