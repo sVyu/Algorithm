@@ -11640,3 +11640,90 @@ dfs/bfs
 # a = list(map(int, input().split()))
 # c = list(map(int, input().split()))
 # print(c[0] - a[2], c[1]//a[1], c[2] - a[0])
+
+
+# 1068 트리
+# import sys
+# from collections import defaultdict
+# input = sys.stdin.readline
+
+# def dfs(tree, num, target):
+#     global ans
+#     if num in tree and num != target:
+#         for n in tree[num]:
+#             if n != target:
+#                 # print("n", n)
+#                 dfs(tree, n, target)
+#     else:
+#         ans += 1
+
+# def solve():
+#     N = int(input())
+#     n_list = list(map(int, input().split()))
+#     target = int(input())
+#     tree = defaultdict(list)
+
+#     for idx in range(N):
+#         if n_list[idx] != -1:
+#             tree[n_list[idx]].append(idx)
+
+#     # print(tree)
+#     # if target in tree:
+#     #     tree.pop(target)
+#     # print(tree)
+
+#     global ans
+#     ans = 0
+
+#     if target == 0:
+#         print(0)
+#     else:
+#         dfs(tree, 0, target)
+#         print(ans)
+
+# solve()
+
+
+# import sys
+# from collections import defaultdict
+# input = sys.stdin.readline
+
+# def dfs(tree, num, target):
+#     global ans
+#     if num in tree and num != target:
+#         for n in tree[num]:
+#             if n != target:
+#                 dfs(tree, n, target)
+#             else:
+#                 if len(tree[num]) == 1:
+#                     ans += 1
+#     else:
+#         if num != target:
+#             ans += 1
+
+# def solve():
+#     N = int(input())
+#     n_list = list(map(int, input().split()))
+#     target = int(input())
+#     tree = defaultdict(list)
+#     root_node_num = -1
+
+#     for idx in range(N):
+#         if n_list[idx] != -1:
+#             tree[n_list[idx]].append(idx)
+#         else:
+#             root_node_num = idx
+
+#     # print(tree)
+#     # if target in tree:
+#     #     tree.pop(target)
+#     # print(tree)
+
+#     global ans
+#     ans = 0
+
+#     dfs(tree, root_node_num, target)
+#     print(ans)
+
+# solve()
+
