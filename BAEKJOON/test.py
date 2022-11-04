@@ -11727,3 +11727,6 @@ dfs/bfs
 
 # solve()
 
+
+# 24568 Cupcake Party
+# print(max(0, 8*int(input())+3*int(input())-28))

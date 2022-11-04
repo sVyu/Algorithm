@@ -321,3 +321,146 @@
 #     return answer
 
 # print(solution(["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"]))
+
+
+# 배달 - clear
+# def solution(N=5, road=[[1,2,1],[2,3,3],[5,2,2],[1,4,2],[5,3,1],[5,4,2]], K=3):
+#     from collections import defaultdict
+#     import sys
+#     input = sys.stdin.readline
+    
+#     min_dist = [500000]*(N+1)
+#     min_dist[1] = 0
+
+#     # g : graph
+#     g = defaultdict(list)
+#     for r in road:
+#         a, b, c = r[0], r[1], r[2]
+#         # print(a, b, c)
+#         g[a].append([b, c])
+#         g[b].append([a, c])
+#     # print(g)
+    
+#     std_dot = 1
+#     std_check_list = [False]*(N+1)
+#     std_check_list[1] = True
+
+#     for _ in range(N):
+#         for x, dist in g[std_dot]:
+#             # print(std_dot, x, dist)
+#             min_dist[x] = min(min_dist[x], min_dist[std_dot]+dist)
+#         # print(min_dist)
+
+#         min_val = 500000
+#         min_idx = 1
+#         for idx in range(1, N+1):
+#             # 값이 더 작고, 기준이 된 적 없는 경우
+#             if min_val > min_dist[idx] and not std_check_list[idx]:
+#                 min_val = min_dist[idx]
+#                 min_idx = idx
+        
+#         std_dot = min_idx
+#         std_check_list[min_idx] = True
+
+#     ans = 1
+#     for x in range(2, N+1):
+#         if min_dist[x] <= K:
+#             ans += 1
+
+#     return ans
+
+# print(solution())
+
+
+# 기지국 설치
+# 그리드
+# try1 정확성 통과, 효율성 실패
+# def solution(n=11, stations=[4,11], w=1):
+#     check = [True] + [False]*n
+#     for s in stations:
+#         low_limit = max(0, s-w)
+#         max_limit = min(n, s+w)
+#         for idx in range(low_limit, max_limit+1):
+#             check[idx] = True
+#     # print(check)
+
+#     ans = 0
+#     idx = 1
+#     while idx <= n:
+#         if not check[idx]:
+#             max_limit = min(n, idx+2*w)
+#             for i in range(idx, max_limit+1):
+#                 check[i] = True
+#             ans += 1
+#             idx += 2*w
+
+#         idx += 1
+#         # print(check)
+    
+#     return ans
+
+# print(solution())
+
+# try2 정확성 통과, 효율성 통과
+# def solution(n=11, stations=[4,11], w=1):
+#     n_dict = dict()
+#     for s in stations:
+#         low_limit = max(0, s-w)
+#         max_limit = min(n, s+w)
+        
+#         n_dict[low_limit] = max_limit
+#     n_dict[n+1] = -1
+
+#     ans = 0
+#     pre_max_limit = 0
+#     div_num = 1+2*w
+
+#     for low_limit, max_limit in n_dict.items():
+#         gab = (low_limit-1) - pre_max_limit
+#         if gab > 0:
+#             ans += ((gab-1) // div_num)+1
+
+#         pre_max_limit = max_limit
+
+#     return ans
+
+# print(solution())
+
+
+# 스티커 모으기(2) dp
+# def solution(sticker):
+#     len_sticker = len(sticker)
+#     if len_sticker <= 2:
+#         return max(sticker)
+    
+#     dp_a = [0] * (len_sticker)
+#     dp_b = [0] * (len_sticker+1)
+#     sticker.insert(0, 0)
+#     dp_a[1] = sticker[1]
+#     dp_b[2] = sticker[2]
+
+#     for idx in range(2, len_sticker):
+#         dp_a[idx] = max(dp_a[idx-2]+sticker[idx], dp_a[idx-1])
+    
+#     for idx in range(3, len_sticker+1):
+#         dp_b[idx] = max(dp_b[idx-2]+sticker[idx], dp_b[idx-1])
+    
+#     return max(dp_a[len_sticker-1], dp_b[len_sticker])
+
+# print(solution())
+
+
+# 숫자 게임
+# def solution(A, B):
+#     # A의 값보다 큰 것중에 가장 작은 값을 출전
+#     A = sorted(A, reverse=True)
+#     B = sorted(B, reverse=True)
+    
+#     ans = 0
+#     while B:
+#         if A[-1] < B[-1]:
+#             A.pop()
+#             ans += 1
+#         B.pop()
+    
+#     return ans
