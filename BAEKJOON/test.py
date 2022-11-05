@@ -11730,3 +11730,44 @@ dfs/bfs
 
 # 24568 Cupcake Party
 # print(max(0, 8*int(input())+3*int(input())-28))
+
+# 1855 암호
+# K = int(input())
+# k_list = list(input())
+# # print(k_list)
+
+# if K == 1:
+#     print(''.join(k_list))
+# else:
+#     R = len(k_list) // K
+#     # print(r)
+
+#     table = [['_'] * K for _ in range(R)]
+#     x, y = -1, 0
+#     inc_y = 1
+#     k_idx = 0
+#     y_count = (K-1)
+
+#     while k_idx < K*R:
+#         if x < R and y_count == (K-1):
+#             x += 1
+#             table[x][y] = k_list[k_idx]
+#             k_idx += 1
+#             # print("[1]", x, y, k_idx, y_count)
+#             y_count = 0
+
+#             if y == 0:
+#                 inc_y = 1
+#             elif y == (K-1):
+#                 inc_y = -1
+
+#         y += inc_y
+#         table[x][y] = k_list[k_idx]
+#         k_idx += 1
+#         y_count += 1
+#         # print("[2]", x, y, k_idx, y_count)
+#     # print(table)
+
+#     for k in range(K):
+#         for r in range(R):
+#             print(table[r][k], end='')
