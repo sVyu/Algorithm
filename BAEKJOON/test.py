@@ -11771,3 +11771,14 @@ dfs/bfs
 #     for k in range(K):
 #         for r in range(R):
 #             print(table[r][k], end='')
+
+
+# 25372 성택이의 은밀한 비밀
+import sys
+input = sys.stdin.readline
+
+for _ in range(int(input())):
+    if 6 <= len(list(map(str, input().rstrip()))) <= 9:
+        print("yes")
+    else:
+        print("no")
