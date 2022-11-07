@@ -11774,11 +11774,16 @@ dfs/bfs
 
 
 # 25372 성택이의 은밀한 비밀
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-for _ in range(int(input())):
-    if 6 <= len(list(map(str, input().rstrip()))) <= 9:
-        print("yes")
-    else:
-        print("no")
+# for _ in range(int(input())):
+#     if 6 <= len(list(map(str, input().rstrip()))) <= 9:
+#         print("yes")
+#     else:
+#         print("no")
+
+
+# 25238 가희와 방어율 무시
+# a, b = map(int, input().split())
+# print(0 if a*(100-b)/100 >= 100 else 1)
