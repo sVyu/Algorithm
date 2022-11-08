@@ -11783,7 +11783,18 @@ dfs/bfs
 #     else:
 #         print("no")
 
-
 # 25238 가희와 방어율 무시
 # a, b = map(int, input().split())
 # print(0 if a*(100-b)/100 >= 100 else 1)
+
+# 25083 새싹
+# print(",\
+# "         ,r\'"7",\
+# "r`-_   ,\'  ,/",\
+# "\. ". L_r\'\","\,
+#    `~\/\
+#       |\
+#       |\
+# )
+
+print("SciComLove\n"*int(input()))
