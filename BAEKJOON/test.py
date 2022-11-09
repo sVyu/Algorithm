@@ -11787,14 +11787,67 @@ dfs/bfs
 # a, b = map(int, input().split())
 # print(0 if a*(100-b)/100 >= 100 else 1)
 
-# 25083 새싹
-# print(",\
-# "         ,r\'"7",\
-# "r`-_   ,\'  ,/",\
-# "\. ". L_r\'\","\,
-#    `~\/\
-#       |\
-#       |\
-# )
+# 21598 SciComLove
+# print("SciComLove\n"*int(input()))
 
-print("SciComLove\n"*int(input()))
+# 2302 극장 좌석
+'''
+2
+1
+1
+2 -> 1
+'''
+
+# 1st code
+# N = int(input())
+# M = int(input())
+# m_set = set({int(input()) for _ in range(M)})
+# dp = [[0]*2 for _ in range(N+1)]
+# dp[0] = [1, 0]
+# dp[1] = [1, 0]
+# # print(m_set)
+
+# ans = 1
+# for x in range(1, N+1):
+#     if x in m_set:
+#         ans *= sum(dp[x-1])
+#         dp[x-1] = [0, 0]
+#         dp[x] = [1, 0]
+#         # dp[x+1]이 있을 경우, [1, 0] 값이 됨
+#     else:
+#         # [x][0] 은 이 자리를 x가 그대로 차지하는 경우
+#         # [x][1] 은 [x-1] 자리의 값과 cross 하는 경우
+#         dp[x][0] = sum(dp[x-1])
+#         if x >= 2:
+#             dp[x][1] = sum(dp[x-2])
+
+# ans *= sum(dp[N])
+# print(ans)
+
+# # for x in range(N+1):
+# #     print(x, dp[x])
+
+# 2nd code
+# N = int(input())
+# M = int(input())
+# m_set = set({int(input()) for _ in range(M)})
+
+# ans = 1
+# dp = [0]*(N+1)
+# dp[0:2] = [0 if 1 in m_set else 1, 1]
+
+# ans = 1
+# for x in range(2, N+1):
+#     if x in m_set:
+#         ans *= dp[x-1]
+#         dp[x-1] = 0
+#         dp[x] = 1
+#     else:
+#         dp[x] = dp[x-1] + dp[x-2]
+# ans *= dp[N]
+
+# print(ans)
+
+
+# 21300 Bottle Return
+# print(sum(list(map(int, input().split())))*5)

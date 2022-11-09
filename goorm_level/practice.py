@@ -282,3 +282,119 @@
 # 	else:
 # 		print(0)
 
+
+# [기본] 4방향 로봇
+# n, m, k = map(int, input().split())
+# k_list = list(input())
+# # print(k_list)
+
+# x, y = 0, 0
+# board = [[0]*m for _ in range(n)]
+# # inc_xy = dict({'E':[-1, 0], 'W':[1, 0], 'N':[0, -1], 'S':[0, 1]})
+# inc_xy = dict({'E':[0, 1], 'W':[0, -1], 'N':[-1, 0], 'S':[1, 0]})
+# # print(inc_xy['E'])
+# board[0][0] = 1
+
+# for cmd in k_list:
+#     plus_x, plus_y = inc_xy[cmd]
+#     # print(plus_x, plus_y)
+    
+#     nx, ny = x + plus_x, y + plus_y
+#     if nx < 0: nx = 0
+#     elif nx >= n: nx = n-1
+
+#     if ny < 0 : ny = 0
+#     elif ny >= m: ny = m-1
+
+#     board[nx][ny] += 1
+#     x, y = nx, ny
+#     # print(cmd, nx, ny)
+
+# total_max = 0
+# for x in range(n):
+#     x_max = max(board[x])
+#     # print(board[x])
+#     # print(x_max)
+#     if total_max < x_max:
+#         total_max = x_max
+# print(total_max)
+
+# this code is not work
+# # print(max(max(board)))
+
+
+# 최대 자리곱
+# 이런 접근인가?
+# n_list = list(map(int, input()))
+# # print(n_list)
+
+# max_val = 1
+# for n in n_list:
+# 	if n != 0:
+# 		max_val *= n
+
+# tmp_max_val = max(1, n_list[0]-1)*(9**(len(n_list)-1))
+# # print(max_val, tmp_max_val)
+# print(max(max_val, tmp_max_val))
+
+
+# 완전탐색 했는데 안 풀림
+# N = int(input())
+# # N_list = list(map(int, input()))
+
+# max_val = 1
+# for n in range(1, N+1):
+#     tmp_max_val = 1
+#     n_list = list(map(int, str(n)))
+#     # print(n_list)
+#     for nn in n_list:
+#         if nn == 0:
+#             break
+#         else:
+#             tmp_max_val *= nn
+#     if max_val < tmp_max_val:
+#         # print(max_val, tmp_max_val, n_list)
+#         max_val = tmp_max_val
+
+# print(max_val)
+
+# 설마..
+# n = input()
+# n_list = list(map(int, n))
+# print(max(1, n_list[0]-1) * 9**(len(n_list)-1))
+
+
+# 소희와 버스
+# import sys
+# input = sys.stdin.readline
+
+# N, T = map(int, input().split())
+# min_time = 200000
+# ans = 0
+
+# for idx in range(N):
+#     s, d = map(int, input().split())
+	
+#     if T < s:
+#         waiting_time = s-T
+#         if min_time > waiting_time:
+#             min_time = waiting_time
+#             ans = idx
+	
+#     elif T == s:
+#         ans = idx
+#         break
+	
+#     else: # T > s
+#         target_val = T-s
+#         times = target_val // d
+#         times = s + times * d
+		
+#         if target_val % d != 0:
+#             times += d
+		
+#         if min_time > times - T:
+#             min_time = times - T
+#             ans = idx
+		
+# print(ans+1)
