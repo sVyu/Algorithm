@@ -11851,3 +11851,7 @@ dfs/bfs
 
 # 21300 Bottle Return
 # print(sum(list(map(int, input().split())))*5)
+
+
+# 11942 고려대는 사랑입니다
+# print("고려대학교")
