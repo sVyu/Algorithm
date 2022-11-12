@@ -11848,10 +11848,13 @@ dfs/bfs
 
 # print(ans)
 
-
 # 21300 Bottle Return
 # print(sum(list(map(int, input().split())))*5)
 
-
 # 11942 고려대는 사랑입니다
 # print("고려대학교")
+
+# 24736 Football Scoring
+# for _ in range(2):
+#     T, F, S, P, C = map(int, input().split())
+#     print(6*T + 3*F + 2*S + 1*P + 2*C)
