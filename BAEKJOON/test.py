@@ -11858,3 +11858,39 @@ dfs/bfs
 # for _ in range(2):
 #     T, F, S, P, C = map(int, input().split())
 #     print(6*T + 3*F + 2*S + 1*P + 2*C)
+
+
+# APC
+# 902/1
+# N = int(input())
+# n_list = list(map(str, input().split()))
+# n_dict = dict({'B':1, 'S':2, 'G':3, 'P':4, 'D':5})
+# pre_problem = n_list[0]
+# # print(n_list)
+
+# idx_1, idx_2 = 0, 0
+# idx_sum = 0
+# for i in range(1, N):
+#     if (n_dict[n_list[i-1][0]] > n_dict[n_list[i][0]]) or\
+#         (n_dict[n_list[i-1][0]] == n_dict[n_list[i][0]] and int(n_list[i-1][1:]) < int(n_list[i][1:])):
+#             if idx_sum == 0:
+#                 idx_1 = i-1
+#                 idx_2 = i
+#                 idx_sum += 1
+#             else:
+#                 idx_2 = i
+
+# print(idx_1, idx_2)
+
+
+# 6810
+# ans = 91
+# mul_num = 1
+# for _ in range(3):
+#     ans += int(input()) * mul_num
+
+#     if mul_num == 1:
+#         mul_num = 3
+#     else:
+#         mul_num = 1
+# print("The 1-3-sum is", ans)
