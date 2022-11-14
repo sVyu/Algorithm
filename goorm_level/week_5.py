@@ -142,6 +142,7 @@
 
 
 # 4. 구슬 게임
+# 부분적으로 FAIL이 뜨는 걸 보니 어딘가 놓친 부분이 있다
 # N, M, K = map(int, input().split())
 # low_limit = max(0, N-M)
 # high_limit = N+M
