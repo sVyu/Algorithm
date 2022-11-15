@@ -11894,3 +11894,13 @@ dfs/bfs
 #     else:
 #         mul_num = 1
 # print("The 1-3-sum is", ans)
+
+
+# 16170 오늘의 날짜는?
+# print(2022, 11, 14, sep='\n')
+
+
+# 14581 팬들에게 둘러싸인 홍준
+# print(f':fan::fan::fan:\n\
+# :fan::{input()}::fan:\n\
+# :fan::fan::fan:')
