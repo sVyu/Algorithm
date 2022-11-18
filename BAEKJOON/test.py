@@ -11935,4 +11935,52 @@ dfs/bfs
 #  \. \". L_r'\n\
 #    `~\/\n\
 #       |\n\
-#       |") 
+#       |")
+
+# 14889 스타트와 링크
+# import sys
+# input = sys.stdin.readline
+
+# def backtracking(S, idx, cnt, N, team_check):
+#     global min_gap
+    
+#     # 4명의 사람이 있으면 idx 2까지, 6명이면 3까지
+#     # i번째에 대해서 team_check 1
+#     # cnt를 재고, i +1 < N으로 backtracking 이 더 가능할 경우 진행 (재귀)
+#     for i in range(idx, N):
+#         cnt += 1
+#         team_check[i] = 1
+#         if cnt != (N//2):
+#             if i + 1 < N:
+#                 backtracking(S, i+1, cnt, N, team_check)
+        
+#         else: # cnt == N//2: 즉, N//2 명의 팀이 충족된 경우
+#             # print(*team_check)
+#             start_team = [k for k in range(N) if team_check[k] == 1]
+#             link_team = [k for k in range(N) if team_check[k] == 0]
+#             # print(start_team, link_team)
+            
+#             start_team_sum, link_team_sum = 0, 0
+#             for a in range(N//2):
+#                 for b in range(a, N//2):
+#                     start_team_sum += S[start_team[a]][start_team[b]] + S[start_team[b]][start_team[a]]
+#                     link_team_sum += S[link_team[a]][link_team[b]] + S[link_team[b]][link_team[a]]
+#             # print(start_team_sum, link_team_sum)
+
+#             if min_gap > abs(start_team_sum - link_team_sum):
+#                 min_gap = abs(start_team_sum - link_team_sum)
+
+#         cnt -= 1
+#         team_check[i] = 0
+
+# def solve():
+#     N = int(input())
+#     S = [list(map(int, input().split())) for _ in range(N)]
+#     global min_gap
+#     min_gap = 2000
+
+#     team_check = [0] * N
+#     backtracking(S, 0, 0, N, team_check)
+#     print(min_gap)
+
+# solve()
