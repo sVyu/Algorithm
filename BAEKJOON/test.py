@@ -11984,3 +11984,25 @@ dfs/bfs
 #     print(min_gap)
 
 # solve()
+
+
+# 13458 시험 감독
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# A = list(map(int, input().split()))
+# B, C = map(int, input().split())
+
+# ans = 0
+# for a in A:
+#     # 총감독관 1명
+#     a -= B
+#     ans += 1
+
+#     # 부감독관이 필요한 경우
+#     if a > 0:
+#         ans += a//C
+#         if a % C != 0:
+#             ans += 1
+# print(ans)
