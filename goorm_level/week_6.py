@@ -48,7 +48,7 @@
 #             alphabet_idx = ord(before_sentence[idx]) - minus_val
 #             # shift_val 
 #             shift_val = ord(token[1][idx % len_token]) % 26
-#             alphabet_idx = (alphabet_idx + 26 + (toggle *shift_val)) % 26
+#             alphabet_idx = (alphabet_idx + 26 + (toggle * shift_val)) % 26
 #             print(chr(alphabet_idx + minus_val), end='')
 #         else:
 #             print(before_sentence[idx], end='')
@@ -73,3 +73,106 @@
 #         if board[x][y] == K:
 #             ans += 1
 # print(ans)
+
+
+# 1
+# for _ in range(5):
+#     K = list(map(int, input()))
+#     a = 0
+#     for i in range(0, 7, 2):
+#         a += K[i]
+#     for i in range(1, 7, 2):
+#         if K[i] != 0:
+#             a *= K[i]
+#     print(a % 10)
+
+# 2
+# N = int(input())
+# S = list(input())
+
+# for i in range(0, N, 2):
+#     print(chr((((ord(S[i])-97) + int(S[i+1])**2)%26)+97), end = '')
+
+
+# 3
+# import sys
+# import string
+
+# input = sys.stdin.readline
+
+# alpha_sm = list(string.ascii_lowercase)
+# alpha_bi = list(string.ascii_uppercase)
+
+# for i in range(int(input())):
+#     S = list(input().rstrip())
+#     cmd, key = map(str, input().split())
+
+#     ans = ''
+#     idx = 0
+#     if cmd == 'E':
+#         for i in S:
+#             if i in alpha_sm:
+#                 ans += alpha_sm[(alpha_sm.index(i) + (ord(key[idx]))) %26]
+#             elif i in alpha_bi:
+#                 ans += alpha_bi[(alpha_bi.index(i) + (ord(key[idx]))) %26]
+#             else:
+#                 ans += i
+
+#             idx += 1
+#             if idx == len(key):
+#                 idx = 0
+
+#     else: # cmd == 'D':
+#         for i in S:
+#             if i in alpha_sm:
+#                 ans += alpha_sm[(alpha_sm.index(i) - (ord(key[idx]))) %26]
+#             elif i in alpha_bi:
+#                 ans += alpha_bi[(alpha_bi.index(i) - (ord(key[idx]))) %26]
+#                 val = (alpha_bi.index(i) - (ord(key[idx])))
+#                 # print(val, val % 26)
+#                 # 음수여도 %값은 0이상이구나
+#             else:
+#                 ans += i
+
+#             idx += 1
+#             if idx == len(key):
+#                 idx = 0
+        
+#     print(ans)
+
+# import sys
+# import string
+
+# input = sys.stdin.readline
+
+# alpha_sm = list(string.ascii_lowercase)
+# alpha_bi = list(string.ascii_uppercase)
+
+# for i in range(int(input())):
+#     S = list(input().rstrip())
+#     cmd, key = map(str, input().split())
+
+#     ans = ''
+#     idx = 0
+#     for i in S:
+#         if i in alpha_sm:
+#             if cmd == 'E':
+#                 ans += alpha_sm[(alpha_sm.index(i) + (ord(key[idx]))) %26]
+#             else:
+#                 ans += alpha_sm[(alpha_sm.index(i) - (ord(key[idx]))) %26]
+
+#         elif i in alpha_bi:
+#             if cmd == 'E':
+#                 ans += alpha_bi[(alpha_bi.index(i) + (ord(key[idx]))) %26]
+#             else:
+                
+#                 ans += alpha_bi[(alpha_bi.index(i) - (ord(key[idx]))) %26]
+#         else:
+#             ans += i
+
+#         idx += 1
+#         if idx == len(key):
+#             idx = 0
+        
+#     print(ans)
+

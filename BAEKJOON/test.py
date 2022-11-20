@@ -12006,3 +12006,16 @@ dfs/bfs
 #         if a % C != 0:
 #             ans += 1
 # print(ans)
+
+
+# 16099 Larger Sport Facility
+# N = int(input())
+# for _ in range(N):
+#     lt, wt, le, we = map(int, input().split())
+#     val = lt*wt - le*we
+#     if val > 0:
+#         print("TelecomParisTech")
+#     elif val < 0:
+#         print("Eurecom")
+#     else:
+#         print("Tie")
