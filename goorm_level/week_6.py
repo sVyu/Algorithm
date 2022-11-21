@@ -176,3 +176,32 @@
         
 #     print(ans)
 
+
+# 4 경쟁 배타의 원리
+# import sys
+# input = sys.stdin.readline
+
+# N, K = map(int, input().split())
+# board = [[0]*1002 for _ in range(1002)] # 0 ~ 1001
+# for _ in range(N):
+#     x1, y1, x2, y2 = map(int, input().split())
+#     # board[x1][y1] = 1
+#     board[x1][y1] += 1
+#     board[x1][y2] += -1
+#     board[x2][y1] += -1
+#     board[x2][y2] += 1
+
+# for x in range(1002):
+#     for y in range(1, 1002):
+#         board[x][y] += board[x][y-1]
+
+# for y in range(1002):
+#     for x in range(1, 1002):
+#         board[x][y] += board[x-1][y]
+
+# ans = 0
+# for x in range(1002):
+#     for y in range(1002):
+#         if board[x][y] == K:
+#             ans += 1
+# print(ans)

@@ -12019,3 +12019,7 @@ dfs/bfs
 #         print("Eurecom")
 #     else:
 #         print("Tie")
+
+
+# 24078 余り (Remainder)
+# print(int(input()) % 21)
