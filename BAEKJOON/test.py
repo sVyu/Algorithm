@@ -12023,3 +12023,9 @@ dfs/bfs
 
 # 24078 余り (Remainder)
 # print(int(input()) % 21)
+
+
+# 
+a = [1, 2, 3, 4]
+# print(*a, sep = '_')
+print(*a, end = '_')
