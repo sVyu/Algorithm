@@ -144,9 +144,8 @@ for i in range(3, 10, 2):
 # output : 3 5 7 9
 ```
 [docs 참고][ref_docs_range]  
-for _ in `range(a, b)에서 b는 포함이 안 된다`는 거 꼭 기억!
-list 슬라이스의 경우도 `list_n[a:b]에서 b가 포함 안 됨`  
-딱 b 바로 전 인덱스까지만 접근
+for _ in `range(a, b)에서 b는 포함이 안 된다`는 거 꼭 기억!  
+list 슬라이스의 경우도 `list_n[a:b]에서 b가 포함 안 됨` 딱 b 바로 전 인덱스까지만 접근
 
 <br>
 

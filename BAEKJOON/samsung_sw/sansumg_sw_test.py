@@ -195,3 +195,53 @@
 #     print(-1)
 
 # solve()
+
+# 14503 로봇 청소기
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# r, c, d = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# dict_d = dict({0:[-1, 0], 1:[0, 1], 2:[1, 0], 3:[0, -1]})
+
+# x, y = r, c
+# ans = 0
+
+# while True:
+#     found_check = False
+    
+#     # 1. 현재 위치 청소
+#     if board[x][y] == 0:
+#         board[x][y] = 2
+#         ans += 1
+    
+#     # print(x, y, d)
+#     # for k in range(N):
+#     #     print(board[k])
+#     # print()
+
+#     # 2.1.  2.2.
+#     for _ in range(4):
+#         d = (d-1) % 4
+#         nx, ny = x + dict_d[d][0], y + dict_d[d][1]
+        
+#         if board[nx][ny] == 0:
+#             found_check = True
+#             x, y = nx, ny
+#             break
+    
+#     # 청소할 공간 찾은 경우 continue해서 다시 1번부터
+#     if found_check:
+#         continue
+
+#     # not found_check (네 방향 다 봐도 청소할 공간이 없는 경우)
+#     nx, ny = x - dict_d[d][0], y - dict_d[d][1]
+#     if 0 <= nx < N and 0 <= ny < M:
+#         # 뒷칸이 벽이 아니면 후진
+#         if board[nx][ny] != 1:
+#             x, y = nx, ny
+#         else: # 1 즉, 벽이면 break
+#             break
+
+# print(ans)
