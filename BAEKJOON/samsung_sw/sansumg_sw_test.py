@@ -196,6 +196,7 @@
 
 # solve()
 
+
 # 14503 로봇 청소기
 # import sys
 # input = sys.stdin.readline
@@ -245,3 +246,165 @@
 #             break
 
 # print(ans)
+
+# 12100 2048(Easy)
+# 9:41 pm ~ 10:25
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# # cnt는 최대 5번까지
+# def backtracking(N, board, cnt):
+#     global max_block
+#     que = deque()
+
+#     cnt += 1
+#     # 0 북, 1 동, 2 남 3 서
+#     for d in range(4):
+#         next_board = [[0] * N for _ in range(N)]
+#         for x in range(N):
+#             next_board[x] = board[x][:]
+
+#         # 북쪽
+#         if d == 0:
+#             for y in range(N):
+#                 pre_x_val = -1
+#                 for x in range(N):
+#                     # 블록 숫자 합치기부터
+#                     if next_board[x][y] != 0:
+#                         if pre_x_val == -1:
+#                             pre_x_val = next_board[x][y]
+#                         else:
+#                             if pre_x_val == next_board[x][y]:
+#                                 que.append(pre_x_val*2)
+#                                 # next_board[pre_x_idx] *= 2
+#                                 pre_x_val = -1
+#                             else:
+#                                 que.append(pre_x_val)
+#                                 pre_x_val = next_board[x][y]
+#                         next_board[x][y] = 0
+
+#                 if pre_x_val != -1:
+#                     que.append(pre_x_val)
+
+#                 # 위에서부터 하나씩 put
+#                 for x in range(len(que)):
+#                     val = que.popleft()
+#                     if max_block < val:
+#                         max_block = val
+#                     next_board[x][y] = val
+
+#         # 동쪽
+#         elif d == 1:
+#             for x in range(N):
+#                 pre_x_val = -1
+#                 for y in range(N-1, -1, -1):
+#                     # 블록 숫자 합치기부터
+#                     if next_board[x][y] != 0:
+#                         if pre_x_val == -1:
+#                             pre_x_val = next_board[x][y]
+#                         else:
+#                             if pre_x_val == next_board[x][y]:
+#                                 que.append(pre_x_val*2)
+#                                 # next_board[pre_x_idx] *= 2
+#                                 pre_x_val = -1
+#                             else:
+#                                 que.append(pre_x_val)
+#                                 pre_x_val = next_board[x][y]
+#                         next_board[x][y] = 0
+
+#                 if pre_x_val != -1:
+#                     que.append(pre_x_val)
+
+#                 # 위에서부터 하나씩 put
+#                 for y in range(N-1, N-1-len(que), -1):
+#                     val = que.popleft()
+#                     if max_block < val:
+#                         max_block = val
+#                     next_board[x][y] = val
+
+#         # 남쪽
+#         elif d == 2:
+#             for y in range(N):
+#                 pre_x_val = -1
+#                 for x in range(N-1, -1, -1):
+#                     # 블록 숫자 합치기부터
+#                     if next_board[x][y] != 0:
+#                         if pre_x_val == -1:
+#                             pre_x_val = next_board[x][y]
+#                         else:
+#                             if pre_x_val == next_board[x][y]:
+#                                 que.append(pre_x_val*2)
+#                                 # next_board[pre_x_idx] *= 2
+#                                 pre_x_val = -1
+#                             else:
+#                                 que.append(pre_x_val)
+#                                 pre_x_val = next_board[x][y]
+#                         next_board[x][y] = 0
+
+#                 if pre_x_val != -1:
+#                     que.append(pre_x_val)
+
+#                 # 위에서부터 하나씩 put
+#                 for x in range(N-1, N-1-len(que), -1):
+#                     val = que.popleft()
+#                     if max_block < val:
+#                         max_block = val
+#                     next_board[x][y] = val
+    
+#         # 서쪽
+#         else: # d == 3:
+#             for x in range(N):
+#                 pre_x_val = -1
+#                 for y in range(N):
+#                     # 블록 숫자 합치기부터
+#                     if next_board[x][y] != 0:
+#                         if pre_x_val == -1:
+#                             pre_x_val = next_board[x][y]
+#                         else:
+#                             if pre_x_val == next_board[x][y]:
+#                                 que.append(pre_x_val*2)
+#                                 # next_board[pre_x_idx] *= 2
+#                                 pre_x_val = -1
+#                             else:
+#                                 que.append(pre_x_val)
+#                                 pre_x_val = next_board[x][y]
+#                         next_board[x][y] = 0
+
+#                 if pre_x_val != -1:
+#                     que.append(pre_x_val)
+
+#                 # 위에서부터 하나씩 put
+#                 for y in range(len(que)):
+#                     val = que.popleft()
+#                     if max_block < val:
+#                         max_block = val
+#                     next_board[x][y] = val
+
+#         # print(cnt, d)
+#         # for x in range(N):
+#         #     print(next_board[x])
+#         # print()
+#         # input()
+
+#         if cnt < 5:
+#             backtracking(N, next_board, cnt)
+
+            
+# def solve():
+#     N = int(input())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     global max_block
+#     max_block = 0
+
+#     backtracking(N, board, 0)
+#     print(max_block)
+
+# solve()
+
+# a = [0, 0, 0, 0]
+# b = [0, 1, 2, 3]
+# a = b[:]
+# print(a)
+    
