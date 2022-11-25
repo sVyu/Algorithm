@@ -407,4 +407,271 @@
 # b = [0, 1, 2, 3]
 # a = b[:]
 # print(a)
-    
+
+
+
+# 14500 테트로미노
+# 09:16 pm ~ 09:53 pm
+# 09:45 제출(시간 초과)
+# PyPy3로 제출하니 통과
+
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+
+# max_val = 0
+# # 1자 가로, 세로
+# for x in range(N):
+#     for y in range(M-3):
+#         sum_val = sum(board[x][y:y+4])
+#         # sum_val = 0
+#         # for k in range(4):
+#         #     sum_val += board[x][y+k] 
+
+#         if max_val < sum_val:
+#             max_val = sum_val
+#             # print("[1]", max_val, x, y)
+#             # input()
+
+# for y in range(M):
+#     for x in range(N-3):
+#         sum_val = 0
+#         for k in range(4):
+#             sum_val += board[x+k][y] 
+#         if max_val < sum_val:
+#             max_val = sum_val
+#             # print("[2]", max_val, x, y)
+#             # input()            
+
+# # 네모
+# for x in range(N-1):
+#     for y in range(M-1):
+#         sum_val = 0
+#         sum_val += board[x][y] + board[x][y+1] + board[x+1][y] + board[x+1][y+1]
+#         if max_val < sum_val:
+#             max_val = sum_val
+#             # print("[3]", max_val, x, y)
+#             # input()
+
+# # 6칸 2x3
+# # L, Z, 'ㅗ' block
+# block = [[1,1,1,1,0,0], [1,1,1,0,0,1], [1,0,0,1,1,1], [0,0,1,1,1,1],
+#         [0,1,1,1,1,0], [1,1,0,0,1,1],
+#         [0,1,0,1,1,1], [1,1,1,0,1,0]
+# ]
+
+# for x in range(N-1):
+#     for y in range(M-2):
+#         for k in range(8):
+#             sum_val = 0
+#             block_idx = 0
+#             for kx in range(2):
+#                 for ky in range(3):
+#                     sum_val += board[x + kx][y + ky] * block[k][block_idx]
+#                     block_idx += 1
+#             # print(x, y, k, sum_val)
+
+#             if max_val < sum_val:
+#                 max_val = sum_val
+#                 # print("[4]", max_val, x, y)
+#                 # input()
+
+# # 6칸 3x2
+# block = [[1,0,1,0,1,1], [1,1,1,0,1,0], [1,1,0,1,0,1], [0,1,0,1,1,1],
+#         [1,0,1,1,0,1], [0,1,1,1,1,0],
+#         [1,0,1,1,1,0], [0,1,1,1,0,1]
+# ]
+
+# for x in range(N-2):
+#     for y in range(M-1):
+#         for k in range(8):
+#             sum_val = 0
+#             block_idx = 0
+#             for kx in range(3):
+#                 for ky in range(2):
+#                     sum_val += board[x + kx][y + ky] * block[k][block_idx]
+#                     block_idx += 1
+
+#             if max_val < sum_val:
+#                 max_val = sum_val
+#                 # print("[5]", max_val, x, y)
+#                 # input()
+# print(max_val)
+
+
+# 14890 경사로
+# pm 09:58 ~ 10:36
+
+# import sys
+# input = sys.stdin.readline
+
+# N, L = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+
+# ans = 0
+# # 가로
+# for x in range(N):
+#     possible_check = True
+#     stair_check = [False] * N
+
+#     for y in range(N-1):
+#         if not possible_check:
+#             break
+
+#         # 1칸 낮은 경우
+#         if board[x][y] == board[x][y+1]+1:
+#             # 경사로 놓을 칸까지 확보가 된 경우
+#             if y+L < N:
+#                 for k in range(L):
+#                     if not stair_check[y+1+k]:
+#                         stair_check[y+1+k] = True
+#                     else:
+#                         possible_check = False
+#                         break
+#             # 칸 부족
+#             else:
+#                 possible_check = False
+#                 break
+        
+#         # 1칸 높은 경우
+#         elif board[x][y] == board[x][y+1]-1:
+#             # 경사로 놓을 칸까지 확보가 된 경우
+#             if y+1-L >= 0:
+#                 for k in range(L):
+#                     if not stair_check[y-k]:
+#                         stair_check[y-k] = True
+#                     else:
+#                         possible_check = False
+#                         break
+#             # 칸 부족
+#             else:
+#                 possible_check = False
+#                 break
+
+#         elif board[x][y] == board[x][y+1]:
+#             continue
+#         # 2층 이상 차이나는 경우
+#         else:
+#             possible_check = False
+#             break
+
+#     if possible_check:
+#         ans += 1
+
+# # 세로
+# for y in range(N):
+#     possible_check = True
+#     stair_check = [False] * N
+
+#     for x in range(N-1):
+#         if not possible_check:
+#             break
+
+#         # 1칸 낮은 경우
+#         if board[x][y] == board[x+1][y]+1:
+#             # 경사로 놓을 칸까지 확보가 된 경우
+#             if x+L < N:
+#                 for k in range(L):
+#                     if not stair_check[x+1+k]:
+#                         stair_check[x+1+k] = True
+#                     else:
+#                         possible_check = False
+#                         break
+#             # 칸 부족
+#             else:
+#                 possible_check = False
+#                 break
+        
+#         # 1칸 높은 경우
+#         elif board[x][y] == board[x+1][y]-1:
+#             # 경사로 놓을 칸까지 확보가 된 경우
+#             if x+1-L >= 0:
+#                 for k in range(L):
+#                     if not stair_check[x-k]:
+#                         stair_check[x-k] = True
+#                     else:
+#                         possible_check = False
+#                         break
+#             # 칸 부족
+#             else:
+#                 possible_check = False
+#                 break
+
+#         elif board[x][y] == board[x+1][y]:
+#             continue
+#         # 2층 이상 차이나는 경우
+#         else:
+#             possible_check = False
+#             break
+
+#     if possible_check:
+#         ans += 1
+
+# print(ans)
+
+
+# 14891 톱니바퀴
+# pm 10:45 ~ 11:19
+# 1st -> 런타임에러
+# 2nd -> 성공
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# # N극 : 0, S극 : 1
+# wheel = [list(map(int, str(input().rstrip()))) for _ in range(4)]
+# # print(wheel)
+# wheel_d = [0, 0, 0, 0]
+
+# que = deque()
+
+# for _ in range(int(input())):
+#     num, di = map(int, input().split())
+#     num -= 1
+
+#     visited = [False] * 4
+#     visited[num] = True
+#     que.append([num, (-1)*di])
+#     que_update = [0, 0, 0, 0]
+
+#     # 어딜 돌려야하는지 체크 -> que
+#     while que:
+#         n, di = que.popleft()
+#         que_update[n] = di
+
+#         for plus_val in [1, -1]:
+#             nn = n + plus_val
+#             if 0 <= nn < 4 and not visited[nn]:
+#                 if plus_val == 1:
+#                     # 같은 극인 경우,
+#                     if wheel[n][(wheel_d[n]+2)%8] == wheel[nn][(wheel_d[nn]+6)%8]:
+#                         continue
+#                     # 다른 극인 경우
+#                     else:
+#                         visited[nn] = True
+#                         que.append([nn, (-1)*di])
+#                 else: # plus_val == -1:
+#                     if wheel[n][(wheel_d[n]+6)%8] == wheel[nn][(wheel_d[nn]+2)%8]:
+#                         continue
+#                     # 다른 극인 경우
+#                     else:
+#                         visited[nn] = True
+#                         que.append([nn, (-1)*di])
+
+#     # 하나씩 돌려서 확인
+#     # print(que_update)
+#     for x in range(4):
+#         wheel_d[x] += que_update[x]
+#     # print(wheel_d)
+
+# ans = 0
+# plus_val = 1
+# for x in range(4):
+#     if wheel[x][wheel_d[x]%8] == 1:
+#         ans += plus_val
+#     plus_val *= 2
+
+# print(ans)
