@@ -614,7 +614,7 @@
 
 # 14891 톱니바퀴
 # pm 10:45 ~ 11:19
-# 1st -> 런타임에러
+# 1st -> 런타임에러 -> ans 계산 과정에도 %8
 # 2nd -> 성공
 
 # import sys
@@ -673,5 +673,4 @@
 #     if wheel[x][wheel_d[x]%8] == 1:
 #         ans += plus_val
 #     plus_val *= 2
-
 # print(ans)

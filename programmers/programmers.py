@@ -464,3 +464,6 @@
 #         B.pop()
     
 #     return ans
+
+# 24082 立方体 (Cube)
+# print(int(input())**3)
