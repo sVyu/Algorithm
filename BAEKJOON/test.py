@@ -12020,7 +12020,12 @@ dfs/bfs
 #     else:
 #         print("Tie")
 
-
 # 24078 余り (Remainder)
 # print(int(input()) % 21)
 
+# 24082 立方体 (Cube)
+# print(int(input())**3)
+
+# 24086 身長 (Height)
+# h = [int(input()) for _ in range(2)]
+# print(abs(h[0]-h[1]))
