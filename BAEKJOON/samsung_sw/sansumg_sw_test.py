@@ -674,3 +674,210 @@
 #         ans += plus_val
 #     plus_val *= 2
 # print(ans)
+
+
+# 15683 감시
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def backtracking(N, M, board, cctv, cnt, cnt_limit):
+#     global min_blind_spot
+
+#     # 위, 오른쪽, 밑, 왼쪽
+#     d = [0, 1, 2, 3]
+#     d_cctv = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     dot_x, dot_y, cctv_num = cctv[cnt]
+#     cnt += 1
+#     que = deque()
+
+#     # 2번은 나올 수 있는 패턴이 2가지 5번은 1가지 경우밖에 없으므로
+#     d_limit = 4
+#     if cctv_num == 2:
+#         d_limit = 2
+#     elif cctv_num == 5:
+#         d_limit = 1
+
+#     # k는 cctv 방향인 n에 대해 +할 값
+#     if cctv_num == 1:
+#         list_k = [0]
+#     elif cctv_num == 2:
+#         list_k = [0, 2]
+#     elif cctv_num == 3:
+#         list_k = [0, 1]
+#     elif cctv_num == 4:
+#         list_k = [0, 1, 2]
+#     else:
+#         list_k = [0, 1, 2, 3]
+
+
+#     for n in range(d_limit):
+#         # 각 방향마다 기존 board를 복사해서 처리해야 함
+#         copied_board = [[] for _ in range(N)]
+#         for x in range(N):
+#             copied_board[x] = board[x][:]
+
+#         for k in list_k:
+#             dd = d[(n+k)%4]
+#             nx, ny = dot_x + d_cctv[dd][0], dot_y + d_cctv[dd][1]
+#             if 0 <= nx < N and 0 <= ny < M and copied_board[nx][ny] != 6:
+#                 que.append([nx, ny, cctv_num, dd])
+        
+#         # cctv 조건에 맞게 감시한 부분들 표시
+#         while que:
+#             x, y, cctv_num, dd = que.popleft()
+#             # print(x, y, cctv_num, dd)
+#             if copied_board[x][y] == 0:
+#                 copied_board[x][y] = '#'
+#             nx, ny = x + d_cctv[dd][0], y + d_cctv[dd][1]
+#             if 0 <= nx < N and 0 <= ny < M and copied_board[nx][ny] != 6:
+#                 que.append([nx, ny, cctv_num, dd])
+
+#         # 아직 모든 cctv에 대해서 # 처리가 되지 않았으면 재귀를 더 진행
+#         if cnt < cnt_limit:
+#             backtracking(N, M, copied_board, cctv, cnt, cnt_limit)
+#         else: # 조건 충족
+#             blind_spot = 0
+#             for x in range(N):
+#                 for y in range(M):
+#                     if copied_board[x][y] == 0:
+#                         blind_spot += 1
+#             if min_blind_spot > blind_spot:
+#                 min_blind_spot = blind_spot
+#                 # for x in range(N):
+#                 #     print(copied_board[x])
+
+#     # backtracking을 위한 cnt -= 1
+#     cnt -= 1
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     cctv = []
+#     for x in range(N):
+#         for y in range(M):
+#             if board[x][y] != 0 and board[x][y] != 6:
+#                 cctv.append([x, y, board[x][y]])
+#     # print(cctv)
+
+#     global min_blind_spot
+#     min_blind_spot = 64
+
+#     copied_board = [[] for _ in range(N)]
+#     for x in range(N):
+#         copied_board[x] = board[x][:]
+#     # print(copied_board)
+
+#     # cctv가 없는 경우
+#     if len(cctv) == 0:
+#         wall = 0
+#         for x in range(N):
+#             for y in range(M):
+#                 if board[x][y] == 6:
+#                     wall += 1
+#         print(N*M - wall)
+#     else:
+#         backtracking(N, M, copied_board, cctv, 0, len(cctv))
+#         print(min_blind_spot)
+
+# solve()
+
+
+# 15684 사다리 조작
+# pm 01:47 ~ 02:48 ~ 03:54
+# 9퍼 시간 초과 02:48
+# 11퍼 틀렸습니다 -> 반례 직접 찾음
+# 결국 성공
+'''
+2 2 3
+1 1 
+2 1
+정답 : 0
+출력 : -1
+'''
+
+# import sys
+# input = sys.stdin.readline
+
+# # 사다리 타기로 전체 i에 대해 i to i가 되는지 체크
+# def i_to_i(N, H, ladder):
+#     pos_check = True
+#     for i in range(1, N+1):
+#         res_i = i
+#         for res_x in range(1, H+1):
+#             if ladder[res_x][res_i] != 0:
+#                 res_i = ladder[res_x][res_i]
+#         if res_i != i:
+#             pos_check = False
+#             break
+#     return pos_check
+
+# # backtracking()
+# def btr(N, H, ladder, plus, plus_limit):
+#     # copied_ladder = ladder.copy()
+#     copied_ladder = [[] for _ in range(H+1)]
+#     for x in range(1, H+1):
+#         copied_ladder[x] = ladder[x][:]
+#     plus += 1
+
+#     global ans
+
+#     # 브루트포스로 사다리 놓기
+#     for x in range(1, H+1):
+#         for y in range(1, N):
+#             if ans != -1:
+#                 return
+#             if copied_ladder[x][y] == 0:
+#                 # 사다리가 연속되는 경우
+#                 if copied_ladder[x][y+1] != 0:
+#                     continue
+#                 # 아닌 경우(새로 놓을 수 있는 경우)
+#                 else:
+#                     copied_ladder[x][y] = y+1
+#                     copied_ladder[x][y+1] = y
+                
+#                     # 사다리 개수를 아직 더 놓을 수 있는 경우
+#                     if plus < plus_limit:
+#                         btr(N, H, copied_ladder, plus, plus_limit)
+#                     # limit 최대치인 경우(갈 수 있나 확인)
+#                     else:
+#                         # print(x, y)
+#                         # for kx in range(1, H+1):
+#                         #     print(copied_ladder[kx])
+#                         # print()
+
+#                         if i_to_i(N, H, copied_ladder):
+#                             # print("ans", plus_limit)
+#                             ans = plus_limit
+#                             return
+
+#                     # 백트래킹
+#                     copied_ladder[x][y] = 0
+#                     copied_ladder[x][y+1] = 0
+
+#     # print()
+
+# def solve():
+#     N, M, H = map(int, input().split())
+#     # ladder = [defaultdict(int) for _ in range(H+1)]
+#     ladder = [[0]*(N+1) for _ in range(H+1)]
+#     for _ in range(M):
+#         a, b = map(int, input().split())
+#         ladder[a][b] = b+1
+#         ladder[a][b+1] = b
+
+#     global ans
+#     ans = -1
+
+#     if i_to_i(N, H, ladder):
+#         print(0)
+#     else:
+#         for plus_limit in range(1, 4):
+#             btr(N, H, ladder, 0, plus_limit)
+#         print(ans)
+
+# solve()
+
+
+# 

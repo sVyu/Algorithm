@@ -12029,3 +12029,9 @@ dfs/bfs
 # 24086 身長 (Height)
 # h = [int(input()) for _ in range(2)]
 # print(abs(h[0]-h[1]))
+
+# 2845 파티가 끝나고 난 뒤
+# L, P = map(int, input().split())
+# written_num = list(map(int, input().split()))
+# for wn in written_num:
+#     print(wn - L*P, end=' ')
