@@ -880,4 +880,54 @@
 # solve()
 
 
-# 
+# 15685 드래곤 커브
+# pm 06:20 ~  07:00
+# N = int(input())
+# board = [[0]*101 for _ in range(101)]
+
+# dragon_curve = [[0]]
+# for _ in range(10):
+#     pre_dragon_curve = dragon_curve[-1][:]
+#     # print(pre_dragon_curve)
+#     new_dragon_curve = [0] * len(pre_dragon_curve)
+#     # print(next_dragon_curve)
+
+#     for i in range(len(pre_dragon_curve)):
+#         new_dragon_curve[i] = (pre_dragon_curve[-i-1]+1) % 4
+#     # print(pre_dragon_curve, new_dragon_curve)
+#     pre_dragon_curve.extend(new_dragon_curve)
+#     dragon_curve.append(pre_dragon_curve)
+# # for y in range(10):
+# #     print(dragon_curve[y])
+
+# for _ in range(N):
+#     x, y, dd, g = map(int, input().split())
+#     board[x][y] = 1
+
+#     inc_xy = [[1, 0], [0, -1], [-1, 0], [0, 1]]
+#     # print(x, y)
+#     # print(dragon_curve[g])
+#     for d in dragon_curve[g]:
+#         d = (d + dd)%4
+#         # print(d, end=' ')
+
+#         nx, ny = x + inc_xy[d][0], y + inc_xy[d][1]
+#         board[nx][ny] = 1
+
+#         x, y = nx, ny
+#     # print()
+
+#     # for y in range(10):
+#     #     for x in range(10):
+#     #         print(board[x][y], end = ' ')
+#     #     print()
+
+# ans = 0
+# for y in range(0, 100):
+#     for x in range(0, 100):
+#         if board[y][x] == 1 and board[y][x+1] == 1 and board[y+1][x] == 1 and board[y+1][x+1] == 1:
+#             ans += 1
+# print(ans)
+
+
+# 15686 치킨 배달

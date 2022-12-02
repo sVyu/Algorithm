@@ -12035,3 +12035,13 @@ dfs/bfs
 # written_num = list(map(int, input().split()))
 # for wn in written_num:
 #     print(wn - L*P, end=' ')
+
+
+# 14489 치킨 두 마리(...)
+# A, B = map(int, input().split())
+# C = int(input())
+
+# if (A+B) >= 2*C:
+#     print((A+B) - 2*C)
+# else:
+#     print(A+B)
