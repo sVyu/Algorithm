@@ -931,3 +931,48 @@
 
 
 # 15686 치킨 배달
+# pm 05:05 ~ 05:40
+# import sys
+# input = sys.stdin.readline
+# import itertools
+
+# N, M = map(int, input().split())
+# city = [list(map(int, input().split())) for _ in range(N)]
+
+# home = []
+# chicken = []
+# for x in range(N):
+#     for y in range(N):
+#         if city[x][y] == 1:
+#             home.append([x, y])
+#         elif city[x][y] == 2:
+#             chicken.append([x, y])
+# # print(home, chicken)
+# len_chicken = len(chicken)
+# len_home = len(home)
+
+# chicken_dist = [[0]*len_home for _ in range(len_chicken)]
+# for c in range(len_chicken):
+#     for h in range(len_home):
+#         chicken_dist[c][h] = abs(chicken[c][0] - home[h][0]) + abs(chicken[c][1] - home[h][1])
+
+# # for x in range(len_chicken):
+#     # print(chicken_dist[x])
+
+# chicken_idx = [i for i in range(len_chicken)]
+# # print(chicken_idx)
+
+# min_urban_chicken_dist = 1300
+# for k in range(1, min(M, len_chicken)+1):
+#     for cb in itertools.combinations(chicken_idx, k):
+#         # print(*cb)
+#         urban_chicken_dist = [100]*len_home
+#         for x in cb:
+#             for h in range(len_home):
+#                 urban_chicken_dist[h] = min(urban_chicken_dist[h], chicken_dist[x][h])
+#         # print(urban_chicken_dist)
+#         if min_urban_chicken_dist > sum(urban_chicken_dist):
+#             min_urban_chicken_dist = sum(urban_chicken_dist)
+
+# print(min_urban_chicken_dist)
+

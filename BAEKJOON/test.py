@@ -12045,3 +12045,10 @@ dfs/bfs
 #     print((A+B) - 2*C)
 # else:
 #     print(A+B)
+
+# 3765 Celebrity jeopardy
+# import sys
+# lines = sys.stdin.readlines()
+
+# for line in lines:
+#     print(line, end = '')
