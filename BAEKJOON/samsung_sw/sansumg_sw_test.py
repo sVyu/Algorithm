@@ -976,3 +976,166 @@
 
 # print(min_urban_chicken_dist)
 
+
+# 5373 큐빙
+# pm 10:11 ~ 11:20 ~ .. 리스트부터 다시 짜야겠음
+
+# 가장 윗면의 색상
+
+# def copy_side(side):
+#     # tmp_side = [[] for _ in range(3)]
+#     # for x in range(3):
+#     #     tmp_side[x] = side[x][:]
+
+#     tmp_side = side[:]
+#     return tmp_side
+
+# for _ in range(int(input())):
+#     n = int(input())
+#     move = list(map(str, input().split()))
+#     # print(move)
+
+#     up = [['w']*3 for _ in range(3)]
+#     down = [['y']*3 for _ in range(3)]
+#     front = [['r']*3 for _ in range(3)]
+#     back = [['o']*3 for _ in range(3)]
+#     left = [['g']*3 for _ in range(3)]
+#     right = [['b']*3 for _ in range(3)]
+
+#     for m in move:
+#         if m[0] == 'U':
+#             # round
+#             r = [back[0], right[0], front[0], left[0]]
+#             if m[1] == '-':
+#                 r = r[::-1]
+                
+#             tmp_last = copy_side(r[-1])
+            
+#             for idx in range(4):
+#                 if idx != 3:
+#                     for y in range(3):
+#                         r[idx+1][y] = r[idx][y]
+#                 else: # idx == 3:
+#                     for y in range(3):
+#                         r[0][y] = tmp_last[y]
+
+#         elif m[0] == 'D':
+#             # round
+#             r = [back[2], left[2], front[2], right[2]]
+#             if m[1] == '-':
+#                 r = r[::-1]
+                
+#             tmp_last = copy_side(r[-1])
+            
+#             for idx in range(4):
+#                 if idx != 3:
+#                     for y in range(3):
+#                         r[idx+1][y] = r[idx][y]
+#                 else: # idx == 3:
+#                     for y in range(3):
+#                         r[0][y] = tmp_last[y]
+
+#         # elif m[0] == 'F':
+#             # r = [up[2], 'right', down[2][::-1], 'left']
+#             # # for rr in r:
+#             #     # print(type(rr))
+#             # if m[1] == '-':
+#             #     r = r[::-1]
+            
+#             # for idx in range(4):
+#             #     if idx != 3:
+#             #         if type(r[idx]) == list:
+#             #             if r[idx+1] == 'left':
+#             #                 for y in range(3):
+#             #                     left[y][2] = r[idx][y]
+#             #             else: # right
+#             #         else: # string
+#             #             if r[idx] == 'left':
+#             #             else: # right
+
+#             #     else: # idx == 3:
+#             #         for y in range(3):
+
+#         # elif m[0] == 'B':
+#         # elif m[0] == 'L':
+#         # else: # 'R'
+        
+#         # if m[1] == '-':
+#         #     r == r[::-1]
+    
+        
+#         # 해당 면 회전
+
+#     print(up, down, front, back, left, right, sep = '\n')
+
+
+# pm 10:58
+
+import sys
+input = sys.stdin.readline
+
+for _ in range(int(input())):
+    n = int(input())
+    rotation = list(map(str, input().rstrip().split()))
+    # print(n, rotation)
+
+    # 위 0, 아래 1, 앞 2, 뒤 3, 왼 4, 오 5
+    cube = [['w']*10, ['y']*10, ['r']*10, ['o']*10, ['g']*10, ['b']*10]
+    # print(cube)
+
+    for r in rotation:
+        if r[0] == 'U':
+            face = 0
+            target = [[[3, 3], [3, 2], [3, 1]], [[5, 3], [5, 2], [5, 1]],\
+                      [[2, 3], [2, 2], [2, 1]], [[4, 3], [4, 2], [4, 1]]]
+        elif r[0] == 'D':
+            face = 1
+            target = [[[3, 9], [3, 8], [3, 7]], [[4, 9], [4, 8], [4, 7]],\
+                      [[2, 9], [2, 8], [2, 7]], [[5, 9], [5, 8], [5, 7]]] 
+        elif r[0] == 'F':
+            face = 2
+            target = [[[0, 7], [0, 8], [0, 9]], [[5, 1], [5, 4], [5, 7]],\
+                      [[1, 7], [1, 8], [1, 9]], [[4, 9], [4, 6], [4, 3]]] 
+        elif r[0] == 'B':
+            face = 3
+            target = [[[0, 3], [0, 2], [0, 1]], [[4, 1], [4, 4], [4, 7]],\
+                      [[1, 3], [1, 2], [1, 1]], [[5, 9], [5, 6], [5, 3]]] 
+        elif r[0] == 'L':
+            face = 4
+            target = [[[0, 1], [0, 4], [0, 7]], [[2, 1], [2, 4], [2, 7]],\
+                      [[1, 9], [1, 6], [1, 3]], [[3, 9], [3, 6], [3, 3]]]
+        else: # r[0] == 'R':
+            face = 5
+            target = [[[0, 9], [0, 6], [0, 3]], [[3, 1], [3, 4], [3, 7]],\
+                      [[1, 1], [1, 4], [1, 7]], [[2, 9], [2, 6], [2, 3]]]
+        
+        if r[1] == '-':
+            target = target[::-1]
+        
+        tmp_backup = [0]*3
+        for y in range(3):
+            tmp_backup[y] = cube[target[0][y][0]][target[0][y][1]]
+        # print(tmp_backup)
+
+        # 4 -> len(target)
+        for i in range(3, -1, -1):
+            for y in range(3):
+                if i != 0:
+                    cube[target[(i+1)%4][y][0]][target[(i+1)%4][y][1]] = cube[target[i][y][0]][target[i][y][1]]
+                else:
+                    cube[target[(i+1)%4][y][0]][target[(i+1)%4][y][1]] = tmp_backup[y]
+
+        target = [[1, 3, 9, 7], [2, 6, 8, 4]]
+        for t in target:
+            if r[1] == '-':
+                t = t[::-1]
+            t_backup = cube[face][t[0]]
+            
+            for i in range(3, -1, -1):
+                if i != 0:
+                    cube[face][t[(i+1)%4]] = cube[face][t[i]]
+                else:
+                    cube[face][t[(i+1)%4]] = t_backup
+
+    for x in range(3):
+        print(*cube[0][1+(x*3):4+(x*3)], sep='')

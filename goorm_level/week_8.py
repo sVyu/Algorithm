@@ -224,3 +224,69 @@
 #             que.append([v, trash_set])
 
 # print(max_val)
+
+
+# 복습
+
+# 3번 직사각형 만들기
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# pair = []
+# cnt = [0 for _ in range(int(1e6)+1)]
+# sticks = map(int, input().split())
+# for stick in sticks:
+#     cnt[stick] += 1
+
+# for length in range(1, int(1e6)+1):
+#     while cnt[length] > 1:
+#         cnt[length] -= 2
+#         pair.append(length)
+
+# pair.sort(reverse=True)
+# # print(pair)
+
+# ans = 0
+# for i in range(1, len(pair), 2):
+#     ans += pair[i - 1] * pair[i]
+
+# print(ans)
+
+
+# 4 구름나라 청소하기
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(1234)
+
+# G = [[] for _ in range(1004)]
+
+# N, K = map(int, input().split())
+# for _ in range(1, N):
+# 	u, v = map(int, input().split())
+# 	G[u].append(v)
+# 	G[v].append(u)
+	
+# A = [0] + list(map(int, input().split()))
+# dp = [[0 for _ in range(K + 1)] for _ in range(N + 1)]
+# can = [0 for _ in range(K + 1)]
+
+# def DFS(cur, prev):
+# 	global K
+# 	for i in range(K + 1):
+# 		if not dp[prev][i]:
+# 			continue
+# 		can[i] = dp[cur][i] = 1
+# 		if i + A[cur] <= K:
+# 			can[i + A[cur]] = dp[cur][i + A[cur]] = 1
+# 	for next in G[cur]:
+# 		if next == prev:
+# 			continue
+# 		DFS(next, cur)
+		
+# dp[0][0] = 1
+# DFS(1, 0)
+# for i in range(K, -1, -1):
+# 	if can[i]:
+# 		print(i)
+# 		exit(0)
