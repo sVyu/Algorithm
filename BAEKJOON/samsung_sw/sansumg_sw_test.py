@@ -1069,73 +1069,446 @@
 #     print(up, down, front, back, left, right, sep = '\n')
 
 
-# pm 10:58
+# pm 10:58 ~ 11:50 clear
 
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-for _ in range(int(input())):
-    n = int(input())
-    rotation = list(map(str, input().rstrip().split()))
-    # print(n, rotation)
+# for _ in range(int(input())):
+#     n = int(input())
+#     rotation = list(map(str, input().rstrip().split()))
+#     # print(n, rotation)
 
-    # 위 0, 아래 1, 앞 2, 뒤 3, 왼 4, 오 5
-    cube = [['w']*10, ['y']*10, ['r']*10, ['o']*10, ['g']*10, ['b']*10]
-    # print(cube)
+#     # 위 0, 아래 1, 앞 2, 뒤 3, 왼 4, 오 5
+#     cube = [['w']*10, ['y']*10, ['r']*10, ['o']*10, ['g']*10, ['b']*10]
+#     # print(cube)
 
-    for r in rotation:
-        if r[0] == 'U':
-            face = 0
-            target = [[[3, 3], [3, 2], [3, 1]], [[5, 3], [5, 2], [5, 1]],\
-                      [[2, 3], [2, 2], [2, 1]], [[4, 3], [4, 2], [4, 1]]]
-        elif r[0] == 'D':
-            face = 1
-            target = [[[3, 9], [3, 8], [3, 7]], [[4, 9], [4, 8], [4, 7]],\
-                      [[2, 9], [2, 8], [2, 7]], [[5, 9], [5, 8], [5, 7]]] 
-        elif r[0] == 'F':
-            face = 2
-            target = [[[0, 7], [0, 8], [0, 9]], [[5, 1], [5, 4], [5, 7]],\
-                      [[1, 7], [1, 8], [1, 9]], [[4, 9], [4, 6], [4, 3]]] 
-        elif r[0] == 'B':
-            face = 3
-            target = [[[0, 3], [0, 2], [0, 1]], [[4, 1], [4, 4], [4, 7]],\
-                      [[1, 3], [1, 2], [1, 1]], [[5, 9], [5, 6], [5, 3]]] 
-        elif r[0] == 'L':
-            face = 4
-            target = [[[0, 1], [0, 4], [0, 7]], [[2, 1], [2, 4], [2, 7]],\
-                      [[1, 9], [1, 6], [1, 3]], [[3, 9], [3, 6], [3, 3]]]
-        else: # r[0] == 'R':
-            face = 5
-            target = [[[0, 9], [0, 6], [0, 3]], [[3, 1], [3, 4], [3, 7]],\
-                      [[1, 1], [1, 4], [1, 7]], [[2, 9], [2, 6], [2, 3]]]
+#     for r in rotation:
+#         if r[0] == 'U':
+#             face = 0
+#             target = [[[3, 3], [3, 2], [3, 1]], [[5, 3], [5, 2], [5, 1]],\
+#                       [[2, 3], [2, 2], [2, 1]], [[4, 3], [4, 2], [4, 1]]]
+#         elif r[0] == 'D':
+#             face = 1
+#             target = [[[3, 9], [3, 8], [3, 7]], [[4, 9], [4, 8], [4, 7]],\
+#                       [[2, 9], [2, 8], [2, 7]], [[5, 9], [5, 8], [5, 7]]] 
+#         elif r[0] == 'F':
+#             face = 2
+#             target = [[[0, 7], [0, 8], [0, 9]], [[5, 1], [5, 4], [5, 7]],\
+#                       [[1, 7], [1, 8], [1, 9]], [[4, 9], [4, 6], [4, 3]]] 
+#         elif r[0] == 'B':
+#             face = 3
+#             target = [[[0, 3], [0, 2], [0, 1]], [[4, 1], [4, 4], [4, 7]],\
+#                       [[1, 3], [1, 2], [1, 1]], [[5, 9], [5, 6], [5, 3]]] 
+#         elif r[0] == 'L':
+#             face = 4
+#             target = [[[0, 1], [0, 4], [0, 7]], [[2, 1], [2, 4], [2, 7]],\
+#                       [[1, 9], [1, 6], [1, 3]], [[3, 9], [3, 6], [3, 3]]]
+#         else: # r[0] == 'R':
+#             face = 5
+#             target = [[[0, 9], [0, 6], [0, 3]], [[3, 1], [3, 4], [3, 7]],\
+#                       [[1, 1], [1, 4], [1, 7]], [[2, 9], [2, 6], [2, 3]]]
         
-        if r[1] == '-':
-            target = target[::-1]
+#         if r[1] == '-':
+#             target = target[::-1]
         
-        tmp_backup = [0]*3
-        for y in range(3):
-            tmp_backup[y] = cube[target[0][y][0]][target[0][y][1]]
-        # print(tmp_backup)
+#         tmp_backup = [0]*3
+#         for y in range(3):
+#             tmp_backup[y] = cube[target[0][y][0]][target[0][y][1]]
+#         # print(tmp_backup)
 
-        # 4 -> len(target)
-        for i in range(3, -1, -1):
-            for y in range(3):
-                if i != 0:
-                    cube[target[(i+1)%4][y][0]][target[(i+1)%4][y][1]] = cube[target[i][y][0]][target[i][y][1]]
-                else:
-                    cube[target[(i+1)%4][y][0]][target[(i+1)%4][y][1]] = tmp_backup[y]
+#         # 4 -> len(target)
+#         for i in range(3, -1, -1):
+#             for y in range(3):
+#                 if i != 0:
+#                     cube[target[(i+1)%4][y][0]][target[(i+1)%4][y][1]] = cube[target[i][y][0]][target[i][y][1]]
+#                 else:
+#                     cube[target[(i+1)%4][y][0]][target[(i+1)%4][y][1]] = tmp_backup[y]
 
-        target = [[1, 3, 9, 7], [2, 6, 8, 4]]
-        for t in target:
-            if r[1] == '-':
-                t = t[::-1]
-            t_backup = cube[face][t[0]]
+#         target = [[1, 3, 9, 7], [2, 6, 8, 4]]
+#         for t in target:
+#             if r[1] == '-':
+#                 t = t[::-1]
+#             t_backup = cube[face][t[0]]
             
-            for i in range(3, -1, -1):
-                if i != 0:
-                    cube[face][t[(i+1)%4]] = cube[face][t[i]]
-                else:
-                    cube[face][t[(i+1)%4]] = t_backup
+#             for i in range(3, -1, -1):
+#                 if i != 0:
+#                     cube[face][t[(i+1)%4]] = cube[face][t[i]]
+#                 else:
+#                     cube[face][t[(i+1)%4]] = t_backup
 
-    for x in range(3):
-        print(*cube[0][1+(x*3):4+(x*3)], sep='')
+#     for x in range(3):
+#         print(*cube[0][1+(x*3):4+(x*3)], sep='')
+
+
+# 16234 인구 이동
+# am 12:02 ~ 12:37
+# 시간 제출 -> PyPy3 제출하니 통과
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def check_need_popluation_move(N, L, R, board, inc_xy):
+#     for x in range(N):
+#         for y in range(N):
+#             for p_x, p_y in inc_xy:
+#                 nx, ny = x + p_x, y + p_y
+#                 if 0 <= nx < N and 0 <= ny < N :
+#                     if L <= abs(board[x][y] - board[nx][ny]) <= R:
+#                         return True
+#     return False
+
+# N, L, R = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+# need_population_move = check_need_popluation_move(N, L, R, board, inc_xy)
+
+# ans = 0
+# while need_population_move:
+#     ans += 1
+    
+#     que = deque()
+#     check = [[0]*N for _ in range(N)]
+
+#     # 시작점 찾기
+#     for x in range(N):
+#         for y in range(N):
+#             for p_x, p_y in inc_xy:
+#                 nx, ny = x + p_x, y + p_y
+#                 if 0 <= nx < N and 0 <= ny < N :
+#                     if L <= abs(board[x][y] - board[nx][ny]) <= R:
+#                         if check[x][y] == 0:
+#                             check[x][y] = 1
+#                             que.append([x, y])
+
+#     # 시작점을 기준으로 bfs 전개해서 인구이동 구현
+#     check = [[0]*N for _ in range(N)]
+#     # que : 기준점 xy que
+#     while que:
+#         x, y = que.popleft()
+#         if check[x][y] == 0:
+#             check[x][y] = 1
+#             population = board[x][y]
+#             area = 1
+            
+#             # 방문한 xy를 저장하기 위한 set
+#             xy_set = set({tuple([x, y])})
+#             # print(xy_set)
+
+#             # pop_que -> 인구수, 칸 개수 구하기 위한 큐
+#             pop_que = deque([[x, y]])
+#             while pop_que:
+#                 kx, ky = pop_que.popleft()
+#                 # print("kx, ky", kx, ky)
+#                 for p_x, p_y in inc_xy:
+#                     nx, ny = kx + p_x, ky + p_y
+#                     if 0 <= nx < N and 0 <= ny < N :
+#                         if L <= abs(board[kx][ky] - board[nx][ny]) <= R:
+#                             if check[nx][ny] == 0:
+#                                 check[nx][ny] = 1
+
+#                                 pop_que.append([nx, ny])
+#                                 xy_set.add(tuple([nx, ny]))
+#                                 population += board[nx][ny]
+#                                 area += 1
+
+#             new_pop = population//area
+#             for sx, sy in xy_set:
+#                 board[sx][sy] = new_pop
+
+#     # for x in range(N):
+#     #     print(board[x])
+#     # print()
+#     # input()
+#     need_population_move = check_need_popluation_move(N, L, R, board, inc_xy)
+
+# print(ans)
+
+
+# 16235 나무 재테크
+# am 12:42 ~ 01:40 (시간초과) ~ 02:06
+
+# import sys
+# input = sys.stdin.readline
+# # from queue import PriorityQueue
+# # from collections import defaultdict
+# from collections import deque
+
+# N, M, K = map(int, input().split())
+# A = [list(map(int, input().split())) for _ in range(N)]
+# water = [[5]*N for _ in range(N)]
+# # 우선순위 큐(어린 나무부터), tree_to_water(여름)
+# # tree = [[PriorityQueue() for _ in range(N)] for _ in range(N)]
+# tree = [[deque() for _ in range(N)] for _ in range(N)]
+# inc_xy = [[p_x, p_y] for p_x in [-1, 0, 1] for p_y in [-1, 0, 1] if not (p_x == 0 and p_y == 0)]
+
+# for _ in range(M):
+#     x, y, z = map(int, input().split())
+#     # tree[x-1][y-1].put(z)
+#     tree[x-1][y-1].append(z)
+# for x in range(N):
+#     for y in range(N):
+#         tree[x][y] = deque(sorted(tree[x][y]))
+#         # print(tree[x-1][y-1].queue, end = ' ')
+# #     print()
+
+# # K년 후
+# for _ in range(K):
+#     # breeding_dict = defaultdict(int)
+#     breeding_dict = dict()
+
+#     # 봄, 여름까지
+#     for x in range(N):
+#         for y in range(N):
+#             # que = PriorityQueue()
+#             que = deque()
+#             tree_to_water = 0
+
+#             # if tree[x][y]:
+#             #     tree[x][y] = deque(sorted(tree[x][y]))
+
+#             while tree[x][y]:
+#                 # print("haha")
+#                 tree_age = tree[x][y].popleft()
+#                 if water[x][y] >= tree_age:
+#                     water[x][y] -= tree_age
+#                     # 1살 추가
+#                     tree_age += 1
+#                     # 가을용
+#                     if tree_age % 5 == 0:
+#                         tuple_xy = tuple([x, y])
+#                         if tuple_xy not in breeding_dict:
+#                             breeding_dict[tuple_xy] = 1
+#                         else:
+#                             breeding_dict[tuple_xy] += 1
+#                     que.append(tree_age)
+#                 else:
+#                     tree_to_water += tree_age//2
+
+#             tree[x][y] = que
+#             # print(x, y, que.queue, end = ' ')
+#             water[x][y] += tree_to_water
+#     #     print()
+#     # print()
+
+#     # 가을
+#     for x, y in breeding_dict:
+#         # print(x, y)
+#         for p_x, p_y in inc_xy:
+#             nx, ny = x + p_x, y + p_y
+#             if 0 <= nx < N and 0 <= ny < N:
+#                 # print("num", breeding_dict[tuple([x, y])])
+#                 for _ in range(breeding_dict[tuple([x, y])]):
+#                 #     tree[nx][ny].put(1)
+#                     tree[nx][ny].appendleft(1)
+#                 # tree[nx][ny].extend([1 for _ in range(breeding_dict[tuple([x, y])])])
+
+#     # 겨울
+#     for x in range(N):
+#         for y in range(N):
+#             water[x][y] += A[x][y]
+
+# ans = 0
+# for x in range(N):
+#     for y in range(N):
+#         # print(tree[x][y].qsize(), end = ' ')
+#         ans += len(tree[x][y])
+#     # print()
+# print(ans)
+
+
+# 17144 미세먼지 안녕!
+# pm 04:05 ~ 04:44
+# Python3 시간초과 → PyPy3 통과
+# import sys
+# input = sys.stdin.readline
+
+# R, C, T = map(int, input().split())
+# A = [list(map(int, input().split())) for _ in range(R)]
+# inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+# # T초가 지난 후 구사과 방에 남아있는 미세먼지의 양을 출력
+# for _ in range(T):
+#     tmp_A = [[0]*C for _ in range(R)]
+
+#     # 확산 기준점 잡기
+#     fine_dust = set()
+#     air_filter = set()
+#     for x in range(R):
+#         for y in range(C):
+#             if A[x][y] > 0:
+#             # if A[x][y] >= 5:
+#                 fine_dust.add(tuple([x, y]))
+#             elif A[x][y] == -1:
+#                 air_filter.add(tuple([x, y]))
+#     # print(fine_dust)
+
+#     # 확산 구현 tmp_A에 따로 저장
+#     for x, y in fine_dust:
+#         cnt = 0
+#         for p_x, p_y in inc_xy:
+#             nx, ny = x + p_x, y + p_y
+#             if 0 <= nx < R and 0 <= ny < C and A[nx][ny] != -1:
+#                 tmp_A[nx][ny] += A[x][y]//5
+#                 cnt += 1
+#         tmp_A[x][y] -= (A[x][y]//5)*cnt
+    
+#     # 미세먼지 확산 일괄 적용
+#     for x in range(R):
+#         for y in range(C):
+#             A[x][y] += tmp_A[x][y]
+    
+#     # 공기청정기 작동
+#     cnt = 0
+#     for x, y in air_filter:
+#         # 윗칸 공기청정기
+#         if cnt == 0:
+#             # ↓
+#             for kx in range(x-1, -1, -1):
+#                 A[kx+1][y] = A[kx][y]
+
+#             # ←
+#             for ky in range(C-1):
+#                 A[0][ky] = A[0][ky+1]
+
+#             # ↑
+#             for kx in range(x):
+#                 A[kx][C-1] = A[kx+1][C-1]
+
+#             # →
+#             for ky in range(C-2, -1, -1):
+#                 A[x][ky+1] = A[x][ky]
+
+#             A[x][y] = -1
+#             A[x][y+1] = 0
+            
+#         else:
+#             # ↑
+#             for kx in range(x, R-1):
+#                 A[kx][y] = A[kx+1][y]
+
+#             # ←
+#             for ky in range(C-1):
+#                 A[R-1][ky] = A[R-1][ky+1]
+
+#             # ↓
+#             for kx in range(R-1, x, -1):
+#                 A[kx][C-1] = A[kx-1][C-1]
+
+#             # →
+#             for ky in range(C-2, -1, -1):
+#                 A[x][ky+1] = A[x][ky]
+
+#             A[x][y] = -1
+#             A[x][y+1] = 0
+
+#         cnt += 1
+
+# ans = 0
+# for x in range(R):
+#     for y in range(C):
+#         if A[x][y] > 0:
+#             ans += A[x][y]
+# print(ans)
+
+
+# 17143 낚시왕
+# pm 10:00 ~ 11:15
+# 1번째 제출에 clear ㅎㅎ
+
+# import sys
+# input = sys.stdin.readline
+
+# R, C, M = map(int, input().split())
+# board = [[0]*C for _ in range(R)]
+
+# # shark = [[[0, 0, 0] for _ in range(C)] for _ in range(R)]
+# shark = dict()
+
+# dd = [[], [-1, 0], [1, 0], [0, 1], [0, -1]]
+# for _ in range(M):
+#     r, c, s, d, z = map(int, input().split())
+#     # shark[r-1][c-1] = [s, d, z]
+#     if d in [1, 2]:
+#         shark[tuple([r-1, c-1])] = [s%(2*(R-1)), d, z]
+#     else:
+#         shark[tuple([r-1, c-1])] = [s%(2*(C-1)), d, z]
+# # print(shark)
+
+# # for x in range(R):
+# #     print(shark[x])
+# # print()
+
+# fishman_y = -1
+# ans = 0
+# for _ in range(C):
+#     # 1칸 이동해서 가장 가까운 상어 한 마리 낚시
+#     fishman_y += 1
+#     for x in range(R):
+#         target = tuple([x, fishman_y])
+#         # print("target", target)
+#         if target in shark:
+#             # print("get", target, shark[target])
+#             ans += shark[target][2]
+#             del(shark[target])
+#             break
+#     # print(shark)
+
+#     # 상어 이동
+#     new_shark = dict()
+#     for x, y in shark:
+#         # print(x, y)
+#         s, d, z = shark[tuple([x, y])]
+        
+#         # 새로운 x, y 계산
+#         left_s = s
+#         nx, ny = x, y
+
+#         while left_s > 0:
+#             if d == 1:
+#                 move = min(left_s, nx)
+#                 left_s -= move
+#                 nx -= move
+                
+#                 if left_s > 0:
+#                     d = 2
+
+#             elif d == 2:
+#                 move = min(left_s, (R-1)-nx)
+#                 left_s -= move
+#                 nx += move
+                
+#                 if left_s > 0:
+#                     d = 1
+
+#             elif d == 3:
+#                 move = min(left_s, (C-1)-ny)
+#                 left_s -= move
+#                 ny += move
+
+#                 if left_s > 0:
+#                     d = 4
+#             else:
+#                 move = min(left_s, ny)
+#                 left_s -= move
+#                 ny -= move
+
+#                 if left_s > 0:
+#                     d = 3
+
+#         target = tuple([nx, ny])
+#         # new_shark에 있는 경우 → 비교
+#         if target in new_shark:
+#             if new_shark[target][2] < z:
+#                 new_shark[target] = [s, d, z]
+#         # 없으면 그냥 추가
+#         else:
+#             new_shark[target] = [s, d, z]
+
+#     shark = new_shark
+#     # print("new_shark")
+#     # print(new_shark)
+#     # print()
+
+# print(ans)
