@@ -1512,3 +1512,196 @@
 #     # print()
 
 # print(ans)
+
+
+# 17140 이차원 배열과 연산
+# pm 12:32 ~ 01:44
+# 파이썬 코드 수행 시간 제한(0.5초) 촉박할 줄 알았는데 널널했다..
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+
+# r, c, k = map(int, input().split())
+# A = [list(map(int, input().split())) for _ in range(3)]
+# board = [[0]*100 for _ in range(100)]
+
+# x_cnt, y_cnt = 3, 3
+# # x_limit, y_limit = [0]*100, [0]*100
+# longest_x_len = 3
+# longest_y_len = 3
+
+# for x in range(3):
+#     for y in range(3):
+#         board[x][y] = A[x][y]
+    
+#     # x_limit[x] = 3
+#     # y_limit[x] = 3
+# # print(board[:3])
+
+# ans = 0
+# while (board[r-1][c-1] != k) and (ans <= 100):
+#     ans += 1
+#     # R 연산
+#     if x_cnt >= y_cnt:
+#         # print("R연산", x_cnt, y_cnt)
+#         for x in range(x_cnt):
+
+#             # 숫자별 개수 체크
+#             new_x_dict = defaultdict(int)
+#             for i in board[x][:y_cnt]:
+#                 if i != 0:
+#                     new_x_dict[i] += 1
+            
+#             # 조건에 맞게 정렬
+#             new_x = sorted(new_x_dict.items(), key=lambda x:(x[1],x[0]))
+#             # print(new_x)
+#             # input()
+
+#             # 값 할당
+#             this_len = 2 * len(new_x)
+#             for i in range(0, this_len, 2):
+#                 board[x][i] = new_x[i//2][0]
+#                 board[x][i+1] = new_x[i//2][1]
+#             # print(this_len)
+
+#             # x별 빈 자리 0으로 채워주고 limit 갱신
+#             # if this_len < x_limit[x]:
+#             if this_len < y_cnt:
+#                 for i in range(this_len, y_cnt):
+#                     board[x][i] = 0
+#             # x_limit[x] = this_len
+            
+#             # 가장 긴 x의 넘버 갱신
+#             # if x_limit[longest_x] <= this_len:
+#             #     longest_x = x
+#             if longest_x_len < this_len:
+#                 longest_x_len = this_len
+
+#         # y_cnt = max(x_limit[:x_cnt])
+#         y_cnt = longest_x_len
+
+#     # C 연산
+#     else:
+#         # print("C연산", x_cnt, y_cnt)
+#         for y in range(y_cnt):
+
+#             # 숫자별 개수 체크
+#             new_y_dict = defaultdict(int)
+#             for i in [board[x][y] for x in range(x_cnt) if board[x][y] != 0]:
+#                 if i != 0:
+#                     new_y_dict[i] += 1
+
+#             new_y = sorted(new_y_dict.items(), key=lambda x:(x[1],x[0]))
+#             # print(new_y)
+
+#             this_len = 2 * len(new_y)
+#             for i in range(0, this_len, 2):
+#                 board[i][y] = new_y[i//2][0]
+#                 board[i+1][y] = new_y[i//2][1]
+            
+#             if this_len < x_cnt:
+#                 for i in range(this_len, x_cnt):
+#                     board[i][y] = 0
+
+#             if longest_y_len < this_len:
+#                 longest_y_len = this_len
+
+#         x_cnt = longest_y_len
+
+#     # for x in range(x_cnt):
+#     #     print(board[x][:y_cnt])
+#     # print()
+#     # input()
+
+# print(ans if ans <= 100 else -1)
+
+
+# 17142 연구소 3
+# pm 10:42 ~ 11:31 → 한 번에 클리어
+
+# import sys
+# input = sys.stdin.readline
+# import itertools
+# from collections import deque
+
+# def pos_check(N, board):
+#     for x in range(N):
+#         for y in range(N):
+#             if board[x][y] == 0:
+#                 return False
+#     return True
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     virus = []
+#     for x in range(N):
+#         for y in range(N):
+#             if board[x][y] == 2:
+#                 virus.append([x, y])
+#     # print(virus)
+#     len_virus = len(virus)
+
+#     total_min_time = -10000
+#     for idxs in itertools.combinations(range(0, len_virus), M):
+#         # print(idxs)
+#         virus_on = set(tuple([tuple(virus[idx]) for idx in idxs]))
+#         # print(virus_on)
+#         # input()
+
+#         # 빈 칸에 마이너스 값으로 최소 시간 계산
+#         que = deque()
+#         for v in virus_on:
+#             que.append(v)
+
+#         # tmp_board로 진행
+#         tmp_board = [[] for _ in range(N)]
+#         for x in range(N):
+#             tmp_board[x] = board[x][:]
+
+#         k = 0
+#         while que:
+#             k -= 1
+#             for _ in range(len(que)):
+#                 x, y = que.popleft()
+#                 for p_x, p_y in inc_xy:
+#                     nx, ny = x + p_x, y + p_y
+
+#                     if 0 <= nx < N and 0 <= ny < N:
+#                         if tmp_board[nx][ny] == 0:
+#                             tmp_board[nx][ny] = k
+#                             que.append([nx, ny])
+
+#                         elif tmp_board[nx][ny] == 2:
+#                             if tuple([nx, ny]) not in virus_on:
+#                                 virus_on.add(tuple([nx, ny]))
+#                                 que.append([nx, ny])
+            
+#         # for x in range(N):
+#         #     print(tmp_board[x])
+#         # input()
+
+#         # 바이러스를 퍼뜨릴 수 없는 경우
+#         if not pos_check(N, tmp_board):
+#             # print("not_pos")
+#             continue
+
+#         # 다 퍼질 수 있으면
+#         else:
+#             # 해당 조합에서의 최소값
+#             this_min_time = 0
+#             for x in range(N):
+#                 for y in range(N):
+#                     if this_min_time > tmp_board[x][y]:
+#                         this_min_time = tmp_board[x][y]
+
+#             total_min_time = max(total_min_time, this_min_time)
+#         # print("total_min_time", total_min_time)
+#         # input()
+
+#     print(-total_min_time if total_min_time != -10000 else -1)
+
+# solve()
