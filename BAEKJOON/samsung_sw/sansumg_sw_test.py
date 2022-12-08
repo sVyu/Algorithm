@@ -1705,3 +1705,53 @@
 #     print(-total_min_time if total_min_time != -10000 else -1)
 
 # solve()
+
+# 17779 게리맨더링 2
+# pm 10:20 ~
+# 읽고 구상 13분
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# population = [list(map(int, input().split())) for _ in range(N)]
+
+# # # d1 하나만 보면 최대 N-2까지 가능
+# # for d1 in range(1, N-1):
+# #     # d1 + d2 합쳐서 max로 N-1까지 가능
+# #     for d2 in range(1, N-d1):
+
+# # N-3 까지 x 가능
+# for x in range(N-2):
+#     # 1부터 N-2까지 가능
+#     for y in range(1, N-1):
+#         # ex. 7-4-1 -1 = 1
+#         for d1 in range(1, min(N-x-1, y+1)):
+#             # 7-4-d1 -1
+#             for d2 in range(1, min(N-x-d1, N-y)):
+#                 print(x, y, d1, d2)
+#                 board = [[0] * N for _ in range(N)]
+                
+#                 # board[x][y] = 5
+#                 # board[x+d1][y-d1] = 5
+#                 # board[x+d2][y+d2] = 5
+#                 # board[x+d1+d2][y-d1+d2] = 5
+#                 for i in range(d1+1):
+#                     board[x+i][y-i] = 5
+#                 for i in range(d2+1):
+#                     board[x+i][y+i] = 5
+#                 for i in range(d2+1):
+#                     board[x+d1+i][y-d1+i] = 5
+#                 for i in range(d1+1):
+#                     board[x+d2+i][y+d2-i] = 5
+                
+#                 for kx in range(x, x+d1):
+#                     for ky in range(N):
+                        
+
+#                 # for kx in range(N):
+#                 #     print(board[kx])
+#                 print()
+#                 input()
+
+
+# 17837 새로운 게임 2

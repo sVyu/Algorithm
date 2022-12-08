@@ -12052,3 +12052,11 @@ dfs/bfs
 
 # for line in lines:
 #     print(line, end = '')
+
+
+# 5524 입실 관리
+# for _ in range(int(input())):
+#     string = list(input())
+#     for s in string:
+#         print(s.lower(), end='')
+#     print()
