@@ -1707,19 +1707,16 @@
 # solve()
 
 # 17779 게리맨더링 2
-# pm 10:20 ~
+# pm 10:20 ~ 12:15
 # 읽고 구상 13분
 # import sys
 # input = sys.stdin.readline
+# from collections import defaultdict
 
 # N = int(input())
-# population = [list(map(int, input().split())) for _ in range(N)]
+# p = [list(map(int, input().split())) for _ in range(N)]
 
-# # # d1 하나만 보면 최대 N-2까지 가능
-# # for d1 in range(1, N-1):
-# #     # d1 + d2 합쳐서 max로 N-1까지 가능
-# #     for d2 in range(1, N-d1):
-
+# min_gap = 1e10
 # # N-3 까지 x 가능
 # for x in range(N-2):
 #     # 1부터 N-2까지 가능
@@ -1728,7 +1725,7 @@
 #         for d1 in range(1, min(N-x-1, y+1)):
 #             # 7-4-d1 -1
 #             for d2 in range(1, min(N-x-d1, N-y)):
-#                 print(x, y, d1, d2)
+#                 # print(x, y, d1, d2)
 #                 board = [[0] * N for _ in range(N)]
                 
 #                 # board[x][y] = 5
@@ -1744,14 +1741,391 @@
 #                 for i in range(d1+1):
 #                     board[x+d2+i][y+d2-i] = 5
                 
-#                 for kx in range(x, x+d1):
-#                     for ky in range(N):
-                        
+#                 # 1
+#                 for kx in range(x+d1):
+#                     for ky in range(y+1):
+#                         if board[kx][ky] != 5:
+#                             board[kx][ky] = 1
+#                         else:
+#                             break
+#                 # 2
+#                 for kx in range(x+d2+1):
+#                     for ky in range(N-1, y, -1):
+#                         if board[kx][ky] != 5:
+#                             board[kx][ky] = 2
+#                         else:
+#                             break
+                
+#                 # 3
+#                 for kx in range(x+d1, N):
+#                     for ky in range(y-d1+d2):
+#                         if board[kx][ky] != 5:
+#                             board[kx][ky] = 3
+#                         else:
+#                             break
+                
+#                 # 4
+#                 for kx in range(x+d2+1, N):
+#                     for ky in range(N-1, y-d1+d2-1, -1):
+#                         if board[kx][ky] != 5:
+#                             board[kx][ky] = 4
+#                         else:
+#                             break
 
 #                 # for kx in range(N):
 #                 #     print(board[kx])
-#                 print()
-#                 input()
+#                 # print()
+#                 # input()
+
+#                 # 인구 차이 계산
+#                 sum_p = defaultdict(int)
+#                 for kx in range(N):
+#                     for ky in range(N):
+#                         if board[kx][ky] > 0:
+#                             sum_p[board[kx][ky]] += p[kx][ky]
+#                         else: # 0
+#                             sum_p[5] += p[kx][ky]
+
+#                 sum_p = sorted(sum_p.items(), key=lambda x:(-x[1]))
+#                 gap = sum_p[0][1]-sum_p[4][1]
+#                 # print(gap)
+#                 min_gap = min(min_gap, gap)
+# print(min_gap)
 
 
 # 17837 새로운 게임 2
+# am 00:21 ~ am 02:39
+
+# def reverse_d(d):
+#     if d == 1:
+#         return 2
+#     elif d == 2:
+#         return 1
+#     elif d == 3:
+#         return 4
+#     else:
+#         return 3
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# N, K = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# order = [[deque() for _ in range(N)] for _ in range(N)]
+
+# horse = [0]*(K)
+# for i in range(K):
+#     x, y, d = map(int, input().split())
+#     horse[i] = [x-1, y-1, d]
+#     order[x-1][y-1].append(i)
+
+# # for x in range(N):
+# #     for y in range(N):
+# #         print(x, y, order[x][y])
+
+# inc_d = [[], [0, 1], [0, -1], [-1, 0], [1, 0]]
+# len_horse = len(horse)
+
+# turn = 0
+# finish = False
+
+# while (not finish) and (turn <= 1000):
+#     turn += 1
+
+#     # 말 이동
+#     # for idx in range(len_horse):
+#     idx = 0
+#     while idx < len_horse:
+#         # print("idx", idx)
+#         x, y, d = horse[idx]
+
+#         # 이동하려는 칸
+#         nx, ny = x + inc_d[d][0], y + inc_d[d][1]
+
+#         # 맵 밖으로 벗어나거나 해당 칸이 파랑인 경우
+#         if not(0 <= nx < N and 0 <= ny < N) or board[nx][ny] == 2:
+#             # 방향 바꾸고
+#             # horse[idx][2] = reverse_d(horse[idx][2])
+#             d = reverse_d(d)
+#             horse[idx][2] = d
+
+#             # 다시 다음 칸 확인
+#             nx, ny = x + inc_d[d][0], y + inc_d[d][1]
+
+#             # 이번에도 범위 나가거나 파랑칸이면 idx 1 올려서 다음 말 진행
+#             if not (0 <= nx < N and 0 <= ny < N) or board[nx][ny] == 2:
+#                 idx += 1
+#             continue
+
+#         # 범위 정상
+#         else:
+#             # 흰색
+#             if board[nx][ny] == 0:
+#                 tmp_o = deque()
+#                 while order[x][y]:
+#                     o = order[x][y].pop()
+#                     tmp_o.append(o)
+#                     horse[o][0] = nx
+#                     horse[o][1] = ny
+#                     if o == idx:
+#                         break
+                
+#                 while tmp_o:
+#                     order[nx][ny].append(tmp_o.pop())
+
+#             # 빨강
+#             elif board[nx][ny] == 1:
+#                 tmp_o = deque()
+#                 while order[x][y]:
+#                     o = order[x][y].pop()
+#                     tmp_o.append(o)
+#                     horse[o][0] = nx
+#                     horse[o][1] = ny
+#                     if o == idx:
+#                         break
+
+#                 while tmp_o:
+#                     order[nx][ny].append(tmp_o.popleft())
+        
+#         # 종료 조건 확인
+#         if 0 <= nx < N and 0 <= ny < N and len(order[nx][ny]) >= 4:
+#             finish = True
+#             break
+
+#         # 디버깅용 코드
+#         # print("turn", turn, idx)
+#         # for kx in range(N):
+#         #     for ky in range(N):
+#         #         print(order[kx][ky], end = ' ')
+#         #     print()
+#         # print()
+        
+#         idx += 1
+#     # input()
+
+# print(turn if turn <= 1000 else -1)
+
+
+# 17822 원판 돌리기
+# am 11:00 ~ am 11:55 ~ pm 12:42 clear
+# 1차 틀렸습니다
+# 2차 틀렸습니다 (0 이하의 값도 체크해야하나 했는데 아니었음)
+# 3차 clear -> 원판이니까 y가 -1이면 M-1로 보정해야하는데 이걸 놓쳤음
+'''
+3 3 1
+2 1 1
+2 1 2
+1 1 1
+3 1 1
+[정답] 0
+[출력] 2
+'''
+
+# def rotate(board, x, di, ki, M):
+#     r_cnt = (M - ki) if di==0 else ki
+    
+#     # return_r = []
+#     new_r = board[x][r_cnt:]
+#     new_r.extend(board[x][:r_cnt])
+#     return new_r
+
+# def solve():
+#     import sys
+#     input = sys.stdin.readline
+#     from collections import deque
+
+#     N, M, T = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     # if ki >= M:
+#     #     ki %= M
+
+#     for _ in range(T):
+#         # 판 회전
+#         xi, di, ki = map(int, input().split())
+#         for x in range(xi-1, N, xi):
+#             board[x] = rotate(board, x, di, ki, M)
+#             # print(board[x])
+
+#         # print("rotate clear")
+#         # for x in range(N):
+#         #     print(board[x])
+#         # print()
+
+#         # 인접한 수 0 처리 - BFS
+#         delete_check = False
+#         for x in range(N):
+#             for y in range(M):
+#                 num = board[x][y]
+#                 if num == 0:
+#                     continue
+#                 que = deque([[num, x, y]])
+                
+#                 while que:
+#                     num, kx, ky = que.popleft()
+#                     # if num == 0:
+#                     #     continue
+
+#                     # print(num, kx, ky)
+#                     for p_x, p_y in [[0, 1], [1, 0], [0, -1], [-1, 0]]:
+#                         nx, ny = kx + p_x, (ky + p_y) % M
+#                         # nx, ny = kx + p_x, ky + p_y
+#                         # if ny == M:
+#                         #     ny = 0
+#                         # print("__", nx, ny)
+                        
+#                         if 0 <= nx < N and 0 <= ny < M:
+#                             if board[nx][ny] > 0 and board[nx][ny] == num:
+#                                 delete_check = True
+#                                 board[kx][ky] = 0
+#                                 board[nx][ny] = 0
+#                                 que.append([num, nx, ny])
+
+#         # 지우지 않은 경우 -> 평균 구하고 평균보다 크면 1 빼기 아니면 1 더하기
+#         if not delete_check:
+#             # 평균 계산
+#             total = 0
+#             cnt = 0
+#             for x in range(N):
+#                 for y in range(M):
+#                     if board[x][y] != 0:
+#                         total += board[x][y]
+#                         cnt += 1
+            
+#             avg = total/cnt if cnt != 0 else 0
+
+#             # +1, -1
+#             for x in range(N):
+#                 for y in range(M):
+#                     if board[x][y] > avg:
+#                         board[x][y] -= 1
+#                     elif board[x][y] > 0 and board[x][y] < avg:
+#                         board[x][y] += 1
+    
+#     # 합계
+#     ans = 0
+#     for x in range(N):
+#         # print(board[x])
+#         for y in range(M):
+#             ans += board[x][y]
+#     print(ans)
+
+# solve()
+
+
+# a = [1, 2, 3]
+# # b = a[1:].extend(a[:1]) # None
+# b = a[1:]
+# b.extend(a[:1])
+# print(b)
+
+
+# 17825 주사위 윷놀이
+# pm 09:57 ~ 11:53..
+# 문제 이해 3분 걸린 줄 알았는데
+# 구현 하고 나서 예제 입출력 4번을 보니 이해가 안 됨
+
+# from collections import deque
+# # 이동 구현 함수 [말 4개의 위치, 점수]
+
+# # que에 넣고 계산할 때마다 점수 계산
+# # 최대 경우의 수 4 * 10 -> 2*20
+# # 처음 1개는 0번 말을 넣는 걸로
+
+# def yut_move(board, h_xy:list, left_move):
+#     x, y = h_xy
+
+#     # 이전에 파란색 칸에 도착한 경우를 체크하기 위한 if문
+#     if x == 0 and y == 5:
+#         x, y = 4, 0
+#     elif x == 1 and y == 5:
+#         x, y = 5, 0
+#     elif x == 2 and y == 5:
+#         x, y = 6, 0
+
+#     # 이동
+#     while left_move > 0:
+#         # print(x, y, left_move)
+#         move = min(len(board[x])-1-y, left_move)
+#         y += move
+#         left_move -= move
+
+#         # 빨간 길
+#         if x == 0 and y == 5:
+#             if left_move > 0:
+#                 x, y = 1, 0
+#         elif x == 1 and y == 5:
+#             if left_move > 0:
+#                 x, y = 2, 0
+#         elif x == 2 and y == 5:
+#             if left_move > 0:
+#                 x, y = 3, 0 
+#         elif x == 3 and y == 5:
+#             if left_move > 0:
+#                 x, y = -1, -1
+#                 left_move = 0
+#         # 파란 길
+#         elif x == 4 and y == 4:
+#             x, y = 7, 0
+#         elif x == 5 and y == 3:
+#             x, y = 7, 0
+#         elif x == 6 and y == 4:
+#             x, y = 7, 0
+#         elif x == 7 and y == 3:
+#             if left_move > 0:
+#                 x, y = -1, -1
+#                 left_move = 0
+
+#     return [x, y]
+
+# yut = list(map(int, input().split()))
+# board = [[0, 2, 4, 6, 8, 10],
+#          [10, 12, 14, 16, 18, 20],
+#          [20, 22, 24, 26, 28, 30],
+#          [30, 32, 34, 36, 38, 40],
+#          # 파란색 길
+#          [10, 13, 16, 19, 25],
+#          [20, 22, 24, 25],
+#          [30, 28, 27, 26, 25],
+#          # 파란색 이후 공통적으로 겹치는 길
+#          [25, 30, 35, 40]]
+
+# que = deque()
+# que.append([[0, yut[0]], [0, 0], [0, 0], [0, 0], board[0][yut[0]], yut[0]])
+
+# max_score = 0
+# while que:
+#     h0, h1, h2, h3, score, cnt = que.popleft()
+#     h = [h0, h1, h2, h3]
+
+#     # 이동
+#     for idx in range(4):
+#         tmp_h_xy = yut_move(board, h[idx], yut[cnt])
+
+#         # new_h = [h[i] for i in range(4) if i != idx else tmp_h_xy]
+#         new_h = [0]*4
+#         for i in range(4):
+#             if i != idx:
+#                 new_h[i] = h[i]
+#             else:
+#                 new_h[i] = tmp_h_xy
+#         # input()
+
+#         # 이동 후 점수 계산 이후
+#         # score += board[tmp_h_xy[0]][tmp_h_xy[1]]
+#         if tmp_h_xy[0] != -1:
+#             if max_score < score + board[tmp_h_xy[0]][tmp_h_xy[1]]:
+#                 max_score = score + board[tmp_h_xy[0]][tmp_h_xy[1]]
+
+#         # print(h)
+#         # print(new_h)
+#         # print(cnt)
+#         # print(score, score + board[tmp_h_xy[0]][tmp_h_xy[1]], max_score)
+#         # input()
+
+#         # print(new_h, cnt)
+#         # input()
+#         if cnt < 9:
+#             que.append([new_h[0], new_h[1], new_h[2], new_h[3], score + board[tmp_h_xy[0]][tmp_h_xy[1]], cnt+1])
+
+# print(max_score)
