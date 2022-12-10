@@ -12060,3 +12060,23 @@ dfs/bfs
 #     for s in string:
 #         print(s.lower(), end='')
 #     print()
+
+# 2555
+# print("3/19")
+
+
+# 5893
+num = list(map(int, input()))
+# print(s)
+
+mul = 1
+ans = 0
+for n in num[::-1]:
+    ans += n * mul
+    mul *= 2
+
+ans *= 17
+while ans > 0:
+    print(ans % 2, end= '')
+    ans //= 2
+# print(0, end='')

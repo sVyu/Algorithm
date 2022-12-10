@@ -2021,27 +2021,26 @@
 
 
 # 17825 주사위 윷놀이
-# pm 09:57 ~ 11:53..
+# pm 09:57 ~ 11:53.. ~ 00:48
 # 문제 이해 3분 걸린 줄 알았는데
 # 구현 하고 나서 예제 입출력 4번을 보니 이해가 안 됨
+# 드디어 이해했다
 
 # from collections import deque
 # # 이동 구현 함수 [말 4개의 위치, 점수]
-
-# # que에 넣고 계산할 때마다 점수 계산
-# # 최대 경우의 수 4 * 10 -> 2*20
-# # 처음 1개는 0번 말을 넣는 걸로
-
 # def yut_move(board, h_xy:list, left_move):
 #     x, y = h_xy
 
 #     # 이전에 파란색 칸에 도착한 경우를 체크하기 위한 if문
-#     if x == 0 and y == 5:
+#     if x == 0 and y == len(board[x])-1:
 #         x, y = 4, 0
-#     elif x == 1 and y == 5:
+#         left_move -= 1
+#     elif x == 1 and y == len(board[x])-1:
 #         x, y = 5, 0
-#     elif x == 2 and y == 5:
+#         left_move -= 1
+#     elif x == 2 and y == len(board[x])-1:
 #         x, y = 6, 0
+#         left_move -= 1
 
 #     # 이동
 #     while left_move > 0:
@@ -2051,47 +2050,55 @@
 #         left_move -= move
 
 #         # 빨간 길
-#         if x == 0 and y == 5:
+#         if x == 0 and y == len(board[x])-1:
 #             if left_move > 0:
 #                 x, y = 1, 0
-#         elif x == 1 and y == 5:
+#                 left_move -= 1
+#         elif x == 1 and y == len(board[x])-1:
 #             if left_move > 0:
 #                 x, y = 2, 0
-#         elif x == 2 and y == 5:
+#                 left_move -= 1
+#         elif x == 2 and y == len(board[x])-1:
 #             if left_move > 0:
-#                 x, y = 3, 0 
-#         elif x == 3 and y == 5:
+#                 x, y = 3, 0
+#                 left_move -= 1
+#         elif x == 3 and y == len(board[x])-1:
 #             if left_move > 0:
-#                 x, y = -1, -1
-#                 left_move = 0
+#                 x, y = 7, 3
+#                 left_move -= 1
+
 #         # 파란 길
-#         elif x == 4 and y == 4:
-#             x, y = 7, 0
-#         elif x == 5 and y == 3:
-#             x, y = 7, 0
-#         elif x == 6 and y == 4:
-#             x, y = 7, 0
-#         elif x == 7 and y == 3:
+#         elif x == 4 and y == len(board[x])-1:
 #             if left_move > 0:
-#                 x, y = -1, -1
-#                 left_move = 0
+#                 x, y = 7, 0
+#                 left_move -= 1
+#         elif x == 5 and y == len(board[x])-1:
+#             if left_move > 0:
+#                 x, y = 7, 0
+#                 left_move -= 1
+#         elif x == 6 and y == len(board[x])-1:
+#             if left_move > 0:
+#                 x, y = 7, 0
+#                 left_move -= 1
+#         elif x == 7 and y == len(board[x])-1:
+#             left_move = 0
 
 #     return [x, y]
 
 # yut = list(map(int, input().split()))
 # board = [[0, 2, 4, 6, 8, 10],
-#          [10, 12, 14, 16, 18, 20],
-#          [20, 22, 24, 26, 28, 30],
-#          [30, 32, 34, 36, 38, 40],
+#          [12, 14, 16, 18, 20],
+#          [22, 24, 26, 28, 30],
+#          [32, 34, 36, 38],
 #          # 파란색 길
-#          [10, 13, 16, 19, 25],
-#          [20, 22, 24, 25],
-#          [30, 28, 27, 26, 25],
+#          [13, 16, 19],
+#          [22, 24],
+#          [28, 27, 26],
 #          # 파란색 이후 공통적으로 겹치는 길
-#          [25, 30, 35, 40]]
+#          [25, 30, 35, 40, 0]]
 
 # que = deque()
-# que.append([[0, yut[0]], [0, 0], [0, 0], [0, 0], board[0][yut[0]], yut[0]])
+# que.append([[0, yut[0]], [0, 0], [0, 0], [0, 0], board[0][yut[0]], 1])
 
 # max_score = 0
 # while que:
@@ -2100,32 +2107,37 @@
 
 #     # 이동
 #     for idx in range(4):
-#         tmp_h_xy = yut_move(board, h[idx], yut[cnt])
+#         # 이미 도착한 말이면 continue
+#         if h[idx] == [7, 4]:
+#             continue
+#         # 다음 칸 계산해서 만약 해당 칸이 도착이 아니면서 말이 있으면 continue
+#         next_xy = yut_move(board, h[idx], yut[cnt])
+#         if next_xy != [7, 4] and next_xy in h:
+#             continue
 
-#         # new_h = [h[i] for i in range(4) if i != idx else tmp_h_xy]
-#         new_h = [0]*4
-#         for i in range(4):
-#             if i != idx:
-#                 new_h[i] = h[i]
-#             else:
-#                 new_h[i] = tmp_h_xy
+#         new_h = [h[i] if i != idx else next_xy for i in range(4)]
+#         # new_h = [0]*4
+#         # for i in range(4):
+#         #     if i != idx:
+#         #         new_h[i] = h[i]
+#         #     else:
+#         #         new_h[i] = next_xy
 #         # input()
 
 #         # 이동 후 점수 계산 이후
-#         # score += board[tmp_h_xy[0]][tmp_h_xy[1]]
-#         if tmp_h_xy[0] != -1:
-#             if max_score < score + board[tmp_h_xy[0]][tmp_h_xy[1]]:
-#                 max_score = score + board[tmp_h_xy[0]][tmp_h_xy[1]]
+#         # score += board[next_xy[0]][next_xy[1]]
+#         tmp_score = score + board[next_xy[0]][next_xy[1]]
+#         if next_xy != [7, 4]:
+#             if max_score < tmp_score:
+#                 max_score = tmp_score
 
 #         # print(h)
 #         # print(new_h)
 #         # print(cnt)
-#         # print(score, score + board[tmp_h_xy[0]][tmp_h_xy[1]], max_score)
+#         # print(score, tmp_score, max_score)
 #         # input()
 
-#         # print(new_h, cnt)
-#         # input()
 #         if cnt < 9:
-#             que.append([new_h[0], new_h[1], new_h[2], new_h[3], score + board[tmp_h_xy[0]][tmp_h_xy[1]], cnt+1])
+#             que.append([new_h[0], new_h[1], new_h[2], new_h[3], tmp_score, cnt+1])
 
 # print(max_score)
