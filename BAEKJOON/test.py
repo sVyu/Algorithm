@@ -12065,18 +12065,36 @@ dfs/bfs
 # print("3/19")
 
 
-# 5893
-num = list(map(int, input()))
-# print(s)
+# 5893 17배
+# mul = 1
+# ans = 0
+# for n in list(map(int, input()))[::-1]:
+#     ans += n * mul
+#     mul *= 2
+# # print(ans)
+# ans *= 17
 
-mul = 1
-ans = 0
-for n in num[::-1]:
-    ans += n * mul
-    mul *= 2
+# idx = 0
+# ans_num = []
+# while ans > 0:
+#     ans_num.append(ans % 2)
+#     ans //= 2
+# print(*ans_num[::-1], sep='')
 
-ans *= 17
-while ans > 0:
-    print(ans % 2, end= '')
-    ans //= 2
-# print(0, end='')
+# print("{0:b}".format(int(f'0b{int(input())}', 2)*17))
+
+
+# 10101 삼각형 외우기
+# t = sorted([int(input()) for _ in range(3)])
+
+# if sum(t) == 180:
+#     if t[0] == t[1] or t[1] == t[2]:
+#         if t[1] == 60:
+#             print("Equilateral")
+#         else:
+#             print("Isosceles")
+#     else:
+#         print("Scalene")
+
+# else:
+#     print("Error")
