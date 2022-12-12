@@ -12098,3 +12098,8 @@ dfs/bfs
 
 # else:
 #     print("Error")
+
+
+# 5554 심부름 가는 길
+# t = sum(int(input()) for _ in range(4))
+# print(t // 60, t % 60, sep='\n')

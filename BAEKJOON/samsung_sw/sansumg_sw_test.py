@@ -2141,3 +2141,277 @@
 #             que.append([new_h[0], new_h[1], new_h[2], new_h[3], tmp_score, cnt+1])
 
 # print(max_score)
+
+# 20061 모노미노도미노2
+# am 12:10 ~ 1:10 clear ~ 1:28 함수로 묶는 것까지 깔끔하게
+
+# clear
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# board = [[0]*10 for _ in range(10)]
+
+# score = 0
+# for _ in range(N):
+#     t, x, y = map(int, input().split())
+
+#     # 블록 -> 이후 초록색 보드, 파란색 보드
+#     if t == 1:
+#         # 초록
+#         for kx in range(6, 10):
+#             if board[kx][y] != 0:
+#                 kx -= 1
+#                 break
+#         board[kx][y] = 1
+
+#         # 파랑
+#         for ky in range(6, 10):
+#             if board[x][ky] != 0:
+#                 ky -= 1
+#                 break
+#         board[x][ky] = 1
+
+#     elif t == 2:
+#         # 초록
+#         for kx in range(6, 10):
+#             if board[kx][y] != 0 or board[kx][y+1] != 0:
+#                 kx -= 1
+#                 break
+#         board[kx][y] = 1
+#         board[kx][y+1] = 1
+
+#         # 파랑
+#         for ky in range(6, 10):
+#             if board[x][ky] != 0:
+#                 ky -= 1
+#                 break
+#         board[x][ky] = 1
+#         board[x][ky-1] = 1
+        
+#     elif t == 3:
+#         # 초록
+#         for kx in range(6, 10):
+#             if board[kx][y] != 0:
+#                 kx -= 1
+#                 break
+#         board[kx][y] = 1
+#         board[kx-1][y] = 1
+        
+#         # 파랑
+#         for ky in range(6, 10):
+#             if board[x][ky] != 0 or board[x+1][ky] != 0:
+#                 ky -= 1
+#                 break
+#         board[x][ky] = 1
+#         board[x+1][ky] = 1
+
+#     # 점수 체크 + 행/열 이동
+#     # 초록
+#     kx = 9
+#     while kx >= 4:
+#         # print("초록 행 이동")
+#         block = 0
+#         for ky in range(4):
+#             if board[kx][ky] == 1:
+#                 block += 1
+#         # 행 이동
+#         if block == 4:
+#             score += 1
+#             for kkx in range(kx, 4, -1):
+#                 board[kkx] = board[kkx-1][:]
+#             board[4] = [0]*10
+#             continue
+#         kx -= 1
+    
+#     # 파랑
+#     ky = 9
+#     while ky >= 4:
+#         # print("파랑 열 이동")
+#         block = 0
+#         for kx in range(4):
+#             if board[kx][ky] == 1:
+#                 block += 1
+        
+#         # 열 이동
+#         if block == 4:
+#             score += 1
+#             for kky in range(ky, 4, -1):
+#                 for kkx in range(0, 4):
+#                     board[kkx][kky] = board[kkx][kky-1]
+
+#             for kkx in range(0, 4):
+#                 board[kkx][4] = 0
+#             continue
+#         ky -= 1
+    
+
+#     # 특수 블록에 따른 행/열 처리 + 행/열 이동
+#     # 초록
+#     while sum(board[5][:4]) > 0:
+#         # print("초록 특수 블록 처리")
+#         # 행 이동
+#         for kx in range(9, 4, -1):
+#             board[kx] = board[kx-1][:]
+#         board[4] = [0]*10
+#         continue
+
+#     # 파랑
+#     sum_val = 0
+#     for kx in range(4):
+#         sum_val += board[kx][5]
+
+#     while sum_val > 0:
+#         # print("파랑 특수 블록 처리")
+#         # 열 이동
+#         for ky in range(9, 4, -1):
+#             for kx in range(0, 4):
+#                 board[kx][ky] = board[kx][ky-1]
+
+#         for kx in range(0, 4):
+#             board[kx][4] = 0
+
+#         sum_val = 0
+#         for kx in range(4):
+#             sum_val += board[kx][5]
+
+# print(score)
+# block = 0
+# for x in range(6, 10):
+#     for y in range(4):
+#         block += board[x][y]
+
+# for x in range(4):
+#     for y in range(6, 10):
+#         block += board[x][y]
+# print(block)
+
+# for x in range(10):
+#     print(board[x])
+
+
+# 함수로 묶기
+# import sys
+# input = sys.stdin.readline
+
+# def block_move(board, t, x, y):
+#     if t == 1:
+#         # 초록
+#         for kx in range(6, 10):
+#             if board[kx][y] != 0:
+#                 kx -= 1
+#                 break
+#         board[kx][y] = 1
+
+#         # 파랑
+#         for ky in range(6, 10):
+#             if board[x][ky] != 0:
+#                 ky -= 1
+#                 break
+#         board[x][ky] = 1
+
+#     elif t == 2:
+#         # 초록
+#         for kx in range(6, 10):
+#             if board[kx][y] != 0 or board[kx][y+1] != 0:
+#                 kx -= 1
+#                 break
+#         board[kx][y] = 1
+#         board[kx][y+1] = 1
+
+#         # 파랑
+#         for ky in range(6, 10):
+#             if board[x][ky] != 0:
+#                 ky -= 1
+#                 break
+#         board[x][ky] = 1
+#         board[x][ky-1] = 1
+        
+#     elif t == 3:
+#         # 초록
+#         for kx in range(6, 10):
+#             if board[kx][y] != 0:
+#                 kx -= 1
+#                 break
+#         board[kx][y] = 1
+#         board[kx-1][y] = 1
+        
+#         # 파랑
+#         for ky in range(6, 10):
+#             if board[x][ky] != 0 or board[x+1][ky] != 0:
+#                 ky -= 1
+#                 break
+#         board[x][ky] = 1
+#         board[x+1][ky] = 1
+
+# def row_move(board, kx):
+#     for x in range(kx, 4, -1):
+#         board[x] = board[x-1][:]
+#     board[4] = [0]*10
+
+# def column_move(board, ky):
+#     for y in range(ky, 4, -1):
+#         for x in range(0, 4):
+#             board[x][y] = board[x][y-1]
+
+#     # 4번 열 초기화
+#     for x in range(0, 4):
+#         board[x][4] = 0
+
+# def total_block(board):
+#     block = 0
+#     for x in range(6, 10):
+#         for y in range(4):
+#             block += board[x][y]
+
+#     for x in range(4):
+#         for y in range(6, 10):
+#             block += board[x][y]
+
+#     return block
+
+# def solve():
+#     N = int(input())
+#     board = [[0]*10 for _ in range(10)]
+
+#     score = 0
+#     for _ in range(N):
+#         t, x, y = map(int, input().split())
+
+#         # 블록 -> 초록색 보드, 파란색 보드
+#         block_move(board, t, x, y)
+
+#         # 점수 체크 + 점수 얻었을 시 행/열 이동
+#         # 초록
+#         kx = 9
+#         while kx >= 4:
+#             # 행 이동
+#             if sum(board[kx][:4]) == 4:
+#                 score += 1
+#                 row_move(board, kx)
+#                 continue
+#             kx -= 1
+        
+#         # 파랑
+#         ky = 9
+#         while ky >= 4:
+#             # 열 이동
+#             if sum(board[kx][ky] for kx in range(4)) == 4:
+#                 score += 1
+#                 column_move(board, ky)
+#                 continue
+#             ky -= 1
+
+#         # 특수 블록에 따른 행/열 처리 + 행/열 이동
+#         # 초록
+#         while sum(board[5][:4]) > 0:
+#             row_move(board, 9)
+
+#         # 파랑
+#         while sum(board[kx][5] for kx in range(4)) > 0:
+#             column_move(board, 9)
+
+#     print(score)
+#     print(total_block(board))
+
+# solve()

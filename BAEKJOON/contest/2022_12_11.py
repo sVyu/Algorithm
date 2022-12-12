@@ -180,6 +180,7 @@
 60 9 15
 '''
 
+# 제출 못 하고 종료된 은나무.. 시간 오버지만 한 번 풀어봤다
 # B번 - 은나무
 # import sys
 # input = sys.stdin.readline
