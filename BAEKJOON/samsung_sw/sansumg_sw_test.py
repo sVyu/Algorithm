@@ -2415,3 +2415,99 @@
 #     print(total_block(board))
 
 # solve()
+
+
+# 19236 청소년 상어
+# pm 03:45 ~ 06:00
+
+# def btr(board, fish_xy, t_shark_xy, ans):
+#     global max_ans
+
+#     # 해당 자리 eat, 상어 -1, 빈 자리 0
+#     fish_size = board[t_shark_xy[0]][t_shark_xy[1]][0]
+#     ans += fish_size
+#     # for k in range(4):
+#     #     print(board[k])
+#     # print("fish_size", fish_size, "ans", ans)
+#     if max_ans < ans:
+#         max_ans = ans
+#     del(fish_xy[fish_size])
+#     board[t_shark_xy[0]][t_shark_xy[1]][0] = -1
+    
+#     # 물고기들 자리 이동
+#     inc_xy = [[], [-1, 0], [-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1]]
+#     for num in range(1, 17):
+#         if num in fish_xy:
+#             x, y = fish_xy[num][0], fish_xy[num][1]
+#             d = board[x][y][1]
+
+#             for k in range(8):
+#                 # d = (d+k-1)%8 +1
+
+#                 # 갈 수 있는 공간 찾았으면
+#                 nx, ny = x + inc_xy[d][0], y + inc_xy[d][1]
+#                 if 0 <= nx < 4 and 0 <= ny < 4 and board[nx][ny][0] != -1:
+#                     fish_xy[num] = [nx, ny]
+
+#                     # 물고기 <-> 물고기
+#                     if board[nx][ny][0] != 0:
+#                         fish_xy[board[nx][ny][0]] = [x, y]
+                
+#                     board[x][y][1] = d
+#                     board[nx][ny], board[x][y] = board[x][y], board[nx][ny] # it works
+#                     break
+
+#                 d = (d % 8) +1
+
+#             # print(num)
+#             # for x in range(4):
+#             #     print(board[x])
+#             # print(fish_xy)
+#             # print()
+
+#     for k in range(1, 4):
+#         x, y = t_shark_xy[0], t_shark_xy[1]
+#         nx, ny = x + k*inc_xy[board[x][y][1]][0], y + k*inc_xy[board[x][y][1]][1]
+#         # print("nx, ny", nx, ny)
+#         if 0 <= nx < 4 and 0 <= ny < 4:
+#             if board[nx][ny][0] > 0:
+#                 # tmp_board = [board[k][:] for k in range(4)]
+
+#                 # 초기화
+#                 tmp_board = [[0]*4 for _ in range(4)]
+#                 for kx in range(4):
+#                     for ky in range(4):
+#                         tmp_board[kx][ky] = board[kx][ky][:]
+                
+#                 tmp_board[x][y] = [0, 0]
+#                 # t_shark_xy = [nx, ny]
+#                 tmp_fish_xy = fish_xy.copy()
+
+#                 btr(tmp_board, tmp_fish_xy, [nx, ny], ans)
+#         else:
+#             break
+
+# def solve():
+#     fish = [list(map(int, input().split())) for _ in range(4)]
+#     board = [[[0, 0] for _ in range(4)] for _ in range(4)]
+#     fish_xy = dict()
+
+#     # board 초기화
+#     for x in range(4):
+#         for y in range(4):
+#             board[x][y] = [fish[x][2*y], fish[x][2*y+1]]
+#             fish_xy[fish[x][2*y]] = [x, y]
+
+#     # for x in range(4):
+#     #     print(board[x])
+#     # print(fish_xy)
+
+#     # 청소년 상어
+#     t_shark_xy = [0, 0]
+#     global max_ans
+#     max_ans = 0
+
+#     btr(board, fish_xy, t_shark_xy, 0)
+#     print(max_ans)
+
+# solve()
