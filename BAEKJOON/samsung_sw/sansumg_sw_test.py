@@ -2511,3 +2511,130 @@
 #     print(max_ans)
 
 # solve()
+
+
+# 19237 어른 상어
+
+# pm 09:25 ~ 10:57
+# import sys
+# input = sys.stdin.readline
+
+# N, M, k = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# smell_board = [[[0, 0] for _ in range(N)] for _ in range(N)]
+
+# d = [0] + list(map(int, input().split()))
+# prior_d = [[list(map(int, input().split())) for _ in range(4)] for _ in range(M)]
+# inc_xy = [[], [-1, 0], [1, 0], [0, -1], [0, 1]]
+
+# # for x in range(M):
+# #     # print(prior_d[x])
+# #     for k in range(4):
+# #         print(prior_d[x][k])
+# #     print()
+
+# shark_xy = dict()
+# for x in range(N):
+#     for y in range(N):
+#         if board[x][y] != 0:
+#             shark_xy[board[x][y]] = [x, y]
+
+# t = 1
+# while t <= 1000:
+#     move = dict()
+#     for num in shark_xy:
+#         move[num] = 0
+
+#     # 뿌리고
+#     for num in shark_xy:
+#         x, y = shark_xy[num]
+#         smell_board[x][y] = [num, k]
+
+#     # 이동
+#     for num in shark_xy:
+#         # 인접한 칸 중 아무 냄새가 없는 칸
+#         x, y = shark_xy[num] # 상어 x, y
+#         now_d = d[num] # 현재 방향
+#         for next_d in prior_d[num-1][now_d-1]:
+#             nx, ny = x + inc_xy[next_d][0], y + inc_xy[next_d][1]
+#             if 0 <= nx < N and 0 <= ny < N and smell_board[nx][ny][0] == 0:
+#                 move[num] = 1
+#                 d[num] = next_d
+                
+#                 # 이동할 칸에 번호가 더 큰 상어
+#                 if board[nx][ny] > num:
+#                     # del(shark_xy[board[x][y]])
+#                     shark_xy[board[nx][ny]] = [-1, -1]
+#                     board[nx][ny] = num
+#                     shark_xy[num] = [nx, ny]
+                    
+#                 else:
+#                     if board[nx][ny] == 0:
+#                         board[nx][ny] = num
+#                         shark_xy[num] = [nx, ny]
+#                     else:
+#                         # del(shark_xy[num])             
+#                         shark_xy[num] = [-1, -1]
+#                         move[num] = -1
+#                 board[x][y] = 0
+#                 break
+
+#     # 자신의 냄새가 있는 칸
+#     for num in range(1, M+1):
+#         if num not in move or move[num] != 0:
+#             continue
+#         # 그런 칸이 없는 경우, 자신의 냄새가 있는 칸
+#         x, y = shark_xy[num] # 상어 x, y
+#         now_d = d[num] # 현재 방향
+#         for next_d in prior_d[num-1][now_d-1]:
+#             nx, ny = x + inc_xy[next_d][0], y + inc_xy[next_d][1]
+#             if 0 <= nx < N and 0 <= ny < N and smell_board[nx][ny][0] == num:
+#                 d[num] = next_d
+#                 # 이동할 칸에 번호가 더 큰 상어
+#                 if board[nx][ny] > num:
+#                     # del(shark_xy[board[x][y]])
+#                     shark_xy[board[nx][ny]] = [-1, -1]
+#                     board[nx][ny] = num
+#                     shark_xy[num] = [nx, ny]
+                    
+#                 else:
+#                     if board[nx][ny] == 0:
+#                         board[nx][ny] = num
+#                         shark_xy[num] = [nx, ny]
+#                     else:
+#                         # del(shark_xy[num])                 
+#                         shark_xy[num] = [-1, -1]
+#                 board[x][y] = 0
+#                 break
+
+#     # 상어 잡아먹음
+#     tmp_shark_xy = shark_xy.copy()
+#     for num in tmp_shark_xy:
+#         if shark_xy[num] == [-1, -1]:
+#             del(shark_xy[num])
+
+#     # 한 마리만 남았으면 break
+#     if len(shark_xy) == 1:
+#         break
+
+#     # 냄새 1초씩 빼고
+#     for x in range(N):
+#         for y in range(N):
+#             num, left_k = smell_board[x][y]
+#             left_k -= 1
+#             if left_k <= 0:
+#                 smell_board[x][y] = [0, 0]
+#             else:
+#                 smell_board[x][y] = [num, left_k]
+
+#     # 흐른 시간 1초 추가
+#     t += 1
+
+#     # for x in range(N):
+#     #     print(board[x])
+#     # for x in range(N):
+#     #     print(smell_board[x])
+#     # print(shark_xy)
+#     # input()
+
+# print(t if t <= 1000 else -1)
