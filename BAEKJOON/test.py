@@ -12103,3 +12103,8 @@ dfs/bfs
 # 5554 심부름 가는 길
 # t = sum(int(input()) for _ in range(4))
 # print(t // 60, t % 60, sep='\n')
+
+
+# 5596 시험 점수
+# s = [list(map(int, input().split())) for _ in range(2)]
+# print(max(sum(s[0]), sum(s[1])))
