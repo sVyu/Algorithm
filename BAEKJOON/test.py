@@ -12117,3 +12117,8 @@ dfs/bfs
 #     x = (a+b)//2
 #     y = (a-b)//2
 #     print(x, y)
+
+
+# 6749 Next in line
+# c = list(int(input()) for _ in range(2))
+# print(2*c[1]-c[0])
