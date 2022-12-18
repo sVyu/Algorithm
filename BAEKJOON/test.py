@@ -12118,7 +12118,12 @@ dfs/bfs
 #     y = (a-b)//2
 #     print(x, y)
 
-
 # 6749 Next in line
 # c = list(int(input()) for _ in range(2))
 # print(2*c[1]-c[0])
+
+
+# 5928 Contest Timing
+# D, H, M = map(int, input().split())
+# ans = (D-11)*1440 + (H-11)*60 + (M-11)
+# print(ans if ans >= 0 else -1)
