@@ -144,43 +144,43 @@
 
 # try 3
 # 에라토스테네스의 체 (sieve of Eratosthenes)
-def sieve(num_limit):
-    num = [False] + [True]*num_limit
-    for i in range(2, num_limit+1):
-        if num[i]:
-            for idx in range(i*2, num_limit+1, i):
-                num[idx] = False
+# def sieve(num_limit):
+#     num = [False] + [True]*num_limit
+#     for i in range(2, num_limit+1):
+#         if num[i]:
+#             for idx in range(i*2, num_limit+1, i):
+#                 num[idx] = False
 
-    return [i for i in range(len(num)) if num[i]]
+#     return [i for i in range(len(num)) if num[i]]
 
-def solve():
-    basic_s = list(input().rstrip())
-    target_s = list(input().rstrip())
+# def solve():
+#     basic_s = list(input().rstrip())
+#     target_s = list(input().rstrip())
 
-    len_basic_s = len(basic_s)
-    gap_s = [0]*len_basic_s
+#     len_basic_s = len(basic_s)
+#     gap_s = [0]*len_basic_s
 
-    # 차이 계산
-    for idx in range(len_basic_s):
-        gap_s[idx] = (ord(target_s[idx]) - ord(basic_s[idx]))%26
-    # print(gap_s)
+#     # 차이 계산
+#     for idx in range(len_basic_s):
+#         gap_s[idx] = (ord(target_s[idx]) - ord(basic_s[idx]))%26
+#     # print(gap_s)
 
-    # 1과 소수 숫자에 해당하는 길이에 대해서 암호 해독 가능한지 검사
-    for ans_len in sieve(len_basic_s):
-        pos = True
-        for iidx in range(ans_len, len_basic_s):
-            if gap_s[iidx % ans_len] != gap_s[iidx]:
-                pos = False
-                break
+#     # 1과 소수 숫자에 해당하는 길이에 대해서 암호 해독 가능한지 검사
+#     for ans_len in sieve(len_basic_s):
+#         pos = True
+#         for iidx in range(ans_len, len_basic_s):
+#             if gap_s[iidx % ans_len] != gap_s[iidx]:
+#                 pos = False
+#                 break
         
-        if pos:
-            break
+#         if pos:
+#             break
 
-    # 정답 반환 (len_basic_s 최대 길이 이하)
-    for g in gap_s[:ans_len]:
-        if g == 0:
-            print("Z", end='')
-        else:
-            print(chr(g+64), end='')
+#     # 정답 반환 (len_basic_s 최대 길이 이하)
+#     for g in gap_s[:ans_len]:
+#         if g == 0:
+#             print("Z", end='')
+#         else:
+#             print(chr(g+64), end='')
 
-solve()
+# solve()
