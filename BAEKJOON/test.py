@@ -12129,4 +12129,17 @@ dfs/bfs
 # print(ans if ans >= 0 else -1)
 
 
-# ~~
+# 10768 특별한 날
+n = list(int(input()) for _ in range(2))
+
+if n[0] < 2:
+    print("Before")
+elif n[0] > 2:
+    print("After")
+else:
+    if n[1] < 18:
+        print("Before")
+    elif n[1] > 18:
+        print("After")
+    else:
+        print("Special")
