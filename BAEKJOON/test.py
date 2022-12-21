@@ -12148,3 +12148,10 @@ dfs/bfs
 # 6887 Squares
 # N = int(input())
 # print(f'The largest square has side length {int(N**(1/2))}.')
+
+
+# 5575 타임카드
+# for _ in range(3):
+#     sh, sm, ss, fh, fm, fs = map(int, input().split())
+#     ans = (fh-sh)*3600 + (fm-sm)*60 + (fs-ss)
+#     print(ans//3600, (ans%3600)//60, (ans%3600)%60)
