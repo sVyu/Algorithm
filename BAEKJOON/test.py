@@ -12155,3 +12155,9 @@ dfs/bfs
 #     sh, sm, ss, fh, fm, fs = map(int, input().split())
 #     ans = (fh-sh)*3600 + (fm-sm)*60 + (fs-ss)
 #     print(ans//3600, (ans%3600)//60, (ans%3600)%60)
+
+
+# 11945 뜨거운 붕어빵
+# N, M = map(int, input().split())
+# for _ in range(N):
+#     print(*list(input())[::-1], sep='')
