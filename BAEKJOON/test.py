@@ -12161,3 +12161,16 @@ dfs/bfs
 # N, M = map(int, input().split())
 # for _ in range(N):
 #     print(*list(input())[::-1], sep='')
+
+
+# 13118 뉴턴과 사과
+# p = list(map(int, input().split()))
+# x, y, r = map(int, input().split())
+
+# ans = 0
+# for idx in range(len(p)):
+#     if p[idx] == x:
+#         ans = idx+1
+#         break
+
+# print(ans)
