@@ -12177,5 +12177,10 @@ dfs/bfs
 
 
 # 14924 폰 노이만과 파리
-S, T, D = map(int, input().split())
-print(T*(D//(2*S)))
+# S, T, D = map(int, input().split())
+# print(T*(D//(2*S)))
+
+
+# 14470 전자레인지
+# n = list(int(input()) for _ in range(5))
+# print((-n[0])*n[2] + n[3] + n[1]*n[4] if n[0] < 0 else (n[1]-n[0])*n[4])
