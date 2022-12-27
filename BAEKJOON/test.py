@@ -12184,3 +12184,11 @@ dfs/bfs
 # 14470 전자레인지
 # n = list(int(input()) for _ in range(5))
 # print((-n[0])*n[2] + n[3] + n[1]*n[4] if n[0] < 0 else (n[1]-n[0])*n[4])
+
+
+# 15873 공백 없는 A+B
+# s = int(input())
+# if s % 10 == 0:
+#     print(s//100 + 10)
+# else:
+#     print(s//10 + s%10)
