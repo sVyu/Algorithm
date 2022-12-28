@@ -12192,3 +12192,10 @@ dfs/bfs
 #     print(s//100 + 10)
 # else:
 #     print(s//10 + s%10)
+
+# print(list(map(int, input())))
+
+
+# 15700 타일 채우기 4
+# N, M = map(int, input().split())
+# print(N*M//2)
