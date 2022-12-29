@@ -12199,3 +12199,8 @@ dfs/bfs
 # 15700 타일 채우기 4
 # N, M = map(int, input().split())
 # print(N*M//2)
+
+
+# 16204 카드 뽑기
+# N, M, K = map(int, input().split())
+# print(min(M, K) + min(N-M, N-K))

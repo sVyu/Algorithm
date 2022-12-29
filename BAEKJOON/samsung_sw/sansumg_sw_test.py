@@ -2638,3 +2638,62 @@
 #     # input()
 
 # print(t if t <= 1000 else -1)
+
+
+# 20055 컨베이어 벨트 위의 로봇
+# 11:15 ~ 11:53
+# N, K = map(int, input().split())
+# # Durability
+# D = list(map(int, input().split()))
+
+# num_D0 = 0
+# robot = [0] * (2*N) # 0 ~ 2N-1
+# turn = 1
+
+# while True:
+#     # 1 벨트 (&로봇) 한 칸 회전
+#     tmp_d_val = D[-1]
+#     for idx in range(2*N-1, 0, -1):
+#         D[idx] = D[idx-1]
+#     D[0] = tmp_d_val
+#     # print("[1D]", D)
+
+#     tmp_d_val = robot[-1]
+#     for idx in range(2*N-1, 0, -1):
+#         robot[idx] = robot[idx-1]
+#     robot[0] = tmp_d_val
+#     # print("[1R]", robot)
+
+#     robot[N-1] = 0
+
+#     # 2 벨트가 회전하는 방향으로 한 칸 이동
+#     for idx in range(2*N-1, 0, -1):
+#         if D[idx] != 0 and robot[idx] == 0 and robot[idx-1] != 0:
+#             robot[idx] = robot[idx-1]
+#             robot[idx-1] = 0    # 이 부분 놓침
+#             D[idx] -= 1
+
+#             if D[idx] == 0:
+#                 num_D0 += 1
+    
+#     robot[N-1] = 0
+#     # print("[2R]", robot)
+
+#     # 3 로봇 올리기
+#     if D[0] != 0:
+#         robot[0] = 1
+#         D[0] -= 1
+#         # if D[idx] == 0:
+#         if D[0] == 0:
+#             num_D0 += 1
+#     # print("[3D]", D)
+#     # print("[3R]", robot)
+
+#     # 4 내구도가 0인 칸의 개수가 K개 이상이라면 과정 종료
+#     if num_D0 >= K:
+#         break
+
+#     turn += 1
+#     # print()
+
+# print(turn)
