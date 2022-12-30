@@ -2514,7 +2514,6 @@
 
 
 # 19237 어른 상어
-
 # pm 09:25 ~ 10:57
 # import sys
 # input = sys.stdin.readline
@@ -2641,7 +2640,7 @@
 
 
 # 20055 컨베이어 벨트 위의 로봇
-# 11:15 ~ 11:53
+# 11:15 ~ 11:53 ~ 12:16
 # N, K = map(int, input().split())
 # # Durability
 # D = list(map(int, input().split()))
@@ -2697,3 +2696,141 @@
 #     # print()
 
 # print(turn)
+
+
+# 리팩토링
+# def rotate(l:list, size, robot_check):
+#     # 1칸씩 회전
+#     tmp_l_val = l[-1]
+#     for idx in range(size-1, 0, -1):
+#         l[idx] = l[idx-1]
+#     l[0] = tmp_l_val
+
+#     # N번 칸 내리기
+#     if robot_check:
+#         l[-1] = 0
+
+# def move(D, robot, size, num_D0):
+#     # 조건에 맞게 1칸씩 이동
+#     for idx in range(size-1, 0, -1):
+#         if D[idx] != 0 and robot[idx] == 0 and robot[idx-1] != 0:
+#             robot[idx] = robot[idx-1]
+#             robot[idx-1] = 0    # 이 부분 놓침
+
+#             D[idx] -= 1
+#             num_D0 += check_D0(D, idx)
+
+#     # N번칸 내리기
+#     robot[-1] = 0
+
+#     return num_D0
+
+# def check_D0(D, idx):
+#     return 1 if D[idx] == 0 else 0
+
+# def solve():
+#     N, K = map(int, input().split())
+#     # Durability
+#     D = list(map(int, input().split()))
+
+#     num_D0 = 0
+#     robot = [0] * N     # 0 ~ N-1
+#     turn = 1
+
+#     while True:
+#         # 1 벨트 (&로봇) 한 칸 회전
+#         rotate(D, 2*N, False)
+#         rotate(robot, N, True)
+
+#         # 2 벨트가 회전하는 방향으로 한 칸 이동
+#         num_D0 = move(D, robot, N, num_D0)
+
+#         # 3 로봇 올리기
+#         if D[0] != 0:
+#             D[0] -= 1
+#             robot[0] = 1
+#             num_D0 += check_D0(D, 0)
+
+#         # 4 내구도가 0인 칸의 개수가 K개 이상이라면 과정 종료
+#         # print(D, robot)
+#         if num_D0 >= K:
+#             break
+#         turn += 1
+
+#     print(turn)
+
+# solve()
+
+
+# 21608 상어 초등학교
+# pm 05:50 ~ 06:35
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N = int(input())
+#     S = [list(map(int, input().split())) for _ in range(N**2)]
+#     board = [[0]*N for _ in range(N)]
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+#     sit = set()
+#     favorite_num = dict()
+#     for idx in range(N**2):
+#         favorite_num[S[idx][0]] = S[idx][1:]
+#     # print(favorite_num)
+
+#     for idx in range(N**2):
+#         # 필요한 값들 plus
+#         sort_target = [[0, 0, 0, 0] for _ in range(N**2)]
+#         for x in range(N):
+#             for y in range(N):
+#                 sort_target[N*x+y][2], sort_target[N*x+y][3] = x, y
+#                 # cnt_favorite_num = 0
+#                 # cnt_empty_space_near = 0
+
+#                 for px, py in inc_xy:
+#                     nx, ny = x + px, y + py
+#                     if 0 <= nx < N and 0 <= ny < N:
+#                         if board[nx][ny] in S[idx][1:]:
+#                             # cnt_favorite_num += 1
+#                             sort_target[N*x+y][0] += 1
+#                         elif board[nx][ny] == 0:
+#                             # print(N, x, y)
+#                             # print(sort_target)
+#                             # cnt_empty_space_near += 1
+#                             sort_target[N*x+y][1] += 1
+
+#         # sort
+#         sort_target = sorted(sort_target, key=lambda x:(-x[0], -x[1], x[2], x[3]))
+#         # print(sort_target)
+#         # input()
+
+#         # 자리 배치
+#         for info in sort_target:
+#             x, y = info[2], info[3]
+#             if tuple([x, y]) not in sit:
+#                 sit.add(tuple([x, y]))
+#                 board[x][y] = S[idx][0]
+#                 break
+
+#         # 확인용 코드
+#         # for x in range(N):
+#         #     print(board[x])
+#         # print()
+    
+#     # 만족도 총합 계산
+#     satisfaction_degree = [0] + [10**i for i in range(4)]
+#     # print(satisfaction_degree)
+
+#     sum_of_satisfaction = 0
+#     for x in range(N):
+#         for y in range(N):
+#             s = 0
+#             for px, py in inc_xy:
+#                 nx, ny = x+px, y+py
+#                 if 0 <= nx < N and 0 <= ny < N:
+#                     if board[nx][ny] in favorite_num[board[x][y]]:
+#                         s += 1
+#             sum_of_satisfaction += satisfaction_degree[s]
+#     print(sum_of_satisfaction)
+
+# solve()

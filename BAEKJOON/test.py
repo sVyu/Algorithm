@@ -12204,3 +12204,31 @@ dfs/bfs
 # 16204 카드 뽑기
 # N, M, K = map(int, input().split())
 # print(min(M, K) + min(N-M, N-K))
+
+
+# 1로 만들기 코드 수정
+# n = int(input())
+# dp = [0, 0, 1, 1] + [int(1e6)+1]*(n-3)
+
+# for idx in range(4, n+1):
+#     if idx % 3 == 0: dp[idx] = min(dp[idx//3]+1, dp[idx])
+#     if idx % 2 == 0: dp[idx] = min(dp[idx//2]+1, dp[idx])
+#     dp[idx] = min(dp[idx], dp[idx-1]+1)
+
+# print(dp[n])
+
+
+# 26566 Pizza
+# import sys
+# input = sys.stdin.readline
+# import math
+
+# for _ in range(int(input())):
+#     A1, P1 = map(int, input().split())
+#     R1, P2 = map(int, input().split())
+#     pi = math.pi
+
+#     if A1 // P1 < R1*(pi**2)//P2:
+#         print("Whole pizza")
+#     else:
+#         print("Slice of pizza")
