@@ -2834,3 +2834,186 @@
 #     print(sum_of_satisfaction)
 
 # solve()
+
+
+# 21610 마법사 상어와 비바라기
+# pm 06:45 ~ 07:20
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# cloud_move = [[], [0, -1], [-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1]]
+# inc_xy = [[1, 1], [1, -1], [-1, -1], [-1, 1]]
+
+# cloud = [[N-2, 0], [N-2, 1], [N-1, 0], [N-1, 1]]
+# for _ in range(M):
+#     di, si = map(int, input().split())
+#     rained = set()
+
+#     # 1, 2 check & 5 rained check
+#     px, py = cloud_move[di]
+#     for idx in range(len(cloud)):
+#         x, y = cloud[idx]
+#         nx, ny = (x+px*si)%N, (y+py*si)%N
+#         # print(x, y, nx, ny)
+
+#         board[nx][ny] += 1
+#         rained.add(tuple([nx, ny]))
+#         cloud[idx] = nx, ny
+#     #     print("::", nx, ny)
+#     # print()
+
+#     # 4
+#     for x, y in cloud:
+#         for px, py in inc_xy:
+#             nx, ny = x+px, y+py
+#             if 0 <= nx < N and 0 <= ny < N and board[nx][ny] > 0:
+#                 board[x][y] += 1
+#     # for x in range(N):
+#     #     print(board[x])
+
+#     # 5
+#     cloud = [[x, y] for x in range(N) for y in range(N) if board[x][y] >= 2 and tuple([x, y]) not in rained]
+#     for x, y in cloud:
+#         board[x][y] -= 2
+    
+#     # cloud = []
+#     # for x in range(N):
+#     #     for y in range(N):
+#     #         if board[x][y] >= 2 and tuple([x, y]) not in rained:
+#     #             board[x][y] -= 2
+#     #             cloud.append([x, y])
+#     # print(cloud\n)
+
+# ans = 0
+# for x in range(N):
+#     ans += sum(board[x])
+
+# print(ans)
+
+
+# 23291 어항 정리
+# pm 09:58 ~ 11:30
+
+'''
+8 7
+5 2 3 14 9 2 11 8
+'''
+'''
+1
+'''
+
+# import sys
+# input = sys.stdin.readline
+
+# N, K = map(int, input().split())
+
+# fish = [[0]*N for _ in range(15)]
+# fish[0] = list(map(int, input().split()))
+
+# # for x in range(15):
+# #     print(fish[x])
+
+# # # 바닥에 일렬로
+# def to_bottom():
+#     return 1
+
+# while True:
+#     # 제일 적은 어항(들)에 물고기 추가 
+#     min_fish = min(fish[0])
+#     for idx in range(N):
+#         if fish[0][idx] == min_fish:
+#             fish[0][idx] += 1
+#     print(fish[0])
+#     print()
+
+#     # 90도 회전 반복
+#     # h, l, idx = 1, 1, 0
+#     # while True:
+#     #     # 90도 회전
+#     #     for hh in range(h):
+#     #         for ll in range(l):
+#     #             fish[idx+1+hh].append(fish[idx-ll][h])
+        
+#     #     l = h
+#     #     h = len(fish[idx+1])
+#     #     idx += l
+        
+#     #     print(fish[idx:])
+        
+#     #     if (N-1)-idx < h:
+#     #         break
+
+#     h, l, idx = 1, 1, 0
+#     while True:
+#         for hh in range(h):
+#             for ll in range(l):
+#                 fish[1+ll][idx+1+hh] = fish[hh][idx-ll]
+
+#         # idx += h
+#         tmp_h = h
+#         h = l+1
+#         l = tmp_h
+#         idx += tmp_h
+
+#         print(h, l, idx)
+        
+#         if (N-1)-idx < h:
+#             break
+    
+#     for x in range(N):
+#         print(fish[x])
+#     print("haha")
+#     input()
+
+
+#     # 물고기 이동
+
+#     # 바닥에 일렬로
+
+#     # 반 잘라서 180도 회전 2번
+
+#     # 물고기 이동
+
+#     # 바닥에 일렬로
+
+#     # 종료 조건
+
+
+# 1806 부분합
+# N, S = map(int, input().split())
+# n = list(map(int, input().split()))
+
+# p1, p2 = 0, 0
+# sum_val = n[0]
+# min_dist = N+1
+
+# while p1 <= N-1:
+#     # 조건 충족
+#     if sum_val >= S:
+#         # 길이 최소값 갱신
+#         min_dist = min(min_dist, p2-p1+1)
+#         # print(p1, p2, min_dist, sum_val)
+#         # 못 줄이는 경우
+#         if p1 == N-1:
+#             break
+
+#         # p1과 p2가 같은 경우
+#         if p1 == p2:
+#             p2 += 1
+#             sum_val += n[p2]
+
+#         # 더 줄일 수 있는 경우
+#         sum_val -= n[p1]
+#         p1 += 1
+
+#     else:
+#         if p2 < N-1:
+#             p2 += 1
+#             sum_val += n[p2]
+#         else:
+#             break
+
+# # 정답 확인
+# print(min_dist if min_dist <= N else 0)
