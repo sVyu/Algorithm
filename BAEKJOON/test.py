@@ -12234,3 +12234,44 @@ dfs/bfs
 #         print("Slice of pizza")
 
 
+# 1325 효율적인 해킹
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**4)
+# from collections import defaultdict
+
+# def dfs(g, u, visited, sum_cnt):
+#     visited[u] = True
+#     sum_cnt += 1
+#     for v in g[u]:
+#         if not visited[v]:
+#             sum_cnt = dfs(g, v, visited, sum_cnt)
+    
+#     return sum_cnt
+
+# def solve():
+#     N, M = map(int, input().split())
+#     g = defaultdict(list)
+#     for _ in range(M):
+#         A, B = map(int, input().split())
+#         g[B].append(A)
+#     # print(g)
+
+#     ans = defaultdict(int)
+#     for i in range(1, N+1):
+#         visited = [False] * (N+1)
+#         # print(dfs(g, i, visited, 0))
+#         ans[i] = dfs(g, i, visited, 0)
+#     ans = sorted(ans.items(), key=lambda x:(-x[1], x[0]))
+#     # print(ans)
+
+#     for key, val in ans:
+#         if val == ans[0][1]:
+#             print(key, end=' ')
+#         else:
+#             break
+
+# solve()
+
+
+# 
