@@ -12274,4 +12274,70 @@ dfs/bfs
 # solve()
 
 
-# 
+# 12852 1로 만들기2
+# from collections import defaultdict
+# from collections import deque
+
+# def recursion(dp2, n):
+#     if dp2[n] != 0:
+#         if dp2[n] == 1:
+#             recursion(dp2, n+1)
+#         else:
+#             recursion(dp2, n*dp2[n])
+
+#     print(n, end = ' ')
+
+# def solve():
+#     N = int(input())
+#     # cnt dp, 역 계산 dp
+#     dp1 = defaultdict(int)
+#     dp2 = defaultdict(int)
+#     init_val = int(1e6)
+#     dp1[1] = init_val
+
+#     que = deque()
+#     que.append([N, 0, 0])
+
+#     while que:
+#         if dp1[1] != init_val:
+#             break
+
+#         for _ in range(len(que)):
+#             n, cnt, k = que.popleft()
+#             if dp1[n] == 0 or dp1[n] > cnt:
+#                 dp1[n] = cnt
+#                 dp2[n] = k
+
+#             if dp1[1] != init_val:
+#                 break
+
+#             if n % 3 == 0:
+#                 que.append([n//3, cnt+1, 3])
+
+#             if n % 2 == 0:
+#                 que.append([n//2, cnt+1, 2])
+
+#             que.append([n-1, cnt+1, 1])
+
+#     print(dp1[1])
+#     # print(dp2)
+
+#     recursion(dp2, 1)
+
+# solve()
+
+
+# 16199 나이 계산하기
+# bidth, standard
+# by, bm, bd = map(int, input().split())
+# sy, sm, sd = map(int, input().split())
+
+# # 만 나이
+# age = (sy-by-1)
+# if sm > bm or (sm == bm and sd >= bd):
+#     age += 1
+# print(age)
+
+# # 세는 나이, 연 나이
+# print(sy-by+1)
+# print(sy-by)
