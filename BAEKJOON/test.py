@@ -12341,3 +12341,19 @@ dfs/bfs
 # # 세는 나이, 연 나이
 # print(sy-by+1)
 # print(sy-by)
+
+
+# 25494 단순한 문제 (Small)
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     a, b, c = map(int, input().split())
+    
+#     ans = 0
+#     for x in range(1, a+1):
+#         for y in range(1, b+1):
+#             for z in range(1, c+1):
+#                 if (x%y) == (y%z) == (z%x):
+#                     ans += 1
+#     print(ans)
