@@ -12357,3 +12357,46 @@ dfs/bfs
 #                 if (x%y) == (y%z) == (z%x):
 #                     ans += 1
 #     print(ans)
+
+
+# 1474 밑 줄
+# 14:15 ~ 14:34
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+# import string
+
+# N, M = map(int, input().split())
+# # rstrip()
+# words = [list(input().rstrip()) for _ in range(N)]
+# underbars = M
+# lower_case = deque()
+# upper_case = deque()
+
+# for idx in range(len(words)):
+#     w = words[idx]
+#     underbars -= len(w)
+#     if idx != 0:
+#         if w[0] in string.ascii_lowercase:
+#             lower_case.append(idx)
+#         else:
+#             upper_case.append(idx)
+# # print(underbars)
+
+# spaces = [underbars//(N-1)]*(N-1)
+# # print(spaces)
+# underbars %= (N-1)
+# # print(underbars)
+
+# while lower_case and (underbars > 0):
+#     spaces[lower_case.popleft()-1] += 1
+#     underbars -= 1
+
+# while upper_case and (underbars > 0):
+#     spaces[upper_case.pop()-1] += 1
+#     underbars -= 1
+
+# for idx in range(N):
+#     print(*words[idx], sep='', end='')
+#     if idx != N-1:
+#         print(spaces[idx]*'_', end='')
