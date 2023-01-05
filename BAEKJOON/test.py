@@ -12400,3 +12400,10 @@ dfs/bfs
 #     print(*words[idx], sep='', end='')
 #     if idx != N-1:
 #         print(spaces[idx]*'_', end='')
+
+
+# 17362 수학은 체육과목 입니다 2
+# n = int(input())
+# n = (n-1) % 8
+# ans = [1, 2, 3, 4, 5, 4, 3, 2]
+# print(ans[n])
