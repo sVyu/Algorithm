@@ -11491,7 +11491,7 @@ dfs/bfs
 #     # if val == S and sum(bit_list) != 0:
 #     #     ans += 1
 #     #     print("[2]", idx, bit_list)
-    
+
 #     if idx+1 <= N-1:
 #         backtracking(idx+1, n_list, bit_list, N, S)
 
@@ -12403,7 +12403,368 @@ dfs/bfs
 
 
 # 17362 수학은 체육과목 입니다 2
+# pm 02:09 ~ 02:12
 # n = int(input())
 # n = (n-1) % 8
 # ans = [1, 2, 3, 4, 5, 4, 3, 2]
 # print(ans[n])
+
+
+# 이중 우선순위 큐
+'''
+2
+3
+I 10
+I 10
+D 1
+'''
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappop, heappush
+
+# for _ in range(int(input())):
+#     k = 0
+#     min_heap = []
+#     max_heap = []
+#     popped_heap = []
+
+#     for _ in range(int(input())):
+#         cmd, n = map(str, input().rstrip().split())
+#         n = int(n)
+
+#         if cmd[0] == 'I':
+#             k += 1
+#             heappush(min_heap, n)
+#             heappush(max_heap, (-n, n))
+
+#         else: #'D'
+#             if k > 0:
+#                 k -= 1
+
+#                 if n == -1:
+#                     heappop(min_heap)
+#                 else:
+#                     heappush(popped_heap, heappop(max_heap)[1])
+#                 # print(popped_heap)
+
+#                 while min_heap and popped_heap and min_heap[0] == popped_heap[0]:
+#                     heappop(min_heap)
+#                     heappop(popped_heap)
+
+#     if k == 0:
+#         print("EMPTY")
+#     else:
+#         min_val = min_heap[0]
+#         max_val = min_heap[0]
+#         # print("min_heap", min_heap)
+#         while min_heap:
+#             val = heappop(min_heap)
+#             # print("val", val, popped_heap[0])
+#             if popped_heap and val == popped_heap[0]:
+#                 heappop(popped_heap)
+#             else:
+#                 max_val = val
+
+#         print(max_val, min_val)
+
+
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     ans = []
+#     for _ in range(int(input())):
+#         cmd, n = map(str, input().rstrip().split())
+#         n = int(n)
+
+#         if cmd == 'I':
+#             ans.append(n)
+#         else: #'D'
+#             if ans:
+#                 ans = sorted(ans, reverse=(True if n == -1 else False))
+#                 ans.pop()
+
+#     if not ans:
+#         print("EMPTY")
+#     else:
+#         ans = sorted(ans)
+#         print(ans[-1], ans[0])
+
+
+# 1 n_largest, heapify → timeover
+# 2 remove → timeover
+# 3 안 쓰고
+
+# 1, 2
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop, nlargest, heapify
+
+# for _ in range(int(input())):
+#     heap = []
+#     for _ in range(int(input())):
+#         cmd, n = map(str, input().rstrip().split())
+#         n = int(n)
+
+#         if cmd == 'I':
+#             heappush(heap, n)
+#         else:
+#             if heap:
+#                 if n == -1:
+#                     heappop(heap)
+#                 else:
+#                     # 1
+#                     # heap = nlargest(len(heap), heap)[1:]
+#                     # heapify(heap)
+#                     # 2
+#                     heap.remove(nlargest(1, heap)[0])
+
+#     # print(heap)
+#     print(f'{max(heap)} {heap[0]}' if heap else "EMPTY")
+
+# 2
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappop, heappush
+
+# for _ in range(int(input())):
+#     min_heap = []
+#     max_heap = []
+
+#     k = int(input())
+#     executed_kk = [False] * (k)
+
+#     for _ in range(k):
+#         cmd, n = map(str, input().rstrip().split())
+#         n = int(n)
+
+#         if cmd == 'I':
+#             heappush(min_heap, n)
+#             heappush(max_heap, -n)
+#         else:
+#             if min_heap: # if min_heap and max_heap
+#             # print(executed_kk)
+#                 if n == 1:
+#                     min_heap.remove(-heappop(max_heap))
+#                 else:
+#                     max_heap.remove(-heappop(min_heap))
+
+#     print(f'{-max_heap[0]} {min_heap[0]}' if min_heap else "EMPTY")
+
+# 3 - PriorityQueue
+# import sys
+# input = sys.stdin.readline
+# from queue import PriorityQueue
+
+# for _ in range(int(input())):
+#     min_pq = PriorityQueue()
+#     max_pq = PriorityQueue()
+
+#     k = int(input())
+#     executed_kk = [False] * (k)
+
+#     for kk in range(k):
+#         cmd, n = map(str, input().rstrip().split())
+#         n = int(n)
+
+#         if cmd == 'I':
+#             min_pq.put((n, kk))
+#             max_pq.put((-n, kk))
+#         else:
+#             # print(executed_kk)
+#             if n == -1:
+#                 while min_pq.queue and executed_kk[min_pq.queue[0][1]]:
+#                     min_pq.get()
+#                 if min_pq.queue:
+#                     executed_kk[min_pq.get()[1]] = True
+#             else:
+#                 while max_pq.queue and executed_kk[max_pq.queue[0][1]]:
+#                     max_pq.get()
+#                 if max_pq.queue:
+#                     executed_kk[max_pq.get()[1]] = True
+
+#     while min_pq.queue and executed_kk[min_pq.queue[0][1]]: min_pq.get()
+#     while max_pq.queue and executed_kk[max_pq.queue[0][1]]: max_pq.get()
+#     print(f'{-max_pq.queue[0][0]} {min_pq.queue[0][0]}' if min_pq.queue and max_pq.queue else "EMPTY")
+
+
+# 3 - heapq
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappop, heappush
+
+# for _ in range(int(input())):
+#     min_pq = []
+#     max_pq = []
+
+#     k = int(input())
+#     executed_kk = [False] * (k)
+
+#     for kk in range(k):
+#         cmd, n = map(str, input().rstrip().split())
+#         n = int(n)
+
+#         if cmd == 'I':
+#             heappush(min_pq, (n, kk))
+#             heappush(max_pq, (-n, kk))
+#         else:
+#             # print(executed_kk)
+#             if n == -1:
+#                 while min_pq and executed_kk[min_pq[0][1]]:
+#                     heappop(min_pq)
+#                 if min_pq:
+#                     executed_kk[heappop(min_pq)[1]] = True
+#             else:
+#                 while max_pq and executed_kk[max_pq[0][1]]:
+#                     heappop(max_pq)
+#                 if max_pq:
+#                     executed_kk[heappop(max_pq)[1]] = True
+
+#     while min_pq and executed_kk[min_pq[0][1]]: heappop(min_pq)
+#     while max_pq and executed_kk[max_pq[0][1]]: heappop(max_pq)
+#     print(f'{-max_pq[0][0]} {min_pq[0][0]}' if min_pq and max_pq else "EMPTY")
+
+
+# 1039 교환
+# pm 03:51 ~ 04:16
+# 런타임 에러 (IndexError)
+'''
+5 1
+[ans] -1
+[출력] IndexError → not que 일 때도 ans = -1 되게 조정
+'''
+# import itertools
+# from collections import deque
+
+# def return_num(num_list:list):
+#     mul_val = 1
+#     return_val = 0
+#     while num_list:
+#         return_val += num_list.pop() * mul_val
+#         mul_val *= 10
+#     return return_val
+
+# def solve():
+#     N, K = map(int, input().split())
+#     N = list(map(int, str(N)))
+#     # print(N)
+#     len_N = len(N)
+
+#     que = deque()
+#     que.append(N)
+
+#     k = 0
+#     while que and k < K:
+#         # print("~~~~~", k)
+#         num_set = set()
+#         for _ in range(len(que)):
+#             n = que.popleft()
+#             # print(n)
+
+#             for idxs in itertools.combinations([i for i in range(0, len_N)], 2):
+#                 next_n = n[:]
+#                 # print(idxs)
+#                 next_n[idxs[0]], next_n[idxs[1]] = next_n[idxs[1]], next_n[idxs[0]]
+#                 if next_n[0] != 0:
+#                     # print("next_n", next_n)
+#                     tuple_next_n = tuple(next_n)
+#                     if tuple_next_n not in num_set:
+#                         num_set.add(tuple_next_n)
+#                         que.append(next_n)
+#         # print(num_set, que)
+#         k += 1
+
+#     # print(k, que)
+#     if k != K or not que:
+#         ans = -1
+#     else: # k == K and que
+#         que = list(que)
+#         for idx in range(len(que)):
+#             que[idx] = return_num(que[idx])
+#         ans = sorted(que)[-1]
+#     print(ans)
+
+# solve()
+
+'''
+7951235 3
+[ans]   9755321
+[출력]  9753125
+'''
+# pm 04:20 ~ 05:58
+#
+# from collections import deque
+
+# # 0, len_N, 1, 2, [], []
+# def return_idxs(idx, len_N, k, K, total_idxs:list, now_idxs:list):
+
+#     now_idxs.append(idx)
+#     # print(now_idxs)
+
+#     # 숫자를 더 넣을 수 있으면
+#     if idx+1 < len_N and k < K:
+#         return_idxs(idx+1, len_N, k+1, K, total_idxs, now_idxs)
+#     elif k == K:
+#         # total_idxs.append(now_idxs)
+#         total_idxs.append(now_idxs[:])
+#         # print(total_idxs)
+
+#     now_idxs.pop()
+#     k -= 1
+
+#     if idx+1 < len_N: # and k < K # and (K-k) >= (len_N-1 - (idx+1)) 
+#         # print(total_idxs, now_idxs, idx+1)
+#         return_idxs(idx+1, len_N, k+1, K, total_idxs, now_idxs)
+
+#     # print("final_total_idxs", total_idxs)
+#     return total_idxs
+
+# def return_num(num_list:list):
+#     mul_val = 1
+#     return_val = 0
+#     while num_list:
+#         return_val += num_list.pop() * mul_val
+#         mul_val *= 10
+#     return return_val
+
+# def solve():
+#     N, K = map(int, input().split())
+#     N = list(map(int, str(N)))
+#     # print(N)
+#     len_N = len(N)
+
+#     que = deque()
+#     que.append(N)
+
+#     k = 0
+#     while que and k < K:
+#         # print("~~~~~", k)
+#         num_set = set()
+#         for _ in range(len(que)):
+#             n = que.popleft()
+#             # print(n)
+
+#             for idxs in return_idxs(0, len_N, 1, 2, [], []):
+#                 # print(idxs)
+#                 next_n = n[:]
+#                 next_n[idxs[0]], next_n[idxs[1]] = next_n[idxs[1]], next_n[idxs[0]]
+#                 if next_n[0] != 0:
+#                     # print("next_n", next_n)
+#                     tuple_next_n = tuple(next_n)
+#                     if tuple_next_n not in num_set:
+#                         num_set.add(tuple_next_n)
+#                         que.append(next_n)
+#         # print(num_set, que)
+#         k += 1
+
+#     # print(k, que)
+#     if k != K or not que:
+#         ans = -1
+#     else: # k == K and que
+#         que = list(que)
+#         for idx in range(len(que)):
+#             que[idx] = return_num(que[idx])
+#         ans = sorted(que)[-1]
+#     print(ans)
+
+# solve()
