@@ -12768,3 +12768,8 @@ D 1
 #     print(ans)
 
 # solve()
+
+
+# 24883 자동 완성
+# print("Naver D2" if input() in ["N", "n"] else "Naver Whale")
+
