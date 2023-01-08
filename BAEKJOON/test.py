@@ -12773,3 +12773,51 @@ D 1
 # 24883 자동 완성
 # print("Naver D2" if input() in ["N", "n"] else "Naver Whale")
 
+# 1197 최소 스패닝 트리
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+# from collections import defaultdict
+# from collections import deque
+
+# V, E = map(int, input().split())
+# g = defaultdict(list)
+# for _ in range(E):
+#     A, B, C = map(int, input().split())
+#     g[A].append([C, B])
+#     g[B].append([C, A])
+# # print(g)
+
+# V_set = set()
+# V_set.add(1)
+# heap = []
+# que = deque()
+# que.append(1)
+
+# ans = 0
+# for _ in range(V-1):
+#     u = que.popleft()
+#     for v in g[u]:
+#         heappush(heap, v)
+
+#     # 가장 가중치가 낮은 간선 중에 이미 방문한 점들을 연결하는 간선은 pop
+#     while heap[0][1] in V_set:
+#         heappop(heap)
+
+#     # 가장 가중치가 낮은 간선의 가중치와 정점 번호에 대해서
+#     val, v = heappop(heap)
+#     ans += val
+#     que.append(v)
+#     V_set.add(v)
+
+# print(ans)
+
+
+# 23795 사장님 도박은 재미로 하셔야 합니다
+N = int(input())
+ans = 0
+while N != -1:
+    ans += N
+    N = int(input())
+
+print(ans)
