@@ -12821,3 +12821,20 @@ D 1
 #     N = int(input())
 
 # print(ans)
+
+
+# 25704 출석 이벤트
+# N = int(input())
+# P = int(input())
+
+# discount = 0
+# if N >= 5:
+#     discount = max(discount, 500)
+# if N >= 10:
+#     discount = max(discount, P*0.1)
+# if N >= 15:
+#     discount = max(discount, 2000)
+# if N >= 20:
+#     discount = max(discount, P*0.25)
+
+# print(max(int(P-discount), 0))
