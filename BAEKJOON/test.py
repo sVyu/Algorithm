@@ -12838,3 +12838,9 @@ D 1
 #     discount = max(discount, P*0.25)
 
 # print(max(int(P-discount), 0))
+
+
+import math
+
+L = int(input())
+print(L*math.sin(math.pi/6)*L*math.cos(math.pi/6))
