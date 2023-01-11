@@ -12840,7 +12840,51 @@ D 1
 # print(max(int(P-discount), 0))
 
 
-import math
+# 14264 정육각형과 삼각형
+# import math
 
-L = int(input())
-print(L*math.sin(math.pi/6)*L*math.cos(math.pi/6))
+# L = int(input())
+# print(L*math.sin(math.pi/6)*L*math.cos(math.pi/6))
+
+
+# 20040 사이클 게임
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+
+# def find_parent(parent, x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent, parent[x])
+#     # else:
+#     #     return x
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+#     if a < b:
+#         parent[b] = a
+#     else:
+#         parent[a] = b
+
+# def solve():
+#     parent = defaultdict(int)
+#     n, m = map(int, input().split())
+
+#     for i in range(n):
+#         parent[i] = i
+#     # print(parent)
+
+#     cycle = False
+#     for i in range(m):
+#         a, b = map(int, input().split())
+#         if find_parent(parent, a) == find_parent(parent, b):
+#             cycle = True
+#             break
+#         else:
+#             union_parent(parent, a, b)
+#         # print(i, parent)
+
+#     print(i+1 if cycle else 0)
+
+# solve()
