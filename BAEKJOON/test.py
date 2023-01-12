@@ -12888,3 +12888,12 @@ D 1
 #     print(i+1 if cycle else 0)
 
 # solve()
+
+
+# 5532 방학 숙제
+# import math
+
+# L = int(input())
+# A, B, C, D = [int(input()) for _ in range(4)]
+# # print(A, B, C, D)
+# print(L - max(math.ceil(A/C), math.ceil(B/D)))
