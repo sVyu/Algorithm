@@ -12897,3 +12897,49 @@ D 1
 # A, B, C, D = [int(input()) for _ in range(4)]
 # # print(A, B, C, D)
 # print(L - max(math.ceil(A/C), math.ceil(B/D)))
+
+
+# 1005 ACM Craft
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+# from collections import defaultdict
+
+# for _  in range(int(input())):
+#     N, K = map(int, input().split())
+#     D = [0] + list(map(int, input().split()))
+
+#     indegree = [0] * (N+1)
+#     g = defaultdict(list)
+#     for _ in range(K):
+#         a, b = map(int, input().split())
+#         g[a].append(b)
+#         indegree[b] += 1
+
+#     W = int(input())
+#     dp = [0] * (N+1)
+
+#     # topology_sort
+#     q = deque()
+#     for i in range(1, N+1):
+#         if indegree[i] == 0:
+#             q.append(i)
+#             dp[i] = D[i]
+
+#     while q:
+#         v = q.popleft()
+#         # print(v)
+#         for i in g[v]:
+#             indegree[i] -= 1
+#             dp[i] = max(dp[i], dp[v] + D[i])
+
+#             if indegree[i] == 0:
+#                 q.append(i)
+
+#     print(dp[W])
+
+
+# 11943 파일 옮기기
+A, B = map(int, input().split())
+C, D = map(int, input().split())
+print(min(A+D, B+C))
