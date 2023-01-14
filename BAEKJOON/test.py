@@ -12940,6 +12940,6 @@ D 1
 
 
 # 11943 파일 옮기기
-A, B = map(int, input().split())
-C, D = map(int, input().split())
-print(min(A+D, B+C))
+# A, B = map(int, input().split())
+# C, D = map(int, input().split())
+# print(min(A+D, B+C))
