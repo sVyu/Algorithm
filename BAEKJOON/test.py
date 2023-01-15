@@ -12943,3 +12943,37 @@ D 1
 # A, B = map(int, input().split())
 # C, D = map(int, input().split())
 # print(min(A+D, B+C))
+
+
+# 11404 플로이드
+import sys
+input = sys.stdin.readline
+from collections import defaultdict
+
+INF = int(1e9)
+n = int(input())
+m = int(input())
+g = [[INF]*(n+1) for _ in range(n+1)]
+
+for x in range(1, n+1):
+    g[x][x] = 0
+# print(g)
+
+for _ in range(m):
+    a, b, c = map(int, input().split())
+    # g[a][b] = c
+    g[a][b] = min(g[a][b], c)
+
+for k in range(1, n+1):
+    for a in range(1, n+1):
+        for b in range(1, n+1):
+            g[a][b] = min(g[a][b], g[a][k] + g[k][b])
+
+for x in range(1, n+1):
+    # print(g[x][1:])
+    for y in range(1, n+1):
+        if g[x][y] == INF:
+            print(0, end=' ')
+        else:
+            print(g[x][y], end=' ')
+    print()
