@@ -12946,34 +12946,123 @@ D 1
 
 
 # 11404 플로이드
-import sys
-input = sys.stdin.readline
-from collections import defaultdict
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
 
-INF = int(1e9)
-n = int(input())
-m = int(input())
-g = [[INF]*(n+1) for _ in range(n+1)]
+# INF = int(1e9)
+# n = int(input())
+# m = int(input())
+# g = [[INF]*(n+1) for _ in range(n+1)]
 
-for x in range(1, n+1):
-    g[x][x] = 0
-# print(g)
+# for x in range(1, n+1):
+#     g[x][x] = 0
+# # print(g)
 
-for _ in range(m):
-    a, b, c = map(int, input().split())
-    # g[a][b] = c
-    g[a][b] = min(g[a][b], c)
+# for _ in range(m):
+#     a, b, c = map(int, input().split())
+#     # g[a][b] = c
+#     g[a][b] = min(g[a][b], c)
 
-for k in range(1, n+1):
-    for a in range(1, n+1):
-        for b in range(1, n+1):
-            g[a][b] = min(g[a][b], g[a][k] + g[k][b])
+# for k in range(1, n+1):
+#     for a in range(1, n+1):
+#         for b in range(1, n+1):
+#             g[a][b] = min(g[a][b], g[a][k] + g[k][b])
 
-for x in range(1, n+1):
-    # print(g[x][1:])
-    for y in range(1, n+1):
-        if g[x][y] == INF:
-            print(0, end=' ')
-        else:
-            print(g[x][y], end=' ')
-    print()
+# for x in range(1, n+1):
+#     # print(g[x][1:])
+#     for y in range(1, n+1):
+#         if g[x][y] == INF:
+#             print(0, end=' ')
+#         else:
+#             print(g[x][y], end=' ')
+#     print()
+
+
+# 14938 서강그라운드
+# import sys
+# input = sys.stdin.readline
+
+# n, m, r = map(int, input().split())
+# t = list(map(int, input().split()))
+
+# INF = int(1e9)
+# g = [[INF] * (n+1) for _ in range(n+1)]
+
+# for _ in range(r):
+#     x, y, c = map(int, input().split())
+#     g[x][y] = min(g[x][y], c)
+#     g[y][x] = min(g[y][x], c)
+
+# for x in range(1, n+1):
+#     g[x][x] = 0
+
+# for k in range(1, n+1):
+#     for x in range(1, n+1):
+#         for y in range(1, n+1):
+#             g[x][y] = min(g[x][y], g[x][k] + g[k][y])
+
+# max_ans = 0
+# for x in range(1, n+1):
+#     # print(g[x][1:])
+#     ans = 0
+#     for y in range(1, n+1):
+#         if g[x][y] <= m:
+#             ans += t[y-1]
+#     max_ans = max(max_ans, ans)
+
+# print(max_ans)
+
+
+# 1389 케빈 베이컨의 6단계 법칙
+# import sys
+# input = sys.stdin.readline
+
+# INF = int(1e2)
+# N, M = map(int, input().split())
+# g = [[INF] * (N+1) for _ in range(N+1)]
+
+# for _ in range(M):
+#     a, b = map(int, input().split())
+#     g[a][b] = 1
+#     g[b][a] = 1
+
+# for a in range(1, N+1):
+#     g[a][a] = 0
+
+# for k in range(1, N+1):
+#     for x in range(1, N+1):
+#         for y in range(1, N+1):
+#             g[x][y] = min(g[x][y], g[x][k] + g[k][y])
+
+# min_total_val = int(1e4)
+# num = -1
+# for x in range(1, N+1):
+#     # print(g[x][1:])
+#     this_total_val = sum(g[x][1:])
+#     if min_total_val > this_total_val:
+#         min_total_val = this_total_val
+#         num = x
+
+# print(num)
+
+
+# 10844 쉬운 계단 수
+# pm 11:10 ~ 11:25
+
+# N = int(input())
+# dp = [[0]*10 for _ in range(N)]
+
+# for y in range(1, 10):
+#     dp[0][y] = 1
+
+# for x in range(1, N):
+#     for y in range(10):
+#         if y >= 1:
+#             dp[x][y] += dp[x-1][y-1]
+#         if y <= 8:
+#             dp[x][y] += dp[x-1][y+1]
+
+# # for x in range(N):
+# #     print(dp[x], sum(dp[x]))
+# print(sum(dp[N-1]) % int(1e9))
