@@ -13066,3 +13066,394 @@ D 1
 # # for x in range(N):
 # #     print(dp[x], sum(dp[x]))
 # print(sum(dp[N-1]) % int(1e9))
+
+
+# 1647 도시 분할 계획
+# pm 11:30 ~ 12:30
+
+# 프림 알고리즘은 time over
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+# from heapq import heappush, heappop
+
+# g = defaultdict(list)
+# N, M = map(int, input().split())
+
+# for _ in range(M):
+#     A, B, C = map(int, input().split())
+#     g[A].append([B, C])
+#     g[B].append([A, C])
+
+# init_v = list(g.keys())[0]
+# spanning_tree_v = set([init_v])
+# # spanning_tree_v.add(init_v)
+# ans = 0
+
+# que = deque([init_v])
+# # que.append(init_v)
+
+# # print(g)
+# heap = []
+# max_val = -1
+
+# for _ in range(N-1):
+#     u = que.popleft()
+#     for v, val in g[u]:
+#         if v not in spanning_tree_v:
+#             heappush(heap, [val, v])
+
+#     while heap[0][1] in spanning_tree_v:
+#         heappop(heap)
+
+#     if heap:
+#         spanning_tree_v.add(heap[0][1])
+#         que.append(heap[0][1])
+
+#         ans += heap[0][0]
+#         # last_val = heap[0][0]
+#         max_val = max(max_val, heap[0][0])
+#     # print(que, ans)
+
+# print(ans - max_val)
+
+
+# 크루스칼
+# import sys
+# input = sys.stdin.readline
+
+# def find_parent(parent, x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+#     if a > b:
+#         parent[a] = b
+#     else:
+#         parent[b] = a
+
+# def solve():
+#     N, M = map(int, input().split())
+#     edges = [list(map(int, input().split())) for _ in range(M)]
+#     edges = sorted(edges, key=lambda x:(x[2]))
+
+#     parent = [0] * (N+1)
+#     for i in range(1, N+1):
+#         parent[i] = i
+
+#     result = 0
+#     max_cost = -1
+
+#     for a, b, cost in edges:
+#         if find_parent(parent, a) != find_parent(parent, b):
+#             union_parent(parent, a, b)
+#             result += cost
+#             max_cost = max(max_cost, cost)
+
+#     print(result - max_cost)
+
+# solve()
+
+
+# 17626 Four Squares
+# pm 09:58 ~ 10:12
+
+# Python3 시간 초과
+# PyPy3 여유롭게 통과
+
+# import math
+
+# n = int(input())
+
+# dp = [0] * (n+1)
+# square_nums = [0] + [0]*(int(math.sqrt(n)))
+
+# for i in range(1, n+1):
+#     dp[i] = i
+
+# for i in range(1, len(square_nums)):
+#     square_nums[i] = i**2
+# # print(dp)
+# # print(square_nums)
+
+# square_nums_i = 1
+# len_square_nums = len(square_nums)
+
+# for i in range(2, n+1):
+#     if square_nums_i < len_square_nums - 1 and\
+#         square_nums[square_nums_i+1] <= i:
+#         square_nums_i += 1
+
+#     for j in range(1, square_nums_i+1):
+#         dp[i] = min(dp[i], dp[i-square_nums[j]]+1)
+
+# print(dp[i])
+
+
+# 1992 쿼드트리
+# pm 10: 12 ~ 10 : 27
+
+# def divide_and_conquer(board, std_xy, dist):
+#     std_x, std_y = std_xy
+
+#     same = True
+#     std_num = board[std_x][std_y]
+#     for kx in range(std_x, std_x + dist):
+#         for ky in range(std_y, std_y + dist):
+#             if board[kx][ky] != std_num:
+#                 same = False
+#                 break
+
+#         if not same:
+#             break
+
+#     if same:
+#         print(std_num, end = '')
+
+#     else:
+#         print("(", end = '')
+#         half_dist = dist//2
+#         divide_and_conquer(board, [std_x, std_y], half_dist)
+#         divide_and_conquer(board, [std_x, std_y + half_dist], half_dist)
+#         divide_and_conquer(board, [std_x + half_dist, std_y], half_dist)
+#         divide_and_conquer(board, [std_x + half_dist, std_y + half_dist], half_dist)
+#         print(")", end = '')
+
+# def solve():
+#     N = int(input())
+#     board = [list(map(int, input())) for _ in range(N)]
+#     # for x in range(N):
+#     #     print(board[x])
+
+#     divide_and_conquer(board, [0, 0], N)
+
+# solve()
+
+
+
+# 16928 뱀과 사다리 게임
+# pm 10 : 34 ~ 10 : 45
+# elif 조건에 next_v = snakes[next_v]라고 해야 되는걸 ladders[next_v]로 했음
+# 다시 보니 사다리나 뱀을 그냥 한 번에 처리해도 될 듯
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     ladders = defaultdict(int)
+#     snakes = defaultdict(int)
+
+#     for _ in range(N):
+#         x, y = map(int, input().split())
+#         ladders[x] = y
+
+#     for _ in range(M):
+#         u, v = map(int, input().split())
+#         snakes[u] = v
+
+#     que = deque()
+#     que.append([1, 0])
+#     visited = [False] * (101)
+#     visited[1] = True
+
+#     while que:
+#         for _ in range(len(que)):
+#             v, cnt = que.popleft()
+
+#             for k in range(1, 7):
+#                 next_v = v+k
+#                 if next_v == 100:
+#                     print(cnt+1)
+#                     return
+
+#                 if not visited[next_v]:
+#                     visited[next_v] = True
+
+#                     if next_v in ladders:
+#                         next_v = ladders[next_v]
+#                     elif next_v in snakes:
+#                         next_v = snakes[next_v]
+#                     visited[next_v] = True
+#                     que.append([next_v, cnt+1])
+
+#                 else:
+#                     continue
+
+# solve()
+
+# 개선 코드
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     # ladders = defaultdict(int)
+#     # snakes = defaultdict(int)
+#     moves = defaultdict(int)
+
+#     for _ in range(N+M):
+#         x, y = map(int, input().split())
+#         moves[x] = y
+
+#     que = deque()
+#     que.append([1, 0])
+#     visited = [False] * (101)
+#     visited[1] = True
+
+#     while que:
+#         # for _ in range(len(que)):
+#         v, cnt = que.popleft()
+
+#         for k in range(1, 7):
+#             next_v = v+k
+#             if next_v == 100:
+#                 print(cnt+1)
+#                 return
+
+#             if not visited[next_v]:
+#                 visited[next_v] = True
+
+#                 if next_v in moves:
+#                     next_v = moves[next_v]
+#                     visited[next_v] = True
+
+#                 que.append([next_v, cnt+1])
+
+# solve()
+
+
+# 9019 DSLR
+# pm 10:54 ~ 
+
+# 시간 초과
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def list_n_to_num_n(list_n):
+#     return_val = 0
+#     mul_val = 1
+
+#     while list_n:
+#         return_val += list_n.pop() * mul_val
+#         mul_val *= 10
+    
+#     return return_val
+
+# def check_visited(que, visited, next_num, tmp_cmd):
+#     if not visited[next_num]:
+#         # next_num = True
+#         visited[next_num] = True
+#         que.append([next_num, tmp_cmd])
+
+# def bfs(que, visited):
+#     n, cmd = que.popleft()
+#     list_n = list(map(int, str(n)))
+
+#     # D
+#     tmp_cmd = cmd[:] + ['D']
+#     next_num = (n*2)%10000
+#     check_visited(que, visited, next_num, tmp_cmd)
+
+#     # S
+#     tmp_cmd = cmd[:] + ['S']
+#     next_num = (n-1)%10000
+#     check_visited(que, visited, next_num, tmp_cmd)
+
+#     # L
+#     tmp_list_n = list_n[1:]
+#     tmp_list_n.append(list_n[0])
+#     tmp_cmd = cmd[:] + ['L']
+#     next_num = list_n_to_num_n(tmp_list_n)
+#     check_visited(que, visited, next_num, tmp_cmd)
+
+#     # R
+#     tmp_list_n = [list_n[-1]]
+#     tmp_list_n.extend(list_n[:-1])
+#     tmp_cmd = cmd[:] + ['R']
+#     next_num = list_n_to_num_n(tmp_list_n)
+#     check_visited(que, visited, next_num, tmp_cmd)
+
+# def solve():
+#     for _ in range(int(input())):
+#         A, B = map(int, input().split())
+
+#         que = deque()
+#         que.append([A, []])
+#         visited = [False] * int(1e4)
+
+#         while que:
+#             if que[0][0] == B:
+#                 print(*que[0][1], sep = '')
+#                 break
+
+#             bfs(que, visited)
+
+# solve()
+
+# 2nd try
+import sys
+input = sys.stdin.readline
+from collections import defaultdict, deque
+
+def check_visited(que, visited, next_num, tmp_cmd, ans_dict):
+    if not visited[next_num]:
+        # next_num = True
+        visited[next_num] = True
+        que.append([next_num, tmp_cmd])
+        ans_dict[next_num] = tmp_cmd
+
+def bfs(que, visited, ans_dict):
+    n, cmd = que.popleft()
+
+    # D
+    tmp_cmd = cmd[:] + ['D']
+    next_num = (n*2)%10000
+    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+
+    # S
+    tmp_cmd = cmd[:] + ['S']
+    next_num = (n-1)%10000
+    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+
+    # 최고 자리 수
+    highest_digit = 1
+    while (n // highest_digit) > 0:
+        highest_digit *= 10
+    # n이 0인 경우는 제외하고 highest_digit //= 10
+    if highest_digit != 1:
+        highest_digit //= 10
+
+    # L
+    next_num = (n % highest_digit)*10 + n // highest_digit
+    tmp_cmd = cmd[:] + ['L']
+    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+
+    # R
+    next_num = (n // 10) + (n % 10)*highest_digit
+    tmp_cmd = cmd[:] + ['R']
+    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+
+def solve():
+    for _ in range(int(input())):
+        A, B = map(int, input().split())
+
+        que = deque()
+        que.append([A, []])
+        visited = [False] * int(1e4)
+        ans_dict = defaultdict(list)
+
+        while que:
+            if B in ans_dict:
+                print(*ans_dict[B], sep = '')
+                break
+
+            bfs(que, visited, ans_dict)
+
+solve()
