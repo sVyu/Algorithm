@@ -13329,7 +13329,7 @@ D 1
 
 
 # 9019 DSLR
-# pm 10:54 ~ 
+# pm 10:54 ~ 12:45
 
 # 시간 초과
 # import sys
@@ -13343,7 +13343,7 @@ D 1
 #     while list_n:
 #         return_val += list_n.pop() * mul_val
 #         mul_val *= 10
-    
+
 #     return return_val
 
 # def check_visited(que, visited, next_num, tmp_cmd):
@@ -13398,62 +13398,119 @@ D 1
 # solve()
 
 # 2nd try
-import sys
-input = sys.stdin.readline
-from collections import defaultdict, deque
+'''
+1 100
+[정답] LL
+[출력] DDDDSLSD
 
-def check_visited(que, visited, next_num, tmp_cmd, ans_dict):
-    if not visited[next_num]:
-        # next_num = True
-        visited[next_num] = True
-        que.append([next_num, tmp_cmd])
-        ans_dict[next_num] = tmp_cmd
+100 1
+[정답] RR
+[출력] L
+'''
+# 시간 초과 해결
+# defaultdict(list) 대신 dict() 쓰고 que에다가 list대신 string("") append
+# visied[A] = True
 
-def bfs(que, visited, ans_dict):
-    n, cmd = que.popleft()
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
 
-    # D
-    tmp_cmd = cmd[:] + ['D']
-    next_num = (n*2)%10000
-    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+# def check_visited(que, visited, next_num, tmp_cmd, ans_dict):
+#     if not visited[next_num]:
+#         visited[next_num] = True
+#         que.append([next_num, tmp_cmd])
+#         ans_dict[next_num] = tmp_cmd
 
-    # S
-    tmp_cmd = cmd[:] + ['S']
-    next_num = (n-1)%10000
-    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+# def bfs(que, visited, ans_dict):
+#     n, cmd = que.popleft()
 
-    # 최고 자리 수
-    highest_digit = 1
-    while (n // highest_digit) > 0:
-        highest_digit *= 10
-    # n이 0인 경우는 제외하고 highest_digit //= 10
-    if highest_digit != 1:
-        highest_digit //= 10
+#     # D
+#     next_num = (n*2)%10000
+#     check_visited(que, visited, next_num, cmd + "D", ans_dict)
 
-    # L
-    next_num = (n % highest_digit)*10 + n // highest_digit
-    tmp_cmd = cmd[:] + ['L']
-    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+#     # S
+#     next_num = (n-1)%10000
+#     check_visited(que, visited, next_num, cmd + "S", ans_dict)
 
-    # R
-    next_num = (n // 10) + (n % 10)*highest_digit
-    tmp_cmd = cmd[:] + ['R']
-    check_visited(que, visited, next_num, tmp_cmd, ans_dict)
+#     # L
+#     next_num = (n * 10) % 10000 + (n * 10) // 10000
+#     check_visited(que, visited, next_num, cmd + "L", ans_dict)
 
-def solve():
-    for _ in range(int(input())):
-        A, B = map(int, input().split())
+#     # R
+#     next_num = (n // 10) + (n % 10)*1000
+#     check_visited(que, visited, next_num, cmd + "R", ans_dict)
 
-        que = deque()
-        que.append([A, []])
-        visited = [False] * int(1e4)
-        ans_dict = defaultdict(list)
+# def solve():
+#     for _ in range(int(input())):
+#         A, B = map(int, input().split())
 
-        while que:
-            if B in ans_dict:
-                print(*ans_dict[B], sep = '')
-                break
+#         que = deque()
+#         # que.append([A, "[]"])
+#         que.append([A, ""])
+#         visited = [False] * int(1e4)
+#         visited[A] = True
+#         ans_dict = dict()
 
-            bfs(que, visited, ans_dict)
+#         while que:
+#             if B in ans_dict:
+#                 print(ans_dict[B])
+#                 break
 
-solve()
+#             bfs(que, visited, ans_dict)
+
+# solve()
+
+
+# 6064 카잉 달력
+# pm 04: 16 ~ 04: 31
+
+'''
+10 12 10 12
+[정답] 60
+[출력] -1
+10 12 6 12
+[정답] 36
+[출력] -1
+'''
+# elif문 추가로 해결
+
+# import sys
+# input = sys.stdin.readline
+
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def lcm(a, b):
+#     return a * b // gcd(a, b)
+
+# for _ in range(int(input())):
+#     M, N, x, y = map(int, input().split())
+
+#     ans = -1
+#     for i in range(x, lcm(M,N)+1, M):
+#         if i % N == y:
+#             ans = i
+#             break
+#         elif N == y and (i-N) % N == 0:
+#             ans = i
+#             break
+
+#     print(ans)
+
+
+# 10172 개
+# print("\
+# |\_/|\n\
+# |q p|   /}\n\
+# ( 0 )\"\"\"\\\n\
+# |\"^\"`    |\n\
+# ||_/=\\\\__|")
+
+# |\_/|
+# |q p|   /}
+# ( 0 )"""\
+# |"^"`    |
+# ||_/=\\__|
+
