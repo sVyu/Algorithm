@@ -13514,3 +13514,204 @@ D 1
 # |"^"`    |
 # ||_/=\\__|
 
+
+# 9251 LCS
+'''
+ABCAAA
+AAABC
+
+[[0, 1000], [0, 1000], [0, 1000], [0, 1000], [0, 1000], [0, 1000]]
+[[1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0]]
+[[2, 0], [2, 0], [2, 0], [2, 0], [2, 0], [2, 0]]
+[[3, 0], [3, 0], [3, 0], [3, 0], [3, 0], [3, 0]]
+[[3, 0], [4, 1], [4, 1], [4, 1], [4, 1], [4, 1]]
+[[3, 0], [4, 1], [5, 2], [5, 2], [5, 2], [5, 2]]
+'''
+# from collections import defaultdict
+
+# str1 = list(input())
+# str2 = ['_'] + list(input())
+# # print(str1, str2)
+
+# INF = int(1e3)
+# # [] : 해당 idx까지 체크했을 때 LCS 길이, LCS를 만족하는 마지막 알파벳의 idx
+# dp = [[[0, INF] for _ in range(len(str1))] for _ in range(len(str2))]
+# alpha_idx = defaultdict(set)
+
+# for idx in range(len(str1)):
+#     alpha = str1[idx]
+#     alpha_idx[alpha].add(idx)
+# # print(alpha_idx)
+
+# for x in range(1, len(str2)):
+#     for y in range(len(str1)):
+#         # 바로 윗값 그대로 복사
+#         dp[x][y] = dp[x-1][y][:]
+
+#         # 해당 알파벳(str2[x])에 대해 일치하는 인덱스(y)가 존재하면 기존 Subsequence에 추가 가능
+#         if y in alpha_idx[str2[x]]:
+#             dp[x][y][0] += 1
+#             dp[x][y][1] = y
+
+#         # 제일 처음 idx가 아니면
+#         if y > 0:
+#             # 위 계산을 다 했을 때 LCS 길이가 바로 전 idx의 값에 비해 작은 경우
+#             if dp[x][y][0] < dp[x][y-1][0]:
+#                 dp[x][y] = dp[x][y-1][:]
+
+#             # LCS길이는 같은데 마지막 idx 위치 갱신이 필요한 경우
+#             if dp[x][y][0] == dp[x][y-1][0] and dp[x][y][1] > dp[x][y-1][1]:
+#                 dp[x][y][1] = dp[x][y-1][1]
+
+# print()
+# for x in range(len(str2)):
+#     print(dp[x])
+
+
+# 새로 짠 코드
+'''
+ABCAAD
+AAABCA
+
+ABABA
+BABAB
+
+AAAAA
+AAAAA
+
+ABCAAD
+AABCAK
+'''
+# from collections import defaultdict, deque
+
+# str1 = list(input())
+# str2 = list(input())
+# # print(str1, str2)
+
+# idxs = defaultdict(deque)
+# idxs_set = defaultdict(set)
+# last_idx = defaultdict(int)
+# popped_idxs_set = defaultdict(set)
+
+# for idx in range(len(str1)):
+#     alpha = str1[idx]
+#     idxs[alpha].append(idx)
+#     idxs_set[alpha].add(idx)
+#     last_idx[alpha] = idx
+# # print(idxs)
+# # print(last_idx)
+# dp = [0] * (len(str1))
+
+# for i in range(len(str2)):
+#     alpha = str2[i]
+#     # alpha 가 str1에서 한 번이라도 등장하면
+#     if alpha in last_idx:
+#         max_val = 0
+#         # idx : 해당 alphbet이 등장하는 마지막 인덱스까지
+#         for idx in range(last_idx[alpha]+1):
+#             # 현재 alpha가 동일한(target) alphabet이 아니면 LCS 값으로 max_val 저장
+#             if (idx not in idxs_set[alpha]):
+#                 max_val = max(max_val, dp[idx])
+#             # target alphabet이면
+#             else:
+#                 dp[idx] = max(dp[idx], max_val+1) # max_val + 1 == LCS + 1
+
+#                 # 동일한 알파벳이 여러 번 나오는 때를 처리,
+#                 # str1보다 str2에서 더 많이 등장하지 않은 경우 if문 성립
+#                 # if idx in popped_idxs_set[alpha]: # 개선 해서 ↓
+#                 if idxs[alpha] and idx in popped_idxs_set[alpha]:
+#                     max_val = max(max_val, dp[idx])
+
+#         if idxs[alpha]:
+#             popped_idxs_set[alpha].add(idxs[alpha].popleft())
+#         # print(popped_idxs_set)
+#     print(dp)
+
+# print(max(dp))
+
+
+# 9251 LCS
+# str1 = list(input())
+# str2 = list(input())
+
+# x, y = len(str1), len(str2)
+# dp = [0] * y
+
+# for kx in range(x):
+#     cnt = 0
+#     for ky in range(y):
+#         if cnt < dp[ky]:
+#             cnt = dp[ky]
+#         elif str1[kx] == str2[ky]:
+#             dp[ky] = cnt+1
+#     # print(dp)
+
+# print(max(dp))
+
+
+# 11725 트리의 부모 찾기
+# pm 02:31 ~ 02:38
+
+# BFS
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# N = int(input())
+# g = defaultdict(list)
+
+# for _ in range(N-1):
+#     a, b = map(int, input().split())
+#     g[a].append(b)
+#     g[b].append(a)
+# # print(g)
+
+# que = deque([1])
+# visited = [False] * (N+1)
+# visited[1] = True
+# parent = [-1] * (N+1)
+
+# while que:
+#     u = que.popleft()
+#     # print(u)
+#     for v in g[u]:
+#         if not visited[v]:
+#             visited[v] = True
+#             que.append(v)
+#             parent[v] = u
+
+# print(*parent[2:], sep='\n')
+
+
+# DFS
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# sys.setrecursionlimit(10**6)
+
+# def dfs(g, visited, parent, u):
+#     for v in g[u]:
+#         if not visited[v]:
+#             visited[v] = True
+#             parent[v] = u
+#             dfs(g, visited, parent, v)
+
+# def solve():
+#     N = int(input())
+#     g = defaultdict(list)
+
+#     for _ in range(N-1):
+#         a, b = map(int, input().split())
+#         g[a].append(b)
+#         g[b].append(a)
+#     # print(g)
+
+#     visited = [False] * (N+1)
+#     visited[1] = True
+#     parent = [-1] * (N+1)
+
+#     dfs(g, visited, parent, 1)
+
+#     print(*parent[2:], sep='\n')
+
+# solve()
