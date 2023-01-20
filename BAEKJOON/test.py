@@ -13715,3 +13715,325 @@ AABCAK
 #     print(*parent[2:], sep='\n')
 
 # solve()
+
+
+# 18221 교수님 저는 취업할래요
+# pm 05:53 ~ 06:00
+# import sys
+# input = sys.stdin.readline
+# import math
+
+# N = int(input())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# prof_xy = list()
+# target_xy = list()
+
+# for x in range(N):
+#     for y in range(N):
+#         if board[x][y] == 2:
+#             prof_xy = [x, y]
+#         elif board[x][y] == 5:
+#             target_xy = [x, y]
+# # print(prof_xy, target_xy)
+
+# ans = 0
+# if math.sqrt((prof_xy[0]-target_xy[0])**2 + (prof_xy[1]-target_xy[1])**2) >= 5:
+#     students = 0
+#     for x in range(min(prof_xy[0], target_xy[0]), max(prof_xy[0], target_xy[0])+1):
+#         for y in range(min(prof_xy[1], target_xy[1]), max(prof_xy[1], target_xy[1])+1):
+#             if board[x][y] == 1:
+#                 students += 1
+
+#     if students >= 3:
+#         ans = 1
+
+# print(ans)
+
+
+# 9252 LCS 2
+# pm 06:02 ~ 06:19 (틀렸습니다 음)
+'''
+ABCDEFB
+EFABCD
+[정답] ABCD
+[출력] FBCD
+'''
+# import sys
+# sys.setrecursionlimit(10**4)
+
+# def recursion(dp, n, idx, str2):
+#     if n > 1 and idx > -1:
+#         recursion(dp, n-1, dp[idx][1], str2)
+
+#     print(str2[idx], end='')
+
+# def solve():
+#     str1, str2 = list(input()), list(input())
+#     w, h = len(str1), len(str2)
+
+#     dp = [[0, -1] for _ in range(h)]
+
+#     for i in range(w):
+#         cnt, pre_idx = 0, -1
+#         for j in range(h):
+#             if cnt < dp[j][0]:
+#                 cnt = dp[j][0]
+#                 pre_idx = j
+#             # cnt >= dp[j]
+#             elif str1[i] == str2[j]:
+#                 dp[j][0] = cnt+1
+#                 dp[j][1] = pre_idx
+#         print(dp)
+
+#     max_val = 0
+#     max_val_idx = -1
+#     for i in range(h):
+#         if max_val < dp[i][0]:
+#             max_val = dp[i][0]
+#             max_val_idx = i
+
+#     print(max_val)
+#     if max_val != 0:
+#         recursion(dp, max_val, max_val_idx, str2)
+
+# solve()
+
+
+# import sys
+# sys.setrecursionlimit(10**4)
+
+# def recursion(dp, x, y, str2):
+#     if dp[x][y] != 0:
+#         if dp[x][y] == dp[x-1][y-1]:
+#             recursion(dp, x-1, y-1, str2)
+#         elif dp[x][y] == dp[x-1][y]:
+#             recursion(dp, x-1, y, str2)
+#         elif dp[x][y] == dp[x][y-1]:
+#             recursion(dp, x, y-1, str2)
+#         else:
+#             recursion(dp, x-1, y-1, str2)
+#             # +1 보정되어있으므로 y-1
+#             print(str2[y-1], end='')
+
+# def solve():
+#     str1, str2 = list(input()), list(input())
+#     h, w = len(str1), len(str2)
+#     dp = [[0] * (w+1) for _ in range(h+1)]
+
+#     for i in range(1, h+1):
+#         for j in range(1, w+1):
+#             if str1[i-1] == str2[j-1]:
+#                 dp[i][j] = dp[i-1][j-1] + 1
+#             else:
+#                 dp[i][j] = max(dp[i][j-1], dp[i-1][j])
+#         # print(dp[i])
+
+#     print(dp[h][w])
+#     recursion(dp, h, w, str2)
+
+# solve()
+
+
+# 2448 별 찍기 - 11
+# pm 10:31 ~ 11:00 (출력 형식이 잘못되었습니다)
+#          ~ 11:32 (공백 잡아주고 나서 AC)
+
+# def recursion(board, N, x, y, d):
+#     if d != 3:
+#         half_d = d//2
+#         recursion(board, N, x, y, half_d)
+#         recursion(board, N, x + half_d, y, half_d)
+#         recursion(board, N, x + half_d, y+(2*half_d), half_d)
+#     else:
+#         board[x][y] = '*'
+#         board[x+1][y] = '*'
+#         board[x+1][y+1] = ' '
+#         board[x+1][y+2] = '*'
+#         # board[x+2][y:y+6] = '*'*5
+#         for i in range(5):
+#             board[x+2][y+i] = '*'
+
+# def solve():
+#     N = int(input()) # N은 항상 3×(2**k) 수
+#     # board = [[' ']*(6*(N//3)) for _ in range(N)]
+#     board = [[' ']*(2*N) for _ in range(N)]
+
+#     recursion(board, N, 0, 0, N)
+
+#     # 출력용
+#     for x in range(N):
+#         print(' '*(N-1-x), end='')
+#         for y in range((2*x)+1):
+#             print(board[x][y], end='')
+#         print(' '*(N-1-x), end='') # it needs this line's code
+#         print()
+
+#     # 확인용
+#     # print(*board[N-1], sep='')
+
+# solve()
+
+
+# 5639 이진 검색 트리
+
+# 시간 초과
+# import sys
+# sys.setrecursionlimit(10**7)
+
+# from collections import defaultdict
+
+# def make_binary_tree(g, parent, val):
+#     if val < parent:
+#         if -1 in g[parent]:
+#             make_binary_tree(g, g[parent][-1], val)
+#         else:
+#             g[parent][-1] = val
+#             # g[val] = dict() # g = dict() 인 경우
+
+#     else:
+#         if 1 in g[parent]:
+#             make_binary_tree(g, g[parent][1], val)
+#         else:
+#             g[parent][1] = val
+#             # g[val] = dict() # g = dict() 인 경우
+
+# def post_order(g, val):
+#     if -1 in g[val]:
+#         post_order(g, g[val][-1])
+#     if 1 in g[val]:
+#         post_order(g, g[val][1])
+
+#     print(val)
+
+# def solve():
+#     vals = sys.stdin.readlines()
+
+#     g = defaultdict(dict)
+#     # g = dict()
+#     # g[vals[0]] = dict() # g = dict() 인 경우
+
+#     for idx in range(len(vals)):
+#         vals[idx] = int(vals[idx])
+#     # print(vals)
+
+#     for val in vals[1:]:
+#         make_binary_tree(g, vals[0], val)
+#     # print(g)
+
+#     post_order(g, vals[0])
+
+# solve()
+
+
+# dict 대신 배열로
+# import sys
+# sys.setrecursionlimit(10**7)
+
+# # tree = [[-1, -1, -1] for _ in range(len(vals))]
+# def make_binary_tree(tree, parent_idx, idx):
+#     if tree[idx][0] < tree[parent_idx][0] :
+#         if tree[parent_idx][1] != -1:
+#             make_binary_tree(tree, tree[parent_idx][1], idx)
+#         else:
+#             tree[parent_idx][1] = idx
+#     else:
+#         if tree[parent_idx][2] != -1:
+#             make_binary_tree(tree, tree[parent_idx][2], idx)
+#         else:
+#             tree[parent_idx][2] = idx
+
+# def post_order(tree, idx):
+#     if tree[idx][1] != -1:
+#         post_order(tree, tree[idx][1])
+#     if tree[idx][2] != -1:
+#         post_order(tree, tree[idx][2])
+
+#     print(tree[idx][0])
+
+# def solve():
+#     vals = sys.stdin.readlines()
+
+#     tree = [[int(vals[i]), -1, -1] for i in range(len(vals))]
+#     for idx in range(1, len(tree)):
+#         make_binary_tree(tree, 0, idx)
+#     # print(tree)
+
+#     post_order(tree, 0)
+
+# solve()
+
+
+# 트리 생성 시 각 노드에 대해 삽입만 최악의 경우 O(N) -> N개에 대해 진행하면 O(N**2) -> Time Over
+# 메모리 초과
+# import sys
+# sys.setrecursionlimit(10**7)
+
+# def post_order(vals):
+#     if vals:
+#         std, next_vals = vals[0], vals[1:]
+#         idx, find = 0, False
+
+#         # std 기준으로 제일 처음 만나는 큰 수의 idx
+#         for idx in range(len(next_vals)):
+#             if next_vals[idx] > std:
+#                 find = True
+#                 break
+#         # 못 찾았으면(없으면) idx+1
+#         if not find:
+#             idx += 1
+
+#         # 후순위
+#         # L
+#         post_order(next_vals[:idx])
+#         # R
+#         post_order(next_vals[idx:])
+#         # parent
+#         print(std)
+
+# def solve():
+#     vals = sys.stdin.readlines()
+#     for idx in range(len(vals)):
+#         vals[idx] = int(vals[idx])
+#     # print(vals)
+#     post_order(vals)
+
+# solve()
+
+
+# Python3 통과, PyPy3 메모리 초과
+# import sys
+# sys.setrecursionlimit(10**7)
+
+# def post_order(vals, idx_from, idx_to):
+#     if idx_from <= idx_to:
+#         # print(idx_from, idx_to)
+#         std = vals[idx_from]
+#         next_std_idx, find = idx_from+1, False
+
+#         # std보다 다 작을 때를 가정해 idx_to 값으로 초기화
+#         next_std_idx = idx_to
+#         # std 기준으로 제일 처음 만나는 큰 수의 idx
+#         for next_std_idx in range(idx_from+1, idx_to+1):
+#             if vals[next_std_idx] > std:
+#                 find = True
+#                 break
+#         # std보다 다 작으면 next_std_idx+1
+#         if not find:
+#             next_std_idx += 1
+
+#         # 후순위
+#         # L
+#         post_order(vals, idx_from+1, next_std_idx-1)
+#         # R
+#         post_order(vals, next_std_idx, idx_to)
+#         # parent
+#         print(std)
+
+# def solve():
+#     vals = sys.stdin.readlines()
+#     for idx in range(len(vals)):
+#         vals[idx] = int(vals[idx])
+#     # print(vals)
+#     post_order(vals, 0, len(vals)-1)
+
+# solve()
