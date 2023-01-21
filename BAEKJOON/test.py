@@ -14037,3 +14037,8 @@ EFABCD
 #     post_order(vals, 0, len(vals)-1)
 
 # solve()
+
+
+# 13866 팀 나누기
+s = list(map(int, input().split()))
+print(abs(s[0]+s[3]-s[1]-s[2]))
