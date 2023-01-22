@@ -14040,5 +14040,83 @@ EFABCD
 
 
 # 13866 팀 나누기
-s = list(map(int, input().split()))
-print(abs(s[0]+s[3]-s[1]-s[2]))
+# s = list(map(int, input().split()))
+# print(abs(s[0]+s[3]-s[1]-s[2]))
+
+
+# 1916 최소비용 구하기
+# am 01:15 ~ 01:46
+# 다익스트라 기억 안 나서 책 봄
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+# from heapq import heappush, heappop
+
+# N, M = int(input()), int(input())
+# g = defaultdict(list)
+# for _ in range(M):
+#     a, b, c = map(int, input().split())
+#     g[a].append([c, b])
+# # print(g)
+# start, finish = map(int, input().split())
+
+# heap = []
+# INF = int(1e9)
+# dist = [INF] * (N+1)
+
+# visited = [False] * (N+1)
+# visited[start] = True
+
+# for val, v in g[start]:
+#     heappush(heap, [val, v])
+
+# while heap:
+#     val, u = heappop(heap)
+#     if visited[u]:
+#         continue
+#     else:
+#         visited[u] = True
+#         dist[u] = min(dist[u], val)
+#         for val, v in g[u]:
+#             if not visited[v]:
+#                 heappush(heap, [dist[u] + val, v])
+
+# # print(dist)
+# print(dist[finish])
+
+# visited 없어도 작동함 → 대신 메모리초과 (Python3 기준 메모리 초과이니 PyPy3는 당연함)
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+# from heapq import heappush, heappop
+
+# N, M = int(input()), int(input())
+# g = defaultdict(list)
+# for _ in range(M):
+#     a, b, c = map(int, input().split())
+#     g[a].append([c, b])
+# # print(g)
+# start, finish = map(int, input().split())
+
+# heap = []
+# INF = int(1e9)
+# dist = [INF] * (N+1)
+
+# for val, v in g[start]:
+#     heappush(heap, [val, v])
+
+# while heap:
+#     val, u = heappop(heap)
+#     if val > dist[u]:
+#         continue
+
+#     dist[u] = min(dist[u], val)
+#     for val, v in g[u]:
+#         heappush(heap, [dist[u] + val, v])
+
+# # print(dist)
+# print(dist[finish])
+
+
+
