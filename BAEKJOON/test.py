@@ -14122,3 +14122,10 @@ EFABCD
 # 15726 이칙연산
 # A, B, C = map(int, input().split())
 # print(max(int(A*B/C), int(A/B*C)))
+
+
+# 11948 과목 선택
+A = sum(sorted([int(input()) for _ in range(4)])[1:])
+B = max([int(input()) for _ in range(2)])
+
+print(A+B)
