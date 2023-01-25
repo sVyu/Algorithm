@@ -14125,7 +14125,14 @@ EFABCD
 
 
 # 11948 과목 선택
-A = sum(sorted([int(input()) for _ in range(4)])[1:])
-B = max([int(input()) for _ in range(2)])
+# A = sum(sorted([int(input()) for _ in range(4)])[1:])
+# B = max([int(input()) for _ in range(2)])
 
-print(A+B)
+# print(A+B)
+
+
+# 16486
+# import math
+
+# d1, d2 = int(input()), int(input())
+# print(2*d1 + 2*math.pi*d2)
