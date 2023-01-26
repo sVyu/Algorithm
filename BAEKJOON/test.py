@@ -14136,3 +14136,16 @@ EFABCD
 
 # d1, d2 = int(input()), int(input())
 # print(2*d1 + 2*math.pi*d2)
+
+
+# 25377 빵
+# import sys
+# input = sys.stdin.readline
+
+# ans = 1001
+# for _ in range(int(input())):
+#     A, B = map(int, input().split())
+#     if A <= B:
+#         ans = min(ans, B)
+
+# print(ans if ans != 1001 else -1)
