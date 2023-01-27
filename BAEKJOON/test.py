@@ -14157,3 +14157,94 @@ EFABCD
 # print("int *ptr = &a;")
 # for i in range(2, N+1):
 #     print('int {0}ptr{1} = &ptr{2};'.format("*"*i, i, (i-1 if i >= 3 else "")))
+
+
+# 1644 소수의 연속합
+# pm 09:50 ~ 10:16
+# N = int(input())
+
+# def solve():
+#     if N == 1:
+#         print(0)
+#         return
+
+#     # 에라토스테네스의 체
+#     limit = int(N+1)
+#     sieves = [True] * limit
+#     for i in range(2, limit):
+#         if sieves[i] == True:
+#             for ii in range(2*i, limit, i):
+#                 sieves[ii] = False
+
+#     # 소수 list
+#     primes = []
+#     for i in range(2, limit):
+#         if sieves[i] == True:
+#             primes.append(i)
+#     # print(primes)
+
+#     # ans 계산
+#     l, r = 0, 0
+#     now_sum = primes[0]
+#     len_primes = len(primes)
+#     ans = 0
+#     while l <= r:
+#         if now_sum < N:
+#             if r >= len_primes-1:
+#                 break
+#             else:
+#                 r += 1
+#                 now_sum += primes[r]
+#         elif now_sum > N:
+#             now_sum -= primes[l]
+#             l += 1
+#         else: # now_sum == N
+#             ans += 1
+#             now_sum -= primes[l]
+#             l, r = l+1, r
+#         # print(l, r)
+#     print(ans)
+
+# solve()
+
+
+# 1987 알파벳
+# 10:23 ~ 33
+# inc_xy 빼줬더니 시간 초과 해결
+
+# import sys
+# input = sys.stdin.readline
+
+# def dfs(board, visited, x, y, R, C, inc_xy, cells):
+#     global ans
+
+#     a = ord(board[x][y])-65
+#     visited[a] = True
+#     ans = max(ans, cells)
+#     # print(x, y, cells, ans)
+
+#     for p_x, p_y in inc_xy:
+#         nx, ny = x + p_x, y + p_y
+#         if 0 <= nx < R and 0 <= ny < C and not visited[ord(board[nx][ny])-65]:
+#             dfs(board, visited, nx, ny, R, C, inc_xy, cells+1)
+
+#     visited[a] = False
+#     # cells -= 1
+
+# def solve():
+#     R, C = map(int, input().split())
+#     board = [list(input().rstrip()) for _ in range(R)]
+#     # for x in range(R):
+#     #     print(board[x])
+#     visited = [False] * 26
+#     inc_xy = [1, 0], [0, 1], [-1, 0], [0, -1]
+#     global ans
+#     ans = 0
+
+#     dfs(board, visited, 0, 0, R, C, inc_xy, 1)
+#     print(ans)
+
+# solve()
+
+
+# BFS
