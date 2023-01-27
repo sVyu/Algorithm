@@ -14149,3 +14149,11 @@ EFABCD
 #         ans = min(ans, B)
 
 # print(ans if ans != 1001 else -1)
+
+
+# 25703 포인터 공부
+# N = int(input())
+# print("int a;")
+# print("int *ptr = &a;")
+# for i in range(2, N+1):
+#     print('int {0}ptr{1} = &ptr{2};'.format("*"*i, i, (i-1 if i >= 3 else "")))
