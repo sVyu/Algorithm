@@ -14248,3 +14248,109 @@ EFABCD
 
 
 # BFS
+'''
+"""""""""""""""""""""""""""""""""""""""""""""""
+'''
+
+# 12865 평범한 배낭
+# import sys
+# input = sys.stdin.readline
+
+# N, K = map(int, input().split())
+# items = [list(map(int, input().split())) for _ in range(N)]
+
+# dp = [[0]*(K+1) for _ in range(N+1)]
+
+# # for u, v in items:
+# for i in range(1, N+1):
+#     u, v = items[i-1]
+
+#     for j in range(1, K+1):
+#         dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+#         if j >= u:
+#             dp[i][j] = max(dp[i][j], dp[i-1][j-u] + v)
+# print(dp[N][K])
+
+# # for x in range(N+1):
+# #     print(dp[x])
+
+
+# from heapq import heapify, heappush, heappop
+# # from queue import PriorityQueue
+
+# heap = [5, 3, 2, 1]
+# heapify(heap)
+
+# # heappush(heap, [1, 2, 3])
+# # heappush(heap, [0, 2, 3])
+# # heappush(heap, [0, 1, 3])
+# # print(heap[0])
+
+# val = heappop(heap)
+# print(val)
+
+
+# 1374 강의실
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# N = int(input())
+
+# m = [list(map(int, input().split())) for _ in range(N)]
+# m = sorted(m, key=lambda x:(x[1], x[2]))
+# # for x in range(N):
+# #     print(m[x])
+
+# # heap -> 종료시간을 담은 우선순위 큐 
+# heap = []
+# # cnt : 필요한 강의실의 수
+# cnt = 0
+# for i in range(N):
+#     if not heap:
+#         cnt += 1
+#         heappush(heap, m[i][2])
+#     else: # 기존 방이 있음
+#         # m : (강의 코드, 시작 시간, 종료시간)
+#         if heap[0] <= m[i][1]:
+#             heappop(heap)
+#         # 강의실이 하나 더 필요해
+#         else:
+#             cnt += 1
+
+#         heappush(heap, m[i][2])
+
+# print(cnt)
+
+# btr - N과 M
+# # import itertools
+# N, M = map(int, input().split())
+
+# # for kk in itertools.permutations([i for i in range(1, N+1)], M):
+# #     print(*kk, sep=' - ', end='\n\n')
+
+# def btr(nums, N, M, dic, k):
+#     for i in range(N):
+#         if nums[i] == False:
+#             nums[i] = True
+#             dic[k-1] = i+1
+
+#             if k+1 <= M:
+#                 btr(nums, N, M, dic, k+1)
+#             else:
+#                 # 변수 같은 거 써서 시간 날림
+#                 for ii in range(M):
+#                     print(dic[ii], end=' ')
+#                 print()
+
+#             nums[i] = False
+#             dic[k] = -1
+
+# nums = [False]*N
+# dic = dict()
+# btr(nums, N, M, dic, 1)
+
+
+# 19698 헛간 청약
+# N, W, H, L = map(int, input().split())
+# print(min(N,(W//L)*(H//L)))
