@@ -14354,3 +14354,109 @@ EFABCD
 # 19698 헛간 청약
 # N, W, H, L = map(int, input().split())
 # print(min(N,(W//L)*(H//L)))
+
+
+# 6764 Sounds fishy!
+# def solve():
+#     depths = [int(input()) for _ in range(4)]
+
+#     rising, diving, cd = True, True, True
+#     for i in range(3):
+#         if depths[i] < depths[i+1]:
+#             diving, cd = False, False
+#         elif depths[i] > depths[i+1]:
+#             rising, cd = False, False
+#         else:
+#             rising, diving = False, False
+
+#     if rising: print("Fish Rising")
+#     elif diving: print("Fish Diving")
+#     elif cd: print("Fish At Constant Depth")
+#     else: print("No Fish")
+
+# solve()
+
+
+# 1308 D-Day
+# def leap_year(n):
+#     if n % 400 == 0:
+#         return True
+#     elif n % 100 == 0:
+#         return False
+#     elif n % 4 == 0:
+#         return True
+
+# def solve():
+#     now = list(map(int, input().split()))
+#     target = list(map(int, input().split()))
+
+#     # 1 ~ 12 (윤년은 따로 계산)
+#     total_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+#     # 천 년 이상
+#     if (target[0] - now[0]) > 1000:
+#         print("gg")
+#         return
+#     elif (target[0] - now[0]) == 1000:
+#         if target[1] > now[1]:
+#             print("gg")
+#             return
+#         elif target[1] == now[1]:
+#             if target[2] >= now[2]:
+#                 print("gg")
+#                 return
+
+#     # 미만
+#     ans = 0
+#     while now[0] != target[0] or now[1] != target[1]:
+#         if (now[1] == 2) and leap_year(now[0]):
+#             ans += 1
+
+#         ans += total_days[now[1]]
+#         now[1] = (now[1])%12 + 1
+#         if now[1] == 1:
+#             now[0] += 1
+#         # print(ans)
+
+#     ans += (target[2] - now[2])
+#     print(f'D-{ans}')
+
+# solve()
+
+
+# 4963 섬의 개수
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e5))
+# from collections import defaultdict
+
+# def dfs(board, w, h, x, y, inc_xy):
+#     if board[x][y] == 1:
+#         board[x][y] = 0
+#         for p_x, p_y in inc_xy:
+#             nx, ny = x + p_x, y + p_y
+#             if 0 <= nx < h and 0 <= ny < w:
+#                 dfs(board, w, h, nx, ny, inc_xy)
+
+#         return 1
+
+#     else:
+#         return 0
+
+
+# def solve():
+#     while True:
+#         w, h = map(int, input().split())
+#         if w == 0:
+#             return 0
+
+#         board = [list(map(int, input().split())) for _ in range(h)]
+#         inc_xy = [[0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]
+
+#         ans = 0
+#         for x in range(h):
+#             for y in range(w):
+#                 ans += dfs(board, w, h, x, y, inc_xy)
+#         print(ans)
+
+# solve()
