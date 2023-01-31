@@ -14460,3 +14460,173 @@ EFABCD
 #         print(ans)
 
 # solve()
+
+
+# 브루트포스
+# N, M = map(int, input().split())
+# cards = sorted(list(map(int, input().split())))
+
+# def solve():
+#     max_sum = 0
+#     now_sum = 0
+#     for i in range(N-2):
+#         now_sum += cards[i]
+#         for j in range(i+1, N-1):
+#             now_sum += cards[j]
+#             for k in range(j+1, N):
+#                 now_sum += cards[k]
+#                 if now_sum == M:
+#                     max_sum = M
+#                     return max_sum
+
+#                 elif now_sum < M:
+#                     if max_sum < now_sum:
+#                         max_sum = now_sum
+#                 else: # now_sum > M
+#                     now_sum -= cards[k]
+#                     break
+
+#                 now_sum -= cards[k]
+#             now_sum -= cards[j]
+#         now_sum -= cards[i]
+#     return max_sum
+
+# print(solve())
+
+
+# 이분 탐색 적용
+# N, M = map(int, input().split())
+# cards = sorted(list(map(int, input().split())))
+
+# def solve():
+#     max_sum = 0
+
+#     for i in range(N-2):
+#         if sum(cards[i:i+3]) > M:
+#             break
+
+#         for j in range(i+1, N-1):
+#             now_sum = cards[i] + cards[j]
+
+#             if now_sum + cards[j+1] > M:
+#                 break
+
+#             # binary_search
+#             l, r = j+1, N-1
+#             while l <= r:
+#                 # print(i, j, now_sum, l, r)
+#                 mid = (l+r)//2
+#                 final_sum = now_sum + cards[mid]
+
+#                 if final_sum == M:
+#                     print(M)
+#                     return
+#                 elif final_sum < M:
+#                     max_sum = max(max_sum, final_sum)
+#                     l = mid + 1
+#                 else:
+#                     r = mid - 1
+
+#     print(max_sum)
+
+# solve()
+
+
+# 두 포인터
+# N, M = map(int, input().split())
+# cards = sorted(list(map(int, input().split())))
+
+# max_sum = -1
+# for mid in range(1, N-1):
+#     l, r = mid-1, mid+1
+#     now_sum = sum(cards[mid-1:mid+2])
+
+#     while True:
+#         if now_sum < M:
+#             max_sum = max(max_sum, now_sum)
+#             if r < N-1:
+#                 now_sum -= cards[r]
+#                 r += 1
+#                 now_sum += cards[r]
+#             else:
+#                 break
+
+#         elif now_sum > M:
+#             if 0 < l:
+#                 now_sum -= cards[l]
+#                 l -= 1
+#                 now_sum += cards[l]
+#             else:
+#                 break
+
+#         else: # now_sum == M:
+#             max_sum = M
+#             break
+
+#     # 더 확인할 필요 없으면 break
+#     if max_sum == M:
+#         break
+
+# print(max_sum)
+
+
+# 조합
+# N, M = map(int, input().split())
+# cards = sorted(list(map(int, input().split())))
+
+# set1, set2 = set({c for c in cards[:2]}), set() # 1장만, 2장 sum
+# set2.add(cards[0] + cards[1]) # 3장 찾을 수 있는 입력만 주어지므로 조건문 필요 없음
+
+# def solve():
+#     max_ans = -1
+#     for i in range(2, N):
+#         val = cards[i]
+
+#         # set2 이후 set1 순서
+#         for c in set2:
+#             if val+c < M:
+#                 max_ans = max(max_ans, val+c)
+#             elif val+c == M:
+#                 max_ans = M
+#                 return max_ans
+
+#         for c in set1:
+#             if val+c < M:
+#                 set2.add(val+c)
+
+#         set1.add(val)
+
+#     return max_ans
+
+# print(solve())
+
+
+# 2467 용액
+N = int(input())
+# solutions
+s = list(map(int, input().split()))
+
+def solve():
+    closest_sum = int(2e9)
+    ans = []
+    l, r = 0, N-1
+
+    while l < r:
+        abs_now_sum = abs(s[l] + s[r])
+
+        if closest_sum > abs_now_sum:
+            closest_sum = abs_now_sum
+            ans = [s[l], s[r]]
+            if closest_sum == 0:
+                break
+
+        if s[l] + s[r] < 0:
+            l += 1
+
+        else:  #s[l] + s[r] > 0:
+            r -= 1
+
+    # print(closest_sum)
+    print(*ans)
+
+solve()
