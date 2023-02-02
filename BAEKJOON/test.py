@@ -14602,31 +14602,92 @@ EFABCD
 
 
 # 2467 용액
-N = int(input())
-# solutions
-s = list(map(int, input().split()))
+# N = int(input())
+# # solutions
+# s = list(map(int, input().split()))
 
-def solve():
-    closest_sum = int(2e9)
-    ans = []
-    l, r = 0, N-1
+# def solve():
+#     closest_sum = int(2e9)
+#     ans = []
+#     l, r = 0, N-1
 
-    while l < r:
-        abs_now_sum = abs(s[l] + s[r])
+#     while l < r:
+#         abs_now_sum = abs(s[l] + s[r])
 
-        if closest_sum > abs_now_sum:
-            closest_sum = abs_now_sum
-            ans = [s[l], s[r]]
-            if closest_sum == 0:
-                break
+#         if closest_sum > abs_now_sum:
+#             closest_sum = abs_now_sum
+#             ans = [s[l], s[r]]
+#             if closest_sum == 0:
+#                 break
 
-        if s[l] + s[r] < 0:
-            l += 1
+#         if s[l] + s[r] < 0:
+#             l += 1
 
-        else:  #s[l] + s[r] > 0:
-            r -= 1
+#         else:  #s[l] + s[r] > 0:
+#             r -= 1
 
-    # print(closest_sum)
-    print(*ans)
+#     # print(closest_sum)
+#     print(*ans)
 
-solve()
+# solve()
+
+# 19944 뉴비의 기준은 뭘까?
+# N, M = map(int, input().split())
+
+# if M <= 2:
+#     print("NEWBIE!")
+# elif M <= N:
+#     print("OLDBIE!")
+# else:
+#     print("TLE!")
+
+# 20673 Covid-19
+# p, q = int(input()), int(input())
+# if p <= 50 and q <= 10:
+#     print("White")
+# elif q > 30:
+#     print("Red")
+# else:
+#     print("Yellow")
+
+# 9205 맥주 마시면서 걸어가기
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     for _ in range(int(input())):
+#         n = int(input())
+#         home = list(map(int, input().split()))
+#         store = set(tuple(map(int, input().split())) for _ in range(n))
+#         festival = list(map(int, input().split()))
+#         # print(home, store, festival)
+
+#         que = deque()
+#         que.append([home[0], home[1], 1000])
+#         inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+#         xy_dict = defaultdict(int)
+#         xy_dict[tuple([home[0], home[1]])] = 1000
+#         # print(xy_dict)
+
+#         ans = "sad"
+#         while que:
+#             x, y, rp = que.popleft() # x, y, rest_power
+
+#             for px, py in inc_xy:
+#                 nx, ny = x + px, y + py
+#                 if -32768 <= nx < 32768 and -32768 <= ny < 32768:
+#                     if [nx, ny] == festival:
+#                         ans = "happy"
+#                         return ans
+
+#                     tuple_xy = tuple([nx, ny])
+#                     if tuple_xy not in xy_dict:
+#                         que.append([nx, ny, rp-1])
+
+#                     elif xy_dict[tuple_xy] < rp:
+#                         que.append([nx, ny, rp-1])
+
+#         return ans
+
+# print(solve())
