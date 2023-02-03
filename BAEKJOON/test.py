@@ -14691,3 +14691,10 @@ EFABCD
 #         return ans
 
 # print(solve())
+
+
+# 15000
+# string = list(input())
+# # print(string)
+# for s in string:
+#     print(s.upper(), end='')
