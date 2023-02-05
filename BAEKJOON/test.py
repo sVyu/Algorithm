@@ -14650,6 +14650,14 @@ EFABCD
 # else:
 #     print("Yellow")
 
+
+# CAPS 15000
+# string = list(input())
+# # print(string)
+# for s in string:
+#     print(s.upper(), end='')
+
+
 # 9205 맥주 마시면서 걸어가기
 # import sys
 # input = sys.stdin.readline
@@ -14693,8 +14701,23 @@ EFABCD
 # print(solve())
 
 
-# 15000
-# string = list(input())
-# # print(string)
-# for s in string:
-#     print(s.upper(), end='')
+# 1965 상자넣기
+# N = int(input())
+# boxes = list(map(int, input().split()))
+
+# dp = [0] * 1001
+# for box in boxes:
+#     dp[box] = dp[box-1]+1
+#     for idx in range(box, 1001):
+#         dp[idx] = max(dp[idx], dp[box])
+
+# print(dp[1000])
+
+
+# 25625 샤틀버스
+# x, y = map(int, input().split())
+
+# if x <= y:
+#     print(y-x)
+# else:
+#     print(y+x)
