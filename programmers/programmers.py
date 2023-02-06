@@ -462,6 +462,6 @@
 #             A.pop()
 #             ans += 1
 #         B.pop()
-    
+
 #     return ans
 

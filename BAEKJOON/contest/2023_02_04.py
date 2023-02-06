@@ -53,7 +53,7 @@
 #         # print(cnt)
 
 #         pos = True
-#         if point_min_x == R or cnt != 1:
+#         if cnt != 1 or ((point_max_x-point_min_x) != (point_max_y-point_min_y)):
 #             pos = False
 
 #         if pos:
