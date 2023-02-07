@@ -805,6 +805,62 @@ print(a*b)
 #         print(k)
 #         break
 
+# 2023/02/07 개선 코드
+# N = int(input())
+# qs = sorted(list(map(int, input().split())))
+
+# def solve():
+#     idx = -1
+#     len_qs = len(qs)
+#     max_k = 0
+
+#     for k in range(0, qs[-1]+1):
+#         while idx < len_qs-1 and qs[idx+1] < k:
+#             idx += 1
+
+#         # k 번 이상 인용된 논문 수
+#         upper_k = len_qs - (idx+1)
+
+#         if upper_k >= k:
+#             max_k = k
+
+#     print(max_k)
+
+# solve()
+
+# 더 개선
+# N = int(input())
+# qs = sorted(list(map(int, input().split())))
+
+# def solve():
+#     len_qs = len(qs)
+#     idx = len_qs-1
+
+#     for k in range(qs[-1], -1, -1):
+#         while idx > 0 and qs[idx-1] >= k:
+#             idx -= 1
+
+#         # k 번 이상 인용된 논문 수
+#         if (len_qs - idx) >= k:
+#             print(k)
+#             break
+
+# solve()
+
+# 더 더 개선
+# N = int(input())
+# qs = sorted(list(map(int, input().split())))
+
+# def solve():
+#     len_qs = len(qs)
+#     for k in range(len_qs):
+#         if qs[k] >= len_qs-k:
+#             return len_qs-k
+#     return 0
+
+# print(solve())
+
+
 # 1929 소수 구하기
 # 시간 초과
 # import math
@@ -816,7 +872,7 @@ print(a*b)
 
 #     for i in range(2, int(math.sqrt(num))+1):
 #         if num % i == 0 : return False
-    
+
 #     return True
 
 # for i in range(m, n+1):
@@ -14723,7 +14779,6 @@ EFABCD
 #     print(y+x)
 
 
-
 # 2193 이친수
 # N = int(input())
 # dp = [[0]*2 for _ in range(N+1)]
@@ -14734,3 +14789,77 @@ EFABCD
 #     dp[i][1] = dp[i-1][0]
 
 # print(sum(dp[N]))
+
+
+# 2410 2의 멱수의 합
+# N = int(input())
+# dp = [0] * (N+1)
+# dp[0] = 1
+
+# for i in range(1, N+1):
+#     k = 1
+#     while k <= i:
+#         dp[i] += dp[i-k]
+
+#         k *= 2
+#     print(dp)
+
+# print(dp)
+
+
+
+# 11779 최소비용 구하기 2
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# from heapq import heappush, heappop
+
+# def route_tracking(route, start, now, cnt):
+#     if now != start:
+#         route_tracking(route, start, route[now], cnt+1)
+#     else:
+#         print(cnt)
+
+#     print(now, end = ' ')
+
+# def solve():
+#     n, m = int(input()), int(input())
+#     g = defaultdict(list)
+#     for _ in range(m):
+#         pre, now, val = map(int, input().split())
+#         g[pre].append([val, pre, now])
+#     start, finish = map(int, input().split())
+
+#     heap = []
+#     for line in g[start]:
+#         heappush(heap, line)
+#     # print(heap)
+
+#     INF = int(1e9)
+#     d = [INF] * (n+1)
+#     d[start] = 0
+#     visited = [False] * (n+1)
+#     visited[start] = True
+#     route = [-1] * (n+1)
+
+#     while heap:
+#         val, pre, now = heappop(heap)
+#         if not visited[now]:
+#             visited[now] = True
+#             # d[now] = min(d[now], val)
+#             d[now] = val
+#             route[now] = pre
+
+#             if now == finish:
+#                 break
+
+#             for next_val, now, next in g[now]:
+#                 if not visited[next]:
+#                     heappush(heap, [val + next_val, now, next])
+
+#     print(d[finish])
+#     # print(route)
+#     route_tracking(route, start, now, 1)
+
+# solve()
+
