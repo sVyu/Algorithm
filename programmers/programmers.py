@@ -278,7 +278,7 @@
 #     for line in lines:
 #         for num in range(min(line[0],line[1]), max(line[0], line[1])):
 #             x[num+99] += 1
-    
+
 #     ans = 0
 #     for idx in range(198):
 #         if x[idx] >= 2:
@@ -328,7 +328,7 @@
 #     from collections import defaultdict
 #     import sys
 #     input = sys.stdin.readline
-    
+
 #     min_dist = [500000]*(N+1)
 #     min_dist[1] = 0
 
@@ -340,7 +340,7 @@
 #         g[a].append([b, c])
 #         g[b].append([a, c])
 #     # print(g)
-    
+
 #     std_dot = 1
 #     std_check_list = [False]*(N+1)
 #     std_check_list[1] = True
@@ -432,7 +432,7 @@
 #     len_sticker = len(sticker)
 #     if len_sticker <= 2:
 #         return max(sticker)
-    
+
 #     dp_a = [0] * (len_sticker)
 #     dp_b = [0] * (len_sticker+1)
 #     sticker.insert(0, 0)
@@ -455,7 +455,7 @@
 #     # A의 값보다 큰 것중에 가장 작은 값을 출전
 #     A = sorted(A, reverse=True)
 #     B = sorted(B, reverse=True)
-    
+
 #     ans = 0
 #     while B:
 #         if A[-1] < B[-1]:

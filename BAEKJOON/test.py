@@ -14863,3 +14863,16 @@ EFABCD
 
 # solve()
 
+
+# 1535 안녕
+# N = int(input())
+# hp_loss = list(map(int, input().split()))
+# glad_gain = list(map(int, input().split()))
+# dp = [0] * 101
+
+# # idx : 체력
+# for i in range(N):
+#     for idx in range(100, hp_loss[i]-1, -1):
+#         dp[idx] = max(dp[idx], dp[idx-hp_loss[i]] + glad_gain[i])
+
+# print(max(dp[:100]))
