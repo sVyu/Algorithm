@@ -1,3 +1,4 @@
+# 타겟 넘버
 # from collections import deque
 # def solution(numbers, target):
 #     len_numbers = len(numbers)
@@ -29,7 +30,7 @@
 # from collections import deque
 # def solution(maps):
 #     answer = -1
-    
+
 #     n, m = len(maps), len(maps[0])
 #     # print(n, m)
 
@@ -62,5 +63,63 @@
 # print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]))
 
 
-# 여행경로
-# 음 ~
+# 네트워크
+# BFS
+# from collections import defaultdict, deque
+
+# def solution(n, computers):
+#     g = defaultdict(list)
+#     for i in range(n):
+#         now_c = computers[i]
+#         for j in range(n):
+#             if i != j and now_c[j] == 1:
+#                 g[i].append(j)
+#     # print(g)
+
+#     que = deque()
+#     visited = [False] * (n+1)
+#     ans = 0
+#     for i in range(n):
+#         if not visited[i]:
+#             visited[i] = True
+#             ans += 1
+
+#             que.append(i)
+#             while que:
+#                 v = que.popleft()
+#                 for u in g[v]:
+#                     if not visited[u]:
+#                         visited[u] = True
+#                         que.append(u)
+
+#     return ans
+
+
+# from collections import defaultdict
+
+# def dfs(g, visited, v):
+#     for u in g[v]:
+#         if not visited[u]:
+#             visited[u] = True
+#             dfs(g, visited, u)
+
+# def solution(n, computers):
+#     g = defaultdict(list)
+#     for i in range(n):
+#         now_c = computers[i]
+#         for j in range(n):
+#             if i != j and now_c[j] == 1:
+#                 g[i].append(j)
+#     # print(g)
+
+#     visited = [False] * (n+1)
+#     ans = 0
+#     for i in range(n):
+#         if not visited[i]:
+#             visited[i] = True
+#             ans += 1
+#             dfs(g, visited, i)
+
+#     return ans
+# print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+

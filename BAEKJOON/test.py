@@ -14876,3 +14876,46 @@ EFABCD
 #         dp[idx] = max(dp[idx], dp[idx-hp_loss[i]] + glad_gain[i])
 
 # print(max(dp[:100]))
+
+
+# 1753 최단경로
+# pm 04:08 ~ 04:17
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# from heapq import heappush, heappop
+
+# def solve():
+#     V, E = map(int, input().split())
+#     K = int(input())
+
+#     g = defaultdict(list)
+#     for _ in range(E):
+#         u, v, w = map(int, input().split())
+#         g[u].append([w, v])
+
+#     heap = []
+#     for line in g[K]:
+#         heappush(heap, line)
+
+#     visited = [False] * (V+1)
+#     visited[K] = True
+
+#     INF = int(2e5)
+#     d = [INF] * (V+1)
+#     d[K] = 0
+
+#     while heap:
+#         val, v = heappop(heap)
+#         if not visited[v]:
+#             visited[v] = True
+#             d[v] = val
+
+#             for next_val, next_v in g[v]:
+#                 if not visited[next_v]:
+#                     heappush(heap, [val+next_val, next_v])
+
+#     print(*[i if i != INF else "INF" for i in d[1:]], sep='\n')
+
+# solve()
