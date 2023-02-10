@@ -444,7 +444,7 @@
     
 #     for idx in range(3, len_sticker+1):
 #         dp_b[idx] = max(dp_b[idx-2]+sticker[idx], dp_b[idx-1])
-    
+
 #     return max(dp_a[len_sticker-1], dp_b[len_sticker])
 
 # print(solution())

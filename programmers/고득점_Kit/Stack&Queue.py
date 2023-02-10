@@ -96,59 +96,95 @@
 # 다리를 지나는 트럭
 # from collections import deque
 # def solution(bridge_length, weight, truck_weights):
-#     answer = 1
+#     ans = 0
 
-#     que = deque()
-#     for t in truck_weights:
-#         que.append(t)
-
-#     while que:
-#         # print(que)
-#         remain_w = weight
-#         while que and que[0] <= remain_w:
-#             remain_w -= que[0]
-#             que.popleft()
-#             answer += 1
-
-#         answer = answer -1 + bridge_length
-
-#     return answer
-
-# print(solution(2, 10, [7,4,5,6]))
-# print(solution(3, 100, [100, 50]))
-# print(solution(3, 100, [100, 100, 100]))
-
-
-# from collections import deque
-# def solution(bridge_length, weight, truck_weights):
-#     answer = 1
-
-#     truck_que = deque()
-#     for t in truck_weights:
-#         truck_que.append(t)
-
+#     truck_que = deque(truck_weights)
+#     # print(truck_que)
 #     bridge_que = deque()
 
 #     remain_w = weight
 #     while truck_que:
-#         cnt = 0
-#         while truck_que and truck_que[0] <= remain_w:
-#             t = truck_que.popleft()
-#             remain_w -= t
-#             # answer += 1
+#         # 무게 되는 선에서 계속 추가
+#         while truck_que and remain_w >= truck_que[0]:
+#             remain_w -= truck_que[0]
 
-#             cnt += 1
-#             # bridge_que.append([bridge_t])
+#             ans += 1
+#             for idx in range(len(bridge_que)):
+#                 bridge_que[idx][1] -= 1
+#             bridge_que.append([truck_que.popleft(), bridge_length])
 
-#         # answer = answer -1 + bridge_length
-#         answer = answer + bridge_length - cnt +1
-#         remain_w += bridge_que.popleft()
-#         print(bridge_que, truck_que, answer)
+#             if bridge_que[0][1] == 0:
+#                 remain_w += bridge_que.popleft()[0]
+#         # print("[1]", bridge_que, truck_que, ans)
 
-#     answer += len(bridge_que)
+#         # 제일 앞에 있는 트럭 빼기, 새 트럭 들여올 수 있으면 추가
+#         # while bridge_que:
+#         if bridge_que:
+#             remain_w += bridge_que[0][0]
+#             val = bridge_que.popleft()[1]
 
-#     return answer
+#             ans += val
+#             for idx in range(len(bridge_que)):
+#                 bridge_que[idx][1] -= val
 
+#             if truck_que and remain_w >= truck_que[0]:
+#                 remain_w -= truck_que[0]
+#                 bridge_que.append([truck_que.popleft(), bridge_length])
+#         # print("[2]", bridge_que, truck_que, ans)
+
+#     # 나머지 처리
+#     if bridge_que:
+#         ans += bridge_que.pop()[1]
+
+#     return ans
 
 # print(solution(2, 10, [7,4,5,6]))
+# print(solution(100, 100, [10]))
+# print(solution(100, 100, [10,10,10,10,10,10,10,10,10,10]))
+# print(solution(1, 10, [1, 1]))
 
+# print(solution(2, 4, [10,10,10,10,10,10]))
+# print(solution(5, 5, [2,2,2,2,1,1,1,1,1]))
+# print(solution(10, 10, [10, 9, 8, 7, 6, 5, 4, 3]))
+
+# def solution(bridge_length, weight, truck_weights):
+#     answer = 0
+#     # [0, 0, 7, 4, 5, 6]
+#     bridge = [0 for _ in range(bridge_length)] + truck_weights
+#     while bridge:
+#         # 앞에서부터 하나씩 제거하면서
+#         bridge.pop(0)
+#         # 다리 길이 만큼의 트럭 무게가 
+#         # 다리가 견딜 수 있는 무게보다 큰 경우
+#         if sum(bridge[:bridge_length]) > weight:
+#             # 대기
+#             bridge.insert(bridge_length-1, 0)
+#         # 반복마다 시간 증가
+#         answer += 1
+#         print(bridge)
+#     return answer
+
+# print(solution(10, 10, [7,4,5,6]))
+
+
+# from collections import deque
+# def solution(bridge_length, weight, truck_weights):
+#     ans, now_w = 0, 0
+#     q_bridge, q_truck = deque([0]*bridge_length), deque(truck_weights)
+#     # print(q_bridge)
+
+#     while q_truck:
+#         now_w -= q_bridge.popleft()
+
+#         if (weight - now_w) >= q_truck[0]:
+#             val = q_truck.popleft()
+#             now_w += val
+#             q_bridge.append(val)
+#         else:
+#             q_bridge.append(0)
+
+#         ans += 1
+
+#     return ans + bridge_length
+
+# print(solution(2, 10, [7,4,5,6]))

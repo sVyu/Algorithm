@@ -14919,3 +14919,17 @@ EFABCD
 #     print(*[i if i != INF else "INF" for i in d[1:]], sep='\n')
 
 # solve()
+
+
+# 1138 한 줄로 서기
+# N = int(input())
+# nums = list(map(int, input().split()))
+
+# ans = [0] * N
+# idxs = [i for i in range(N)]
+
+# for i in range(N):
+#     ans[idxs[nums[i]]] = i+1
+#     del idxs[nums[i]]
+
+# print(*ans)

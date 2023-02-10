@@ -142,3 +142,111 @@
 #     return w * h
 
 # print(solution([[60, 50], [30, 70], [60, 30], [80, 40]]))
+
+
+# 카펫
+# def solution(brown, yellow):
+#     for yw in range(yellow, 0, -1):
+#         if yellow % yw == 0:
+#             yh = yellow // yw
+#             if (yw+2)*(yh+2)-yw*yh == brown:
+#                 return [yw+2, yh+2]
+
+# print(solution(10, 2))
+
+
+# 효율 개선
+# def factorization(n):
+#     l = []
+#     while n % 2 == 0:
+#         l.append(2)
+#         n //= 2
+#         if n == 1:
+#             return l
+
+#     for i in range(3, n+1, 2):
+#         while n % i == 0:
+#             l.append(i)
+#             n //= i
+#             if n == 1:
+#                 return l
+
+# def all_divisors(l:list):
+#     if not l: #yellow가 1인 경우
+#         return {1}
+
+#     n_set = set({1})
+#     for a in l:
+#         tmp_set = set()
+#         for n in n_set:
+#             if a*n not in n_set:
+#                 tmp_set.add(a*n)
+
+#         for n in tmp_set:
+#             n_set.add(n)
+
+#     return n_set
+
+# def solution(brown, yellow):
+#     for yw in sorted(all_divisors(factorization(yellow)), reverse=True):
+#         if yellow % yw == 0:
+#             yh = yellow // yw
+#             if (yw+2)*(yh+2)-yw*yh == brown:
+#                 return [yw+2, yh+2]
+
+# print(solution(10, 2))
+# print(solution(8, 1))
+
+
+# 피로도
+# import itertools
+# def solution(k, dungeons):
+#     ans = 0
+#     n = len(dungeons)
+    
+#     for idxs in itertools.permutations([i for i in range(n)], n):
+#         # print(idxs)
+#         now_k = k
+#         now_cnt = 0
+
+#         for i in idxs:
+#             if now_k >= dungeons[i][0]:
+#                 now_k -= dungeons[i][1]
+#                 now_cnt += 1
+
+#         if now_cnt == n:
+#             return n
+
+#         ans = max(ans, now_cnt)
+
+#     return ans
+
+# print(solution(80, [[80,20],[50,40],[30,10]]))
+
+
+
+# 모음사전
+# pm 09:57 ~ 10:12
+# btr(word, ["A", "E", "I", "O", "U"], ['','','','',''], 0, 5, 0)
+# def btr(word, vowels, now_list, idx, n, cnt):
+#     # alphabet : apb
+#     for apb in vowels:
+#         now_list[idx] = apb
+#         cnt[0] += 1
+#         # print(''.join(now_list))
+#         if word == ''.join(now_list):
+#             return cnt
+
+#         elif idx+1 < n:
+#             ans = btr(word, vowels, now_list, idx+1, n, cnt)
+#             if ans != None:
+#                 return ans
+
+#     now_list[idx] = ''
+
+# def solution(word):
+#     return btr(word, ["A","E","I","O","U"], ['','','','',''], 0, 5, [0])[0]
+
+# print(solution("AAAAE"))
+# print(solution("AAAE"))
+# print(solution("I"))
