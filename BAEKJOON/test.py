@@ -14933,3 +14933,7 @@ EFABCD
 #     del idxs[nums[i]]
 
 # print(*ans)
+
+
+# 9655 돌 게임
+# print("SK" if int(input()) % 2 == 1 else "CY")
