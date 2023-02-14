@@ -567,8 +567,8 @@ from collections import defaultdict
 # from collections import deque #BFS
 ```
 
-그래프가 넓은 경우 시간초과 방지를 위해 꼭 set으로 좌표를 확인할 것  
-안 그러면 시뮬레이션에서 루프에 빠진 경우를 볼 수 있음
+그래프가 넓은 경우 시간초과 방지를 위해 visited(list)나 set으로 방문한 좌표를 저장할 것  
+안 그러면 시뮬레이션에서 루프에 빠진 경우를 볼 수 있음 :)
 ```python
 xy_set = set()
 ```

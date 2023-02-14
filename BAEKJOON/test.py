@@ -12302,7 +12302,7 @@ dfs/bfs
 #     for v in g[u]:
 #         if not visited[v]:
 #             sum_cnt = dfs(g, v, visited, sum_cnt)
-    
+
 #     return sum_cnt
 
 # def solve():
@@ -12318,8 +12318,10 @@ dfs/bfs
 #         visited = [False] * (N+1)
 #         # print(dfs(g, i, visited, 0))
 #         ans[i] = dfs(g, i, visited, 0)
+#         # print(i, visited)
+
 #     ans = sorted(ans.items(), key=lambda x:(-x[1], x[0]))
-#     # print(ans)
+#     print(ans)
 
 #     for key, val in ans:
 #         if val == ans[0][1]:
@@ -12328,6 +12330,135 @@ dfs/bfs
 #             break
 
 # solve()
+
+'''
+7 8
+2 1
+3 2
+1 3
+4 2
+5 4
+6 4
+1 7
+3 7
+'''
+
+
+# dfs
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**5)
+
+# def dfs(g, u, visited, sum_cnt):
+#     visited[u] = True
+#     sum_cnt += 1
+#     for v in g[u]:
+#         if not visited[v]:
+#             sum_cnt = dfs(g, v, visited, sum_cnt)
+
+#     return sum_cnt
+
+# def solve():
+#     N, M = map(int, input().split())
+#     g = [list() for _ in range(N+1)]
+#     for _ in range(M):
+#         A, B = map(int, input().split())
+#         g[B].append(A)
+#     # print(g)
+
+#     ans = [0] * (N+1)
+#     for i in range(1, N+1):
+#         visited = [False] * (N+1)
+#         ans[i] = dfs(g, i, visited, 0)
+#     # print(ans)
+
+#     max_val = max(ans)
+#     for i in range(1, N+1):
+#         if ans[i] == max_val:
+#             print(i, end=' ')
+
+# solve()
+
+
+# bfs
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def bfs(g, u, visited):
+#     visited[u] = True
+#     q = deque([u])
+
+#     cnt = 1
+#     while q:
+#         v = q.popleft()
+#         for u in g[v]:
+#             if not visited[u]:
+#                 visited[u] = True
+#                 cnt += 1
+#                 q.append(u)
+
+#     return cnt
+
+# def solve():
+#     N, M = map(int, input().split())
+#     g = [list() for _ in range(N+1)]
+#     for _ in range(M):
+#         A, B = map(int, input().split())
+#         g[B].append(A)
+#     # print(g)
+
+#     ans = [0] * (N+1)
+#     for i in range(1, N+1):
+#         ans[i] = bfs(g, i, [False] * (N+1))
+#     # print(ans)
+
+#     max_val = max(ans)
+#     for i in range(1, N+1):
+#         if ans[i] == max_val:
+#             print(i, end=' ')
+
+# solve()
+
+
+# 싸이클 처리가 안 됨
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**5)
+# from collections import defaultdict
+
+# def dfs(g, v, child, visited, group):
+#     # 처음 가는 경우 or child가 없는 경우
+#     if not visited[v]:
+#         for u in g[v]:
+#             # print("u", u)
+#             visited[u] = True
+#             dfs(g, u, child, visited)
+#             child[v] += child[u]
+
+# def solve():
+#     N, M = map(int, input().split())
+#     g = defaultdict(list)
+#     for _ in range(M):
+#         A, B = map(int, input().split())
+#         g[B].append(A)
+#     # print("g", g)
+
+#     visited = [False]*(N+1)
+#     child = [1]*(N+1)
+
+#     for v in range(1, N+1):
+#         # print(v)
+#         dfs(g, v, child, visited, set())
+
+#     max_val = max(child)
+#     # print("ans", end=' ')
+#     for v in range(1, N+1):
+#         if child[v] == max_val:
+#             print(v, end=' ')
+
+# solve()
+
 
 
 # 12852 1로 만들기2
@@ -14937,3 +15068,538 @@ EFABCD
 
 # 9655 돌 게임
 # print("SK" if int(input()) % 2 == 1 else "CY")
+
+# 9657 돌 게임 3
+# print("SK" if int(input()) % 7 not in [0, 2] else "CY")
+
+# 24723 녹색 거탑
+# print(2**(int(input())))
+
+
+# 2252 줄 세우기
+# pm 02:28 ~ 02:47
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     N, M = map(int, input().split())
+
+#     # cnt, g 초기화
+#     cnt = [0]*(N+1)
+#     g = defaultdict(list)
+#     for _ in range(M):
+#         A, B = map(int, input().split())
+#         g[A].append(B)
+#         cnt[B] += 1
+
+#     # q 초기화
+#     q = deque()
+#     for v in range(1, N+1):
+#         if cnt[v] == 0:
+#             q.append(v)
+
+#     # 위상 정렬 수행
+#     while q:
+#         v = q.popleft()
+#         print(v, end=' ')
+#         for u in g[v]:
+#             cnt[u] -= 1
+#             if cnt[u] == 0:
+#                 q.append(u)
+
+# solve()
+
+
+# 1766 문제집
+# pm 02:47 ~ 02:50
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# from heapq import heappush, heappop
+
+# def solve():
+#     N, M = map(int, input().split())
+
+#     # cnt, g 초기화 (cnt의 개수 : 먼저 해야하는 것들의 개수)
+#     cnt = [0]*(N+1)
+#     g = defaultdict(list)
+#     for _ in range(M):
+#         A, B = map(int, input().split())
+#         g[A].append(B)
+#         cnt[B] += 1
+
+#     # 처음에 cnt가 0인 (먼저 해도 되는) v를 집어넣는다
+#     heap = []
+#     for v in range(1, N+1):
+#         if cnt[v] == 0:
+#             heappush(heap, v)
+
+#     # 위상 정렬 수행
+#     while heap:
+#         v = heappop(heap)
+#         print(v, end=' ')
+
+#         # 하나씩 빼면서 0이면 추가
+#         for u in g[v]:
+#             cnt[u] -= 1
+#             if cnt[u] == 0:
+#                 heappush(heap, u)
+
+# solve()
+
+'''
+100000000
+000000000
+000000000
+000000000
+000000000
+000000000
+000000000
+000000000
+000000000
+
+'''
+
+# 2239 스도쿠
+# def btr(board, std_x, std_y, num_set_3x3, num_set_x, num_set_y):
+#     for x in range(std_x, 9):
+#         for y in range(0 if std_x != x else std_y, 9):
+#             if board[x][y] == 0:
+#                 for i in range(1, 10):
+#                     # 같은 3x3 구간 검사 및 같은 행, 열 검사
+#                     if i not in num_set_3x3[x//3][y//3]:
+#                         if (i not in num_set_x[x]) and (i not in num_set_y[y]):
+#                             board[x][y] = i
+#                             num_set_3x3[x//3][y//3].add(i)
+#                             num_set_x[x].add(i)
+#                             num_set_y[y].add(i)
+
+#                             # 스도쿠 완성 (끝 부분이 원래 0인 경우)
+#                             if x == 8 and y == 8:
+#                                 return board
+
+#                             return_val = btr(board, x, y+1, num_set_3x3, num_set_x, num_set_y)
+#                             if return_val != None:
+#                                 return return_val
+
+#                             # 컴파일러가 이 주석 부분을 지나간다는 건 스도쿠 완성이 안 되는 경우라는 뜻
+#                             # 추가했던 값 다시 취소
+#                             board[x][y] = 0
+#                             num_set_3x3[x//3][y//3].remove(i)
+#                             num_set_x[x].remove(i)
+#                             num_set_y[y].remove(i)
+
+#                 return # 이 부분 중요, 한 번에 한 좌표만 해야함
+
+#             # 스도쿠 완성 (끝 부분이 원래 0이 아닌 경우)
+#             if x == 8 and y == 8:
+#                 # for kx in range(9):
+#                 #     print(board[kx])
+#                 return board
+
+# def solve():
+#     board = [list(map(int, str(input()))) for _ in range(9)]
+#     # for x in range(9):
+#     #     print(board[x])
+
+#     num_set_3x3 = [[set() for _ in range(3)] for _ in range(3)]
+#     num_set_x = [set() for _ in range(9)]
+#     num_set_y = [set() for _ in range(9)]
+
+#     for x in range(9):
+#         for y in range(9):
+#             if board[x][y] != 0:
+#                 num_set_3x3[x//3][y//3].add(board[x][y])
+#                 num_set_x[x].add(board[x][y])
+#                 num_set_y[y].add(board[x][y])
+#     # print(num_set_3x3)
+#     # print(num_set_x)
+#     # print(num_set_y)
+
+#     board = btr(board, 0, 0, num_set_3x3, num_set_x, num_set_y)
+#     for x in range(9):
+#         print(*board[x], sep='')
+
+# solve()
+
+
+# 16724 피리 부는 사나이
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def find_parent(parent, xy:list):
+#     x, y = xy
+#     if parent[x][y] != xy:
+#         parent[x][y] = find_parent(parent, parent[x][y])
+
+#     return parent[x][y]
+
+# def union_parent(parent, xy_1, xy_2):
+#     xy_1 = find_parent(parent, xy_1)
+#     xy_2 = find_parent(parent, xy_2)
+
+#     if (xy_1[0] < xy_2[0]) or (xy_1[0] == xy_2[0] and xy_1[1] < xy_2[1]):
+#         parent[xy_2[0]][xy_2[1]] = parent[xy_1[0]][xy_1[1]]
+#     else:
+#         parent[xy_1[0]][xy_1[1]] = parent[xy_2[0]][xy_2[1]]
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(input().rstrip()) for _ in range(N)]
+
+#     visited = [[False] * M for _ in range(N)]
+#     inc_xy = dict({'U':[-1, 0], 'D':[1, 0], 'L' : [0, -1], 'R' : [0, 1]})
+#     # print(inc_xy['U'])
+
+#     # parent 초기화
+#     parent = [[[-1, -1] for _ in range(M)] for _ in range(N)]
+#     for x in range(N):
+#         for y in range(M):
+#             parent[x][y] = [x, y]
+
+#     # 분리 집합 만들기
+#     for x in range(N):
+#         for y in range(M):
+
+#             if not visited[x][y]:
+#                 visited[x][y] = True
+#                 que = deque([[x, y]])
+
+#                 while que:
+#                     x, y = que.popleft()
+#                     nx, ny = x + inc_xy[board[x][y]][0], y + inc_xy[board[x][y]][1]
+#                     union_parent(parent, [x, y], [nx, ny])
+#                     if not visited[nx][ny]:
+#                         visited[nx][ny] = True
+#                         que.append([nx, ny])
+
+#     # for x in range(N):
+#     #     print(parent[x])
+
+#     for x in range(N):
+#         for y in range(M):
+#             find_parent(parent, [x, y])
+
+#     # for x in range(N):
+#     #     print(parent[x])
+
+#     ans = set()
+#     for x in range(N):
+#         for y in range(M):
+#             ans.add(tuple(parent[x][y]))
+#     # print(ans)
+#     print(len(ans))
+
+# solve()
+
+'''
+3 4
+DLLL
+DLDU
+RURU
+'''
+'''
+3 4
+DLLL
+DLRD
+RURU
+'''
+'''
+3 4
+RLLL
+DLRD
+RURU
+'''
+
+# import sys
+# input = sys.stdin.readline
+
+# def dfs(board, visited, inc_xy, x, y, cnt, group):
+#     visited[x][y] = True
+#     # print(x, y, cnt)
+
+#     nx, ny = x + inc_xy[board[x][y]][0], y + inc_xy[board[x][y]][1]
+#     if not visited[nx][ny]:
+#         group[x][y] = dfs(board, visited, inc_xy, nx, ny, cnt, group)
+#     else:
+#         group[x][y] = cnt if group[nx][ny] == 0 else group[nx][ny]
+
+#     return group[x][y]
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(input().rstrip()) for _ in range(N)]
+
+#     visited = [[False]*M for _ in range(N)]
+#     inc_xy = dict({'U':[-1, 0], 'D':[1, 0], 'L' : [0, -1], 'R' : [0, 1]})
+#     group = [[0]*M for _ in range(N)]
+
+#     cnt = 1
+#     for x in range(N):
+#         for y in range(M):
+#             if not visited[x][y]:
+#                 # cnt = dfs(board, visited, inc_xy, x, y, cnt, group)+1
+#                 cnt = max(cnt, dfs(board, visited, inc_xy, x, y, cnt, group)+1)
+
+#     # for x in range(N):
+#     #     print(group[x])
+#     print(cnt-1)
+
+# solve()
+
+
+# 9466 텀 프로젝트
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
+
+# # 결국엔 싸이클이 만들어진다 -> route : set()
+# def dfs(N, nums, i, visited, route, have_a_team):
+#     visited[i] = True
+
+#     if not visited[nums[i]]:    
+#         route.add(i)
+#         return_num, team_check = dfs(N, nums, nums[i], visited, route, have_a_team)
+#         have_a_team[i] = team_check
+#         # print(i, have_a_team)
+#         return [return_num, team_check] if i != return_num else [-1, 0]
+
+#     else:
+#         have_a_team[i] = 1 if (i == nums[i] or nums[i] in route) else 0
+
+#         # nums[i] : 싸이클이 처음으로 시작되는 숫자
+#         # 자기 자신으로 싸이클이 끝나면(팀이 되면) [nums[i], 0] 반환
+#         return [nums[i], have_a_team[i] if i != nums[i] else 0]
+
+# def solve():
+#     for _ in range(int(input())):
+#         N = int(input())
+#         nums = [0] + list(map(int, input().split()))
+
+#         visited = [False] * (N+1)
+#         have_a_team = [0] * (N+1)
+
+#         for i in range(N+1):
+#             if not visited[i]:
+#                 dfs(N, nums, i, visited, set(), have_a_team)
+
+#         # print(visited)
+#         # print(heave_a_team)
+#         print(N+1 - sum(have_a_team))
+
+# solve()
+
+
+# 개선? 조건을 하나 줄였음 대신 1000ms 가량 더 걸림
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(10**6)
+
+# # 결국엔 최소 1개의 싸이클이 만들어진다 -> route : set()
+# def dfs(N, nums, i, visited, route, have_a_team):
+#     visited[i] = True
+#     route.add(i)
+
+#     if not visited[nums[i]]:    
+#         return_num, team_check = dfs(N, nums, nums[i], visited, route, have_a_team)
+#         have_a_team[i] = team_check
+#         # print(i, have_a_team)
+#         return [return_num, team_check] if i != return_num else [-1, 0]
+
+#     else:
+#         have_a_team[i] = 1 if nums[i] in route else 0
+
+#         # nums[i] : 싸이클이 처음으로 시작되는 숫자
+#         # 자기 자신으로 싸이클이 끝나면(팀이 되면) [nums[i], 0] 반환
+#         return [nums[i], have_a_team[i] if i != nums[i] else 0]
+
+# def solve():
+#     for _ in range(int(input())):
+#         N = int(input())
+#         nums = [0] + list(map(int, input().split()))
+
+#         visited = [False] * (N+1)
+#         have_a_team = [0] * (N+1)
+
+#         for i in range(N+1):
+#             if not visited[i]:
+#                 dfs(N, nums, i, visited, set(), have_a_team)
+
+#         # print(visited)
+#         # print(heave_a_team)
+#         print(N+1 - sum(have_a_team))
+
+# solve()
+
+
+# 노마드코더 NOMAD_CODER FULL_STACK
+# FS = [  '01000010', '01100101', '00100000', '01100110', '01110010', '01100101',\
+#         '01100101', '00101110', '00100000', '01000010', '01100101', '00100000',\
+#         '01101000', '01100001', '01110000', '01110000', '01111001', '00101110',\
+#         '00100000', '01000010', '01100101', '00100000', '01100010', '01110010',\
+#         '01100001', '01110110', '01100101', '00100001']
+# # print(FS)
+
+# def make_bin_to_dec(num:str):
+#     num = list(map(int, num))
+#     k = 1
+#     return_val = 0
+
+#     for n in num[::-1]:
+#         return_val += k*n
+#         k *= 2
+#     return return_val
+
+# def solve():
+#     # cnt = 0
+#     for num in FS:
+#         print(chr(make_bin_to_dec(num)), end=' ')
+#     print()
+#         # cnt += 1
+#         # if cnt % 6 == 0:
+#         #     print()
+
+# solve()
+
+
+# 2623 음악 프로그램
+# pm 08:50 ~ 09:00
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     N, M = map(int, input().split())
+
+#     g = defaultdict(list)
+#     cnt = [0]*(N+1)
+#     for _ in range(M):
+#         nums = list(map(int, input().split()))
+#         for k in range(1, nums[0]):
+#             g[nums[k]].append(nums[k+1])
+#             cnt[nums[k+1]] +=1
+#     # print(g)
+#     # print(cnt)
+
+#     q = deque()
+#     for idx in range(1, N+1):
+#         if cnt[idx] == 0:
+#             q.append(idx)
+
+#     ans = []
+#     while q:
+#         v = q.popleft()
+#         ans.append(v)
+#         # print(v, ans)
+
+#         for u in g[v]:
+#             cnt[u] -= 1
+#             if cnt[u] == 0:
+#                 q.append(u)
+
+#     print(*ans if len(ans) == N else [0], sep='\n')
+
+# solve()
+
+
+# 4386 별자리 만들기
+# import sys
+# input = sys.stdin.readline
+# from heapq import heapify, heappop
+# import math
+
+# def distance_between_two_points(point1, point2):
+#     return math.sqrt((point1[0]-point2[0])**2 + (point1[1]-point2[1])**2)
+
+# def find_parent(parent, x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+
+#     if a > b:
+#         parent[a] = b
+#     else:
+#         parent[b] = a
+
+# def solve():
+#     N = int(input())
+
+#     xys = [list(map(float, input().split())) for _ in range(N)]
+#     parent = [i for i in range(N)]
+
+#     heap = []
+#     for i in range(N-1):
+#         for j in range(i+1, N):
+#             heap.append([distance_between_two_points(xys[i], xys[j]), i, j])
+#     heapify(heap)
+
+#     ans = 0
+#     while heap:
+#         dist, a, b = heappop(heap)
+#         if find_parent(parent, a) != find_parent(parent, b):
+#             union_parent(parent, a, b)
+#             ans += dist
+
+#     print(ans)
+
+# solve()
+
+
+# 1043 거짓말
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     who_knows_truth = list(map(int, input().split()))[1:]
+
+#     # 누구랑 누가 만났었는지를 저장하는 g
+#     g = [set() for _ in range(N+1)]
+#     parties = [list(map(int, input().split())) for _ in range(M)]
+#     for party in parties:
+#         for i in range(1, party[0]):
+#             for j in range(i+1, party[0]+1):
+#                 g[party[i]].add(party[j])
+#                 g[party[j]].add(party[i])
+#                 # print(i, j)
+#     # print(g)
+
+#     # 진실을 아는 사람들과 이어져 있으면 can_tell_truth[i] = False
+#     q = deque(who_knows_truth)
+#     visited = [False] * (N+1)
+#     can_tell_truth = [True] * (N+1)
+
+#     while q:
+#         i = q.popleft()
+#         visited[i] = True
+#         can_tell_truth[i] = False
+
+#         for j in g[i]:
+#             if not visited[j]:
+#                 visited[j] = True # 효율 개선
+#                 q.append(j)
+#     # print(can_tell_truth)
+
+#     # 각 파티당 진실을 아는 사람이 1명도 없다면 ans += 1
+#     ans = 0
+#     for party in parties:
+#         pos = True
+#         for i in party[1:]:
+#             if not can_tell_truth[i]:
+#                 pos = False
+#                 break
+
+#         if pos:
+#             ans +=1
+
+#     print(ans)
+
+# solve()

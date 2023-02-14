@@ -29,7 +29,7 @@
 # 		if dp[x] == True:
 # 			if x+n <= N:
 # 				dp[x+n] = True
-		
+
 # 	for x in range(n, N+1, n):
 # 		dp[x] = True
 
@@ -108,7 +108,7 @@
 # 				# print("xy", x, y)
 # 				sand_que.append([x, y])
 # 				sand_set.add(tuple([x, y]))
-										 
+
 # 				# BFS
 # 				while sand_que:
 # 					tmp_x, tmp_y = sand_que.popleft()
@@ -122,7 +122,7 @@
 # 	if sand_num >= 2:
 # 		ans = minutes
 # 		break
-	
+
 # 	# 1분 지났을 때 모래성 minus 값들 계산
 # 	for x in range(n):
 # 		for y in range(m):
@@ -144,13 +144,13 @@
 # 				if min_k > val_k:
 # 					min_k = val_k
 # 	# print("min_k", min_k)
-						
+
 # 	# minus 반영
 # 	for x in range(n):
 # 		for y in range(m):
 # 			board[x][y] = max(0, (board[x][y] - minus_board[x][y]*min_k))
 # 			minus_board[x][y] = 0
-	
+
 # 	minutes += min_k
 
 # 	# for x in range(n):
@@ -205,7 +205,7 @@
 # 			# print("xy", x, y)
 # 			sand_que.append([x, y])
 # 			sand_set.add(tuple([x, y]))
-									 
+
 # 			# BFS
 # 			while sand_que:
 # 				tmp_x, tmp_y = sand_que.popleft()
@@ -219,7 +219,7 @@
 # 	if sand_num >= 2:
 # 		ans = minutes
 # 		break
-	
+
 # 	# 1분 지났을 때 모래성 minus 값들 계산
 # 	for key in xy_dict.keys():
 # 		x, y = key
@@ -249,7 +249,7 @@
 # 		# 	xy_dict.pop(key)
 # 			pop_key_set.add(key)
 # 		minus_board[x][y] = 0
-	
+
 # 	for key in pop_key_set:
 # 		xy_dict.pop(key)
 # 	# print("xy_dict", xy_dict)
@@ -298,7 +298,7 @@
 # for cmd in k_list:
 #     plus_x, plus_y = inc_xy[cmd]
 #     # print(plus_x, plus_y)
-    
+
 #     nx, ny = x + plus_x, y + plus_y
 #     if nx < 0: nx = 0
 #     elif nx >= n: nx = n-1
