@@ -7427,13 +7427,162 @@ dfs/bfs
 #             pos_check = False
 #             break
 #         tmp_i //= 10
-    
+
 #     if pos_check:
 #         # print("[ans2] i : ", i)
 #         high_min_ans = len(str(i)) + i - int_channel
 #         break
 
 # print(min(low_max_ans, high_min_ans, abs(100-int_channel)))
+
+
+# 1107 리모컨
+# 888 667
+# import sys
+# input = sys.stdin.readline
+
+# def DFS(numS):
+#     defNum =abs(int(n) - int(numS))
+#     # print(numS, defNum)
+#     if defNum < minDef[1] :
+#     # if len(str(defNum)) + defNum < minDef[1] + minDef[2]:
+#         minDef[0] = numS
+#         minDef[1] = defNum
+#         minDef[2] = len(str(int(numS))) # 숫자 첫 번째에 0이 붙으면 제거하기 위해
+#         # print(minDef)
+
+#     if len(numS) > len(n):
+#         return True
+#     else:    
+#         for i in btn:
+#             DFS(numS + i)
+
+# for n in range(1555, 1556):
+#     start = 100
+#     n = str(n)
+#     # n = input() # 이동하려는 채널 
+#     # m = int(input()) # 고장난 버튼 개수
+#     m = 3
+#     broke = [0, 1, 9]
+#     # if m > 0:
+#     #     broke = list(map(int, input().split()))
+
+#     btn = [] # 사용 가능 버튼 
+#     for i in range(0,10):
+#         if i not in broke:
+#             btn.append(str(i))
+
+#     # 입력 가능한 버튼을 DFS 방식으로 탐색
+#     #  index 0: n과의 차이가 가장 적은 값의 수 
+#     #  index 1: n과의 차가 가장 작은값 
+#     #  index 2: 수를 만들기 위해 눌러야 하는 횟수 
+#     minDef = [100, 500000, 0] 
+#     for i in btn:
+#         DFS(i)
+
+#     print(minDef)
+#     res = []
+#     # n을 만들기 위해 최소한을 눌러야 하는 총 횟수 
+#     res.append(minDef[1]+minDef[2]) 
+
+#     # 만약 +, - 만 누르는 것이 숫자를 누르는 횟수보다 빠른지 확인
+#     res.append(abs(int(n)-start))
+
+#     # 최솟값 출력 
+#     # print(min(res))
+#     val_ans_1 = min(res)
+
+
+#     # channel = str(input().rstrip())
+#     # int_channel = int(channel)
+#     int_channel = int(n)
+
+#     # val_n, val_n_list = int(input()), []
+#     val_n, val_n_list = m, broke
+#     # if val_n > 0 :
+#     #     val_n_list = list(map(int, input().split()))
+#     # print(n_list)
+#     low_max_ans, high_min_ans = 999999, 999999
+
+#     # low_max_ans
+#     for i in range(int_channel, -1, -1):
+#         pos_check = True
+#         tmp_i = i
+
+#         # for j in range(len_channel):
+#         for j in range(len(str(i))):
+#             # print(tmp_i)
+#             if tmp_i % 10 in val_n_list:
+#                 pos_check = False
+#                 break
+#             tmp_i //= 10
+
+#         if pos_check :
+#             # print("[ans1] i : ", i)
+#             low_max_ans = len(str(i)) + int_channel - i
+#             # print("haha", i)
+#             break
+
+#     # high_min_ans
+#     for i in range(int_channel, int_channel+500000):
+#         pos_check = True
+#         tmp_i = i
+
+#         for j in range(len(str(i))):
+#             if tmp_i % 10 in val_n_list:
+#                 pos_check = False
+#                 break
+#             tmp_i //= 10
+        
+#         if pos_check:
+#             # print("[ans2] i : ", i)
+#             high_min_ans = len(str(i)) + i - int_channel
+#             break
+    
+#     print(low_max_ans, high_min_ans, abs(100-int_channel))
+#     # print(min(low_max_ans, high_min_ans, abs(100-int_channel)))
+#     val_ans_2 = min(low_max_ans, high_min_ans, abs(100-int_channel))
+#     print(n)
+#     if val_ans_1 != val_ans_2 :
+#         print("haha i found it!", i, val_ans_1, val_ans_2)
+
+
+# def DFS(target_n:int, now_n:str, btn:list, min_def:list):
+#     gap = abs(target_n - int(now_n))
+#     if len(now_n) + gap < min_def[1] + min_def[2]:
+#         # min_def[0] = now_n
+#         min_def[1] = gap
+#         min_def[2] = len(now_n)
+
+#     # 길이가 target_n보다 더 길다면 return
+#     if len(now_n) > len(str(target_n)):
+#         return
+#     # 아직 숫자를 더 추가할 필요가 있다면 DFS 수행
+#     else:
+#         for i in btn:
+#             # print(now_n, i, gap, min_def)
+#             DFS(target_n, now_n + i, btn, min_def)
+
+# def solve():
+#     start = 100             # 시작 채널
+#     target_n = int(input()) # 이동하려는 target 채널 
+#     m = int(input())        # 고장난 버튼의 개수
+#     broke_btn = set(map(int, input().split())) if m != 0 else []
+#     btn = [str(i) for i in range(10) if i not in broke_btn]
+
+#     # 만들 수 있는 숫자를 DFS 방식으로 탐색하며 최소값 계산 
+#     # index 0: 현재 n과의 차이가 가장 적은 값 (시작채널로 초기화)
+#     # index 1: target_n과의 gap (갱신을 위해 input 가능한 가장 큰 값으로 초기화)
+#     # index 2: index 0의 값을 만들기 위해 리모컨을 누르는 횟수
+#     min_def = [100, int(5e5), 0]
+#     for i in btn:
+#         DFS(target_n, i, btn, min_def)
+
+#     # min((n을 만들기 위해 최소한을 눌러야 하는 총 횟수), (+, - 만 누르는 횟수))
+#     print(min(sum(min_def[1:]), abs(target_n)-start))
+
+# solve()
+
 
 # 10951 A + B - 4
 # import sys
@@ -10112,115 +10261,6 @@ dfs/bfs
 #         # print(ans)
 #     print(ans)
 
-
-# 888 667
-# import sys
-# input = sys.stdin.readline
-
-# def DFS(numS):
-#     defNum =abs(int(n) - int(numS))
-#     # print(numS, defNum)
-#     if defNum < minDef[1] :
-#     # if len(str(defNum)) + defNum < minDef[1] + minDef[2]:
-#         minDef[0] = numS
-#         minDef[1] = defNum
-#         minDef[2] = len(str(int(numS))) # 숫자 첫 번째에 0이 붙으면 제거하기 위해
-#         # print(minDef)
-
-#     if len(numS) > len(n):
-#         return True
-#     else:    
-#         for i in btn:
-#             DFS(numS + i)
-
-# for n in range(1555, 1556):
-#     start = 100
-#     n = str(n)
-#     # n = input() # 이동하려는 채널 
-#     # m = int(input()) # 고장난 버튼 개수
-#     m = 3
-#     broke = [0, 1, 9]
-#     # if m > 0:
-#     #     broke = list(map(int, input().split()))
-
-#     btn = [] # 사용 가능 버튼 
-#     for i in range(0,10):
-#         if i not in broke:
-#             btn.append(str(i))
-            
-#     # 입력 가능한 버튼을 DFS 방식으로 탐색
-#     #  index 0: n과의 차이가 가장 적은 값의 수 
-#     #  index 1: n과의 차가 가장 작은값 
-#     #  index 2: 수를 만들기 위해 눌러야 하는 횟수 
-#     minDef = [100, 500000, 0] 
-#     for i in btn:
-#         DFS(i)
-
-#     print(minDef)
-#     res = []
-#     # n을 만들기 위해 최소한을 눌러야 하는 총 횟수 
-#     res.append(minDef[1]+minDef[2]) 
-
-#     # 만약 +, - 만 누르는 것이 숫자를 누르는 횟수보다 빠른지 확인
-#     res.append(abs(int(n)-start))
-
-#     # 최솟값 출력 
-#     # print(min(res))
-#     val_ans_1 = min(res)
-
-
-#     # channel = str(input().rstrip())
-#     # int_channel = int(channel)
-#     int_channel = int(n)
-
-#     # val_n, val_n_list = int(input()), []
-#     val_n, val_n_list = m, broke
-#     # if val_n > 0 :
-#     #     val_n_list = list(map(int, input().split()))
-#     # print(n_list)
-#     low_max_ans, high_min_ans = 999999, 999999
-
-#     # low_max_ans
-#     for i in range(int_channel, -1, -1):
-#         pos_check = True
-#         tmp_i = i
-
-#         # for j in range(len_channel):
-#         for j in range(len(str(i))):
-#             # print(tmp_i)
-#             if tmp_i % 10 in val_n_list:
-#                 pos_check = False
-#                 break
-#             tmp_i //= 10
-
-#         if pos_check :
-#             # print("[ans1] i : ", i)
-#             low_max_ans = len(str(i)) + int_channel - i
-#             # print("haha", i)
-#             break
-
-#     # high_min_ans
-#     for i in range(int_channel, int_channel+500000):
-#         pos_check = True
-#         tmp_i = i
-
-#         for j in range(len(str(i))):
-#             if tmp_i % 10 in val_n_list:
-#                 pos_check = False
-#                 break
-#             tmp_i //= 10
-        
-#         if pos_check:
-#             # print("[ans2] i : ", i)
-#             high_min_ans = len(str(i)) + i - int_channel
-#             break
-    
-#     print(low_max_ans, high_min_ans, abs(100-int_channel))
-#     # print(min(low_max_ans, high_min_ans, abs(100-int_channel)))
-#     val_ans_2 = min(low_max_ans, high_min_ans, abs(100-int_channel))
-#     print(n)
-#     if val_ans_1 != val_ans_2 :
-#         print("haha i found it!", i, val_ans_1, val_ans_2)
 
 
 # 3711 학번
@@ -15183,7 +15223,7 @@ EFABCD
 #                             if return_val != None:
 #                                 return return_val
 
-#                             # 컴파일러가 이 주석 부분을 지나간다는 건 스도쿠 완성이 안 되는 경우라는 뜻
+#                             # 인터프리터가 이 주석 부분을 지나간다는 건 스도쿠 완성이 안 되는 경우라는 뜻
 #                             # 추가했던 값 다시 취소
 #                             board[x][y] = 0
 #                             num_set_3x3[x//3][y//3].remove(i)
@@ -15601,5 +15641,297 @@ RURU
 #             ans +=1
 
 #     print(ans)
+
+# solve()
+
+
+# 12851 숨바꼭질 2
+# 메모리 초과
+# from collections import deque
+
+# def solve():
+#     N, K = map(int, input().split())
+#     q = deque([N])
+#     limit = int(1e5+5e4)
+#     # print(limit)
+#     # 모든 경우를 체크해야 하므로 visited는 없음
+
+#     ans = 0 
+#     while q:
+#         pos = False
+#         cnt = 0
+#         for _ in range(len(q)):
+#             v = q.popleft()
+#             if v == K:
+#                 pos = True
+#                 cnt += 1
+
+#             if v+1 <= limit:
+#                 q.append(v+1)
+#             if v-1 >= 0:
+#                 q.append(v-1)
+#             if v*2 <= limit:
+#                 q.append(v*2)
+
+#         if pos:
+#             print(ans, cnt, sep='\n')
+#             break
+
+#         ans += 1
+
+# solve()
+
+
+# 시간 초과 -> 해결(밑의 배열 방식보다 이게 더 빠르다 ㅎㅎㅎ)
+# from collections import defaultdict, deque
+
+# def solve():
+#     N, K = map(int, input().split())
+
+#     if N >= K:
+#         print(N-K, 1, sep='\n')
+#         return
+
+#     q = deque([[N, 1]])
+#     limit = int(1e5)
+#     # print(limit)
+#     # 모든 경우를 체크해야 하므로 visited는 없음
+#     visited = [False]*(limit+1)
+#     visited[N] = True
+
+#     ans = 1
+#     while q:
+#         num_dict = defaultdict(int)
+
+#         for _ in range(len(q)):
+#             key, val = q.popleft()
+#             # num_dict[key] += val
+
+#             if key+1 <= limit and not visited[key+1]:
+#                 num_dict[key+1] += val
+#             if key-1 >= 0 and not visited[key-1]:
+#                 num_dict[key-1] += val
+#             if key*2 <= limit and not visited[key*2]:
+#                 num_dict[key*2] += val
+
+#         # target 숫자 K가 있으면
+#         if K in num_dict:
+#             print(ans, num_dict[K], sep='\n')
+#             break
+
+#         for key, val in num_dict.items():
+#             q.append([key, val])
+#             visited[key] = True
+#         # print(num_dict)
+
+#         ans += 1
+
+# solve()
+
+
+# 시간 초과
+# def solve():
+#     N, K = map(int, input().split())
+
+#     if N >= K:
+#         print(N-K, 1, sep='\n')
+#         return
+
+#     limit = int(1e5)
+#     # print(limit)
+#     visited = [False] * (limit+1)
+#     visited[N] = True
+
+#     pre_set = set({N})
+#     pre_cnt = [0] * (limit+1)
+#     pre_cnt[N] = 1
+
+#     ans = 1
+#     while pre_set:
+#         new_set = set()
+#         new_cnt = [0] * (limit+1)
+
+#         for v in pre_set:
+#             if v+1 <= limit and not visited[v+1]:
+#                 new_cnt[v+1] += pre_cnt[v]
+#                 new_set.add(v+1)
+#             if v-1 >= 0 and not visited[v-1]:
+#                 new_cnt[v-1] += pre_cnt[v]
+#                 new_set.add(v-1)
+#             if v*2 <= limit and not visited[v*2]:
+#                 new_cnt[v*2] += pre_cnt[v]
+#                 new_set.add(v*2)
+
+#         # target 숫자 K가 있으면
+#         if new_cnt[K] != 0:
+#             print(ans, new_cnt[K], sep='\n')
+#             break
+
+#         for v in new_set:
+#             visited[v] = True
+
+#         pre_set = new_set
+#         pre_cnt = new_cnt
+
+#         ans += 1
+
+# solve()
+
+
+# 1504 특정한 최단 경로
+# 다익스트라, 플로이드-와셜
+# pm 02:20 ~ 03:10
+
+'''
+3 2
+1 2 1
+2 3 1
+1 2
+'''
+'''
+3 2
+1 2 1
+2 3 1
+2 3
+'''
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def dijkstra(N, g, start_v):
+#     q = deque([[0, start_v]])
+#     for line in g[start_v]:
+#         q.append(line)
+#     # print(start_v, target_v, heap)
+
+#     dist = [float("INF")]*(N+1)
+#     dist[start_v] = 0
+#     # print(g)
+
+#     while q:
+#         dist_sum_to_v, v = q.popleft()
+#         for dist_to_next_v, next_v in g[v]:
+#             if dist[next_v] > dist_sum_to_v + dist_to_next_v:
+#                 dist[next_v] = dist_sum_to_v + dist_to_next_v
+#                 q.append([dist_sum_to_v + dist_to_next_v, next_v])
+
+#     return dist
+
+# def solve():
+#     N, E = map(int, input().split())
+
+#     g = defaultdict(list)
+#     for _ in range(E):
+#         a, b, c = map(int, input().split())
+#         g[a].append([c, b])
+#         g[b].append([c, a])
+#     # print(g)
+
+#     v1, v2 = map(int, input().split())
+#     # print(v1, v2)
+
+#     from_1 = dijkstra(N, g, 1)
+#     from_v1 = dijkstra(N, g, v1)
+#     from_v2 = dijkstra(N, g, v2)
+#     # print(from_1, from_v1, from_v2)
+
+#     ans = min(from_1[v1]+from_v1[v2]+from_v2[N], from_1[v2]+from_v2[v1]+from_v1[N])
+#     print(ans if ans != float("INF") else -1)
+
+# solve()
+
+
+# 플로이드-와셜 : O(N^3) -> 시간 초과
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, M = map(int, input().split())
+
+#     # dist 초기화
+#     dist = [[float("INF") for _ in range(N+1)] for _ in range(N+1)]
+#     for _ in range(M):
+#         a, b, c = map(int, input().split())
+#         dist[a][b] = c # 임의의 두 정점 u와 v사이에는 간선이 최대 1개이므로 min 필요 없음
+#         dist[b][a] = c
+
+#     for x in range(N+1):
+#         dist[x][x] = 0
+#         # print(dist[x])
+
+#     v1, v2 = map(int, input().split())
+
+#     # 플로이드-와셜
+#     for k in range(1, N+1):
+#         for x in range(1, N+1):
+#             for y in range(1, N+1):
+#                 dist[x][y] = min(dist[x][y], dist[x][k] + dist[k][y])
+
+#     ans = min(dist[1][v1]+dist[v1][v2]+dist[v2][N], dist[1][v2]+dist[v2][v1]+dist[v1][N])
+#     print(ans if ans != float("INF") else -1)
+
+# solve()
+
+
+# 13913 숨바꼭질4
+# pm 03:58 ~ 04:19
+
+# import sys
+# sys.setrecursionlimit(int(1e6))
+
+# def btr(move_type, n):
+#     if move_type[n] != -1:
+#         if move_type[n] == 0:
+#             btr(move_type, n-1)
+#         elif move_type[n] == 1:
+#             btr(move_type, n+1)
+#         else: # 2
+#             btr(move_type, n//2)
+
+#     print(n, end=' ')
+
+# def solve():
+#     N, K = map(int, input().split())
+
+#     if N == K:
+#         print(0, N, sep='\n')
+#         return
+
+#     limit = int(1e5)
+#     visited = [False] * (limit+1)
+#     visited[N] = True
+#     move_type = [-1] * (limit+1)
+
+#     now_set = set({N})
+#     cnt = 1
+
+#     while now_set:
+#         # print(cnt, now_set)
+#         next_set = set()
+
+#         for v in now_set:
+#             if v+1 <= limit and not visited[v+1]:
+#                 next_set.add(v+1)
+#                 visited[v+1] = True
+#                 move_type[v+1] = 0
+#             if v-1 >= 0 and not visited[v-1]:
+#                 next_set.add(v-1)
+#                 visited[v-1] = True
+#                 move_type[v-1] = 1
+#             if v*2 <= limit and not visited[v*2]:
+#                 next_set.add(v*2)
+#                 visited[v*2] = True
+#                 move_type[v*2] = 2
+
+#         if K in next_set:
+#             print(cnt)
+#             break
+
+#         now_set = next_set
+#         cnt += 1
+
+#     # print(move_type[:20])
+#     btr(move_type, K)
 
 # solve()
