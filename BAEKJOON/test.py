@@ -15935,3 +15935,110 @@ RURU
 #     btr(move_type, K)
 
 # solve()
+
+
+# 18290번 - NM과 K (1)
+# import sys
+# input = sys.stdin.readline
+
+# def btr(board, visited, val, max_ans, cnt, K, x, y, N, M, inc_xy):
+#     val += board[x][y]
+
+#     if cnt == K:
+#         max_ans[0] = max(max_ans[0], val)
+#     else:
+#         visited[x][y] = True
+#         for nx in range(x, N):
+#             for ny in range(0 if nx != x else y, M):
+#                 if not visited[nx][ny]:
+#                     pos = True
+#                     for px, py in inc_xy:
+#                         kx, ky = nx + px, ny + py
+#                         if 0 <= kx < N and 0 <= ky < M and visited[kx][ky]:
+#                             # print(x, y, "//", nx, ny, kx, ky)
+#                             pos = False
+#                             break
+
+#                     if pos:
+#                         btr(board, visited, val, max_ans, cnt+1, K, nx, ny, N, M, inc_xy)
+
+#         visited[x][y] = False
+
+# def solve():
+#     N, M, K = map(int, input().split())
+
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     visited = [[False]*M for _ in range(N)]
+#     max_ans = [-int(1e6)]
+#     inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+#     for x in range(N):
+#         for y in range(M):
+#             btr(board, visited, 0, max_ans, 1, K, x, y, N, M, inc_xy)
+
+#     print(max_ans[0])
+
+# solve()
+
+
+# 25628 햄버거 만들기
+# A, B = map(int, input().split())
+# print(min(A//2, B))
+
+import sys
+input = sys.stdin.readline
+from collections import defaultdict
+
+# 행렬 곱셈
+def mul_mem(N, m1, m2):
+    matrix = [[0]*N for _ in range(N)]
+
+    for x in range(N):
+        for y in range(N):
+            for k in range(N):
+                matrix[x][y] += m1[x][k] * m2[k][y]
+
+            matrix[x][y] %= 1000
+
+    return matrix
+
+# 행렬 mem 초기화 (divide and conquer)
+def make_mem(N, A, n, mem):
+    if n not in mem:
+        make_mem(N, A, n//2, mem)
+        mem[n] = mul_mem(N, mem[n//2], mem[n//2])
+
+def solve():
+    N, B = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(N)]
+    mem = defaultdict(list)
+    mem[1] = A
+    # print(A, mem)
+
+    # B 이하의 가장 큰 2^N 값 찾기
+    max_2_power_N = 1
+    while max_2_power_N <= B:
+        max_2_power_N *= 2
+    max_2_power_N //= 2
+
+    # mem 만들기 : A^(2^N)을 저장
+    make_mem(N, A, max_2_power_N, mem)
+    # print(mem)
+
+    # 단위행렬 초기화
+    now_m = [[0]*N for _ in range(N)]
+    for x in range(N):
+        now_m[x][x] = 1
+
+    # A^B 만들기
+    while max_2_power_N > 0:
+        if (B // max_2_power_N) >= 1:
+            B -= max_2_power_N
+            now_m = mul_mem(N, now_m, mem[max_2_power_N])
+        max_2_power_N //= 2
+
+    # 출력
+    for x in range(N):
+        print(*now_m[x])
+
+solve()
