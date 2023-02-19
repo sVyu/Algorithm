@@ -15985,60 +15985,113 @@ RURU
 # A, B = map(int, input().split())
 # print(min(A//2, B))
 
-import sys
-input = sys.stdin.readline
-from collections import defaultdict
 
-# 행렬 곱셈
-def mul_mem(N, m1, m2):
-    matrix = [[0]*N for _ in range(N)]
+# 10830 행렬 제곱
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
 
-    for x in range(N):
-        for y in range(N):
-            for k in range(N):
-                matrix[x][y] += m1[x][k] * m2[k][y]
+# # 행렬 곱셈
+# def mul_mem(N, m1, m2):
+#     matrix = [[0]*N for _ in range(N)]
 
-            matrix[x][y] %= 1000
+#     for x in range(N):
+#         for y in range(N):
+#             for k in range(N):
+#                 matrix[x][y] += m1[x][k] * m2[k][y]
 
-    return matrix
+#             matrix[x][y] %= 1000
 
-# 행렬 mem 초기화 (divide and conquer)
-def make_mem(N, A, n, mem):
-    if n not in mem:
-        make_mem(N, A, n//2, mem)
-        mem[n] = mul_mem(N, mem[n//2], mem[n//2])
+#     return matrix
 
-def solve():
-    N, B = map(int, input().split())
-    A = [list(map(int, input().split())) for _ in range(N)]
-    mem = defaultdict(list)
-    mem[1] = A
-    # print(A, mem)
+# # 행렬 mem 초기화 (divide and conquer)
+# def make_mem(N, A, n, mem):
+#     if n not in mem:
+#         make_mem(N, A, n//2, mem)
+#         mem[n] = mul_mem(N, mem[n//2], mem[n//2])
 
-    # B 이하의 가장 큰 2^N 값 찾기
-    max_2_power_N = 1
-    while max_2_power_N <= B:
-        max_2_power_N *= 2
-    max_2_power_N //= 2
+# def solve():
+#     N, B = map(int, input().split())
+#     A = [list(map(int, input().split())) for _ in range(N)]
+#     mem = defaultdict(list)
+#     mem[1] = A
+#     # print(A, mem)
 
-    # mem 만들기 : A^(2^N)을 저장
-    make_mem(N, A, max_2_power_N, mem)
-    # print(mem)
+#     # B 이하의 가장 큰 2^N 값 찾기
+#     max_2_power_N = 1
+#     while max_2_power_N <= B:
+#         max_2_power_N *= 2
+#     max_2_power_N //= 2
 
-    # 단위행렬 초기화
-    now_m = [[0]*N for _ in range(N)]
-    for x in range(N):
-        now_m[x][x] = 1
+#     # mem 만들기 : A^(2^N)을 저장
+#     make_mem(N, A, max_2_power_N, mem)
+#     # print(mem)
 
-    # A^B 만들기
-    while max_2_power_N > 0:
-        if (B // max_2_power_N) >= 1:
-            B -= max_2_power_N
-            now_m = mul_mem(N, now_m, mem[max_2_power_N])
-        max_2_power_N //= 2
+#     # 단위행렬 초기화
+#     now_m = [[0]*N for _ in range(N)]
+#     for x in range(N):
+#         now_m[x][x] = 1
 
-    # 출력
-    for x in range(N):
-        print(*now_m[x])
+#     # A^B 만들기
+#     while max_2_power_N > 0:
+#         if (B // max_2_power_N) >= 1:
+#             B -= max_2_power_N
+#             now_m = mul_mem(N, now_m, mem[max_2_power_N])
+#         max_2_power_N //= 2
 
-solve()
+#     # 출력
+#     for x in range(N):
+#         print(*now_m[x])
+
+# solve()
+
+
+# 11444 피보나치 수 6
+# n = 1
+# a, b = 1, 1
+# mod = int(1e9)+7
+# # while n <= int(1e18):
+# while n <= 100:
+#     print(n, n+1, a, b)
+#     a, b = (21*a+34*b)%mod, (34*a+55*b)%mod 
+#     n += 10
+
+
+
+# 2096 내려가기
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# board = [[0, 0, 0]]+ [list(map(int, input().split())) for _ in range(N)]
+# dp = [[[0]*3 for _ in range(N+1)] for _ in range(2)]
+
+# # print(board)
+# # print(dp)
+
+# for x in range(1, N+1):
+#     dp[0][x][0] = board[x][0] + max(board[x-1][0], board[x-1][1])
+#     dp[1][x][0] = board[x][0] + min(board[x-1][0], board[x-1][1])
+
+
+#     dp[0][x][1] = board[x][1] + max(board[x-1][0], board[x-1][1], board[x-1][2])
+#     dp[1][x][1] = board[x][1] + min(board[x-1][0], board[x-1][1], board[x-1][2])
+
+#     dp[0][x][2] = board[x][2] + max(board[x-1][1], board[x-1][2])
+#     dp[1][x][2] = board[x][2] + min(board[x-1][1], board[x-1][2])
+
+#     print(x, 0, dp[0][x])
+#     print(x, 1, dp[1][x])
+
+# print()
+# for k in range(2):
+#     for x in range(1, N+1):
+#         print(dp[k][x])
+
+#     print()
+
+
+# 17356 욱 제
+
+A, B = map(int, input().split())
+print(1/(1+10**((B-A)/400)))
