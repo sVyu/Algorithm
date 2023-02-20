@@ -16057,41 +16057,223 @@ RURU
 #     n += 10
 
 
-
 # 2096 내려가기
 # import sys
 # input = sys.stdin.readline
 
 # N = int(input())
-# board = [[0, 0, 0]]+ [list(map(int, input().split())) for _ in range(N)]
-# dp = [[[0]*3 for _ in range(N+1)] for _ in range(2)]
+# max_dp, min_dp = [0]*3, [0]*3
 
-# # print(board)
-# # print(dp)
+# for _ in range(N):
+#     scores = list(map(int, input().split()))
+#     new_max_dp, new_min_dp = [0]*3, [0]*3
 
-# for x in range(1, N+1):
-#     dp[0][x][0] = board[x][0] + max(board[x-1][0], board[x-1][1])
-#     dp[1][x][0] = board[x][0] + min(board[x-1][0], board[x-1][1])
+#     new_max_dp[0] = scores[0] + max(max_dp[0], max_dp[1])
+#     new_min_dp[0] = scores[0] + min(min_dp[0], min_dp[1])
 
+#     new_max_dp[1] = scores[1] + max(max_dp[0], max_dp[1], max_dp[2])
+#     new_min_dp[1] = scores[1] + min(min_dp[0], min_dp[1], min_dp[2])
 
-#     dp[0][x][1] = board[x][1] + max(board[x-1][0], board[x-1][1], board[x-1][2])
-#     dp[1][x][1] = board[x][1] + min(board[x-1][0], board[x-1][1], board[x-1][2])
+#     new_max_dp[2] = scores[2] + max(max_dp[1], max_dp[2])
+#     new_min_dp[2] = scores[2] + min(min_dp[1], min_dp[2])
 
-#     dp[0][x][2] = board[x][2] + max(board[x-1][1], board[x-1][2])
-#     dp[1][x][2] = board[x][2] + min(board[x-1][1], board[x-1][2])
+#     max_dp, min_dp = new_max_dp, new_min_dp
 
-#     print(x, 0, dp[0][x])
-#     print(x, 1, dp[1][x])
-
-# print()
-# for k in range(2):
-#     for x in range(1, N+1):
-#         print(dp[k][x])
-
-#     print()
+# print(max(max_dp), min(min_dp))
 
 
 # 17356 욱 제
+# A, B = map(int, input().split())
+# print(1/(1+10**((B-A)/400)))
 
-A, B = map(int, input().split())
-print(1/(1+10**((B-A)/400)))
+
+# 1238 파티
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# from heapq import heappush, heappop
+
+# def go(heap, X, g, visited, dist, check):
+#     while heap:
+#         val, v = heappop(heap)
+#         if v == X and check:
+#             return val
+
+#         if not visited[v]:
+#             visited[v] = True
+#             dist[v] = val
+#             # print(visited, v, check)
+
+#             for val_u, u in g[v]:
+#                 if not visited[u]:
+#                     heappush(heap, [val+val_u, u])
+
+# def solve():
+#     N, M, X = map(int, input().split())
+#     g = defaultdict(list)
+#     for _ in range(M):
+#         a, b, c = map(int, input().split())
+#         g[a].append([c, b])
+
+#     dist_go = [0]*(N+1)
+
+#     INF = int(1e7)
+#     for i in range(N+1):
+#         heap = []
+#         heappush(heap, [0, i])
+#         dist_go[i] = go(heap, X, g, [False]*(N+1), [INF]*(N+1), True)
+#     # print(dist_go)
+
+#     dist_back = [INF]*(N+1)
+#     heap = []
+#     heappush(heap, [0, X])
+#     go(heap, X, g, [False]*(N+1), dist_back, False)
+#     # print(dist_back)
+
+#     ans = 0
+#     for i in range(1, N+1):
+#         ans = max(ans, dist_go[i]+dist_back[i])
+#     print(ans)
+
+# solve()
+
+
+# 개선
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# from heapq import heappush, heappop
+
+# def go(g, N, i, X, check):
+#     heap = []
+#     heappush(heap, [0, i])
+#     dist = [float("inf")]*(N+1)
+
+#     while heap:
+#         val, v = heappop(heap)
+#         if v == X and check:
+#             return val
+
+#         if dist[v] > val:
+#             dist[v] = val
+
+#             for val_u, u in g[v]:
+#                 cost = val + val_u
+#                 if dist[u] > cost:
+#                     heappush(heap, [cost, u])
+
+#     return dist
+
+# def solve():
+#     N, M, X = map(int, input().split())
+#     g = defaultdict(list)
+#     for _ in range(M):
+#         a, b, c = map(int, input().split())
+#         g[a].append([c, b])
+
+#     dist_go = [float("inf")]*(N+1)
+#     for i in range(N+1):
+#         dist_go[i] = go(g, N, i, X, True)
+#     # print(dist_go)
+
+#     dist_back = go(g, N, X, X, False)
+#     # print(dist_back)
+
+#     ans = 0
+#     for i in range(1, N+1):
+#         ans = max(ans, dist_go[i]+dist_back[i])
+#     print(ans)
+
+# solve()
+
+
+# que를 이용한 방법
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def dijkstra(g, N, start):
+#     dist = [float("inf")]*(N+1)
+#     dist[start] = 0
+#     q = deque([[start, 0]])
+
+#     while q:
+#         v, val = q.popleft()
+#         for u, val_u in g[v]:
+#             if dist[u] > val+val_u:
+#                 dist[u] = val+val_u
+#                 q.append([u, val+val_u])
+
+#     return dist
+
+# def solve():
+#     N, M, X = map(int, input().split())
+#     g = defaultdict(list)
+#     for _ in range(M):
+#         a, b, c = map(int, input().split())
+#         g[a].append([b, c])
+
+#     dist_go = [float("inf")]*(N+1)
+#     for i in range(1, N+1):
+#         dist_go[i] = dijkstra(g, N, i)[X]
+#     # print(dist_go)
+
+#     dist_back = dijkstra(g, N, X)
+#     # print(dist_back)
+
+#     ans = 0
+#     for i in range(1, N+1):
+#         ans = max(ans, dist_go[i]+dist_back[i])
+#     print(ans)
+
+# solve()
+
+
+# 2042 구간 합 구하기
+# import sys
+# input = sys.stdin.readline
+
+# def init(start, end, node, nums, tree):
+#     if(start == end):
+#         tree[node] = nums[start]
+#         return tree[node]
+
+#     mid = (start + end) // 2
+#     tree[node] = init(start, mid, node*2, nums, tree) + init(mid+1, end, node*2+1, nums, tree)
+#     return tree[node]
+
+# def sum_tree(start, end, node, left, right, tree):
+#     if (left > end) | (right < start): return 0;
+#     elif (left <= start) & (end <= right): return tree[node];
+
+#     mid = (start + end) // 2
+#     return sum_tree(start, mid, node*2, left, right, tree) + sum_tree(mid+1, end, node*2+1, left, right, tree)
+
+# def update(start, end, node, index, diff, tree):
+#     # if index < start | index > end: return;
+#     if (index < start) | (index > end): return;
+#     tree[node] += diff
+#     if (start == end): return;
+
+#     mid = (start + end) // 2
+#     update(start, mid, node*2, index, diff, tree)
+#     update(mid+1, end, node*2+1, index, diff, tree)
+
+# def solve():
+#     N, M, K = map(int, input().split())
+#     nums = [int(input()) for _ in range(N)]
+#     # print(nums)
+#     tree = [0]*(4*N)
+#     init(0, N-1, 1, nums, tree)
+#     # print(tree)
+
+#     for _ in range(M+K):
+#         a, b, c = map(int, input().split())
+#         if a == 1:
+#             update(0, N-1, 1, b-1, c-nums[b-1], tree)
+#             nums[b-1] = c
+#             # print("updated", tree)
+#         else:
+#             print(sum_tree(0, N-1, 1, b-1, c-1, tree))
+
+# solve()
