@@ -16230,6 +16230,7 @@ RURU
 
 
 # 2042 구간 합 구하기
+# 세그먼트 트리
 # import sys
 # input = sys.stdin.readline
 
@@ -16275,5 +16276,107 @@ RURU
 #             # print("updated", tree)
 #         else:
 #             print(sum_tree(0, N-1, 1, b-1, c-1, tree))
+
+# solve()
+
+'''
+4 2
+1
+2
+3
+4
+1 4
+3 4
+'''
+'''
+3 2
+1
+2
+3
+1 3
+2 3
+'''
+'''
+2 2
+1
+2
+'''
+# 2357 최댓값과 최솟값
+
+# 세그먼트 트리에서 체크 포인트
+# init의 return은 2번 (1. start==end 일 때, 2. 그 외의 경우 함수 마지막에)
+# mid 잡고 start~mid / mid+1, end
+# init을 재귀로 타고 가면서 node*2
+
+# show()의 범위
+# start, end가 재귀를 타고 가면서 바뀌는 범위이므로 이 범위가 left right 안에 속하는 지를 봐야함
+
+# import sys
+# input = sys.stdin.readline
+
+# def init(start, end, node, nums, tree, check_child):
+#     # global cnt
+#     # cnt += 1
+#     if start == end:
+#         tree[node] = [nums[start], nums[start]]
+#         # cnt -= 1
+#         return tree[node]
+
+#     mid = (start+end)//2
+#     if check_child:
+#         tree[node][0] = min(init(start, mid, node*2, nums, tree, True)[0], init(mid+1, end, node*2+1, nums, tree, True)[0])
+#         tree[node][1] = max(init(start, mid, node*2, nums, tree, False)[1], init(mid+1, end, node*2+1, nums, tree, False)[1])
+#     return tree[node] # 놓친 부분
+
+# def show(start, end, node, left, right, tree):
+#     # global cnt
+#     # cnt += 1
+#     if (right < start) or (end < left): return [int(1e9), 1]
+#     # elif (start <= left) and (right <= end): # 틀린 부분
+#     elif (left <= start) and (end <= right):
+#         return tree[node]
+
+#     mid = (start+end)//2
+#     left_child, right_child = show(start, mid, node*2, left, right, tree), show(mid+1, end, node*2+1, left, right, tree)
+#     return [min(left_child[0], right_child[0]), max(left_child[1], right_child[1])]
+
+# def cal_tree_len(N):
+#     tree_len = 1
+#     while tree_len < N:
+#         tree_len *= 2
+#     tree_len *= 2
+#     return tree_len
+
+# def solve():
+#     N, M = map(int, input().split())
+#     nums = [int(input()) for _ in range(N)]
+
+#     tree = [[0, 0] for _ in range(cal_tree_len(N))]
+#     # print("tree_len ", cal_tree_len(N))
+
+#     # global cnt
+#     # cnt = 0
+#     init(0, N-1, 1, nums, tree, True)
+#     # print(tree)
+
+#     for _ in range(M):
+#         l, r = map(int, input().split())
+#         print(*show(0, N-1, 1, l-1, r-1, tree))
+#     # print("cnt", cnt)
+
+# solve()
+
+# test code
+# def f():
+#     global cnt
+#     cnt += 1
+#     return float("inf")
+
+# def solve():
+#     global cnt
+#     cnt = 0
+
+#     min(f(), f())
+#     print(cnt)
 
 # solve()
