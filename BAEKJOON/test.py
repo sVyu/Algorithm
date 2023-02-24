@@ -16313,6 +16313,7 @@ RURU
 
 # import sys
 # input = sys.stdin.readline
+# INF = int(1e9)
 
 # def init(start, end, node, nums, tree, check_child):
 #     # global cnt
@@ -16331,7 +16332,7 @@ RURU
 # def show(start, end, node, left, right, tree):
 #     # global cnt
 #     # cnt += 1
-#     if (right < start) or (end < left): return [int(1e9), 1]
+#     if (right < start) or (end < left): return [INF, 1]
 #     # elif (start <= left) and (right <= end): # 틀린 부분
 #     elif (left <= start) and (end <= right):
 #         return tree[node]
@@ -16378,5 +16379,251 @@ RURU
 
 #     min(f(), f())
 #     print(cnt)
+
+# solve()
+
+
+# import math
+# print(math.log2(int(1e5)))
+
+
+# 11505 구간 곱 구하기
+# pm 02:32 ~ 03:31
+
+'''
+5 2 2
+1
+2
+3
+4
+5
+2 1 4
+2 1 5
+'''
+
+# 복습
+# 놓친 부분 : node*2, node*2+1
+
+# import sys
+# input = sys.stdin.readline
+# mod = int(1e9)+7
+
+# def init(s, e, node, nums, tree):
+#     if s == e:
+#         tree[node] = nums[s]
+#         return tree[node]
+
+#     mid = (s+e)//2
+#     tree[node] = (init(s, mid, node*2, nums, tree)*init(mid+1, e, node*2+1, nums, tree))%mod
+#     return tree[node] # 놓친 부분
+
+# def show(s, e, node, left, right, tree):
+#     if (e < left) or (right < s): return 1;
+#     elif (left <= s) and (e <= right): return tree[node]; # else X
+#     # print("[show] s, e", s, e)
+
+#     mid = (s+e)//2
+#     return (show(s, mid, node*2, left, right, tree)*(show(mid+1, e, node*2+1, left, right, tree)))%mod
+
+# def update(s, e, node, index, diff, tree):
+#     # 타겟 index를 벗어나는 범위의 node면 return[node];
+#     if not (s <= index <= e):
+#         # return; # 놓친 부분
+#         return tree[node]; # return 1; 도 아님
+
+#     # 최하단 자식 노드
+#     if s == e:
+#         # 타겟이면 수정
+#         if s == index:
+#             tree[node] = diff
+#         return tree[node]
+
+#     mid = (s+e)//2
+#     tree[node] = (update(s, mid, node*2, index, diff, tree)*update(mid+1, e, node*2+1, index, diff, tree))%mod
+#     return tree[node]
+
+# def cal_tree_len(N):
+#     tree_len = 1
+#     while tree_len < N:
+#         tree_len *= 2
+#     tree_len *= 2 # 놓친 부분
+#     return tree_len
+
+# def solve():
+#     N, M, K = map(int, input().split())
+#     nums = [int(input()) for _ in range(N)]
+#     tree = [1]*(cal_tree_len(N))
+#     init(0, N-1, 1, nums, tree)
+#     # print(tree)
+
+#     # 구간 곱 출력
+#     for _ in range(M+K):
+#         a, b, c = map(int, input().split())
+#         if a == 1:
+#             update(0, N-1, 1, b-1, c, tree)
+#             nums[b-1] = c
+#             # print("nums", nums)
+#         else:
+#             print(show(0, N-1, 1, b-1, c-1, tree))
+#         # print("tree", tree)
+
+# solve()
+
+
+# 14428 수열과 쿼리 16
+'''
+5
+5 4 3 2 1
+6
+2 1 3
+2 1 4
+1 5 3
+2 3 5
+1 4 3
+2 3 5
+'''
+# update 범위 벗어나는 부분에서 헤맸다
+# 아까랑 같은 실수라서 이제는 확실하게 알겠다 :)
+
+# import sys
+# input = sys.stdin.readline
+
+# INF = int(1e9)+1
+
+# def init(s, e, nd, nums, tree):
+#     if s == e:
+#         tree[nd] = [nums[s], s]
+#         return tree[nd]
+
+#     mid = (s+e)//2
+#     lnd, rnd = init(s, mid, nd*2, nums, tree), init(mid+1, e, nd*2+1, nums, tree)
+#     tree[nd] = lnd if lnd[0] <= rnd[0] else rnd
+#     return tree[nd]
+
+# def show(s, e, nd, l, r, tree):
+#     if (e < l) or (r < s): return [INF, INF];
+#     elif (l <= s) and (e <= r): return tree[nd];
+
+#     mid = (s+e)//2
+#     lnd, rnd = show(s, mid, nd*2, l, r, tree), show(mid+1, e, nd*2+1, l, r, tree)
+#     # 놓친 부분, show라서 값을 노드에 값을 대입 하는 부분이 있으면 안 됨
+#     # tree[nd] = (lnd if lnd[0] <= rnd[0] else rnd) 
+#     return lnd if lnd[0] <= rnd[0] else rnd
+
+# def update(s, e, nd, idx, val, tree):
+#     # if not (s <= idx <= e): return [INF, INF];
+#     if not (s <= idx <= e):
+#         # print("haha", s, e, idx, tree[nd])
+#         return tree[nd];
+
+#     if s == e == idx:
+#         # print("im idx?", s, e, idx)
+#         tree[nd] = [val, idx];
+#         return tree[nd];
+
+#     mid = (s+e)//2
+#     lnd, rnd = update(s, mid, nd*2, idx, val, tree), update(mid+1, e, nd*2+1, idx, val, tree)
+#     tree[nd] = (lnd if lnd[0] <= rnd[0] else rnd)
+#     return tree[nd]
+
+# def cal_tree_len(N):
+#     tl = 1
+#     while tl < N:
+#         tl *= 2
+#     tl *= 2
+#     return tl
+
+# def solve():
+#     N = int(input())
+#     nums = list(map(int, input().split()))
+#     M = int(input())
+#     # value, value's_index
+#     tree = [[INF, INF] for _ in range(cal_tree_len(N))]
+#     init(0, N-1, 1, nums, tree)
+#     # print(tree)
+
+#     for _ in range(M):
+#         a, b, c = map(int, input().split())
+#         if a == 1:
+#             update(0, N-1, 1, b-1, c, tree)
+#         else:
+#             print(show(0, N-1, 1, b-1, c-1, tree)[1]+1)
+#         # print(tree)
+
+# solve()
+
+
+# 1967 트리의 지름
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# sys.setrecursionlimit(int(1e5))
+
+# def dfs(g, v):
+#     # print("v", v)
+#     # 가장 큰 값, 두 번째로 큰 값, 현재까지 체크한 트리의 지름 
+#     first_max, second_max, ans = 0, 0, 0
+
+#     for next_v, cost in g[v]:
+#         next_cost, this_ans = dfs(g, next_v)
+#         ans = max(ans, this_ans)
+
+#         this_cost = next_cost + cost
+#         if first_max <= this_cost:
+#             second_max = first_max
+#             first_max = this_cost
+
+#         elif second_max < this_cost:
+#             second_max = this_cost
+
+#     # print(v, first_max, second_max, ans)
+#     return [first_max, max((first_max + second_max), ans)]
+
+# def solve():
+#     n = int(input())
+#     g = defaultdict(list)
+#     for _ in range(n-1):
+#         a, b, c = map(int, input().split())
+#         g[a].append([b, c])
+
+#     # print("dfs start =====")
+#     # 정점은 1부터
+#     print(dfs(g, 1)[1])
+
+# solve()
+
+
+# 14725 개미굴
+# import sys
+# input = sys.stdin.readline
+
+# def init(g, foods, idx):
+#     # print("now : ", foods, idx)
+#     if foods[idx] not in g:
+#         g[foods[idx]] = dict()
+
+#     foods[0] -= 1
+#     if foods[0] > 0:
+#         init(g[foods[idx]], foods, idx+1)
+
+# def show(g, depth):
+#     g = sorted(g.items(), key=lambda x:(x[0]))
+#     for key, next_g in g:
+#         print('--'*depth, key, sep='')
+#         show(next_g, depth+1)
+
+# def solve():
+#     N = int(input())
+#     g = dict()
+
+#     # 입력 받고 초기화
+#     for _ in range(N):
+#         foods = list(input().split())
+#         foods[0] = int(foods[0])
+#         init(g, foods, 1)
+#         # print("total_g", g)
+
+#     # 예제 출력과 같은 format으로 출력
+#     show(g, 0)
 
 # solve()
