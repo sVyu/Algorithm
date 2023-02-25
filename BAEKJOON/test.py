@@ -7379,11 +7379,29 @@ dfs/bfs
 #         else:
 #             minus_val = minus_que.queue[0]
 #             plus_val = plus_que.queue[0]
-            
+
 #             if minus_val <= plus_val :
 #                 print(-minus_que.get())
 #             else:
 #                 print(plus_que.get())
+
+
+# 개선
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# def solve():
+#     heap = []
+#     for _ in range(int(input())):
+#         val = int(input())
+
+#         if val == 0:
+#             print(heappop(heap)[1]) if heap else print(0)
+#         else:
+#             heappush(heap, [abs(val), val])
+
+# solve()
 
 
 # 1107 리모컨
@@ -8025,6 +8043,42 @@ dfs/bfs
 
 #     down_bfs(graph, m, n, 0, 0, inc_xy, graph[0][0])
 #     print(cnt)
+
+# solve()
+
+
+# 1520 내리막 길
+# pm 03:35 ~ 03 ~ 44
+
+# 참고 : https://studyandwrite.tistory.com/387
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e6))
+
+# def dfs(N, M, board, dp, x, y, inc_xy):
+#     # print(x, y)
+#     if x == N-1 and y == M-1:
+#         return 1
+
+#     if dp[x][y] != -1:
+#         return dp[x][y]
+
+#     cnt = 0
+#     for px, py in inc_xy:
+#         nx, ny = x + px, y + py
+#         if 0 <= nx < N and 0 <= ny < M and board[x][y] > board[nx][ny]:
+#             cnt += dfs(N, M, board, dp, nx, ny, inc_xy)
+
+#     dp[x][y] = cnt
+#     return cnt
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+#     dp = [[-1]*M for _ in range(N)]
+#     print(dfs(N, M, board, dp, 0, 0, inc_xy))
 
 # solve()
 
@@ -16625,5 +16679,42 @@ RURU
 
 #     # 예제 출력과 같은 format으로 출력
 #     show(g, 0)
+
+# solve()
+
+
+# 1937 욕심쟁이 판다
+
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e6))
+
+# def dfs(N, board, dp, inc_xy, x, y):
+#     if dp[x][y] != -1:
+#         return dp[x][y]
+
+#     next_cnt = 0
+#     for px, py in inc_xy:
+#         nx, ny = x+px, y+py
+#         if 0 <= nx < N and 0 <= ny < N and board[x][y] < board[nx][ny]:
+#             next_cnt = max(next_cnt, dfs(N, board, dp, inc_xy, nx, ny))
+
+#     dp[x][y] = next_cnt+1
+#     return dp[x][y]
+
+# def solve():
+#     N = int(input())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     dp = [[-1]*N for _ in range(N)]
+#     inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+#     for x in range(N):
+#         for y in range(N):
+#             dfs(N, board, dp, inc_xy, x, y)
+
+#     # for x in range(N):
+#     #     print(dp[x])
+
+#     print(max([max(dp[x]) for x in range(N)]))
 
 # solve()
