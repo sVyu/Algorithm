@@ -16110,6 +16110,42 @@ RURU
 #     a, b = (21*a+34*b)%mod, (34*a+55*b)%mod 
 #     n += 10
 
+# 백준 블로그 참고해서 개선
+# 참고 : https://www.acmicpc.net/blog/view/28
+# mod = int(1e9)+7
+
+# def matrix_mul(matrix_a, matrix_b):
+#     matrix_return = [[0, 0], [0, 0]]
+#     for x in range(2):
+#         for y in range(2):
+#             for k in range(2):
+#                 matrix_return[x][y] += matrix_a[x][k] * matrix_b[k][y]
+
+#             matrix_return[x][y] %= mod
+
+#     # for x in range(2):
+#     #     print(matrix_return[x])
+#     # print()
+
+#     return matrix_return
+
+# def solve():
+#     n = int(input())
+
+#     ans = [[1, 0], [0, 1]] # 단위 행렬 E
+#     a = [[1, 1], [1, 0]]
+
+#     while n > 0:
+#         if n % 2 == 1:
+#             ans = matrix_mul(ans, a)
+
+#         a = matrix_mul(a, a)
+#         n //= 2
+
+#     print(ans[0][1])
+
+# solve()
+
 
 # 2096 내려가기
 # import sys
@@ -16718,3 +16754,276 @@ RURU
 #     print(max([max(dp[x]) for x in range(N)]))
 
 # solve()
+
+
+# 2170 선 긋기
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N = int(input())
+#     lines = sorted([list(map(int, input().split())) for _ in range(N)], key=lambda x:(x[0]))
+#     INF = int(1e9)
+
+#     ans, pre_l, pre_r = 0, -INF, -INF
+#     for now_l, now_r in lines:
+#         # 합치기 불가
+#         if pre_r < now_l:
+#             ans += pre_r - pre_l
+#             pre_l, pre_r = now_l, now_r
+#         # 합치기 가능
+#         else:
+#             pre_r = max(pre_r, now_r)
+
+#     ans += pre_r - pre_l
+#     print(ans)
+
+# solve()
+
+
+# 17070 파이프 옮기기
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N = int(input())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+
+#     # dp 정의 : 각 좌표는 파이프의 마무리 지점에 대해서 합산
+#     # 0은 ㅡ,  1은 우하단 대각선, 2는 ㅣ 방향, 파이프를 합산
+#     dp = [[[0, 0, 0] for _ in range(N)] for _ in range(N)]
+#     # 0번째 행 1번째 열 0번(ㅡ)
+#     dp[0][1][0] = 1
+
+#     # 0번 행 초기화
+#     for y in range(2, N):
+#         if board[0][y] == 0:
+#             dp[0][y][0] = 1
+#         else:
+#             break
+
+#     # 1번 행부터 dp값 메모이제이션
+#     for x in range(1, N):
+#         for y in range(N):
+#             if board[x][y] == 0:
+#                 dp[x][y][2] = dp[x-1][y][1] + dp[x-1][y][2]
+
+#                 # 대각선은 추가로 사이드에 벽이 없는지 확인
+#                 if y >= 2 and board[x-1][y] == board[x][y-1] == 0:
+#                     dp[x][y][1] = sum(dp[x-1][y-1])
+
+#                 if y >= 3:
+#                     dp[x][y][0] = dp[x][y-1][0] + dp[x][y-1][1]
+
+#     # 확인용 코드
+#     # print()
+#     # for x in range(N):
+#     #     for y in range(N):
+#     #         print(dp[x][y], end= ' ')
+#     #     print()
+
+#     print(sum(dp[N-1][N-1]))
+
+# solve()
+
+
+# 13549 숨바꼭질 3
+# pm 03:48 ~ 04:28
+# from collections import deque
+
+# def teleport(INF, visited, q, v, sec, K):
+#     next_v = 2*v
+#     while next_v <= INF:
+#         if not visited[next_v][1]:
+#             if next_v == K:
+#                 print(sec)
+#                 return True
+#             visited[next_v][1] = True
+#             q.append([next_v, sec])
+#             next_v *= 2
+#         else:
+#             break
+
+# def solve():
+#     N, K = map(int, input().split())
+#     INF = int(1e5)
+#     # (+1 or -1 로 방문) / (순간이동으로 방문)
+#     visited = [[False, False] for _ in range(INF+1)]
+
+#     q = deque([[N, 0]])
+#     visited[N][0] = True
+
+#     if N >= K:
+#         print(N-K)
+#         return
+
+#     # 순간이동으로 바로 찾아간 경우
+#     if teleport(INF, visited, q, N, 0, K):
+#         return
+
+#     while q:
+#         v, sec = q.popleft()
+#         if v+1 == K:
+#             print(sec+1)
+#             return
+#         elif v-1 == K:
+#             print(sec+1)
+#             return
+#         else:
+#             if teleport(INF, visited, q, v, sec, K):
+#                 return
+
+#         # IndexError
+#         # if not visited[v+1][0] and not visited[v+1][1] and v+1 <= INF:
+#         if v+1 <= INF and not visited[v+1][0] and not visited[v+1][1]:
+#             visited[v+1][0] = True
+#             q.append([v+1, sec+1])
+#         if  v-1 >= 0 and not visited[v-1][0] and not visited[v-1][1]:
+#             visited[v-1][0] = True
+#             q.append([v-1, sec+1])
+
+#         # print(q)
+
+# solve()
+
+
+# from collections import deque
+
+# def solve():
+#     N, K = map(int, input().split())
+#     INF = int(1e5)
+#     visited = [False] * (INF+1)
+
+#     if N >= K:
+#         print(N-K)
+#         return
+
+#     q = deque([[N, 0]])
+#     while q:
+#         v, sec = q.popleft()
+#         if v == K:
+#             print(sec)
+#             return
+
+#         # v*2를 먼저 처리해주어야 한다
+#         if v*2 <= INF and not visited[v*2]:
+#             q.appendleft([v*2, sec])
+#             visited[v*2] = True
+#         if v+1 <= INF and not visited[v+1]:
+#             q.append([v+1, sec+1])
+#             visited[v+1] = True
+#         if v-1 >= 0 and not visited[v-1]:
+#             q.append([v-1, sec+1])
+#             visited[v-1] = True
+
+#         # print(q[0])
+
+# solve()
+
+
+# 2638 치즈
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def board_clear(N, board):
+#     for x in range(N):
+#         if sum(board[x]) != 0:
+#             return False
+#     return True
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+#     hr = 0
+#     while not board_clear(N, board):
+#         cnt = [[0]*M for _ in range(N)]
+#         visited = [[False]*M for _ in range(N)]
+#         visited[0][0] = True
+#         q = deque([[0, 0]])
+
+#         while q:
+#             x, y = q.popleft()
+#             for px, py in inc_xy:
+#                 nx, ny = x + px, y + py
+#                 if 0 <= nx < N and 0 <= ny < M:
+#                     if board[nx][ny] != 0:
+#                         cnt[nx][ny] += 1
+
+#                     # board[nx][ny] == 0
+#                     elif not visited[nx][ny]:
+#                         visited[nx][ny] = True
+#                         q.append([nx, ny])
+
+#         for x in range(N):
+#             for y in range(M):
+#                 if cnt[x][y] >= 2:
+#                     board[x][y] = 0
+
+#         hr += 1
+#         # print(hr)
+
+#     print(hr)
+
+# solve()
+
+
+# 2631 줄 세우기
+# N = int(input())
+# nums = [int(input()) for _ in range(N)] # int() 미처리 실수
+# dp = [1]*N
+
+# for i in range(1, N):
+#     for j in range(0, i):
+#         if nums[i] > nums[j] and dp[i] == dp[j]:
+#             dp[i] = dp[j]+1
+
+# print(N-max(dp))
+
+
+# 1918 후위 표기식
+'''
+(A*B+C)/D
+'''
+# from string import ascii_uppercase
+
+# exp = list(input())
+# # print(exp)
+
+# alpha = set(ascii_uppercase)
+# # print(upper)
+
+# ans = ""
+# symbols = []
+# depth = 0
+
+# for e in exp:
+#     if e in alpha:
+#         ans += e
+#     else:
+#         if e == '(':
+#             depth += 1
+#             continue
+
+#         elif e == ')':
+#             while symbols and symbols[-1][0] >= depth:
+#                 ans += symbols.pop()[1]
+#             depth -= 1
+#             continue
+
+#         elif e in ['+', '-']:
+#             while symbols and symbols[-1][0] >= depth:
+#                 ans += symbols.pop()[1]
+
+#         else:
+#             while symbols and symbols[-1][0] >= depth and symbols[-1][1] in ['*', '/']:
+#                 ans += symbols.pop()[1]
+
+#         symbols.append([depth, e])
+
+# while symbols:
+#     ans += symbols.pop()[1]
+
+# print(ans)
