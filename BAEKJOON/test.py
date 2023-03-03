@@ -10932,6 +10932,7 @@ dfs/bfs
 
 # solve()
 
+from sys import stdin
     # for idx in range(N):
     #     if y_list[x] == -1:
     #         print("x:, cnt", x, cnt)
@@ -17027,3 +17028,238 @@ RURU
 #     ans += symbols.pop()[1]
 
 # print(ans)
+
+
+# 11657 타임머신
+# import sys
+# input = sys.stdin.readline
+# INF = float("inf")
+
+# def bellman_ford(N, edges, dist):
+#     for i in range(N):
+#         for start, end, d in edges:
+#             if dist[start] != INF and dist[end] > dist[start]+d:
+#                 if i == N-1:
+#                     return -1
+#                 dist[end] = dist[start]+d
+
+#     return dist[2:]
+
+# def solve():
+#     N, M = map(int, input().split())
+#     edges = [list(map(int, input().split())) for _ in range(M)]
+
+#     dist = [INF]*(N+1)
+#     dist[1] = 0
+#     # print(dist)
+
+#     res = bellman_ford(N, edges, dist)
+#     if res == -1:
+#         print(-1)
+#     else:
+#         for i in res:
+#             print(i) if i != INF else print(-1)
+
+# solve()
+
+
+# 1865 웜홀
+# import sys
+# input = sys.stdin.readline
+# # INF = float("inf")
+
+# def bellman_ford(N, dist, edges):
+#     for i in range(N):
+#         for S, E, T in edges:
+#             # if dist[S] != INF and dist[E] > dist[S] + T:
+#             if dist[E] > dist[S] + T:
+#                 if i == N-1:
+#                     return "YES"
+#                 dist[E] = dist[S] + T
+
+#     return "NO"
+
+# def solve():
+#     for _ in range(int(input())):
+#         N, M, W = map(int, input().split())
+
+#         # dist = [INF]*(N+1)
+#         dist = [0]*(N+1)
+#         edges = []
+#         for _ in range(M):
+#             S, E, T = map(int, input().split())
+#             edges.append([S, E, T])
+#             edges.append([E, S, T])
+
+#         for _ in range(W):
+#             S, E, T = map(int, input().split())
+#             edges.append([S, E, -T])
+
+#         # dist[1] = 0
+#         print(bellman_ford(N, dist, edges))
+
+# solve()
+
+
+# 3665 최종 순위
+# 문제를 잘못 이해했다
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def topology_sort(n, nums, news):
+#     cnt = [0]*(n+1)
+#     g = defaultdict(list)
+#     for i in range(n-1):
+#         for j in range(i+1, n):
+#             if tuple([nums[i], nums[j]]) in news or tuple([nums[j], nums[i]]) in news:
+#                 cnt[nums[i]] += 1
+#                 g[nums[j]].append(nums[i])
+#             else:
+#                 cnt[nums[j]] += 1
+#                 g[nums[i]].append(nums[j])
+
+#     # 위상정렬
+#     ans = []
+#     q = deque([v for v in range(1, n+1) if cnt[v] == 0])
+#     while q:
+#         v = q.popleft()
+#         ans.append(v)
+#         for next_v in g[v]:
+#             cnt[next_v] -= 1
+#             if cnt[next_v] == 0:
+#                 q.append(next_v)
+
+#     print(*ans) if len(ans) == n else print("IMPOSSIBLE")
+
+# def solve():
+#     for _ in range(int(input())):
+#         n = int(input())
+#         nums = list(map(int, input().split()))
+#         m = int(input())
+#         news = set(tuple(map(int, input().split())) for _ in range(m))
+#         # print(news)
+
+#         topology_sort(n, nums, news)
+
+# solve()
+
+
+# 2304 창고 다각형
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N = int(input())
+#     ps = sorted([list(map(int, input().split())) for _ in range(N)], key=lambda x:(x[0]))
+#     # print(ps)
+
+#     ans = 0
+#     max_h = -1
+#     # 가장 높은 기둥의 높이값 max_h 찾기
+#     for p in ps:
+#         max_h = max(max_h, p[1])
+#     # print(max_h)
+
+#     visited = False  # max_h 방문했는지 체크
+#     p_stack = []    # max_h 이후 p 값들 저장
+
+#     pre_l, pre_h = 0, 0
+#     for p in ps:
+#         # 최고 높이 만나기 전
+#         if not visited:
+#             if p[1] == max_h:
+#                 visited = True
+#                 p_stack.append([p[0]+1, p[1]])
+
+#             if pre_h < p[1]:
+#                 ans += pre_h * (p[0] - pre_l)
+#                 pre_l, pre_h = p[0], p[1]
+
+#         # 최고 높이 이후
+#         else:
+#             l, h = p
+#             l += 1
+#             while p_stack and p_stack[-1][1] <= h:
+#                 p_stack.pop()
+#             p_stack.append([l, h])
+
+#     # print(p_stack)
+#     # print(ans)
+
+#     for l, h in p_stack:
+#         ans += h * (l-pre_l)
+#         pre_l = l
+
+#     # 마지막 처리
+#     print(ans)
+
+# solve()
+
+
+# 1240 노드 사이의 거리
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     g = defaultdict(list)
+#     for _ in range(N-1):
+#         a, b, c = map(int, input().split())
+#         g[a].append([b, c])
+#         g[b].append([a, c])
+
+#     for _ in range(M):
+#         a, b = map(int, input().split())
+#         if a == b:
+#             print(0)
+#             continue
+
+#         q = deque([[a, 0]])
+#         visited = [False]*(N+1)
+#         visited[a] = True
+
+#         while q:
+#             v, d = q.popleft()
+#             for next_v, next_d in g[v]:
+#                 if next_v == b:
+#                     print(d + next_d)
+#                     break
+
+#                 if not visited[next_v]:
+#                     visited[next_v] = True
+#                     q.append([next_v, d + next_d])
+
+# solve()
+
+
+# 플로이드-와셜 : 시간 초과
+# import sys
+# input = sys.stdin.readline
+# INF = float("inf")
+
+# def solve():
+#     N, M = map(int, input().split())
+#     g = [[INF]*(N+1) for _ in range(N+1)]
+#     for _ in range(N-1):
+#         a, b, c = map(int, input().split())
+#         g[a][b] = c
+#         g[b][a] = c
+
+#     for x in range(1, N+1):
+#         g[x][x] = 0
+#         # print(g[x])
+
+#     # 플로이드-와셜
+#     for k in range(1, N+1):
+#         for x in range(1, N+1):
+#             for y in range(1, N+1):
+#                 if g[x][y] > g[x][k] + g[k][y]:
+#                     g[x][y] = g[x][k] + g[k][y]
+
+#     for _ in range(M):
+#         a, b = map(int, input().split())
+#         print(g[a][b])
+
+# solve()
