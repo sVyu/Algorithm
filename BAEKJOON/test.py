@@ -17263,3 +17263,86 @@ RURU
 #         print(g[a][b])
 
 # solve()
+
+
+# 26560 Periods
+# for _ in range(int(input())):
+#     stc = input()
+#     print(stc if stc[-1] == '.' else stc+'.')
+
+
+# 2512 예산
+# def solve():
+#     N = int(input())
+#     nums = list(map(int, input().split()))
+#     limit = int(input())
+
+#     top, bot = max(nums), 0
+#     ans = 0
+#     while top >= bot:
+#         mid = (top+bot)//2
+
+#         now_sum = 0
+#         for n in nums:
+#             if mid >= n :
+#                 now_sum += n
+#             else: # mid < n
+#                 now_sum += mid
+
+#         if now_sum <= limit:
+#             ans = mid
+#             bot = mid+1
+#         else:
+#             top = mid-1
+
+#     print(ans)
+
+# solve()
+
+
+# 1167 트리의 지름
+# pm 11:05 ~ 11:38
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+
+# def diameter_of_tree(g, v, visited):
+#     # Diameter of tree : 트리의 지름
+#     first_max, second_max, ans = 0, 0, 0
+#     visited[v] = True
+
+#     for next_v, next_dist in g[v]:
+#         if not visited[next_v]:
+#             sub_first_max, sub_ans = diameter_of_tree(g, next_v, visited)
+#             # this_dist : 가장 마지막 자식 노드까지 1자로 쭉 갔을 때 가장 긴 길이
+#             this_dist = next_dist + sub_first_max
+#             # sub_ans : 각 노드를 기준으로 현재까지 가장 큰 값 (트리의 지름 추정값)
+#             ans = max(ans, sub_ans)
+
+#             # 제일 긴 길이, 두 번째로 긴 길이 갱신
+#             if first_max <= this_dist:
+#                 second_max = first_max
+#                 first_max = this_dist
+
+#             elif second_max <= this_dist:
+#                 second_max = this_dist
+
+#     # print(v, first_max, second_max, ans)
+#     return [first_max, max((first_max + second_max), ans)]
+
+# def solve():
+#     V = int(input())
+#     g = defaultdict(list)
+#     for _ in range(V):
+#         ns = list(map(int, input().split()))
+#         for i in range(1, len(ns), 2):
+#             if ns[i] != -1:
+#                 g[ns[0]].append([ns[i], ns[i+1]])
+#     # print(g)
+#     visited = [False] * (V+1)
+
+#     # 1번 기준으로 재귀
+#     print(max(diameter_of_tree(g, 1, visited)))
+
+# solve()
