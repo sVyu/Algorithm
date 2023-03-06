@@ -17346,3 +17346,49 @@ RURU
 #     print(max(diameter_of_tree(g, 1, visited)))
 
 # solve()
+
+
+# 2263 트리의 순회
+'''
+13    
+8 4 9 2 10 5 1 6 11 3 12 7 13
+8 9 4 10 5 2 11 6 12 13 7 3 1
+
+1 2 4 8 9 5 10 3 6 11 7 12 13 clear
+'''
+# import sys
+# sys.setrecursionlimit(int(1e7))
+
+# def show_preorder(inorder, postorder, inidxs, in_l, in_r, post_l, post_r):
+#     root = postorder[post_r]
+
+#     # root 먼저 출력
+#     print(root, end=' ')
+#     root_idx = inidxs[root]
+
+#     # print("[1]", in_l, root_idx, in_r, post_l, post_r)
+
+#     # L
+#     if in_l <= root_idx-1:
+#         # print("[2]")
+#         # inorder의 l길이-1만큼 post_l에 더해서 post_r 계산 (root_idx-1 - in_l +1 -1)
+#         show_preorder(inorder, postorder, inidxs, in_l, root_idx-1, post_l, post_l + (root_idx-1 - in_l))
+
+#     # R
+#     if root_idx+1 <= in_r:
+#         # print("[3]")
+#         # inorder의 R길이-1만큼 port_r-1에서 빼서 post_l 계산
+#         show_preorder(inorder, postorder, inidxs, root_idx+1, in_r, post_r-1 - (in_r - root_idx-1), post_r-1)
+
+# def solve():
+#     n = int(input())
+#     inorder = list(map(int, input().split()))
+#     postorder = list(map(int, input().split()))
+#     inidxs = dict()
+#     for i in range(len(inorder)):
+#         inidxs[inorder[i]] = i
+#     # print(inidxs)
+
+#     show_preorder(inorder, postorder, inidxs, 0, n-1, 0, n-1)
+
+# solve()
