@@ -17392,3 +17392,57 @@ RURU
 #     show_preorder(inorder, postorder, inidxs, 0, n-1, 0, n-1)
 
 # solve()
+
+
+# 2635 수 이어가기
+'''
+1
+[ans]
+4
+1 1 0 1
+[출력]
+0
+→ for문 범위 (1, N)을 (1, N+1)로 바꿔서 해결
+'''
+# def solve():
+#     N = int(input())
+
+#     max_cnt, ans = 0, []
+#     for i in range(1, N+1):
+#         cnt, nums = 2, [N, i]
+#         while nums[-2]-nums[-1] >= 0:
+#             nums.append(nums[-2]-nums[-1])
+#             cnt += 1
+
+#         if max_cnt < cnt:
+#             max_cnt = cnt
+#             ans = nums
+
+#     print(max_cnt)
+#     print(*ans)
+
+# solve()
+
+
+# 2023 신기한 소수 수정 중
+# def check_prime(N):
+
+
+
+# def solve():
+#     N = int(input())
+
+#     for num in range(10**(N-1), 10**(N)):
+#         pos = True
+
+#         tmp_num = num
+#         while tmp_num > 0:
+#             # if not s[tmp_num]:
+#                 pos = False
+#                 break
+#             tmp_num //= 10
+
+#         if pos:
+#             print(num)
+
+# solve()
