@@ -17424,25 +17424,123 @@ RURU
 # solve()
 
 
-# 2023 신기한 소수 수정 중
-# def check_prime(N):
+# 2023 신기한 소수
+# def make_sieve(n):
+#     s = [False, False] + [True]*(n-1)
+#     for i in range(1, n+1):
+#         if s[i]:
+#             for ii in range(2*i, n+1, i):
+#                 s[ii] = False
 
+#     return [i for i in range(n+1) if s[i]]
 
+# def check_prime(N, s):
+#     for div_num in s:
+#         if N <= div_num:
+#             break
+
+#         elif N % div_num == 0:
+#             return False
+
+#     return True
 
 # def solve():
 #     N = int(input())
 
-#     for num in range(10**(N-1), 10**(N)):
-#         pos = True
+#     cnt = 1
+#     prime_nums = [2, 3, 5, 7]
+#     s = make_sieve(min(10**N, 10000))
+#     # print(s)
 
-#         tmp_num = num
-#         while tmp_num > 0:
-#             # if not s[tmp_num]:
-#                 pos = False
-#                 break
-#             tmp_num //= 10
+#     while cnt < N:
+#         new_prime_nums = []
+#         for pn in prime_nums:
+#             for k in range(1, 10, 2):
+#                 if check_prime(pn*10 + k, s):
+#                     new_prime_nums.append(pn*10 + k)
 
-#         if pos:
-#             print(num)
+#         prime_nums = new_prime_nums
+#         cnt += 1
+
+#     print(*prime_nums, sep='\n')
+
+# solve()
+
+
+# 1251 단어 나누기
+# def solve():
+#     s = input()
+#     # print(s)
+
+#     ans = []
+#     for i in range(0, len(s)-2):
+#         for j in range(i+1, len(s)-1):
+#             ans.append(s[:i+1][::-1] + s[i+1:j+1][::-1] + s[j+1:][::-1])
+
+#     print(sorted(ans)[0])
+
+# solve()
+
+
+# 2563 색종이
+# def solve():
+#     board = [[0]*101 for _ in range(101)]
+#     for _ in range(int(input())):
+#         x, y = map(int, input().split())
+#         for nx in range(x, x+10):
+#             for ny in range(y, y+10):
+#                 board[nx][ny] += 1
+
+#     ans = 0
+#     for x in range(1, 101):
+#         for y in range(1, 101):
+#             if board[x][y] != 0:
+#                 ans += 1
+
+#     print(ans)
+
+# solve()
+
+
+# 5582 공통 부분 문자열
+# 메모리 초과
+# def solve():
+#     s1, s2 = list(input()), list(input())
+
+#     dp = [[0]*(len(s2)+1) for _ in range(len(s1)+1)]
+#     ans = 0
+#     for i in range(1, len(s1)+1):
+#         for j in range(1, len(s2)+1):
+#             if s1[i-1] == s2[j-1]:
+#                 # print(i-1, j-1)
+#                 dp[i][j] = dp[i-1][j-1]+1
+#         ans = max(ans, max(dp[i]))
+
+#     # for x in range(len(s1)+1):
+#     #     print(dp[x])
+
+#     print(ans)
+
+# solve()
+
+# 개선 코드 → 통과
+# def solve():
+#     s1, s2 = list(input()), list(input())
+
+#     len_s2 = len(s2)
+#     pre_dp = [0]*(len_s2+1)
+#     ans = 0
+
+#     for i in range(1, len(s1)+1):
+#         now_dp = [0]*(len_s2+1)
+#         for j in range(1, len_s2+1):
+#             if s1[i-1] == s2[j-1]:
+#                 # print(i-1, j-1)
+#                 now_dp[j] = pre_dp[j-1]+1
+
+#         ans = max(ans, max(now_dp))
+#         pre_dp = now_dp
+
+#     print(ans)
 
 # solve()
