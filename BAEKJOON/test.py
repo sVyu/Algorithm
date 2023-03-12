@@ -17523,6 +17523,7 @@ RURU
 
 # solve()
 
+
 # 개선 코드 → 통과
 # def solve():
 #     s1, s2 = list(input()), list(input())
@@ -17544,3 +17545,18 @@ RURU
 #     print(ans)
 
 # solve()
+
+
+# 9625 BABBA
+def solve():
+    K = int(input())
+    dp = [[0, 0] for _ in range(K+1)]
+    dp[0] = [1, 0]
+
+    for i in range(1, K+1):
+        dp[i][0] = dp[i-1][1]
+        dp[i][1] = sum(dp[i-1])
+
+    print(*dp[K])
+
+solve()
