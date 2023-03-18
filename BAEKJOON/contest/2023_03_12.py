@@ -1,5 +1,18 @@
 # AI Network Scholarium I이 개최됩니다!
 
+# 27868 On My Way Dorm
+# A
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, S = map(int, input().split())
+#     nums = list(map(int, input().split()))
+#     # input()
+#     print(input().rstrip()[::-1])
+
+# solve()
+
 # B
 # 시간 초과...
 # 공지 중 C 외의 언어로 풀 수 있음이 보장 되지 않음..
@@ -39,9 +52,9 @@
 # def solve():
 #     N, Q = map(int, input().split())
 #     nums = [0] + list(map(int, input().split()))
-#     sums = [0]
+#     sums = [0] * (N+1)
 #     for i in range(1, N+1):
-#         sums.append(nums[i]+sums[i-1])
+#         sums[i] = nums[i]+sums[i-1]
 #     # print(sums)
 
 #     tree = [0 for _ in range(cal_tree_len(N))]
@@ -64,3 +77,5 @@
 #         # print(tree)
 
 # solve()
+
+

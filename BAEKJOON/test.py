@@ -8400,7 +8400,7 @@ dfs/bfs
 #     home_x, home_y = map(int, input().split())
 #     home_xy = 
 #     for _ in range(convenience_store_num):
-        
+
 #         convenience_store_list.append(map(int, input().split()))
 
 
@@ -14940,49 +14940,6 @@ EFABCD
 #     print(s.upper(), end='')
 
 
-# 9205 맥주 마시면서 걸어가기
-# import sys
-# input = sys.stdin.readline
-# from collections import defaultdict, deque
-
-# def solve():
-#     for _ in range(int(input())):
-#         n = int(input())
-#         home = list(map(int, input().split()))
-#         store = set(tuple(map(int, input().split())) for _ in range(n))
-#         festival = list(map(int, input().split()))
-#         # print(home, store, festival)
-
-#         que = deque()
-#         que.append([home[0], home[1], 1000])
-#         inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-#         xy_dict = defaultdict(int)
-#         xy_dict[tuple([home[0], home[1]])] = 1000
-#         # print(xy_dict)
-
-#         ans = "sad"
-#         while que:
-#             x, y, rp = que.popleft() # x, y, rest_power
-
-#             for px, py in inc_xy:
-#                 nx, ny = x + px, y + py
-#                 if -32768 <= nx < 32768 and -32768 <= ny < 32768:
-#                     if [nx, ny] == festival:
-#                         ans = "happy"
-#                         return ans
-
-#                     tuple_xy = tuple([nx, ny])
-#                     if tuple_xy not in xy_dict:
-#                         que.append([nx, ny, rp-1])
-
-#                     elif xy_dict[tuple_xy] < rp:
-#                         que.append([nx, ny, rp-1])
-
-#         return ans
-
-# print(solve())
-
-
 # 1965 상자넣기
 # N = int(input())
 # boxes = list(map(int, input().split()))
@@ -17548,15 +17505,360 @@ RURU
 
 
 # 9625 BABBA
-def solve():
-    K = int(input())
-    dp = [[0, 0] for _ in range(K+1)]
-    dp[0] = [1, 0]
+# def solve():
+#     K = int(input())
+#     dp = [[0, 0] for _ in range(K+1)]
+#     dp[0] = [1, 0]
 
-    for i in range(1, K+1):
-        dp[i][0] = dp[i-1][1]
-        dp[i][1] = sum(dp[i-1])
+#     for i in range(1, K+1):
+#         dp[i][0] = dp[i-1][1]
+#         dp[i][1] = sum(dp[i-1])
 
-    print(*dp[K])
+#     print(*dp[K])
 
-solve()
+# solve()
+
+# 1193 분수 찾기
+# def solve():
+#     X = int(input())
+
+#     n, k = 0, 1
+#     while n+k < X:
+#         n += k
+#         k += 1
+
+#     gab = X-n
+#     print(f'{gab}/{k+1-gab}') if k % 2 == 0 else print(f'{k+1-gab}/{gab}')
+
+# solve()
+
+
+# 1717 집합의 표현
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e7))
+
+# def find_parent(parent, x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent, parent[x])
+
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+#     if a < b:
+#         parent[b] = a
+#     else:
+#         parent[a] = b
+
+# def solve():
+#     n, m = map(int, input().split())
+#     parent = [i for i in range(n+1)]
+#     # print(parent)
+
+#     for _ in range(m):
+#         ops, a, b = list(map(int, input().split()))
+#         if ops == 0:
+#             if a != b:
+#                 union_parent(parent, a, b)
+
+#         else:
+#             print("YES") if find_parent(parent, a) == find_parent(parent, b) else print("NO")
+
+# solve()
+
+
+# 1461 도서관
+# def solve():
+#     N, M = map(int, input().split())
+#     nums = list(map(int, input().split()))
+
+#     # 양수 음수 분리 후 정렬
+#     pos, neg = [], []
+#     for n in nums:
+#         if n > 0: pos.append(n)
+#         else: neg.append(n)
+#     pos, neg = sorted(pos), sorted(neg, reverse=True)
+#     # print(pos, neg)
+
+#     # 제일 처음으로 처리해야할 인덱스 각각 계산
+#     # pos_idx, neg_idx
+#     len_pos, len_neg = len(pos), len(neg)
+#     pi, ni = (len_pos-1) % M, (len_neg-1) % M
+#     # print(pi, ni)
+
+#     # 한 배열이 마무리 될 때까지 반복
+#     ans = 0
+#     while pi < len_pos and ni < len_neg:
+#         if pos[pi] < (-neg[ni]):
+#             ans += pos[pi]*2
+#             pi += M
+#         else:
+#             ans += (-neg[ni])*2
+#             ni += M
+#     # print("[1]", ans)
+
+#     # pos 좌표들만 남은 경우
+#     while pi < len_pos:
+#         if pi != len_pos-1:
+#             ans += pos[pi]*2
+#             pi += M
+#         else:
+#             ans += pos[pi]
+#             break
+
+#     # neg 좌표들만 남은 경우
+#     while ni < len_neg:
+#         if ni != len_neg-1:
+#             ans += (-neg[ni])*2
+#             ni += M
+#         else:
+#             ans += (-neg[ni])
+#             break
+
+#     print(ans)
+
+# solve()
+
+
+# 1253 좋다
+'''
+4
+-1 0 0 1
+[ans] 2
+5
+0 0 0 0 0
+[ans] 5
+5
+2 6 8 10 10
+[ans] 3
+'''
+
+# 참고 : https://baby-ohgu.tistory.com/30
+# def solve():
+#     N = int(input())
+#     nums = sorted(list(map(int, input().split())))
+
+#     ans = 0
+#     for i in range(N):
+#         tmp = nums[:i] + nums[i+1:]
+#         l, r = 0, N-2
+
+#         while l < r:
+#             now = tmp[l] + tmp[r]
+#             if now == nums[i]:
+#                 ans += 1
+#                 break
+
+#             elif now < nums[i]:
+#                 l += 1
+#             else:
+#                 r -= 1
+
+#     print(ans)
+
+# solve()
+
+
+# 17299 오등큰수
+# pm 04:05 ~ 04:20
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+
+# def solve():
+#     N = int(input())
+#     nums = list(map(int, input().split()))
+#     d = defaultdict(int)
+#     for n in nums:
+#         d[n] += 1
+
+#     ans = [-1]*N
+#     stack = []
+#     for idx in range(N):
+#         while stack and d[nums[stack[-1]]] < d[nums[idx]]:
+#             ans[stack.pop()] = nums[idx]
+#         stack.append(idx)
+
+#     print(*ans)
+
+# solve()
+
+
+# 11004 K번째 수
+# import sys
+# input = sys.stdin.readline
+
+# _, K = map(int, input().split())
+# print(sorted(list(map(int, input().split())))[K-1])
+
+
+# 1189 컴백홈
+# pm 09:40 ~ 10:26
+# dfs 오랜만인 점 + 전역변수 없이 처리하려니까 좀 걸렸네..
+# import sys
+# input = sys.stdin.readline
+
+# def dfs(R, C, K, board, x, y, inc_xy, ans, cnt):
+#     board[x][y] = '_'
+#     # print("[1]", x, y, ans)
+#     for px, py in inc_xy:
+#         nx, ny = x + px, y + py
+#         if (0 <= nx < R) and (0 <= ny < C) and (board[nx][ny] == '.') and (cnt < K):
+#             if [nx, ny, cnt+1] == [0, C-1, K]:
+#                 board[x][y] = '.'
+#                 return ans + 1
+
+#             else:
+#                 ans = dfs(R, C, K, board, nx, ny, inc_xy, ans, cnt+1)
+#                 # print("[2]", x, y, ans)
+
+#     board[x][y] = '.'
+#     return ans
+
+# def solve():
+#     R, C, K = map(int, input().split())
+#     if (R+C-1 > K):
+#         print(0);
+#         return
+
+#     board = [list(input().rstrip()) for _ in range(R)]
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     print(dfs(R, C, K, board, R-1, 0, inc_xy, 0, 1))
+
+# solve()
+
+
+# 5427 불
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N = int(input())
+#     inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+#     for _ in range(N):
+#         w, h = map(int, input().split())
+#         board = [list(input().rstrip()) for _ in range(h)]
+
+#         # 불 위치, 상근이가 서있을 수 있는 위치
+#         q_fires, q_sg = deque(), deque()
+#         for x in range(h):
+#             for y in range(w):
+#                 if board[x][y] == '*':
+#                     q_fires.append([x, y])
+#                 elif board[x][y] == '@':
+#                     q_sg.append([x, y])
+
+#         pos = False
+#         time = 0
+#         while q_sg and (not pos):
+#             time += 1
+
+#             if q_fires:
+#                 for _ in range(len(q_fires)):
+#                     x, y = q_fires.popleft()
+#                     for px, py in inc_xy:
+#                         nx, ny = x+px, y+py
+#                         if 0 <= nx < h and 0 <= ny < w and board[nx][ny] == '.':
+#                             board[nx][ny] = '*'
+#                             q_fires.append([nx, ny])
+
+#             if q_sg:
+#                 for _ in range(len(q_sg)):
+#                     x, y = q_sg.popleft()
+#                     if (x in [0, h-1]) or (y in [0, w-1]):
+#                         pos = True
+#                         break
+
+#                     for px, py in inc_xy:
+#                         nx, ny = x+px, y+py
+#                         if 0 <= nx < h and 0 <= ny < w and board[nx][ny] == '.':
+#                             board[nx][ny] = '@'
+#                             q_sg.append([nx, ny])
+
+#         print(time) if pos else print("IMPOSSIBLE")
+
+# solve()
+
+
+# 9205 맥주 마시면서 걸어가기
+# pm 08:52 ~ 09:12
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def dist(l1, l2):
+#     x1, y1 = l1
+#     x2, y2 = l2
+#     return (abs(x1-x2)+abs(y1-y2))
+
+# def solve():
+#     for _ in range(int(input())):
+#         n = int(input())
+#         q = deque([list(map(int, input().split()))])
+#         stores = set(tuple(map(int, input().split())) for _ in range(n))
+#         goal = list(map(int, input().split()))
+
+#         pos = False
+#         while q:
+#             x, y = q.popleft()
+#             if dist([x, y], goal) <= 1000:
+#                 pos = True
+#                 break
+
+#             tmp_xy = set()
+#             for sx, sy in stores:
+#                 if dist([x, y], [sx, sy]) <= 1000:
+#                     q.append([sx, sy])
+#                     tmp_xy.add(tuple([sx, sy]))
+
+#             for t in tmp_xy:
+#                 stores.remove(t)
+
+#         print("happy") if pos else print("sad")
+
+# solve()
+
+
+# 17609 회문
+# pm 09:15 ~ 09:40
+# import sys
+# input = sys.stdin.readline
+
+# def is_palidrome(s, l, r):
+#     while l <= r:
+#         # print(l, r)
+#         if s[l] == s[r]:
+#             l += 1
+#             r -= 1
+#         else:
+#             break
+#     return [l, r]
+
+# def solve():
+#     for _ in range(int(input())):
+#         s = list(input().rstrip())
+#         # print("s", s)
+#         sl, sr = is_palidrome(s, 0, len(s)-1)
+
+#         if sl >= sr:
+#             print(0)
+#             continue
+
+#         pos = False
+#         for l, r in [[sl+1, sr], [sl, sr-1]]:
+#             tmp_l, tmp_r = is_palidrome(s, l, r)
+#             if tmp_l >= tmp_r:
+#                 pos = True
+#                 print(1)
+#                 break
+
+#         if not pos:
+#             print(2)
+
+# solve()
