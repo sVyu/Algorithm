@@ -17862,3 +17862,78 @@ RURU
 #             print(2)
 
 # solve()
+
+
+# K번째 수 - 개편
+# def solve():
+#     N = int(input())
+#     k = int(input())
+
+#     bot, top = 1, N**2
+#     ans = 0
+#     while bot <= top:
+#         mid = (bot+top)//2
+#         cnt = 0
+#         for i in range(1, N+1):
+#             cnt += min(N, (mid//i))
+
+#         # print(bot, mid top, cnt)
+#         if cnt >= k:
+#             top = mid-1
+#             ans = mid
+#         else:
+#             bot = mid+1
+
+#     print(ans)
+
+# solve()
+
+
+# 1132 합
+import sys
+input = sys.stdin.readline
+
+def solve():
+    vals = [[i, 0] for i in range(26)]
+    # print(vals)
+
+    # cannot_zero   : 0이 될 수 없는 알파벳을 체크
+    # appeared      : 한 번이라도 등장한 알파벳을 체크
+    cannot_zero = set()
+    appeared = set()
+    for _ in range(int(input())):
+        s = list(input().rstrip())
+        cannot_zero.add(s[0])
+
+        val = 1
+        for c in s[::-1]:
+            appeared.add(c)
+            vals[ord(c)-65][1] += val
+            val *= 10
+    # print(vals)
+
+    # 값으로 내림차순
+    vals = sorted(vals, key=lambda x:(-x[1]))[:len(appeared)]
+    # print(vals)
+    # print(appeared)
+    # print(cannot_zero)
+
+    # 0이 필요한 건 10개의 알파벳이 모두 등장했을 때
+    target = -1
+    if len(appeared) >= 10:
+        for i, _ in vals[::-1]:
+            if chr(i+65) not in cannot_zero:
+                target = i
+                break
+    # print(vals)
+    # print(target)
+
+    ans, num = 0, 9
+    for i, val in vals:
+        if i == target:
+            continue
+        ans += val*num
+        num -= 1
+    print(ans)
+
+solve()
