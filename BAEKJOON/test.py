@@ -17890,50 +17890,439 @@ RURU
 
 
 # 1132 합
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-def solve():
-    vals = [[i, 0] for i in range(26)]
-    # print(vals)
+# def solve():
+#     vals = [[i, 0] for i in range(26)]
+#     # print(vals)
 
-    # cannot_zero   : 0이 될 수 없는 알파벳을 체크
-    # appeared      : 한 번이라도 등장한 알파벳을 체크
-    cannot_zero = set()
-    appeared = set()
-    for _ in range(int(input())):
-        s = list(input().rstrip())
-        cannot_zero.add(s[0])
+#     # cannot_zero   : 0이 될 수 없는 알파벳을 체크
+#     # appeared      : 한 번이라도 등장한 알파벳을 체크
+#     cannot_zero = set()
+#     appeared = set()
+#     for _ in range(int(input())):
+#         s = list(input().rstrip())
+#         cannot_zero.add(s[0])
 
-        val = 1
-        for c in s[::-1]:
-            appeared.add(c)
-            vals[ord(c)-65][1] += val
-            val *= 10
-    # print(vals)
+#         val = 1
+#         for c in s[::-1]:
+#             appeared.add(c)
+#             vals[ord(c)-65][1] += val
+#             val *= 10
+#     # print(vals)
 
-    # 값으로 내림차순
-    vals = sorted(vals, key=lambda x:(-x[1]))[:len(appeared)]
-    # print(vals)
-    # print(appeared)
-    # print(cannot_zero)
+#     # 값으로 내림차순
+#     vals = sorted(vals, key=lambda x:(-x[1]))[:len(appeared)]
+#     # print(vals)
+#     # print(appeared)
+#     # print(cannot_zero)
 
-    # 0이 필요한 건 10개의 알파벳이 모두 등장했을 때
-    target = -1
-    if len(appeared) >= 10:
-        for i, _ in vals[::-1]:
-            if chr(i+65) not in cannot_zero:
-                target = i
-                break
-    # print(vals)
-    # print(target)
+#     # 0이 필요한 건 10개의 알파벳이 모두 등장했을 때
+#     target = -1
+#     if len(appeared) >= 10:
+#         for i, _ in vals[::-1]:
+#             if chr(i+65) not in cannot_zero:
+#                 target = i
+#                 break
+#     # print(vals)
+#     # print(target)
 
-    ans, num = 0, 9
-    for i, val in vals:
-        if i == target:
-            continue
-        ans += val*num
-        num -= 1
-    print(ans)
+#     ans, num = 0, 9
+#     for i, val in vals:
+#         if i == target:
+#             continue
+#         ans += val*num
+#         num -= 1
+#     print(ans)
 
-solve()
+# solve()
+
+
+# 5430 AC - 개선
+# 500ms → 124ms
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     for _ in range(int(input())):
+#         p = list(input().rstrip())
+#         n = int(input())
+#         nums = list(input().rstrip()[1:-1].split(','))
+#         # print(nums)
+
+#         # l, r = left, right
+#         l, r = 0, n-1
+#         is_reversed = False
+#         pos = True
+#         for func in p:
+#             if func == 'R':
+#                 is_reversed = not is_reversed
+
+#             else: #D
+#                 n -= 1
+#                 if is_reversed:
+#                     r -= 1
+#                 else:
+#                     l += 1
+
+#             if n < 0: # l > r+1
+#                 pos = False
+#                 break
+
+#         if pos:
+#             print("[", ','.join(nums[l:r+1][::(-1) if is_reversed else 1]), "]", sep='')
+#         else:
+#             print("error")
+
+# solve()
+
+
+# 3595 맥주 냉장고
+# def solve():
+#     n = int(input())
+
+#     ans, min_area = [], int(1e7)
+#     for a in range(1, n+1):
+#         if n % a == 0:
+#             b_times_c = n//a
+#             for b in range(1, b_times_c+1):
+#                 if b_times_c % b == 0:
+#                     c = b_times_c // b
+#                     # print(a, b, c)
+
+#                     if min_area > 2*(a*b + b*c + c*a) :
+#                         min_area = 2*(a*b + b*c + c*a)
+#                         ans = [a, b, c]
+
+#     print(*ans)
+
+# solve()
+
+
+# 1799 비숍
+# def btr(N, board, pos_xy, len_pos_xy, idx, bishop, now_cnt, inc_xy):
+#     global ans
+#     for now in range(idx, len_pos_xy):
+#         bx, by = pos_xy[now]
+#         # print(now)
+
+#         # 대각선 검사
+#         pos = True
+#         for px, py in inc_xy:
+#             # print(px, py)
+#             tmpx, tmpy = bx+px, by+py
+#             # print(bx, by, tmpx, tmpy)
+#             while (0 <= tmpx < N) and (0 <= tmpy < N):
+#                 if bishop[tmpx][tmpy]:
+#                     pos = False
+
+#                 tmpx += px
+#                 tmpy += py
+
+#             if not pos: break
+
+#         if pos:
+#             bishop[bx][by] = True
+#             # print(bx, by, now_cnt)
+#             # for kx in range(N):
+#             #     print(bishop[kx])
+#             # print()
+#             # input()
+
+#             ans = max(ans, now_cnt+1)
+#             btr(N, board, pos_xy, len_pos_xy, now+1, bishop, now_cnt+1, inc_xy)
+
+#             bishop[bx][by] = False
+
+# def solve():
+#     N = int(input())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     pos_xy = [[x, y] for x in range(N) for y in range(N) if board[x][y] == 1]
+#     # print(pos_xy)
+#     len_pos_xy = len(pos_xy)
+
+#     bishop = [[False]*N for _ in range(N)]
+
+#     global ans
+#     ans = 0
+
+#     inc_xy = [[-1, -1], [-1, 1], [1, 1], [1, -1]]
+
+#     btr(N, board, pos_xy, len_pos_xy, 0, bishop, 0, inc_xy)
+#     print(ans)
+
+# solve()
+
+
+# 개선 그래도 오래 걸림
+# def btr(N, board, pos_xy, len_pos_xy, idx, bishop_xy, now_cnt):
+#     global ans
+#     for now in range(idx, len_pos_xy):
+#         px, py = pos_xy[now]
+#         # print(now)
+
+#         pos = True
+#         for bx, by in bishop_xy:
+#             if abs(px-bx) == abs(py-by):
+#                 pos = False
+#                 break
+
+#         if pos:
+#             bishop_xy.add(tuple([px, py]))
+
+#             ans = max(ans, now_cnt+1)
+#             btr(N, board, pos_xy, len_pos_xy, idx+1, bishop_xy, now_cnt+1)
+
+#             bishop_xy.remove(tuple([px, py]))
+
+# def solve():
+#     N = int(input())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     pos_xy = [[x, y] for x in range(N) for y in range(N) if board[x][y] == 1]
+#     # print(pos_xy)
+#     len_pos_xy = len(pos_xy)
+
+#     # check = [[False]*(N) for _ in range(N)]
+#     bishop_xy = set()
+
+#     global ans
+#     ans = 0
+
+#     btr(N, board, pos_xy, len_pos_xy, 0, bishop_xy, 0)
+
+#     print(ans)
+
+# solve()
+
+'''
+7
+1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 
+
+8
+1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 
+
+9
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1
+
+10
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+'''
+
+
+# 시간 초과
+# def btr(N, board, pos_xy, len_pos_xy, idx, now_cnt, now_bishop, cannot_bishop, inc_xy):
+#     global ans
+#     for now in range(idx, len_pos_xy):
+#         bx, by = pos_xy[now]
+#         # print("now", now)
+
+#         if cannot_bishop[bx][by]:
+#             continue
+
+#         cannot_bishop_xy = []
+#         for px, py in inc_xy:
+#             tmpx, tmpy = bx+px, by+py
+#             # print(bx, by, tmpx, tmpy)
+#             while (0 <= tmpx < N) and (0 <= tmpy < N):
+#                 if board[tmpx][tmpy] == 1 and not now_bishop[tmpx][tmpy]:
+#                     cannot_bishop_xy.append([tmpx, tmpy])
+#                 tmpx += px
+#                 tmpy += py
+
+#         now_bishop[bx][by] = True
+#         for x, y in cannot_bishop_xy:
+#             cannot_bishop[x][y] += 1
+
+#         ans = max(ans, now_cnt+1)
+#         btr(N, board, pos_xy, len_pos_xy, now+1, now_cnt+1, now_bishop, cannot_bishop, inc_xy)
+
+#         now_bishop[bx][by] = False
+#         for x, y in cannot_bishop_xy:
+#             cannot_bishop[x][y] -= 1
+
+# def solve():
+#     N = int(input())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     pos_xy = [[x, y] for x in range(N) for y in range(N) if board[x][y] == 1]
+#     # print(pos_xy)
+#     len_pos_xy = len(pos_xy)
+
+#     now_bishop = [[False]*N for _ in range(N)]
+#     # can_bishop = [[True if board[x][y] == 1 else False for y in range(N)] for x in range(N)]
+#     cannot_bishop = [[0]*N for _ in range(N)]
+
+#     inc_xy = [[-1, -1], [-1, 1], [1, 1], [1, -1]]
+
+#     global ans
+#     ans = 0
+
+#     btr(N, board, pos_xy, len_pos_xy, 0, 0, now_bishop, cannot_bishop, inc_xy)
+
+#     print(ans)
+
+# solve()
+
+
+# 바꿔도 시간 초과.. 좀 더 고민해봐야겠다
+# N = int(input())
+# board = [list(map(int, input().split())) for _ in range(N)]
+
+# # / 대각선으로 같은 대각선 원소들 정리
+# pos_xy = [[] for _ in range(2*N)]
+# # print(pos_xy)
+# for x in range(N):
+#     for y in range(N):
+#         if board[x][y] == 1:
+#             pos_xy[x+y].append([x, y])
+
+# # for x in range(2*N):
+# #     print(pos_xy[x])
+
+# # \ 대각선으로 backtracking
+# diag = [True]*(2*N)
+
+# line_idxs = []
+# for i in range(2*N):
+#     if len(pos_xy[i]) != 0:
+#         line_idxs.append(i)
+# # print(line_idxs)
+# # len(line_idxs) # \대각선을 고려하지 않은 가능한 최고 길이
+# limit_std_idx = len(line_idxs)
+# global ans
+# ans = 0
+
+# def btr(N, board, pos_xy, line_idxs, std_idx, limit_std_idx, now_cnt, diag):
+#     global ans
+#     for i in range(std_idx, limit_std_idx):
+#         print("now", i)
+#         for bx, by in pos_xy[line_idxs[i]]:
+#             # print(i, bx, by)
+#             if not (diag[N+by-bx]): continue
+
+#             diag[N+by-bx] = False
+
+#             ans = max(ans, now_cnt+1)
+#             if ans == limit_std_idx:
+#                 return
+#             # btr(N, board, pos_xy, std_idx, limit_std_idx, now_cnt, diag)
+#             btr(N, board, pos_xy, line_idxs, i+1, limit_std_idx, now_cnt+1, diag)
+
+#             diag[N+by-bx] = True
+
+# btr(N, board, pos_xy, line_idxs, 0, limit_std_idx, 0, diag)
+# print(ans)
+
+
+# 10811 바구니 뒤집기
+# def solve():
+#     N, M = map(int, input().split())
+#     ns = [i for i in range(N+1)]
+
+#     for _ in range(M):
+#         l, r = map(int, input().split())
+#         while l < r:
+#             ns[l], ns[r] = ns[r], ns[l]
+#             l += 1
+#             r -= 1
+
+#     print(*ns[1:])
+
+# solve()
+
+
+# 2941 크로아티아 알파벳
+# def solve():
+#     s = list(input())
+#     ans, i, len_s = 0, 0, len(s)
+
+#     while i < len_s:
+#         if (s[i] == 'c') and ((i+1) < len_s) and (s[i+1] in ['=', '-']):
+#             i += 2
+#         elif s[i] == 'd':
+#             if (i+2) < len_s and s[i+1] == 'z' and s[i+2] == '=':
+#                 i += 3
+#             elif (i+1) < len_s and s[i+1] == '-':
+#                 i += 2
+#             else:
+#                 i += 1
+#         elif (s[i] == 'l') and ((i+1) < len_s) and (s[i+1] =='j'):
+#             i += 2
+#         elif (s[i] == 'n') and ((i+1) < len_s) and (s[i+1] =='j'):
+#             i += 2
+#         elif (s[i] == 's') and ((i+1) < len_s) and (s[i+1] =='='):
+#             i += 2
+#         elif (s[i] == 'z') and ((i+1) < len_s) and (s[i+1] =='='):
+#             i += 2
+#         else:
+#             i += 1
+
+#         ans += 1
+
+#     print(ans)
+
+# solve()
+
+
+# 크로아티아 알파벳 - 코드 개선
+# def solve():
+#     s = input()
+#     ans, i, len_s = 0, 0, len(s)
+
+#     while i < len_s:
+#         if (i+1) < len_s:
+#             if s[i:i+2] in ["c=", "c-", "d-", "lj", "nj", "s=", "z="]:
+#                 i += 1
+#             elif ((i+2) < len_s) and (s[i:i+3] == "dz="):
+#                 i += 2
+
+#         i += 1
+#         ans += 1
+
+#     print(ans)
+
+# solve()
+
+
+# 7785 회사에 있는 사람
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     names = set()
+#     for _ in range(int(input())):
+#         name, move = input().rstrip().split()
+#         names.add(name) if move == 'enter' else names.remove(name)
+#     print(*sorted(names, reverse=True), sep='\n')
+
+# solve()
