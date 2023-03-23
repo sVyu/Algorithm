@@ -1,1 +1,1 @@
-# python_things
+# Algorithm things 😄

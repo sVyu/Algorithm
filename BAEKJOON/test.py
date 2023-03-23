@@ -18326,3 +18326,17 @@ RURU
 #     print(*sorted(names, reverse=True), sep='\n')
 
 # solve()
+
+
+# 2229 조 짜기
+# def solve():
+#     N = int(input())
+#     grades = [0] + list(map(int, input().split()))
+#     dp = [0]*(N+1)
+
+#     for i in range(1, N+1):
+#         for j in range(1, i+1):
+#             dp[i] = max(dp[i], dp[j-1] + abs(grades[j]-grades[i]))
+#     print(dp[N])
+
+# solve()
