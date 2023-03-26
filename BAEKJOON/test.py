@@ -18340,3 +18340,99 @@ RURU
 #     print(dp[N])
 
 # solve()
+
+
+# 8979 올림픽
+# from collections import defaultdict
+
+# def solve():
+#     N, K = map(int, input().split())
+#     grades = defaultdict(list)
+
+#     for _ in range(N):
+#         # num, gold, silver, bronze
+#         n, g, s, b = map(int, input().split())
+#         grades[n] = [g, s, b]
+#     # print(grades)
+
+#     grades = sorted(grades.items(), key=lambda x:(-x[1][0], -x[1][1], -x[1][2]))
+#     # print(grades)
+
+#     pre_g, ans, same_cnt = [-1, -1, -1], 0, 0
+#     for i in range(N):
+#         if pre_g != grades[i][1]:
+#             pre_g = grades[i][1]
+#             ans += 1 + same_cnt
+#             same_cnt = 0
+#         else:
+#             same_cnt += 1
+
+#         if grades[i][0] == K:
+#             print(ans)
+#             return
+
+# solve()
+
+
+# 14916 거스름돈
+# def solve():
+#     n = int(input())
+#     INF = int(1e5)
+#     dp = [INF]*(n+1)
+
+#     if n >= 2: dp[2] = 1
+#     if n >= 4: dp[4] = 2
+#     if n >= 5: dp[5] = 1
+
+#     for i in range(6, n+1):
+#         dp[i] = min(dp[i-2], dp[i-5])+1
+#     # print(dp)
+
+#     print(dp[n] if dp[n] != INF else -1)
+
+# solve()
+
+
+# 1707 이분 그래프
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def bfs(g, q, colors):
+#     while q:
+#         v, color = q.popleft()
+#         # print(v, color)
+#         next_color = (color+1)%2
+
+#         for next_v in g[v]:
+#             if colors[next_v] == -1:
+#                 colors[next_v] = next_color
+#                 q.append([next_v, next_color])
+#             elif colors[next_v] != next_color:
+#                 return False
+
+#     return True
+
+# def solve():
+#     for _ in range(int(input())):
+#         V, E = map(int, input().split())
+#         g = defaultdict(list)
+#         for _ in range(E):
+#             u, v = map(int, input().split())
+#             g[u].append(v)
+#             g[v].append(u)
+#         # print(g)
+
+#         colors = [-1]*(V+1)
+#         pos = True
+
+#         for v in range(1, V+1):
+#             if colors[v] == -1:
+#                 colors[v] = 0
+#                 if not bfs(g, deque([[v, 0]]), colors):
+#                     pos = False
+#                     break
+
+#         print("YES") if pos else print("NO")
+
+# solve()
