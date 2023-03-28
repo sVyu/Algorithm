@@ -18436,3 +18436,180 @@ RURU
 #         print("YES") if pos else print("NO")
 
 # solve()
+
+
+# 1417 국회의원 선거
+# from heapq import heapify, heappush, heappop
+
+# def solve():
+#     n = int(input())
+#     target = int(input())
+
+#     heap = [-int(input()) for _ in range(n-1)]
+#     heapify(heap)
+#     # print(heap)
+
+#     ans = 0
+#     while(heap and (target <= -heap[0])):
+#         # print(target, -heap[0])
+#         heappush(heap, heappop(heap)+1)
+#         target += 1
+#         ans += 1
+
+#     print(ans)
+
+# solve()
+
+
+# 1976 여행 가자
+'''
+5
+5
+0 1 0 0 0
+1 0 0 0 1
+0 0 0 1 0
+0 0 1 0 1
+0 1 0 1 0
+3 5 4 2 1
+
+4
+4
+0 0 0 1
+0 0 1 0
+0 1 0 1
+1 0 1 0
+1 2 3 4
+'''
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def find_parent(parent, x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+
+#     if a > b:
+#         parent[a] = b
+#     else:
+#         parent[b] = a
+
+# def solve():
+#     N, _ = int(input()), int(input())
+
+#     routes = [[0]*N] + [list(map(int, input().split())) for _ in range(N)]
+#     # print(routes)
+
+#     g = [[(j+1) for j in range(N) if routes[i][j] == 1] for i in range(N+1)]
+#     # print(g)
+
+#     parent = [i for i in range(N+1)]
+#     # print(parent)
+
+#     visited = [False] * (N+1)
+#     plan = list(map(int, input().split()))
+#     for v in plan:
+#         if not visited[v]:
+#             visited[v] = True
+#             q = deque(g[v])
+#             # visited 를 확실하기 위해 추가
+#             for u in g[v]:
+#                 visited[u] = True
+
+#             while q:
+#                 u = q.popleft()
+#                 union_parent(parent, v, u)
+#                 for next_u in g[u]:
+#                     if not visited[next_u]:
+#                         visited[next_u] = True
+#                         q.append(next_u)
+#     # print(parent)
+
+#     pos = True
+#     for v in plan[1:]:
+#         if find_parent(parent, plan[0]) != find_parent(parent, parent[v]):
+#             pos = False
+#             break
+
+#     print("YES") if pos else print("NO")
+
+# solve()
+
+
+# 코드 개선
+# import sys
+# input = sys.stdin.readline
+
+# def find_parent(parent, x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+
+#     if a > b:
+#         parent[a] = b
+#     else:
+#         parent[b] = a
+
+# def solve():
+#     N, _ = int(input()), int(input())
+
+#     routes = [[0]*N] + [list(map(int, input().split())) for _ in range(N)]
+#     # print(routes)
+#     parent = [i for i in range(N+1)]
+#     # print(parent)
+
+#     for i in range(1, N+1):
+#         for j in range(N):
+#             if routes[i][j] == 1:
+#                 union_parent(parent, i, j+1)
+#     # print(parent)
+
+#     pos = True
+#     plan = list(map(int, input().split()))
+#     for v in plan[1:]:
+#         if find_parent(parent, plan[0]) != find_parent(parent, parent[v]):
+#         # if parent[plan[0]] != parent[v]:
+#             pos = False
+#             break
+
+#     print("YES") if pos else print("NO")
+
+# solve()
+
+
+# 20915 숫자 카드 놀이
+'''
+687687
+'''
+# import itertools
+
+# def solve():
+#     for _ in range(int(input())):
+#         t = list(input())
+#         len_t = len(t)
+
+#         for i in range(len_t):
+#             if t[i] == '6':
+#                 t[i] = '9'
+#         t = sorted(t, reverse=True)
+#         # print(t)
+
+#         ans, default_s = 0, set({k for k in range(len_t)})
+#         for c in itertools.combinations(range(len_t), (len_t)//2):
+#             s = default_s - set(c)
+#             # print(s)
+#             n1, n2 = int(''.join([t[k] for k in s])), int(''.join([t[k] for k in c]))
+#             ans = max(ans, n1*n2)
+
+#         print(ans)
+
+# solve()
