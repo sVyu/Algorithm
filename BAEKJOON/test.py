@@ -2396,7 +2396,7 @@ print(a*b)
 
 # 17298 오큰수
 # 요새 출력 형식을 정확히 안 맞춰서 틀리는 경우가 종종 있네
-# 자중의 필요가 있다 !
+# 자중할 필요가 있다 !
 # 시간 초과...
 # 힌트가 스택 ?
 
@@ -7213,7 +7213,7 @@ dfs/bfs
 
 
 # 7662 이중 우선순위 큐
-# how solve is this
+# how to solve this
 # from queue import PriorityQueue
 # que = PriorityQueue()
 
@@ -10932,23 +10932,6 @@ dfs/bfs
 
 # solve()
 
-from sys import stdin
-    # for idx in range(N):
-    #     if y_list[x] == -1:
-    #         print("x:, cnt", x, cnt)
-    #         if not same_line_check(y_list, cnt, x, idx):
-    #             y_list[x] = idx
-    #             x += 1
-    #             cnt += 1
-    #             # print('haha')
-    #             print(x, idx, y_list)
-    #             if cnt == N:
-    #                 ans += 1
-    #             N_queens(ans, N, y_list, x, cnt)
-    #     y_list[x] = -1
-    #     x -= 1
-    #     cnt -= 1
-    # return ans
 
 # 17295 엔드게임 스포일러
 # print("Avengers: Endgame")
@@ -18055,7 +18038,7 @@ RURU
 # solve()
 
 
-# 개선 그래도 오래 걸림
+# 개선, 그래도 오래 걸림
 # def btr(N, board, pos_xy, len_pos_xy, idx, bishop_xy, now_cnt):
 #     global ans
 #     for now in range(idx, len_pos_xy):
@@ -18611,5 +18594,69 @@ RURU
 #             ans = max(ans, n1*n2)
 
 #         print(ans)
+
+# solve()
+
+
+# 개선
+# def solve():
+#     for _ in range(int(input())):
+#         ns = list(map(int, input()))
+#         for i in range(len(ns)):
+#             if ns[i] == 6:
+#                 ns[i] = 9
+#         ns.sort(reverse=True)
+#         # print(ns)
+
+#         a, b = 0, 0
+#         for n in ns:
+#             if a <= b:
+#                 a = 10*a+n
+#             else:
+#                 b = 10*b+n
+#             print(a,b)
+#         print(a*b)
+
+# solve()
+
+
+# 2447 별 찍기 - 10
+# import sys
+# input = sys.stdin.readline
+
+# def recursion(N, board, x, y, d):
+#     next_d = (d//3)
+#     for nx in range(x + next_d, x + next_d*2):
+#         for ny in range(y + next_d, y + next_d*2):
+#             board[nx][ny] = ' '
+
+#     if d > 1: # d >= 3
+#         for nx in range(x, x+d, next_d):
+#             for ny in range(y, y+d, next_d):
+#                 # 중앙 부분 처리했으니 continue
+#                 if (nx == x+next_d) and (ny == y+next_d):
+#                     continue
+#                 recursion(N, board, nx, ny, next_d)
+
+# def solve():
+#     N = int(input())
+#     board = [['*']*N for _ in range(N)]
+
+#     recursion(N, board, 0, 0, N)
+#     for x in range(N):
+#         print(*board[x], sep='')
+
+# solve()
+
+
+# 7579 앱
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, M = map(int, input().split())
+#     ms, cs = list(map(int, input().split())), list(map(int, input().split()))
+
+    
 
 # solve()
