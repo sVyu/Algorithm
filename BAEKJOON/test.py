@@ -18650,6 +18650,10 @@ RURU
 
 
 # 7579 앱
+'''
+mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
+'''
+# 시간 초과
 # import sys
 # input = sys.stdin.readline
 
@@ -18657,6 +18661,135 @@ RURU
 #     N, M = map(int, input().split())
 #     ms, cs = list(map(int, input().split())), list(map(int, input().split()))
 
-    
+#     d = dict()
+#     for i in range(N):
+#         tmp_d = d.copy()
+#         m, c = ms[i], cs[i]
+#         if m in d:
+#             d[m] = min(d[m], c)
+#         else:
+#             d[m] = c
+
+#         for tmp_m, tmp_c in tmp_d.items():
+#             if m+tmp_m in tmp_d:
+#                 d[m+tmp_m] = min(d[m+tmp_m], c+tmp_c)
+#             else:
+#                 d[m+tmp_m] = c+tmp_c
+#     # print(d)
+
+#     # 시간 복잡도 계산해보면 정렬을 안 하고 찾는 게 더 빠를 듯
+#     # for k, v in sorted(d.items(), key=lambda x:(-x[0], x[1])):
+#     #     print(k, v)
+
+#     ans = int(1e4)
+#     for k, v in d.items():
+#         if k >= M:
+#             ans = min(ans, v)
+#     print(ans)
+
+# solve()
+
+
+# CN 기준 dp 테이블이면 충분할 듯 (최대 100만 인덱스) → 1만으로도 가능
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, M = map(int, input().split())
+#     ms, cs = list(map(int, input().split())), list(map(int, input().split()))
+#     w = sum(cs)
+
+#     dp = [[0]*(w+1) for _ in range(N+1)]
+#     for x in range(1, N+1):
+#         m, c = ms[x-1], cs[x-1]
+#         for y in range(c):
+#             dp[x][y] = dp[x-1][y]
+#         for y in range(c, w+1):
+#             dp[x][y] = max(dp[x-1][y], m+dp[x-1][y-c])
+
+#     # for x in range(1, N+1):
+#     #     print(dp[x])
+
+#     ans = -1
+#     for y in range(w+1):
+#         if dp[N][y] >= M:
+#             ans = y
+#             break
+#     print(ans)
+
+# solve()
+
+
+# 6051 시간 여행
+
+# 통과는 됐는데.. 최악의 경우 32초/3.2GB를 소모하는 코드라서 개선이 필요하다
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     total_stack, now = [[]], []
+#     for _ in range(int(input())):
+#         cmd = input().rstrip()
+#         if cmd[0] in "at":  # a or t
+#             K = int(cmd.split()[1])
+#             if cmd[0] == 'a':
+#                 now.append(K)
+#             else: # t
+#                 now = total_stack[K-1][:]
+
+#         elif now: # s
+#             now.pop()
+
+#         total_stack.append(now[:])
+#         print(now[-1] if now else -1)
+#     # print(total_stack)
+
+# solve()
+
+
+# import sys
+# input = sys.stdin.readline
+# def solve():
+#     N = int(input())
+#     # ns 내 원소 : 쿼리를 진행했을 때 [마지막 원소, 쿼리 상 직전 원소가 추가(a)된 쿼리 번호]
+#     ns = [[-1, -1] for _ in range(N+1)]
+
+#     for i in range(1, N+1):
+#         cmd = input().rstrip()
+#         if cmd[0] in "at":
+#             K = int(cmd.split()[1])
+#             if cmd[0] == 'a':
+#                 ns[i] = [K, i-1]
+#             else: # 't'
+#                 ns[i] = ns[K-1]
+#         else: # 's'
+#             ns[i] = ns[ns[i-1][1]]
+
+#         print(ns[i][0])
+#     print(ns)
+
+# solve()
+
+
+# 9316 Hello World, Judge 1!
+# for i in range(int(input())):
+#     print(f'Hello World, Judge {i+1}!')
+
+
+# 1011 Fly me to the Alpha Centauri
+# def solve():
+#     for _ in range(int(input())):
+#         x, y = map(int, input().split())
+#         k = y-x
+
+#         ans, i, check = 0, 1, False
+#         while k > 0:
+#             k -= i
+#             if check:
+#                 i += 1
+#             ans += 1
+#             check = not check
+
+#         print(ans)
 
 # solve()
