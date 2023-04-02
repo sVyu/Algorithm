@@ -18793,3 +18793,46 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 #         print(ans)
 
 # solve()
+
+
+# 4141 Numbersrebmun
+# for _ in range(int(input())):
+#     s = list(input())
+#     # print(s)
+
+#     for i in range(len(s)):
+#         if s[i] in "AaBbCc":
+#             s[i] = 2
+#         elif s[i] in "DdEeFf":
+#             s[i] = 3
+#         elif s[i] in "GgHhIi":
+#             s[i] = 4
+#         elif s[i] in "JjKkLl":
+#             s[i] = 5
+#         elif s[i] in "MmNnOo":
+#             s[i] = 6
+#         elif s[i] in "PpQqRrSs":
+#             s[i] = 7
+#         elif s[i] in "TtUuVv":
+#             s[i] = 8
+#         else:
+#             s[i] = 9
+#     # print(s)
+
+#     print("YES") if s == s[::-1] else print("NO")
+
+
+# 2293 동전 1
+# def solve():
+#     n, k = map(int, input().split())
+#     dp = [0]*(k+1)
+#     dp[0] = 1
+
+#     for _ in range(n):
+#         num = int(input())
+#         for i in range(num, k+1):
+#             dp[i] = dp[i-num] + dp[i]
+
+#     print(dp[k])
+
+# solve()
