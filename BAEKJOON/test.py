@@ -18836,3 +18836,21 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 #     print(dp[k])
 
 # solve()
+
+
+# 11931 수 정렬하기 4
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# print(*sorted([int(input()) for _ in range(N)], reverse=True), sep='\n')
+
+
+# 13241 최소공배수
+def gcd(a, b):
+    while b > 0:
+        a, b = b, a%b
+    return a
+
+A, B = map(int, input().split())
+print(A*B//gcd(A, B))
