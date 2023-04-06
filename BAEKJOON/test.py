@@ -18847,10 +18847,78 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 
 
 # 13241 최소공배수
-def gcd(a, b):
-    while b > 0:
-        a, b = b, a%b
-    return a
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
 
-A, B = map(int, input().split())
-print(A*B//gcd(A, B))
+# A, B = map(int, input().split())
+# print(A*B//gcd(A, B))
+
+
+# 16435 스네이크버드
+# N, L = map(int, input().split())
+# hs = sorted(list(map(int, input().split())))
+
+# for h in hs:
+#     if h <= L:
+#         L += 1
+#     else:
+#         break
+# print(L)
+
+
+# 2294 동전 2
+# n, k = map(int, input().split())
+# nums = [int(input()) for _ in range(n)]
+# dp = [0] + [-1]*k
+
+# for num in nums:
+#     for idx in range(num, k+1):
+#         if dp[idx-num] != -1:
+#             if dp[idx] == -1:
+#                 dp[idx] = dp[idx-num]+1
+#             else:
+#                 dp[idx] = min(dp[idx], dp[idx-num]+1)
+# print(dp[k])
+
+
+# 12015 가장 긴 증가하는 부분 수열 2
+# 직접 구현 성공.. wow !
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = list(map(int, input().split()))
+
+# dp = [0]*N
+# values, level = [-1]*N, 0
+# values[0] = ns[0]
+# # print(values)
+
+# for i in range(1, N):
+#     if values[level] < ns[i]:
+#         level += 1
+#         dp[i] = level
+#         values[level] = ns[i]
+#         continue
+
+#     target_idx = -1
+#     # bot, top → idx 접근
+#     bot, top = 0, level
+#     while bot <= top:
+#         mid = (bot+top)//2
+
+#         if values[mid] < ns[i]:
+#             bot = mid+1
+#         else: # values[mid] >= ns[i]:
+#             top = mid-1
+#             target_idx = mid
+
+#     values[target_idx] = ns[i]
+#     dp[i] = target_idx
+#     # print(i, target_idx, dp, values)
+
+# # print(dp)
+# # print(values)
+# print(max(dp)+1)
