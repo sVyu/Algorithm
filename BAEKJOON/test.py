@@ -18891,7 +18891,7 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 # N = int(input())
 # ns = list(map(int, input().split()))
 
-# dp = [0]*N
+# ans = [0]*N
 # values, level = [-1]*N, 0
 # values[0] = ns[0]
 # # print(values)
@@ -18899,7 +18899,7 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 # for i in range(1, N):
 #     if values[level] < ns[i]:
 #         level += 1
-#         dp[i] = level
+#         ans[i] = level
 #         values[level] = ns[i]
 #         continue
 
@@ -18916,9 +18916,42 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 #             target_idx = mid
 
 #     values[target_idx] = ns[i]
-#     dp[i] = target_idx
-#     # print(i, target_idx, dp, values)
+#     ans[i] = target_idx
+#     # print(i, target_idx, ans, values)
 
-# # print(dp)
+# # print(ans)
 # # print(values)
-# print(max(dp)+1)
+# print(max(ans)+1)
+
+
+# 2629 양팔저울
+# def solve():
+#     N = int(input())
+#     ns = [0] + list(map(int, input().split()))
+#     M = int(input())
+#     ms = list(map(int, input().split()))
+#     # print(ms)
+#     w = 30001
+
+#     dp = [[0]*w for _ in range(N+1)]
+#     for i in range(1, N+1):
+#         # \\\\\\
+#         for y in range(w-ns[i]):
+#             dp[i][y+ns[i]] += dp[i-1][y]
+
+#         # //////
+#         for y in range(ns[i], w):
+#             dp[i][y-ns[i]] += dp[i-1][y]
+
+#         # ││││││
+#         for y in range(w):
+#             dp[i][y] += dp[i-1][y]
+
+#         dp[i][ns[i]+15000] += 1
+#         dp[i][-ns[i]+15000] += 1
+#     # print(dp[N][15000:15030])
+
+#     for m in ms:
+#         print("Y", end=' ') if (m <= 15000) and (dp[N][m+15000] > 0) else print("N", end=' ')
+
+# solve()
