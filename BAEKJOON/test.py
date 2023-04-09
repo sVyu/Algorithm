@@ -18955,3 +18955,58 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 #         print("Y", end=' ') if (m <= 15000) and (dp[N][m+15000] > 0) else print("N", end=' ')
 
 # solve()
+
+
+# 14003 가장 긴 증가하는 부분 수열 5
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e7))
+
+# def btr(A, pre_idxs, i):
+#     if i != -1:
+#         btr(A, pre_idxs, pre_idxs[i])
+#         print(A[i], end=' ')
+
+# def solve():
+#     N = int(input())
+#     A = list(map(int, input().split()))
+
+#     # values : 현idx, value
+#     values, level, updated_idx = [[-1, 0] for _ in range(N)], 0, 0
+#     values[0] = [0, A[0]]
+#     # print(values)
+#     pre_idxs = [-1]*N
+
+#     for i in range(1, N):
+#         if A[i] > values[level][1]:
+#             level += 1
+#             updated_idx = i
+#             values[level] = [i, A[i]]
+#             pre_idxs[i] = values[level-1][0]
+#             continue
+
+#         # target_level 찾기
+#         bot, top = 0, level
+#         target = -1
+#         while bot <= top:
+#             mid = (bot+top)//2
+#             if A[i] > values[mid][1]:
+#                 bot = mid+1
+#             else: # A[i] <= values[mid][1]:
+#                 top = mid-1
+#                 target = mid
+
+#         values[target] = [i, A[i]]
+#         if target != 0:
+#             pre_idxs[i] = values[target-1][0]
+
+#     # print(values, pre_idxs, updated_idx, sep='\n')
+#     print(level+1)
+#     btr(A, pre_idxs, updated_idx)
+
+# solve()
+
+
+# 15963 CASIO
+# N, M = map(int, input().split())
+# print(1 if N == M else 0)
