@@ -18958,9 +18958,9 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 
 
 # 14003 가장 긴 증가하는 부분 수열 5
-# import sys
-# input = sys.stdin.readline
-# sys.setrecursionlimit(int(1e7))
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(int(1e7))
 
 # def btr(A, pre_idxs, i):
 #     if i != -1:
@@ -19010,3 +19010,118 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 # 15963 CASIO
 # N, M = map(int, input().split())
 # print(1 if N == M else 0)
+
+
+# # 17388 와글와글 숭고한
+# S, K, H = map(int, input().split())
+
+# if S+K+H >= 100:
+#     print("OK")
+# elif S < K and S < H:
+#     print("Soongsil")
+# elif K < S and K < H:
+#     print("Korea")
+# else:
+#     print("Hanyang")
+
+
+# 1100 하얀 칸
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     board = [list(input().rstrip()) for _ in range(8)]
+#     # print(board)
+
+#     ans = 0
+#     for x in range(8):
+#         for y in range(8):
+#             if (x+y) % 2 == 0 and board[x][y] == 'F':
+#                 ans += 1
+#     print(ans)
+
+# solve()
+
+
+# 15439 베라의 패션
+# N = int(input())
+# print(N*(N-1))
+
+
+# 5555 반지
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     ring = input().rstrip()
+#     ans = 0
+#     for _ in range(int(input())):
+#         target = str(input().rstrip())
+#         target *= 2
+#         # print(target)
+#         if ring in target:
+#             ans += 1
+#     print(ans)
+
+# solve()
+
+
+# 12779 상품 is 뭔들
+# import math
+
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def solve():
+#     a, b = map(int, input().split())
+#     # k = int(math.sqrt(b)) - int(math.sqrt(a))
+#     k = math.isqrt(b) - math.isqrt(a)
+#     gcd_val = gcd(k, b-a)
+#     print(f'{k//gcd_val}/{(b-a)//gcd_val}' if k != 0 else 0)
+
+# solve()
+
+
+# ??
+# print(math.sqrt(1152921504606846976))
+# print(math.sqrt(1152921504606846975))
+
+# print(math.isqrt(1152921504606846976))
+# print(math.isqrt(1152921504606846975))
+
+
+# 4485 녹색 옷 입은 애가 젤다지?
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, INF, cnt = -1, int(2e5), 0
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     while (N != 0):
+#         N = int(input())
+#         if N == 0:
+#             break
+#         cnt += 1
+
+#         board = [list(map(int, input().split())) for _ in range(N)]
+#         rupee = [[INF]*N for _ in range(N)]
+#         # print(rupee)
+#         rupee[0][0] = board[0][0]
+
+#         q = deque([[0, 0]])
+#         while q:
+#             x, y = q.popleft()
+#             for px, py in inc_xy:
+#                 nx, ny = x+px, y+py
+#                 if 0 <= nx < N and 0 <= ny < N:
+#                     if rupee[nx][ny] > rupee[x][y] + board[nx][ny]:
+#                         rupee[nx][ny] = rupee[x][y] + board[nx][ny]
+#                         q.append([nx, ny])
+
+#         print(f'Problem {cnt}: {rupee[N-1][N-1]}')
+
+# solve()
