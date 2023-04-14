@@ -18958,9 +18958,9 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 
 
 # 14003 가장 긴 증가하는 부분 수열 5
-import sys
-input = sys.stdin.readline
-sys.setrecursionlimit(int(1e7))
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e7))
 
 # def btr(A, pre_idxs, i):
 #     if i != -1:
@@ -19123,5 +19123,204 @@ sys.setrecursionlimit(int(1e7))
 #                         q.append([nx, ny])
 
 #         print(f'Problem {cnt}: {rupee[N-1][N-1]}')
+
+# solve()
+
+
+# 17130 토끼가 정보섬에 올라온 이유
+'''
+3 4
+R..O
+####
+CCCO
+[정답] 0
+
+1 4
+ROCO
+[정답] 1
+
+1 1
+R
+[정답] -1
+
+2 2
+..
+.R
+[정답] -1
+'''
+
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(input().rstrip()) for _ in range(N)]
+#     dp = [[0]*M for _ in range(N)]
+#     ans = 0
+#     inc_x = [-1, 0, 1]
+
+#     for y in range(1, M):
+#         for x in range(N):
+#             if board[x][y] == '#':
+#                 continue
+
+#             for px in inc_x:
+#                 if x == 0 and px == -1:
+#                     continue
+#                 elif x == N-1 and px == 1:
+#                     continue
+#                 dp[x][y] = max(dp[x][y], dp[x+px][y-1])
+
+#             if board[x][y] == 'C':
+#                 dp[x][y] += 1
+#             elif board[x][y] == 'O':
+#                 ans = max(ans, dp[x][y])
+
+#     # for x in range(N):
+#     #     # print(board[x])
+#     #     print(dp[x])
+
+#     print(ans if ans != 0 else -1)
+
+# solve()
+
+
+# 새로 짠 코드
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(input().rstrip()) for _ in range(N)]
+#     dp = [[0]*M for _ in range(N)]
+#     ans = -1
+#     inc_x = [-1, 0, 1]
+#     xy_set = set()
+
+#     q = deque()
+#     for x in range(N):
+#         for y in range(M):
+#             if board[x][y] == 'R':
+#                 q.append([x, y])
+
+#     if q[0][1] == M-1:
+#         print(-1)
+#         return
+
+#     while q:
+#         x, y = q.popleft()
+#         # print(x, y)
+#         if board[x][y] == 'C':
+#             dp[x][y] += 1
+
+#         for px in inc_x:
+#             nx = x+px
+#             if not (0 <= nx < N):
+#                 continue
+#             elif board[nx][y+1] == '#':
+#                 continue
+#             elif board[nx][y+1] == 'O':
+#                 ans = max(ans, dp[x][y])
+
+#             # 'O' / 'C' / '.'
+#             if y < M-2:
+#                 dp[nx][y+1] = max(dp[x][y], dp[nx][y+1])
+#                 if tuple([nx, y+1]) not in xy_set:
+#                     xy_set.add(tuple([nx, y+1]))
+#                     q.append([nx, y+1])
+
+#     print(ans)
+
+# solve()
+
+
+# 1038 감소하는 수
+'''
+9876543210
+[정답] 1022
+'''
+# def btr(s, e, max_l, v, N, cnt):
+#     for i in range(s, e):
+#         if s != 0:
+#             # return btr(s-1, i, max_l, now_l+1, 10*v+i, N, cnt)
+#             ans = btr(s-1, i, max_l, 10*v+i, N, cnt)
+#             if ans != None:
+#                 return ans
+#         else:
+#             cnt[0] += 1
+#             # print(cnt, 10*v, i)
+#             if cnt[0] == N:
+#                 return 10*v+i
+
+# def solve():
+#     N = int(input())
+#     cnt, ans = [-1], -1
+
+#     # max_l : 1 ~ 10 (9876543210)
+#     for max_l in range(1, 11):
+#         ans = btr(max_l-1, 10, max_l, 0, N, cnt)
+#         if ans != None:
+#             break
+
+#     print(ans if ans != None else -1)
+
+# solve()
+
+
+# 2981 검문
+# a % M == k 이고 b % M == k 라면 (a-b) % M == 0
+# import sys
+# input = sys.stdin.readline
+# import math
+
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def divisors(n):
+#     divs = set({n})
+#     for i in range(2, math.isqrt(n)+1):
+#         if n % i == 0:
+#             divs.add(i)
+#             divs.add(n//i)
+#     # print(divs)
+#     return sorted(divs)
+
+# def solve():
+#     N = int(input())
+#     ns = [int(input()) for _ in range(N)]
+#     gaps = [abs(ns[i]-ns[j]) for i in range(N) for j in range(i+1, N)]
+#     # print(gaps)
+
+#     gcd_val = gaps[0]
+#     for gap in gaps[1:]:
+#         gcd_val = gcd(gcd_val, gap)
+#     # print(gcd_val)
+
+#     print(*divisors(gcd_val))
+
+# solve()
+
+
+# 17386 선분 교차 1
+# 참고1 : https://degurii.tistory.com/47#prev
+# 참고2 : https://imucoding.tistory.com/1059
+# def ccw(x1, y1, x2, y2, x3, y3):
+#     a = x1*y2 + x2*y3 + x3*y1
+#     b = y1*x2 + y2*x3 + y3*x1
+#     return a-b
+
+# def solve():
+#     x1, y1, x2, y2 = map(int, input().split())
+#     x3, y3, x4, y4 = map(int, input().split())
+
+#     if ccw(x1, y1, x2, y2, x3, y3)*ccw(x1, y1, x2, y2, x4, y4) < 0 and\
+#         ccw(x3, y3, x4, y4, x1, y1)*ccw(x3, y3, x4, y4, x2, y2) < 0:
+#         print(1)
+#     else:
+#         print(0)
 
 # solve()
