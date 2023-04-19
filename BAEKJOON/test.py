@@ -19324,3 +19324,261 @@ R
 #         print(0)
 
 # solve()
+
+
+# 13171
+'''
+1000000000000000000
+1000000000000000000
+'''
+# 1e18? 2^10 ≒ 10e3
+# A, X = int(input()), int(input())
+# mod = int(1e9+7)
+# # print(mod)
+
+# bins, tmp_X = [], X
+# while tmp_X > 0:
+#     bins.append(tmp_X%2)
+#     tmp_X //= 2
+# # print(bins)
+
+# len_bins = len(bins)
+# muls = [0]*len_bins
+# muls[0] = (A%mod)
+# for i in range(1, len_bins):
+#     muls[i] = (muls[i-1]**2)%mod
+# # print(muls)
+
+# ans = 1
+# for i in range(len_bins):
+#     if bins[i] == 1:
+#         ans = (ans*muls[i])%mod
+# print(ans)
+
+
+# 11758 CCW
+# x1, y1 = list(map(int, input().split()))
+# x2, y2 = list(map(int, input().split()))
+# x3, y3 = list(map(int, input().split()))
+
+# ccw =  (x1*y2 + x2*y3 + x3*y1) - (y1*x2 + y2*x3 + y3*x1)
+# if ccw > 0:
+#     print(1)
+# elif ccw < 0:
+#     print(-1)
+# else:
+#     print(0)
+
+
+# 2022 사다리
+# import math
+# x, y, c = map(float, input().split())
+# # print(x, y, c)
+
+# bot, top = 0, min(x, y)
+# target = 1/c
+# ans = -1
+# while (bot - top) <= -0.0001:
+#     # print(bot, top)
+#     mid = (bot+top)/2
+
+#     now_val = (1/math.sqrt(x**2-mid**2)) + (1/math.sqrt(y**2-mid**2))
+#     if now_val >= target:
+#         ans = mid
+#         top = mid
+#     else:
+#         bot = mid
+
+# print('{0:.3f}'.format(ans))
+
+
+# 2410 2의 멱수의 합
+'''
+15
+26
+'''
+# 시간 복잡도 : NlogN → 1e6 기준 약 2천만이므로 1억당 1초라 할 때 0.2초
+# N = int(input())
+# mod = int(1e9)
+
+# dp = [0]*(N+1) 
+# dp[0] = 1
+
+# for i in range(1, N+1):
+#     if i % 2 == 1:
+#         dp[i] = dp[i-1]
+#     else: # i is even(짝수)
+#         dp[i] = (i//2)+1
+#         k = 4
+#         while k <= i:
+#             dp[i] += dp[i-k]
+#             k *= 2
+#     dp[i] %= mod
+
+# print(dp)
+# # print(dp[N])
+
+
+# 힌트 참고
+# N = int(input())
+# dp = [1]+[0]*N
+# mod = int(1e9)
+
+# for i in range(1, N+1):
+#     if i % 2 == 1:
+#         dp[i] = dp[i-1]
+#     else:
+#         dp[i] = dp[i-1]+dp[i//2]
+#         dp[i] %= mod
+
+# print(dp[N])
+
+
+# 25551 멋쟁이 포닉스
+'''
+5 1
+2 5
+5 2
+[정답] 3
+'''
+# MW, MB = map(int, input().split())
+# TW, TB = map(int, input().split())
+# PW, PB = map(int, input().split())
+
+# DTW, DTB = min(MB, TW, PB), min(MW, TB, PW)
+# print(DTW*2 if DTW==DTB else min(DTW,DTB)*2+1)
+
+
+# 16918 봄버맨
+'''
+3 3 5
+.O.
+OOO
+.O.
+
+[정답]
+OOO
+OOO
+OOO
+'''
+# import sys
+# input = sys.stdin.readline
+
+# def print_board(board, R):
+#     for x in range(R):
+#         print(*board[x], sep='')
+
+# def make_board(board, R, C):
+#     new_board = [['O']*C for _ in range(R)]
+#     bombs = [[x, y] for x in range(R) for y in range(C) if board[x][y] == 'O']
+#     # print(bombs)
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     for x, y in bombs:
+#         new_board[x][y] = '.'
+#         for px, py in inc_xy:
+#             nx, ny = x+px, y+py
+#             if 0 <= nx < R and 0 <= ny < C:
+#                 new_board[nx][ny] = '.'
+#     return new_board
+
+# def solve():
+#     R, C, N = map(int, input().split())
+#     board = [list(input().rstrip()) for _ in range(R)]
+
+#     if (N-2)%2 == 0:
+#         print_board([['O']*C for _ in range(R)], R)
+#         return
+
+#     board_3sec = make_board(board, R, C)
+#     if (N-2)%4 == 3:
+#         if N == 1:
+#             print_board(board, R)
+#         else: # N >= 5
+#             # 1초 후랑 5초 후가 다른 경우가 있음
+#             board_5sec = make_board(board_3sec, R, C)
+#             print_board(board_5sec, R)
+#     else: #(N-2)%4 == 1:
+#         print_board(board_3sec, R)
+
+# solve()
+
+
+# 13398 연속합 2
+# def solve():
+#     N = int(input())
+#     ns = list(map(int, input().split()))
+#     ans = ns[0]
+
+#     dp = [[ns[0], -1], [0, -1]]
+#     for i in range(1, N):
+#         dp[0][1] = max(ns[i], dp[0][0]+ns[i])
+#         dp[1][1] = max(dp[0][0], dp[1][0]+ns[i])
+#         ans = max(ans, dp[0][1], dp[1][1])
+
+#         dp[0][0] = dp[0][1]
+#         dp[1][0] = dp[1][1]
+
+#     print(ans)
+
+# solve()
+
+
+# 2473 세 용액
+# N = int(input())
+# ns = sorted(list(map(int, input().split())))
+# # print(ns)
+# ans, closest_sum = [], int(3e9)+1
+
+# out_l, out_r = 0, N-1
+# while out_l < out_r-1:
+#     in_l, in_r = out_l+1, out_r-1
+
+#     while in_l <= in_r:
+#         mid = (in_l+in_r)//2
+#         now_sum = abs(ns[out_l] + ns[mid] + ns[out_r])
+#         if closest_sum > now_sum:
+#             ans = [ns[out_l], ns[mid], ns[out_r]]
+#             closest_sum = now_sum
+
+#         if now_sum >= 0:
+#             in_r = mid-1
+#         else:
+#             in_l = mid+1
+
+#     if ns[out_l] + ns[out_r] >= 0:
+#         out_r -= 1
+#     else:
+#         out_l += 1
+
+# print(*ans)
+
+'''
+5
+-5 -1 2 3 4
+'''
+# 2try - clear
+# Python3 - 시간 초과, PyPy3 - 통과 (240ms)
+
+# N = int(input())
+# ns = sorted(list(map(int, input().split())))
+# # print(ns)
+# ans, closest_sum = [], int(3e9)+1
+
+# for mid in range(1, N-1):
+#     l, r = mid-1, mid+1
+#     while 0 <= l and r <= N-1:
+#         now_sum = ns[l]+ns[mid]+ns[r]
+#         # print(l, mid, r, closest_sum, now_sum)
+#         if closest_sum > abs(now_sum):
+#             closest_sum = abs(now_sum)
+#             ans = [ns[l], ns[mid], ns[r]]
+
+#         if now_sum >= 0:
+#             l -= 1
+#         else:
+#             r += 1
+
+# print(*ans)
+
+
