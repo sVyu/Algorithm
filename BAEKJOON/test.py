@@ -19582,3 +19582,608 @@ OOO
 # print(*ans)
 
 
+# 10942 팰린드롬?
+'''
+3
+1 1 1
+1
+1 2
+'''
+# import sys
+# input = sys.stdin.readline
+
+# def palindrome_check(N, ns, dp, l, r):
+#     while 0 <= l and r <= N-1:
+#         if ns[l] == ns[r]:
+#             dp[l][r] = 1
+#             l -= 1
+#             r += 1
+#         else:
+#             break
+
+# def solve():
+#     N = int(input())
+#     ns = list(map(int, input().split()))
+
+#     dp = [[0]*N for _ in range(N)]
+#     for i in range(N):
+#         palindrome_check(N, ns, dp, i, i)
+#         palindrome_check(N, ns, dp, i, i+1)
+
+#     # for x in range(N):
+#     #     print(dp[x])
+
+#     for _ in range(int(input())):
+#         S, E = map(int, input().split())
+#         print(dp[S-1][E-1])
+
+# solve()
+
+
+# 14912 숫자 빈도수
+# n, d = map(int, input().split())
+# ans = 0
+# for i in range(1, n+1):
+#     k = i
+#     while k > 0:
+#         if k % 10 == d:
+#             ans += 1
+#         k //= 10
+
+# print(ans)
+
+
+# 1009 분산 처리
+# nums = dict()
+# nums[0] = [10]
+# nums[1] = [1]
+# nums[2] = [2, 4, 8, 6]
+# nums[3] = [3, 9, 7, 1]
+# nums[4] = [4, 6]
+# nums[5] = [5]
+# nums[6] = [6]
+# nums[7] = [7, 9, 3, 1]
+# nums[8] = [8, 4, 2, 6]
+# nums[9] = [9, 1]
+
+# for _ in range(int(input())):
+#     ans = 1
+#     a, b = map(int, input().split())
+#     a %= 10
+#     print(nums[a][(b-1)%len(nums[a])])
+
+
+# 1024 수열의 합
+# def solve():
+#     N, L = map(int, input().split())
+#     for i in range(L, 101):
+#         # 리스트의 첫 숫자 k를 계산해서 조건에 부합하는지 체크
+#         k = (N/i)-(i-1)/2
+#         if k >= 0 and k == float(int(k)):
+#             # print(i, k)
+#             for ans_num in range(int(k), int(k)+i):
+#                 print(ans_num, end=' ')
+#             return
+
+#     print(-1)
+
+# solve()
+
+
+# 4659 비밀번호 발음하기
+# import sys
+# input = sys.stdin.readline
+
+# while True:
+#     S = input().rstrip()
+#     if S == 'end':
+#         break
+#     # print(S)
+
+#     pos = True
+#     vowel_cnt = 0
+#     cond2 = [0, 0]
+#     pre_s = ''
+
+#     for s in S:
+#         if s in "aeiou":
+#             vowel_cnt += 1
+#             cond2[0] += 1
+#             cond2[1] = 0
+#         else:
+#             cond2[0] = 0
+#             cond2[1] += 1
+
+#         if cond2[0] == 3 or cond2[1] == 3:
+#             pos = False
+#             break
+
+#         if pre_s == s:
+#             if s in 'eo':
+#                 continue
+#             pos = False
+#             break
+#         pre_s = s
+
+#     if vowel_cnt == 0:
+#         pos = False
+
+#     print(f'<{S}> is ', '' if pos else 'not ', 'acceptable.', sep='')
+
+
+# 3048 개미
+# 위치 변경에 대해서 일괄 적용해야한다
+# N1, N2 = map(int, input().split())
+# ants1, ants2 = list(input()), list(input())
+# ans = [[a, 0] for a in ants1[::-1]] + [[a, 1] for a in ants2]
+# # print(ans)
+
+# total_len = N1+N2
+# for _ in range(int(input())):
+#     pre_a, changing_idxs = -1, []
+#     for idx in range(total_len):
+#         if pre_a == 0 and ans[idx][1] == 1:
+#             changing_idxs.append(idx)
+#         pre_a = ans[idx][1]
+
+#     for idx in changing_idxs:
+#         ans[idx-1], ans[idx] = ans[idx], ans[idx-1]
+#     # print(ans)
+
+# print(''.join(a[0] for a in ans))
+
+
+# 11688 최소공배수 찾기
+# 다시 보니까 좀 더 간단하게 풀 수 있다
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def lcm(a, b):
+#     return a*b//gcd(a, b)
+
+# def sieve(a, b):
+#     s = [True]*(max(a, b)+1)
+#     len_s = len(s)
+#     for i in range(2, len_s):
+#         if s[i]:
+#             for ii in range(2*i, len_s, i):
+#                 s[ii] = False
+#     return [i for i in range(2, len_s) if s[i]]
+
+# def solve():
+#     a, b, L = list(map(int, input().split()))
+#     if L % lcm(a,b) != 0:
+#         print(-1)
+#         return
+
+#     primes = sieve(a, b)
+#     # print(primes)
+
+#     c = 1
+#     for prime in primes:
+#         if a * b == 1:
+#             break
+
+#         cnt = 0
+#         while True:
+#             can_divide_a, can_divide_b = (a % prime == 0), (b % prime == 0)
+#             if not (can_divide_a | can_divide_b):
+#                 break
+
+#             cnt += 1
+#             if can_divide_a: a //= prime
+#             if can_divide_b: b //= prime
+#             L //= prime # 최소공배수를 만족하므로 조건문 없이 가능
+#             # print(prime, a, b, L)
+
+#         if L % prime == 0:
+#             while L % prime != 0:
+#                 L //= prime
+#                 cnt += 1
+#             c *= prime**cnt
+
+#     # print(c, L)
+#     print(c*L)
+
+# solve()
+
+
+# 13172 ∑
+# def inverse(n, X):
+#     # b^(X-2) ≡ b^(-1) (mod X)
+#     target = X-2
+#     bins = []
+#     while target > 0:
+#         bins.append(target%2)
+#         target//=2
+#     # print("bins", bins)
+
+#     len_bins = len(bins)
+#     muls = [0]*len_bins
+#     muls[0] = n % X
+#     for i in range(1, len_bins):
+#         muls[i] = (muls[i-1]**2) % X
+#         # muls[i] = ((muls[i-1]%X)**2) % X
+#     # print("muls", muls)
+
+#     inverse_val = 1
+#     for i in range(len_bins):
+#         if bins[i]:
+#             inverse_val = (inverse_val * muls[i]) % X
+#     # print("inverse_val", inverse_val)
+#     return inverse_val
+
+# def solve():
+#     X = int(1e9)+7
+#     ans = 0
+#     for _ in range(int(input())):
+#         Ni, Si = map(int, input().split())
+#         # E(X + Y) = E(X) + E(Y)
+#         ans += Si*inverse(Ni, X)
+#     print(ans % X)
+
+# solve()
+
+
+# 개선 코드
+# def power(n, p, X):
+#     # print(n, p, X)
+#     if p == 1:
+#         return n
+#     # 홀수
+#     elif p % 2: 
+#         return (n * power(n, p-1, X)) % X
+#     # 짝수
+#     else:
+#         tmp = power(n, p//2, X)
+#         return (tmp**2) % X
+
+# def solve():
+#     ans, X = 0, int(1e9)+7
+#     for _ in range(int(input())):
+#         Ni, Si = map(int, input().split())
+#         ans += Si*power(Ni, X-2, X)
+#     print(ans % X)
+
+# solve()
+
+
+# 1075 나누기
+# N, F = int(input()), int(input())
+
+# N = (N//100)*100
+# while N % F != 0:
+#     N += 1
+
+# print('{0:0>2}'.format(N%100))
+
+
+# 4948 베르트랑 공준
+# limit = 2*123456
+# s = [False, False] + [True]*(limit-1)
+# for i in range(2, limit+1):
+#     if s[i]:
+#         for ii in range(2*i, limit+1, i):
+#             s[ii] = False
+
+# cnt = [0]*(limit+1)
+# for i in range(2, limit+1):
+#     cnt[i] = cnt[i-1]
+#     if s[i]:
+#         cnt[i] += 1
+
+# n = int(input())
+# while n > 0:
+#     print(cnt[2*n]-cnt[n])
+#     n = int(input())
+
+
+# 11049 행렬 곱셈 순서
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = [list(map(int, input().split())) for _ in range(N)]
+# ns = [ns[i][0] for i in range(N)] + [ns[-1][1]]
+# # print(ns)
+
+# INF = int(2**31)-1
+# dp = [[INF]*(N+2) for _ in range(N+2)]
+
+# for x in range(N+2):
+#     if x-1 >= 0:
+#         dp[x][x-1] = 0
+#     dp[x][x] = 0
+#     if x+1 < (N+2):
+#         dp[x][x+1] = 0
+
+# # 전체 숫자 : N+1개
+# # w : width 길이, s : 시작점 위치, i : 기준점 위치
+# for w in range(3, N+2):
+#     for s in range(0, N+2-w):
+#         # print(w, s)
+#         for i in range(1, w-1):
+#             dp[s][s+w-1] = min(dp[s][s+w-1], dp[s][s+i]+dp[s+i][s+w-1]+(ns[s]*ns[s+i]*ns[s+w-1]))
+
+# print(dp[0][N])
+
+
+# 2143 두 배열의 합
+'''
+5
+3
+3 3 3
+3
+2 2 2
+'''
+# def make_new_s(n, ns):
+#     new_s = [0]*(n*(n+1)//2)
+#     k = 0
+#     for i in range(n):
+#         for j in range(i, n):
+#             if i == j:
+#                 new_s[k] = ns[i]
+#             else:
+#                 new_s[k] = new_s[k-1]+ns[j]
+#             k += 1
+#     return new_s
+
+# def solve():
+#     T = int(input())
+#     n, ns = int(input()), list(map(int, input().split()))
+#     m, ms = int(input()), list(map(int, input().split()))
+#     # print(ns, ms)
+
+#     new_ns, new_ms = make_new_s(n, ns), sorted(make_new_s(m, ms))
+#     # print(new_ns, new_ms, sep='\n')
+
+#     ans, len_new_ms = 0, len(new_ms)
+#     for nn in new_ns:
+#         low_bot, low_top = 0, len_new_ms-1
+#         high_bot, high_top = 0, len_new_ms-1
+#         low_i, high_i = -1,-1
+
+#         while low_bot <= low_top:
+#             mid = (low_bot+low_top)//2
+#             if new_ms[mid]+nn >= T:
+#                 low_i = mid
+#                 low_top = mid-1
+#             else:
+#                 low_bot = mid+1
+
+#         while high_bot <= high_top:
+#             # print("bot, top", high_bot, high_top)
+#             mid = (high_bot+high_top)//2
+#             if new_ms[mid]+nn <= T:
+#                 high_i = mid
+#                 high_bot = mid+1
+#             else:
+#                 high_top = mid-1
+
+#         # print("l, h", low_i, high_i)
+#         if low_i != -1 and high_i != -1 and new_ms[low_i] == new_ms[high_i]:
+#             ans += (high_i-low_i)+1
+
+#     print(ans)
+
+# solve()
+
+
+# 2166 다각형의 면적
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N = int(input())
+#     points = [list(map(int, input().split())) for _ in range(N)]
+#     # print(points)
+
+#     ans = 0
+#     x1, y1 = points[0]
+#     for i in range(1, N-1):
+#         x2, y2 = points[i]
+#         x3, y3 = points[i+1]
+#         ans += ((x1*y2 + x2*y3 + x3*y1) - (y1*x2 + y2*x3 + y3*x1))
+#     print('{:.1f}'.format(abs(ans)/2))
+
+# solve()
+
+
+# 2342 Dance Dance Revolution
+# def cal_energy(std, k):
+#     if std == 0:
+#         return 2
+#     elif std == k:
+#         return 1
+#     # std : 1 ~ 4
+#     elif abs(std-k) != 2:
+#         return 3
+#     else:
+#         return 4
+
+# ns = list(map(int, input().split()))
+# # print(ns)
+
+# INF = 4*(int(1e5))+1
+# pre_dp = [[INF]*5 for _ in range(5)]
+# pre_dp[0][0] = 0
+
+# for n in ns[:-1]:
+#     # n : 1 ~ 4
+#     now_dp = [[INF]*5 for _ in range(5)]
+#     for x in range(5):
+#         for y in range(5):
+#             if pre_dp[x][y] != INF:
+#                 now_dp[n][y] = min(now_dp[n][y], pre_dp[x][y]+cal_energy(x, n))
+#                 now_dp[x][n] = min(now_dp[x][n], pre_dp[x][y]+cal_energy(y, n))
+
+#     # for x in range(5):
+#     #     print(now_dp[x])
+#     # print()
+
+#     pre_dp = now_dp
+
+# ans = min(min(pre_dp[x]) for x in range(5))
+# print(ans if ans != INF else 0)
+
+
+# 2665 미로 만들기
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     n = int(input())
+#     board = [list(map(int, input().rstrip())) for _ in range(n)]
+#     board = [[0 if board[x][y] == 1 else 1 for y in range(n)] for x in range(n)]
+#     # print(board)
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     INF = 2501
+#     cnts = [[INF]*n for _ in range(n)]
+#     # cnt[0][0] = 0
+
+#     que = deque([[0, 0, 0]])
+#     while que:
+#         x, y, cnt = que.popleft()
+#         if cnts[x][y] > cnt:
+#             cnts[x][y] = cnt
+#             for px, py in inc_xy:
+#                 nx, ny = x+px, y+py
+#                 if 0 <= nx < n and 0 <= ny < n:
+#                     next_cnt = cnt + board[nx][ny]
+#                     if cnts[nx][ny] > next_cnt:
+#                         que.append([nx, ny, next_cnt])
+#                         # print(que)
+
+#     # for x in range(n):
+#     #     print(cnts[x])
+
+#     print(cnts[n-1][n-1])
+
+# solve()
+
+
+# 16946 벽 부수고 이동하기 4
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     board = [list(map(int, input().rstrip())) for _ in range(N)]
+#     cnt_board, area_board = [[0]*M for _ in range(N)], [[0]*M for _ in range(N)]
+#     visited = [[False]*M for _ in range(N)]
+#     # print(board)
+
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+#     zero_que, sec_zero_que = deque(), deque()
+#     area_num = 0
+
+#     # 0인 블럭들 처리
+#     for x in range(N):
+#         for y in range(M):
+#             if board[x][y] == 0 and not visited[x][y]:
+#                 visited[x][y] = True
+#                 zero_que.append([x, y])
+#                 area_num += 1
+
+#             # 0인 곳을 기점으로 bfs 해서 몇 개 있는지 cnt
+#             cnt = 0
+#             while zero_que:
+#                 cnt += 1
+#                 sec_zero_que.append(zero_que[0])
+#                 kx, ky = zero_que.popleft()
+
+#                 for px, py in inc_xy:
+#                     nx, ny = kx+px, ky+py
+#                     if 0 <= nx < N and 0 <= ny < M and board[nx][ny] == 0 and not visited[nx][ny]:
+#                         visited[nx][ny] = True
+#                         zero_que.append([nx, ny])
+
+#             # 0으로 이어진 좌표마다 해당 영역의 total 개수를 저장
+#             cnt %= 10
+#             # print("szq", sec_zero_que)
+#             while sec_zero_que:
+#                 kx, ky = sec_zero_que.popleft()
+#                 cnt_board[kx][ky] = cnt
+#                 area_board[kx][ky] = area_num
+
+#     # for x in range(N):
+#     #     print(area_board[x])
+
+#     # 상하좌우 합 계산
+#     for x in range(N):
+#         for y in range(M):
+#             if board[x][y] == 1:
+#                 area_set = set()
+#                 cnt = 1
+#                 for px, py in inc_xy:
+#                     nx, ny = x+px, y+py
+#                     if 0 <= nx < N and 0 <= ny < M and board[nx][ny] == 0:
+#                         if area_board[nx][ny] not in area_set:
+#                             cnt += cnt_board[nx][ny]
+#                             area_set.add(area_board[nx][ny])
+#                 print(cnt%10, end='')
+#             else:
+#                 print(0, end='')
+#         print()
+
+# solve()
+
+
+# 1501 영어 읽기
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+
+# def cnt_arr(arr):
+#     cnt = [0]*52
+#     for w in arr:
+#         ord_w = ord(w)
+#         # 대문자인 경우
+#         if ord_w - 97 < 0:
+#             cnt[ord_w-65] += 1
+#         # 소문자인 경우
+#         else:
+#             # -97+26 == -71
+#             cnt[ord_w-71] += 1
+
+#     return cnt
+
+# def solve():
+#     N = int(input())
+#     words = dict()
+#     for _ in range(N):
+#         word = list(input().rstrip())
+#         # print(word)
+
+#         # cnt = cnt_arr(word[1:-1])
+#         cnt = cnt_arr(word)
+#         # print(cnt[:26])
+#         # print(cnt[26:])
+
+#         key_word = word[0]+word[-1]
+#         if not key_word in words:
+#             words[key_word] = defaultdict(int)
+#         words[key_word][tuple(cnt)] += 1
+#     # print(words)
+
+#     M = int(input())
+#     for _ in range(M):
+#         targets, ans = list(input().rstrip().split()), 1
+
+#         for t in targets:
+#             key_word = t[0]+t[-1]
+#             cnt = cnt_arr(t)
+#             try:
+#                 ans *= words[key_word][tuple(cnt)]
+#             except KeyError:
+#                 ans = 0
+#                 break
+
+#         print(ans)
+
+# solve()
