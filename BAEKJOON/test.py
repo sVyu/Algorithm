@@ -12677,7 +12677,7 @@ dfs/bfs
 
 # 이중 우선순위 큐
 '''
-2
+1
 3
 I 10
 I 10
@@ -20183,6 +20183,175 @@ OOO
 #             except KeyError:
 #                 ans = 0
 #                 break
+
+#         print(ans)
+
+# solve()
+
+
+# 2485 가로수
+# import sys
+# input = sys.stdin.readline
+
+# def gcd(a,b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# N = int(input())
+# ns = sorted([int(input()) for _ in range(N)])
+# # print(ns)
+# gabs = [ns[i+1]-ns[i] for i in range(N-1)]
+# # print(gabs)
+
+# total_gcd = gabs[0]
+# for g in gabs[1:]:
+#     total_gcd = gcd(total_gcd, g)
+# # print(total_gcd)
+
+# ans = 0
+# for g in gabs:
+#     ans += (g - total_gcd) // total_gcd
+# print(ans)
+
+
+'''
+ZZKZZ
+4
+ZZBZZBBZZ
+
+ZZZZAZZZZ
+'''
+# 15927 회문은 회문아니야!!
+# def solve():
+#     S = list(input())
+#     len_S = len(S)
+
+#     for i in range(0, (len_S//2)+1):
+#         if (S[0] != S[len_S-1-i]) | (S[i] != S[len_S-1]):
+#             print(len_S-i)
+#             return
+
+#     print(-1)
+
+# solve()
+
+
+# def solve():
+#     S = list(input())
+#     len_S = len(S)
+
+#     # 전체 검사
+#     for i in range(len_S//2):
+#         if S[i] != S[len_S-1-i]:
+#             print(len_S)
+#             return
+
+#     # 부분 검사
+#     # 하나만 다른 부분이 있어도 가능
+#     pre_A = S[0]
+#     pos = False
+#     for i in range((len_S//2)+1):
+#         if (S[i] != pre_A) or (S[len_S-1-i] != pre_A):
+#             pos = True
+#             break
+
+#     print(len_S-1 if pos else -1)
+
+# solve()
+
+
+# 9328 열쇠
+'''
+3
+4 4
+****
+a**A
+****
+***C
+c
+
+1
+5 9
+*********
+.......a*
+***.*****
+*$Ab*****
+*********
+0
+'''
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def open_doors(i, doors, q):
+#     while doors[i]:
+#         q.append(doors[i].popleft())
+
+# def check(visited, board, x, y, q, doors, keys):
+#     global ans
+
+#     if not visited[x][y] and board[x][y] != '*':
+#         # print(x,y)
+#         visited[x][y] = True
+#         ord_val = ord(board[x][y])
+
+#         # 빈 공간
+#         if board[x][y] == '.':
+#             q.append([x, y])
+#         # 문서
+#         elif board[x][y] == '$':
+#             ans += 1
+#             q.append([x, y])
+#         # A~Z : doors
+#         elif 65 <= ord_val <= 90:
+#             doors[ord_val-65].append([x, y])
+#             if keys[ord_val-65]:
+#                 open_doors(ord_val-65, doors, q)
+#         # a~z : keys
+#         else:
+#             keys[ord_val-97] = True
+#             open_doors(ord_val-97, doors, q)
+#             q.append([x, y])
+
+# def solve():
+#     for _ in range(int(input())):
+#         global ans
+#         ans = 0
+
+#         h, w = map(int, input().split())
+#         board = [list(input().rstrip()) for _ in range(h)]
+#         # for x in range(h):
+#         #     print(board[x])
+#         visited = [[False]*w for _ in range(h)]
+#         inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#         # 열쇠 check
+#         keys = [False]*26
+#         given_keys = list(input().rstrip())
+#         if given_keys[0] != '0':
+#             for key in given_keys:
+#                 keys[ord(key)-97] = True
+#         # print(keys)
+#         doors = [deque() for _ in range(26)]
+
+#         q = deque()
+#         for k in range(w):
+#             for x, y in [[0, k], [h-1, k]]:
+#                 check(visited, board, x, y, q, doors, keys)
+
+#         for k in range(h):
+#             for x, y in [[k, 0], [k, w-1]]:
+#                 check(visited, board, x, y, q, doors, keys)
+#         # print(doors)
+#         # print(keys)
+
+#         while q:
+#             x, y = q.popleft()
+#             for px, py in inc_xy:
+#                 nx, ny = x+px, y+py
+#                 if 0 <= nx < h and 0 <= ny < w:
+#                     check(visited, board, nx, ny, q, doors, keys)
 
 #         print(ans)
 
