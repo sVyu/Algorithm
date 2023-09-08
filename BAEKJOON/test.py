@@ -187,7 +187,7 @@ print(a*b)
 #     row_check += 1
 #     # char = num(input())
 #     # exp_list[row_check].append(char)
-    
+
 # # print(exp_list)
 
 # row_check = 0
@@ -208,7 +208,7 @@ print(a*b)
 #             ans -= 7
 #         else:
 #             print("error\n")
-        
+
 #         col_check += 1
 
 #     print("{0:.2f}".format(ans))
@@ -397,7 +397,7 @@ print(a*b)
 
 #     elif num_list[0][i] == num_list[2][i]:
 #         ans_list.append(num_list[1][i])
-    
+
 #     else:
 #         ans_list.append(num_list[0][i])
 
@@ -447,7 +447,7 @@ print(a*b)
 # else:
 #     if(h == 0):
 #         h = 24
-    
+
 #     h -= 1
 #     m += 15
 
@@ -538,7 +538,7 @@ print(a*b)
 # result_list = []
 # while True:
 #     data_list = list(map(int, input().split()))
-    
+
 #     if (data_list[0] == 0) & (data_list[1] == 0):
 #         break
 #     elif(data_list[1] % data_list[0] == 0):
@@ -641,7 +641,7 @@ print(a*b)
 #             break
 #         else:
 #             continue
-    
+
 #     if(num == sum(div_list)):
 #         print("{0} = ".format(num), end='')
 #         for i in range(len(div_list)-1):
@@ -666,11 +666,11 @@ print(a*b)
 #     if(cooking_time >= 300):
 #         hms_list[0] = cooking_time // 300
 #         cooking_time %= 300
-    
+
 #     if(cooking_time >= 60):
 #         hms_list[1] = cooking_time // 60
 #         cooking_time %= 60
-    
+
 #     hms_list[2] = cooking_time // 10
 
 # print("{0} {1} {2}".format(hms_list[0], hms_list[1], hms_list[2]))
@@ -922,7 +922,7 @@ print(a*b)
 #     count = 0
 #     for j in range(1, num_list[i][0]+1):
 #         if(num_list[i][j] > avg): count += 1    # 평균보다 크면 count+1
-    
+
 #     print('{0:.3f}%'.format(round((count/num_list[i][0]) * 100, 3)))    # 형식에 맞게 출력
 
 # 10757
@@ -1089,7 +1089,7 @@ print(a*b)
 # def tree_binary_search(tree_height_list, top, bot, n, m):
 #     if(top < bot):
 #         return top
-    
+
 #     cutting_height = (top + bot) // 2
 #     sum = sum_cut_tree(tree_height_list, cutting_height, n)
 #     # print(cutting_height, sum)
@@ -1210,7 +1210,7 @@ print(a*b)
 #         for i in range(len(num_list) // 2):
 #             if(num_list[i] == num_list[len(num_list)-1-i]): continue
 #             else: palindrome_check = False
-        
+
 #         if(palindrome_check): print("yes")
 #         else: print("no")
 
@@ -1404,10 +1404,10 @@ print(a*b)
 # while True:
 #     str_list = list(sys.stdin.readline().rstrip())
 #     # print(str_list)
-    
+
 #     if((len(str_list) == 1) & (str_list[0] == '.')):
 #         break
-    
+
 #     stack_list = []
 
 #     symmetry_check = True
@@ -1432,7 +1432,7 @@ print(a*b)
 #                 symmetry_check = False
 #                 break
 #         else: continue
-    
+
 #     # if(len(stack_list) == 0): print("yes")
 #     # else: print("no")
 
@@ -1546,7 +1546,7 @@ print(a*b)
 #             else:
 #                 new_str_list.append(str_list[i])
 #                 i += 1
-        
+
 #         # 새로운 str_list랑 기존 str_list랑 같은 경우 → 무한 루프 → NP
 #         if(new_str_list == str_list):
 #             print("NP")
@@ -1624,7 +1624,7 @@ print(a*b)
 
 # 10859 뒤집어진 소수
 # 4퍼 13퍼 16퍼 91퍼 → 틀렸습니다
-# 4퍼 5퍼 시간 초과 
+# 4퍼 5퍼 시간 초과
 # import math
 # import sys
 
@@ -1680,7 +1680,7 @@ print(a*b)
 
 # new_value = list_to_num(new_num_list)
 
-# # 뒤집어진(new) 숫자와 기존 숫자를 체크해서 둘 다 소수면 yes 아니면 no 
+# # 뒤집어진(new) 숫자와 기존 숫자를 체크해서 둘 다 소수면 yes 아니면 no
 # # print(input_value, new_value)
 # if(prime_num_check(new_value) & prime_num_check(int(input_value))): print("yes")
 # else: print("no")
@@ -1821,7 +1821,7 @@ print(a*b)
 # value = 665
 # while True:
 #     value += 1
-    
+
 #     if('666' in str(value)):
 #         count += 1
 #     if(count == num):
@@ -1881,7 +1881,7 @@ print(a*b)
 #     else: # top
 #         if(len(stack_list) == 0): print(-1)
 #         else: print(stack_list[-1])
-        
+
 #     # print("stack_list : ", stack_list)
 
 
@@ -1984,7 +1984,7 @@ print(a*b)
 # 시간초과 x 2
 # https://www.acmicpc.net/board/view/89276
 # 33퍼 틀렸습니다 x 2
-# 결국 성공 ㅎㅎㅎ 
+# 결국 성공 ㅎㅎㅎ
 
 # import sys
 # # from collections import deque
@@ -2049,7 +2049,7 @@ print(a*b)
 #                 que = que[start_index:]
 #             else:
 #                 que = que[start_index:end_index+1]
-                
+
 #         else:
 #             que.reverse()
 #             # print("reverse", que)
@@ -2276,7 +2276,7 @@ print(a*b)
 #     required_dot = []
 #     for i in range(2):
 #         required_dot.append(2 * standard_dot[i] - overlapped_dot[i])
-    
+
 #     # 답 출력
 #     # print(required_dot)
 #     print("{0:.3f} {1:.3f}".format(required_dot[0], required_dot[1]))
@@ -2314,7 +2314,7 @@ print(a*b)
 #     required_dot = []
 #     for i in range(2):
 #         required_dot.append(2 * standard_dot[i] - overlapped_dot[i])
-    
+
 #     # 답 출력
 #     # print(required_dot)
 #     print("{0:.3f} {1:.3f}".format(required_dot[0], required_dot[1]))
@@ -2371,7 +2371,7 @@ print(a*b)
 #         if(junwons_power > sorted_power_list[i]): junwons_power += sorted_power_list[i]
 #         else:
 #             survive_check = False
-#             break    
+#             break
 #         # print(junwons_power)
 
 # # print(survive_check)
@@ -2465,7 +2465,7 @@ print(a*b)
 #     if(len(stack_list) == 0): stack_list.append(i)
 #     elif(num_list[stack_list[-1]] >= num_list[i]): stack_list.append(i)
 #     else:
-#         # while (len(stack_list) != 0) & (num_list[stack_list[-1]] < num_list[i]):    
+#         # while (len(stack_list) != 0) & (num_list[stack_list[-1]] < num_list[i]):
 #         #     NGE_list[stack_list.pop()] = num_list[i]
 #         while True:
 #             if(len(stack_list) == 0): break
@@ -2515,7 +2515,7 @@ print(a*b)
 #     # n 길이의 최대 cnt 보다 val이 큰 경우
 #     if(val > (n*(n-1))//2):
 #         return -1
-    
+
 #     for i in range(1, n):
 #         now = numbers[i]
 #         j = i - 1
@@ -2702,9 +2702,9 @@ print(a*b)
 #     s, letter = map(str, input().split())
 #     s = int(s)
 #     index = (index + s) % n
-    
+
 #     # 현재 index의 글자가 '?'이 아니면서 입력받은 글자와 다른 경우 (1인덱스 2글자)
-#     if(str_list[index] != '?') & (str_list[index] != letter): 
+#     if(str_list[index] != '?') & (str_list[index] != letter):
 #         normal_check = False
 #         break
 #     # 하나의 글자가 두 개 이상의 index에서 나타나는 경우 (1글자 2인덱스)
@@ -2912,7 +2912,7 @@ print(a*b)
 # N, r, c = map(int, input().split())
 # gap = 2**N
 # count = 0
-# # 기준 점을 잡아서 위쪽 좌우 / 아래쪽 좌우를 나누기 위한 변수 
+# # 기준 점을 잡아서 위쪽 좌우 / 아래쪽 좌우를 나누기 위한 변수
 # standard_x, standard_y = gap//2, gap//2
 
 # def recursion_Z(N, x, y):
@@ -3037,7 +3037,7 @@ print(a*b)
 #                 for j in range(i, len_prime_list):
 #                     if(prime_list[i] + prime_list[j] == n):
 #                         ans_list.append([prime_list[i], prime_list[j], prime_list[j] - prime_list[i]])
-        
+
 #         ans_list.sort(key=lambda x:x[2])
 #         print(ans_list[0][0], ans_list[0][1])
 #         # print(prime_list)
@@ -3107,7 +3107,7 @@ print(a*b)
 #                     #     print("check", index_1, prime_list[index_1], index_2, prime_list[index_2])
 #                     #     os.system("pause")
 #                     #     break
-                
+
 #                 if(find_check): break
 
 # solve()
@@ -3165,7 +3165,7 @@ print(a*b)
 #                         break
 #                     # 아직 못 찾은 경우
 #                     else: index_2 += 1
-                
+
 #                 if(find_check): break
 
 # # 소수 list를 구해놓고 체크를 하면 되는데 바보같이 num 받을때마다 소수 list를 구하게 했네..
@@ -3217,7 +3217,7 @@ print(a*b)
 #     apple_x, apple_y = map(int, input().split())
 #     apple_x -= 1
 #     apple_y -= 1
-    
+
 #     board[apple_x][apple_y] += 1
 
 # snake_direction = {0:'right', 1:'down', 2:'left', 3:'up'}
@@ -3275,7 +3275,7 @@ print(a*b)
 #                 now_x -= 1
 #                 if(check_que(now_x, now_y)): break
 #             else: break
-        
+
 #         # 제시된 거리만큼 이동 한 다음에 방향 조정
 #         if(total_distance == dist_direct_list[dist_direct_index][0]):
 #             if(dist_direct_list[dist_direct_index][1] == 'L'):  # 왼쪽으로 90도
@@ -3283,7 +3283,7 @@ print(a*b)
 #                 else: now_d -= 1
 #             else: # D, 오른쪽으로 90도
 #                 now_d = (now_d+1) % 4
-            
+
 #             if dist_direct_index < len(dist_direct_list)-1:
 #                 dist_direct_index += 1
 #         # print(total_distance, que, snake_direction[now_d])
@@ -3334,7 +3334,7 @@ print(a*b)
 # def solve():
 #     sum_yeong_sik, sum_min_sik = 0, 0
 #     n = int(input())
-#     talk_time_list = list(map(int, input().split())) 
+#     talk_time_list = list(map(int, input().split()))
 
 #     for i in range(n):
 #         sum_yeong_sik += yeong_sik(talk_time_list[i])
@@ -3542,7 +3542,7 @@ print(a*b)
 #             break
 #         else:
 #             index_b += 1
-    
+
 #     if(team_a[index_a] > team_b[index_b]): score += 2
 #     elif(team_a[index_a] == team_b[index_b]): score += 1
 #     print(team_a[index_a], team_b[index_b])
@@ -3569,7 +3569,7 @@ print(a*b)
 #         # 기존 weight_set에 현재 추 무게만큼 더한 값을 temp_weight_set에 추가
 #         for j in weight_set:
 #             temp_weight_set.add(weight_list[i] + j)
-        
+
 #         # 기존 weight_set과 temp_weight_set을 union
 #         weight_set = weight_set.union(temp_weight_set)
 #         # print(weight_set)
@@ -4248,7 +4248,7 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 #                     stack_list.append('+')
 #             check_list[num] = -1
 #             stack_list.append('-')
-        
+
 #         # pop, 여기서 가능/불가능 체크
 #         else: # num < pre_num
 #             # pop 하고자 하는 값이 이미 pop된 경우
@@ -4451,16 +4451,16 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 # for _ in range(int(input())):
 #     i, j, x, y = map(int, input().split())
 #     total_sum = 0
-    
+
 #     for i in range(i-1, x):
 #         total_sum += sum(l_n[i][j-1:y])
-    
+
 #     print(total_sum)
 
 
 # 합계 dp
 
-    
+
 # 10926 ??!
 # print(input()+'??!')
 
@@ -4487,7 +4487,7 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 
 #     if(graph[nx][ny] == 1 and check_graph[nx][ny] == 0):
 #         check_graph[nx][ny] = 1
-        
+
 #         for i in range(4):
 #             if 0 <= nx + x[i] < m and 0 <= ny + y[i] < n:
 #                 check_bfs(graph, check_graph, nx+x[i], ny+y[i], m, n)
@@ -4509,15 +4509,15 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 #     for _ in range(k):
 #         dot_x, dot_y = map(int, input().split())
 #         graph[dot_x][dot_y] = 1
-    
+
 #     total_area = 0
 #     for nx in range(m):
 #         for ny in range(n):
 #             if check_bfs(graph, check_graph, nx, ny, m, n):
 #                 total_area += 1
-    
+
 #     print(total_area)
-    
+
 
 # 1620 나는야 포켓몬 마스터 이다솜
 # import sys
@@ -4595,7 +4595,7 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 #                 #     for ny in range(m):
 #                 for nx, ny in virus_dot:
 #                        virus_bfs(new_graph, check_graph, nx, ny, n, m, plus_x, plus_y)
-                
+
 #                 # for nx in range(n):
 #                 #     print(new_graph[nx])
 
@@ -4603,7 +4603,7 @@ why? 블록이 모자란 경우가 아닌데 모자라다고 판별해버렸음
 #                 for nx in range(n):
 #                     for ny in range(m):
 #                         if new_graph[nx][ny] == 0: count += 1
-                
+
 #                 if max_count < count: max_count = count
 #     return max_count
 
@@ -4843,7 +4843,7 @@ dfs/bfs
 #     # print(type(visited), len(visited))
 #     # print(visited[i] for i in range(len(visited)))
 #     # print(new_visited[i] for i in range(len(new_visited)))
-    
+
 #     move_count += 1
 
 #     for i in range(4):
@@ -5029,7 +5029,7 @@ dfs/bfs
 #     graph[ny][nx] = 1
 #     for i in range(4):
 #         new_x, new_y = nx + inc_xy[i][0], ny + inc_xy[i][1]
-#         if 0 <= new_x < n and 0 <= new_y < m and graph[new_y][new_x] == 0 :            
+#         if 0 <= new_x < n and 0 <= new_y < m and graph[new_y][new_x] == 0 :
 #             graph[new_y][new_x] = 1
 #             # print(nx, ny, new_x, new_y)
 #             que.append([new_x, new_y])
@@ -5060,7 +5060,7 @@ dfs/bfs
 #                     area_bfs(que, inc_xy, graph, m, n)
 #                     area_num += 1
 #                 area_list.append(area_num)
-    
+
 #     print(len(area_list))
 #     print(*sorted(area_list))
 
@@ -5318,7 +5318,7 @@ dfs/bfs
 #     que = deque([[start_num, 0]])
 #     visited = [start_num]
 #     print(par_bfs(par_graph, kid_graph, que, visited, end_num))
-    
+
 # solve()
 
 
@@ -5612,12 +5612,12 @@ dfs/bfs
 
 # def cal_factorial(num):
 #     if num <= 1: return 1
-#     else: 
+#     else:
 #         ans = 1
 #         for i in range(num, 1, -1):
 #             ans *= i
 #         return ans
-    
+
 # def solve():
 #     n, k = map(int, input().split())
 #     ans = cal_factorial(n)//(cal_factorial(k)*cal_factorial(n-k))
@@ -5673,7 +5673,7 @@ dfs/bfs
 #     while num > ans:
 #         cnt += 1
 #         ans += cnt*6
-    
+
 #     print(cnt+1)
 
 # solve()
@@ -5691,11 +5691,11 @@ dfs/bfs
 
 #     while bot <= top :
 #         mid, sum = (bot+top)//2, 0
-        
+
 #         for tree_height in tree_list:
 #             if tree_height > mid:
 #                 sum += tree_height - mid
-        
+
 #         if sum >= m :
 #             ans = mid
 #             bot = mid + 1
@@ -5759,7 +5759,7 @@ dfs/bfs
 #     val_list = list(map(ord, input().rstrip()))
 #     # print(val_list)
 
-#     # num 값으로 r**i (mod M) list를 생성 
+#     # num 값으로 r**i (mod M) list를 생성
 #     mul_list = [1] * num
 #     for i in range(1, num):
 #         mul_list[i] = mul_list[i-1] * 31
@@ -5913,7 +5913,7 @@ dfs/bfs
 #     for _ in range(int(input())):
 #         cmd_list = list(map(str, input().split()))
 #         # print(cmd_list)
-        
+
 #         if cmd_list[0] == 'add':
 #             val = int(cmd_list[1])
 #             if val not in set_s:
@@ -5953,7 +5953,7 @@ dfs/bfs
 #         if clothes_list[1] not in clothes_dict: clothes_dict[clothes_list[1]] = 1
 #         else: clothes_dict[clothes_list[1]] += 1
 #     # print(clothes_dict)
-    
+
 #     ans = 1
 #     for i in clothes_dict:
 #         ans *= (clothes_dict[i]+1)
@@ -6068,7 +6068,7 @@ dfs/bfs
 # for _ in range(int(input())):
 #     name, dd, mm, yy = map(str, input().split())
 #     dd, mm, yy = map(int, [dd, mm, yy])
-    
+
 #     # if earlist_birth[2] >= yy and earlist_birth[1] >= mm and earlist_birth[0] > dd :
 #     #     earlist_birth = [dd, mm, yy]
 #     #     earlist_birth_name = name
@@ -6089,7 +6089,6 @@ dfs/bfs
 #         latest_birth_name = name
 
 # print(latest_birth_name, earlist_birth_name, sep='\n')
-
 
 
 # 1408 24
@@ -6200,14 +6199,14 @@ dfs/bfs
 #         print(' ', end='')
 #     for _ in range(num-i-1):
 #         print('*', end='')
-    
+
 #     # mid
 #     print('*', end='')
 
 #     # right
 #     for _ in range(num-i-1):
 #         print('*', end='')
-    
+
 #     # '\n'
 #     print()
 
@@ -6327,7 +6326,7 @@ dfs/bfs
 # 10995 별 찍기 - 20
 # n = int(input())
 # for i in range(n):
-#     if i % 2 == 1: print(' ', end='') 
+#     if i % 2 == 1: print(' ', end='')
 #     print('*', end='')
 #     print(' *' * (n-1))
 
@@ -6561,7 +6560,7 @@ dfs/bfs
 #     while n > 0:
 #         n_list.append(n%2)
 #         n //= 2
-    
+
 #     for i in range(len(n_list)):
 #         if n_list[i] == 1: print(i, end=' ')
 
@@ -6770,7 +6769,7 @@ dfs/bfs
 #             sum_even_num += i
 #             if min_even_num > i:
 #                 min_even_num = i
-    
+
 #     print(sum_even_num, min_even_num)
 
 
@@ -6962,7 +6961,7 @@ dfs/bfs
 #         alphabet_num += 13
 #         if 123 <= alphabet_num:
 #             alphabet_num -= 26
-    
+
 #     print(chr(alphabet_num), end='')
 
 
@@ -6975,7 +6974,7 @@ dfs/bfs
 #     while tmp_num % 2 == 0:
 #         tmp_num //= 2
 #         count_2 += 1
-    
+
 #     while tmp_num % 5 == 0:
 #         tmp_num //= 5
 #         count_5 += 1
@@ -6988,7 +6987,7 @@ dfs/bfs
 
 # for i in range(5, num+1):
 #     tmp_num = i
-    
+
 #     while tmp_num % 5 == 0:
 #         tmp_num //= 5
 #         count_5 += 1
@@ -7108,12 +7107,12 @@ dfs/bfs
 #     # print(list_block)
 # # print(list_block)
 # print(list_block[0]*3 + list_block[1]*5 + list_block[2]*7)
-'''
+"""
 3
 2 2 1
 [정답] 12 (7+5)
 [출력] 13 (5+5+1)
-'''
+"""
 
 
 # 1237 정ㅋ벅ㅋ
@@ -7178,7 +7177,7 @@ dfs/bfs
 #     first_color_val = graph[ny][nx]
 #     diff_color_check = False
 
-#     # diff_color_check == False <- all_same_color ! 
+#     # diff_color_check == False <- all_same_color !
 #     for y in range(ny, ny+n):
 #         for x in range(nx, nx+n):
 #             if graph[y][x] != first_color_val:
@@ -7195,7 +7194,7 @@ dfs/bfs
 #     else: # False
 #         if first_color_val == 0: w_count += 1
 #         else: b_count += 1
-    
+
 #     # print(n, ny, nx, w_count, b_count)
 #     # return w_count, b_count
 
@@ -7282,7 +7281,7 @@ dfs/bfs
 #                     if max_que.queue:
 #                         min_del_que.put(-max_que.get())
 #                         # check_del_que(max_que, max_del_que)
-            
+
 #             check_del_que(min_que, min_del_que)
 #             check_del_que(max_que, max_del_que)
 #             # print(min_que.queue, max_que.queue)
@@ -7471,42 +7470,42 @@ dfs/bfs
 
 #     if len(numS) > len(n):
 #         return True
-#     else:    
+#     else:
 #         for i in btn:
 #             DFS(numS + i)
 
 # for n in range(1555, 1556):
 #     start = 100
 #     n = str(n)
-#     # n = input() # 이동하려는 채널 
+#     # n = input() # 이동하려는 채널
 #     # m = int(input()) # 고장난 버튼 개수
 #     m = 3
 #     broke = [0, 1, 9]
 #     # if m > 0:
 #     #     broke = list(map(int, input().split()))
 
-#     btn = [] # 사용 가능 버튼 
+#     btn = [] # 사용 가능 버튼
 #     for i in range(0,10):
 #         if i not in broke:
 #             btn.append(str(i))
 
 #     # 입력 가능한 버튼을 DFS 방식으로 탐색
-#     #  index 0: n과의 차이가 가장 적은 값의 수 
-#     #  index 1: n과의 차가 가장 작은값 
-#     #  index 2: 수를 만들기 위해 눌러야 하는 횟수 
-#     minDef = [100, 500000, 0] 
+#     #  index 0: n과의 차이가 가장 적은 값의 수
+#     #  index 1: n과의 차가 가장 작은값
+#     #  index 2: 수를 만들기 위해 눌러야 하는 횟수
+#     minDef = [100, 500000, 0]
 #     for i in btn:
 #         DFS(i)
 
 #     print(minDef)
 #     res = []
-#     # n을 만들기 위해 최소한을 눌러야 하는 총 횟수 
-#     res.append(minDef[1]+minDef[2]) 
+#     # n을 만들기 위해 최소한을 눌러야 하는 총 횟수
+#     res.append(minDef[1]+minDef[2])
 
 #     # 만약 +, - 만 누르는 것이 숫자를 누르는 횟수보다 빠른지 확인
 #     res.append(abs(int(n)-start))
 
-#     # 최솟값 출력 
+#     # 최솟값 출력
 #     # print(min(res))
 #     val_ans_1 = min(res)
 
@@ -7551,12 +7550,12 @@ dfs/bfs
 #                 pos_check = False
 #                 break
 #             tmp_i //= 10
-        
+
 #         if pos_check:
 #             # print("[ans2] i : ", i)
 #             high_min_ans = len(str(i)) + i - int_channel
 #             break
-    
+
 #     print(low_max_ans, high_min_ans, abs(100-int_channel))
 #     # print(min(low_max_ans, high_min_ans, abs(100-int_channel)))
 #     val_ans_2 = min(low_max_ans, high_min_ans, abs(100-int_channel))
@@ -7583,12 +7582,12 @@ dfs/bfs
 
 # def solve():
 #     start = 100             # 시작 채널
-#     target_n = int(input()) # 이동하려는 target 채널 
+#     target_n = int(input()) # 이동하려는 target 채널
 #     m = int(input())        # 고장난 버튼의 개수
 #     broke_btn = set(map(int, input().split())) if m != 0 else []
 #     btn = [str(i) for i in range(10) if i not in broke_btn]
 
-#     # 만들 수 있는 숫자를 DFS 방식으로 탐색하며 최소값 계산 
+#     # 만들 수 있는 숫자를 DFS 방식으로 탐색하며 최소값 계산
 #     # index 0: 현재 n과의 차이가 가장 적은 값 (시작채널로 초기화)
 #     # index 1: target_n과의 gap (갱신을 위해 input 가능한 가장 큰 값으로 초기화)
 #     # index 2: index 0의 값을 만들기 위해 리모컨을 누르는 횟수
@@ -7711,7 +7710,7 @@ dfs/bfs
 #             if num % i == 0:
 #                 return True
 #         return False
-    
+
 # def solve():
 #     n = int(input())
 #     num_list = [i for i in range(1, n+1)]
@@ -7864,7 +7863,7 @@ dfs/bfs
 #     for one_chr in ans_str:
 #         if one_chr in vowles_list: vowles_num += 1
 #         else: consonants_num += 1
-    
+
 #     if vowles_num >= 1 and consonants_num >= 2:
 #         # print(ans_str, vowles_num, consonant_num)
 #         print(*ans_str, sep='')
@@ -8191,7 +8190,7 @@ dfs/bfs
 #                 break
 #         pre_alphabet = text_list[i]
 #         # print(pre_alphabet)
-    
+
 #     if group_word_check:
 #         total_group_word += 1
 
@@ -8223,7 +8222,7 @@ dfs/bfs
 #         for i in range(len(str_list)):
 #             if str_list[i] in vowel_list:
 #                 vowel_count += 1
-        
+
 #         print(vowel_count)
 
 
@@ -8276,7 +8275,7 @@ dfs/bfs
 
 # def postorder(tree, root):
 #     left, right = tree[root]
-    
+
 #     if left != '.': postorder(tree, left)
 #     if right != '.': postorder(tree, right)
 #     print(root, end='')
@@ -8316,7 +8315,7 @@ dfs/bfs
 #             ones_class = 'Senior'
 #         else:
 #             ones_class = 'Junior'
-        
+
 #         print(name, ones_class)
 
 
@@ -8398,7 +8397,7 @@ dfs/bfs
 #     convenience_store_list = [] * convenience_store_num
 
 #     home_x, home_y = map(int, input().split())
-#     home_xy = 
+#     home_xy =
 #     for _ in range(convenience_store_num):
 
 #         convenience_store_list.append(map(int, input().split()))
@@ -8486,7 +8485,7 @@ dfs/bfs
 #             # print(cannon_balls_idx)
 #         else: break
 #     # print(cannon_balls_idx, cannon_balls_list[cannon_balls_idx])
-    
+
 #     dp_list[i] = (i // cannon_balls_list[cannon_balls_idx]) + dp_list[i % cannon_balls_list[cannon_balls_idx]]
 #     # print(i, dp_list[i])
 
@@ -8625,7 +8624,7 @@ dfs/bfs
 #     n, m = map(int, input().split())
 #     num_list = [list(map(int, input().split())) for _ in range(n)]
 #     dp_list = [[0] * (n+1) for _ in range(n+1)]
-    
+
 #     for x in range(1, n+1):
 #         sum_of_num = 0
 #         for y in range(1, n+1):
@@ -8739,7 +8738,7 @@ dfs/bfs
 
 # for i in range(1, num+1):
 #     hansu_check = True
-    
+
 #     if i >= 100:
 #         i_div_10 = i // 10
 #         if (i % 10 - i_div_10 % 10) != (i_div_10 % 10) - (i_div_10 // 10):
@@ -8911,7 +8910,7 @@ dfs/bfs
 # else:
 #     for i in range(2):
 #         start_y, start_x, direction = pos_point_list[i][0], pos_point_list[i][1], pos_point_list[i][2]
-    
+
 #         if direction == 0:
 #             for plus_val in range(k):
 #                 graph[start_y+plus_val][start_x] += 1
@@ -8934,14 +8933,13 @@ dfs/bfs
 #         print(x+1, y+1)
 
 
-
 # 5014 스타트링크
 # from collections import deque
 
 # F, S, G, U, D = map(int, input().split())
 # # print(F)
 # cnt_list = [-1] * F
-# cnt_list[S-1] = 0 
+# cnt_list[S-1] = 0
 # que = deque([[S,0]])
 
 # while que:
@@ -9046,13 +9044,13 @@ dfs/bfs
 #     for j in range(n):
 #         # print(j, i)
 #         DNA_check_list[ord(DNA_list[j][i])-65] += 1
-    
+
 #     max_val, max_val_idx = 0, 0
 #     for alphabet_idx in range(26):
 #         if max_val < DNA_check_list[alphabet_idx]:
 #             max_val = DNA_check_list[alphabet_idx]
 #             max_val_idx = alphabet_idx
-    
+
 #     new_DNA_list[i] = chr(max_val_idx + 65)
 #     min_Hamming_Distance += sum(DNA_check_list) - DNA_check_list[max_val_idx]
 
@@ -9084,10 +9082,10 @@ dfs/bfs
 #                 if target_name_idx < 0: target_name_idx += num
 #                 # print(target_name_idx)
 #                 print("{0} was nasty about {1}".format(name_PN_list[target_name_idx][0], name_PN_list[name_idx][0]))
-    
+
 #     if not PN_check:
 #         print("Nobody was nasty")
-    
+
 #     group_num += 1
 #     print()
 
@@ -9284,7 +9282,7 @@ dfs/bfs
 
 # def solve():
 #     N, M, K = map(int, input().split())
-    
+
 #     sub_val = 0
 #     for k in range(K):
 #         sub_val += combinations(N, M) * combinations(M, k) * combinations(N-M, M-k)
@@ -9347,7 +9345,7 @@ dfs/bfs
 #     if num == 4:
 #         print(1)
 #         exit()
-    
+
 #     for new_n in graph[n]:
 #         if visited_list[new_n] == False:
 #             dfs(graph, visited_list, new_n, num+1)
@@ -9403,11 +9401,11 @@ dfs/bfs
 #     if n >= 2:
 #         dp_list[0][1] = dp_list[1][0] + num_list[0][1]
 #         dp_list[1][1] = dp_list[0][0] + num_list[1][1]
-    
+
 #     for idx in range(2, n):
 #         for x in range(2):
 #             dp_list[x][idx] = max(dp_list[(x+1)%2][idx-1], dp_list[(x+1)%2][idx-2]) + num_list[x][idx]
-    
+
 #     # for x in range(2):
 #     #     print(dp_list[x])
 #     print(max(dp_list[0][n-1], dp_list[1][n-1]))
@@ -9450,14 +9448,14 @@ dfs/bfs
 #             nx += 1
 #         else:
 #             ny -= 1
-        
+
 #         if num == target_num:
 #             target_x, target_y = nx+1, ny+1
 
 #         num_table[nx][ny] = num
 #         # print(nx, ny, direction)
 #         num += 1
-        
+
 #         if nx == 0 and ny == 0:
 #             break
 #     direction = (direction + 1) % 4
@@ -9583,7 +9581,7 @@ dfs/bfs
 
 #     for alphabet in alpha_list:
 #         alpha_check_list[ord(alphabet)-97] += 1
-    
+
 #     alpha_check_list = tuple(alpha_check_list)
 #     if alpha_check_list in word_dict:
 #         word_dict[alpha_check_list] += 1
@@ -9609,7 +9607,7 @@ dfs/bfs
 #         new_list = word_list[start_idx:]
 #         new_list.extend(word_list[:start_idx])
 #         # print(new_list)
-        
+
 #         tupled_new_list = tuple(new_list)
 #         # print(tupled_new_list)
 #         if tupled_new_list in word_dict:
@@ -9739,7 +9737,7 @@ dfs/bfs
 
 
 # 코드 개선... 했는데 오래 걸림
-# 더 빠르게 동작할 수 있어야 함 
+# 더 빠르게 동작할 수 있어야 함
 # N = int(input())
 # K = int(input())
 
@@ -9803,7 +9801,7 @@ dfs/bfs
 #     else:
 #         name_list = [input().rstrip() for _ in range(K)]
 #         # print(name_list)
-        
+
 #         check_list = [True] * K
 #         for _ in range(2*K-1):
 #             num, check = map(str, input().split())
@@ -9816,7 +9814,7 @@ dfs/bfs
 #             if check_list[idx] == False:
 #                 print(scenario_num, name_list[idx])
 #                 break
-    
+
 #     scenario_num += 1
 
 
@@ -9860,7 +9858,7 @@ dfs/bfs
 #     xy_coordinate = list(input().rstrip())
 #     new_x, new_y = ord(xy_coordinate[0])-65, int(xy_coordinate[1])-1
 #     # print(xy_coordinate)
-    
+
 #     if ((abs(pre_x - new_x) == 1 and abs(pre_y - new_y) == 2) or\
 #         (abs(pre_x - new_x) == 2 and abs(pre_y - new_y) == 1)) and\
 #         chess_board_check[new_x][new_y] == 0:
@@ -10030,7 +10028,7 @@ dfs/bfs
 #                 ny = y + plus_y
 #                 if mines_list[nx][ny] != '.':
 #                     num_of_mines += int(mines_list[nx][ny])
-        
+
 #         if num_of_mines >= 10: map_list[x][y] = 'M'
 #         else: map_list[x][y] = num_of_mines
 
@@ -10076,13 +10074,13 @@ dfs/bfs
 # try - 2, 3
 # 35퍼 쯤? 틀렸습니다
 # 뭐가 문제지(try2) ㅡ input의 1행부터 Ti가 Si보다 크다면?(try3)
-''' 찾았다 반례
+""" 찾았다 반례
 2
 7 5
 1 8
 [정답] -1
 [출력] -2
-'''
+"""
 # import sys
 # input = sys.stdin.readline
 
@@ -10183,7 +10181,7 @@ dfs/bfs
 #             tmp_A //= div_num
 #         div_num += 1
 #     print(A_list)
-    
+
 #     for i in range((len(A_list))+1):
 #         for div_num in itertools.combinations(A_list, i):
 #             print(div_num)
@@ -10193,7 +10191,7 @@ dfs/bfs
 #             print(div_val)
 #             if div_val not in div_set:
 #                 div_set.add(div_val)
-            
+
 #                 if (L <= div_val <= R) and (A % div_val == 0):
 #                     # print("ahha")
 #                     quotient = A // div_val
@@ -10202,7 +10200,7 @@ dfs/bfs
 #                             continue
 #                         histogram_check = True
 #                         break
-            
+
 #         if histogram_check : break
 
 # if histogram_check:
@@ -10314,7 +10312,6 @@ dfs/bfs
 #         conveyor_belt_index[x] = y
 #         # print(ans)
 #     print(ans)
-
 
 
 # 3711 학번
@@ -10448,9 +10445,9 @@ dfs/bfs
 #                         nx, ny = new_x, new_y
 #                         print("size!!", sum_for_size_up, body_size)
 #                         break
-                
+
 #                 if fish_found_check: break
-                
+
 #             if fish_found_check: break
 #         for x in range(N):
 #             print(g[x])
@@ -10543,7 +10540,7 @@ dfs/bfs
 # print(day)
 
 # 14501 퇴사
-# 이런 접근인가? 
+# 이런 접근인가?
 # N = int(input())
 # consulting_list = [list(map(int, input().split())) for _ in range(N)]
 # consulting_list.insert(0, 0)
@@ -10630,7 +10627,7 @@ dfs/bfs
 #         mul_val = 1
 #         while mul_val * num_of_client < y:
 #             mul_val += 1
-        
+
 #         dp_list[x][y] = min(dp_list[x-1][y], mul_val * cost)
 #         if num_of_client <= y:
 #             dp_list[x][y] = min(dp_list[x][y], dp_list[x][y-num_of_client] + cost)
@@ -10659,7 +10656,7 @@ dfs/bfs
 #     for idx in range(n):
 #         idx_list[idx] = [dict_1[list_2[idx]], dict_2[list_2[idx]]]
 #     # print(idx_list)
-    
+
 #     cryptogram_list = list(map(str, input().split()))
 #     # plain_text_list = []*n
 #     plain_text_list = [_]*n
@@ -10753,11 +10750,11 @@ dfs/bfs
 #             next_num_list = [i for i in range(1, 10) if i != place_value]
 #         else:
 #             next_num_list = [i for i in range(10) if i != place_value]
-        
+
 #         for val in next_num_list:
 #             tmp_num_list[idx] = val
 #             # print(tmp_num_list)
-            
+
 #             next_num = 0
 #             for i in range(4):
 #                 next_num += tmp_num_list[i] * (10**(3-i))
@@ -10767,7 +10764,7 @@ dfs/bfs
 #                 que.append([next_num, cnt+1])
 
 # def solve():
-#     # 소수 판정, 에라토스테네스의 체 
+#     # 소수 판정, 에라토스테네스의 체
 #     prime_check_list = [True] * 10000
 #     for x in range(2, 10000):
 #         if prime_check(x):
@@ -10976,7 +10973,7 @@ dfs/bfs
 #     if R >= 2:
 #         sum_white_chocolate = 2*(R*(R+1)*((2*R)+(3*gab)+1)//6) -R*C -gab-1
 #         sum_black_chocolate = 2*(R*(R+1)*(R-1))//3 + gab*R*R - gab
-    # print(sum_white_chocolate, sum_black_chocolate)
+# print(sum_white_chocolate, sum_black_chocolate)
 
 #     # R 값이 1인 층,
 #     if gab == 0:
@@ -11083,7 +11080,7 @@ dfs/bfs
 #     tmp_dict = dict({0: [0,0]})
 #     # tmp_dict[0] = [0, 0]
 #     que = deque([[tmp_dict, 0]])
-    
+
 #     while que:
 #         next_step(que, X, Y)
 
@@ -11118,7 +11115,7 @@ dfs/bfs
 # def solve():
 #     X, Y = map(int, input().split())
 #     que = deque([[[[0, 0] for _ in range(9)], 0]])
-    
+
 #     while que:
 #         next_step(que, X, Y)
 
@@ -11150,14 +11147,14 @@ dfs/bfs
 #             # BackTracking
 #             y_list[x] = -1
 #             y_check_list[y] = False
-        
+
 # def solve():
 #     global ans
 #     ans = 0
 #     N = int(input())
 #     y_list = [-1]*N
 #     y_check_list = [False]*N
-    
+
 #     check_n_queen(N, y_list, y_check_list, 0)
 #     print(ans)
 
@@ -11184,11 +11181,11 @@ dfs/bfs
 #                 check_n_queen(N, y_list, x+1)
 #         # BackTracking
 #         y_list[x] = -1
-        
+
 # def solve():
 #     N = int(input())
 #     y_list = [-1]*N
-    
+
 #     check_n_queen(N, y_list, 0)
 #     # print(ans)
 
@@ -11300,7 +11297,7 @@ dfs/bfs
 #     cnt_list[0][idx] -= min_val
 #     cnt_list[1][idx+1] += min_val
 #     n_list[idx+1] -= min_val
-    
+
 #     min_val = min(cnt_list[1][idx], n_list[idx+1])
 #     cnt_list[1][idx] -= min_val
 #     cnt_list[2][idx+1] += min_val
@@ -11655,7 +11652,7 @@ dfs/bfs
 
 #     val -= n_list[idx]
 #     bit -= 1
-    
+
 #     if idx+1 <= N-1:
 #         backtracking(idx+1, n_list, bit, N, S)
 
@@ -11760,7 +11757,7 @@ dfs/bfs
 #     n_list = list(map(int, input().split()))
 #     oprs = list(map(int, input().split())) # operators
 #     oprs_order = [-1] * (N-1)
-    
+
 #     global max_val, min_val
 #     max_val, min_val = -1e9, 1e9 # -10억, 10억
 
@@ -11925,12 +11922,12 @@ dfs/bfs
 # print("SciComLove\n"*int(input()))
 
 # 2302 극장 좌석
-'''
+"""
 2
 1
 1
 2 -> 1
-'''
+"""
 
 # 1st code
 # N = int(input())
@@ -12077,7 +12074,7 @@ dfs/bfs
 
 # def backtracking(S, idx, cnt, N, team_check):
 #     global min_gap
-    
+
 #     # 4명의 사람이 있으면 idx 2까지, 6명이면 3까지
 #     # i번째에 대해서 team_check 1
 #     # cnt를 재고, i +1 < N으로 backtracking 이 더 가능할 경우 진행 (재귀)
@@ -12087,13 +12084,13 @@ dfs/bfs
 #         if cnt != (N//2):
 #             if i + 1 < N:
 #                 backtracking(S, i+1, cnt, N, team_check)
-        
+
 #         else: # cnt == N//2: 즉, N//2 명의 팀이 충족된 경우
 #             # print(*team_check)
 #             start_team = [k for k in range(N) if team_check[k] == 1]
 #             link_team = [k for k in range(N) if team_check[k] == 0]
 #             # print(start_team, link_team)
-            
+
 #             start_team_sum, link_team_sum = 0, 0
 #             for a in range(N//2):
 #                 for b in range(a, N//2):
@@ -12409,7 +12406,7 @@ dfs/bfs
 
 # solve()
 
-'''
+"""
 7 8
 2 1
 3 2
@@ -12419,7 +12416,7 @@ dfs/bfs
 6 4
 1 7
 3 7
-'''
+"""
 
 
 # dfs
@@ -12538,7 +12535,6 @@ dfs/bfs
 # solve()
 
 
-
 # 12852 1로 만들기2
 # from collections import defaultdict
 # from collections import deque
@@ -12614,7 +12610,7 @@ dfs/bfs
 
 # for _ in range(int(input())):
 #     a, b, c = map(int, input().split())
-    
+
 #     ans = 0
 #     for x in range(1, a+1):
 #         for y in range(1, b+1):
@@ -12676,13 +12672,13 @@ dfs/bfs
 
 
 # 이중 우선순위 큐
-'''
+"""
 1
 3
 I 10
 I 10
 D 1
-'''
+"""
 # import sys
 # input = sys.stdin.readline
 # from heapq import heappop, heappush
@@ -12893,11 +12889,11 @@ D 1
 # 1039 교환
 # pm 03:51 ~ 04:16
 # 런타임 에러 (IndexError)
-'''
+"""
 5 1
 [ans] -1
 [출력] IndexError → not que 일 때도 ans = -1 되게 조정
-'''
+"""
 # import itertools
 # from collections import deque
 
@@ -12951,11 +12947,11 @@ D 1
 
 # solve()
 
-'''
+"""
 7951235 3
 [ans]   9755321
 [출력]  9753125
-'''
+"""
 # pm 04:20 ~ 05:58
 #
 # from collections import deque
@@ -12977,7 +12973,7 @@ D 1
 #     now_idxs.pop()
 #     k -= 1
 
-#     if idx+1 < len_N: # and k < K # and (K-k) >= (len_N-1 - (idx+1)) 
+#     if idx+1 < len_N: # and k < K # and (K-k) >= (len_N-1 - (idx+1))
 #         # print(total_idxs, now_idxs, idx+1)
 #         return_idxs(idx+1, len_N, k+1, K, total_idxs, now_idxs)
 
@@ -13498,7 +13494,6 @@ D 1
 # solve()
 
 
-
 # 16928 뱀과 사다리 게임
 # pm 10 : 34 ~ 10 : 45
 # elif 조건에 next_v = snakes[next_v]라고 해야 되는걸 ladders[next_v]로 했음
@@ -13663,7 +13658,7 @@ D 1
 # solve()
 
 # 2nd try
-'''
+"""
 1 100
 [정답] LL
 [출력] DDDDSLSD
@@ -13671,7 +13666,7 @@ D 1
 100 1
 [정답] RR
 [출력] L
-'''
+"""
 # 시간 초과 해결
 # defaultdict(list) 대신 dict() 쓰고 que에다가 list대신 string("") append
 # visied[A] = True
@@ -13729,14 +13724,14 @@ D 1
 # 6064 카잉 달력
 # pm 04: 16 ~ 04: 31
 
-'''
+"""
 10 12 10 12
 [정답] 60
 [출력] -1
 10 12 6 12
 [정답] 36
 [출력] -1
-'''
+"""
 # elif문 추가로 해결
 
 # import sys
@@ -13781,7 +13776,7 @@ D 1
 
 
 # 9251 LCS
-'''
+"""
 ABCAAA
 AAABC
 
@@ -13791,7 +13786,7 @@ AAABC
 [[3, 0], [3, 0], [3, 0], [3, 0], [3, 0], [3, 0]]
 [[3, 0], [4, 1], [4, 1], [4, 1], [4, 1], [4, 1]]
 [[3, 0], [4, 1], [5, 2], [5, 2], [5, 2], [5, 2]]
-'''
+"""
 # from collections import defaultdict
 
 # str1 = list(input())
@@ -13834,7 +13829,7 @@ AAABC
 
 
 # 새로 짠 코드
-'''
+"""
 ABCAAD
 AAABCA
 
@@ -13846,7 +13841,7 @@ AAAAA
 
 ABCAAD
 AABCAK
-'''
+"""
 # from collections import defaultdict, deque
 
 # str1 = list(input())
@@ -14017,12 +14012,12 @@ AABCAK
 
 # 9252 LCS 2
 # pm 06:02 ~ 06:19 (틀렸습니다 음)
-'''
+"""
 ABCDEFB
 EFABCD
 [정답] ABCD
 [출력] FBCD
-'''
+"""
 # import sys
 # sys.setrecursionlimit(10**4)
 
@@ -14567,7 +14562,7 @@ EFABCD
 # # for x in range(N):
 # #     print(m[x])
 
-# # heap -> 종료시간을 담은 우선순위 큐 
+# # heap -> 종료시간을 담은 우선순위 큐
 # heap = []
 # # cnt : 필요한 강의실의 수
 # cnt = 0
@@ -14973,7 +14968,6 @@ EFABCD
 # print(dp)
 
 
-
 # 11779 최소비용 구하기 2
 # import sys
 # input = sys.stdin.readline
@@ -15183,7 +15177,7 @@ EFABCD
 
 # solve()
 
-'''
+"""
 100000000
 000000000
 000000000
@@ -15194,7 +15188,7 @@ EFABCD
 000000000
 000000000
 
-'''
+"""
 
 # 2239 스도쿠
 # def btr(board, std_x, std_y, num_set_3x3, num_set_x, num_set_y):
@@ -15330,24 +15324,24 @@ EFABCD
 
 # solve()
 
-'''
+"""
 3 4
 DLLL
 DLDU
 RURU
-'''
-'''
+"""
+"""
 3 4
 DLLL
 DLRD
 RURU
-'''
-'''
+"""
+"""
 3 4
 RLLL
 DLRD
 RURU
-'''
+"""
 
 # import sys
 # input = sys.stdin.readline
@@ -15395,7 +15389,7 @@ RURU
 # def dfs(N, nums, i, visited, route, have_a_team):
 #     visited[i] = True
 
-#     if not visited[nums[i]]:    
+#     if not visited[nums[i]]:
 #         route.add(i)
 #         return_num, team_check = dfs(N, nums, nums[i], visited, route, have_a_team)
 #         have_a_team[i] = team_check
@@ -15438,7 +15432,7 @@ RURU
 #     visited[i] = True
 #     route.add(i)
 
-#     if not visited[nums[i]]:    
+#     if not visited[nums[i]]:
 #         return_num, team_check = dfs(N, nums, nums[i], visited, route, have_a_team)
 #         have_a_team[i] = team_check
 #         # print(i, have_a_team)
@@ -15651,7 +15645,7 @@ RURU
 #     # print(limit)
 #     # 모든 경우를 체크해야 하므로 visited는 없음
 
-#     ans = 0 
+#     ans = 0
 #     while q:
 #         pos = False
 #         cnt = 0
@@ -15777,18 +15771,18 @@ RURU
 # 다익스트라, 플로이드-와셜
 # pm 02:20 ~ 03:10
 
-'''
+"""
 3 2
 1 2 1
 2 3 1
 1 2
-'''
-'''
+"""
+"""
 3 2
 1 2 1
 2 3 1
 2 3
-'''
+"""
 
 # import sys
 # input = sys.stdin.readline
@@ -16048,7 +16042,7 @@ RURU
 # # while n <= int(1e18):
 # while n <= 100:
 #     print(n, n+1, a, b)
-#     a, b = (21*a+34*b)%mod, (34*a+55*b)%mod 
+#     a, b = (21*a+34*b)%mod, (34*a+55*b)%mod
 #     n += 10
 
 # 백준 블로그 참고해서 개선
@@ -16310,7 +16304,7 @@ RURU
 
 # solve()
 
-'''
+"""
 4 2
 1
 2
@@ -16318,20 +16312,20 @@ RURU
 4
 1 4
 3 4
-'''
-'''
+"""
+"""
 3 2
 1
 2
 3
 1 3
 2 3
-'''
-'''
+"""
+"""
 2 2
 1
 2
-'''
+"""
 # 2357 최댓값과 최솟값
 
 # 세그먼트 트리에서 체크 포인트
@@ -16421,7 +16415,7 @@ RURU
 # 11505 구간 곱 구하기
 # pm 02:32 ~ 03:31
 
-'''
+"""
 5 2 2
 1
 2
@@ -16430,7 +16424,7 @@ RURU
 5
 2 1 4
 2 1 5
-'''
+"""
 
 # 복습
 # 놓친 부분 : node*2, node*2+1
@@ -16502,7 +16496,7 @@ RURU
 
 
 # 14428 수열과 쿼리 16
-'''
+"""
 5
 5 4 3 2 1
 6
@@ -16512,7 +16506,7 @@ RURU
 2 3 5
 1 4 3
 2 3 5
-'''
+"""
 # update 범위 벗어나는 부분에서 헤맸다
 # 아까랑 같은 실수라서 이제는 확실하게 알겠다 :)
 
@@ -16538,7 +16532,7 @@ RURU
 #     mid = (s+e)//2
 #     lnd, rnd = show(s, mid, nd*2, l, r, tree), show(mid+1, e, nd*2+1, l, r, tree)
 #     # 놓친 부분, show라서 값을 노드에 값을 대입 하는 부분이 있으면 안 됨
-#     # tree[nd] = (lnd if lnd[0] <= rnd[0] else rnd) 
+#     # tree[nd] = (lnd if lnd[0] <= rnd[0] else rnd)
 #     return lnd if lnd[0] <= rnd[0] else rnd
 
 # def update(s, e, nd, idx, val, tree):
@@ -16592,7 +16586,7 @@ RURU
 
 # def dfs(g, v):
 #     # print("v", v)
-#     # 가장 큰 값, 두 번째로 큰 값, 현재까지 체크한 트리의 지름 
+#     # 가장 큰 값, 두 번째로 큰 값, 현재까지 체크한 트리의 지름
 #     first_max, second_max, ans = 0, 0, 0
 
 #     for next_v, cost in g[v]:
@@ -16925,9 +16919,9 @@ RURU
 
 
 # 1918 후위 표기식
-'''
+"""
 (A*B+C)/D
-'''
+"""
 # from string import ascii_uppercase
 
 # exp = list(input())
@@ -17289,13 +17283,13 @@ RURU
 
 
 # 2263 트리의 순회
-'''
+"""
 13    
 8 4 9 2 10 5 1 6 11 3 12 7 13
 8 9 4 10 5 2 11 6 12 13 7 3 1
 
 1 2 4 8 9 5 10 3 6 11 7 12 13 clear
-'''
+"""
 # import sys
 # sys.setrecursionlimit(int(1e7))
 
@@ -17335,7 +17329,7 @@ RURU
 
 
 # 2635 수 이어가기
-'''
+"""
 1
 [ans]
 4
@@ -17343,7 +17337,7 @@ RURU
 [출력]
 0
 → for문 범위 (1, N)을 (1, N+1)로 바꿔서 해결
-'''
+"""
 # def solve():
 #     N = int(input())
 
@@ -17606,7 +17600,7 @@ RURU
 
 
 # 1253 좋다
-'''
+"""
 4
 -1 0 0 1
 [ans] 2
@@ -17616,7 +17610,7 @@ RURU
 5
 2 6 8 10 10
 [ans] 3
-'''
+"""
 
 # 참고 : https://baby-ohgu.tistory.com/30
 # def solve():
@@ -18078,7 +18072,7 @@ RURU
 
 # solve()
 
-'''
+"""
 7
 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 
@@ -18120,7 +18114,7 @@ RURU
 1 1 1 1 1 1 1 1 1 1
 1 1 1 1 1 1 1 1 1 1
 1 1 1 1 1 1 1 1 1 1
-'''
+"""
 
 
 # 시간 초과
@@ -18189,19 +18183,20 @@ RURU
 #         if board[x][y] == 1:
 #             pos_xy[x+y].append([x, y])
 
-# # for x in range(2*N):
-# #     print(pos_xy[x])
+# for x in range(2*N):
+#     print(pos_xy[x])
 
-# # \ 대각선으로 backtracking
+# # # \ 대각선으로 backtracking
 # diag = [True]*(2*N)
 
 # line_idxs = []
 # for i in range(2*N):
 #     if len(pos_xy[i]) != 0:
 #         line_idxs.append(i)
-# # print(line_idxs)
+# print(line_idxs)
 # # len(line_idxs) # \대각선을 고려하지 않은 가능한 최고 길이
 # limit_std_idx = len(line_idxs)
+# print(limit_std_idx)
 # global ans
 # ans = 0
 
@@ -18445,7 +18440,7 @@ RURU
 
 
 # 1976 여행 가자
-'''
+"""
 5
 5
 0 1 0 0 0
@@ -18462,7 +18457,7 @@ RURU
 0 1 0 1
 1 0 1 0
 1 2 3 4
-'''
+"""
 
 # import sys
 # input = sys.stdin.readline
@@ -18570,9 +18565,9 @@ RURU
 
 
 # 20915 숫자 카드 놀이
-'''
+"""
 687687
-'''
+"""
 # import itertools
 
 # def solve():
@@ -18650,9 +18645,9 @@ RURU
 
 
 # 7579 앱
-'''
+"""
 mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
-'''
+"""
 # 시간 초과
 # import sys
 # input = sys.stdin.readline
@@ -18917,7 +18912,7 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 
 #     values[target_idx] = ns[i]
 #     ans[i] = target_idx
-#     # print(i, target_idx, ans, values)
+#     print(i, target_idx, ans, values)
 
 # # print(ans)
 # # print(values)
@@ -19128,7 +19123,7 @@ mk == 2^k 라면 for문이 1번 돌 때마다 약 2배씩 늘어난다..
 
 
 # 17130 토끼가 정보섬에 올라온 이유
-'''
+"""
 3 4
 R..O
 ####
@@ -19147,7 +19142,7 @@ R
 ..
 .R
 [정답] -1
-'''
+"""
 
 # import sys
 # input = sys.stdin.readline
@@ -19237,10 +19232,10 @@ R
 
 
 # 1038 감소하는 수
-'''
+"""
 9876543210
 [정답] 1022
-'''
+"""
 # def btr(s, e, max_l, v, N, cnt):
 #     for i in range(s, e):
 #         if s != 0:
@@ -19327,10 +19322,10 @@ R
 
 
 # 13171
-'''
+"""
 1000000000000000000
 1000000000000000000
-'''
+"""
 # 1e18? 2^10 ≒ 10e3
 # A, X = int(input()), int(input())
 # mod = int(1e9+7)
@@ -19393,15 +19388,15 @@ R
 
 
 # 2410 2의 멱수의 합
-'''
+"""
 15
 26
-'''
+"""
 # 시간 복잡도 : NlogN → 1e6 기준 약 2천만이므로 1억당 1초라 할 때 0.2초
 # N = int(input())
 # mod = int(1e9)
 
-# dp = [0]*(N+1) 
+# dp = [0]*(N+1)
 # dp[0] = 1
 
 # for i in range(1, N+1):
@@ -19435,12 +19430,12 @@ R
 
 
 # 25551 멋쟁이 포닉스
-'''
+"""
 5 1
 2 5
 5 2
 [정답] 3
-'''
+"""
 # MW, MB = map(int, input().split())
 # TW, TB = map(int, input().split())
 # PW, PB = map(int, input().split())
@@ -19450,7 +19445,7 @@ R
 
 
 # 16918 봄버맨
-'''
+"""
 3 3 5
 .O.
 OOO
@@ -19460,7 +19455,7 @@ OOO
 OOO
 OOO
 OOO
-'''
+"""
 # import sys
 # input = sys.stdin.readline
 
@@ -19553,10 +19548,10 @@ OOO
 
 # print(*ans)
 
-'''
+"""
 5
 -5 -1 2 3 4
-'''
+"""
 # 2try - clear
 # Python3 - 시간 초과, PyPy3 - 통과 (240ms)
 
@@ -19583,12 +19578,12 @@ OOO
 
 
 # 10942 팰린드롬?
-'''
+"""
 3
 1 1 1
 1
 1 2
-'''
+"""
 # import sys
 # input = sys.stdin.readline
 
@@ -19833,7 +19828,7 @@ OOO
 #     if p == 1:
 #         return n
 #     # 홀수
-#     elif p % 2: 
+#     elif p % 2:
 #         return (n * power(n, p-1, X)) % X
 #     # 짝수
 #     else:
@@ -19911,13 +19906,13 @@ OOO
 
 
 # 2143 두 배열의 합
-'''
+"""
 5
 3
 3 3 3
 3
 2 2 2
-'''
+"""
 # def make_new_s(n, ns):
 #     new_s = [0]*(n*(n+1)//2)
 #     k = 0
@@ -20215,13 +20210,13 @@ OOO
 # print(ans)
 
 
-'''
+"""
 ZZKZZ
 4
 ZZBZZBBZZ
 
 ZZZZAZZZZ
-'''
+"""
 # 15927 회문은 회문아니야!!
 # def solve():
 #     S = list(input())
@@ -20262,7 +20257,7 @@ ZZZZAZZZZ
 
 
 # 9328 열쇠
-'''
+"""
 3
 4 4
 ****
@@ -20279,7 +20274,7 @@ c
 *$Ab*****
 *********
 0
-'''
+"""
 # import sys
 # input = sys.stdin.readline
 # from collections import deque
@@ -20356,3 +20351,2738 @@ c
 #         print(ans)
 
 # solve()
+
+
+# 25191 치킨댄스를 추는 곰곰이를 본 임스
+# N = int(input())
+# A, B = map(int, input().split())
+
+# print(min(N, (A//2)+B))
+
+
+# 14935 FA
+# print("FA")
+
+
+# 2669 직사각형 네개의 합집합의 면적 구하기
+# board = [[0]*102 for _ in range(102)]
+# for _ in range(4):
+#     x1, y1, x2, y2 = map(int, input().split())
+#     for x in range(x1, x2):
+#         board[x][y1] += 1
+#         board[x][y2] -= 1
+
+# ans = 0
+# for x in range(1, 101):
+#     k = 0
+#     for y in range(1, 101):
+#         k += board[x][y]
+#         if k > 0:
+#             ans += 1
+
+# # for x in range(10, -1, -1):
+# #     print(board[x][:10])
+
+# print(ans)
+
+
+"""
+5 12
+4 4 2 2 2
+[정답] 3
+"""
+"""
+5 0
+0 0 0 0 0
+[정답] 31
+"""
+
+# 1208 부분수열의 합 2
+# from collections import defaultdict
+
+# def num_dict(ns:list):
+#     ndict = defaultdict(int)
+#     # print(nset)
+
+#     for n in ns:
+#         new_ndict = ndict.copy()
+#         for element_n in ndict:
+#             new_ndict[element_n+n] += ndict[element_n]
+#         new_ndict[n] += 1
+#         ndict = new_ndict
+
+#     return ndict
+
+# def solve():
+#     N, S = map(int, input().split())
+#     ns = list(map(int, input().split()))
+
+#     ns1, ns2 = ns[:(N//2)], ns[(N//2):]
+#     # print(num_dict(ns1))
+#     # print(num_dict(ns2))
+
+#     nd_ns1 = num_dict(ns1)
+#     nd_ns2 = num_dict(ns2)
+
+#     ans = 0
+#     if S in nd_ns1: ans += nd_ns1[S]
+#     if S in nd_ns2: ans += nd_ns2[S]
+
+#     ns1 = sorted(nd_ns1.items(), key=lambda x:(x[0]))
+#     ns2 = sorted(nd_ns2.items(), key=lambda x:(x[0]))
+
+#     idx1, idx2 = 0, len(ns2)-1
+#     len_ns1 = len(ns1)
+
+#     while idx1 <= (len_ns1-1) and idx2 >= 0:
+#         if ns1[idx1][0] + ns2[idx2][0] == S:
+#             ans += ns1[idx1][1] * ns2[idx2][1]
+#             idx1 += 1
+#             idx2 -= 1
+#         elif ns1[idx1][0] + ns2[idx2][0] < S:
+#             idx1 += 1
+#         else:
+#             idx2 -= 1
+#         # print(idx1, idx2)
+
+#     print(ans)
+
+# solve()
+
+
+# 1202 보석 도둑
+# Branch-and-Bound for the 0-1 Knapsack Problem
+# 참고 : https://inf.run/LwtC
+# from heapq import heappush, heappop
+
+# class SSTNode:
+#     def __init__(self, level, profit, weight):
+#         self.level = level
+#         self.profit = profit
+#         self.weight = weight
+#         self.bound = 0
+
+#     # def print(self):
+#     #     print(self.level, self.profit, self.weight, self.bound)
+
+# def bound(u, p, w, W):
+#     n = len(p)-1
+#     if (u.weight >= W):
+#         return 0
+
+#     result = u.profit
+#     j = u.level+1
+#     totweight = u.weight
+#     while (j <= n and totweight + w[j] <= W):
+#         totweight += w[j]
+#         result += p[j]
+#         j += 1
+
+#     if (j <= n):
+#         result += (W - totweight) * p[j] / w[j]
+
+#     return result
+
+# def knapsack4 (p, w, W):
+#     heap = []
+#     v = SSTNode(0, 0, 0)
+#     maxprofit = 0
+#     # root_node
+#     v.bound = bound(v, p, w, W)
+#     heappush(heap, [-v.bound, v])
+
+#     while heap:
+#         v = heappop(heap)[1]
+#         # print(v)
+#         if (v.bound > maxprofit):
+#             level = v.level+1
+
+#             u = SSTNode(level, v.profit + p[level], v.weight + w[level])
+#             if (u.weight <= W and u.profit > maxprofit):
+#                 maxprofit = u.profit
+#             u.bound = bound(u, p, w, W)
+#             if (u.bound > maxprofit):
+#                 heappush(heap, [-u.bound, u])
+
+#             u = SSTNode(level, v.profit, v.weight)
+#             u.bound = bound(u, p, w, W)
+#             if (u.bound > maxprofit):
+#                 heappush(heap, [-u.bound, u])
+#         # print(heap, maxprofit)
+
+#     return maxprofit
+
+# def solve():
+#     profit = [0, 40, 30, 50, 10]
+#     weight = [0, 2, 5, 10, 5]
+#     W = 16
+
+#     maxprofit = knapsack4(profit, weight, W)
+#     print('maxprofit = ', maxprofit)
+
+# solve()
+
+
+# 다른 접근
+# 지금 보니 가방 1개에 보석 1개씩 넣을 수 있다
+# 가격/무게 ?
+# 무게 - 가격 정렬 X : 예제 2번이 반례
+# 위 정렬에 heap 추가로 clear
+
+# import sys
+# input = sys.stdin.readline
+
+# from heapq import heappush, heappop, heappushpop
+
+# def solve():
+#     N, K = map(int, input().split())
+#     jewels = [list(map(int, input().split())) for _ in range(N)]
+#     jewels.sort(key=lambda x:(-x[0], -x[1]))
+#     # print(jewels)
+
+#     bags = sorted([int(input()) for _ in range(K)], reverse=True)
+#     # print(bags)
+
+#     # jewels_idx, bags_idx
+#     heap, bi = [], 0
+#     for ji in range(N):
+#         # 빈 가방에 보석을 넣을 수 있는 경우
+#         if (bi < K) and (jewels[ji][0] <= bags[bi]):
+#             # 보석에 대해 무게순 정렬을 했으므로 가격만 넣어서 비교
+#             # 이후 heap을 통해 비교해도 이전 보석보다 가벼운 보석이므로 무게 고려 안 해도 됨
+#             heappush(heap, jewels[ji][1])
+#             bi += 1
+
+#         # 현재 bi 인덱스의 가방에 못 넣는 경우
+#         # 더 이상 가방이 없거나 현재 순번의 가방에 보석을 못 넣는 경우
+#         else:
+#             # 보석을 넣어둔 기존 가방에서 가격 비교
+#             if heap and (heap[0] < jewels[ji][1]):
+#                 heappop(heap)
+#                 heappush(heap, jewels[ji][1])
+#                 # heappushpop(heap, jewels[ji][1])
+#         # print(heap)
+
+#     print(sum(heap))
+
+# solve()
+
+
+# 2225 합분해
+# N, K = map(int, input().split())
+# INF = int(1e9)
+
+# dp = [[0]*(N+1) for _ in range(K+1)]
+# for y in range(N+1):
+#     dp[1][y] = 1
+
+# for x in range(2, K+1):
+#     for y in range(N+1):
+#         for k in range(y+1):
+#             dp[x][y] = (dp[x][y] + (dp[x-1][k])) % INF
+
+# # for x in range(K+1):
+# #     print(dp[x])
+
+# print(dp[K][N])
+
+
+# Total count
+# import sys
+# input = sys.stdin.readline
+
+# words_dict, words_list = dict(), []
+# while True:
+#     word = input().rstrip()
+#     if word == '0':
+#         sum_val = 0
+#         for word in words_list:
+#             print(f'{word}: {words_dict[word]}')
+#             sum_val += words_dict[word]
+#         print(f'Grand Total: {sum_val}')
+#         break
+
+#     if word not in words_dict:
+#         words_dict[word] = 1
+#         words_list.append(word)
+#     else:
+#         words_dict[word] += 1
+
+
+# 2493 탑
+# N = int(input())
+# ns = list(map(int, input().split()))
+# ans = [0]*N
+# stack = []
+
+# for idx in range(N-1, -1, -1):
+#     while stack and ns[stack[-1]] <= ns[idx]:
+#         ans[stack.pop()] = idx+1
+#     stack.append(idx)
+
+# print(*ans)
+
+
+# 2470 두 용액
+# N = int(input())
+# ns = sorted(list(map(int, input().split())))
+# # print(ns)
+
+# ans, min_val = [], int(2e9)+1
+# l, r = 0, N-1
+
+# while l < r:
+#     # print(l, r)
+#     this_val = ns[l]+ns[r]
+
+#     if abs(this_val) < min_val:
+#         ans = [l, r]
+#         min_val = abs(this_val)
+
+#     if this_val >= 0:
+#         r -= 1
+#     else:
+#         l += 1
+
+# print(ns[ans[0]], ns[ans[1]])
+
+
+# 2565 전깃줄
+# greedy 접근 → 실패
+# import sys
+# input = sys.stdin.readline
+
+# def cal_cnt(N, ns):
+#     cross_cnts = [0]*N
+#     for x in range(N):
+#         if ns[x][1] == -1: continue
+#         for y in range(N):
+#             if (x == y) or (ns[y][1] == -1):
+#                 continue
+#             elif x < y:
+#                 if ns[x][1] > ns[y][1]:
+#                     cross_cnts[x] += 1
+#             else: # x > y:
+#                 if ns[x][1] < ns[y][1]:
+#                     cross_cnts[x] += 1
+#     # print(cross_cnts)
+
+#     max_val, idx = 0, -1
+#     for x in range(N):
+#         if max_val < cross_cnts[x]:
+#             max_val = cross_cnts[x]
+#             idx = x
+
+#     # print(max_val, idx)
+#     return max_val, idx
+
+# def solve():
+#     N = int(input())
+#     ns = [list(map(int, input().split())) for _ in range(N)]
+#     ns.sort(key=lambda x:x[0])
+#     # print(ns)
+
+#     ans = 0
+#     max_val, target_idx = cal_cnt(N, ns)
+
+#     while max_val != 0:
+#         ns[target_idx][1] = -1
+#         ans += 1
+#         max_val, target_idx = cal_cnt(N, ns)
+
+#     print(ans)
+
+# solve()
+
+
+# LIS 였다니 !!! 이걸 생각 못 했다니 ~~~
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = [list(map(int, input().split())) for _ in range(N)]
+# ns.sort(key=lambda x:x[0])
+
+# # LIS
+# dp = [0]*N
+# for x in range(1, N):
+#     for y in range(x):
+#         if dp[x] == dp[y] and ns[x][1] > ns[y][1]:
+#             dp[x] += 1
+
+# print(N-max(dp)-1)
+
+
+# 23825 SASA 모형을 만들어보자
+# N, M = map(int, input().split())
+# print(min(N//2, M//2))
+
+
+# 1935 후위 표기식2
+# N = int(input())
+# exp = list(input())
+# ns = [int(input()) for _ in range(N)]
+
+# stack = []
+# for e in exp:
+#     if e in "*+/-":
+#         n2, n1 = stack.pop(), stack.pop()
+#         if e == '*':    stack.append(n1*n2)
+#         elif e == '+':  stack.append(n1+n2)
+#         elif e == '/':  stack.append(n1/n2)
+#         else: stack.append(n1-n2)
+#     else:
+#         stack.append(ns[ord(e)-65])
+
+# # print(stack)
+# print('{:.2f}'.format(stack[0]))
+
+
+# 1922 네트워크 연결
+# import sys
+# input = sys.stdin.readline
+# from heapq import heapify, heappop
+
+# def find_parent(parent, x):
+#     if parent[x] != x:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def combine(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+
+#     if a > b:
+#         parent[a] = b
+#     else:
+#         parent[b] = a
+
+# def solve():
+#     N = int(input())
+#     M = int(input())
+
+#     lines = [list(map(int, input().split()))[::-1] for _ in range(M)]
+#     parent = [i for i in range(N+1)]
+#     heapify(lines)
+#     # print(lines)
+
+#     ans = 0
+#     while lines:
+#         cost, a, b = heappop(lines)
+#         if find_parent(parent, a) != find_parent(parent, b):
+#             combine(parent, a, b)
+#             ans += cost
+
+#     print(ans)
+
+# solve()
+
+
+# 16938 캠프 준비
+# import itertools
+
+# def solve():
+#     N, L, R, X = map(int, input().split())
+#     ns = list(map(int, input().split()))
+
+#     ans = 0
+#     for k in range(1, N+1):
+#         for idxs in itertools.combinations([i for i in range(N)], k):
+#             tns = [ns[i] for i in idxs]
+#             # print(this_ns)
+
+#             if (L <= sum(tns) <= R) and (max(tns) - min(tns) >= X):
+#                 ans += 1
+
+#     print(ans)
+
+# solve()
+
+
+# 11549 Identifying tea
+# T = int(input())
+# print(sum([1 if T == i else 0 for i in list(map(int, input().split()))]))
+
+
+# 오르막 수
+# N = int(input())
+# mod = int(1e4)+7
+
+# dp = [[0]*10 for _ in range(N)]
+# dp[0] = [1]*10
+# # print(dp)
+
+# for x in range(1, N):
+#     for y in range(10):
+#         for k in range(y+1):
+#             dp[x][y] = (dp[x][y] + dp[x-1][k]) % mod
+# # print(dp)
+
+# print(sum(dp[N-1]) % mod)
+
+
+# 2589 보물섬
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# h, w = map(int, input().split())
+# board = [list(input().rstrip()) for _ in range(h)]
+# inc_xy = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+# ans = 0
+
+# for x in range(h):
+#     for y in range(w):
+#         if board[x][y] == 'L':
+#             visited = [[False]*w for _ in range(h)]
+#             visited[x][y] = True
+
+#             q = deque([[x, y, 0]])
+#             while q:
+#                 kx, ky, cnt = q.popleft()
+#                 # print(kx, ky)
+#                 ans = max(ans, cnt)
+#                 for px, py in inc_xy:
+#                     nx, ny = kx+px, ky+py
+#                     if 0 <= nx < h and 0 <= ny < w and board[nx][ny] == 'L' and not visited[nx][ny]:
+#                         visited[nx][ny] = True
+#                         q.append([nx, ny, cnt+1])
+
+# print(ans)
+
+
+# 5557 1학년
+# N = int(input())
+# ns = list(map(int, input().split()))
+
+# dp = [[0]*21 for _ in range(N+1)]
+# dp[0][0] = 1
+# # print(dp)
+
+# # i+1
+# for i in range(N):
+#     for k in range(21-ns[i]):
+#         dp[i+1][k+ns[i]] += dp[i][k]
+#     for k in range(ns[i], 21):
+#         dp[i+1][k-ns[i]] += dp[i][k]
+
+# for x in range(N):
+#     print(dp[x])
+
+
+# N = int(input())
+# ns = list(map(int, input().split()))
+
+# dp = [[0]*21 for _ in range(N-1)]
+# dp[0][ns[0]] = 1
+# # print(dp)
+
+# # i+1
+# for i in range(1, N-1):
+#     for k in range(21-ns[i]):
+#         dp[i][k+ns[i]] += dp[i-1][k]
+#     for k in range(ns[i], 21):
+#         dp[i][k-ns[i]] += dp[i-1][k]
+
+# # for x in range(N-1):
+# #     print(dp[x])
+
+# print(dp[N-2][ns[N-1]])
+
+
+# 2568 전깃줄 - 2
+# 반례 https://www.acmicpc.net/board/view/82980
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# lines = [list(map(int, input().split())) for _ in range(N)]
+# lines.sort(key=lambda x:(x[0]))
+# # print(lines)
+
+# limit = int(5e5)+1
+# # lcs
+# lcs = [lines[0]]
+# len_lcs = 1
+# # print(lcs)
+
+# dp = [0]*limit
+# dp[lines[0][0]] = 1
+
+# for i in range(1, N):
+#     if lcs[-1][1] < lines[i][1]:
+#         lcs.append(lines[i])
+#         len_lcs += 1
+#         target_idx = len_lcs-1
+#     else:
+#         l, r = 0, len_lcs-1
+#         target_idx = -1
+#         while l <= r:
+#             mid = (l+r)//2
+#             if lcs[mid][1] >= lines[i][1]:
+#                 target_idx = mid
+#                 r = mid-1
+#             else:
+#                 l = mid+1
+
+#         lcs[target_idx] = lines[i]
+
+#     dp[lines[i][0]] = target_idx+1
+# # print(lcs)
+# # print(dp[:11])
+
+# target_val = max(dp)
+# targets = set()
+# for i in range(limit-1, -1, -1):
+#     if dp[i] == target_val:
+#         target_val -= 1
+#         targets.add(i)
+
+# ans = set(line[0] for line in lines) - targets
+# print(len(ans), *ans, sep='\n')
+
+
+# 10610 30
+# N = sorted(list(map(int, input())), reverse=True)
+# # print(N)
+
+# if sum(N) % 3 == 0 and N[-1] == 0:
+#     print(*N, sep='')
+# else:
+#     print(-1)
+
+
+# 27866 문자와 문자열
+# S = list(input())
+# N = int(input())
+# print(S[N-1])
+
+
+# 14729 칠무해
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = sorted([float(input()) for _ in range(N)])
+# for i in range(7):
+#     print('{0:.3f}'.format(ns[i]))
+
+
+# https://www.acmicpc.net/problem/7562
+# 7562 나이트의 이동
+
+
+# 2011 암호코드
+# def solve():
+#     pw = list(map(int, input()))
+#     # print(pw)
+
+#     if pw[0] == 0:
+#         print(0)
+#         return
+
+#     dp = [0]*len(pw)
+#     dp[0] = 1
+#     mod = int(1e6)
+
+#     for i in range(1, len(pw)):
+#         if i >= 2:
+#             dp[i] += dp[i-2]
+
+#         if dp[i-1] == 0:
+#             if dp[i] == 0:
+#                 print(-1)
+#                 return
+#         elif dp[i-1] == 1:
+#             if dp[i] != 0: # 1~9
+#                 dp[i] += dp[i-1]
+#         elif dp[i-1] == 2:
+#             if 1 <= dp[i] <= 6:
+#                 dp[i] += dp[i-1]
+#         else:
+
+#         dp[i] %= mod
+
+# solve()
+
+
+# 11441 합 구하기
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = list(map(int, input().split()))
+
+# sums = [0]*(N+1)
+# for i in range(1, N+1):
+#     sums[i] = sums[i-1]+ns[i-1]
+# # print(sums)
+
+# for _ in range(int(input())):
+#     a, b = map(int, input().split())
+#     print(sums[b]-sums[a-1])
+
+
+# 28074 모비스
+# s = list(input())
+
+# if ("M" in s) and ("O" in s) and ("B" in s) and ("I" in s) and ("S" in s):
+#     print("YES")
+# else:
+#     print("NO")
+
+
+# 18110 solved.ac
+# 반례 : https://www.acmicpc.net/board/view/49706
+# round 해결 : https://yangnyang.tistory.com/10
+# import sys
+# input = sys.stdin.readline
+
+# def roundUp(n):
+#     if (n - int(n)) >= 0.5:
+#         return int(n)+1
+#     else:
+#         return int(n)
+
+# def solve():
+#     n = int(input())
+#     if n == 0:
+#         print(0)
+#         return
+
+#     ns = sorted([int(input()) for _ in range(n)])
+#     # cut_val
+#     cv = roundUp(n*0.15)
+#     # print(cv)
+#     # print(sum(ns[cv:n-cv])/(n-2*cv))
+#     print('{0:d}'.format(roundUp(sum(ns[cv:n-cv])/(n-2*cv))))
+
+# solve()
+
+
+# 14940 쉬운 최단 거리
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     n, m = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(n)]
+#     visited = [[False]*m for _ in range(n)]
+#     ans = [[0]*m for _ in range(n)]
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     q = deque()
+#     for x in range(n):
+#         for y in range(m):
+#             if board[x][y] == 2:
+#                 q.append([x, y, 1])
+#                 visited[x][y] = True
+
+#     while q:
+#         x, y, cnt = q.popleft()
+#         for px, py in inc_xy:
+#             nx, ny = x+px, y+py
+#             if 0 <= nx < n and 0 <= ny < m and board[nx][ny] == 1 and not visited[nx][ny]:
+#                 visited[nx][ny] = True
+#                 ans[nx][ny] = cnt
+#                 q.append([nx, ny, cnt+1])
+
+#     for x in range(n):
+#         # print(*ans[x])
+#         for y in range(m):
+#             if visited[x][y]:
+#                 print(ans[x][y], end=' ')
+#             else:
+#                 print(0 if board[x][y] == 0 else -1, end=' ')
+#         print()
+
+# solve()
+
+
+# 21736 헌내기는 친구가 필요해
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# N, M = map(int, input().split())
+# board = [list(input().rstrip()) for _ in range(N)]
+# visited = [[False]*M for _ in range(N)]
+# inc_xy = [[0,1], [1,0], [0,-1], [-1,0]]
+
+# # for x in range(N):
+# #     print(board[x])
+
+# q = deque()
+# for x in range(N):
+#     for y in range(M):
+#         if board[x][y] == 'I':
+#             q.append([x, y])
+#             visited[x][y] = True
+
+# ans = 0
+# while q:
+#     x, y = q.popleft()
+#     for px, py in inc_xy:
+#         nx, ny = x+px, y+py
+#         if 0 <= nx < N and 0 <= ny < M and (board[nx][ny] != 'X') and not visited[nx][ny]:
+#             visited[nx][ny] = True
+#             q.append([nx, ny])
+#             if board[nx][ny] == 'P':
+#                 ans += 1
+
+# print(ans if ans != 0 else 'TT')
+
+
+# 24228 젓가락
+# N, R = map(int, input().split())
+# print(N+(2*(R-1)+1))
+
+
+# 20529 가장 가까운 세 사람의 심리적 거리
+# import sys
+# input = sys.stdin.readline
+
+# def d(s1, s2):
+#     n = 0
+#     for k in range(4):
+#         if s1[k] != s2[k]:
+#             n +=1
+#     return n
+
+# def solve():
+#     for _ in range(int(input())):
+#         N = int(input())
+#         # mbtis
+#         ms = list(map(str, input().split()))
+#         # print(ms)
+#         if N >= 33: # 16*2+1
+#             print(0)
+#         else:
+#             ans = 12
+#             for i in range(N-2):
+#                 for j in range(i+1, N-1):
+#                     for k in range(j+1, N):
+#                         # print(i, j, k)
+#                         ans = min(ans, d(ms[i], ms[j]) + d(ms[j], ms[k])+ d(ms[k], ms[i]))
+#             print(ans)
+
+# solve()
+
+
+# 28097 모범생 포닉스
+# N = int(input())
+# ns = list(map(int, input().split()))
+# ans = sum(ns)+8*(N-1)
+# print(ans//24, ans%24)
+
+
+# 10825 국영수
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# strs = [list(input().rstrip().split()) for _ in range(N)]
+# d = dict()
+# for i in range(N):
+#     d[strs[i][0]] = [int(strs[i][k]) for k in range(1, 4)]
+# # print(d)
+
+# d = list(d.items())
+# # print(d)
+
+# d = sorted(d, key=lambda x:(-x[1][0], x[1][1], -x[1][2], x[0]))
+# print(*(d[i][0] for i in range(N)), sep='\n')
+
+
+# 20303 할로윈의 양아치
+# 잘 짠 코드 : 노션 정리
+"""
+5 3 3 
+1 1 1 1 1
+1 2
+3 4
+1 3
+[0, 1, 1, 1, 3, 5]   print(parent) 4번째 index의 값이 1이어야 함
+2
+[정답] 1
+[출력] 2
+4 3 3
+1 2 4 8
+1 4
+2 3
+3 4
+[정답] 0
+"""
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     N, M, K = map(int, input().split())
+#     ns = [0]+list(map(int, input().split()))
+
+#     conns = [list(map(int, input().split())) for _ in range(M)]
+#     g = defaultdict(list)
+#     d = []
+#     for a, b in conns:
+#         g[a].append(b)
+#         g[b].append(a)
+
+#     visited = [False]*(N+1)
+#     for i in range(1, N+1):
+#         if visited[i]:
+#             continue
+
+#         q = deque([i])
+#         visited[i] = True
+#         v_list = [i]
+#         candy_sum = ns[i]
+#         while q:
+#             v = q.popleft()
+#             for next_v in g[v]:
+#                 if not visited[next_v]:
+#                     q.append(next_v)
+#                     visited[next_v] = True
+#                     v_list.append(next_v)
+#                     candy_sum += ns[next_v]
+#         # print(v_list, candy_sum)
+#         d.append([len(v_list), candy_sum])
+#     # print(d)
+
+#     h = len(d)
+#     dp = [[0]*K for _ in range(h+1)]
+#     for x in range(1, h+1):
+#         for y in range(1, K):
+#             dp[x][y] = dp[x-1][y]
+
+#         cnt = d[x-1][0]
+#         if cnt >= K:
+#             continue
+
+#         for y in range(cnt, K):
+#             dp[x][y] = max(dp[x][y], dp[x-1][y-cnt]+d[x-1][1])
+
+#     print(dp[h][K-1])
+
+# solve()
+
+
+# 11478 서로 다른 부분 문자열의 개수
+# S = input()
+# word_set = set()
+# len_S = len(S)
+
+# ans = 0
+# for i in range(len_S):
+#     for j in range(i, len_S):
+#         word = S[i:j+1]
+#         if word not in word_set:
+#             word_set.add(word)
+#             ans += 1
+# print(ans)
+
+
+# 14226 이모티콘
+# from collections import deque
+
+# def solve():
+#     S = int(input())
+#     q = deque([[1, 0]])
+#     na_set = set()
+#     cnt = 0
+
+#     while q:
+#         for _ in range(len(q)):
+#             n, a = q.popleft()
+#             if n == S:
+#                 print(cnt)
+#                 return
+
+#             if tuple([n, n]) not in na_set:
+#                 na_set.add(tuple([n, n]))
+#                 q.append([n, n])
+#             if tuple([n+a, a]) not in na_set:
+#                 na_set.add(tuple([n+a, a]))
+#                 q.append([n+a, a])
+
+#             if n >= 2 and tuple([n-1, 0]) not in na_set:
+#                 na_set.add(tuple([n-1, 0]))
+#                 q.append([n-1, 0])
+
+#         cnt += 1
+#         # print(q, cnt)
+
+# solve()
+
+
+# 11576 Base Conversion
+# A, B = map(int, input().split())
+# input()
+# k, mul_val = 0, 1
+
+# ns = list(map(int, input().split()))
+# for n in ns[::-1]:
+#     k += n*mul_val
+#     mul_val *= A
+
+# ans = []
+# while k > 0:
+#     ans.append(k % B)
+#     k //= B
+
+# print(*ans[::-1])
+
+
+# 1021 회전하는 큐
+# from collections import deque
+
+# N, M = map(int, input().split())
+# ns = list(map(int, input().split()))
+# ans = 0
+# q = deque([i for i in range(1, N+1)])
+# for n in ns:
+#     idx_front = q.index(n)
+#     idx_back = len(q)-1-idx_front
+
+#     if idx_front < (idx_back+1):
+#         for _ in range(idx_front):
+#             ans += 1
+#             q.append(q.popleft())
+#     else:
+#         for _ in range(idx_back+1):
+#             ans += 1
+#             q.appendleft(q.pop())
+#     q.popleft()
+
+# print(ans)
+
+
+# 24508 나도리팡
+# N, K, T = map(int, input().split())
+# ns = sorted(list(map(int, input().split())))
+
+# l, r = 0, N-1
+# cnt = 0
+# while l <= r and cnt < T:
+
+
+# 27323 직사각형
+# print(int(input())*int(input()))
+
+
+# 20003 거스름돈이 싫어요
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def lcm(a, b):
+#     return a*b//gcd(a, b)
+
+# def solve():
+#     N = int(input())
+#     ns = [list(map(int, input().split())) for _ in range(N)]
+
+#     numerators = [ns[i][0] for i in range(N)]
+#     denominators = [ns[i][1] for i in range(N)]
+#     # print(numerators)
+#     # print(denominators)
+
+#     lcm_denominators = denominators[0]
+#     for d in denominators[1:]:
+#         lcm_denominators = lcm(lcm_denominators, d)
+#         # print(lcm_denominators)
+
+#     lcm_numerators = lcm_denominators//denominators[0]*numerators[0]
+#     for idx in range(1, N):
+#         lcm_numerators = gcd(lcm_numerators, (lcm_denominators//denominators[idx])*numerators[idx])
+
+#     gcd_val = gcd(lcm_numerators, lcm_denominators)
+#     print(lcm_numerators//gcd_val, lcm_denominators//gcd_val)
+
+# solve()
+
+
+# 27433 팩토리얼 2
+# N = int(input())
+# ans = 1
+# for i in range(2, N+1):
+#     ans *= i
+# print(ans)
+
+
+# 1002 터렛
+# 참고 0 https://mathbang.net/101#gsc.tab=0
+# 참고 1 https://www.acmicpc.net/board/view/96827
+# 참고 2 https://www.acmicpc.net/board/view/113688
+
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     x1, y1, r1, x2, y2, r2 = map(int, input().split())
+#     if x1 == x2 and y1 == y2:
+#         if r1 == r2 :
+#             if r1 == 0:
+#                 print(1)
+#             else:
+#                 print(-1)
+#         else:
+#             print(0)
+#         continue
+
+#     squared_dist = (x2-x1)**2+(y2-y1)**2
+#     sqaured_r2_plus_r1 = (r2+r1)**2
+#     sqaured_r2_minus_r1 = (r2-r1)**2
+#     print(sqaured_r2_minus_r1)
+
+#     if squared_dist > sqaured_r2_plus_r1:
+#         print(0)
+#     elif squared_dist == sqaured_r2_plus_r1:
+#         print(1)
+#     elif sqaured_r2_minus_r1 < squared_dist < sqaured_r2_plus_r1:
+#         print(2)
+#     elif sqaured_r2_minus_r1 == squared_dist:
+#         print(1)
+#     else:
+#         print(0)
+
+
+# 4344 평균은 넘겠지
+# import sys
+# input = sys.stdin.readline
+
+# def round(n):
+#     a = n*1000
+#     if (a - int(a)) >= 0.5:
+#         return (int(a)+1)/1000
+#     else:
+#         return int(a)/1000
+
+# def solve():
+#     for _ in range(int(input())):
+#         ns = list(map(int, input().split()))
+#         avg = sum(ns[1:])/ns[0]
+#         print('{:.3f}%'.format(round(100*sum(1 for n in ns[1:] if n > avg)/ns[0])))
+
+# solve()
+
+
+# 28256 초콜릿 보관함
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# for _ in range(int(input())):
+#     cs = [list(input().rstrip()) for _ in range(3)]
+#     ns = list(map(int, input().split()))
+#     # print(cs, ns)
+
+#     q = deque([cs[0][i] for i in range(3)] + [cs[1][2]] + [cs[2][i] for i in range(2, -1, -1)] + [cs[1][0]])
+#     for _ in range(9):
+#         if q[0] == 'X':
+#             break
+#         else:
+#             q.append(q.popleft())
+#     # print(q)
+
+#     ans = []
+#     cnt = 0
+#     for a in q:
+#         if a == 'O':
+#             cnt += 1
+#         else:
+#             if cnt != 0:
+#                 ans.append(cnt)
+#             cnt = 0
+
+#     if cnt != 0:
+#         ans.append(cnt)
+#     # print(ans)
+
+#     print(1 if sorted(ans) == ns[1:] else 0)
+
+
+# 16936 나3곱2
+# N = int(input())
+# ns = list(map(int, input().split()))
+
+# nsets = [set(n for n in ns)]
+# # print(nsets)
+
+# i, div_val = 0, 3
+# while nsets[i]:
+#     nsets.append(set())
+#     remove_set = set()
+#     for a in nsets[i]:
+#         if a % div_val == 0:
+#             remove_set.add(a)
+#             nsets[i+1].add(a)
+#             # print("a", a)
+
+#     for a in remove_set:
+#         nsets[i].remove(a)
+
+#     i += 1
+#     div_val *= 3
+# # print(nsets)
+
+# for s in nsets[::-1][1:]:
+#     print(*sorted(s), end=' ')
+
+
+# 1689 겹치는 선분
+# https://www.acmicpc.net/problem/1689
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# N = int(input())
+# lines = [list(map(int, input().split())) for _ in range(N)]
+# lines.sort(key=lambda x:(x[0]))
+# heap = []
+
+# ans, cnt = 0, 0
+# for now_l, now_r in lines:
+#     while heap and heap[0] <= now_l:
+#         heappop(heap)
+#         cnt -= 1
+#     heappush(heap, now_r)
+#     cnt += 1
+#     ans = max(ans, cnt)
+
+# print(ans)
+
+
+# TLE ( python3, pypy3 )
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# lines = [[-1, -1] for _ in range(2*N)]
+# for i in range(N):
+#     l, r = map(int, input().split())
+#     lines[2*i] = [l, 1]
+#     lines[2*i+1] = [r, -1]
+# lines.sort(key=lambda x:(x[0], x[1]))
+
+# ans, cnt = 0, 0
+# for _, val in lines:
+#     cnt += val
+#     ans = max(ans, cnt)
+
+# print(ans)
+
+
+# 20205 교수님 그림이 깨지는데요?
+# N, K = map(int, input().split())
+# for _ in range(N):
+#     ns = list(map(int, input().split()))
+#     for _ in range(K):
+#         for n in ns:
+#             for _ in range(K):
+#                 print(n, end=' ')
+#         print()
+
+
+# 10973 이전 순열
+# def solve():
+#     N = int(input())
+#     ns = [10001] + list(map(int, input().split()))
+#     idx = N
+#     now_val = ns[idx]
+
+#     for idx in range(N-1, -1, -1):
+#         if now_val > ns[idx]:
+#             now_val = ns[idx]
+#         else:
+#             break
+
+#     if idx == 0:
+#         print(-1)
+#         return
+
+#     new_ns = sorted(ns[idx:])
+#     now_val = new_ns[0]
+#     for n in new_ns:
+#         if ns[idx] > n:
+#             now_val = n
+#         else:
+#             break
+
+#     new_ns.remove(now_val)
+#     print(*ns[1:idx], now_val, *new_ns[::-1], sep=' ')
+
+# solve()
+
+
+# 27907
+# print('7 '*int(input()))
+
+
+# 3135 라디오
+# A, B = map(int, input().split())
+# N = int(input())
+# ns = [int(input()) for _ in range(N)]
+# print("ns", ns)
+
+# ans = abs(A-B)
+# for n in ns:
+#     ans = min(ans, abs(n-B)+1)
+
+# print(ans)
+
+
+# 24263 알고리즘 수업 - 알고리즘의 수행 시간 2
+# print(int(input()), 1, sep='\n')
+
+
+# 20041 Escaping
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# # polices, target
+# pxys = [list(map(int, input().split())) for _ in range(N)]
+# tx, ty = map(int, input().split())
+
+# # → ← ↑ ↓
+# pos = [1]*4
+
+# for px, py in pxys:
+#     if not sum(pos):
+#         break
+
+#     # 도둑 기준으로 유리한 좌표 이동 수 계산
+#     gap_x = abs(tx-px)
+#     gap_y = abs(ty-py)
+#     sign_x = 1 if (tx-px) > 0 else -1
+#     sign_y = 1 if (ty-py) > 0 else -1
+
+#     # →
+#     sub_x = sign_x*gap_x
+#     if (sub_x + gap_y) <= 0:
+#         pos[0] = 0
+
+#     # ←
+#     sub_x = -sign_x*gap_x
+#     if (sub_x + gap_y) <= 0:
+#         pos[1] = 0
+
+#     # ↑
+#     sub_y = sign_y*gap_y
+#     if (gap_x + sub_y) <= 0:
+#         pos[2] = 0
+
+#     # ↓
+#     sub_y = -sign_y*gap_y
+#     if (gap_x + sub_y) <= 0:
+#         pos[3] = 0
+
+# print("YES" if sum(pos) else "NO")
+
+
+# 1456 거의 소수
+# import math
+
+# A, B = map(int, input().split())
+# limit = math.isqrt(B)
+# checks = [False, False] + [True]*(limit-1)
+
+# for i in range(2, limit+1):
+#     if checks[i]:
+#         for ii in range(2*i, limit+1, i):
+#             checks[ii] = False
+# primes = [i for i in range(2, limit+1) if checks[i]]
+# # print(len(primes))
+
+# ans = 0
+# for p in primes:
+#     now_val = p**2
+#     while now_val <= B:
+#         if now_val >= A:
+#             ans += 1
+#         now_val *= p
+#         # print(ans, now_val)
+
+# print(ans)
+
+
+# 15633 Fan Death
+# n = int(input())
+# ans = 0
+
+# for i in range(1, int(n**(1/2))+1):
+#     if n % i == 0:
+#         ans += i + (n//i)
+#         if i == (n//i):
+#             ans -= i
+
+# print(ans*5-24)
+
+
+# 5567 결혼식
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# def solve():
+#     n = int(input())
+#     g = defaultdict(list)
+
+#     for _ in range(int(input())):
+#         a, b = map(int, input().split())
+#         g[a].append(b)
+#         g[b].append(a)
+
+#     ans = 0
+#     visited = [False]*(n+1)
+#     visited[1] = True
+#     q = deque([1])
+
+#     for _ in range(2):
+#         for _ in range(len(q)):
+#             v = q.popleft()
+#             for u in g[v]:
+#                 if not visited[u]:
+#                     ans += 1
+#                     visited[u] = True
+#                     q.append(u)
+
+#     print(ans)
+
+# solve()
+
+
+# 27902 CVE: Life is Way Too Short
+# 2**14284 까지 출력
+# n = int(input())
+# if n <= 14284:
+#     print(2**n)
+
+# s = 2 ** int(input())
+# if len(str(s)) <= 4300:
+#     print(s)
+
+
+# 28235
+# D = dict()
+# D["SONGDO"] = "HIGHSCHOOL"
+# D["CODE"] = "MASTER"
+# D["2023"] = "0611"
+# D["ALGORITHM"] = "CONTEST"
+
+# print(D[input()])
+
+
+# 3047 ABC
+# ns = sorted(list(map(int, input().split())))
+# d = dict()
+# d['A'] = ns[0]
+# d['B'] = ns[1]
+# d['C'] = ns[2]
+
+# for c in input():
+#     print(d[c], end=' ')
+
+
+# 2566 최댓값
+
+# i, j, max_val = -1, -1, -1
+# for k in range(9):
+#     ns = list(map(int, input().split()))
+#     for idx in range(9):
+#         if max_val < ns[idx]:
+#             max_val = ns[idx]
+#             i = k
+#             j = idx
+
+# print(max_val)
+# print(i+1, j+1)
+
+
+# 15894 수학은 체육과목 입니다
+# print(4*int(input()))
+
+
+# 27535 제주 초콜릿 지키기
+# def cal_n_base(n, base):
+#     if n == 0: return 0
+
+#     k = ""
+#     while n > 0:
+#         k += str(n % base)
+#         n //= base
+#     return k[::-1]
+
+# def solve():
+#     alphas = "HTCKG"
+#     tmp_ns = list(map(int, input().split()))
+#     ns = dict()
+#     for i in range(5):
+#         ns[alphas[i]] = tmp_ns[i]
+#     # print("ns", ns)
+#     base = sum(tmp_ns)%10
+#     if base <= 1:
+#         base = 10
+
+#     for _ in range(int(input())):
+#         tmp_ns = list(map(int, input().split()))
+#         for i in range(5):
+#             ns[alphas[i]] -= tmp_ns[i]
+#         # print(ns)
+
+#         sum_ns = sum(ns.values())
+#         print(f"{cal_n_base(sum_ns, base)}7H")
+
+#         if sum_ns == 0:
+#             print("NULL")
+#             continue
+#         else:
+#             vals = sorted(ns.items(), key=lambda x: (-x[1], x[0]))
+#             for i in range(5):
+#                 if vals[i][1] == 0:
+#                     break
+#                 print(vals[i][0], end="")
+#             print()
+
+#             base = sum_ns % 10
+#             if base <= 1:
+#                 base = 10
+
+# solve()
+
+
+# 2857 FBI
+# ans = []
+# for i in range(5):
+#     name = list(input().split("-"))
+#     checks = False
+#     for n in name:
+#         if "FBI" in n:
+#             checks = True
+#             break
+
+#     if checks:
+#         ans.append(i + 1)
+
+# print(*ans) if ans else print("HE GOT AWAY!")
+
+
+# 1799 비숍
+"""
+10
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+"""
+
+# def btr(board:list, checks:list, N, len_board, std_x):
+#     global cnt, max_cnt
+
+#     for i in range(std_x, len_board):
+#         for j in range(len(board[i])):
+#             x, y = board[i][j]
+#             if not checks[N-x+y]:
+#                 checks[N-x+y] = True
+#                 cnt += 1
+#                 max_cnt = max(max_cnt, cnt)
+
+#                 btr(board, checks, N, len_board, i+1)
+#                 checks[N-x+y] = False
+#                 cnt -= 1
+
+# def solve():
+#     N = int(input())
+#     input_board = [list(map(int, input().split())) for _ in range(N)]
+
+#     # separated boards : 흑백 따로
+#     sep_boards = [[[] for _ in range(N)], [[] for _ in range(N-1)]]
+#     # print(sep_boards)
+
+#     checks = [False]*(2*N)
+
+#     for x in range(N):
+#         for y in range(N):
+#             if input_board[x][y]:
+#                 sep_boards[(x+y)%2][(x+y)//2].append([x,y])
+#     # for k in range(2):
+#     #     print(sep_boards[k])
+
+#     ans = 0
+#     global cnt, max_cnt
+#     for i in range(2):
+#         cnt, max_cnt = 0, 0
+#         btr(sep_boards[i], checks, N, len(sep_boards[i]), 0)
+#         ans += max_cnt
+
+#     print(ans)
+
+# solve()
+
+
+# 10775 공항
+"""
+5
+10
+5
+5
+5
+5
+5
+4
+[정답] 5
+"""
+# import sys
+# input = sys.stdin.readline
+
+# G = int(input())
+# parent = [i for i in range(G+1)]
+
+# def find_parent(x):
+#     if x != parent[x]:
+#         parent[x] = find_parent(parent[x])
+#     return parent[x]
+
+# ans = 0
+# for _ in range(int(input())):
+#     gi = int(input())
+
+#     # if parent[gi] == 0:
+#     if find_parent(gi) == 0:
+#         break
+
+#     ans += 1
+#     # parent[find_parent(parent[gi])] -= 1
+#     parent[parent[gi]] -= 1
+#     find_parent(gi)
+#     # print(ans, parent)
+
+# print(ans)
+
+
+# 1956 운동
+# import sys
+# input = sys.stdin.readline
+
+# V, E = map(int, input().split())
+# INF = int(5e6)
+# dist = [[INF] * V for _ in range(V)]
+# # for i in range(V):
+# #     dist[i][i] = 0
+# # print("dist", dist)
+
+# for _ in range(E):
+#     a, b, c = map(int, input().split())
+#     dist[a - 1][b - 1] = c
+
+# for k in range(V):
+#     for m in range(V):
+#         for n in range(V):
+#             dist[k][n] = min(dist[k][n], dist[k][m] + dist[m][n])
+
+# ans = INF
+# for i in range(V):
+#     for j in range(V):
+#         ans = min(ans, dist[i][j] + dist[j][i])
+
+# print(ans if ans != INF else -1)
+
+
+# 11256 사탕
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     J, N = map(int, input().split())
+#     cnt = 0
+#     boxes = [list(map(int, input().split())) for _ in range(N)]
+#     boxes = sorted([boxes[i][0] * boxes[i][1] for i in range(N)], reverse=True)
+#     # print(boxes)
+
+#     for b in boxes:
+#         J -= b
+#         cnt += 1
+#         if J <= 0:
+#             break
+
+#     print(cnt)
+
+
+# 1547 공
+# ans = 1
+# for _ in range(int(input())):
+#     X, Y = map(int, input().split())
+#     if X == ans:
+#         ans = Y
+#     elif Y == ans:
+#         ans = X
+
+# print(ans)
+
+
+# 1509 팰린드롬 분할
+# s = list(input())
+# # print(s)
+
+# len_s = len(s)
+# dp1 = [[0] * len_s for _ in range(len_s)]
+# dp2 = [[0] * len_s for _ in range(len_s)]
+
+# for i in range(len_s):
+#     for k in range(min(i, len_s - 1 - i) + 1):
+#         if s[i - k] == s[i + k]:
+#             dp1[i][i - k] = 2 * k + 1
+#         else:
+#             break
+
+# for i in range(len_s - 1):
+#     for k in range(min(i, len_s - 2 - i) + 1):
+#         if s[i - k] == s[i + k + 1]:
+#             dp2[i][i - k] = 2 * (k + 1)
+#         else:
+#             break
+
+# # for i in range(len_s):
+# #     print(dp1[i])
+# #     # print(dp2[i])
+# # print()
+
+# dp3 = [2500] * (len_s + 1)
+# dp3[0] = 0
+
+# for y in range(len_s):
+#     for x in range(len_s):
+#         for this_dp in [dp1, dp2]:
+#             if this_dp[x][y] == 0:
+#                 continue
+
+#             ny = y + this_dp[x][y]
+#             dp3[ny] = min(dp3[ny], dp3[y] + 1)
+
+# print(dp3[len_s])
+
+
+# 12850 본대 산책2
+# A^D
+
+# mod = int(1e9) + 7
+
+# def mul_matrix(matrix_a, matrix_b):
+#     return_matrix = [[0] * 8 for _ in range(8)]
+#     for i in range(8):
+#         for j in range(8):
+#             for k in range(8):
+#                 return_matrix[i][j] += matrix_a[i][k] * matrix_b[k][j]
+#             return_matrix[i][j] %= mod
+#     return return_matrix
+
+# def matrix_power_n(matrix: list, n: int):
+#     if n % 2 == 1:
+#         if n == 1:
+#             return matrix
+#         return mul_matrix(matrix, matrix_power_n(matrix, n - 1))
+#     else:
+#         matrix_power_half_n = matrix_power_n(matrix, n // 2)
+#         return mul_matrix(matrix_power_half_n, matrix_power_half_n)
+
+# def solve():
+#     D = int(input())
+#     A = [
+#         [0, 1, 1, 0, 0, 0, 0, 0],
+#         [1, 0, 1, 1, 0, 0, 0, 0],
+#         [1, 1, 0, 1, 1, 0, 0, 0],
+#         [0, 1, 1, 0, 1, 1, 0, 0],
+#         [0, 0, 1, 1, 0, 1, 1, 0],
+#         [0, 0, 0, 1, 1, 0, 0, 1],
+#         [0, 0, 0, 0, 1, 0, 0, 1],
+#         [0, 0, 0, 0, 0, 1, 1, 0],
+#     ]
+#     print(matrix_power_n(A, D)[0][0])
+
+# solve()
+
+
+# 12833 XORXORXOR
+# A, B, C = map(int, input().split())
+# if C % 2 == 0:
+#     print(A)
+# else:
+#     print(A ^ B)
+
+
+# 24389 2의 보수
+# N = int(input())
+# print(32 - len(str(bin(N ^ (~N + 1)))[4:]))
+
+
+# 1740 거듭제곱
+# N = int(input())
+# ans, mul_val = 0, 1
+
+# for n in format(N, "b")[::-1]:
+#     ans += int(n) * mul_val
+#     mul_val *= 3
+# print(ans)
+
+
+# 11811 데스스타
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = [list(map(int, input().split())) for _ in range(N)]
+# ans = [0] * N
+
+# for i in range(N):
+#     for j in range(N):
+#         ans[i] |= ns[i][j]
+
+# print(*ans)
+
+
+# 2098
+
+# INF = int(20e6)
+
+
+# def isIn(i, A):
+#     if A & (1 << (i - 2)):
+#         return True
+#     return False
+
+# def diff(A, j):
+#     t = 1 << (j - 2)
+#     return A & (~t)
+
+# def count(A, n):
+#     count = 0
+#     for i in range(n):
+#         if (A & (1 << i)) != 0:
+#             count += 1
+#     return count
+
+
+# def minimum(W, D, i, A):
+#     minValue = INF
+#     n = len(W) - 1
+#     for j in range(2, n + 1):
+#         if isIn(j, A):
+#             m = W[i][j] + D[j][diff(A, j)]
+#             if minValue > m:
+#                 minValue = m
+#     return minValue
+
+# def travel(W):
+#     n = len(W) - 1
+#     size = 2 ** (n - 1)
+#     D = [[0] * size for _ in range(n + 1)]
+#     for i in range(2, n + 1):
+#         D[i][0] = W[i][1]
+#     for k in range(1, n - 1):
+#         for A in range(1, size):
+#             if count(A, n) == k:
+#                 for i in range(2, n + 1):
+#                     if not isIn(i, A):
+#                         D[i][A] = minimum(W, D, i, A)
+#     A = size - 1
+#     for i in range()
+#     D[1][A] = minimum(W, D, 1, A)
+
+#     # print("D")
+#     # for i in range(n + 1):
+#     #     print(*D[i])
+
+#     return D
+
+
+# def solve():
+#     N = int(input())
+#     W = [[-1] * (N + 1), *[[-1] + list(map(int, input().split())) for _ in range(N)]]
+#     print(travel(W)[1][-1])
+
+
+# solve()
+
+
+# 28239 배고파(Easy)
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     m = int(input())
+#     str = bin(m)[2:][::-1]
+
+#     cnt = 0
+#     idxs = []
+#     for i in range(len(str)):
+#         if str[i] == "1":
+#             idxs.append(i)
+#             cnt += 1
+#     # print(cnt, idxs)
+
+#     print(*idxs) if cnt == 2 else print(*([idxs[0] - 1] * 2))
+
+
+# 15787 기차가 어둠을 헤치고 은하수를
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# trains = [0] * (N+1)
+# cut = (1 << 20)-1
+
+# for _ in range(M):
+#     cmd = list(map(int, input().split()))
+#     if cmd[0] == 1:
+#         i, x = cmd[1:]
+#         trains[i] |= 1 << (x-1)
+#     elif cmd[0] == 2:
+#         i, x = cmd[1:]
+#         trains[i] &= ~(1 << (x-1))
+#     elif cmd[0] == 3:
+#         i = cmd[1]
+#         trains[i] *= 2
+#         trains[i] &= cut
+#     else:
+#         i = cmd[1]
+#         trains[i] //= 2
+
+# train_set = set()
+# for t in trains[1:]:
+#     if t not in train_set:
+#         train_set.add(t)
+
+# print(len(train_set))
+
+
+# 13411 하늘에서 정의가 빗발친다!
+# import math
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = [list(map(int, input().split())) for _ in range(N)]
+# ps = [[math.sqrt(ns[i][0]**2+ns[i][1]**2)/ns[i][2], i+1] for i in range(N)]
+# ps.sort(key=lambda x:(x[0], x[1]))
+# print(*[ps[i][1] for i in range(N)], sep='\n')
+
+
+# 28282 운명
+# X, K = map(int, input().split())
+# ns = list(map(int, input().split()))
+# left, right = ns[:X], ns[X:]
+# # print(left, right)
+
+# acc_left, acc_right = [0]*(K+1), [0]*(K+1)
+# for l in left: acc_left[l] += 1
+# for r in right: acc_right[r] += 1
+# # print(acc_left, acc_right)
+# sum_left, sum_right = sum(acc_left), sum(acc_right)
+
+# ans = 0
+# for i in range(1, K+1):
+#     ans += acc_left[i] * (sum_right - acc_right[i])
+# print(ans)
+
+
+# 3474 교수가 된 현우
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     T = int(input())
+#     ans, div_num = 0, 5
+
+#     while div_num <= T:
+#         ans += T // div_num
+#         div_num *= 5
+#     print(ans)
+
+
+# 10810 공 넣기
+# N, M = map(int, input().split())
+# ans = [0]*(N+1)
+# for _ in range(M):
+#     i, j, k = map(int, input().split())
+#     for idx in range(i, j+1):
+#         ans[idx] = k
+# print(*ans[1:])
+
+
+# 3049 다각형의 대각선
+# def fac(n):
+#     val = 1
+#     for k in range(2, n+1):
+#         val *= k
+#     return val
+
+# def solve():
+#     N = int(input())
+#     print(fac(N)//(fac(N-4)*fac(4)))
+
+# solve()
+
+
+
+# 2766 Candy Sharing Game
+# def end_check(ns, N):
+#     end = True
+#     for i in range(1, N):
+#         if ns[0] != ns[i]:
+#             end = False
+#             break
+#     return end
+
+# def solve():
+#     import sys
+#     input = sys.stdin.readline
+
+#     while True:
+#         N = int(input())
+#         if N == 0:
+#             break
+
+#         rounds = 0
+#         ns = [int(input()) for _ in range(N)]
+        
+#         while not end_check(ns, N):
+#             tmp_ns = [0]*N
+#             for i in range(N):
+#                 tmp_ns[i] -= ns[i] //2
+#                 tmp_ns[(i+1)%N] += ns[i]//2
+
+#             for i in range(N):
+#                 ns[i] += tmp_ns[i]
+#                 if ns[i] % 2 != 0:
+#                     ns[i] += 1
+
+#             rounds += 1
+
+#         print(rounds, ns[0])
+
+# solve()
+
+
+# 23663 Deja vu of Go Players
+# for _ in range(int(input())):
+#     n, m = map(int, input().split())
+#     input(), input()
+#     print("Yes") if n <= m else print("No")
+
+
+# 7453 합이 0인 네 정수
+# import sys
+# input = sys.stdin.readline
+
+# n = int(input())
+# ns = [list(map(int, input().split())) for _ in range(n)]
+
+# ws, xs, ys, zs = [[ns[i][k] for i in range(n)] for k in range(4)]
+# # print(ws, xs, ys, zs)
+
+# js, ks = sorted([w+x for w in ws for x in xs]), sorted([y+z for y in ys for z in zs])
+# # print(js, ks)
+
+# l, len_js, r = 0, len(js), len(ks)-1
+
+# ans = 0
+# while l <= len_js-1 and r >= 0:
+#     s = js[l]+ks[r]
+#     if s < 0:
+#         l += 1
+#     elif s > 0:
+#         r -= 1
+#     else:
+#         l_cnt, r_cnt = 1, 1
+#         while l + l_cnt <= len_js-1 and js[l] == js[l+l_cnt]:
+#             l_cnt += 1
+
+#         while r - r_cnt >= 0 and ks[r] == ks[r-r_cnt]:
+#             r_cnt += 1
+
+#         l += l_cnt
+#         r -= r_cnt
+#         ans += (l_cnt * r_cnt)
+
+# print(ans)
+
+
+# 19638 센티와 마법의 뿅망치
+# from heapq import heapify, heappush, heappop
+
+# N, H, T = map(int, input().split())
+# heap = [-int(input()) for _ in range(N)]
+# heapify(heap)
+# # print(heap)
+
+# H = -H
+# cnt = 0
+# while T > 0:
+#     if heap[0] > H: break
+#     heappush(heap, min((heappop(heap)+1)//2, -1))
+#     T -= 1
+#     cnt += 1
+
+# print("YES", cnt, sep='\n') if heap[0] > H else print("NO", -heap[0], sep='\n')
+
+
+# 17352 여러분의 다리가 되어 드리겠습니다!
+'''
+6
+1 2
+3 4
+3 5
+5 2
+'''
+'''
+4
+2 3
+1 2
+'''
+
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# parent = [i for i in range(N+1)]
+
+# def find_parent(x):
+#     if x != parent[x]:
+#         parent[x] = find_parent(parent[x])
+#     return parent[x]
+
+# def union_parent(a, b):
+#     a = find_parent(a)
+#     b = find_parent(b)
+
+#     if a > b:
+#         parent[a] = b
+#     else:
+#         parent[b] = a
+
+# def solve():
+#     for _ in range(N-2):
+#         a, b = map(int, input().split())
+#         union_parent(a, b)
+#         # print("parent a b", a, b, parent)
+
+#     # why
+#     # for i in range(2, N+1):
+#     #     find_parent(i)
+#     print(parent)
+
+#     for i in range(2, N+1):
+#         if parent[i] != 1:
+#             print(1, i)
+#             break
+
+# solve()
+
+
+# 24313 알고리즘 수업 - 점근적 표기 1
+# a1, a0 = map(int, input().split())
+# c = int(input())
+# n0 = int(input())
+
+# if c >= a1:
+#     print(1) if a0 <= n0*(c-a1) else print(0)
+# else:
+#     print(0)
+
+
+
+# 3053 택시 기하학
+# import math
+
+# R = int(input())
+# print('{0:.6f}'.format(math.pi*(R**2)))
+# print('{0:.6f}'.format(2*(R**2)))
+
+
+# 28449 누가 이길까
+# import sys
+# input = sys.stdin.readline
+
+# _, M = map(int, input().split())
+# ns = sorted(list(map(int, input().split())))
+# ms = sorted(list(map(int, input().split())))
+
+# win, lose, draw = 0, 0, 0
+# for n in ns:
+#     l, r = 0, M-1
+#     target = 0
+#     while l <= r:
+#         mid = (l+r)//2
+
+#         if ms[mid] <= n:
+#             target = mid
+#             if ms[mid] == n:
+#                 break
+#             l = mid+1
+#         elif ms[mid] > n:
+#             r = mid-1
+#     # print("target", target, "mid", mid)
+
+#     if ms[target] < n:
+#         win += target+1
+#         lose += (M-target-1)
+#     elif ms[target] > n:
+#         win += target
+#         lose += (M-target)
+#     else: # ms[target] == n
+#         ll, lr = 0, target
+#         l_target = target
+#         while ll <= lr:
+#             mid = (ll+lr) //2
+#             if ms[mid] < ms[target]:
+#                 ll = mid+1
+#             else:
+#                 l_target = mid
+#                 lr = mid-1
+
+#         rl, rr = target, M-1
+#         r_target = target
+#         while rl <= rr:
+#             mid = (rl+rr) //2
+#             if ms[mid] <= ms[target]:
+#                 r_target = mid
+#                 rl = mid+1
+#             else:
+#                 rr = mid-1
+
+#         win += l_target
+#         draw += r_target-l_target+1
+#         lose += M-r_target-1
+#     # print(n, "n", win, lose, draw)
+
+# print(win, lose, draw)
+
+
+# 28449 누가 이길까
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# ns = list(map(int, input().split()))
+# ms = list(map(int, input().split()))
+
+# limit = (int(1e5)+1)
+# cnt_ms = [0]*limit
+
+# for m in ms:
+#     cnt_ms[m] += 1
+
+# for i in range(1, limit):
+#     cnt_ms[i] += cnt_ms[i-1]
+
+# win, lose, draw = 0, 0, 0
+# for n in ns:
+#     win += cnt_ms[n-1]
+#     draw += cnt_ms[n]-cnt_ms[n-1]
+#     lose += M-cnt_ms[n]
+
+# print(win, lose, draw)
+
+
+# 2942 퍼거슨과 사과
+# import math
+
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a % b
+#     return a
+
+# def solve():
+#     R, G = map(int, input().split())
+#     divisor = gcd(R, G)
+#     # print(divisor)
+
+#     for i in range(1, math.isqrt(divisor)+1):
+#         if divisor % i == 0:
+#             print(i, R//i, G//i)
+#             if i != divisor//i:
+#                 div_val = divisor//i
+#                 print(div_val, R//div_val, G//div_val)
+
+# solve()
+
+
+# 16165 걸그룹 마스터 준석이
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# girlGroupDict1 = dict()
+# girlGroupDict2 = dict()
+
+# for _ in range(N):
+#     groupName = input().rstrip()
+#     cnt = int(input())
+#     members = sorted([input().rstrip() for _ in range(cnt)])
+#     girlGroupDict1[groupName] = members
+
+#     for m in members:
+#         girlGroupDict2[m] = groupName
+
+# for _ in range(M):
+#     name = input().rstrip()
+#     n = int(input())
+#     if n == 0:
+#         print(*girlGroupDict1[name], sep='\n')
+#     else:
+#         print(girlGroupDict2[name])
+
+
+# 16945 매직 스퀘어로 변경하기
+# import itertools
+
+# board = [list(map(int, input().split())) for _ in range(3)]
+# board = [board[i][j] for i in range(3) for j in range(3)]
+
+# ans = 100
+# for k in itertools.permutations(range(1, 10), 9):
+#     # print(k)
+
+#     rs = [[k[3*i + j] for j in range(3)] for i in range(3)]
+#     # print(rs)
+
+#     cs = [[k[i + 3*j] for j in range(3)] for i in range(3)]
+#     # print(cs)
+
+#     std = (k[0]+k[4]+k[8])
+#     if std == (k[2]+k[4]+k[6]):
+#         pos = True
+
+#         for i in range(3):
+#             if std != sum(rs[i]) or std != sum(cs[i]):
+#                 pos = False
+#                 break
+
+#         if pos:
+#             tmp_sum = 0
+#             for i in range(9):
+#                 tmp_sum += abs(k[i] - board[i])
+#             # print(tmp_sum)
+#             ans = min(ans, tmp_sum)
+
+# print(ans)
+
+
+# 28470 슥~빡! 빡~슥!
+# N = int(input())
+# As = list(map(int, input().split()))
+# Bs = list(map(int, input().split()))
+# Ks = list(map(float, input().split()))
+
+# ans = 0
+# for i in range(N):
+#     if Ks[i] >= 1:
+#         ans += int(As[i]*(Ks[i]*10))//10 - Bs[i]
+#     else:
+#         ans += As[i] - int(Bs[i]*(Ks[i]*10))//10
+
+# print(ans)
+
+
+# 28471 W키가 빠진 성원이
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# N = int(input())
+# board = [list(input().rstrip()) for _ in range(N)]
+# # print(board)
+# inc_xy = [[0, 1], [1, 1], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]]
+# visited = [[False]*N for _ in range(N)]
+
+# q = deque([[x, y] for x in range(N) for y in range(N) if board[x][y]=='F'])
+# x, y = q[0]
+# visited[x][y] = True
+
+# ans = 0
+# while q:
+#     x, y = q.popleft()
+#     for px, py in inc_xy:
+#         nx, ny = x+px, y+py
+#         if 0 <= nx < N and 0 <= ny < N:
+#             if board[nx][ny] == '.' and not visited[nx][ny]:
+#                 visited[nx][ny] = True
+#                 q.append([nx, ny])
+#                 ans += 1
+
+# print(ans)
+
+
+# 20001 고무오리 디버깅
+
+# cnt = 0
+# while True:
+#     s = input()
+#     if s == '문제':
+#         cnt += 1
+#     elif s == '고무오리':
+#         if cnt == 0:
+#             cnt += 2
+#         else:
+#             cnt -= 1
+#     elif s == '고무오리 디버깅 끝':
+#         break
+
+# print("고무오리야 사랑해" if not cnt else "힝구")
+
+
+# 12886 돌 그룹
+# from collections import deque
+
+# def solve():
+#     q = deque([list(map(int, input().split()))])
+#     # print(q)
+#     ns_set = set(tuple(q[0]))
+#     # print(ns_set)
+
+#     while q:
+#         ns = q.popleft()
+#         if ns[0] == ns[1] == ns[2]:
+#             print(1)
+#             return
+
+#         for i in range(0, 2):
+#             for j in range(i+1, 3):
+#                 check = False
+#                 next = []
+
+#                 if ns[i] < ns[j]:
+#                     for k in range(3):
+#                         if k != i and k != j:
+#                             check = True
+#                             next = sorted([[i, 2*ns[i]], [j, ns[j]-ns[i]], [k, ns[k]]], key=lambda x:(x[0]))
+#                 elif ns[i] > ns[j]:
+#                     for k in range(3):
+#                         if k != i and k != j:
+#                             check = True
+#                             next = sorted([[i, ns[i]-ns[j]], [j, 2*ns[j]], [k, ns[k]]], key=lambda x:(x[0]))
+
+#                 if check:
+#                     next = tuple([next[i][1] for i in range(3)])
+#                     if next not in ns_set:
+#                         ns_set.add(next)
+#                         q.append(next)
+#     print(0)
+
+# solve()
+
+
+# from collections import deque
+
+# def q_append_check(next, ns_set, q):
+#     if next:
+#         next = tuple(next)
+#         if next not in ns_set:
+#             ns_set.add(next)
+#             q.append(next)
+
+# def solve():
+#     q = deque([list(map(int, input().split()))])
+#     # print(q)
+#     ns_set = set(tuple(q[0]))
+#     # print(ns_set)
+
+#     while q:
+#         ns = q.popleft()
+#         if ns[0] == ns[1] == ns[2]:
+#             print(1)
+#             return
+
+#         next = []
+#         if ns[0] > ns[1]:   next = [ns[0]-ns[1], 2*ns[1], ns[2]]
+#         elif ns[0] < ns[1]: next = [2*ns[0], ns[1]-ns[0], ns[2]]
+#         q_append_check(next, ns_set, q)
+
+#         next = []
+#         if ns[0] > ns[2]:   next = [ns[0]-ns[2], ns[1], 2*ns[2]]
+#         elif ns[0] < ns[2]: next = [2*ns[0], ns[1], ns[2]-ns[0]]
+#         q_append_check(next, ns_set, q)
+
+#         next = []
+#         if ns[1] > ns[2]:   next = [ns[0], ns[1]-ns[2], 2*ns[2]]
+#         elif ns[1] < ns[2]: next = [ns[0], 2*ns[1], ns[2]-ns[1]]
+#         q_append_check(next, ns_set, q)
+
+#     print(0)
+
+# solve()
+
+
+# 27918 탁구 경기
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# D, P = 0, 0
+
+# for _ in range(N):
+#     c = input().rstrip()
+#     if c == 'D': D += 1
+#     else: P += 1
+
+#     if abs(D-P) >= 2:
+#         break
+
+# print(f'{D}:{P}')
+
+
+# 5648 역원소 정렬
+# import sys
+
+# strs = sys.stdin.readlines()
+# strs = [s.rstrip().split() for s in strs]
+# strs[0] = strs[0][1:]
+# # print(strs)
+
+# ans = [int(s[::-1]) for ss in strs for s in ss]
+# print(*sorted(ans), sep='\n')
+
+
+# 10472 십자뒤집기
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def toggle(board, x, y):
+#     if board[x][y] == '*':
+#         board[x][y] = '.'
+#     else:
+#         board[x][y] = '*'
+
+# inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+# for _ in range(int(input())):
+#     target = tuple(tuple(input().rstrip()) for _ in range(3))
+#     # print(target)
+
+#     start_board = tuple([tuple(['.']*3) for _ in range(3)])
+#     # board_set = set(start_board)
+#     board_set = set()
+#     board_set.add(start_board)
+#     # print(board_set)
+
+#     q = deque([[start_board, 0]])
+#     while q:
+#         now, cnt = q.popleft()
+#         if now == target:
+#             print(cnt)
+#             break
+
+#         for x in range(3):
+#             for y in range(3):
+#                 new_board = [list(now[i][:]) for i in range(3)]
+#                 toggle(new_board, x, y)
+
+#                 for px, py in inc_xy:
+#                     nx, ny = x+px, y+py
+#                     if 0 <= nx < 3 and 0 <= ny < 3:
+#                         toggle(new_board, nx, ny)
+
+#                 tupled_new_board = tuple(tuple(new_board[i][:]) for i in range(3))
+#                 if tupled_new_board not in board_set:
+#                     board_set.add(tupled_new_board)
+#                     q.append([tupled_new_board, cnt+1])
+
+
+# 18765 정*수-를+[만들자!]
+# from collections import deque
+
+# dp = [1000]*1001
+# ans = ['+[]',
+#         '+!![]',
+#         '!![]+!![]',
+#         '!![]+!![]+!![]',
+#         '!![]+!![]+!![]+!![]',
+#         '!![]+!![]+!![]+!![]+!![]',
+#         '[!![]+!![]+!![]]*[!![]+!![]]',
+#         '[+!![]]+[+[]]-!![]-!![]-!![]',
+#         '[+!![]]+[+[]]-!![]-!![]',
+#         '[+!![]]+[+[]]-!![]',
+#         '[+!![]]+[+[]]'
+#         ] + ['_'*1000]*990
+# # print(ans[:13])
+
+# q = deque([[10, len('[+!![]]+[+[]]')]])
+
+# max_len = 0
+# for i in range(11, 1001):
+#     tmp_ans = '[' + ']+['.join([ans[k] for k in list(map(int, str(i)))]) + ']'
+#     ans[i] = tmp_ans
+#     # print(tmp_ans)
+#     max_len = max(max_len, len(tmp_ans))
+#     q.append([i, len(tmp_ans)])
+# # print(max_len)
+
+# for i in range(1001):
+#     dp[i] = len(ans[i])
+
+# while q:
+#     v, l = q.popleft()
+
+#     if v-1 >= 0 and dp[v-1] > (dp[v]+5):
+#         dp[v-1] = dp[v]+5
+#         q.append([v-1, dp[v]+5])
+#         ans[v-1] = f'{ans[v]}-!![]'
+
+#     if v+1 <= 1000 and dp[v+1] > (dp[v]+5):
+#         dp[v+1] = dp[v]+5
+#         q.append([v+1, dp[v]+5])
+#         ans[v+1] = f'{ans[v]}+!![]'
+
+#     for k in range(2, 11):
+#         if k*v <= 1000:
+#             next_dp_len = dp[v]+5+len(ans[k])
+#             if dp[k*v] > next_dp_len:
+#                 dp[k*v] = next_dp_len
+#                 q.append([k*v, next_dp_len])
+#                 ans[k*v] = f'[{ans[v]}]*[{ans[k]}]'
+#         else:
+#             break
+
+#     if v >= 2:
+#         now = v
+#         for k in range(2, 11):
+#             # now == v**k
+#             now *= v
+#             if now <= 1000:
+#                 next_dp_len = dp[v]+6+len(ans[k])
+#                 if dp[now] > next_dp_len:
+#                     dp[now] = next_dp_len
+#                     q.append([now, next_dp_len])
+#                     ans[now] = f'[{ans[v]}]**[{ans[k]}]'
+#             else:
+#                 break
+
+# # print(dp[:20])
+# # print(*ans[:11], sep='\n')
+# # print([len(ans[i]) for i in range(11)])
+
+# print(max(len(ans[i]) for i in range(1001)))
+
+# f = open("./result.txt", 'w')
+# for i in range(1001):
+#     f.write(f'+[{ans[i]}]\n')
+# f.close()
+
+
+# 24049 정원 (Easy)
+# N, M = map(int, input().split())
+
+# board = [[0]*(M+1) for _ in range(N+1)]
+# ns = list(map(int, input().split()))
+# ms = list(map(int, input().split()))
+
+# for i in range(N):
+#     board[1+i][0] = ns[i]
+# for i in range(M):
+#     board[0][1+i] = ms[i]
+
+# for x in range(1, N+1):
+#     for y in range(1, M+1):
+#         board[x][y] = board[x][y-1] ^ board[x-1][y]
+
+# print(board[N][M])
+
+
+# 2230 수 고르기
+# N, M = map(int, input().split())
+# ns = sorted([int(input()) for _ in range(N)])
+
+# l, r = 0, 0
+# ans = int(2e9)
+
+# while l <= r and r <= N-1:
+#     gap = ns[r]-ns[l]
+#     if gap < M:
+#         r += 1
+#     elif gap > M:
+#         ans = min(ans, gap)
+#         l += 1
+#     else:
+#         ans = M
+#         break
+
+# print(ans)
+
+
+# 16922 로마 숫자 만들기
+# def btr(now_idx, rest_n, ns, ans, sum_set):
+#     for val in range(0, rest_n+1):
+#         ns[now_idx] = val
+#         if now_idx < 3:
+#             btr(now_idx+1, rest_n-val, ns, ans, sum_set)
+#         else:
+#             ns[3] = rest_n
+#             now_sum = ns[0] + 5*ns[1] + 10*ns[2] + 50*ns[3]
+#             if now_sum not in sum_set:
+#                 sum_set.add(now_sum)
+#                 ans[0] += 1
+
+# def solve():
+#     N = int(input())
+#     ns = [0]*4
+#     ans = [0]
+#     sum_set = set()
+
+#     btr(0, N, ns, ans, sum_set)
+#     print(ans[0])
+
+# solve()
+
+
+# 5587 카드 캡터 상근이
+# n = int(input())
+
+# ns = sorted([int(input()) for _ in range(n)])
+# ns_have = [True]*(n)
+# ns_set = set(ns)
+
+# ms = sorted([i for i in range(1, 2*n+1) if i not in ns_set])
+# ms_have = [True]*(n)
+# # print(ms)
+
+# ans_n, ans_m = 0, 0
+# now_n, now_m = n, n
+# field_card = 0
+# sg_turn = True
+
+# while now_n > 0 and now_m > 0:
+#     pos = False
+
+#     if sg_turn:
+#         for i in range(n):
+#             if field_card < ns[i] and ns_have[i]:
+#                 field_card = ns[i]
+#                 ns_have[i] = False
+#                 now_n -= 1
+#                 pos = True
+#                 break
+#     else:
+#         for i in range(n):
+#             if field_card < ms[i] and ms_have[i]:
+#                 field_card = ms[i]
+#                 ms_have[i] = False
+#                 now_m -= 1
+#                 pos = True
+#                 break
+
+#     sg_turn = not sg_turn
+
+#     if not pos:
+#         field_card = 0
+
+# print(now_m, now_n, sep='\n')
