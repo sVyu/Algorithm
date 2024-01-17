@@ -26665,3 +26665,108 @@ WLLUU
 # print("YES", dp[N][M], sep='\n') if H >= dp[N][M] else print("NO")
 
 
+# 16987 계란으로 계란치기
+'''
+3
+1 4
+8 1
+3 1
+'''
+'''
+8
+7 100
+6 100
+100 1
+100 1
+100 1
+100 1
+100 1
+100 1
+'''
+'''
+6
+5 100
+4 100
+100 1
+100 1
+100 1
+100 1
+'''
+
+# N = int(input())
+# ns = [list(map(int, input().split())) for _ in range(N)]
+# global ans
+# ans = 0
+
+# def cnt():
+#     return sum([1 if ns[i][0] <= 0 else 0 for i in range(N)])
+
+# def btr(i):
+#     global ans
+#     if i >= N:
+#         ans = max(ans, cnt())
+#         return
+
+#     if ns[i][0] <= 0:
+#         btr(i+1)
+#         return
+
+#     cannot_attack = True
+#     for j in range(N):
+#         if i != j and ns[j][0] > 0:
+#             cannot_attack = False
+#             ns[i][0] -= ns[j][1]
+#             ns[j][0] -= ns[i][1]
+#             btr(i+1)
+#             ns[i][0] += ns[j][1]
+#             ns[j][0] += ns[i][1]
+
+#     if cannot_attack:
+#         btr(i+1)
+
+# def solve():
+#     btr(0)
+#     print(ans)
+
+# solve()
+
+
+# 1987 알파벳
+# retry
+
+# R, C = map(int, input().split())
+# board = [input() for _ in range(R)]
+# inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+# visited = [[False]*C for _ in range(R)]
+# alphas = [False]*26
+# alphas[ord(board[0][0])-65] = True
+
+# global ans
+# ans = 1
+
+# def btr(x, y, cnt):
+#     global ans
+#     ans = max(ans, cnt)
+#     if ans >= 26:
+#         return
+
+#     for px, py in inc_xy:
+#         nx, ny = x+px, y+py
+#         if 0 <= nx < R and 0 <= ny < C:
+#             oa = ord(board[nx][ny])-65
+#             if not visited[nx][ny] and not alphas[oa]:
+#                 visited[nx][ny] = True
+#                 alphas[oa] = True
+#                 btr(nx, ny, cnt+1)
+
+#                 visited[nx][ny] = False
+#                 alphas[oa] = False
+
+# def solve():
+#     visited[0][0] = True
+#     btr(0, 0, 1)
+#     print(ans)
+
+# solve()
+
+
