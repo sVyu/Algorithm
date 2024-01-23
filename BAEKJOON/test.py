@@ -26770,3 +26770,293 @@ WLLUU
 # solve()
 
 
+# 5107 마니또
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# N = int(input())
+# case_num = 1
+
+# while N > 0:
+#     g = defaultdict(list)
+#     names, visited = set(), set()
+#     for _ in range(N):
+#         a, b = input().split()
+#         g[a].append(b)
+#         names.add(a)
+
+#     ans = 0
+#     for name in names:
+#         if name not in visited:
+#             ans += 1
+#             visited.add(name)
+#             q = deque([name])
+
+#             while q:
+#                 v = q.popleft()
+#                 for u in g[v]:
+#                     if u not in visited:
+#                         visited.add(u)
+#                         q.append(u)
+
+#     print(case_num, ans)
+#     N = int(input())
+#     case_num += 1
+
+
+# 10451 순열 사이클
+# for _ in range(int(input())):
+#     N = int(input())
+#     ns = [0] + list(map(int, input().split()))
+#     visited = [False]*(N+1)
+
+#     ans = 0
+#     for i in range(1, N+1):
+#         if not visited[i]:
+#             ans += 1
+#             visited[i] = True
+#             v = ns[i]
+#             while v != i:
+#                 visited[v] = True
+#                 v = ns[v]
+
+#     print(ans)
+
+
+# 1394 암호
+# cs = list(input())
+# ts = list(input())
+# C, T = len(cs), len(ts)
+# mod = 900528
+
+# # powers
+# pws = [1]*T
+# for i in range(1, T):
+#     pws[i] = (pws[i-1]*C) % mod
+
+# # 앞에 몇 개의 알파벳이 있는지
+# d = dict()
+# for i in range(C):
+#     d[cs[i]] = i
+# # print(d)
+
+# # 총 길이(T)보다 자리수가 적은 경우
+# ans = 1
+# for i in range(1, T):
+#     ans = (ans + pws[i]) % mod
+# # print(ans)
+
+# # 총 길이 맞춘 이후 각 알파벳이 올 때까지 횟수 plus
+# for i in range(T):
+#     t = ts[i]
+#     ans = (ans + d[t]*pws[T-1-i]) % mod
+
+# print(ans)
+
+
+# 1990 소수인팰린드롬
+'''
+1 10000
+'''
+# import math
+
+# a, b = map(int, input().split())
+# # isqrt_b = math.isqrt(b)
+
+# # sieves, primes
+# ss = [True]*(10000)
+# for i in range(2, 10000):
+#     if ss[i]:
+#         for ii in range(2*i, 10000, i):
+#             ss[ii] = False
+# ps = [i for i in range(2, 10000) if ss[i]]
+# # print(ps)
+# # print(len(ps)) max : 1229
+
+# def prime_check(n):
+#     isqrt_n = math.isqrt(n)
+#     for p in ps:
+#         # if isqrt_n < p:
+#         #     break
+#         if n % p == 0:
+#             return False
+#     return True
+
+# def solve():
+#     for n in range(2, 8):
+#         if a <= n <= b and prime_check(n):
+#             print(n)
+#         elif n > b:
+#             return
+
+#     # d : 자릿수
+#     for d in range(2, 9):
+#         dl = d//2
+#         dm = d%2
+
+#         pn = 10**(dl-1)
+#         for n in range(pn, 10*pn):
+#             if (n // pn) % 2 == 0 : continue
+#             sn = str(n)
+
+#             if dm != 0:
+#                 for km in range(10):
+#                     tn = int(sn+str(km)+sn[::-1])
+#                     if tn > b: return
+#                     if prime_check(tn): print(tn)
+#                 continue
+
+#             # 소수 체크
+#             tn = int(sn+sn[::-1])
+#             if tn > b: return
+#             if prime_check(tn): print(tn)
+
+# solve()
+# print(-1)
+
+
+# 28018 시간이 겹칠까?
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# lmt = int(1e6)+1
+# check = [0]*(lmt+1)
+# sums = [0]*lmt
+
+# for _ in range(N):
+#     S, E = map(int, input().split())
+#     check[S] += 1
+#     check[E+1] -= 1
+
+# for i in range(lmt):
+#     sums[i] = sums[i-1]+check[i]
+
+# input()
+# for n in map(int, input().split()):
+#     print(sums[n])
+
+
+# 1990 소수인 팰린드롬 (리트) - 클리어
+# import math
+
+# def prime_check(n):
+#     if n == 1: return False
+#     elif n == 2: return True
+#     elif n % 2 == 0: return False
+#     else:
+#         for k in range(3, math.isqrt(n)+1, 2):
+#             if n % k == 0:
+#                 return False
+#         return True
+
+# def rn(n, hw):
+#     sn = str(n)
+#     return int(sn+sn[:hw][::-1])
+
+# def solve():
+#     a, b = map(int, input().split())
+
+#     for w in range(1, 8, 2):
+#         bn = 10**(w//2)
+#         for n in range(bn, 10*bn):
+#             target = rn(n, w//2)
+#             if a > target:
+#                 continue
+#             if target <= b:
+#                 if prime_check(target):
+#                     print(target)
+#             else:
+#                 return
+
+#         if w == 1 and a <= 11 <= b:
+#             print(11)
+
+# solve()
+# print(-1)
+
+
+# 14719 빗물
+# H, W = map(int, input().split())
+# ns = list(map(int, input().split()))
+
+# # std : standard, mhi : max_height_index
+# ans, std = 0, 0
+# mhi = ns.index(max(ns))
+
+# def cal_s(s, e, delta):
+#     global ans
+#     mhi_yet = s
+#     for i in range(s+delta, e+delta, delta):
+#         if ns[mhi_yet] <= ns[i]:
+#             for j in range(mhi_yet, i, delta):
+#                 ans += ns[mhi_yet] - ns[j]
+#             mhi_yet = i
+
+# cal_s(0, mhi, 1)
+# cal_s(W-1, mhi, -1)
+# print(ans)
+
+
+# 5637 가장 긴 단어
+# import sys
+# input = sys.stdin.readline
+
+# word, ml = '', 0
+# end = False
+
+# while not end:
+#     for ss in list(input().split()):
+#         w = ''
+#         for i in range(len(ss)):
+#             c = ss[i]
+#             if (65 <= ord(c) < 91) or (97 <= ord(c) < 123) or (c == '-'):
+#                 w += c
+#             else:
+#                 len_w = len(w)
+#                 if ml < len_w:
+#                     ml = len_w
+#                     word = w
+#                 w = ''
+
+#         if w != '':
+#             if w == 'E-N-D':
+#                 end = True
+#                 break
+#             len_w = len(w)
+#             if ml < len_w:
+#                 ml = len_w
+#                 word = w
+
+# print(word.lower())
+
+
+# 1655 가운데를 말해요
+# 반 잘라서 제일 큰 값 pq(중앙값 미만 index), 제일 작은 값 pq (중앙값 포함)
+'''
+5
+1
+2
+3
+4
+5
+'''
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# maxq, minq = [], []
+# for i in range(int(input())):
+#     n = int(input())
+#     if i % 2 == 0:
+#         heappush(maxq, -n)
+#     else:
+#         heappush(minq, n)
+
+#     if minq and (-maxq[0]) > minq[0]:
+#         tmax = -heappop(maxq)
+#         heappush(maxq, -heappop(minq))
+#         heappush(minq, tmax)
+
+#     print(-maxq[0])
