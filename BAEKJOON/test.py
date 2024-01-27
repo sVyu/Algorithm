@@ -27060,3 +27060,113 @@ WLLUU
 #         heappush(minq, tmax)
 
 #     print(-maxq[0])
+
+
+# 12904 A와 B
+# S = input()
+# T = input()
+# t, now = len(S), len(T)
+
+# l, r = 0, now-1
+# rev = False
+
+# while t < now:
+#     if not rev:
+#         if T[r] == 'B':
+#             rev = True
+#         r -= 1
+#     else:
+#         if T[l] == 'B':
+#             rev = False
+#         l += 1
+#     now -= 1
+
+# T = T[l:r+1][::-1 if rev else 1]
+# print(1 if S == T else 0)
+
+
+# 15720 카우버거
+# B, C, D = map(int, input().split())
+
+# bs = sorted(list(map(int, input().split())))
+# cs = sorted(list(map(int, input().split())))
+# ds = sorted(list(map(int, input().split())))
+
+# ans = sum(bs)+sum(cs)+sum(ds)
+# print(ans)
+
+# k = min(B, C, D)
+# ans -= 0.1*(sum(bs[-k:])+sum(cs[-k:])+sum(ds[-k:]))
+# print(int(ans))
+
+
+# 14921 용액 합성하기
+# N = int(input())
+# ns = list(map(int, input().split()))
+
+# l, r = 0, N-1
+# val = int(2e8)+1
+
+# while l < r:
+#     now = ns[l]+ns[r]
+#     if abs(val) > abs(now):
+#         val = now
+
+#     if now < 0: l += 1
+#     else: r -= 1
+
+# print(val)
+
+
+# 23300 웹 브라우저 2
+# import sys
+# input = sys.stdin.readline
+
+# N, Q = map(int, input().split())
+# s, now, e = -1, -1, -1
+# pgs = []
+
+# for _ in range(Q):
+#     cmds = list(input().split())
+#     # print(cmds)
+
+#     if cmds[0] == "B":
+#         if s < now:
+#             now -= 1
+#     elif cmds[0] == "F":
+#         if now < e:
+#             now += 1
+#     elif cmds[0] == "A":
+#         n = int(cmds[1])
+#         if now == -1:
+#             s, now, e = 0, 0, 0
+#             pgs = [n]
+#         else:
+#             for _ in range(e-now):
+#                 pgs.pop()
+#             pgs.append(n)
+#             now += 1
+#             e = now
+#     else:
+#         if now != -1:
+#             tmp_pgs = []
+#             prev = -1
+
+#             for p in pgs[:now]:
+#                 if prev != p:
+#                     tmp_pgs.append(p)
+#                 prev = p
+
+#             gap = now-len(tmp_pgs)
+#             tmp_pgs.extend(pgs[now:])
+#             pgs = tmp_pgs
+
+#             now -= gap
+#             e -= gap
+
+# # print(s, now, e)
+# # print(pgs)
+
+# print(pgs[now])
+# print(*pgs[:now][::-1]) if s < now else print(-1)
+# print(*pgs[(now+1):]) if now < e else print(-1)
