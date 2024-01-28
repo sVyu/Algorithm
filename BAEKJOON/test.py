@@ -27170,3 +27170,58 @@ WLLUU
 # print(pgs[now])
 # print(*pgs[:now][::-1]) if s < now else print(-1)
 # print(*pgs[(now+1):]) if now < e else print(-1)
+
+
+
+
+# 13140 Hello World!
+# def check_exp(N, h, w, e, o, l, r, d):
+#     now = 10000*(h+w)+1000*e+1001*o+120*l+100*r+d
+#     if N == now: return True
+#     else: return False
+
+# def print_answer(N, h, w, e, o, l, r, d):
+#     print(f'  {h}{e}{l}{l}{o}')
+#     print(f'+ {w}{o}{r}{l}{d}')
+#     print(f'-------')
+#     SN = str(N)
+#     print(' '*(7-len(SN)), SN, sep='')
+
+# def solve():
+#     N = int(input())
+#     check = [False]*10
+
+#     for h in range(1, 10):
+#         check[h] = True
+#         for w in range(1, 10):
+#             if check[w]: continue
+#             check[w] = True
+#             for e in range(0, 10):
+#                 if check[e]: continue
+#                 check[e] = True
+#                 for o in range(0, 10):
+#                     if check[o]: continue
+#                     check[o] = True
+#                     for l in range(0, 10):
+#                         if check[l]: continue
+#                         check[l] = True
+#                         for r in range(0, 10):
+#                             if check[r]: continue
+#                             check[r] = True
+#                             for d in range(0, 10):
+#                                 if check[d]: continue
+#                                 check[d] = True
+#                                 if check_exp(N, h, w, e, o, l, r, d):
+#                                     print_answer(N, h, w, e, o, l, r, d)
+#                                     return
+
+#                                 check[d] = False
+#                             check[r] = False
+#                         check[l] = False
+#                     check[o] = False
+#                 check[e] = False
+#             check[w] = False
+#         check[h] = False
+#     print('No Answer')
+
+# solve()
