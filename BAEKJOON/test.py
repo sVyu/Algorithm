@@ -27225,3 +27225,103 @@ WLLUU
 #     print('No Answer')
 
 # solve()
+
+
+# 6593 상범 빌딩
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# L, R, C = map(int, input().split())
+# inc_xyz = [[0, 0, 1], [0, 1, 0], [0, 0, -1], [0, -1, 0], [1, 0, 0], [-1, 0, 0]]
+# while not (L == 0 and R == 0 and C == 0):
+#     visited = [[[False]*C for _ in range(R)] for _ in range(L)]
+#     board = []
+#     for _ in range(L):
+#         board.append([list(input().rstrip()) for _ in range(R)])
+#         input()
+#     # print(board)
+
+#     q = deque()
+#     for z in range(L):
+#         for x in range(R):
+#             for y in range(C):
+#                 if board[z][x][y] == 'S':
+#                     q.append([z, x, y, 0])
+#                     visited[z][x][y] = True
+#     # print(szxy)
+
+#     can_sb_escape = False
+#     while q:
+#         z, x, y, cnt = q.popleft()
+#         # print(z, x, y, cnt)
+#         for pz, px, py in inc_xyz:
+#             nz, nx, ny = z+pz, x+px, y+py
+#             if 0 <= nz < L and 0 <= nx < R and 0 <= ny < C:
+#                 if board[nz][nx][ny] != '#' and not visited[nz][nx][ny]:
+#                     if board[nz][nx][ny] == 'E':
+#                         can_sb_escape = True
+#                         print(f'Escaped in {cnt+1} minute(s).')
+#                         q = []
+#                         break
+#                     q.append([nz, nx, ny, cnt+1])
+#                     visited[nz][nx][ny] = True
+
+#     if not can_sb_escape:
+#         print('Trapped!')
+
+#     L, R, C = map(int, input().split())
+
+
+# 22862 가장 긴 짝수 연속한 부분 수열 (large)
+# 하나도 없을 수 있음
+# default l, r 설정
+# 짝수들 인덱스 저장해두고 사용해도 될 듯,,, 이렇게 했어야 됐네
+# 인덱스 저장 안 하고도 두 포인터로 풀 수 있었을 듯
+'''
+8 1
+2 3 3 4 5 5 6 7
+[ans] 1
+'''
+'''
+8 1
+1 1 1 1 1 1 1 2
+[ans] 1
+'''
+'''
+8 5
+2 2 1 1 1 1 2 3
+[ans] 3
+'''
+# def solve():
+#     N, K = map(int, input().split())
+#     ns = list(map(int, input().split()))
+
+#     # even_idxs
+#     eis = [i for i in range(N) if ns[i] % 2 == 0]
+#     if not eis:
+#         print(0)
+#         return
+
+#     l, r = 0, 0
+#     len_eis = len(eis)
+#     ans = 1
+#     while l <= r:
+#         # ((all cnt) - inner even cnt) <= K
+#         while ((eis[r]-1-eis[l])-(max(0, r-l-1))) <= K:
+#             r += 1
+#             if r >= len_eis:
+#                 break
+#         r -= 1
+#         ans = max(ans, r-l+1)
+#         # print("?", l, r, ans)
+#         if r == len_eis-1:
+#             break
+#         l += 1
+#     print(ans)
+
+# solve()
+
+
+# 17387 선분 교차 2
+# 신발끈 정리
