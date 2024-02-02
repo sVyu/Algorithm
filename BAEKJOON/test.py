@@ -27323,5 +27323,97 @@ WLLUU
 # solve()
 
 
+# 3020 개똥벌레
+# N, H = map(int, input().split())
+# ts, bs = [0]*H, [0]*H
+
+# for i in range(N):
+#     n = int(input())
+#     if i % 2 == 0:
+#         bs[n] += 1
+#     else:
+#         ts[n] += 1
+# # print(ts, bs)
+
+# for i in range(H-2, 0, -1):
+#     ts[i] = ts[i]+ts[i+1]
+#     bs[i] = bs[i]+bs[i+1]
+# # print(ts, bs)
+
+# sums = [0]*(H+1)
+# for i in range(1, H):
+#     sums[i] += ts[i]
+#     sums[i+1] += bs[H-i]
+# # print(sums)
+
+# ans_sum, ans_cnt = (N+1), 0
+# for i in range(1, H+1):
+#     if ans_sum > sums[i]:
+#         ans_sum = sums[i]
+#         ans_cnt = 1
+#     elif ans_sum == sums[i]:
+#         ans_cnt += 1
+
+# print(ans_sum, ans_cnt)
+
+
+# 2212 센서
+'''
+2
+1
+1 3
+'''
+'''
+3
+2
+1 3 5
+'''
+# N = int(input())
+# K = int(input())
+# ns = sorted(list(map(int, input().split())))
+# gaps = sorted([(ns[i+1]-ns[i]) for i in range(N-1)])
+# # print(gaps)
+
+# ans = ns[N-1]-ns[0]-(sum(gaps[-K+1:]) if K >= 2 else 0)
+# print(ans)
+
+
+# 18405 경쟁적 전염
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# N, K = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# q = deque()
+# inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+# vs = [[] for _ in range(K+1)]
+# for x in range(N):
+#     for y in range(N):
+#         if board[x][y] != 0:
+#             vs[board[x][y]].append([x, y])
+
+# for k in range(1, K+1):
+#     for x, y in vs[k]:
+#         q.append([x, y, k])
+# # print(q)
+
+# S, X, Y = map(int, input().split())
+# for _ in range(S):
+#     for _ in range(len(q)): #
+#         x, y, k = q.popleft()
+#         # print(x, y, k)
+#         for px, py in inc_xy:
+#             nx, ny = x+px, y+py
+#             if 0 <= nx < N and 0 <= ny < N and board[nx][ny] == 0:
+#                 board[nx][ny] = k
+#                 q.append([nx, ny, k])
+
+# # for x in range(N):
+# #     print(board[x])
+
+# print(board[X-1][Y-1])
+
 # 17387 선분 교차 2
 # 신발끈 정리
