@@ -27415,5 +27415,56 @@ WLLUU
 
 # print(board[X-1][Y-1])
 
+
 # 17387 선분 교차 2
 # 신발끈 정리
+
+'''
+1 1 5 5
+6 6 5 5
+[ans] 1
+'''
+'''
+1 1 5 5
+-3 -3 10 10
+[ans] 1
+'''
+
+# def ccw(x1, y1, x2, y2, x3, y3):
+#     a = x1*y2 + x2*y3+ x3*y1
+#     b = y1*x2 + y2*x3+ y3*x1
+#     return (a-b)
+
+# def solve():
+#     x1, y1, x2, y2 = map(int, input().split())
+#     x3, y3, x4, y4 = map(int, input().split())
+
+#     ccws1 = [ccw(x1, y1, x2, y2, x3, y3), ccw(x1, y1, x2, y2, x4, y4)]
+#     ccws2 = [ccw(x3, y3, x4, y4, x1, y1), ccw(x3, y3, x4, y4, x2, y2)]
+
+#     if (ccws1[0] * ccws1[1] <= 0) and (ccws2[0] * ccws2[1] <= 0):
+#         # 평행한 경우 예외처리
+#         if (ccws1[0] * ccws1[1] == 0) and (ccws2[0] * ccws2[1] == 0):
+#             x1, x2 = sorted([x1, x2])
+#             x3, x4 = sorted([x3, x4])
+#             y1, y2 = sorted([y1, y2])
+#             y3, y4 = sorted([y3, y4])
+
+#             overlapped = False
+#             for tx in [x3, x4]:
+#                 for ty in [y3, y4]:
+#                     if x1 <= tx <= x2 and y1 <= ty <= y2:
+#                         overlapped = True
+#             for tx in [x1, x2]:
+#                 for ty in [y1, y2]:
+#                     if x3 <= tx <= x4 and y3 <= ty <= y4:
+#                         overlapped = True
+
+#             print(1 if overlapped else 0)
+#             return
+#         ##
+#         print(1)
+#     else:
+#         print(0)
+
+# solve()
