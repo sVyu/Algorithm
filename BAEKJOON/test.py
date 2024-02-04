@@ -27468,3 +27468,29 @@ WLLUU
 #         print(0)
 
 # solve()
+
+
+# 9527 1의 개수
+# def cal(cnts, s, k):
+#     tot, one_cnt = 0, 0
+#     for i in range(k):
+#         if s[i] == '1':
+#             upper = k-1-i
+#             tot += cnts[upper] + one_cnt*(1 << upper) + 1
+#             one_cnt += 1
+
+#     return tot
+
+# def solve():
+#     cnts = [0]*55
+#     for i in range(1, 55):
+#         cnts[i] = cnts[i-1]*2 + (1 << (i-1))
+#     # print(cnts)
+
+#     A, B = map(int, input().split())
+#     A -= 1
+
+#     bin_a, bin_b = bin(A)[2:], bin(B)[2:]
+#     print(cal(cnts, bin_b, len(bin_b)) - cal(cnts, bin_a, len(bin_a)))
+
+# solve()
