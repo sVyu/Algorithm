@@ -27494,3 +27494,79 @@ WLLUU
 #     print(cal(cnts, bin_b, len(bin_b)) - cal(cnts, bin_a, len(bin_a)))
 
 # solve()
+
+
+# 2162 선분 그룹
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+
+# def find_parent(parent, x):
+#     if x != parent[x]:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+
+#     if a > b:   parent[a] = b
+#     else:       parent[b] = a
+
+# # todo -> class
+# def ccw(x1, y1, x2, y2, x3, y3):
+#     a = x1*y2 + x2*y3 + x3*y1
+#     b = y1*x2 + y2*x3 + y3*x1
+#     return a-b
+
+# def is_overlapped(x1, y1, x2, y2, x3, y3, x4, y4):
+#     ccws1 = [ccw(x1, y1, x2, y2, x3, y3), ccw(x1, y1, x2, y2, x4, y4)]
+#     ccws2 = [ccw(x3, y3, x4, y4, x1, y1), ccw(x3, y3, x4, y4, x2, y2)]
+
+#     if ccws1[0]*ccws1[1] <= 0 and ccws2[0]*ccws2[1] <= 0:
+#         if ccws1[0]*ccws1[1] == 0 and ccws2[0]*ccws2[1] == 0:
+#             check_overlapped = False
+#             x1, x2 = sorted([x1, x2])
+#             x3, x4 = sorted([x3, x4])
+#             y1, y2 = sorted([y1, y2])
+#             y3, y4 = sorted([y3, y4])
+
+#             for tx in [x3, x4]:
+#                 for ty in [y3, y4]:
+#                     if x1 <= tx <= x2 and y1 <= ty <= y2:
+#                         check_overlapped = True
+#             for tx in [x1, x2]:
+#                 for ty in [y1, y2]:
+#                     if x3 <= tx <= x4 and y3 <= ty <= y4:
+#                         check_overlapped = True
+
+#             return check_overlapped
+#         return True
+#     else:
+#         return False
+
+# def solve():
+#     N = int(input())
+#     xys = [list(map(int, input().split())) for _ in range(N)]
+
+#     parent = [i for i in range(N)]
+#     for a in range(N-1):
+#         x1, y1, x2, y2 = xys[a]
+#         for b in range(a+1, N):
+#             x3, y3, x4, y4 = xys[b]
+#             if is_overlapped(x1, y1, x2, y2, x3, y3, x4, y4):
+#                 union_parent(parent, a, b)
+
+#     # here
+#     for a in range(N):
+#         find_parent(parent, a)
+#     ##
+
+#     d = defaultdict(int)
+#     for k in parent:
+#         d[k] += 1
+#     # print(d)
+
+#     print(len(d), max(d.values()), sep='\n')
+
+# solve()
