@@ -27570,3 +27570,97 @@ WLLUU
 #     print(len(d), max(d.values()), sep='\n')
 
 # solve()
+
+
+# 2887 행성 터널
+# Prim
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# from heapq import heappush, heappop
+
+# N = int(input())
+# xyzs = [list(map(int, input().split())) for _ in range(N)]
+# xs = sorted([[xyzs[i][0], i] for i in range(N)])
+# ys = sorted([[xyzs[i][1], i] for i in range(N)])
+# zs = sorted([[xyzs[i][2], i] for i in range(N)])
+# # print(xs)
+# # print(ys)
+# # print(zs)
+
+# g = defaultdict(list)
+# for i in range(N):
+#     if i != N-1:
+#         g[xs[i][1]].append([xs[i+1][0]-xs[i][0], xs[i+1][1]])
+#         g[ys[i][1]].append([ys[i+1][0]-ys[i][0], ys[i+1][1]])
+#         g[zs[i][1]].append([zs[i+1][0]-zs[i][0], zs[i+1][1]])
+#     if i != 0:
+#         g[xs[i][1]].append([xs[i][0]-xs[i-1][0], xs[i-1][1]])
+#         g[ys[i][1]].append([ys[i][0]-ys[i-1][0], ys[i-1][1]])
+#         g[zs[i][1]].append([zs[i][0]-zs[i-1][0], zs[i-1][1]])
+# # print(g)
+
+# ans = 0
+# heap = []
+# for item in g[0]:
+#     heappush(heap, item)
+# # print(heap)
+# visited = [False]*N
+# visited[0] = True
+
+# for _ in range(N-1):
+#     while heap:
+#         d, v = heappop(heap)
+#         if not visited[v]:
+#             visited[v] = True
+#             ans += d
+#             for item in g[v]:
+#                 heappush(heap, item)
+#             break
+
+# print(ans)
+
+
+# Kruskal
+# import sys
+# input = sys.stdin.readline
+# from heapq import heapify, heappop
+
+# def find_parent(parent, x):
+#     if x != parent[x]:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+#     if a > b :  parent[a] = b
+#     else:       parent[b] = a
+
+# def solve():
+#     N = int(input())
+#     xyzs = [list(map(int, input().split())) for _ in range(N)]
+#     xs = sorted([[xyzs[i][0], i] for i in range(N)])
+#     ys = sorted([[xyzs[i][1], i] for i in range(N)])
+#     zs = sorted([[xyzs[i][2], i] for i in range(N)])
+
+#     heap = []
+#     for ts in [xs, ys, zs]:
+#         heap.extend([[ts[i+1][0]-ts[i][0], ts[i][1], ts[i+1][1]] for i in range(N-1)])
+#         # heap.extend([[ts[i][0]-ts[i-1][0], ts[i][1], ts[i-1][1]] for i in range(1, N)])
+#     # print(heap)
+#     # print(len(heap))
+#     heapify(heap)
+#     parent = [i for i in range(N)]
+
+#     ans = 0
+#     for _ in range(N-1):
+#         while heap:
+#             d, s, e = heappop(heap)
+#             if find_parent(parent, s) != find_parent(parent, e):
+#                 union_parent(parent, s, e)
+#                 ans += d
+#                 break
+#     print(ans)
+
+# solve()
