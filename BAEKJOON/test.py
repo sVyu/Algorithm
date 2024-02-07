@@ -27664,3 +27664,52 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 16566 카드 게임
+'''
+10 7 7
+1 2 3 4 5 6 7
+3 4 5 6 7 8 9
+[ans]
+4
+5
+6
+7
+1
+2
+3
+'''
+# import sys
+# input = sys.stdin.readline
+
+# def find_parent(parent, x):
+#     if x != parent[x]:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def solve():
+#     N, M, K = map(int, input().split())
+#     ms = sorted(list(map(int, input().split())))
+#     ks = list(map(int, input().split()))
+
+#     parent = [i for i in range(M+1)]
+#     for k in ks:
+#         # binary_search
+#         l, r = 0, M-1
+#         bi = M-1 # base index
+#         if k < ms[M-1]:
+#             while l <= r:
+#                 mid = (l+r)//2
+#                 if ms[mid] > k:
+#                     bi = mid
+#                     r = mid-1
+#                 else:
+#                     l = mid+1
+
+#         ti = find_parent(parent, bi) # target index
+#         print(ms[ti])
+#         parent[ti] = parent[(ti+1)%M]
+#         # print(parent)
+
+# solve()
