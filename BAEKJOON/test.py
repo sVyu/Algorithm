@@ -27713,3 +27713,47 @@ WLLUU
 #         # print(parent)
 
 # solve()
+
+
+# 1013 Contact
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     target = list(map(int, input().rstrip()))
+#     # print(target)
+
+#     ns, len_ns = [], 0
+#     pp = [-1, 0] # prev_pattern
+#     for t in target:
+#         ns.append(t)
+#         len_ns += 1
+#         if ns[0] == 1:
+#             # 100...111111...
+#             if pp[0] == 0:
+#                 ns = []
+#                 len_ns = 0
+#                 pp[1] += 1
+#             # 100...1
+#             if len_ns >= 2 and ns[-1] == 1:
+#                 # 11 / 101
+#                 if len_ns < 4: break
+#                 pp = [0, 0]
+#                 ns = []
+#                 len_ns = 0
+#         # 0...
+#         elif len_ns >= 2:
+#             # 01
+#             if ns[1] == 1:
+#                 pp = [1, 0]
+#                 ns = []
+#                 len_ns = 0
+#             # 00...1
+#             else:
+#                 if pp[0] == 0 and ns[-1] == 1:
+#                     if pp[1] == 0: break
+#                     pp = [0, 0]
+#                     ns = []
+#                     len_ns = 0
+
+#     print("NO" if ns else "YES")
