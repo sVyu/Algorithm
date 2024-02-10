@@ -27757,3 +27757,152 @@ WLLUU
 #                     len_ns = 0
 
 #     print("NO" if ns else "YES")
+
+
+# 2533 사회망 서비스(SNS)
+'''
+14
+1 2
+1 3
+1 4
+2 5
+3 6
+4 7
+5 8
+6 9
+6 10
+7 11
+7 12
+8 13
+8 14
+[ans] 5
+'''
+# 틀린 이유 : q의 탐색 순서가 트리의 레벨 순서로 이루어 지지 않음
+# 반례 찾을 수 있음
+
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict, deque
+
+# N = int(input())
+# g = defaultdict(list)
+# leaf_node = [False]*(N+1)
+
+# for _ in range(N-1):
+#     u, v = map(int, input().split())
+#     g[u].append(v)
+#     g[v].append(u)
+# # print(g)
+
+# # leaf_node check
+# visited = [False]*(N+1)
+# visited[1] = True
+# q = deque([1])
+
+# while q:
+#     v = q.popleft()
+#     is_leaf_node = True
+#     for u in g[v]:
+#         if not visited[u]:
+#             visited[u] = True
+#             q.append(u)
+#             is_leaf_node = False
+#     if is_leaf_node:
+#         leaf_node[v] = True
+# # print(leaf_node)
+
+# # dp : early_adaptor check
+# visited = [False]*(N+1)
+# leaf_nodes = [i for i in range(1, N+1) if leaf_node[i]]
+# q = deque(leaf_nodes)
+# for lf in leaf_nodes:
+#     visited[lf] = True
+# # print(visited)
+
+# dp = [0] + [0 if leaf_node[i] else 1 for i in range(1, N+1)]
+# # print(dp)
+
+# while q:
+#     v = q.popleft()
+#     # parent_node
+#     for u in g[v]:
+#         if not visited[u]:
+#             visited[u] = True
+#             q.append(u)
+
+#     # uncheck unnecessary node
+#     should_be_early_adaptor = False
+#     for u in g[v]:
+#         if not dp[u]:
+#             should_be_early_adaptor = True
+#     if not should_be_early_adaptor:
+#         dp[v] = 0
+
+# # print(dp)
+# print(sum(dp))
+
+
+# PyPy3 메모리 초과
+# Python3 273900 KB > 256 * 1024 == 262144 (KB) / 4340 ms > 3000 ms
+# import sys
+# input = sys.stdin.readline
+# from collections import defaultdict
+# sys.setrecursionlimit(int(1e6))
+
+# def should_be_early_adaptor_check(v, g, ans, visited):
+#     should_be_early_adaptor = False
+#     for u in g[v]:
+#         if not visited[u]:
+#             visited[u] = True
+#             should_be_early_adaptor |= should_be_early_adaptor_check(u, g, ans, visited)
+
+#     if not should_be_early_adaptor:
+#         ans[v] = 0
+
+#     return not should_be_early_adaptor
+
+# def solve():
+#     N = int(input())
+#     g = defaultdict(list)
+
+#     for _ in range(N-1):
+#         u, v = map(int, input().split())
+#         g[u].append(v)
+#         g[v].append(u)
+#     # print(g)
+
+#     ans = [0] + [1]*N
+#     visited = [True, True]+[False]*(N-1)
+#     should_be_early_adaptor_check(1, g, ans, visited)
+#     print(sum(ans))
+
+# solve()
+
+
+# PyPy3 메모리 초과
+# Python3 231524 KB < 256 * 1024 == 262144 (KB) / 4144 ms > 3000 ms
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e6))
+
+# def should_be_early_adaptor_check(v):
+#     should_be_early_adaptor = False
+#     for u in g[v]:
+#         if not visited[u]:
+#             visited[u] = True
+#             should_be_early_adaptor |= should_be_early_adaptor_check(u)
+#     if not should_be_early_adaptor: ans[v] = 0
+#     return not should_be_early_adaptor
+
+# N = int(input())
+# g = [[] for _ in range(N+1)]
+# for _ in range(N-1):
+#     u, v = map(int, input().split())
+#     g[u].append(v)
+#     g[v].append(u)
+# # print(g)
+
+# ans = [0] + [1]*N
+# visited = [True, True] + [False]*(N-1)
+# should_be_early_adaptor_check(1)
+# print(sum(ans))
