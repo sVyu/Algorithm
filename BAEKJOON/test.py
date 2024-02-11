@@ -27906,3 +27906,158 @@ WLLUU
 # visited = [True, True] + [False]*(N-1)
 # should_be_early_adaptor_check(1)
 # print(sum(ans))
+
+
+# 13334 철로
+# 반례 참고 : https://www.acmicpc.net/board/view/29748
+'''
+4
+-2 2
+1 0
+3 0
+3 -1
+4
+[ans] 3
+'''
+# 22 퍼 틀렸습니다.. 다시 보니 보완이 필요한 코드
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# n = int(input())
+# lines = [sorted(list(map(int, input().split()))) for _ in range(n)]
+# d = int(input())
+# lines = sorted([line for line in lines if (line[1]-line[0]) <= d], key=lambda x:(x[0], x[1]))
+# # print(lines)
+# n = len(lines)
+
+# xs = sorted(set([line[0] for line in lines]))
+# x_idx, line_idx = 0, 0
+# max_cnt, cnt = 0, 0
+# now_heap, wait_heap = [], []
+
+# while line_idx < n:
+#     line = lines[line_idx]
+#     s, e = xs[x_idx], xs[x_idx]+d
+#     while now_heap and now_heap[0][0] < s:
+#         heappop(now_heap)
+#         cnt -= 1
+#     while wait_heap and wait_heap[0][0] <= e:
+#         heappush(now_heap, heappop(wait_heap)[::-1])
+#         cnt += 1
+
+#     # start is overlapped
+#     if line[0] < e: #
+#         line_idx += 1
+#         # fully overlapped
+#         if line[1] <= e:
+#             heappush(now_heap, line)
+#             cnt += 1
+#             max_cnt = max(max_cnt, cnt)
+#         # 범위를 벗어나는 경우
+#         else:
+#             heappush(wait_heap, line[::-1])
+#     else:
+#         x_idx += 1
+
+# print(now_heap, wait_heap)
+# max_cnt = max(max_cnt, len(now_heap))
+# print(max_cnt)
+
+
+# revise - code with 2 heapq
+# 참고 반례 : https://www.acmicpc.net/board/view/117691
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# n = int(input())
+# lines = [sorted(list(map(int, input().split()))) for _ in range(n)]
+# d = int(input())
+# lines = sorted([line for line in lines if (line[1]-line[0]) <= d], key=lambda x:(x[0]))
+# # print(lines)
+# n = len(lines)
+
+# xs = sorted(set([line[0] for line in lines]))
+# line_idx = 0
+# max_cnt, cnt = 0, 0
+# now_heap, wait_heap = [], []
+
+# for x in xs:
+#     s, e = x, x+d
+#     while now_heap and now_heap[0][0] < s:
+#         heappop(now_heap)
+#         cnt -= 1
+#     while wait_heap and wait_heap[0][0] <= e:
+#         heappush(now_heap, heappop(wait_heap)[::-1])
+#         cnt += 1
+
+#     while line_idx < n:
+#         line = lines[line_idx]
+#         if line[0] >= e: break
+#         # fully overlapped
+#         if line[1] <= e:
+#             heappush(now_heap, line)
+#             cnt += 1
+#         # partially overlapped
+#         else:
+#             heappush(wait_heap, line[::-1])
+#         line_idx += 1
+
+#     max_cnt = max(max_cnt, cnt)
+
+# print(max_cnt)
+
+
+# revised - 1 heapq
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# n = int(input())
+# lines = [sorted(list(map(int, input().split()))) for _ in range(n)]
+# d = int(input())
+# lines = sorted([line for line in lines if (line[1]-line[0]) <= d])
+# len_lines = len(lines)
+# # print(lines)
+
+# # starts
+# ss = sorted(set([line[0] for line in lines]))
+# len_ss = len(ss)
+# line_idx = 0
+# max_cnt, cnt = 0, 0
+# wait_heap = []
+
+# line_cnts = dict()
+# for s, _ in lines:
+#     if s not in line_cnts:
+#         line_cnts[s] = 1
+#     else: 
+#         line_cnts[s] += 1
+
+# s_idx = 0
+# while s_idx < len_ss:
+#     v = ss[s_idx]
+#     s, e = v, v+d
+
+#     if s_idx > 0:
+#         cnt -= line_cnts[ss[s_idx-1]]
+#     while wait_heap and wait_heap[0] <= e:
+#         heappop(wait_heap)
+#         cnt += 1
+
+#     while line_idx < len_lines:
+#         line = lines[line_idx]
+#         if line[0] >= e: break
+#         # fully overlapped
+#         if line[1] <= e:
+#             cnt += 1
+#         # partially overlapped
+#         else:
+#             heappush(wait_heap, line[1])
+#         line_idx += 1
+
+#     max_cnt = max(max_cnt, cnt)
+#     s_idx += 1
+
+# print(max_cnt)
