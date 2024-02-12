@@ -28061,3 +28061,32 @@ WLLUU
 #     s_idx += 1
 
 # print(max_cnt)
+
+
+# 1092 배
+# def solve():
+#     N = int(input())
+#     ns = sorted(list(map(int, input().split())), reverse=True)
+#     M = int(input())
+#     ms = sorted(list(map(int, input().split())), reverse=True)
+#     moved = [False]*M
+#     tot_cnt = 0
+
+#     if ns[0] < ms[0]:
+#         print(-1)
+#         return
+
+#     for time in range(1, 10001):
+#         ni = 0
+#         for mi in range(M):
+#             if ms[mi] <= ns[ni] and not moved[mi]:
+#                 moved[mi] = True
+#                 ni += 1
+#                 tot_cnt += 1
+#                 if ni >= N:
+#                     break
+#         if tot_cnt == M:
+#             print(time)
+#             return
+
+# solve()
