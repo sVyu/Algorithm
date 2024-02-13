@@ -28090,3 +28090,31 @@ WLLUU
 #             return
 
 # solve()
+
+
+# 6198 옥상 정원 꾸미기
+'''
+4
+3
+1
+2
+1
+'''
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# hs = [int(input()) for _ in range(N)]
+# ans = [0]*N
+# s = []
+
+# for i in range(N):
+#     while s and hs[s[-1]] <= hs[i]:
+#         t = s.pop()
+#         ans[t] = i-t-1
+#     s.append(i)
+
+# for i in range(len(s)):
+#     ans[s[i]] = N-1-s[i]
+
+# print(sum(ans))
