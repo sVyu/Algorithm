@@ -28118,3 +28118,19 @@ WLLUU
 #     ans[s[i]] = N-1-s[i]
 
 # print(sum(ans))
+
+
+# 15824 너 봄에는 캡사이신이 맛있단다
+# N = int(input())
+# ns = sorted(list(map(int, input().split())))
+# mod = int(1e9)+7
+
+# pws = [1]*N
+# for i in range(1, N):
+#     pws[i] = (pws[i-1]*2) % mod
+# # print(pws)
+
+# ans = 0
+# for i in range(N):
+#     ans = (ans + ns[i]*((pws[i]-1)-(pws[N-1-i]-1))) % mod
+# print(ans)
