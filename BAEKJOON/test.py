@@ -28134,3 +28134,34 @@ WLLUU
 # for i in range(N):
 #     ans = (ans + ns[i]*((pws[i]-1)-(pws[N-1-i]-1))) % mod
 # print(ans)
+
+
+# 1041 주사위
+# def sum_alphas(ss: str, nd: list):
+#     return sum(nd[s] for s in ss)
+
+# def solve():
+#     N = int(input())
+#     ns = list(map(int, input().split()))
+
+#     if N == 1:
+#         print(sum(sorted(ns)[:5]))
+#         return
+
+#     nd = dict()
+#     for i in range(6):
+#         nd[chr(65+i)] = ns[i]
+
+#     ans = (4*(N-2)*(N-1)+(N-2)**2)*min(ns)
+#     min_val_on_two_sulfaces = 100
+#     for ss in ['EA', 'AB', 'BF', 'FE', 'DE', 'DA', 'DB', 'DF', 'CE', 'CA', 'CB', 'CF']:
+#         min_val_on_two_sulfaces = min(min_val_on_two_sulfaces, sum_alphas(ss, nd))
+
+#     min_val_on_three_sulfaces = 150
+#     for ss in ['DEA', 'DAB', 'DBF', 'DFE', 'CEA', 'CAB', 'CBF', 'CFE']:
+#         min_val_on_three_sulfaces = min(min_val_on_three_sulfaces, sum_alphas(ss, nd))
+
+#     ans += (4*((N-1)+(N-2)))*min_val_on_two_sulfaces + 4*min_val_on_three_sulfaces
+#     print(ans)
+
+# solve()
