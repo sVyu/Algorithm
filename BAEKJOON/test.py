@@ -28173,3 +28173,28 @@ WLLUU
 
 # for n in ns:
 #     print(3*(n//3)*(1+n//3)//2 + 7*(n//7)*(1+(n//7))//2 - 21*(n//21)*(1+(n//21))//2)
+
+
+# 16565 N 포커
+# def f(n):
+#     val = 1
+#     for a in range(2, n+1):
+#         val *= a
+#     return val
+
+# def c(n, k):
+#     val = 1
+#     for a in range(n+1-k, n+1):
+#         val *= a
+#     return val//f(k)
+
+# def solve():
+#     N = int(input())
+#     mod = int(1e4)+7
+
+#     ans = 0
+#     for i in range(1, (N//4)+1):
+#         ans = (ans + ((-1)**(i+1)) * c(13,i) * c(52-4*i, N-4*i)) % mod
+#     print(ans)
+
+# solve()
