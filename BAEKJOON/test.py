@@ -28165,3 +28165,11 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 17206 준석이의 수학 문제
+# T = int(input())
+# ns = list(map(int, input().split()))
+
+# for n in ns:
+#     print(3*(n//3)*(1+n//3)//2 + 7*(n//7)*(1+(n//7))//2 - 21*(n//21)*(1+(n//21))//2)
