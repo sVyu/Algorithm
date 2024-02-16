@@ -28175,7 +28175,7 @@ WLLUU
 #     print(3*(n//3)*(1+n//3)//2 + 7*(n//7)*(1+(n//7))//2 - 21*(n//21)*(1+(n//21))//2)
 
 
-# 16565 N 포커
+# 16565 N포커
 # def f(n):
 #     val = 1
 #     for a in range(2, n+1):
@@ -28196,5 +28196,33 @@ WLLUU
 #     for i in range(1, (N//4)+1):
 #         ans = (ans + ((-1)**(i+1)) * c(13,i) * c(52-4*i, N-4*i)) % mod
 #     print(ans)
+
+# solve()
+
+
+# 12852 1로 만들기 2 - 오랜만에 retry
+# def btr(dp, n, ans):
+#     if n > 1:
+#         if n % 2 == 0 and dp[n//2] == dp[n]-1: btr(dp, n//2, ans)
+#         elif n % 3 == 0 and dp[n//3] == dp[n]-1: btr(dp, n//3, ans)
+#         else: btr(dp, n-1, ans)
+
+#     ans.append(n)
+#     return ans
+
+# def solve():
+#     N = int(input())
+#     INF = int(1e6)+1
+
+#     dp = [INF]*(N+1)
+#     dp[1] = 0
+#     for i in range(2, N+1):
+#         dp[i] = dp[i-1]+1
+#         if i % 2 == 0: dp[i] = min(dp[i], dp[i//2]+1)
+#         if i % 3 == 0: dp[i] = min(dp[i], dp[i//3]+1)
+#     # print(dp)
+
+#     print(dp[N])
+#     print(*btr(dp, N, [])[::-1])
 
 # solve()
