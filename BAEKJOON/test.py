@@ -28291,3 +28291,33 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 14284 간선 이어가기 2
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# n, m = map(int, input().split())
+# g = [[] for _ in range(n+1)]
+# INF = int(1e8)+1
+# d = [INF]*(n+1)
+
+# for _ in range(m):
+#     a, b, c = map(int, input().split())
+#     g[a].append([b, c])
+#     g[b].append([a, c])
+# s, t = map(int, input().split())
+
+# d[s] = 0
+# q = deque([s])
+
+# while q:
+#     v = q.popleft()
+#     for u, c in g[v]:
+#         next_c = d[v]+c
+#         if d[u] > next_c:
+#             d[u] = next_c
+#             q.append(u)
+
+# print(d[t])
