@@ -28226,3 +28226,68 @@ WLLUU
 #     print(*btr(dp, N, [])[::-1])
 
 # solve()
+
+
+# 1019 책 페이지
+'''
+99
+[ans]
+
+100
+[ans]
+
+101
+[ans]
+'''
+# def solve():
+#     N = int(input())
+#     ans = [0]*10
+
+#     if N <= 9:
+#         for i in range(1, N+1):
+#             ans[i] = 1
+#         print(*ans)
+#         return
+
+#     for c in list(map(int, str(N))):
+#         ans[c] += 1
+#     # print(ans)
+
+#     pw = len(str(N))-1
+#     # print(pw)
+
+#     cnts = [[0]*10 for _ in range(pw)]
+#     for i in range(10):
+#         cnts[0][i] = 1
+
+#     for p in range(1, pw):
+#         for i in range(10):
+#             cnts[p][i] = cnts[p-1][i]*10 + 10**p
+#             # else:
+#             #     cnts[p][i] = cnts[p-1][i]*10 + 9*(10**(p-1) if p >= 2 else 0)
+#     print(cnts)
+
+#     for p in range(pw, -1, -1):
+#         print("p", p)
+#         val = 10**p
+#         quo = N // val # 몫
+#         print("N", N)
+#         N %= val
+
+#         if quo == 0: continue
+#         # ans[0] += val if p != pw else 0
+
+#         for i in range(quo):
+#             ans[i] += val
+#                 # ans[0] += (val//10) if p >= 2 else 0 # 1 ~ 8
+#             for j in range(10):
+#                 ans[j] += cnts[p-1][j] if p >= 1 else 0
+#         # print("[1]", (val//10) if p >= 2 else 0)
+#         # print("[2]", cnts[p-1][0] if p >= 1 else 0)
+
+#         ans[quo] += N
+#         print("now ans", ans)
+
+#     print(ans)
+
+# solve()
