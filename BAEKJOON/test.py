@@ -28321,3 +28321,20 @@ WLLUU
 #             q.append(u)
 
 # print(d[t])
+
+
+# 2240 자두나무
+# T, W = map(int, input().split())
+
+# dp = [[0]*3 for _ in range(W+1)]
+# for i in range(T):
+#     n = int(input())
+#     dp[0][n] += 1
+#     if n == 1:
+#         for x in range(2, W+1, 2):
+#             dp[x][1] = max(dp[x][1], dp[x-1][2])+1
+#     else:
+#         for x in range(1, W+1, 2):
+#             dp[x][2] = max(dp[x][2], dp[x-1][1])+1
+
+# print(max([max(dp[i]) for i in range(W+1)]))
