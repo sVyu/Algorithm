@@ -28338,3 +28338,94 @@ WLLUU
 #             dp[x][2] = max(dp[x][2], dp[x-1][1])+1
 
 # print(max([max(dp[i]) for i in range(W+1)]))
+
+
+# 16935 배열 돌리기 3
+# import sys
+# input = sys.stdin.readline
+
+# def cmd1(board, N, M):
+#     tmp_board = [[0]*M for _ in range(N)]
+#     for x in range(N):
+#         for y in range(M):
+#             tmp_board[N-1-x][y] = board[x][y]
+#     return tmp_board
+
+# def cmd2(board, N, M):
+#     tmp_board = [[0]*M for _ in range(N)]
+#     for x in range(N):
+#         for y in range(M):
+#             tmp_board[x][M-1-y] = board[x][y]
+#     return tmp_board
+
+# def cmd3(board, N, M):
+#     tmp_board = [[0]*N for _ in range(M)]
+#     for x in range(N):
+#         for y in range(M):
+#             tmp_board[y][N-1-x] = board[x][y]
+#     return tmp_board, M, N
+
+# def cmd4(board, N, M):
+#     tmp_board = [[0]*N for _ in range(M)]
+#     for x in range(N):
+#         for y in range(M):
+#             tmp_board[M-1-y][x] = board[x][y]
+#     return tmp_board, M, N
+
+# def cmd5(board, N, M):
+#     tmp_board = [[0]*M for _ in range(N)]
+#     half_N, half_M = N//2, M//2
+#     # 1 → 2
+#     for x in range(half_N):
+#         for y in range(half_M):
+#             tmp_board[x][half_M+y] = board[x][y]
+#     # 2 → 3
+#     for x in range(half_N):
+#         for y in range(half_M, M):
+#             tmp_board[x+half_N][y] = board[x][y]
+#     # 3 → 4
+#     for x in range(half_N, N):
+#         for y in range(half_M, M):
+#             tmp_board[x][y-half_M] = board[x][y]
+#     # 4 → 1
+#     for x in range(half_N, N):
+#         for y in range(half_M):
+#             tmp_board[x-half_N][y] = board[x][y]
+#     return tmp_board
+
+# def cmd6(board, N, M):
+#     tmp_board = [[0]*M for _ in range(N)]
+#     half_N, half_M = N//2, M//2
+#     # 1 → 4
+#     for x in range(half_N):
+#         for y in range(half_M):
+#             tmp_board[x+half_N][y] = board[x][y]
+#     # 4 → 3
+#     for x in range(half_N, N):
+#         for y in range(half_M):
+#             tmp_board[x][y+half_M] = board[x][y]
+#     # 3 → 2
+#     for x in range(half_N, N):
+#         for y in range(half_M, M):
+#             tmp_board[x-half_N][y] = board[x][y]
+#     # 2 → 1
+#     for x in range(half_N):
+#         for y in range(half_M, M):
+#             tmp_board[x][y-half_M] = board[x][y]
+#     return tmp_board
+
+# def solve():
+#     N, M, _ = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     for r in list(map(int, input().split())):
+#         if r == 1:      board = cmd1(board, N, M)
+#         elif r == 2:    board = cmd2(board, N, M)
+#         elif r == 3:    board, N, M = cmd3(board, N, M)
+#         elif r == 4:    board, N, M = cmd4(board, N, M)
+#         elif r == 5:    board = cmd5(board, N, M)
+#         else:           board = cmd6(board, N, M)
+
+#     for x in range(N):
+#         print(*board[x])
+
+# solve()
