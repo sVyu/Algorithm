@@ -28429,3 +28429,42 @@ WLLUU
 #         print(*board[x])
 
 # solve()
+
+
+# 1025 제곱수 찾기
+'''
+1 1
+9
+[ans] 9
+'''
+# import math
+
+# N, M = map(int, input().split())
+# board = [list(input()) for _ in range(N)]
+# # print(board)
+
+# ans = -1
+# for bx in range(N):
+#     for by in range(M):
+#         for px in range(-N+1, N):
+#             for py in range(-M+1, M):
+#                 sx, sy = bx, by
+#                 now = ''
+#                 if (px == 0 and py == 0):
+#                     now = board[sx][sy]
+#                     if now:
+#                         n = int(now)
+#                         if math.isqrt(n)**2 == n:
+#                             ans = max(ans, n)
+#                 else:
+#                     while (0 <= sx < N and 0 <= sy < M):
+#                         now += board[sx][sy]
+#                         sx += px
+#                         sy += py
+
+#                         if now:
+#                             n = int(now)
+#                             if math.isqrt(n)**2 == n:
+#                                 ans = max(ans, n)
+
+# print(ans)
