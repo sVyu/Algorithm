@@ -28503,3 +28503,54 @@ WLLUU
 #     print(*ans)
 
 # solve()
+
+
+# 11689 GCD(n, k) = 1
+# 오일러 피 함수 활용으로 clear
+# 플라드 로?
+# 포함 배제의 원리를 활용해서도 풀린다고 한다
+
+# import math
+
+# def prime_check(n):
+#     if n == 1: return False
+#     elif n == 2: return True
+#     elif n % 2 == 0: return False
+#     else:
+#         for k in range(3, math.isqrt(n)+1, 2):
+#             if n % k == 0:
+#                 return False
+#         return True
+
+# def solve():
+#     N = int(input())
+
+#     if N == 1:
+#         print(1)
+#         return
+#     elif prime_check(N):
+#         print(N-1)
+#         return
+
+#     # 약수 중에 소수인 수들 모아서 sort
+#     ps = []
+#     sqrt_n = math.isqrt(N)
+#     for k in range(2, sqrt_n+1):
+#         if N % k == 0:
+#             if k == sqrt_n and prime_check(k):
+#                 ps.append(k)
+#                 break
+#             for t in [k, N//k]:
+#                 if prime_check(t):
+#                     ps.append(t)
+#     ps = sorted(ps)
+#     # print(ps)
+
+#     ans = N
+#     for p in ps:
+#         if N % p == 0:
+#             ans -= ans//p
+
+#     print(ans)
+
+# solve()
