@@ -28554,3 +28554,54 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 11437 LCA
+# import sys
+# input = sys.stdin.readline
+# # sys.setrecursionlimit(int(1e4)+1) # 런타임 에러 (RecursionError)
+# sys.setrecursionlimit(int(1e5)+1)
+
+# def dfs(v, level, g, visited, acsts, levels):
+#     for u in g[v]:
+#         if not visited[u]:
+#             visited[u] = True
+#             acsts[u] = v
+#             levels[u] = level+1
+#             dfs(u, level+1, g, visited, acsts, levels)
+
+# def solve():
+#     N = int(input())
+#     g = [[] for _ in range(N+1)]
+#     for _ in range(N-1):
+#         a, b = map(int, input().split())
+#         g[a].append(b)
+#         g[b].append(a)
+#     # print(g)
+
+#     acsts = [0]*(N+1)
+#     levels = [0]*(N+1)
+#     levels[1] = 1
+#     visited = [False]*(N+1)
+#     visited[1] = True
+#     dfs(1, 1, g, visited, acsts, levels)
+#     # print(acsts)
+
+#     # for i in range(1, N+1):
+#     #     print("a", i, acsts[i], levels[i])
+
+#     M = int(input())
+#     for _ in range(M):
+#         a, b = map(int, input().split())
+
+#         while levels[a] > levels[b]:
+#             a = acsts[a]
+#         while levels[a] < levels[b]:
+#             b = acsts[b]
+#         while a != b:
+#             a = acsts[a]
+#             b = acsts[b]
+
+#         print(a)
+
+# solve()
