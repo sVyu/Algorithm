@@ -28605,3 +28605,86 @@ WLLUU
 #         print(a)
 
 # solve()
+
+
+# 6443 애너그램
+# import sys
+# input = sys.stdin.readline
+
+# def btr(cnt, w, len_w, checked, new_word, word_set):
+#     for i in range(len_w):
+#         if not checked[i]:
+#             checked[i] = True
+#             if cnt == len_w:
+#                 new_word += w[i]
+#                 if new_word not in word_set:
+#                     word_set.add(new_word)
+#                     print(new_word)
+#             else:
+#                 btr(cnt+1, w, len_w, checked, new_word+w[i], word_set)
+#             checked[i] = False
+
+# def solve():
+#     N = int(input())
+#     for _ in range(N):
+#         # w : word
+#         w = sorted(list(input().rstrip()))
+#         len_w = len(w)
+#         btr(1, w, len_w, [False]*len_w, '', set())
+
+# solve()
+
+
+# import sys
+# input = sys.stdin.readline
+# import itertools
+
+# def solve():
+#     N = int(input())
+#     for _ in range(N):
+#         # w : word
+#         w = sorted(list(input().rstrip()))
+#         len_w = len(w)
+#         w_set = set()
+
+#         for idxs in itertools.permutations(range(len_w)):
+#             new_w = ''.join(w[i] for i in idxs)
+#             if new_w not in w_set:
+#                 w_set.add(new_w)
+#                 sys.stdout.write(new_w+'\n')
+
+# solve()
+
+
+# import sys
+# input = sys.stdin.readline
+# import itertools
+# from collections import defaultdict
+
+# def c(rest_idxs, alpha_cnt_dict, alphas, alphas_idx, ans, anagrams):
+#     if rest_idxs:
+#         now_alpha = alphas[alphas_idx]
+#         for now_idxs in itertools.combinations(rest_idxs, alpha_cnt_dict[now_alpha]):
+#             for now_idx in now_idxs:
+#                 ans[now_idx] = now_alpha
+#             selected = set(now_idxs)
+#             c([i for i in rest_idxs if i not in selected], alpha_cnt_dict, alphas, alphas_idx+1, ans, anagrams)
+#     else:
+#         anagrams.append(''.join(ans))
+
+# def solve():
+#     for _ in range(int(input())):
+#         t = sorted(list(input().rstrip()))
+#         len_t = len(t)
+#         rest_idxs = [i for i in range(len_t)]
+
+#         alpha_cnt_dict = defaultdict(int)
+#         for a in t:
+#             alpha_cnt_dict[a] += 1
+#         # print(alpha_cnt_dict)
+
+#         anagrams = []
+#         c(rest_idxs, alpha_cnt_dict, sorted(alpha_cnt_dict.keys()), 0, ['']*len_t, anagrams)
+#         print(*sorted(anagrams), sep='\n')
+
+# solve()
