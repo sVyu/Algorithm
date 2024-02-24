@@ -28688,3 +28688,45 @@ WLLUU
 #         print(*sorted(anagrams), sep='\n')
 
 # solve()
+
+
+# 18428 감시 피하기
+# def check_can_avoid(N, board, t_xys):
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+#     for tx, ty in t_xys:
+#         for px, py in inc_xy:
+#             nx, ny = tx+px, ty+py
+#             while 0 <= nx < N and 0 <= ny < N:
+#                 if board[nx][ny] == 'O':
+#                     break
+#                 elif board[nx][ny] == 'S':
+#                     return False
+#                 nx += px
+#                 ny += py
+#     return True
+
+# def btr(N, board, t_xys, x, y, cnt):
+#     ans = False
+#     for ox in range(x, N):
+#         for oy in range(y if x == ox else 0, N):
+#             if board[ox][oy] == 'X':
+#                 board[ox][oy] = 'O'
+#                 cnt += 1
+#                 if cnt == 3:
+#                     if check_can_avoid(N, board, t_xys):
+#                         return True
+#                 else:
+#                     ans |= btr(N, board, t_xys, ox, oy+1, cnt)
+#                     if ans:
+#                         return True
+#                 board[ox][oy] = 'X'
+#                 cnt -= 1
+#     return ans
+
+# def solve():
+#     N = int(input())
+#     board = [list(input().split()) for _ in range(N)]
+#     t_xys = [[x, y] for x in range(N) for y in range(N) if board[x][y] == 'T']
+#     print('YES' if btr(N, board, t_xys, 0, 0, 0) else 'NO')
+
+# solve()
