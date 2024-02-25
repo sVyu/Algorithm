@@ -28730,3 +28730,40 @@ WLLUU
 #     print('YES' if btr(N, board, t_xys, 0, 0, 0) else 'NO')
 
 # solve()
+
+
+# 15661 링크와 스타트
+# import sys
+# input = sys.stdin.readline
+# import itertools
+
+# def solve():
+#     N = int(input())
+#     ans = 100*N
+#     board = [list(map(int, input().split())) for _ in range(N)]
+#     base = [i for i in range(N)]
+
+#     # member_cnt
+#     for links_m_cnt in range(1, (N//2)+1):
+#         links = itertools.combinations(base, links_m_cnt)
+#         for link in links:
+#             link_set = set(link)
+#             start = [i for i in range(N) if i not in link_set]
+
+#             sum_of_link = 0
+#             for x in link:
+#                 for y in link:
+#                     if x == y: continue
+#                     sum_of_link += board[x][y]
+
+#             sum_of_start = 0
+#             for x in start:
+#                 for y in start:
+#                     if x == y: continue
+#                     sum_of_start += board[x][y]
+
+#             ans = min(ans, abs(sum_of_link-sum_of_start))
+
+#     print(ans)
+
+# solve()
