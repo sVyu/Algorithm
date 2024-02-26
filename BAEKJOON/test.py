@@ -28767,3 +28767,30 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 2436 공약수
+# import math
+
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a%b
+#     return a
+
+# def lcm(a, b):
+#     return a*b//gcd(a,b)
+
+# def solve():
+#     m, n = map(int, input().split())
+#     ans = [0, int(1e8)]
+#     base = n//m
+
+#     for i in range(1, math.isqrt(base)+1):
+#         if base % i == 0:
+#             a, b = i, base//i
+#             if gcd(a, b) == 1 and (ans[1]-ans[0]) > (b-a):
+#                 ans = [a*m, b*m]
+
+#     print(*ans)
+
+# solve()
