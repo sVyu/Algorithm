@@ -28794,3 +28794,29 @@ WLLUU
 #     print(*ans)
 
 # solve()
+
+
+# 7490 0 만들기
+# def btr(N, now_n, now_sum, tmp_n, ops):
+#     if now_n > N:
+#         if now_sum + tmp_n == 0:
+#             ops = list(ops)
+#             for i in range(N):
+#                 print(i+1, end='')
+#                 if i == N-1: break
+#                 print(ops[i], end='')
+#             print()
+#     else:
+#         btr(N, now_n+1, now_sum, (abs(tmp_n)*10+now_n)*(1 if tmp_n >= 0 else -1), ops+' ')
+#         btr(N, now_n+1, now_sum+tmp_n, now_n, ops+'+')
+#         btr(N, now_n+1, now_sum+tmp_n, -now_n, ops+'-')
+
+# def solve():
+#     len_tc = int(input())
+#     for i in range(len_tc):
+#         N = int(input())
+#         btr(N, 2, 0, 1, '')
+#         if i == len_tc-1 : break
+#         print()
+
+# solve()
