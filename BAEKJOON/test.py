@@ -28820,3 +28820,44 @@ WLLUU
 #         print()
 
 # solve()
+
+
+# 17836 공주님을 구해라!
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, M, T = map(int, input().split())
+#     board = [list(map(int, input().split())) for _ in range(N)]
+
+#     INF = int(1e4)+1
+#     ans = INF
+#     visited = [[0]*M for _ in range(N)]
+#     visited[0][0] = 1
+#     q = deque([[0, 0, 0, 1]])
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+
+#     while q:
+#         x, y, cnt, p = q.popleft()
+#         for px, py in inc_xy:
+#             nx, ny = x+px, y+py
+#             if 0 <= nx < N and 0 <= ny < M:
+#                 if nx == N-1 and ny == M-1:
+#                     ans = min(ans, cnt+1)
+#                     q = []
+#                     break
+
+#                 np = max(p, board[nx][ny])
+#                 if board[nx][ny] != 1:
+#                     if visited[nx][ny] < np:
+#                         visited[nx][ny] = np
+#                         q.append([nx, ny, cnt+1, np])
+#                 # board[nx][ny] == 1:
+#                 elif visited[nx][ny] < 2 and p == 2:
+#                     visited[nx][ny] = np
+#                     q.append([nx, ny, cnt+1, np])
+
+#     print(ans if ans <= T else 'Fail')
+
+# solve()
