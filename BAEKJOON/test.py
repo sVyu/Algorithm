@@ -28914,3 +28914,16 @@ WLLUU
 #     print(tot_sheep, tot_wolves)
 
 # solve()
+
+
+# 20312 CPU 벤치마킹
+# N = int(input())
+# ns = [0] + list(map(int, input().split()))
+# mod = int(1e9)+7
+
+# ans, prev = 0, 0
+# for i in range(1, N):
+#     prev = ((prev*ns[i]) + ns[i]) % mod
+#     ans = (ans + prev) % mod
+
+# print(ans)
