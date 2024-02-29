@@ -28864,10 +28864,53 @@ WLLUU
 
 
 # 29768 팰린드롬 이름
-N, K = map(int, input().split())
+# N, K = map(int, input().split())
 
-ans = 'a'*(N-K+1)
-for i in range(K-1):
-    ans += chr(98+i)
+# ans = 'a'*(N-K+1)
+# for i in range(K-1):
+#     ans += chr(98+i)
 
-print(ans)
+# print(ans)
+
+
+# 3187 양치기 꿍
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     R, C = map(int, input().split())
+#     board = [list(input().rstrip()) for _ in range(R)]
+#     visited = [[False]*C for _ in range(R)]
+#     inc_xy = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+#     tot_wolves, tot_sheep = 0, 0
+
+#     for x in range(R):
+#         for y in range(C):
+#             if not visited[x][y]:
+#                 visited[x][y] = True
+#                 q = deque([[x, y]])
+#                 wolves, sheep = 0, 0
+
+#                 while q:
+#                     kx, ky = q.popleft()
+#                     if board[kx][ky] == 'v':
+#                         wolves += 1
+#                     elif board[kx][ky] == 'k':
+#                         sheep += 1
+
+#                     for px, py in inc_xy:
+#                         nx, ny = kx+px, ky+py
+#                         if 0 <= nx < R and 0 <= ny < C:
+#                             if board[nx][ny] != '#'and not visited[nx][ny]:
+#                                 visited[nx][ny] = True
+#                                 q.append([nx, ny])
+
+#                 if wolves < sheep:
+#                     tot_sheep += sheep
+#                 else:
+#                     tot_wolves += wolves
+
+#     print(tot_sheep, tot_wolves)
+
+# solve()
