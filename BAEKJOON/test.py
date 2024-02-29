@@ -28861,3 +28861,15 @@ WLLUU
 #     print(ans if ans <= T else 'Fail')
 
 # solve()
+
+
+# 29768 팰린드롬 이름
+# N, K = map(int, input().split())
+
+# ans = ''
+# for _ in range(N-K+1):
+#     ans += 'a'
+# for i in range(K-1):
+#     ans += chr(98+i)
+
+# print(ans)
