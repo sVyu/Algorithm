@@ -28927,3 +28927,28 @@ WLLUU
 #     ans = (ans + prev) % mod
 
 # print(ans)
+
+
+# 3079 입국심사
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, M = map(int, input().split())
+#     ts = [int(input()) for _ in range(N)]
+
+#     ans = -1
+#     l, r = 1, int(1e18) 
+#     while l <= r:
+#         mid = (l+r)//2
+#         cnt = sum([mid//t for t in ts])
+
+#         if cnt >= M:
+#             ans = mid
+#             r = mid-1
+#         else:
+#             l = mid+1
+
+#     print(ans)
+
+# solve()
