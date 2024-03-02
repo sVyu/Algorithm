@@ -28952,3 +28952,28 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 23889 돌 굴러가유
+'''
+5 2 3
+1 1 1 1 1
+3 4 5
+[ans] 3 4
+'''
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, M, K = map(int, input().split())
+#     ns = list(map(int, input().split()))
+#     ks = list(map(int, input().split())) + [N+1]
+
+#     sums = [0]*(N+1)
+#     for i in range(1, N+1):
+#         sums[i] = sums[i-1]+ns[i-1]
+
+#     ans = sorted([[sums[ks[k+1]-1]-sums[ks[k]-1], ks[k]] for k in range(K)], key=lambda x:(-x[0], x[1]))[:M]
+#     print(*sorted([a[1] for a in ans]), sep='\n')
+
+# solve()
