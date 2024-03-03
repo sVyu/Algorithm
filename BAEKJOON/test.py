@@ -28977,3 +28977,71 @@ WLLUU
 #     print(*sorted([a[1] for a in ans]), sep='\n')
 
 # solve()
+
+
+# 2174 로봇 시뮬레이션
+# pm 11:23 ~ 11:50
+'''
+5 4
+2 3
+1 1 E
+5 1 W
+1 L 4
+1 F 2
+1 F 2
+[ans] Robot 1 crashes into robot 2
+'''
+
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     A, B = map(int, input().split())
+#     N, M = map(int, input().split())
+
+#     board = [[0]*A for _ in range(B)]
+#     ds = [[] for _ in range(N)]
+#     d_dict = dict({'E':0, 'S':1, 'W':2, 'N':3})
+#     d_yxs = [[0, 1], [-1, 0], [0, -1], [1, 0]]
+#     r_yxs = [[] for _ in range(N)]
+
+#     # robots init on board
+#     for i in range(N):
+#         x, y, d = input().split()
+#         x, y = int(x)-1, int(y)-1
+
+#         board[y][x] = i+1
+#         r_yxs[i] = [y, x]
+#         ds[i] = d_dict[d]
+
+#     # commands
+#     for _ in range(M):
+#         n, cmd, repeat = input().split()
+#         n, repeat = int(n)-1, int(repeat)
+
+#         if cmd == 'L':
+#             ds[n] = (ds[n]-repeat)%4
+#         elif cmd == 'R':
+#             ds[n] = (ds[n]+repeat)%4
+#         else:
+#             y, x = r_yxs[n]
+#             board[y][x] = 0
+#             py, px = d_yxs[ds[n]]
+#             for _ in range(repeat):
+#                 ny, nx = y+py, x+px
+#                 # print('ny, nx', ny, nx)
+#                 if not (0 <= ny < B and 0 <= nx < A):
+#                     print(f'Robot {n+1} crashes into the wall')
+#                     return
+#                 elif board[ny][nx] != 0:
+#                     print(f'Robot {n+1} crashes into robot {board[ny][nx]}')
+#                     return
+#                 y, x = ny, nx
+
+#             r_yxs[n] = [y, x]
+#             board[y][x] = n+1
+
+#     # no problem
+#     print('OK')
+
+# solve()
