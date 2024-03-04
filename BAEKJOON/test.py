@@ -29045,3 +29045,55 @@ WLLUU
 #     print('OK')
 
 # solve()
+
+
+# 14567 선수과목 Prerequisite
+# sort, dp
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# N, M = map(int, input().split())
+# dp = [1]*(N+1)
+
+# pres = sorted([list(map(int, input().split())) for _ in range(M)])
+# for A, B in pres:
+#     dp[B] = max(dp[B], dp[A]+1)
+
+# print(*dp[1:])
+
+
+# topology sort
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, M = map(int, input().split())
+#     g = [[] for _ in range(N+1)]
+#     pres = [0]*(N+1)
+
+#     for _ in range(M):
+#         A, B = map(int, input().split())
+#         g[A].append(B)
+#         g[B].append(A)
+#         pres[B] += 1
+#     # print(pres)
+
+#     q = deque([i for i in range(N+1) if pres[i] == 0])
+#     ans = [1]*(N+1)
+#     cnt = 1
+#     while q:
+#         for _ in range(len(q)):
+#             v = q.popleft()
+#             ans[v] = cnt
+#             for u in g[v]:
+#                 if pres[u] > 0:
+#                     pres[u] -= 1
+#                     if pres[u] == 0:
+#                         q.append(u)
+#         cnt += 1
+
+#     print(*ans[1:])
+
+# solve()
