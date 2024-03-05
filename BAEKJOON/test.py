@@ -29097,3 +29097,33 @@ WLLUU
 #     print(*ans[1:])
 
 # solve()
+
+
+# 21758 꿀 따기
+# 변수명 실수..
+'''
+4
+1 100 100 1
+[ans] 300
+'''
+# def solve():
+#     N = int(input())
+#     ns = list(map(int, input().split()))
+
+#     ans = 0
+#     # tns : target ns
+#     for tns in [ns, ns[::-1]]:
+#         sums = [0]*N
+#         for i in range(N):
+#             if i >= 1: sums[i] = sums[i-1]
+#             sums[i] += tns[i]
+#         # print(sums)
+
+#         base_sum = 2*sums[N-1]-sums[0]
+#         for i in range(1, N-1):
+#             ans = max(ans, base_sum-tns[i]-sums[i])
+
+#     ans = max(ans, sums[N-2]-sums[0]+max(ns[1:N-1]))
+#     print(ans)
+
+# solve()
