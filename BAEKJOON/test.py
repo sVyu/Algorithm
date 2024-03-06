@@ -29127,3 +29127,25 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 1915 가장 큰 정사각형
+# import sys
+# input = sys.stdin.readline
+
+# n, m = map(int, input().split())
+# board = [list(map(int, input().rstrip())) for _ in range(n)]
+
+# dp = [[0]*m for _ in range(n)]
+# for i in range(m):
+#     dp[0][i] = board[0][i]
+# for i in range(n):
+#     dp[i][0] = board[i][0]
+
+# for x in range(1, n):
+#     for y in range(1, m):
+#         if board[x][y]:
+#             dp[x][y] = min(dp[x-1][y-1], dp[x-1][y], dp[x][y-1]) + 1
+
+# max_w = max([max(dp[x]) for x in range(n)])
+# print(max_w**2)
