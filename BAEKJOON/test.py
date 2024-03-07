@@ -29149,3 +29149,40 @@ WLLUU
 
 # max_w = max([max(dp[x]) for x in range(n)])
 # print(max_w**2)
+
+
+# 2116 주사위 쌓기
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N = int(input())
+#     dices = [list(map(int, input().split())) for _ in range(N)]
+
+#     # 각 면의 반대 면 값을 저장한 dict
+#     dices_dict = [dict() for _ in range(N)]
+#     for i in range(N):
+#         dices_dict[i][dices[i][0]] = dices[i][5]
+#         dices_dict[i][dices[i][5]] = dices[i][0]
+
+#         dices_dict[i][dices[i][1]] = dices[i][3]
+#         dices_dict[i][dices[i][3]] = dices[i][1]
+
+#         dices_dict[i][dices[i][2]] = dices[i][4]
+#         dices_dict[i][dices[i][4]] = dices[i][2]
+
+#     ans = 0
+#     for start_n in range(1, 7):
+#         bottom_n = start_n
+#         tmp_ans = 0
+#         for i in range(N):
+#             top_n = dices_dict[i][bottom_n]
+#             appeared_set = set({bottom_n, top_n})
+#             tmp_ans += max(n for n in range(1, 7) if n not in appeared_set)
+#             bottom_n = top_n
+
+#         ans = max(ans, tmp_ans)
+
+#     print(ans)
+
+# solve()
