@@ -29244,3 +29244,68 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 2138 전구와 스위치
+'''
+4
+1011
+0000
+[ans] 2
+'''
+'''
+3
+000
+100
+[ans] 2
+'''
+'''
+5
+00000
+10101
+[ans] 3
+'''
+'''
+(반례 참고)
+8
+00000000
+11011000
+[ans] 2
+'''
+'''
+(반례 참고)
+7
+1101000
+1111111
+[ans] 3
+'''
+
+N = int(input())
+t_now = list(map(int, input()))
+target = list(map(int, input()))
+
+INF = int(1e5)
+ans = INF
+
+for is_first_bulb_pushed in [True, False]:
+    now = t_now[:]
+    i = 0
+    cnt = 0
+
+    if is_first_bulb_pushed:
+        for s in range(2):
+            now[s] = (now[s]+1)%2
+        cnt += 1
+        # i += 1 #
+
+    while i < N-2:
+        if now[i] != target[i]:
+            for s in range(3):
+                now[i+s] = (now[i+s]+1)%2
+            cnt += 1 #
+        i += 1
+
+    if now[-2] == target[-2] and now[-1] == target[-1]: ans = min(ans, cnt)
+    if now[-2] != target[-2] and now[-1] != target[-1]: ans = min(ans, cnt+1)
+
+print(ans if ans != INF else -1)
