@@ -29186,3 +29186,59 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 1911 흙길 보수하기
+'''
+(찾은 반례)
+2 5
+1 2
+4 5
+[ans] 1
+'''
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, L = map(int, input().split())
+#     plrs = sorted([list(map(int, input().split())) for _ in range(N)])
+#     # print(plrs)
+
+#     pools = []
+#     l, r = plrs[0]
+#     for pl, pr in plrs[1:]:
+#         if r < pl-1:
+#             pools.append(r-l)
+#             l, r = pl, pr
+#         else:
+#             r = pr
+#     pools.append(r-l)
+
+#     ans = sum([(p//L +(1 if p%L else 0)) for p in pools])
+#     print(ans)
+
+# solve()
+
+
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     N, L = map(int, input().split())
+#     plrs = sorted([list(map(int, input().split())) for _ in range(N)])
+#     # print(plrs)
+
+#     ans = 0
+#     x = -1
+
+#     for pl, pr in plrs:
+#         if x >= pr: continue
+#         if x > pl: pl = x
+
+#         cnt = (pr-pl)//L + (1 if (pr-pl)%L else 0)
+#         ans += cnt
+#         x = pl+cnt*L
+
+#     print(ans)
+
+# solve()
