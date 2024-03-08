@@ -29196,6 +29196,7 @@ WLLUU
 4 5
 [ans] 1
 '''
+# 1st try - 문제 잘못 이해
 # import sys
 # input = sys.stdin.readline
 
@@ -29220,6 +29221,7 @@ WLLUU
 # solve()
 
 
+# 2nd try - clear
 # import sys
 # input = sys.stdin.readline
 
