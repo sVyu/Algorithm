@@ -29280,32 +29280,82 @@ WLLUU
 [ans] 3
 '''
 
-N = int(input())
-t_now = list(map(int, input()))
-target = list(map(int, input()))
+# N = int(input())
+# t_now = list(map(int, input()))
+# target = list(map(int, input()))
 
-INF = int(1e5)
-ans = INF
+# INF = int(1e5)
+# ans = INF
 
-for is_first_bulb_pushed in [True, False]:
-    now = t_now[:]
-    i = 0
-    cnt = 0
+# for is_first_bulb_pushed in [True, False]:
+#     now = t_now[:]
+#     i = 0
+#     cnt = 0
 
-    if is_first_bulb_pushed:
-        for s in range(2):
-            now[s] = (now[s]+1)%2
-        cnt += 1
-        # i += 1 #
+#     if is_first_bulb_pushed:
+#         for s in range(2):
+#             now[s] = (now[s]+1)%2
+#         cnt += 1
+#         # i += 1 #
 
-    while i < N-2:
-        if now[i] != target[i]:
-            for s in range(3):
-                now[i+s] = (now[i+s]+1)%2
-            cnt += 1 #
-        i += 1
+#     while i < N-2:
+#         if now[i] != target[i]:
+#             for s in range(3):
+#                 now[i+s] = (now[i+s]+1)%2
+#             cnt += 1 #
+#         i += 1
 
-    if now[-2] == target[-2] and now[-1] == target[-1]: ans = min(ans, cnt)
-    if now[-2] != target[-2] and now[-1] != target[-1]: ans = min(ans, cnt+1)
+#     if now[-2] == target[-2] and now[-1] == target[-1]: ans = min(ans, cnt)
+#     if now[-2] != target[-2] and now[-1] != target[-1]: ans = min(ans, cnt+1)
 
-print(ans if ans != INF else -1)
+# print(ans if ans != INF else -1)
+
+
+# 11058 크리보드
+# fail
+# def solve():
+#     N = int(input())
+
+#     if N <= 3:
+#         print(N)
+#         return
+
+#     ans = [0]*(N+1)
+#     for i in range(4):
+#         ans[i] = i
+
+#     tmp_buffer = 1
+#     for i in range(4, N+1):
+#         val_with_max_buffer = ans[i-3]*2
+#         if ans[i-1]+tmp_buffer <= val_with_max_buffer:
+#             ans[i] = val_with_max_buffer
+#             tmp_buffer = ans[i-3]
+#         else:
+#             ans[i] = ans[i-1]+tmp_buffer
+
+#     # print(ans[N])
+#     print(ans)
+
+# solve()
+
+
+# clear - 코드 개선 가능 (포도주 문제처럼 접근)
+# def solve():
+#     N = int(input())
+#     if N <= 6:
+#         print(N)
+#         return
+
+#     dp = [i for i in range(N+1)]
+
+#     for i in range(4, N+1):
+#         buffer = dp[i-3]
+#         base = buffer*2
+#         dp[i] = max(dp[i], base)
+
+#         for j in range(i+1, N+1):
+#             dp[j] = max(dp[j], base+(j-i)*buffer)
+
+#     print(dp[N])
+
+# solve()
