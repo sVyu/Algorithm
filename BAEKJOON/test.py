@@ -29359,3 +29359,26 @@ WLLUU
 #     print(dp[N])
 
 # solve()
+
+
+# 4811 알약
+# max_N = 30
+# dp_table = [[0]*(2*max_N+1) for _ in range(max_N+1)]
+
+# for y in range(1, max_N+1):
+#     dp_table[0][y] = 1
+
+# for y in range(2, 2*max_N+1):
+#     for x in range(1, y//2+1):
+#         dp_table[x][y] = dp_table[x-1][y-1]+dp_table[x][y-1]
+
+# # for x in range(N+1):
+# #     print(dp_table[x])
+
+# dp = [dp_table[k][2*k] for k in range(max_N+1)]
+# # print(dp)
+
+# n = int(input())
+# while n > 0:
+#     print(dp[n])
+#     n = int(input())
