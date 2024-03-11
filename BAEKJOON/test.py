@@ -29382,3 +29382,82 @@ WLLUU
 # while n > 0:
 #     print(dp[n])
 #     n = int(input())
+
+
+# 15591 MooTube (Silver)
+# try1 - solved (but too much time - about 5s (TL : 2s))
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, Q = map(int, input().split())
+#     g = [[] for _ in range(N+1)]
+
+#     for _ in range(N-1):
+#         pi, qi, ri = map(int, input().split())
+#         g[pi].append([qi, ri])
+#         g[qi].append([pi, ri])
+
+#     INF = int(1e9)+1
+#     usados = [[0]*(N+1) for _ in range(N+1)]
+#     for i in range(1, N+1):
+#         visited = [False]*(N+1)
+#         visited[i] = True
+#         q = deque([[i, INF]])
+#         while q:
+#             v, now_usados = q.popleft()
+#             for u, connected_usados in g[v]:
+#                 if not visited[u]:
+#                     visited[u] = True
+#                     next_usados = min(now_usados, connected_usados)
+
+#                     usados[i][u] = next_usados
+#                     q.append([u, next_usados])
+
+#     # for x in range(N+1):
+#     #     print(usados[x])
+
+#     for _ in range(Q):
+#         k, v = map(int, input().split())
+#         print(sum([1 for i in range(N+1) if usados[v][i] >= k]))
+
+# solve()
+
+
+# try 2 - revised (about 2s)
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, Q = map(int, input().split())
+#     g = [[] for _ in range(N+1)]
+
+#     for _ in range(N-1):
+#         pi, qi, ri = map(int, input().split())
+#         g[pi].append([qi, ri])
+#         g[qi].append([pi, ri])
+
+#     INF = int(1e9)+1
+
+#     for _ in range(Q):
+#         ki, vi = map(int, input().split())
+#         visited = [False]*(N+1)
+#         visited[vi] = True
+#         cnt = 0
+
+#         q = deque([[vi, INF]])
+#         while q:
+#             v, now_usados = q.popleft()
+#             for u, connected_usados in g[v]:
+#                 if not visited[u]:
+#                     visited[u] = True
+#                     next_usados = min(now_usados, connected_usados)
+
+#                     if next_usados >= ki:
+#                         cnt += 1
+#                         q.append([u, next_usados])
+#         print(cnt)
+
+# solve()
