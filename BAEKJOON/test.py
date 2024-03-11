@@ -29461,3 +29461,38 @@ WLLUU
 #         print(cnt)
 
 # solve()
+
+
+# revised ! (1396 ms)
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+
+# def solve():
+#     N, Q = map(int, input().split())
+#     g = [[] for _ in range(N+1)]
+
+#     for _ in range(N-1):
+#         p, q, r = map(int, input().split())
+#         g[p].append((q, r))
+#         g[q].append((p, r))
+
+#     for _ in range(Q):
+#         k, v = map(int, input().split())
+#         visited = [False]*(N+1)
+#         visited[v] = True
+#         cnt = 0
+
+#         q = deque([v])
+#         while q:
+#             v = q.popleft()
+#             for u, connected_usados in g[v]:
+#                 if not visited[u]:
+#                     visited[u] = True
+
+#                     if connected_usados >= k:
+#                         cnt += 1
+#                         q.append(u)
+#         print(cnt)
+
+# solve()
