@@ -29500,6 +29500,7 @@ WLLUU
 
 # 9660 돌 게임 6
 '''
+    0   창
 상  1
     2   창
 상  3
@@ -29518,5 +29519,4 @@ WLLUU
     16 창
 상  17
 '''
-# N = int(input())
 # print('SK' if int(input()) % 7 not in [0, 2] else 'CY')
