@@ -29500,7 +29500,7 @@ WLLUU
 
 # 9660 돌 게임 6
 '''
-    0   창
+    0   창      # !
 상  1
     2   창
 상  3
@@ -29520,3 +29520,38 @@ WLLUU
 상  17
 '''
 # print('SK' if int(input()) % 7 not in [0, 2] else 'CY')
+
+
+# 19598 최소 회의실 개수
+'''
+4
+1 2
+2 3
+3 6
+5 10
+'''
+
+# import sys
+# input = sys.stdin.readline
+# from heapq import heappush, heappop
+
+# def solve():
+#     N = int(input())
+#     ns = sorted([list(map(int, input().split())) for _ in range(N)])
+#     # print(ns)
+
+#     ans, num_of_meeting_room = 1, 1
+#     heap = [ns[0][1]]
+
+#     for s, e in ns[1:]:
+#         while heap and s >= heap[0]:
+#             heappop(heap)
+#             num_of_meeting_room -= 1
+
+#         heappush(heap, e)
+#         num_of_meeting_room += 1
+#         ans = max(ans, num_of_meeting_room)
+
+#     print(ans)
+
+# solve()
