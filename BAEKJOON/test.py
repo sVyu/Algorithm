@@ -29555,3 +29555,30 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 1206 사람의 수
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = [int(''.join(input().rstrip().split('.'))) for _ in range(N)]
+# # print(ns)
+
+# # nop : number of people
+# nop = 1
+
+# while True:
+#     possible_vals = set({n*1000//nop for n in range(nop*10+1)})
+
+#     find_pos_nop = True
+#     for n in ns:
+#         if n not in possible_vals:
+#             find_pos_nop = False
+#             break
+
+#     if find_pos_nop:
+#         print(nop)
+#         break
+
+#     nop += 1
