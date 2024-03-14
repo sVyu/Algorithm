@@ -29582,3 +29582,35 @@ WLLUU
 #         break
 
 #     nop += 1
+
+
+# 15681 트리와 쿼리
+# import sys
+# input = sys.stdin.readline
+# sys.setrecursionlimit(int(1e5))
+
+# def countSubtreeNodes(currentNode, trees, sizes, visited) :
+#     sizes[currentNode] = 1 # 자기 자신
+#     visited[currentNode] = True
+#     for u in trees[currentNode]:
+#         if not visited[u]:
+#             countSubtreeNodes(u, trees, sizes, visited)
+#             sizes[currentNode] += sizes[u]
+
+# def solve():
+#     N, R, Q = map(int, input().split())
+#     trees = [[] for _ in range(N+1)]
+#     for _ in range(N-1):
+#         U, V = map(int, input().split())
+#         trees[U].append(V)
+#         trees[V].append(U)
+
+#     sizes = [0]*(N+1)
+#     visited = [False]*(N+1)
+#     countSubtreeNodes(R, trees, sizes, visited)
+
+#     for _ in range(Q):
+#         v = int(input())
+#         print(sizes[v])
+
+# solve()
