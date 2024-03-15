@@ -29614,3 +29614,28 @@ WLLUU
 #         print(sizes[v])
 
 # solve()
+
+
+# 1662 압축
+# ss = list(input())
+# ans = 0
+# stack = []
+# len_ss = len(ss)
+
+# i = 0
+# while i < len_ss:
+#     s = ss[i]
+
+#     if s == ')':
+#         pre_len, cnt = stack.pop()
+#         ans = pre_len + ans*cnt
+#     else:
+#         if i+1 < len_ss and ss[i+1] == '(':
+#             stack.append([ans, int(s)])
+#             ans = 0
+#             i += 2
+#             continue
+#         ans += 1
+#     i += 1
+
+# print(ans)
