@@ -29639,3 +29639,37 @@ WLLUU
 #     i += 1
 
 # print(ans)
+
+
+# 2666 벽장문의 이동
+# N = int(input())
+# door1, door2 = sorted(list(map(int, input().split())))
+# Q = int(input())
+
+# INF = N*Q
+# dp = [[INF]*(N+1) for _ in range(N+1)]
+# dp[door1][door2] = 0
+# t = -1
+
+# for i in range(Q):
+#     t = int(input())
+#     new_dp = [[INF]*(N+1) for _ in range(N+1)]
+#     for x in range(1, N+1):
+#         for y in range(x+1, N+1):
+#             if not (y <= t):
+#                 new_dp[t][y] = min(new_dp[t][y], dp[x][y]+abs(x-t))
+#             if not (t <= x):
+#                 new_dp[x][t] = min(new_dp[x][t], dp[x][y]+abs(y-t))
+#     dp = new_dp
+
+#     # for x in range(N+1):
+#     #     print(dp[x])
+
+# min_cnt = INF
+# for x in range(1, t):
+#     min_cnt = min(min_cnt, dp[x][t])
+
+# for y in range(t+1, N+1):
+#     min_cnt = min(min_cnt, dp[t][y])
+
+# print(min_cnt)
