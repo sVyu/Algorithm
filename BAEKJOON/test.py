@@ -29673,3 +29673,39 @@ WLLUU
 #     min_cnt = min(min_cnt, dp[t][y])
 
 # print(min_cnt)
+
+
+# 1790 수 이어 쓰기 2
+'''
+100000000 1000000000
+'''
+'''
+1 2
+'''
+# N, k = map(int, input().split())
+
+# now = 0
+# w = 1
+# base = 9
+
+# while (N > 0) & (w <= k):
+#     # mv : min_val
+#     mv = min(N, k//w, base)
+#     N -= mv
+#     k -= mv*w
+#     now += mv
+
+#     w += 1
+#     base *= 10
+# # print(now, N, k)
+
+# if k == 0:
+#     print(now % 10)
+# elif k > 0:
+#     if N > 0:
+#         now += 1
+#         k -= 1
+#         list_now = list(str(now))
+#         print(list_now[k])
+#     else:
+#         print(-1)
