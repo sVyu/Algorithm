@@ -29709,3 +29709,31 @@ WLLUU
 #         print(list_now[k])
 #     else:
 #         print(-1)
+
+
+# 25682 체스판 다시 칠하기 2
+# N, M, K = map(int, input().split())
+# board = [list(input()) for _ in range(N)]
+
+# sums = [[0]*(M+1) for _ in range(N+1)]
+# colors = ['B', 'W']
+
+# for x in range(1, N+1):
+#     row_diff_cnts = 0
+#     for y in range(1, M+1):
+#         if board[x-1][y-1] != colors[(x+y)%2]:
+#             row_diff_cnts += 1
+
+#         sums[x][y] = row_diff_cnts+sums[x-1][y]
+
+# # for x in range(1, N+1):
+# #     print(sums[x])
+
+# ans = int(2e6)
+# k_square = K**2
+# for bx in range(N-K+1):
+#     for by in range(M-K+1):
+#         cnt = sums[bx+K][by+K]-sums[bx+K][by]-sums[bx][by+K]+sums[bx][by]
+#         ans = min(ans, cnt, k_square-cnt)
+
+# print(ans)
