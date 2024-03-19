@@ -29737,3 +29737,36 @@ WLLUU
 #         ans = min(ans, cnt, k_square-cnt)
 
 # print(ans)
+
+
+# 3649 로봇 프로젝트
+# import sys
+# input = sys.stdin.readline
+
+# def solve():
+#     while True:
+#         try:
+#             x = int(input()) * int(1e7)
+#         except:
+#             break
+
+#         n = int(input())
+#         ns = sorted([int(input()) for _ in range(n)])
+
+#         l, r = 0, n-1
+#         find_check = False
+#         while l < r:
+#             tmp_sum = ns[l]+ns[r]
+#             if tmp_sum < x:
+#                 l += 1
+#             elif tmp_sum > x:
+#                 r -= 1
+#             else:
+#                 find_check = True
+#                 print(f'yes {ns[l]} {ns[r]}')
+#                 break
+
+#         if not find_check:
+#             print('danger')
+
+# solve()
