@@ -29770,3 +29770,33 @@ WLLUU
 #             print('danger')
 
 # solve()
+
+
+# 3980 선발 명단
+# import sys
+# input = sys.stdin.readline
+
+# def btr(checked, stats, player_index, cur_val):
+#     global max_val
+#     for i in range(11):
+#         if not checked[i] and stats[player_index][i] > 0:
+#             checked[i] = True
+#             cur_val += stats[player_index][i]
+#             if player_index < 10:
+#                 btr(checked, stats, player_index+1, cur_val)
+#             else:
+#                 max_val = max(max_val, cur_val)
+#             checked[i] = False
+#             cur_val -= stats[player_index][i]
+
+# def solve():
+#     global max_val
+#     max_val = 0
+
+#     checked = [False]*11
+#     stats = [list(map(int, input().split())) for _ in range(11)]
+#     btr(checked, stats, 0, 0)
+#     print(max_val)
+
+# for _ in range(int(input())):
+#     solve()
