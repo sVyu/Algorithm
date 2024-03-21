@@ -29800,3 +29800,40 @@ WLLUU
 
 # for _ in range(int(input())):
 #     solve()
+
+
+# 2800 괄호 제거
+'''
+(1+2)+(3+4)
+'''
+
+# ss = list(input())
+# len_ss = len(ss)
+
+# p_idxs = []
+# stacks = []
+# for i in range(len_ss):
+#     if ss[i] == '(':
+#         stacks.append(i)
+#     elif ss[i] == ')':
+#         p_idxs.append([stacks.pop(), i])
+# # print(p_idxs)
+
+# tot_stack_cnt = len(p_idxs)
+# limit = 2**tot_stack_cnt
+# ans = []
+
+# for n in range(1, limit):
+#     check_show = [True]*len_ss
+#     bin_n = bin(n)[2:].zfill(tot_stack_cnt)
+
+#     for i in range(tot_stack_cnt):
+#         if bin_n[i] == '1':
+#             l, r = p_idxs[i]
+#             check_show[l] = False
+#             check_show[r] = False
+
+#     # print(''.join([ss[i] for i in range(len_ss) if check_show[i]]))
+#     ans.append(''.join([ss[i] for i in range(len_ss) if check_show[i]]))
+
+# print(*sorted(set(ans)), sep='\n')
