@@ -29837,3 +29837,30 @@ WLLUU
 #     ans.append(''.join([ss[i] for i in range(len_ss) if check_show[i]]))
 
 # print(*sorted(set(ans)), sep='\n')
+
+
+# 3067 Coins
+'''
+1
+3
+1 10 5
+5
+[ans] 2
+'''
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     N = int(input())
+#     ns = [0] + list(map(int, input().split()))
+#     M = int(input())
+#     dp = [[0]*(M+1) for _ in range(N+1)]
+
+#     for x in range(1, N+1): # 
+#         dp[x][0] = 1
+#         for y in range(1, M+1):
+#             dp[x][y] = dp[x-1][y]
+#             if y >= ns[x]:
+#                 dp[x][y] += dp[x][y-ns[x]]
+
+#     print(dp[N][M])
