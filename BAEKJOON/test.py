@@ -29864,3 +29864,53 @@ WLLUU
 #                 dp[x][y] += dp[x][y-ns[x]]
 
 #     print(dp[N][M])
+
+
+# 17845 수강 과목
+# ?
+# import sys
+# input = sys.stdin.readline
+
+# N, K = map(int, input().split())
+# subs = [list(map(int, input().split())) for _ in range(K)]
+
+# dp = [[0]*(N+1) for _ in range(K+1)]
+# for x in range(1, K+1):
+#     importance, needed_time = subs[x-1]
+#     for y in range(needed_time, N+1):
+#         dp[x][y] = max(dp[x-1][y], dp[x-1][y-needed_time]+importance)
+
+# print(dp[K][N])
+
+
+# revised -> clear
+# import sys
+# input = sys.stdin.readline
+
+# N, K = map(int, input().split())
+# subs = [list(map(int, input().split())) for _ in range(K)]
+
+# dp = [[0]*(N+1) for _ in range(K+1)]
+# for x in range(1, K+1):
+#     importance, needed_time = subs[x-1]
+#     for y in range(N+1):
+#         dp[x][y] = dp[x-1][y]
+#         if y >= needed_time:
+#             dp[x][y] = max(dp[x][y], dp[x-1][y-needed_time]+importance)
+
+# print(dp[K][N])
+
+
+# improve perf
+# import sys
+# input = sys.stdin.readline
+
+# N, K = map(int, input().split())
+# dp = [0]*(N+1)
+
+# for _ in range(K):
+#     importance, needed_time = map(int, input().split())
+#     for y in range(N, needed_time-1, -1):
+#         dp[y] = max(dp[y], dp[y-needed_time]+importance)
+
+# print(dp[N])
