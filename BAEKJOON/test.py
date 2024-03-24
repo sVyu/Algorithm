@@ -29914,3 +29914,30 @@ WLLUU
 #         dp[y] = max(dp[y], dp[y-needed_time]+importance)
 
 # print(dp[N])
+
+
+# 20437 문자열 게임 2
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     ss = list(input().rstrip())
+#     len_ss = len(ss)
+
+#     ans = [10001, -1]
+#     all_alphabet_idxs = [[] for _ in range(26)]
+#     for i in range(len_ss):
+#         all_alphabet_idxs[ord(ss[i])-97].append(i)
+#     # print(all_alphabet_idxs)
+
+#     K = int(input())
+#     for i in range(26):
+#         one_alphabet_idxs = all_alphabet_idxs[i]
+#         len_one_alphabet_idxs = len(one_alphabet_idxs)
+
+#         for l in range(len_one_alphabet_idxs-K+1):
+#             r = l+K-1
+#             ans[0] = min(ans[0], one_alphabet_idxs[r]-one_alphabet_idxs[l]+1)
+#             ans[1] = max(ans[1], one_alphabet_idxs[r]-one_alphabet_idxs[l]+1)
+
+#     print(*ans) if ans[1] != -1 else print(-1)
