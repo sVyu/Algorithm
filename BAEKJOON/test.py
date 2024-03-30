@@ -29965,3 +29965,28 @@ WLLUU
 # 9656 돌 게임 2
 # print('CY' if int(input())%2 else 'SK')
 
+
+# 10709 기상캐스터
+H, W = map(int, input().split())
+board = [list(input()) for _ in range(H)]
+
+ans = [[-1]*W for _ in range(H)]
+coords = [[x, y] for x in range(H) for y in range(W) if board[x][y] == 'c']
+#print(coords)
+
+sec = 0
+while coords:
+    new_coords = []
+    for x, y in coords:
+        if ans[x][y] != -1: continue  
+        ans[x][y] = sec
+
+        new_y = y+1
+        if new_y < W:
+            new_coords.append([x, new_y])
+
+    coords = new_coords
+    sec += 1
+
+for x in range(H):
+    print(*ans[x])
