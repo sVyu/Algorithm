@@ -29993,6 +29993,53 @@ WLLUU
 
 
 # 13909 창문 닫기
-import math
+# import math
 
-print(math.isqrt(int(input())))
+# print(math.isqrt(int(input())))
+
+
+# 1062 가르침 - 알고리즘 분류 확인
+# import sys
+# input = sys.stdin.readline
+
+# def btr(checked_list, tidx, plused_tot_alphas, K, booleaned_alphas_list):
+#     global ans
+#     if plused_tot_alphas > K: return
+#     elif plused_tot_alphas == K:
+#         tmp_cnt = 0
+#         for one_booleaned_alphas in booleaned_alphas_list:
+#             pos = True
+#             for alpha_idx in range(26):
+#                 if one_booleaned_alphas[alpha_idx] and not checked_list[alpha_idx]:
+#                     pos = False
+#                     break
+#             if pos: tmp_cnt += 1
+#         ans = max(ans, tmp_cnt)
+#     else:
+#         for i in range(tidx, 26):
+#             if not checked_list[i]:
+#                 checked_list[i] = True
+#                 btr(checked_list, i+1, plused_tot_alphas+1, K, booleaned_alphas_list)
+#                 checked_list[i] = False
+
+# def solve():
+#     N, K = map(int, input().split())
+#     checked_list = [False]*26
+#     for a in "antic":
+#         checked_list[ord(a)-97] = True
+#     words = [input().rstrip() for _ in range(N)]
+
+#     booleaned_alphas_list = [[False]*26 for _ in range(N)]
+#     for i in range(N):
+#         word = words[i]
+#         for c in word:
+#             booleaned_alphas_list[i][ord(c)-97] = True
+#     # print(booleaned_alphas_list)
+
+#     global ans
+#     ans = 0
+
+#     btr(checked_list, 1, 5, K, booleaned_alphas_list)
+#     print(ans)
+
+# solve()
