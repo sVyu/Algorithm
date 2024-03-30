@@ -29941,3 +29941,24 @@ WLLUU
 #             ans[1] = max(ans[1], one_alphabet_idxs[r]-one_alphabet_idxs[l]+1)
 
 #     print(*ans) if ans[1] != -1 else print(-1)
+
+
+# 2877 4와 7
+N = int(input())
+hi = 2
+
+tn = N
+w = 1
+while tn > hi:
+    tn -= hi
+    hi*= 2
+    w += 1
+
+tn -= 1
+bin_tn = bin(tn)[2:].zfill(w)
+# print(bin_tn)
+
+ans = ['4' if s == '0' else '7' for s in bin_tn]
+print(''.join(ans))
+
+
