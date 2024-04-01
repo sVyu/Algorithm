@@ -30043,3 +30043,13 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 2776 암기왕
+# for _ in range(int(input())):
+#     input()
+#     nset = set(map(int, input().split()))
+
+#     input()
+#     for k in list(map(int, input().split())):
+#         print(1 if k in nset else 0)
