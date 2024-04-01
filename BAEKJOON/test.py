@@ -30053,3 +30053,21 @@ WLLUU
 #     input()
 #     for k in list(map(int, input().split())):
 #         print(1 if k in nset else 0)
+
+
+# 20500 Ezreal 여눈부터 가네 ㅈㅈ
+# N = int(input())
+
+# # x: 숫자의 길이, y: 3으로 나눈 나머지, dp[x][y]: 개수
+# dp = [[0]*3 for _ in range(N+1)]
+
+# # 5의 배수 -> (1의 자리가 5) -> (5 % 3 == 2)
+# dp[1][2] = 1
+# mod = int(1e9)+7
+
+# for x in range(2, N+1):
+#     dp[x][0] = (dp[x-1][1] + dp[x-1][2]) % mod
+#     dp[x][1] = (dp[x-1][0] + dp[x-1][2]) % mod
+#     dp[x][2] = (dp[x-1][0] + dp[x-1][1]) % mod
+
+# print(dp[N][0])
