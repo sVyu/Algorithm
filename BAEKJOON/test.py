@@ -30110,3 +30110,25 @@ WLLUU
 # else:
 #     print("NEITHER")
 
+
+# 14606 피자 (Small)
+# def solve():
+#     N = int(input())
+#     if N == 1:
+#         print(0)
+#         return
+
+#     dp = [0]*(N+1)
+#     dp[2] = 1
+
+#     for i in range(3, N+1):
+#         half_val = i//2
+#         if i % 2:
+#             a, b = half_val, half_val+1
+#             dp[i] = dp[a]+dp[b] + a*b
+#         else:
+#             dp[i] = 2*dp[half_val] + half_val**2
+
+#     print(dp[N])
+
+# solve()
