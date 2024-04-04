@@ -30071,3 +30071,29 @@ WLLUU
 #     dp[x][2] = (dp[x-1][0] + dp[x-1][1]) % mod
 
 # print(dp[N][0])
+
+
+# 9324 진짜 메시지
+# for _ in range(int(input())):
+#     cnts = [0]*26
+
+#     ss = list(input())
+#     len_ss = len(ss)
+
+#     normal = True
+#     i = 0
+#     while i < len_ss:
+#         alpha = ss[i]
+#         cnts[ord(alpha)-65] += 1
+
+#         if cnts[ord(alpha)-65] % 3 == 0:
+#             if (i == (len_ss-1)) or ss[i+1] != alpha:
+#                 normal = False
+#                 break
+#             else:
+#                 i += 2
+#                 continue
+
+#         i += 1
+
+#     print("OK" if normal else "FAKE")
