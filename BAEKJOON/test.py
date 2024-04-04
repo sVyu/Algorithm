@@ -30097,3 +30097,16 @@ WLLUU
 #         i += 1
 
 #     print("OK" if normal else "FAKE")
+
+
+# 11536 줄 세우기
+# N = int(input())
+# names = [input() for _ in range(N)]
+
+# if names == sorted(names):
+#     print("INCREASING")
+# elif names == sorted(names, reverse = True):
+#     print("DECREASING")
+# else:
+#     print("NEITHER")
+
