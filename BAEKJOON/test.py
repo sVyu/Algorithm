@@ -30153,3 +30153,24 @@ WLLUU
 #         ans += 1 
 
 #     print(ans)
+
+
+# 자료구조는 정말 최고야
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# pos = True
+# for _ in range(M):
+#     k = int(input())
+#     ns = list(map(int, input().split()))  
+
+#     for i in range(k-1):
+#         if ns[i] < ns[i+1]:
+#             pos = False
+#             break
+
+#     if not pos:
+#         break 
+
+# print("Yes" if pos else "No")
