@@ -30214,3 +30214,43 @@ WLLUU
 # for n in ns[1:]:
 #     gcd_val = gcd(ns[0], n)
 #     print(f'{ns[0]//gcd_val}/{n//gcd_val}')
+
+
+# 7511 소셜 네트워킹 어플리케이션
+# import sys
+# input = sys.stdin.readline
+
+# def find_parent(parent, x):
+#     if x != parent[x]:
+#         parent[x] = find_parent(parent, parent[x])
+#     return parent[x]
+
+# def union_parent(parent, a, b):
+#     a = find_parent(parent, a)
+#     b = find_parent(parent, b)
+
+#     if a > b: parent[a] = b
+#     else:     parent[b] = a
+
+# def solve():
+#     for loop_cnt in range(int(input())):
+#         n = int(input()) # 유저 수
+#         k = int(input()) # 관계 수
+#         parent = [i for i in range(n)]
+
+#         for _ in range(k):
+#             a, b = map(int, input().split())
+#             union_parent(parent, a, b)
+#         # print(parent)
+
+#         # essential code
+#         for i in range(n):
+#             find_parent(parent, i)
+
+#         print(f'Scenario {loop_cnt+1}:')
+#         for _ in range(int(input())):
+#             a, b = map(int, input().split())
+#             print(1 if parent[a] == parent[b] else 0)
+#         print()
+
+# solve()
