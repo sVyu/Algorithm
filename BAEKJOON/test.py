@@ -30137,3 +30137,19 @@ WLLUU
 # 15549 if
 # Text
 # int -2147483648
+
+
+# 3060 욕심쟁이 돼지
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     ans = 1
+#     n = int(input())
+#     k = sum(map(int, input().split()))    
+
+#     while k <= n:
+#         k *= 4
+#         ans += 1 
+
+#     print(ans)
