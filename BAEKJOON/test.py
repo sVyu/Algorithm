@@ -30190,3 +30190,13 @@ WLLUU
 #         break
 
 # print(ans)
+
+
+# 14655 욱제는 도박쟁이야!!
+# def abs_int(n):
+#     return abs(int(n))
+
+# N = int(input())
+# ns1 = list(map(abs_int, input().split()))
+# ns2 = list(map(abs_int, input().split()))
+# print(sum(ns1)+sum(ns2))
