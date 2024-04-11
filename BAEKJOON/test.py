@@ -30200,3 +30200,17 @@ WLLUU
 # ns1 = list(map(abs_int, input().split()))
 # ns2 = list(map(abs_int, input().split()))
 # print(sum(ns1)+sum(ns2))
+
+
+# 3036 링
+# def gcd(a, b):
+#     while b > 0:
+#         a, b = b, a % b
+#     return a
+
+# N = int(input())
+# ns = list(map(int, input().split()))
+
+# for n in ns[1:]:
+#     gcd_val = gcd(ns[0], n)
+#     print(f'{ns[0]//gcd_val}/{n//gcd_val}')
