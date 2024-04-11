@@ -30174,3 +30174,19 @@ WLLUU
 #         break 
 
 # print("Yes" if pos else "No")
+
+
+# 1813 논리학 교수
+# N = int(input())
+
+# cnts = [0]*51
+# for n in list(map(int, input().split())):
+#     cnts[n] += 1
+
+# ans = -1
+# for n in range(50, -1, -1):
+#     if cnts[n] == n:
+#         ans = n
+#         break
+
+# print(ans)
