@@ -30291,3 +30291,15 @@ WLLUU
 
 #     print(ans)
 #     N, M = map(int, input().split())
+
+
+# 17254 키보드 이벤트
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# vals = [list(input().split()) for _ in range(M)]
+# vals = [[int(vals[i][0]), int(vals[i][1]), vals[i][2]] for i in range(M)]
+
+# vals.sort(key=lambda x:(x[1], x[0]))
+# print(''.join([vals[i][2] for i in range(M)]))
