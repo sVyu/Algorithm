@@ -30317,3 +30317,36 @@ WLLUU
 #     ans = min(ans, ns[i]+ns[N-1-i])
 
 # print(ans)
+
+
+# 28286 재채점을 기다리는 중
+'''
+20 4
+1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+'''
+
+# def btr(N, now, target, push_or_pull_cnt, K):
+#     global ans
+#     tmp_cnt = 0
+#     for i in range(N):
+#         if now[i] == target[i]:
+#             tmp_cnt += 1
+#     ans = max(ans, tmp_cnt)
+
+#     if push_or_pull_cnt < K:
+#         for i in range(N):
+#             btr(N, now[:i]+now[i+1:]+[0], target, push_or_pull_cnt+1, K)    # 당기기
+#             btr(N, now[:i]+[0]+now[i:N-1], target, push_or_pull_cnt+1, K)   # 밀기
+
+# def solve ():
+#     N, K = map(int, input().split())
+#     target = list(map(int, input().split()))
+#     now = list(map(int, input().split()))
+
+#     global ans
+#     ans = 0
+#     btr(N, now, target, 0, K)
+#     print(ans)
+
+# solve()
