@@ -30265,3 +30265,12 @@ WLLUU
 #     for n in range(2, N+1):
 #         val = (val*n) % M
 #     print(val)
+
+
+# 25375 아주 간단한 문제
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     a, b = map(int, input().split())
+#     print(1 if (b%a == 0 and b!=a) else 0)
