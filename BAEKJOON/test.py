@@ -30303,3 +30303,17 @@ WLLUU
 
 # vals.sort(key=lambda x:(x[1], x[0]))
 # print(''.join([vals[i][2] for i in range(M)]))
+
+
+# 11597 Excellence
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# ns = sorted([int(input()) for _ in range(N)])
+
+# ans = int(2e6)
+# for i in range(N//2):
+#     ans = min(ans, ns[i]+ns[N-1-i])
+
+# print(ans)
