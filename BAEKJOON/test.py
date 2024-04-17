@@ -30274,3 +30274,20 @@ WLLUU
 # for _ in range(int(input())):
 #     a, b = map(int, input().split())
 #     print(1 if (b%a == 0 and b!=a) else 0)
+
+
+# 4158 CD
+# import sys
+# input = sys.stdin.readline
+
+# N, M = map(int, input().split())
+# while N != 0 and M != 0:
+#     nset = set([int(input()) for _ in range(N)])
+
+#     ans = 0
+#     for _ in range(M):
+#         if int(input()) in nset:
+#             ans += 1
+
+#     print(ans)
+#     N, M = map(int, input().split())
