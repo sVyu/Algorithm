@@ -30254,3 +30254,14 @@ WLLUU
 #         print()
 
 # solve()
+
+# 31738 매우 어려운 문제
+# N, M = map(int, input().split())
+
+# if N >= M:
+#     print(0)
+# else:
+#     val = 1
+#     for n in range(2, N+1):
+#         val = (val*n) % M
+#     print(val)
