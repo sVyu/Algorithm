@@ -30350,3 +30350,12 @@ WLLUU
 #     print(ans)
 
 # solve()
+
+
+# 15655 N과 M (6)
+# import itertools
+
+# _, M = map(int, input().split())
+# ns = sorted(list(map(int, input().split())))
+# for n in itertools.combinations(ns, M):
+#     print(*n)
