@@ -30359,3 +30359,14 @@ WLLUU
 # ns = sorted(list(map(int, input().split())))
 # for n in itertools.combinations(ns, M):
 #     print(*n)
+
+
+# 9372 상근이의 여행
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     N, M = map(int, input().split())
+#     for _ in range(M):
+#         input()
+#     print(N-1)
