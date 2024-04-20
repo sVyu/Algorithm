@@ -30370,3 +30370,17 @@ WLLUU
 #     for _ in range(M):
 #         input()
 #     print(N-1)
+
+
+# 13305 주유소
+# N = int(input())
+# dists = list(map(int, input().split()))
+# prices = list(map(int, input().split()))
+
+# now_min_price = int(1e9)
+# ans = 0
+# for i in range(N-1):
+#     now_min_price = min(now_min_price, prices[i])
+#     ans += now_min_price * dists[i]
+
+# print(ans)
