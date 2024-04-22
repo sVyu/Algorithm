@@ -30401,3 +30401,34 @@ WLLUU
 #         nd[n] += 1
 
 # print(sorted(nd.items(), key=lambda x:(-x[1], x[0]))[0][0])
+
+
+# 9024 두 수의 합
+# import sys
+# input = sys.stdin.readline
+
+# for _ in range(int(input())):
+#     n, K = map(int, input().split())
+#     ns = sorted(list(map(int, input().split())))
+#     # print("ns", ns)
+
+#     l, r = 0, n-1
+#     min_gap, ans_cnt = int(3e8), 0
+#     while l < r:
+#         now_sum = ns[l]+ns[r]
+#         gap = abs(now_sum-K)
+#         # print("now_sum", now_sum, l, r)
+
+#         if gap < min_gap:
+#             min_gap = gap
+#             ans_cnt = 1
+#         elif gap == min_gap:
+#             ans_cnt += 1
+
+#         if now_sum > K:
+#             r -= 1
+#         else:
+#             l += 1
+
+#     # print("ans", min_gap, ans_cnt)
+#     print(ans_cnt)
