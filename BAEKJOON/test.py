@@ -30384,3 +30384,20 @@ WLLUU
 #     ans += now_min_price * dists[i]
 
 # print(ans)
+
+
+# 11652 카드
+# import sys
+# input = sys.stdin.readline
+
+# N = int(input())
+# nd = dict()
+
+# for _ in range(N):
+#     n = int(input())
+#     if n not in nd:
+#         nd[n] = 1
+#     else:
+#         nd[n] += 1
+
+# print(sorted(nd.items(), key=lambda x:(-x[1], x[0]))[0][0])
