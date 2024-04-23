@@ -1,3 +1,5 @@
 {
-  "files.encoding": "euckr"
+  // "files.encoding": "euckr",
+  "files.encoding": "euckr",
+  "files.autoGuessEncoding": true
 }
