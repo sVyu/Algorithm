@@ -1,3 +1,5 @@
 배열 범위 조심
 'text' 랑 "text" 는 다르다 (따옴표 차이)
 자료형 범위 조심 (int로는 모자랄 수 있으니 longlong 사용하는 경우 등)
+- 오타체크
+  - vector 를 vector 라고 썼는지 잘 볼 것 (ve'r'tor 등)
