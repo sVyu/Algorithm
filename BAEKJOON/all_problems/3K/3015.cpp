@@ -1,18 +1,4 @@
-/*
-edge case 0
-5
-4
-2
-2
-1
-2
-*/
-/*
-edge case 1
-1
-1
-*/
-
+// not completed code
 #include <bits/stdc++.h>
 using namespace std;
 
