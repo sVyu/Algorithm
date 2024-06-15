@@ -1,5 +1,6 @@
 # 다익스트라 역추적
 # 개선 버전 → AC
+# 다시 생각해보니 역추적을 하지 않고도 가능하다..!
 
 import sys
 input = sys.stdin.readline
