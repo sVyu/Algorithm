@@ -8,7 +8,7 @@ def prime_check(n):
     elif n == 2:        return True
     elif n % 2 == 0:    return False
     else:
-        for k in range(3, math.isqrt(n), 2):
+        for k in range(3, math.isqrt(n)+1, 2):  # math.isqrt(n)..
             if n % k == 0:
                 return False
         return True
@@ -19,11 +19,14 @@ p = -1
 k = 0       # p 이하의 소수의 개수
 for val in range(2, n+1):
     if prime_check(val):
+        # print(val, end=' ')
         k += 1
         if n % val == 0:
             p = val
             break
+# print()
 print(p, k)
+print("999 + k :", 999+k)
 
 '''
 맞았습니다
@@ -39,6 +42,7 @@ k       3
 n       1017
 n+2     1019
 p       1019
-k       186
-999+k   1185 
+k       186     ->  171
+999+k   1185    ->  1170
+1185 유럽여행(P4) Clear.. ㅋㅋㅋ..
 '''
