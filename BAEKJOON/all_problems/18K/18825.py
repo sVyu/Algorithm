@@ -1,4 +1,6 @@
-# 맞았습니다! 1193
+# 맞았습니다!   1193
+# 맞힌 사람     1017
+
 import math
 
 def prime_check(n):
@@ -11,7 +13,8 @@ def prime_check(n):
                 return False
         return True
 
-n = 1193+2
+# n = 1193+2
+n = 1017+2
 p = -1
 k = 0       # p 이하의 소수의 개수
 for val in range(2, n+1):
@@ -23,9 +26,19 @@ for val in range(2, n+1):
 print(p, k)
 
 '''
+맞았습니다
 n       1193
 n+2     1195
 p       5
 k       3
 999+k   1002
+'''
+
+'''
+맞힌 사람
+n       1017
+n+2     1019
+p       1019
+k       186
+999+k   1185 
 '''
