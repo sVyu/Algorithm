@@ -1,7 +1,7 @@
 # Algorithm things 😄
 
 📌 PS에 임하는 마인드
-- [(BeakJoon Choi) 나는 어떻게 알고리즘을 공부했을까? + 신기한 방법으로 문제 풀어보기](https://www.slideshare.net/slideshow/ss-52193873/52193873)
+- [(BaekJoon Choi) 나는 어떻게 알고리즘을 공부했을까? + 신기한 방법으로 문제 풀어보기](https://www.slideshare.net/slideshow/ss-52193873/52193873)
 - [[공부법] 알고리즘 공부법](https://gmlwjd9405.github.io/2018/05/14/how-to-study-algorithms.html)
 - [알고리즘 공부, 어떻게 해야하나요?](https://baactree.tistory.com/52)
 - [몇 분 정도 고민한 후에도 감이 안오면 해설을 보는게 좋을까요? / 문제를 보고 어떤 알고리즘이 사용될지는 어떻게 알 수 있나요?](https://blog.encrypted.gg/1062)
