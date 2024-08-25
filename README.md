@@ -27,6 +27,11 @@
 - [알고리즘별 난이도 참고](https://jh05013.github.io/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/#_2)
 - [자주 틀리는 요인](https://www.acmicpc.net/blog/view/70)
 
+📌 추천 어플 (알고리즘 도감)
+- [Android](https://play.google.com/store/apps/details?id=wiki.algorithm.algorithms&hl=ko&pli=1)
+- [ios](https://apps.apple.com/kr/app/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%8F%84%EA%B0%90/id1047532631) 
+
+
 📌 VScode에서 C++ (ver17) 구동하기
 - [(Youtube) Windows에 Visual Studio Code를 사용한 C/C++ 개발환경 만들기(수정)](https://youtu.be/xvZfgJJ0t8k?si=KqNEBDWLqJTEP1vF)
 - [(Blog) Visual Studio Code를 사용한 C/C++ 개발환경 만들기-(Windows/Ubuntu)](https://webnautes.tistory.com/1854)
