@@ -31,14 +31,14 @@
 - [Android](https://play.google.com/store/apps/details?id=wiki.algorithm.algorithms&hl=ko&pli=1)
 - [ios](https://apps.apple.com/kr/app/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%8F%84%EA%B0%90/id1047532631) 
 
-
 📌 VScode에서 C++ (ver17) 구동하기
 - [(Youtube) Windows에 Visual Studio Code를 사용한 C/C++ 개발환경 만들기(수정)](https://youtu.be/xvZfgJJ0t8k?si=KqNEBDWLqJTEP1vF)
 - [(Blog) Visual Studio Code를 사용한 C/C++ 개발환경 만들기-(Windows/Ubuntu)](https://webnautes.tistory.com/1854)
 
 📌 VScode Extension
 - [Competitive Programming Helper](https://marketplace.visualstudio.com/items?itemName=DivyanshuAgrawal.competitive-programming-helper) (강추)  
-<img src="https://divyanshuagrawal.gallerycdn.vsassets.io/extensions/divyanshuagrawal/competitive-programming-helper/2024.7.1722430096/1722430111323/Microsoft.VisualStudio.Services.Icons.Default"/>  
-  
+<a href="https://marketplace.visualstudio.com/items?itemName=DivyanshuAgrawal.competitive-programming-helper"/>
+<img src="https://divyanshuagrawal.gallerycdn.vsassets.io/extensions/divyanshuagrawal/competitive-programming-helper/2024.7.1722430096/1722430111323/Microsoft.VisualStudio.Services.Icons.Default"/></a>
+
 📌 알쓸신잡 TMI
 - [(startlink) ChatGPT 만으로 골드 3찍기](https://www.acmicpc.net/board/view/110940)
