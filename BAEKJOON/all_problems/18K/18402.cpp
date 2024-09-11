@@ -17,7 +17,7 @@ void solve(){
         dists[a][b] = min(dists[a][b], val);
     }
 
-    // floyd
+    // floyd_warshall
     for(int k=0; k<sz; k++){
         for(int i=0; i<sz; i++){
             for(int j=0; j<sz; j++){
