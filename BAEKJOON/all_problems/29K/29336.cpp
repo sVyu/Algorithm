@@ -18,7 +18,7 @@ void solve(){
         while(zi<n and ans < q){
             ans += zs[zi++]+t;
         }
-        cout << m << ' ' << ans << ' ' << q << '\n';
+        // cout << m << ' ' << ans << ' ' << q << '\n';
         if(ans < q){
             cout << -1;
             return;
