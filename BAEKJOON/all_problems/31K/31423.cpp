@@ -15,20 +15,21 @@ void solve(){
     int n; cin >> n;
     vector<string> ss(n); for(auto &s:ss) cin >> s;
     vector<vector<int>> g(n);
-    vector<vector<int>> rev_g(n);
+    // vector<vector<int>> rev_g(n);
 
+    int root = -1;
     for(int i=1; i<n; ++i){
         int a, b;
         cin >> a >> b;
         a -= 1; b -= 1;
         g[a].push_back(b);
-        rev_g[b].push_back(a);
+        root = a;
+        // rev_g[b].push_back(a);
     }
 
-    int root = -1;
-    for(int i=0; i<n; ++i){
-        if(rev_g[i].size() == 0) root = i;
-    }
+    // for(int i=0; i<n; ++i){
+    //     if(rev_g[i].size() == 0) root = i;
+    // }
     // cout << root;
 
     vector<bool> visited(n, false);
