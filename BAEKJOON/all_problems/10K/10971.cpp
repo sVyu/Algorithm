@@ -1,19 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void dfs(vector<vector<int>> &ws, vector<bool> &visited, int cnt, int s, int v, int n, int val, int &ans){
+void dfs(vector<vector<int>> &ws, vector<bool> &visited, int cnt, int s, int i, int n, int val, int &ans){
     if(cnt == (n-1)){
-        if(ws[v][s] == 0) return; //
-        ans = min(ans, val+ws[v][s]);
+        if(ws[i][s] == 0) return; //
+        ans = min(ans, val+ws[i][s]);
         return;
     }
 
-    for(int i=0; i<n; ++i){
-        if(visited[i]) continue;
-        if(ws[v][i] == 0) continue; //
-        visited[i] = true;
-        dfs(ws, visited, cnt+1, s, i, n, val+ws[v][i], ans);
-        visited[i] = false;
+    for(int j=0; j<n; ++j){
+        if(visited[j]) continue;
+        if(ws[i][j] == 0) continue; //
+        visited[j] = true;
+        dfs(ws, visited, cnt+1, s, j, n, val+ws[i][j], ans);
+        visited[j] = false;
     }
 }
 
@@ -25,11 +25,11 @@ void solve(){
 
     int ans = INT_MAX;
     int cnt = 0;
-    for(int v=0; v<n; ++v)
+    for(int i=0; i<n; ++i)
     {
-        visited[v] = true;
-        dfs(ws, visited, cnt, v, v, n, 0, ans);
-        visited[v] = false;
+        visited[i] = true;
+        dfs(ws, visited, cnt, i, i, n, 0, ans);
+        visited[i] = false;
     }
 
     cout << ans;
