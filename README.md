@@ -24,7 +24,7 @@
 📌 알고리즘 참고 추천 사이트(혹은 블로그)
 - [GeeksforGeeks(영문)](https://www.geeksforgeeks.org/)
 - [Algorithm Visualizer](https://algorithm-visualizer.org/)
-- [알고리즘별 난이도 참고](https://jh05013.github.io/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/#_2)
+- ~~[알고리즘별 난이도 참고](https://jh05013.github.io/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/#_2)~~
 - [자주 틀리는 요인](https://www.acmicpc.net/blog/view/70)
 
 📌 추천 어플 (알고리즘 도감)
