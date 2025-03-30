@@ -10,7 +10,7 @@ for (let i = 0; i < 3; ++i) {
 }
 // console.log(se_times);
 
-// mct : mwt
+// medicine_work_time : mwt
 let mwt = se_times[0][1];
 for (let day = 1; day <= n; ++day) {
   for (let i = 0; i < 3; ++i) {
